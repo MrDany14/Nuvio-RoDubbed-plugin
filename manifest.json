@@ -16,7 +16,7 @@
       "enabled": true,
       "logo": "https://www.google.com/s2/favicons?domain=desenefaine.com&sz=128",
       "contentLanguage": ["ro"],
-      "formats": ["mp4", "mkv", "hls"],
+      "formats": ["mp4", "mkv", "m3u8"], 
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": true
@@ -32,7 +32,7 @@
       "enabled": true,
       "logo": "https://www.google.com/s2/favicons?domain=dozaanimata.net&sz=128",
       "contentLanguage": ["ro"],
-      "formats": ["mp4", "mkv", "hls"],
+      "formats": ["mp4", "mkv", "m3u8"],
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": true
