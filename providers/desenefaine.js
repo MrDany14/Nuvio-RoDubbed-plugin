@@ -91,11 +91,13 @@ function getStreams(id, type, season, episode) {
       var baseSlug = normalizeSlug(title);
       var slug = baseSlug;
       
+      // FIX: Correct slug generation for TV episodes
       if (type === "tv" && season && episode) {
-        slug = normalizeSlug(title + " sezonul " + season + " episodul " + episode);
+        slug = normalizeSlug(title) + "-sezonul-" + season + "-episodul-" + episode;
       }
       
-      var prefixes = type === "tv" ? ["serial", "desene", "episod"] : ["film", "desene"];
+      // FIX: Added "epi" as the primary prefix for TV episodes
+      var prefixes = type === "tv" ? ["epi", "serial", "desene"] : ["film", "desene"];
       
       var promises = prefixes.map(function(prefix) {
         var url = MAIN_URL + "/" + prefix + "/" + slug + "/";
@@ -109,7 +111,10 @@ function getStreams(id, type, season, episode) {
       
       return Promise.all(promises).then(function(results) {
         for (var i = 0; i < results.length; i++) {
-          if (results[i]) return results[i];
+          if (results[i]) {
+            log("Direct URL match found: " + results[i].url);
+            return results[i];
+          }
         }
         return null;
       });
@@ -117,6 +122,8 @@ function getStreams(id, type, season, episode) {
 
     function searchSite(query) {
       var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
+      log("Searching site for: '" + query + "'");
+      
       return fetchText(searchUrl).then(function(html) {
         var $ = cheerio.load(html);
         var bestMatch = null;
@@ -145,12 +152,16 @@ function getStreams(id, type, season, episode) {
         });
 
         if (bestMatch) {
+          log("Search match found: " + bestMatch.text + " -> " + bestMatch.href);
           return fetchText(bestMatch.href).then(function(html) {
             return { url: bestMatch.href, html: html };
           });
         }
         return null;
-      }).catch(function() { return null; });
+      }).catch(function(e) {
+        log("Search failed: " + e.message);
+        return null;
+      });
     }
 
     return tryDirectUrl(roTitle).then(function(result) {
@@ -176,7 +187,7 @@ function getStreams(id, type, season, episode) {
       var streams = [];
       var serverCount = 1;
 
-      // 1. PRIORITY: Look for direct .mp4 or .m3u8 links first
+      // 1. PRIORITY: Look for direct .mp4 or .m3u8 links
       $$("source, video").each(function(_, el) {
         var src = $$(el).attr("src");
         if (src && (src.indexOf(".mp4") !== -1 || src.indexOf(".m3u8") !== -1)) {
@@ -201,7 +212,7 @@ function getStreams(id, type, season, episode) {
         }
       });
 
-      // 2. FALLBACK: Look for iframes only if no direct video was found
+      // 2. FALLBACK: Look for ALL iframes (including player.desenefaine.net)
       if (streams.length === 0) {
         $$("iframe").each(function(_, el) {
           var src = $$(el).attr("src") || $$(el).attr("data-src") || $$(el).attr("data-lazy-src");
@@ -210,12 +221,12 @@ function getStreams(id, type, season, episode) {
           if (src.startsWith("//")) src = "https:" + src;
           else if (!src.startsWith("http")) src = MAIN_URL + (src.startsWith("/") ? "" : "/") + src;
 
-          if (src.includes("facebook.com") || src.includes("youtube.com") || src.includes("doubleclick") || src.includes("google.com")) {
+          // Only filter out obvious ads/trailers, ALLOW player.desenefaine.net
+          if (src.includes("facebook.com") || src.includes("youtube.com") || src.includes("doubleclick")) {
             return;
           }
 
-          // CRITICAL DEBUG LOG: This will tell us exactly which video host is being used
-          log("FOUND IFRAME URL: " + src);
+          log("FOUND STREAM URL: " + src);
 
           streams.push({
             name: PROVIDER_NAME,
@@ -226,9 +237,11 @@ function getStreams(id, type, season, episode) {
               notWebReady: true,
               proxyHeaders: {
                 request: {
-                  "Referer": result.url, // Use the post URL, not just the homepage
+                  // CRITICAL: The Referer MUST be the post URL, not the homepage
+                  "Referer": result.url,
                   "User-Agent": DEFAULT_HEADERS["User-Agent"],
-                  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                  "Origin": MAIN_URL
                 }
               }
             }
