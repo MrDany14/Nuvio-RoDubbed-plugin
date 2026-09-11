@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Romanian dubbed cartoons and movies",
   "author": "MrDany14",
-  "providers": [
+  "scrapers": [
     {
       "id": "desenefaine-pro",
       "name": "DeseneFaine Pro",
