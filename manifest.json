@@ -2,28 +2,40 @@
   "id": "ro-cartoons-repo",
   "name": "Romanian Cartoons Repository",
   "version": "1.0.0",
-  "description": "Romanian dubbed cartoons and movies from desenefaine.com and dozaanimata.net",
+  "description": "Romanian dubbed cartoons and movies",
   "author": "MrDany14",
   "providers": [
     {
       "id": "desenefaine-pro",
-      "name": "DeseneFaine (RO)",
-      "description": "Romanian dubbed cartoons and movies from desenefaine.com",
+      "name": "DeseneFaine Pro",
+      "description": "Romanian dubbed cartoons from desenefaine.com",
       "version": "1.0.0",
-      "filename": "providers/desenefaine.js",
+      "author": "MrDany14",
       "supportedTypes": ["movie", "tv"],
-      "language": "ro",
-      "enabled": true
+      "filename": "providers/desenefaine.js",
+      "enabled": true,
+      "logo": "https://www.google.com/s2/favicons?domain=desenefaine.com&sz=128",
+      "contentLanguage": ["ro"],
+      "formats": ["mp4", "mkv", "hls"],
+      "limited": false,
+      "disabledPlatforms": [],
+      "supportsExternalPlayer": true
     },
     {
       "id": "dozaanimata-pro",
-      "name": "DozaAnimata (RO)",
-      "description": "Romanian subbed and dubbed anime/cartoons from dozaanimata.net",
+      "name": "DozaAnimata Pro",
+      "description": "Romanian subbed and dubbed anime from dozaanimata.net",
       "version": "1.0.0",
-      "filename": "providers/dozaanimata.js",
+      "author": "MrDany14",
       "supportedTypes": ["movie", "tv"],
-      "language": "ro",
-      "enabled": true
+      "filename": "providers/dozaanimata.js",
+      "enabled": true,
+      "logo": "https://www.google.com/s2/favicons?domain=dozaanimata.net&sz=128",
+      "contentLanguage": ["ro"],
+      "formats": ["mp4", "mkv", "hls"],
+      "limited": false,
+      "disabledPlatforms": [],
+      "supportsExternalPlayer": true
     }
   ]
 }
