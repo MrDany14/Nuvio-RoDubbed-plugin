@@ -1,252 +1,384 @@
-var cheerio = require("cheerio-without-node-native");
+// providers/desenefaine.js
+// Nuvio scraper for DeseneFaine (RO Dub)
+// TMDB ID -> title lookup -> site search -> iframe resolution -> direct streams.
 
-var PROVIDER_NAME = "DeseneFaine";
-var MAIN_URL = "https://desenefaine.com";
-var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c"; 
+const PROVIDER_NAME = "DeseneFaine";
+const MAIN_URL = "https://desenefaine.com";
 
-// EXACT headers structure used by working Nuvio-TV plugins
-var STREAM_HEADERS = {
-  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-  "Accept": "*/*",
-  "Connection": "keep-alive",
-  "Referer": MAIN_URL + "/",
-  "Origin": MAIN_URL
+// TMDB configuration. Replace with your own key or pull it from your
+// plugin's manifest/config if Nuvio exposes one.
+const TMDB_API_KEY = "ccd8c6e162505e91ef8dc65b323ff4be";
+const TMDB_BASE = "https://api.themoviedb.org/3";
+const TMDB_LANG = "ro-RO"; // Change to "en-US" if you prefer English titles.
+
+const USER_AGENT =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
+  "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
+
+const DEFAULT_HEADERS = {
+  "User-Agent": USER_AGENT,
+  Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+  "Accept-Language": "ro-RO,ro;q=0.9,en;q=0.8",
 };
 
-var FETCH_HEADERS = {
-  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-  "Accept-Language": "ro-RO,ro;q=0.9,en-US;q=0.8,en;q=0.7"
-};
+const SCRAPER_TIMEOUT_MS = 20000;
+
+// ---------------------------------------------------------------------------
+// Logging & small helpers
+// ---------------------------------------------------------------------------
 
 function log(msg) {
-  console.log("[" + PROVIDER_NAME + "] " + msg);
+  console.log(`[${PROVIDER_NAME}] ${msg}`);
 }
 
-function fetchText(url, options) {
-  options = options || {};
-  return fetch(url, {
-    method: options.method || "GET",
-    redirect: options.redirect || "follow",
-    headers: Object.assign({}, FETCH_HEADERS, options.headers || {}),
-    body: options.body
-  }).then(function(res) {
-    if (!res.ok) throw new Error("HTTP " + res.status + " -> " + url);
-    return res.text();
+function absoluteUrl(url) {
+  if (!url) return null;
+  if (url.startsWith("//")) return "https:" + url;
+  if (url.startsWith("http")) return url;
+  return MAIN_URL + (url.startsWith("/") ? "" : "/") + url;
+}
+
+async function fetchText(url, headers = {}) {
+  const res = await fetch(url, {
+    headers: { ...DEFAULT_HEADERS, ...headers },
+    redirect: "follow",
   });
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+  return await res.text();
 }
 
-function fetchJson(url, options) {
-  options = options || {};
-  return fetch(url, {
-    method: options.method || "GET",
-    redirect: options.redirect || "follow",
-    headers: Object.assign({}, FETCH_HEADERS, options.headers || {}),
-    body: options.body
-  }).then(function(res) {
-    if (!res.ok) throw new Error("HTTP " + res.status + " -> " + url);
-    return res.json();
+async function fetchJson(url) {
+  const res = await fetch(url, {
+    headers: {
+      "User-Agent": USER_AGENT,
+      Accept: "application/json",
+    },
   });
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+  return await res.json();
 }
 
-function normalizeSlug(value) {
-  return String(value || "")
-    .toLowerCase()
-    .replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i")
-    .replace(/ș/g, "s").replace(/ț/g, "t")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
+// ---------------------------------------------------------------------------
+// TMDB resolution
+// ---------------------------------------------------------------------------
+
+/**
+ * Resolve a TMDB id into a search-friendly title + year.
+ * Nuvio passes the TMDB id as `id`, and `type` is "movie" or "series".
+ */
+async function resolveTmdb(id, type, season, episode) {
+  if (!TMDB_API_KEY || TMDB_API_KEY === "YOUR_TMDB_API_KEY") {
+    log("TMDB API key is not configured — falling back to raw id");
+    return { title: String(id), year: null, season, episode };
+  }
+
+  const endpoint = type === "movie" ? "movie" : "tv";
+  const url = `${TMDB_BASE}/${endpoint}/${id}?api_key=${TMDB_API_KEY}&language=${TMDB_LANG}`;
+
+  try {
+    const data = await fetchJson(url);
+    const title = data.title || data.name || data.original_title || data.original_name;
+    const original =
+      data.original_title || data.original_name || data.title || data.name;
+    const dateStr = data.release_date || data.first_air_date || "";
+    const year = dateStr ? dateStr.slice(0, 4) : null;
+
+    log(`TMDB resolved: "${title}" (${year}) original="${original}"`);
+
+    return {
+      title,
+      originalTitle: original,
+      year,
+      season,
+      episode,
+    };
+  } catch (e) {
+    log(`TMDB lookup failed for ${id}: ${e.message}`);
+    return { title: String(id), year: null, season, episode };
+  }
 }
 
-function normalizeTitle(value) {
-  return String(value || "")
-    .toLowerCase()
-    .replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i")
-    .replace(/ș/g, "s").replace(/ț/g, "t")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
+/**
+ * Produce a prioritized list of search queries to try against the site.
+ * DeseneFaine uses Romanian titles, so the localized TMDB title is first.
+ */
+function buildSearchQueries(meta, type) {
+  const queries = [];
+  const { title, originalTitle, year, season, episode } = meta;
+
+  // For TV shows, the site likely groups all episodes under one page.
+  // Include season/episode hints in a second pass only if needed.
+  if (title) queries.push(title);
+  if (originalTitle && originalTitle !== title) queries.push(originalTitle);
+  if (title && year) queries.push(`${title} ${year}`);
+  if (title && year) queries.push(`${title} (${year})`);
+  if (type === "series" && season && episode) {
+    queries.push(`${title} sezonul ${season}`);
+    queries.push(`${title} episodul ${episode}`);
+  }
+
+  // Deduplicate, preserve order.
+  return [...new Set(queries)];
 }
 
-function getStreams(id, type, season, episode) {
-  log("Requested: ID=" + id + ", Type=" + type + ", S=" + season + ", E=" + episode);
-  
-  var isImdb = String(id).startsWith("tt");
-  var endpoint = isImdb ? "find/" + id + "?external_source=imdb_id" : (type === "tv" ? "tv/" : "movie/") + id;
-  var tmdbUrl = "https://api.themoviedb.org/3/" + endpoint + "?api_key=" + TMDB_API_KEY + "&language=ro-RO";
+// ---------------------------------------------------------------------------
+// Site search
+// ---------------------------------------------------------------------------
 
-  return fetchJson(tmdbUrl).then(function(data) {
-    var roTitle = "";
-    var enTitle = "";
+async function searchSite(query) {
+  const searchUrl = `${MAIN_URL}/?s=${encodeURIComponent(query)}`;
+  log(`Searching: ${searchUrl}`);
+  const html = await fetchText(searchUrl, { Referer: MAIN_URL + "/" });
 
-    if (isImdb) {
-      var results = type === "tv" ? data.tv_results : data.movie_results;
-      if (results && results.length > 0) {
-        roTitle = type === "tv" ? results[0].name : results[0].title;
-        enTitle = type === "tv" ? results[0].original_name : results[0].original_title;
-      }
-    } else {
-      roTitle = type === "tv" ? data.name : data.title;
-      enTitle = type === "tv" ? data.original_name : data.original_title;
+  // Collect candidate post URLs.
+  const linkRegex = /<a[^>]+href=["']([^"']+)["'][^>]*>/gi;
+  const candidates = [];
+  let m;
+  while ((m = linkRegex.exec(html)) !== null) {
+    const href = absoluteUrl(m[1]);
+    if (!href) continue;
+    if (!href.startsWith(MAIN_URL)) continue;
+    if (href.includes("/category/") || href.includes("/tag/")) continue;
+    if (href.includes("/page/") || href.includes("/author/")) continue;
+    if (href.includes("?s=")) continue;
+    if (href === MAIN_URL || href === MAIN_URL + "/") continue;
+    // Skip obvious non-post paths.
+    const path = href.replace(MAIN_URL, "").replace(/^\/|\/$/g, "");
+    if (!path || path.split("/").length < 1) continue;
+    candidates.push(href);
+  }
+
+  // Score candidates so the most likely post comes first.
+  const scored = candidates.map((href) => {
+    const slug = decodeURIComponent(href).toLowerCase();
+    const q = query.toLowerCase();
+    let score = 0;
+    // Word overlap between query and slug.
+    const qWords = q.split(/\s+/).filter((w) => w.length > 2);
+    for (const w of qWords) if (slug.includes(w)) score += 5;
+    // Penalize short/common paths.
+    if (slug.split("-").length >= 3) score += 2;
+    return { href, score };
+  });
+
+  scored.sort((a, b) => b.score - a.score);
+
+  if (scored.length === 0) return null;
+  log(`Best candidate: ${scored[0].href} (score=${scored[0].score})`);
+  return scored[0].href;
+}
+
+// ---------------------------------------------------------------------------
+// Iframe resolution
+// ---------------------------------------------------------------------------
+
+const SKIP_HOSTS = [
+  "facebook.com",
+  "youtube.com",
+  "youtu.be",
+  "doubleclick.net",
+  "googletagmanager.com",
+  "google-analytics.com",
+  "disqus.com",
+];
+
+function shouldSkipIframe(src) {
+  const lower = src.toLowerCase();
+  return SKIP_HOSTS.some((h) => lower.includes(h));
+}
+
+function extractVideoUrlFromHtml(html) {
+  if (!html) return null;
+
+  // 1. <source src="...mp4|m3u8">
+  let m = html.match(/<source[^>]+src=["']([^"']+\.(?:mp4|m3u8)[^"']*)["']/i);
+  if (m) return m[1];
+
+  // 2. JSON-style: "file":"..." or file: "..."
+  m = html.match(/file\s*[:=]\s*["']([^"']+\.(?:mp4|m3u8)[^"']*)["']/i);
+  if (m) return m[1];
+
+  // 3. jwplayer / plyr / videojs sources array
+  m = html.match(
+    /(?:sources|source)\s*:\s*\[\s*\{[^}]*?(?:file|src)\s*:\s*["']([^"']+\.(?:mp4|m3u8)[^"']*)["']/i
+  );
+  if (m) return m[1];
+
+  // 4. Any bare .mp4 / .m3u8 URL anywhere in the page
+  m = html.match(/https?:\/\/[^"'\s<>]+\.(?:mp4|m3u8)[^"'\s<>]*/i);
+  if (m) return m[0];
+
+  return null;
+}
+
+async function resolveIframe(iframeUrl, referer) {
+  try {
+    log(`Resolving iframe: ${iframeUrl}`);
+    const html = await fetchText(iframeUrl, { Referer: referer });
+    const videoUrl = extractVideoUrlFromHtml(html);
+    if (!videoUrl) {
+      log(`No video URL found in iframe: ${iframeUrl}`);
+      return null;
     }
+    return absoluteUrl(videoUrl);
+  } catch (e) {
+    log(`Iframe resolve failed (${iframeUrl}): ${e.message}`);
+    return null;
+  }
+}
 
-    if (!roTitle && !enTitle) {
-      log("TMDB returned no title.");
-      return [];
-    }
+// ---------------------------------------------------------------------------
+// Page extraction
+// ---------------------------------------------------------------------------
 
-    function tryDirectUrl(title) {
-      var slug = normalizeSlug(title);
-      if (type === "tv" && season && episode) {
-        slug = normalizeSlug(title) + "-sezonul-" + season + "-episodul-" + episode;
-      }
-      
-      var prefixes = type === "tv" ? ["epi", "serial", "desene"] : ["film", "desene"];
-      
-      var promises = prefixes.map(function(prefix) {
-        var url = MAIN_URL + "/" + prefix + "/" + slug + "/";
-        return fetchText(url).then(function(html) {
-          if (html && html.length > 2000 && !html.includes("does not exist") && !html.includes("Nu am găsit")) {
-            return { url: url, html: html };
-          }
-          return null;
-        }).catch(function() { return null; });
-      });
-      
-      return Promise.all(promises).then(function(results) {
-        for (var i = 0; i < results.length; i++) {
-          if (results[i]) {
-            log("Direct URL match: " + results[i].url);
-            return results[i];
-          }
-        }
-        return null;
-      });
-    }
+function extractIframes(html) {
+  const iframes = [];
+  const regex = /<iframe[^>]+>/gi;
+  const tagMatches = html.match(regex) || [];
+  for (const tag of tagMatches) {
+    const srcMatch = tag.match(
+      /(?:src|data-src|data-lazy-src|data-url)=["']([^"']+)["']/i
+    );
+    if (!srcMatch) continue;
+    const src = absoluteUrl(srcMatch[1]);
+    if (!src || shouldSkipIframe(src)) continue;
+    iframes.push(src);
+  }
+  return [...new Set(iframes)];
+}
 
-    function searchSite(query) {
-      var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
-      return fetchText(searchUrl).then(function(html) {
-        var $ = cheerio.load(html);
-        var bestMatch = null;
-        var normQuery = normalizeTitle(query);
-        var queryWords = normQuery.split(" ").filter(function(w) { return w.length > 2; });
+function extractDirectLinks(html) {
+  const links = [];
+  const regex =
+    /(?:src|href|file)\s*[:=]\s*["']([^"']+\.(?:mp4|m3u8)[^"']*)["']/gi;
+  let m;
+  while ((m = regex.exec(html)) !== null) {
+    const url = absoluteUrl(m[1]);
+    if (url) links.push(url);
+  }
+  return [...new Set(links)];
+}
 
-        $("a").each(function(_, el) {
-          var href = $(el).attr("href");
-          if (!href || !href.includes("desenefaine.com")) return;
-          if (/\/(category|tag|author|page|feed|wp-)/i.test(href)) return;
+function guessQuality(url) {
+  const lower = url.toLowerCase();
+  if (lower.includes("1080")) return "1080p";
+  if (lower.includes("720")) return "720p";
+  if (lower.includes("480")) return "480p";
+  if (lower.includes("360")) return "360p";
+  return "auto";
+}
 
-          var text = $(el).text().trim();
-          if (text.length < 5) return;
+// ---------------------------------------------------------------------------
+// Core scraper
+// ---------------------------------------------------------------------------
 
-          var normText = normalizeTitle(text);
-          var matchCount = 0;
-          queryWords.forEach(function(word) {
-            if (normText.includes(word)) matchCount++;
-          });
+async function fetchAndExtractPage(pageUrl, streams, currentHeaders) {
+  let pageHtml;
+  try {
+    pageHtml = await fetchText(pageUrl, { Referer: MAIN_URL + "/" });
+  } catch (e) {
+    log(`Failed to fetch page ${pageUrl}: ${e.message}`);
+    return;
+  }
 
-          if (matchCount >= Math.ceil(queryWords.length / 2)) {
-            if (!bestMatch || text.length < bestMatch.text.length) {
-              bestMatch = { href: href, text: text, score: matchCount };
-            }
-          }
-        });
-
-        if (bestMatch) {
-          return fetchText(bestMatch.href).then(function(html) {
-            return { url: bestMatch.href, html: html };
-          });
-        }
-        return null;
-      }).catch(function() { return null; });
-    }
-
-    return tryDirectUrl(roTitle).then(function(result) {
-      if (result) return result;
-      if (enTitle && enTitle !== roTitle) {
-        return tryDirectUrl(enTitle).then(function(enResult) {
-          if (enResult) return enResult;
-          return searchSite(roTitle).then(function(searchResult) {
-            if (searchResult) return searchResult;
-            return searchSite(enTitle);
-          });
-        });
-      }
-      return searchSite(roTitle);
-    }).then(function(result) {
-      if (!result || !result.html) {
-        log("No valid page found.");
-        return [];
-      }
-
-      log("Extracting from: " + result.url);
-      var $$ = cheerio.load(result.html);
-      var streams = [];
-      var serverCount = 1;
-
-      // Update the Referer in STREAM_HEADERS to the exact post URL
-      var currentHeaders = Object.assign({}, STREAM_HEADERS, {
-        "Referer": result.url,
-        "Origin": MAIN_URL
-      });
-
-      // 1. PRIORITY: Direct .mp4 or .m3u8 links
-      $$("source, video").each(function(_, el) {
-        var src = $$(el).attr("src");
-        if (src && (src.indexOf(".mp4") !== -1 || src.indexOf(".m3u8") !== -1)) {
-          if (src.startsWith("//")) src = "https:" + src;
-          else if (!src.startsWith("http")) src = result.url + (src.startsWith("/") ? "" : "/") + src;
-          
-          // EXACT structure from hdhub4u.js / dahmermovies.js
-          streams.push({
-            name: PROVIDER_NAME + " | Direct",
-            title: "1080p | RO Dub",
-            url: src,
-            quality: "1080p",
-            headers: currentHeaders,
-            provider: "desenefaine"
-          });
-        }
-      });
-
-      // 2. FALLBACK: Iframes (like player4me)
-      if (streams.length === 0) {
-        $$("iframe").each(function(_, el) {
-          var src = $$(el).attr("src") || $$(el).attr("data-src") || $$(el).attr("data-lazy-src");
-          if (!src) return;
-          
-          if (src.startsWith("//")) src = "https:" + src;
-          else if (!src.startsWith("http")) src = MAIN_URL + (src.startsWith("/") ? "" : "/") + src;
-
-          if (src.includes("facebook.com") || src.includes("youtube.com") || src.includes("doubleclick")) {
-            return;
-          }
-
-          log("FOUND IFRAME: " + src);
-
-          // EXACT structure from hdhub4u.js / dahmermovies.js
-          streams.push({
-    name: PROVIDER_NAME + " | Server " + serverCount++,
-    title: "1080p | RO Dub",
-    url: src,
-    quality: "1080p",
-    headers: currentHeaders,
-    provider: "desenefaine"
-});
-        });
-      }
-
-      log("Extracted " + streams.length + " streams.");
-      return streams;
+  // Direct links embedded on the page.
+  for (const url of extractDirectLinks(pageHtml)) {
+    streams.push({
+      name: PROVIDER_NAME,
+      title: `${guessQuality(url)} | RO Dub`,
+      url,
+      quality: guessQuality(url),
+      headers: currentHeaders,
+      provider: "desenefaine",
     });
-  }).catch(function(e) {
-    log("Fatal Error: " + e.message);
-    return [];
-  });
+  }
+
+  // Iframes → resolve to direct URLs.
+  const iframes = extractIframes(pageHtml);
+  log(`Found ${iframes.length} iframe(s) on ${pageUrl}`);
+
+  const resolved = await Promise.all(
+    iframes.map((src) => resolveIframe(src, pageUrl))
+  );
+
+  for (const videoUrl of resolved) {
+    if (!videoUrl) continue;
+    streams.push({
+      name: PROVIDER_NAME,
+      title: `${guessQuality(videoUrl)} | RO Dub`,
+      url: videoUrl,
+      quality: guessQuality(videoUrl),
+      headers: { ...currentHeaders, Referer: pageUrl },
+      provider: "desenefaine",
+    });
+  }
 }
 
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = { getStreams: getStreams };
-} else {
-  global.getStreams = getStreams;
+async function actualGetStreams(id, type, season, episode) {
+  const streams = [];
+  const currentHeaders = {
+    Referer: MAIN_URL + "/",
+    "User-Agent": USER_AGENT,
+  };
+
+  // 1. TMDB: id -> title/year.
+  const meta = await resolveTmdb(id, type, season, episode);
+
+  // 2. Build search queries from the resolved metadata.
+  const queries = buildSearchQueries(meta, type);
+  log(`Search queries: ${JSON.stringify(queries)}`);
+
+  // 3. Try each query until one yields a page.
+  let pageUrl = null;
+  for (const q of queries) {
+    try {
+      pageUrl = await searchSite(q);
+      if (pageUrl) break;
+    } catch (e) {
+      log(`Search failed for "${q}": ${e.message}`);
+    }
+  }
+
+  if (!pageUrl) {
+    log("No matching page found on site.");
+    return [];
+  }
+
+  // 4. Extract streams from the matched page.
+  await fetchAndExtractPage(pageUrl, streams, currentHeaders);
+
+  // 5. Deduplicate by URL.
+  const seen = new Set();
+  const deduped = streams.filter((s) => {
+    if (seen.has(s.url)) return false;
+    seen.add(s.url);
+    return true;
+  });
+
+  log(`Returning ${deduped.length} stream(s)`);
+  return deduped;
 }
+
+async function getStreams(id, type, season, episode) {
+  let timeoutId;
+  const timeout = new Promise((_, reject) => {
+    timeoutId = setTimeout(
+      () => reject(new Error(`Scraper timeout after ${SCRAPER_TIMEOUT_MS}ms`)),
+      SCRAPER_TIMEOUT_MS
+    );
+  });
+
+  try {
+    return await Promise.race([
+      actualGetStreams(id, type, season, episode),
+      timeout,
+    ]);
+  } catch (e) {
+    log(`Fatal: ${e.message}`);
+    return [];
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
+module.exports = { getStreams };
