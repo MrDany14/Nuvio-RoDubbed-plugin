@@ -1,7 +1,6 @@
 /**
- * DozaAnimata Provider for Nuvio
- * Built using the stable AllMovieLand transpiled architecture.
- * Generated: 2026-09-11
+ * DeseneFaine Provider for Nuvio
+ * Rebuilt using the stable AllMovieLand transpiled architecture with Cheerio parsing.
  */
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -51,7 +50,7 @@ var import_cheerio_without_node_native = __toESM(require("cheerio-without-node-n
 
 var TMDB_API_KEY = "5201b54eb0a60ac2778dc965256f3f01";
 var TMDB_BASE_URL = "https://api.themoviedb.org/3";
-var MAIN_URL = "https://dozaanimata.net";
+var MAIN_URL = "https://desenefaine.com";
 var HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
   "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
@@ -83,17 +82,17 @@ function getTMDBDetails(tmdbId, mediaType) {
 
 function getStreams(tmdbId, mediaType = "movie", season = null, episode = null) {
   return __async(this, null, function* () {
-    console.log(`[DozaAnimata] Fetching streams for TMDB/IMDB ID: ${tmdbId}, Type: ${mediaType}`);
+    console.log(`[DeseneFaine] Fetching streams for TMDB/IMDB ID: ${tmdbId}, Type: ${mediaType}`);
     try {
       const mediaInfo = yield getTMDBDetails(tmdbId, mediaType);
       if (!mediaInfo || !mediaInfo.title) {
-          console.log("[DozaAnimata] TMDB match failed.");
+          console.log("[DeseneFaine] TMDB match failed.");
           return [];
       }
       
       const query = mediaInfo.title;
       const searchUrl = `${MAIN_URL}/?s=${encodeURIComponent(query)}`;
-      console.log(`[DozaAnimata] Searching: ${searchUrl}`);
+      console.log(`[DeseneFaine] Searching: ${searchUrl}`);
       
       const res = yield fetch(searchUrl, { headers: HEADERS });
       const html = yield res.text();
@@ -102,28 +101,29 @@ function getStreams(tmdbId, mediaType = "movie", season = null, episode = null) 
       let exactPostUrl = null;
       let firstValidPost = null;
       
+      // Create a URL-safe slug from the Romanian title (e.g., "regele-leu")
       const titleSlug = query.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
       $("a").each((i, el) => {
-          const href = $(el).attr("href");
-          const postTitle = $(el).text().toLowerCase();
-          
-          if (!href || href === MAIN_URL + "/" || href.includes('/category/') || href.includes('/genre/') || href.includes('/page/')) return;
+          let href = $(el).attr("href");
+          if (!href || href === MAIN_URL + "/" || href.includes('/category/') || href.includes('/tag/') || href.includes('/page/')) return;
+
+          // Convert relative links to absolute
+          if (href.startsWith("/")) href = MAIN_URL + href;
 
           if (!firstValidPost && href.includes(titleSlug)) firstValidPost = href;
 
           if (mediaType === "tv") {
               const epSlug = `sezonul-${season}-episodul-${episode}`;
-              if (href.includes('/episode/') && href.includes(epSlug)) {
+              if (href.includes(epSlug)) {
                   exactPostUrl = href;
                   return false; // Break loop
               }
           } else {
-              if (href.includes(titleSlug) && !href.includes('/episode/')) {
-                  if (mediaInfo.year && (href.includes(mediaInfo.year) || postTitle.includes(mediaInfo.year))) {
-                      exactPostUrl = href;
-                      return false; // Break loop
-                  }
+              // Ensure we aren't clicking a TV episode when searching for a movie
+              if (href.includes(titleSlug) && !href.includes('sezonul-')) {
+                  exactPostUrl = href;
+                  return false; // Break loop
               }
           }
       });
@@ -131,14 +131,14 @@ function getStreams(tmdbId, mediaType = "movie", season = null, episode = null) 
       if (!exactPostUrl) {
           if (mediaType === "movie" && firstValidPost) {
               exactPostUrl = firstValidPost;
-              console.log(`[DozaAnimata] Exact year match failed, falling back to: ${exactPostUrl}`);
+              console.log(`[DeseneFaine] Exact match failed, falling back to: ${exactPostUrl}`);
           } else {
-              console.log("[DozaAnimata] No confident match found on search page.");
+              console.log("[DeseneFaine] No confident match found on search page.");
               return [];
           }
       }
 
-      console.log(`[DozaAnimata] Extracting from: ${exactPostUrl}`);
+      console.log(`[DeseneFaine] Extracting from: ${exactPostUrl}`);
       const postRes = yield fetch(exactPostUrl, { headers: HEADERS });
       const postHtml = yield postRes.text();
       const post$ = import_cheerio_without_node_native.default.load(postHtml);
@@ -147,11 +147,16 @@ function getStreams(tmdbId, mediaType = "movie", season = null, episode = null) 
       let serverCount = 1;
 
       post$("iframe").each((i, el) => {
-          const src = post$(el).attr("src");
+          // Check standard src as well as common lazy-loading attributes
+          let src = post$(el).attr("src") || post$(el).attr("data-src") || post$(el).attr("data-lazy-src");
+          
           if (src && !src.includes("facebook.com") && !src.includes("youtube.com") && !src.includes("doubleclick")) {
+              // Fix protocol-relative URLs (e.g., //player.com/video)
+              if (src.startsWith("//")) src = "https:" + src;
+              
               streams.push({
-                  name: "DozaAnimata",
-                  title: `Server ${serverCount++} | RO Dub/Sub`,
+                  name: "DeseneFaine",
+                  title: `Server ${serverCount++} | RO Dub`,
                   url: src,
                   quality: "1080p",
                   headers: {
@@ -163,12 +168,12 @@ function getStreams(tmdbId, mediaType = "movie", season = null, episode = null) 
       });
 
       if (streams.length === 0) {
-          console.log("[DozaAnimata] No iframes found in post.");
+          console.log("[DeseneFaine] No iframes found in post.");
       }
 
       return streams;
     } catch (error) {
-      console.error(`[DozaAnimata] Global Error: ${error.message}`);
+      console.error(`[DeseneFaine] Global Error: ${error.message}`);
       return [];
     }
   });
