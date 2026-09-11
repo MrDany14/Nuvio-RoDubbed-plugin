@@ -2,7 +2,6 @@ var cheerio = require("cheerio-without-node-native");
 
 var PROVIDER_NAME = "DeseneFaine";
 var MAIN_URL = "https://desenefaine.com";
-// Using the working TMDB key from the reference Nuvio-TV plugin
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c"; 
 
 var DEFAULT_HEADERS = {
@@ -41,7 +40,16 @@ function fetchJson(url, options) {
   });
 }
 
-// Removes diacritics and special chars for reliable matching (e.g., "Mașini" -> "masini")
+// Converts "Scooby-Doo: Blestemul monstrului din lac" -> "scooby-doo-blestemul-monstrului-din-lac"
+function normalizeSlug(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i")
+    .replace(/ș/g, "s").replace(/ț/g, "t")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 function normalizeTitle(value) {
   return String(value || "")
     .toLowerCase()
@@ -80,7 +88,43 @@ function getStreams(id, type, season, episode) {
 
     log("TMDB Titles -> RO: '" + roTitle + "' | EN: '" + enTitle + "'");
 
-    // Helper function to search the site and return the best matching URL
+    // 1. TRY DIRECT URL FIRST (Bypasses broken WordPress search)
+    function tryDirectUrl(title) {
+      var baseSlug = normalizeSlug(title);
+      var slug = baseSlug;
+      
+      // If it's a TV episode, try to match the episode slug pattern
+      if (type === "tv" && season && episode) {
+        slug = normalizeSlug(title + " sezonul " + season + " episodul " + episode);
+      }
+      
+      var prefixes = type === "tv" ? ["serial", "desene", "episod"] : ["film", "desene"];
+      
+      var promises = prefixes.map(function(prefix) {
+        var url = MAIN_URL + "/" + prefix + "/" + slug + "/";
+        return fetchText(url).then(function(html) {
+          // Check if page is valid (not a 404 or "page not found" message)
+          if (html && html.length > 2000 && !html.includes("The page you are looking for does not exist") && !html.includes("Nu am găsit")) {
+            return { url: url, html: html };
+          }
+          return null;
+        }).catch(function() {
+          return null; // Ignore 404s, just try the next prefix
+        });
+      });
+      
+      return Promise.all(promises).then(function(results) {
+        for (var i = 0; i < results.length; i++) {
+          if (results[i]) {
+            log("Direct URL match found: " + results[i].url);
+            return results[i];
+          }
+        }
+        return null;
+      });
+    }
+
+    // 2. FALLBACK TO SEARCH PAGE (If direct URL fails)
     function searchSite(query) {
       var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
       log("Searching site for: '" + query + "'");
@@ -100,89 +144,88 @@ function getStreams(id, type, season, episode) {
           if (text.length < 5) return;
 
           var normText = normalizeTitle(text);
-          
-          // Check if most of the query words are in the post title
           var matchCount = 0;
           queryWords.forEach(function(word) {
             if (normText.includes(word)) matchCount++;
           });
 
           if (matchCount >= Math.ceil(queryWords.length / 2)) {
-            // Prefer shorter, more exact titles
             if (!bestMatch || text.length < bestMatch.text.length) {
               bestMatch = { href: href, text: text, score: matchCount };
             }
           }
         });
 
-        return bestMatch;
+        if (bestMatch) {
+          log("Search match found: " + bestMatch.text + " -> " + bestMatch.href);
+          return fetchText(bestMatch.href).then(function(html) {
+            return { url: bestMatch.href, html: html };
+          });
+        }
+        return null;
       }).catch(function(e) {
         log("Search failed for '" + query + "': " + e.message);
         return null;
       });
     }
 
-    // Try Romanian title first, then English title as fallback
-    return searchSite(roTitle).then(function(match) {
-      if (match) {
-        log("Found match with RO title: " + match.text + " -> " + match.href);
-        return match.href;
-      }
+    // Execution Chain: RO Direct -> EN Direct -> RO Search -> EN Search
+    return tryDirectUrl(roTitle).then(function(result) {
+      if (result) return result;
       
       if (enTitle && enTitle !== roTitle) {
-        log("RO title failed, trying EN title: '" + enTitle + "'");
-        return searchSite(enTitle).then(function(enMatch) {
-          if (enMatch) {
-            log("Found match with EN title: " + enMatch.text + " -> " + enMatch.href);
-            return enMatch.href;
-          }
-          log("No matches found for either RO or EN title.");
-          return null;
+        return tryDirectUrl(enTitle).then(function(enResult) {
+          if (enResult) return enResult;
+          
+          return searchSite(roTitle).then(function(searchResult) {
+            if (searchResult) return searchResult;
+            return searchSite(enTitle);
+          });
         });
       }
       
-      log("No matches found.");
-      return null;
-    }).then(function(postUrl) {
-      if (!postUrl) return [];
+      return searchSite(roTitle);
+    }).then(function(result) {
+      if (!result || !result.html) {
+        log("No valid page found after all attempts.");
+        return [];
+      }
 
-      log("Extracting streams from: " + postUrl);
-      return fetchText(postUrl).then(function(postHtml) {
-        var $$ = cheerio.load(postHtml);
-        var streams = [];
-        var serverCount = 1;
+      log("Extracting streams from: " + result.url);
+      var $$ = cheerio.load(result.html);
+      var streams = [];
+      var serverCount = 1;
 
-        $$("iframe").each(function(_, el) {
-          var src = $$(el).attr("src") || $$(el).attr("data-src") || $$(el).attr("data-lazy-src");
-          if (!src) return;
-          
-          if (src.startsWith("//")) src = "https:" + src;
-          else if (!src.startsWith("http")) src = MAIN_URL + (src.startsWith("/") ? "" : "/") + src;
+      $$("iframe").each(function(_, el) {
+        var src = $$(el).attr("src") || $$(el).attr("data-src") || $$(el).attr("data-lazy-src");
+        if (!src) return;
+        
+        if (src.startsWith("//")) src = "https:" + src;
+        else if (!src.startsWith("http")) src = MAIN_URL + (src.startsWith("/") ? "" : "/") + src;
 
-          if (src.includes("facebook.com") || src.includes("youtube.com") || src.includes("doubleclick") || src.includes("google.com")) {
-            return;
-          }
+        if (src.includes("facebook.com") || src.includes("youtube.com") || src.includes("doubleclick") || src.includes("google.com")) {
+          return;
+        }
 
-          streams.push({
-            name: PROVIDER_NAME,
-            title: "Server " + serverCount++ + " | RO Dub",
-            url: src,
-            quality: "1080p",
-            behaviorHints: {
-              notWebReady: true,
-              proxyHeaders: {
-                request: {
-                  "Referer": MAIN_URL + "/",
-                  "User-Agent": DEFAULT_HEADERS["User-Agent"]
-                }
+        streams.push({
+          name: PROVIDER_NAME,
+          title: "Server " + serverCount++ + " | RO Dub",
+          url: src,
+          quality: "1080p",
+          behaviorHints: {
+            notWebReady: true,
+            proxyHeaders: {
+              request: {
+                "Referer": MAIN_URL + "/",
+                "User-Agent": DEFAULT_HEADERS["User-Agent"]
               }
             }
-          });
+          }
         });
-
-        log("Successfully extracted " + streams.length + " streams.");
-        return streams;
       });
+
+      log("Successfully extracted " + streams.length + " streams.");
+      return streams;
     });
   }).catch(function(e) {
     log("Fatal Error: " + e.message);
@@ -190,7 +233,6 @@ function getStreams(id, type, season, episode) {
   });
 }
 
-// Support both CommonJS (Nuvio) and Global environments
 if (typeof module !== "undefined" && module.exports) {
   module.exports = { getStreams: getStreams };
 } else {
