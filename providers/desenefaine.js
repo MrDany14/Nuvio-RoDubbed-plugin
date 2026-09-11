@@ -4,7 +4,16 @@ var PROVIDER_NAME = "DeseneFaine";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c"; 
 
-var DEFAULT_HEADERS = {
+// EXACT headers structure used by working Nuvio-TV plugins
+var STREAM_HEADERS = {
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+  "Accept": "*/*",
+  "Connection": "keep-alive",
+  "Referer": MAIN_URL + "/",
+  "Origin": MAIN_URL
+};
+
+var FETCH_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
   "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
   "Accept-Language": "ro-RO,ro;q=0.9,en-US;q=0.8,en;q=0.7"
@@ -19,7 +28,7 @@ function fetchText(url, options) {
   return fetch(url, {
     method: options.method || "GET",
     redirect: options.redirect || "follow",
-    headers: Object.assign({}, DEFAULT_HEADERS, options.headers || {}),
+    headers: Object.assign({}, FETCH_HEADERS, options.headers || {}),
     body: options.body
   }).then(function(res) {
     if (!res.ok) throw new Error("HTTP " + res.status + " -> " + url);
@@ -32,7 +41,7 @@ function fetchJson(url, options) {
   return fetch(url, {
     method: options.method || "GET",
     redirect: options.redirect || "follow",
-    headers: Object.assign({}, DEFAULT_HEADERS, options.headers || {}),
+    headers: Object.assign({}, FETCH_HEADERS, options.headers || {}),
     body: options.body
   }).then(function(res) {
     if (!res.ok) throw new Error("HTTP " + res.status + " -> " + url);
@@ -59,7 +68,7 @@ function normalizeTitle(value) {
 }
 
 function getStreams(id, type, season, episode) {
-  log("Nuvio requested: ID=" + id + ", Type=" + type + ", S=" + season + ", E=" + episode);
+  log("Requested: ID=" + id + ", Type=" + type + ", S=" + season + ", E=" + episode);
   
   var isImdb = String(id).startsWith("tt");
   var endpoint = isImdb ? "find/" + id + "?external_source=imdb_id" : (type === "tv" ? "tv/" : "movie/") + id;
@@ -81,7 +90,7 @@ function getStreams(id, type, season, episode) {
     }
 
     if (!roTitle && !enTitle) {
-      log("TMDB returned no title for ID: " + id);
+      log("TMDB returned no title.");
       return [];
     }
 
@@ -175,6 +184,12 @@ function getStreams(id, type, season, episode) {
       var streams = [];
       var serverCount = 1;
 
+      // Update the Referer in STREAM_HEADERS to the exact post URL
+      var currentHeaders = Object.assign({}, STREAM_HEADERS, {
+        "Referer": result.url,
+        "Origin": MAIN_URL
+      });
+
       // 1. PRIORITY: Direct .mp4 or .m3u8 links
       $$("source, video").each(function(_, el) {
         var src = $$(el).attr("src");
@@ -182,21 +197,14 @@ function getStreams(id, type, season, episode) {
           if (src.startsWith("//")) src = "https:" + src;
           else if (!src.startsWith("http")) src = result.url + (src.startsWith("/") ? "" : "/") + src;
           
+          // EXACT structure from hdhub4u.js / dahmermovies.js
           streams.push({
-            name: PROVIDER_NAME,
-            title: "Direct Video | RO Dub",
+            name: PROVIDER_NAME + " | Direct",
+            title: "1080p | RO Dub",
             url: src,
             quality: "1080p",
-            behaviorHints: {
-              notWebReady: true,
-              filename: "video.mp4",
-              proxyHeaders: {
-                request: {
-                  "Referer": result.url,
-                  "User-Agent": DEFAULT_HEADERS["User-Agent"]
-                }
-              }
-            }
+            headers: currentHeaders,
+            provider: "desenefaine"
           });
         }
       });
@@ -216,23 +224,14 @@ function getStreams(id, type, season, episode) {
 
           log("FOUND IFRAME: " + src);
 
+          // EXACT structure from hdhub4u.js / dahmermovies.js
           streams.push({
-            name: PROVIDER_NAME,
-            title: "Server " + serverCount++ + " | RO Dub (Use External Player if loops)",
+            name: PROVIDER_NAME + " | Server " + serverCount++,
+            title: "1080p | RO Dub",
             url: src,
             quality: "1080p",
-            behaviorHints: {
-              notWebReady: true,
-              filename: "video.mp4", // CRITICAL: Tricks Nuvio into treating it as a video stream
-              proxyHeaders: {
-                request: {
-                  "Referer": result.url, // MUST be the post URL
-                  "Origin": MAIN_URL,
-                  "User-Agent": DEFAULT_HEADERS["User-Agent"],
-                  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
-                }
-              }
-            }
+            headers: currentHeaders,
+            provider: "desenefaine"
           });
         });
       }
