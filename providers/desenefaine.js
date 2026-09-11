@@ -1,31 +1,21 @@
-/*
- * DeseneFaine Provider for Nuvio
- * ========================================
- * Rebuilt using the stable, Promise-based architecture.
- * Fixes applied:
- * 1. Removed buggy __async/__toESM transpiled boilerplate.
- * 2. Added proper Romanian diacritic normalization (ăâîșț -> aaisst) for reliable URL slug matching.
- * 3. Added fallback to original English TMDB title if Romanian search yields no results.
- * 4. Robust iframe extraction with lazy-load attribute support and protocol fixing.
- * 5. Smart TV episode pattern matching (sezonul-X-episodul-Y).
- */
-
 var cheerio = require("cheerio-without-node-native");
 
 var PROVIDER_NAME = "DeseneFaine";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "5201b54eb0a60ac2778dc965256f3f01";
-var DEBUG = false;
+var DEBUG = true; // Set to false once confirmed working
 
 var DEFAULT_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
   "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-  "Accept-Language": "ro-RO,ro;q=0.9,en-US;q=0.8,en;q=0.7",
-  "Connection": "keep-alive"
+  "Accept-Language": "ro-RO,ro;q=0.9,en-US;q=0.8,en;q=0.7"
 };
 
 function dbg() {
-  if (DEBUG) console.log.apply(console, arguments);
+  if (DEBUG) {
+    var args = ["[" + PROVIDER_NAME + "]"].concat(Array.prototype.slice.call(arguments));
+    console.log.apply(console, args);
+  }
 }
 
 function fetchText(url, options) {
@@ -36,9 +26,7 @@ function fetchText(url, options) {
     headers: Object.assign({}, DEFAULT_HEADERS, options.headers || {}),
     body: options.body
   }).then(function(res) {
-    if (!res.ok) {
-      throw new Error("HTTP " + res.status + " -> " + url);
-    }
+    if (!res.ok) throw new Error("HTTP " + res.status + " -> " + url);
     return res.text();
   });
 }
@@ -67,15 +55,11 @@ function fixUrl(url, baseUrl) {
   }
 }
 
-// Normalizes titles and converts Romanian diacritics to base Latin for reliable slug matching
 function normalizeTitle(value) {
   return String(value || "")
     .toLowerCase()
-    .replace(/ă/g, "a")
-    .replace(/â/g, "a")
-    .replace(/î/g, "i")
-    .replace(/ș/g, "s")
-    .replace(/ț/g, "t")
+    .replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i")
+    .replace(/ș/g, "s").replace(/ț/g, "t")
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
 }
@@ -98,7 +82,10 @@ function getTmdbDetails(tmdbId, mediaType) {
         };
       }
       return null;
-    }).catch(function() { return null; });
+    }).catch(function(e) { 
+      dbg("TMDB IMDB lookup failed:", e.message);
+      return null; 
+    });
   } else {
     var endpoint = mediaType === "tv" ? "tv" : "movie";
     url = "https://api.themoviedb.org/3/" + endpoint + "/" + tmdbId + "?api_key=" + TMDB_API_KEY + "&language=ro-RO";
@@ -109,24 +96,25 @@ function getTmdbDetails(tmdbId, mediaType) {
         original: mediaType === "tv" ? data.original_name : data.original_title,
         year: (data.first_air_date || data.release_date || "").substring(0, 4) 
       };
-    }).catch(function() { return null; });
+    }).catch(function(e) { 
+      dbg("TMDB ID lookup failed:", e.message);
+      return null; 
+    });
   }
 }
 
 function searchContent(query, mediaType, season, episode) {
   var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
-  dbg("[searchContent] URL:", searchUrl);
+  dbg("Searching:", searchUrl);
   
   return fetchText(searchUrl).then(function(html) {
     var $ = cheerio.load(html);
     var results = [];
     
-    $("a").each(function(_, el) {
+    // TARGETED SELECTOR: Only grab links inside article/post titles, ignoring menus/footers
+    $("article a, .post-title a, .entry-title a, h2 a, h3 a").each(function(_, el) {
       var href = fixUrl($(el).attr("href"), MAIN_URL);
-      if (!href) return;
-      if (href === MAIN_URL + "/" || href === MAIN_URL) return;
-      
-      // Skip non-post pages
+      if (!href || href === MAIN_URL + "/" || href === MAIN_URL) return;
       if (/\/(category|tag|author|page|feed|wp-admin|wp-login|about|contact|dmca|privacy)\//i.test(href)) return;
       
       var title = $(el).find("h2, h3, h4, .entry-title, .title").first().text().trim() || 
@@ -140,18 +128,16 @@ function searchContent(query, mediaType, season, episode) {
       
       var isEpisode = /sezonul|episodul|s\d+e\d+/i.test(href) || /sezonul|episodul/i.test(title);
       
-      // TV Episode specific matching
       if (mediaType === "tv" && season && episode) {
-        var epPattern = new RegExp("sezonul[\\s-]*" + season + "[\\s-]*episodul[\\s-]*" + episode, "i");
+        var epPattern = new RegExp("sezonul[s-]*" + season + "[s-]*episodul[s-]*" + episode, "i");
         if (!epPattern.test(href) && !epPattern.test(title)) {
           if (normalizedTitle.indexOf(normalizedQuery) === -1) return;
         }
       } else if (mediaType === "movie") {
-        // Skip episodes when looking for a movie
-        if (isEpisode) return;
+        if (isEpisode) return; // Skip episodes when looking for a movie
       }
       
-      // Scoring system
+      // Flexible scoring system
       var score = 0;
       if (normalizedTitle === normalizedQuery) score = 100;
       else if (normalizedTitle.indexOf(normalizedQuery) !== -1) score = 50;
@@ -163,27 +149,27 @@ function searchContent(query, mediaType, season, episode) {
     });
     
     if (results.length === 0) {
-      dbg("[searchContent] No results found for:", query);
+      dbg("No results found for:", query);
       return null;
     }
     
-    // Sort by score descending
     results.sort(function(a, b) { return b.score - a.score; });
-    dbg("[searchContent] Best match:", results[0].title, "->", results[0].href);
+    dbg("Best match:", results[0].title, "->", results[0].href);
     return results[0].href;
   }).catch(function(e) {
-    dbg("[searchContent] Error:", e.message);
+    dbg("Search error:", e.message);
     return null;
   });
 }
 
 function extractStreams(contentUrl, mediaType, season, episode) {
+  dbg("Extracting from:", contentUrl);
   return fetchText(contentUrl).then(function(html) {
     var $ = cheerio.load(html);
     var streams = [];
     var serverCount = 1;
     
-    // Look for iframes (standard and lazy-loaded)
+    // Look for standard and lazy-loaded iframes
     $("iframe").each(function(_, el) {
       var src = $(el).attr("src") || $(el).attr("data-src") || $(el).attr("data-lazy-src");
       if (!src) return;
@@ -203,9 +189,14 @@ function extractStreams(contentUrl, mediaType, season, episode) {
         title: "Server " + serverCount++ + " | RO Dub",
         url: src,
         quality: "1080p",
-        headers: {
-          "Referer": MAIN_URL + "/",
-          "User-Agent": DEFAULT_HEADERS["User-Agent"]
+        behaviorHints: {
+          notWebReady: true,
+          proxyHeaders: {
+            request: {
+              "Referer": MAIN_URL + "/",
+              "User-Agent": DEFAULT_HEADERS["User-Agent"]
+            }
+          }
         }
       });
     });
@@ -221,36 +212,40 @@ function extractStreams(contentUrl, mediaType, season, episode) {
             title: "Direct Video | RO Dub",
             url: src,
             quality: "1080p",
-            headers: {
-              "Referer": MAIN_URL + "/",
-              "User-Agent": DEFAULT_HEADERS["User-Agent"]
+            behaviorHints: {
+              notWebReady: true,
+              proxyHeaders: {
+                request: {
+                  "Referer": MAIN_URL + "/",
+                  "User-Agent": DEFAULT_HEADERS["User-Agent"]
+                }
+              }
             }
           });
         }
       });
     }
     
-    dbg("[extractStreams] Found", streams.length, "streams for", contentUrl);
+    dbg("Found", streams.length, "streams");
     return streams;
   }).catch(function(e) {
-    dbg("[extractStreams] Error:", e.message);
+    dbg("Extract error:", e.message);
     return [];
   });
 }
 
 function getStreams(tmdbId, mediaType, season, episode) {
-  dbg("[getStreams] Fetching for TMDB/IMDB ID:", tmdbId, "Type:", mediaType, "S:", season, "E:", episode);
+  dbg("getStreams called with:", tmdbId, mediaType, "S:", season, "E:", episode);
   
   return getTmdbDetails(tmdbId, mediaType).then(function(mediaInfo) {
     if (!mediaInfo || !mediaInfo.title) {
-      dbg("[getStreams] TMDB match failed.");
+      dbg("TMDB match failed.");
       return [];
     }
     
     var trySearch = function(query) {
       return searchContent(query, mediaType, season, episode).then(function(contentUrl) {
-        if (contentUrl) return contentUrl;
-        return null;
+        return contentUrl || null;
       });
     };
     
@@ -258,23 +253,26 @@ function getStreams(tmdbId, mediaType, season, episode) {
     return trySearch(mediaInfo.title).then(function(contentUrl) {
       if (contentUrl) return contentUrl;
       if (mediaInfo.original && mediaInfo.original !== mediaInfo.title) {
-        dbg("[getStreams] Romanian title failed, trying original:", mediaInfo.original);
+        dbg("Romanian title failed, trying original:", mediaInfo.original);
         return trySearch(mediaInfo.original);
       }
       return null;
     }).then(function(contentUrl) {
       if (!contentUrl) {
-        dbg("[getStreams] No confident match found on search page.");
+        dbg("No confident match found on search page.");
         return [];
       }
-      
-      dbg("[getStreams] Extracting from:", contentUrl);
       return extractStreams(contentUrl, mediaType, season, episode);
     });
   }).catch(function(e) {
-    console.error("[DeseneFaine] Global Error:", e.message);
+    console.error("[" + PROVIDER_NAME + "] Global Error:", e.message);
     return [];
   });
 }
 
-module.exports = { getStreams: getStreams };
+// CRITICAL: Support both CommonJS (Node/Nuvio) and Global (Browser/Web) environments
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { getStreams: getStreams };
+} else {
+  global.getStreams = getStreams;
+}
