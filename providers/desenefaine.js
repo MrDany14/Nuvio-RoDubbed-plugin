@@ -85,18 +85,12 @@ function getStreams(id, type, season, episode) {
       return [];
     }
 
-    log("TMDB Titles -> RO: '" + roTitle + "' | EN: '" + enTitle + "'");
-
     function tryDirectUrl(title) {
-      var baseSlug = normalizeSlug(title);
-      var slug = baseSlug;
-      
-      // FIX: Correct slug generation for TV episodes
+      var slug = normalizeSlug(title);
       if (type === "tv" && season && episode) {
         slug = normalizeSlug(title) + "-sezonul-" + season + "-episodul-" + episode;
       }
       
-      // FIX: Added "epi" as the primary prefix for TV episodes
       var prefixes = type === "tv" ? ["epi", "serial", "desene"] : ["film", "desene"];
       
       var promises = prefixes.map(function(prefix) {
@@ -112,7 +106,7 @@ function getStreams(id, type, season, episode) {
       return Promise.all(promises).then(function(results) {
         for (var i = 0; i < results.length; i++) {
           if (results[i]) {
-            log("Direct URL match found: " + results[i].url);
+            log("Direct URL match: " + results[i].url);
             return results[i];
           }
         }
@@ -122,8 +116,6 @@ function getStreams(id, type, season, episode) {
 
     function searchSite(query) {
       var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
-      log("Searching site for: '" + query + "'");
-      
       return fetchText(searchUrl).then(function(html) {
         var $ = cheerio.load(html);
         var bestMatch = null;
@@ -152,16 +144,12 @@ function getStreams(id, type, season, episode) {
         });
 
         if (bestMatch) {
-          log("Search match found: " + bestMatch.text + " -> " + bestMatch.href);
           return fetchText(bestMatch.href).then(function(html) {
             return { url: bestMatch.href, html: html };
           });
         }
         return null;
-      }).catch(function(e) {
-        log("Search failed: " + e.message);
-        return null;
-      });
+      }).catch(function() { return null; });
     }
 
     return tryDirectUrl(roTitle).then(function(result) {
@@ -178,16 +166,16 @@ function getStreams(id, type, season, episode) {
       return searchSite(roTitle);
     }).then(function(result) {
       if (!result || !result.html) {
-        log("No valid page found after all attempts.");
+        log("No valid page found.");
         return [];
       }
 
-      log("Extracting streams from: " + result.url);
+      log("Extracting from: " + result.url);
       var $$ = cheerio.load(result.html);
       var streams = [];
       var serverCount = 1;
 
-      // 1. PRIORITY: Look for direct .mp4 or .m3u8 links
+      // 1. PRIORITY: Direct .mp4 or .m3u8 links
       $$("source, video").each(function(_, el) {
         var src = $$(el).attr("src");
         if (src && (src.indexOf(".mp4") !== -1 || src.indexOf(".m3u8") !== -1)) {
@@ -201,6 +189,7 @@ function getStreams(id, type, season, episode) {
             quality: "1080p",
             behaviorHints: {
               notWebReady: true,
+              filename: "video.mp4",
               proxyHeaders: {
                 request: {
                   "Referer": result.url,
@@ -212,7 +201,7 @@ function getStreams(id, type, season, episode) {
         }
       });
 
-      // 2. FALLBACK: Look for ALL iframes (including player.desenefaine.net)
+      // 2. FALLBACK: Iframes (like player4me)
       if (streams.length === 0) {
         $$("iframe").each(function(_, el) {
           var src = $$(el).attr("src") || $$(el).attr("data-src") || $$(el).attr("data-lazy-src");
@@ -221,27 +210,26 @@ function getStreams(id, type, season, episode) {
           if (src.startsWith("//")) src = "https:" + src;
           else if (!src.startsWith("http")) src = MAIN_URL + (src.startsWith("/") ? "" : "/") + src;
 
-          // Only filter out obvious ads/trailers, ALLOW player.desenefaine.net
           if (src.includes("facebook.com") || src.includes("youtube.com") || src.includes("doubleclick")) {
             return;
           }
 
-          log("FOUND STREAM URL: " + src);
+          log("FOUND IFRAME: " + src);
 
           streams.push({
             name: PROVIDER_NAME,
-            title: "Server " + serverCount++ + " | RO Dub",
+            title: "Server " + serverCount++ + " | RO Dub (Use External Player if loops)",
             url: src,
             quality: "1080p",
             behaviorHints: {
               notWebReady: true,
+              filename: "video.mp4", // CRITICAL: Tricks Nuvio into treating it as a video stream
               proxyHeaders: {
                 request: {
-                  // CRITICAL: The Referer MUST be the post URL, not the homepage
-                  "Referer": result.url,
+                  "Referer": result.url, // MUST be the post URL
+                  "Origin": MAIN_URL,
                   "User-Agent": DEFAULT_HEADERS["User-Agent"],
-                  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-                  "Origin": MAIN_URL
+                  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
                 }
               }
             }
@@ -249,7 +237,7 @@ function getStreams(id, type, season, episode) {
         });
       }
 
-      log("Successfully extracted " + streams.length + " streams.");
+      log("Extracted " + streams.length + " streams.");
       return streams;
     });
   }).catch(function(e) {
