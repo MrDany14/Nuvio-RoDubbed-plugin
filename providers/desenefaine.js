@@ -1,4 +1,3 @@
-```javascript
 var cheerio = require("cheerio-without-node-native");
 
 var PROVIDER_NAME = "DeseneFaine";
