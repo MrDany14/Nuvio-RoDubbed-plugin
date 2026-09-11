@@ -4,15 +4,6 @@ var PROVIDER_NAME = "DeseneFaine";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c"; 
 
-// EXACT headers structure used by working Nuvio-TV plugins
-var STREAM_HEADERS = {
-  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-  "Accept": "*/*",
-  "Connection": "keep-alive",
-  "Referer": MAIN_URL + "/",
-  "Origin": MAIN_URL
-};
-
 var FETCH_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
   "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
@@ -184,32 +175,29 @@ function getStreams(id, type, season, episode) {
       var streams = [];
       var serverCount = 1;
 
-      // Update the Referer in STREAM_HEADERS to the exact post URL
-      var currentHeaders = Object.assign({}, STREAM_HEADERS, {
-        "Referer": result.url,
-        "Origin": MAIN_URL
-      });
-
-      // 1. PRIORITY: Direct .mp4 or .m3u8 links
+      // 1. DIRECT LINKS: Play internally in Nuvio
       $$("source, video").each(function(_, el) {
         var src = $$(el).attr("src");
         if (src && (src.indexOf(".mp4") !== -1 || src.indexOf(".m3u8") !== -1)) {
           if (src.startsWith("//")) src = "https:" + src;
           else if (!src.startsWith("http")) src = result.url + (src.startsWith("/") ? "" : "/") + src;
           
-          // EXACT structure from hdhub4u.js / dahmermovies.js
           streams.push({
             name: PROVIDER_NAME + " | Direct",
-            title: "1080p | RO Dub",
+            title: "1080p | RO Dub (Plays in Nuvio)",
             url: src,
             quality: "1080p",
-            headers: currentHeaders,
+            headers: {
+              "User-Agent": FETCH_HEADERS["User-Agent"],
+              "Referer": result.url,
+              "Origin": MAIN_URL
+            },
             provider: "desenefaine"
           });
         }
       });
 
-      // 2. FALLBACK: Iframes (like player4me)
+      // 2. IFRAMES: Use externalUrl to PREVENT the loading loop
       if (streams.length === 0) {
         $$("iframe").each(function(_, el) {
           var src = $$(el).attr("src") || $$(el).attr("data-src") || $$(el).attr("data-lazy-src");
@@ -224,13 +212,13 @@ function getStreams(id, type, season, episode) {
 
           log("FOUND IFRAME: " + src);
 
-          // EXACT structure from hdhub4u.js / dahmermovies.js
+          // CRITICAL FIX: Use 'externalUrl' instead of 'url' for iframes.
+          // This tells Nuvio: "Do not try to buffer this as a video. Open it externally."
           streams.push({
-            name: PROVIDER_NAME + " | Server " + serverCount++,
-            title: "1080p | RO Dub",
-            url: src,
+            name: PROVIDER_NAME + " | Server " + serverCount++ + " (External)",
+            title: "1080p | RO Dub (Click to open in Browser/External Player)",
+            externalUrl: src, 
             quality: "1080p",
-            headers: currentHeaders,
             provider: "desenefaine"
           });
         });
