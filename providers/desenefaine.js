@@ -1,15 +1,12 @@
 // providers/desenefaine.js
 // Nuvio scraper for DeseneFaine (RO Dub)
-//
-// Pipeline:
-//   TMDB id / title  ->  site search  ->  content page  ->  iframe resolve  ->  direct streams
+// Fixes: 1) search / page discovery  2) iframe -> direct video URL resolution
 
 const PROVIDER_NAME = "DeseneFaine";
 const MAIN_URL = "https://desenefaine.com";
 
 // --- TMDB -------------------------------------------------------------------
-// Set your key here, or leave blank to skip TMDB and rely on the incoming id
-// being a title/slug already.
+// Fill in your key, or leave blank if the incoming id is already a title.
 const TMDB_API_KEY = "ccd8c6e162505e91ef8dc65b323ff4be";
 const TMDB_BASE = "https://api.themoviedb.org/3";
 const TMDB_LANG = "ro-RO";
@@ -39,7 +36,7 @@ function log(msg) {
 }
 
 // ============================================================================
-// HTTP layer (tries fetch -> axios -> https, whichever exists at runtime)
+// HTTP layer (fetch -> axios -> node https)
 // ============================================================================
 
 let _httpClient = null;
@@ -47,9 +44,8 @@ let _httpClient = null;
 function getHttpClient() {
   if (_httpClient) return _httpClient;
 
-  // 1. global fetch
   if (typeof fetch === "function") {
-    log("HTTP client: global fetch");
+    log("HTTP client: fetch");
     _httpClient = async (url, opts = {}) => {
       const controller =
         typeof AbortController !== "undefined" ? new AbortController() : null;
@@ -77,9 +73,7 @@ function getHttpClient() {
     return _httpClient;
   }
 
-  // 2. axios
   try {
-    // eslint-disable-next-line global-require
     const axios = require("axios");
     log("HTTP client: axios");
     _httpClient = async (url, opts = {}) => {
@@ -103,13 +97,10 @@ function getHttpClient() {
     return _httpClient;
   } catch (_) {}
 
-  // 3. node http/https
   try {
-    // eslint-disable-next-line global-require
     const https = require("https");
-    // eslint-disable-next-line global-require
     const http = require("http");
-    log("HTTP client: node http/https");
+    log("HTTP client: node http");
     _httpClient = (url, opts = {}) =>
       new Promise((resolve, reject) => {
         const lib = url.startsWith("https") ? https : http;
@@ -117,7 +108,6 @@ function getHttpClient() {
           url,
           { headers: { ...DEFAULT_HEADERS, ...(opts.headers || {}) } },
           (res) => {
-            // Follow up to 3 redirects.
             if (
               res.statusCode >= 300 &&
               res.statusCode < 400 &&
@@ -153,7 +143,7 @@ function getHttpClient() {
     return _httpClient;
   } catch (_) {}
 
-  throw new Error("No HTTP client available in this runtime");
+  throw new Error("No HTTP client available");
 }
 
 async function fetchText(url, headers = {}) {
@@ -171,7 +161,7 @@ async function fetchJson(url, headers = {}) {
 }
 
 // ============================================================================
-// Small helpers
+// Helpers
 // ============================================================================
 
 function absoluteUrl(url) {
@@ -209,7 +199,7 @@ function guessQuality(url) {
 }
 
 // ============================================================================
-// TMDB resolution
+// TMDB
 // ============================================================================
 
 function looksLikeTmdbId(id) {
@@ -225,20 +215,18 @@ function looksLikeTitle(id) {
 }
 
 async function resolveMeta(id, type, season, episode) {
-  // If the incoming id is not a TMDB/IMDB id, treat it as a title directly.
   if (looksLikeTitle(id)) {
-    log(`Incoming id looks like a title, using directly: "${id}"`);
+    log(`Incoming id is a title: "${id}"`);
     return { title: String(id), originalTitle: null, year: null, season, episode };
   }
 
   if (!TMDB_API_KEY || TMDB_API_KEY === "YOUR_TMDB_API_KEY") {
-    log("TMDB key not configured; using raw id as title");
+    log("TMDB key not set, using raw id");
     return { title: String(id), originalTitle: null, year: null, season, episode };
   }
 
   try {
     let tmdbId = null;
-
     if (looksLikeImdbId(id)) {
       const findUrl = `${TMDB_BASE}/find/${id}?api_key=${TMDB_API_KEY}&external_source=imdb_id&language=${TMDB_LANG}`;
       const data = await fetchJson(findUrl, { Accept: "application/json" });
@@ -249,7 +237,7 @@ async function resolveMeta(id, type, season, episode) {
     }
 
     if (!tmdbId) {
-      log(`Could not map id ${id} to a TMDB id`);
+      log(`Could not map ${id} to TMDB`);
       return { title: String(id), originalTitle: null, year: null, season, episode };
     }
 
@@ -263,10 +251,10 @@ async function resolveMeta(id, type, season, episode) {
     const dateStr = data.release_date || data.first_air_date || "";
     const year = dateStr ? dateStr.slice(0, 4) : null;
 
-    log(`TMDB: "${title}" (${year}) orig="${originalTitle}"`);
+    log(`TMDB: "${title}" (${year})`);
     return { title, originalTitle, year, season, episode };
   } catch (e) {
-    log(`TMDB lookup failed: ${e.message}`);
+    log(`TMDB error: ${e.message}`);
     return { title: String(id), originalTitle: null, year: null, season, episode };
   }
 }
@@ -305,33 +293,24 @@ async function trySearchUrl(template, query) {
 }
 
 async function searchSite(query) {
-  // Try several search URL patterns; keep whatever returns candidates.
   const patterns = [
     `${MAIN_URL}/?s={q}`,
     `${MAIN_URL}/cauta/{q}/`,
     `${MAIN_URL}/search/{q}/`,
   ];
 
-  let bestPage = null;
-  let bestHtml = null;
-
   for (const p of patterns) {
-    log(`Searching via: ${p.replace("{q}", query)}`);
+    log(`Trying search: ${p.replace("{q}", query)}`);
     const result = await trySearchUrl(p, query);
     if (!result || !result.html) continue;
     const candidates = collectCandidates(result.html, query);
     if (candidates.length > 0) {
-      const top = candidates[0];
-      log(`  -> top candidate: ${top.href} (score ${top.score})`);
-      bestPage = top.href;
-      bestHtml = result.html;
-      break;
-    } else {
-      log(`  -> no candidates from this pattern`);
+      log(`  -> best: ${candidates[0].href} (score ${candidates[0].score})`);
+      return candidates[0].href;
     }
+    log("  -> no candidates");
   }
-
-  return bestPage;
+  return null;
 }
 
 function collectCandidates(html, query) {
@@ -355,8 +334,6 @@ function collectCandidates(html, query) {
 
     const path = href.replace(MAIN_URL, "").replace(/^\/|\/$/g, "");
     if (!path || path.length < 3) continue;
-
-    // Skip obvious static assets.
     if (/\.(png|jpe?g|gif|svg|css|js|ico|webp)$/i.test(path)) continue;
 
     const slug = decodeURIComponent(path).toLowerCase();
@@ -375,7 +352,7 @@ function collectCandidates(html, query) {
 }
 
 // ============================================================================
-// Iframe resolution
+// Iframe / embed resolution  (the critical fix)
 // ============================================================================
 
 const SKIP_HOSTS = [
@@ -395,28 +372,55 @@ function shouldSkipIframe(src) {
   return SKIP_HOSTS.some((h) => l.includes(h));
 }
 
+// --- OK.ru specific extractor -----------------------------------------------
+function extractOkRuVideo(html) {
+  if (!/ok\.ru|odnoklassniki/i.test(html)) return null;
+
+  // OK.ru stores video data in a JSON blob: "videoUrl":"...", "hls":"..."
+  const patterns = [
+    /"videoUrl"\s*:\s*"([^"]+)"/i,
+    /"hls"\s*:\s*"([^"]+)"/i,
+    /"url"\s*:\s*"([^"]+\.(?:mp4|m3u8)[^"]*)"/i,
+    /"video"\s*:\s*"([^"]+\.(?:mp4|m3u8)[^"]*)"/i,
+  ];
+  for (const re of patterns) {
+    const m = html.match(re);
+    if (m && m[1]) {
+      let url = m[1].replace(/\\\//g, "/").replace(/\\u0026/g, "&");
+      if (url.startsWith("//")) url = "https:" + url;
+      if (url.startsWith("http")) return url;
+    }
+  }
+  return null;
+}
+
+// --- Generic extractor -------------------------------------------------------
 function extractVideoUrlFromHtml(html) {
   if (!html) return null;
 
-  // 1. <source src="...mp4|m3u8">
+  // OK.ru first
+  const ok = extractOkRuVideo(html);
+  if (ok) return ok;
+
+  // <source src="...mp4|m3u8">
   let m = html.match(/<source[^>]+src=["']([^"']+\.(?:mp4|m3u8)[^"']*)["']/i);
   if (m) return m[1];
 
-  // 2. file: "..." / "file":"..."
+  // file: "..." / "file":"..."
   m = html.match(/["']?file["']?\s*[:=]\s*["']([^"']+\.(?:mp4|m3u8)[^"']*)["']/i);
   if (m) return m[1];
 
-  // 3. sources: [{file:"..."}]
+  // sources: [{file:"..."}]
   m = html.match(
     /(?:sources|source)\s*:\s*\[\s*\{[^}]*?["']?(?:file|src)["']?\s*:\s*["']([^"']+\.(?:mp4|m3u8)[^"']*)["']/i
   );
   if (m) return m[1];
 
-  // 4. jwplayer setup / playlist URL
+  // jwplayer playlist
   m = html.match(/["']?playlist["']?\s*[:=]\s*["']([^"']+\.(?:mp4|m3u8)[^"']*)["']/i);
   if (m) return m[1];
 
-  // 5. Any bare .mp4/.m3u8 URL
+  // Any bare .mp4/.m3u8 URL
   m = html.match(/https?:\/\/[^"'\s<>\\]+\.(?:mp4|m3u8)[^"'\s<>\\]*/i);
   if (m) return m[0];
 
@@ -425,12 +429,16 @@ function extractVideoUrlFromHtml(html) {
 
 async function resolveIframe(iframeUrl, referer) {
   try {
+    log(`Resolving iframe: ${iframeUrl}`);
     const html = await fetchText(iframeUrl, { Referer: referer });
     const videoUrl = extractVideoUrlFromHtml(html);
     if (!videoUrl) {
-      log(`No video URL in iframe: ${iframeUrl}`);
+      log(`No video URL found in iframe: ${iframeUrl}`);
+      // Log a snippet to help debugging (first 500 chars of body)
+      log(`Iframe body preview: ${html.slice(0, 500).replace(/\s+/g, " ")}`);
       return null;
     }
+    log(`Resolved -> ${videoUrl}`);
     return absoluteUrl(videoUrl);
   } catch (e) {
     log(`Iframe resolve failed (${iframeUrl}): ${e.message}`);
@@ -489,6 +497,7 @@ async function processPage(pageUrl, streams) {
     Origin: MAIN_URL,
   };
 
+  // 1. Direct links on the page (rare but possible)
   for (const url of extractDirectLinks(html)) {
     streams.push({
       name: PROVIDER_NAME,
@@ -500,6 +509,7 @@ async function processPage(pageUrl, streams) {
     });
   }
 
+  // 2. Iframes -> resolve to direct URLs
   const iframes = extractIframes(html);
   log(`Found ${iframes.length} iframe(s) on ${pageUrl}`);
 
@@ -522,11 +532,11 @@ async function processPage(pageUrl, streams) {
 
 async function actualGetStreams(id, type, season, episode) {
   const streams = [];
-  log(`Invoked with id=${id} type=${type} s=${season} e=${episode}`);
+  log(`Invoked id=${id} type=${type} s=${season} e=${episode}`);
 
   const meta = await resolveMeta(id, type, season, episode);
   const queries = buildSearchQueries(meta, type);
-  log(`Search queries: ${JSON.stringify(queries)}`);
+  log(`Queries: ${JSON.stringify(queries)}`);
 
   let pageUrl = null;
   for (const q of queries) {
