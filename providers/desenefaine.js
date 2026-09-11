@@ -226,13 +226,13 @@ function getStreams(id, type, season, episode) {
 
           // EXACT structure from hdhub4u.js / dahmermovies.js
           streams.push({
-            name: PROVIDER_NAME + " | Server " + serverCount++,
-            title: "1080p | RO Dub",
-            url: src,
-            quality: "1080p",
-            headers: currentHeaders,
-            provider: "desenefaine"
-          });
+    name: PROVIDER_NAME + " | Server " + serverCount++,
+    title: "1080p | RO Dub",
+    url: src,
+    quality: "1080p",
+    headers: currentHeaders,
+    provider: "desenefaine"
+});
         });
       }
 
