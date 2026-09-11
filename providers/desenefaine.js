@@ -40,7 +40,6 @@ function fetchJson(url, options) {
   });
 }
 
-// Converts "Scooby-Doo: Blestemul monstrului din lac" -> "scooby-doo-blestemul-monstrului-din-lac"
 function normalizeSlug(value) {
   return String(value || "")
     .toLowerCase()
@@ -88,12 +87,10 @@ function getStreams(id, type, season, episode) {
 
     log("TMDB Titles -> RO: '" + roTitle + "' | EN: '" + enTitle + "'");
 
-    // 1. TRY DIRECT URL FIRST (Bypasses broken WordPress search)
     function tryDirectUrl(title) {
       var baseSlug = normalizeSlug(title);
       var slug = baseSlug;
       
-      // If it's a TV episode, try to match the episode slug pattern
       if (type === "tv" && season && episode) {
         slug = normalizeSlug(title + " sezonul " + season + " episodul " + episode);
       }
@@ -103,32 +100,23 @@ function getStreams(id, type, season, episode) {
       var promises = prefixes.map(function(prefix) {
         var url = MAIN_URL + "/" + prefix + "/" + slug + "/";
         return fetchText(url).then(function(html) {
-          // Check if page is valid (not a 404 or "page not found" message)
-          if (html && html.length > 2000 && !html.includes("The page you are looking for does not exist") && !html.includes("Nu am găsit")) {
+          if (html && html.length > 2000 && !html.includes("does not exist") && !html.includes("Nu am găsit")) {
             return { url: url, html: html };
           }
           return null;
-        }).catch(function() {
-          return null; // Ignore 404s, just try the next prefix
-        });
+        }).catch(function() { return null; });
       });
       
       return Promise.all(promises).then(function(results) {
         for (var i = 0; i < results.length; i++) {
-          if (results[i]) {
-            log("Direct URL match found: " + results[i].url);
-            return results[i];
-          }
+          if (results[i]) return results[i];
         }
         return null;
       });
     }
 
-    // 2. FALLBACK TO SEARCH PAGE (If direct URL fails)
     function searchSite(query) {
       var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
-      log("Searching site for: '" + query + "'");
-      
       return fetchText(searchUrl).then(function(html) {
         var $ = cheerio.load(html);
         var bestMatch = null;
@@ -157,33 +145,25 @@ function getStreams(id, type, season, episode) {
         });
 
         if (bestMatch) {
-          log("Search match found: " + bestMatch.text + " -> " + bestMatch.href);
           return fetchText(bestMatch.href).then(function(html) {
             return { url: bestMatch.href, html: html };
           });
         }
         return null;
-      }).catch(function(e) {
-        log("Search failed for '" + query + "': " + e.message);
-        return null;
-      });
+      }).catch(function() { return null; });
     }
 
-    // Execution Chain: RO Direct -> EN Direct -> RO Search -> EN Search
     return tryDirectUrl(roTitle).then(function(result) {
       if (result) return result;
-      
       if (enTitle && enTitle !== roTitle) {
         return tryDirectUrl(enTitle).then(function(enResult) {
           if (enResult) return enResult;
-          
           return searchSite(roTitle).then(function(searchResult) {
             if (searchResult) return searchResult;
             return searchSite(enTitle);
           });
         });
       }
-      
       return searchSite(roTitle);
     }).then(function(result) {
       if (!result || !result.html) {
@@ -196,33 +176,65 @@ function getStreams(id, type, season, episode) {
       var streams = [];
       var serverCount = 1;
 
-      $$("iframe").each(function(_, el) {
-        var src = $$(el).attr("src") || $$(el).attr("data-src") || $$(el).attr("data-lazy-src");
-        if (!src) return;
-        
-        if (src.startsWith("//")) src = "https:" + src;
-        else if (!src.startsWith("http")) src = MAIN_URL + (src.startsWith("/") ? "" : "/") + src;
-
-        if (src.includes("facebook.com") || src.includes("youtube.com") || src.includes("doubleclick") || src.includes("google.com")) {
-          return;
-        }
-
-        streams.push({
-          name: PROVIDER_NAME,
-          title: "Server " + serverCount++ + " | RO Dub",
-          url: src,
-          quality: "1080p",
-          behaviorHints: {
-            notWebReady: true,
-            proxyHeaders: {
-              request: {
-                "Referer": MAIN_URL + "/",
-                "User-Agent": DEFAULT_HEADERS["User-Agent"]
+      // 1. PRIORITY: Look for direct .mp4 or .m3u8 links first
+      $$("source, video").each(function(_, el) {
+        var src = $$(el).attr("src");
+        if (src && (src.indexOf(".mp4") !== -1 || src.indexOf(".m3u8") !== -1)) {
+          if (src.startsWith("//")) src = "https:" + src;
+          else if (!src.startsWith("http")) src = result.url + (src.startsWith("/") ? "" : "/") + src;
+          
+          streams.push({
+            name: PROVIDER_NAME,
+            title: "Direct Video | RO Dub",
+            url: src,
+            quality: "1080p",
+            behaviorHints: {
+              notWebReady: true,
+              proxyHeaders: {
+                request: {
+                  "Referer": result.url,
+                  "User-Agent": DEFAULT_HEADERS["User-Agent"]
+                }
               }
             }
-          }
-        });
+          });
+        }
       });
+
+      // 2. FALLBACK: Look for iframes only if no direct video was found
+      if (streams.length === 0) {
+        $$("iframe").each(function(_, el) {
+          var src = $$(el).attr("src") || $$(el).attr("data-src") || $$(el).attr("data-lazy-src");
+          if (!src) return;
+          
+          if (src.startsWith("//")) src = "https:" + src;
+          else if (!src.startsWith("http")) src = MAIN_URL + (src.startsWith("/") ? "" : "/") + src;
+
+          if (src.includes("facebook.com") || src.includes("youtube.com") || src.includes("doubleclick") || src.includes("google.com")) {
+            return;
+          }
+
+          // CRITICAL DEBUG LOG: This will tell us exactly which video host is being used
+          log("FOUND IFRAME URL: " + src);
+
+          streams.push({
+            name: PROVIDER_NAME,
+            title: "Server " + serverCount++ + " | RO Dub",
+            url: src,
+            quality: "1080p",
+            behaviorHints: {
+              notWebReady: true,
+              proxyHeaders: {
+                request: {
+                  "Referer": result.url, // Use the post URL, not just the homepage
+                  "User-Agent": DEFAULT_HEADERS["User-Agent"],
+                  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                }
+              }
+            }
+          });
+        });
+      }
 
       log("Successfully extracted " + streams.length + " streams.");
       return streams;
