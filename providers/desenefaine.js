@@ -4,7 +4,6 @@ var PROVIDER_NAME = "DeseneFaine";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c"; 
 
-// EXACT headers structure used by working Nuvio-TV plugins
 var STREAM_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
   "Accept": "*/*",
@@ -65,6 +64,33 @@ function normalizeTitle(value) {
     .replace(/ș/g, "s").replace(/ț/g, "t")
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
+}
+
+// ----------------------------------------------------------------------------
+// NEW: Extracts the direct .m3u8 or .mp4 from an iframe to prevent loading loop
+// ----------------------------------------------------------------------------
+function resolveIframe(iframeUrl, referer) {
+    return fetchText(iframeUrl, { headers: { Referer: referer } })
+        .then(function(html) {
+            // Player4me / generic JWPlayer setups usually store it in 'file' or 'sources'
+            var match = html.match(/(?:file|src|url)["']?\s*[:=]\s*["'](https?:\/\/[^"']+(?:\.mp4|\.m3u8)[^"']*)["']/i);
+            
+            if (match && match[1]) {
+                var directUrl = match[1].replace(/\\\//g, "/");
+                return directUrl;
+            }
+            
+            // Ok.ru specific
+            var okMatch = html.match(/"videoUrl"\s*:\s*"([^"]+)"/i) || html.match(/"hls"\s*:\s*"([^"]+)"/i);
+            if (okMatch && okMatch[1]) {
+                return okMatch[1].replace(/\\\//g, "/").replace(/\\u0026/g, "&");
+            }
+
+            return null;
+        }).catch(function(e) {
+            log("Failed to resolve iframe: " + iframeUrl);
+            return null;
+        });
 }
 
 function getStreams(id, type, season, episode) {
@@ -181,37 +207,30 @@ function getStreams(id, type, season, episode) {
 
       log("Extracting from: " + result.url);
       var $$ = cheerio.load(result.html);
-      var streams = [];
+      var streamPromises = [];
       var serverCount = 1;
 
-      // Update the Referer in STREAM_HEADERS to the exact post URL
-      var currentHeaders = Object.assign({}, STREAM_HEADERS, {
-        "Referer": result.url,
-        "Origin": MAIN_URL
-      });
-
-      // 1. PRIORITY: Direct .mp4 or .m3u8 links
+      // 1. PRIORITY: Direct .mp4 or .m3u8 links found on the main page
       $$("source, video").each(function(_, el) {
         var src = $$(el).attr("src");
         if (src && (src.indexOf(".mp4") !== -1 || src.indexOf(".m3u8") !== -1)) {
           if (src.startsWith("//")) src = "https:" + src;
           else if (!src.startsWith("http")) src = result.url + (src.startsWith("/") ? "" : "/") + src;
           
-          // EXACT structure from hdhub4u.js / dahmermovies.js
-          streams.push({
+          streamPromises.push(Promise.resolve({
             name: PROVIDER_NAME + " | Direct",
             title: "1080p | RO Dub",
             url: src,
             quality: "1080p",
-            headers: currentHeaders,
+            isM3U8: src.includes(".m3u8"), // TELLS NUVIO TO USE HLS PLAYER
+            headers: Object.assign({}, STREAM_HEADERS, { "Referer": result.url }),
             provider: "desenefaine"
-          });
+          }));
         }
       });
 
-      // 2. FALLBACK: Iframes (like player4me)
-      if (streams.length === 0) {
-        $$("iframe").each(function(_, el) {
+      // 2. FALLBACK: Resolve Iframes to direct video files
+      $$("iframe").each(function(_, el) {
           var src = $$(el).attr("src") || $$(el).attr("data-src") || $$(el).attr("data-lazy-src");
           if (!src) return;
           
@@ -223,21 +242,41 @@ function getStreams(id, type, season, episode) {
           }
 
           log("FOUND IFRAME: " + src);
+          
+          // Fetch the iframe and extract the real video file
+          var resolvePromise = resolveIframe(src, result.url).then(function(directVideoUrl) {
+              if (directVideoUrl) {
+                  // Get the base domain of the iframe to bypass 403 blocks
+                  var iframeDomain = src.match(/^https?:\/\/([^/?#]+)/i)[0];
+                  
+                  return {
+                      name: PROVIDER_NAME + " | Server " + serverCount++,
+                      title: "1080p | RO Dub",
+                      url: directVideoUrl, // <--- DIRECT FILE, NO MORE LOADING LOOP!
+                      quality: "1080p",
+                      isM3U8: directVideoUrl.includes(".m3u8"), // TELLS NUVIO TO USE HLS PLAYER
+                      headers: {
+                          "User-Agent": STREAM_HEADERS["User-Agent"],
+                          "Referer": iframeDomain + "/",
+                          "Origin": iframeDomain
+                      },
+                      provider: "desenefaine"
+                  };
+              }
+              return null;
+          });
+          
+          streamPromises.push(resolvePromise);
+      });
 
-          // EXACT structure from hdhub4u.js / dahmermovies.js
-          streams.push({
-    name: PROVIDER_NAME + " | Server " + serverCount++,
-    title: "1080p | RO Dub",
-    url: src,
-    quality: "1080p",
-    headers: currentHeaders,
-    provider: "desenefaine"
-});
-        });
-      }
+      // Wait for all iframes to be resolved
+      return Promise.all(streamPromises).then(function(resolvedStreams) {
+          // Filter out any nulls (iframes that failed to resolve)
+          var finalStreams = resolvedStreams.filter(function(s) { return s !== null; });
+          log("Extracted " + finalStreams.length + " streams.");
+          return finalStreams;
+      });
 
-      log("Extracted " + streams.length + " streams.");
-      return streams;
     });
   }).catch(function(e) {
     log("Fatal Error: " + e.message);
