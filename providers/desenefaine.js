@@ -1,84 +1,88 @@
 // providers/desenefaine.js
 // Nuvio scraper for DeseneFaine (RO Dub)
 //
-// Discovery/search logic intentionally kept close to the original working
-// version. The main change is iframe/player resolution.
+// Current strategy:
+// 1. Resolve the incoming IMDb/TMDB id through TMDB.
+// 2. Try to locate the DeseneFaine /film/ page directly from the title.
+// 3. Fall back to DeseneFaine search.
+// 4. Extract iframe/embed/server URLs from HTML AND inline JS.
+// 5. Resolve direct MP4/M3U8 URLs when available.
+// 6. Resolve Player4me / StreamP2P / SeekStreaming embeds when possible.
 //
-// Flow:
-// Nuvio IMDb ID
-//    -> TMDB
-//    -> Romanian title
-//    -> DeseneFaine search
-//    -> episode page
-//    -> iframe
-//    -> Player4Me / StreamP2P / SeekStreaming resolver
-//    -> actual stream URL
+// IMPORTANT:
+// Nuvio runs provider JS inside its own JS runtime.
+// Avoid relying on browser-only APIs such as window/document/DOM.
+// Also avoid new URL() in the normal provider path.
 
 const PROVIDER_NAME = "DeseneFaine";
+const PROVIDER_ID = "desenefaine";
+
 const MAIN_URL = "https://desenefaine.com";
 
+// -----------------------------------------------------------------------------
 // TMDB
+// -----------------------------------------------------------------------------
+
 const TMDB_API_KEY = "ccd8c6e162505e91ef8dc65b323ff4be";
 const TMDB_BASE = "https://api.themoviedb.org/3";
 const TMDB_LANG = "ro-RO";
 
-// Misc
+// -----------------------------------------------------------------------------
+// HTTP
+// -----------------------------------------------------------------------------
+
 const USER_AGENT =
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
-  "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
+  "AppleWebKit/537.36 (KHTML, like Gecko) " +
+  "Chrome/124.0.0.0 Safari/537.36";
 
 const DEFAULT_HEADERS = {
   "User-Agent": USER_AGENT,
-  Accept:
+  "Accept":
     "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
   "Accept-Language": "ro-RO,ro;q=0.9,en;q=0.8",
 };
 
-const SCRAPER_TIMEOUT_MS = 30000;
 const REQUEST_TIMEOUT_MS = 12000;
+const SCRAPER_TIMEOUT_MS = 25000;
 
-// ============================================================================
-// Logging
-// ============================================================================
+let _httpClient = null;
 
 function log(msg) {
   try {
-    console.log(`[${PROVIDER_NAME}] ${msg}`);
+    console.log("[" + PROVIDER_NAME + "] " + msg);
   } catch (_) {}
 }
-
-// ============================================================================
-// HTTP layer
-// ============================================================================
-
-let _httpClient = null;
 
 function getHttpClient() {
   if (_httpClient) return _httpClient;
 
+  // Nuvio normally provides fetch.
   if (typeof fetch === "function") {
     log("HTTP client: fetch");
 
-    _httpClient = async (url, opts = {}) => {
+    _httpClient = async function (url, opts) {
+      opts = opts || {};
+
       const controller =
         typeof AbortController !== "undefined"
           ? new AbortController()
           : null;
 
       const timer = controller
-        ? setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS)
+        ? setTimeout(function () {
+            try {
+              controller.abort();
+            } catch (_) {}
+          }, REQUEST_TIMEOUT_MS)
         : null;
 
       try {
         const res = await fetch(url, {
-          method: opts.method || "GET",
-          headers: {
-            ...DEFAULT_HEADERS,
-            ...(opts.headers || {}),
-          },
+          method: "GET",
+          headers: Object.assign({}, DEFAULT_HEADERS, opts.headers || {}),
           redirect: "follow",
           signal: controller ? controller.signal : undefined,
-          body: opts.body,
         });
 
         const text = await res.text();
@@ -86,8 +90,12 @@ function getHttpClient() {
         return {
           status: res.status,
           ok: res.ok,
-          text: async () => text,
-          json: async () => JSON.parse(text),
+          text: async function () {
+            return text;
+          },
+          json: async function () {
+            return JSON.parse(text);
+          },
         };
       } finally {
         if (timer) clearTimeout(timer);
@@ -97,22 +105,28 @@ function getHttpClient() {
     return _httpClient;
   }
 
+  // Axios fallback.
   try {
     const axios = require("axios");
 
     log("HTTP client: axios");
 
-    _httpClient = async (url, opts = {}) => {
+    _httpClient = async function (url, opts) {
+      opts = opts || {};
+
       const res = await axios.get(url, {
-        headers: {
-          ...DEFAULT_HEADERS,
-          ...(opts.headers || {}),
-        },
+        headers: Object.assign({}, DEFAULT_HEADERS, opts.headers || {}),
         timeout: REQUEST_TIMEOUT_MS,
         maxRedirects: 5,
-        validateStatus: () => true,
+        validateStatus: function () {
+          return true;
+        },
         responseType: "text",
-        transformResponse: [(d) => d],
+        transformResponse: [
+          function (data) {
+            return data;
+          },
+        ],
       });
 
       const text =
@@ -123,44 +137,58 @@ function getHttpClient() {
       return {
         status: res.status,
         ok: res.status >= 200 && res.status < 300,
-        text: async () => text,
-        json: async () => JSON.parse(text),
+        text: async function () {
+          return text;
+        },
+        json: async function () {
+          return JSON.parse(text);
+        },
       };
     };
 
     return _httpClient;
   } catch (_) {}
 
+  // Node fallback.
   try {
     const https = require("https");
     const http = require("http");
 
     log("HTTP client: node http");
 
-    _httpClient = (url, opts = {}) =>
-      new Promise((resolve, reject) => {
+    _httpClient = function (url, opts) {
+      opts = opts || {};
+
+      return new Promise(function (resolve, reject) {
         const lib = url.startsWith("https") ? https : http;
 
         const req = lib.get(
           url,
           {
-            headers: {
-              ...DEFAULT_HEADERS,
-              ...(opts.headers || {}),
-            },
+            headers: Object.assign(
+              {},
+              DEFAULT_HEADERS,
+              opts.headers || {}
+            ),
           },
-          (res) => {
+          function (res) {
             if (
               res.statusCode >= 300 &&
               res.statusCode < 400 &&
               res.headers.location &&
-              (opts._redirects || 0) < 5
+              (opts._redirects || 0) < 3
             ) {
               res.resume();
 
-              const next = res.headers.location.startsWith("http")
-                ? res.headers.location
-                : new URL(res.headers.location, url).toString();
+              let next = res.headers.location;
+
+              if (!next.startsWith("http")) {
+                if (next.startsWith("/")) {
+                  next = MAIN_URL + next;
+                } else {
+                  next = MAIN_URL + "/" + next;
+                }
+              }
 
               return resolve(
                 _httpClient(next, {
@@ -174,18 +202,22 @@ function getHttpClient() {
 
             res.setEncoding("utf8");
 
-            res.on("data", (c) => {
+            res.on("data", function (c) {
               body += c;
             });
 
-            res.on("end", () => {
+            res.on("end", function () {
               resolve({
                 status: res.statusCode,
                 ok:
                   res.statusCode >= 200 &&
                   res.statusCode < 300,
-                text: async () => body,
-                json: async () => JSON.parse(body),
+                text: async function () {
+                  return body;
+                },
+                json: async function () {
+                  return JSON.parse(body);
+                },
               });
             });
           }
@@ -193,10 +225,11 @@ function getHttpClient() {
 
         req.on("error", reject);
 
-        req.setTimeout(REQUEST_TIMEOUT_MS, () => {
+        req.setTimeout(REQUEST_TIMEOUT_MS, function () {
           req.destroy(new Error("request timeout"));
         });
       });
+    };
 
     return _httpClient;
   } catch (_) {}
@@ -204,39 +237,39 @@ function getHttpClient() {
   throw new Error("No HTTP client available");
 }
 
-async function fetchText(url, headers = {}) {
+async function fetchText(url, headers) {
   const client = getHttpClient();
 
   const res = await client(url, {
-    headers,
+    headers: headers || {},
   });
 
   if (!res.ok) {
-    throw new Error(`HTTP ${res.status} for ${url}`);
+    throw new Error("HTTP " + res.status + " for " + url);
   }
 
   return await res.text();
 }
 
-async function fetchJson(url, headers = {}) {
+async function fetchJson(url, headers) {
   const client = getHttpClient();
 
   const res = await client(url, {
-    headers,
+    headers: headers || {},
   });
 
   if (!res.ok) {
-    throw new Error(`HTTP ${res.status} for ${url}`);
+    throw new Error("HTTP " + res.status + " for " + url);
   }
 
   return await res.json();
 }
 
-// ============================================================================
-// Helpers
-// ============================================================================
+// -----------------------------------------------------------------------------
+// General helpers
+// -----------------------------------------------------------------------------
 
-function absoluteUrl(url, base = MAIN_URL) {
+function absoluteUrl(url) {
   if (!url) return null;
 
   url = String(url).trim();
@@ -247,7 +280,7 @@ function absoluteUrl(url, base = MAIN_URL) {
     return "https:" + url;
   }
 
-  if (/^https?:\/\//i.test(url)) {
+  if (url.startsWith("http://") || url.startsWith("https://")) {
     return url;
   }
 
@@ -255,109 +288,174 @@ function absoluteUrl(url, base = MAIN_URL) {
     return MAIN_URL + url;
   }
 
-  // Preserve the original scraper's behavior for DeseneFaine-relative URLs.
-  if (base === MAIN_URL || base === MAIN_URL + "/") {
-    return MAIN_URL + "/" + url;
-  }
+  return MAIN_URL + "/" + url;
+}
 
-  try {
-    return new URL(url, base).toString();
-  } catch (_) {
-    return MAIN_URL + "/" + url;
-  }
+function cleanUrl(url) {
+  if (!url) return null;
+
+  let u = String(url).trim();
+
+  u = u
+    .replace(/^['"`]+/, "")
+    .replace(/['"`]+$/, "")
+    .replace(/&amp;/g, "&")
+    .replace(/\\\//g, "/")
+    .replace(/\\u002F/gi, "/")
+    .replace(/\\u0026/gi, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'");
+
+  return u.trim();
 }
 
 function decodeEntities(s) {
   if (!s) return s;
 
-  return s
+  return String(s)
     .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
     .replace(/&#039;/g, "'")
-    .replace(/&#39;/g, "'")
     .replace(/&#8217;/g, "’")
-    .replace(/&#8211;/g, "–");
-}
-
-function decodeJsUrl(s) {
-  if (!s) return s;
-
-  return decodeEntities(String(s))
-    .replace(/\\\//g, "/")
-    .replace(/\\u0026/gi, "&")
-    .replace(/\\u003d/gi, "=")
-    .replace(/\\u003f/gi, "?")
-    .replace(/\\"/g, '"');
+    .replace(/&#8216;/g, "‘")
+    .replace(/&#8211;/g, "–")
+    .replace(/&#8212;/g, "—")
+    .replace(/&#x27;/gi, "'")
+    .replace(/&#x2F;/gi, "/");
 }
 
 function stripTags(s) {
-  return s
-    ? s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()
-    : "";
-}
+  if (!s) return "";
 
-function getOrigin(url) {
-  try {
-    return new URL(url).origin;
-  } catch (_) {
-    const m = String(url || "").match(
-      /^(https?:\/\/[^\/?#]+)/i
-    );
-
-    return m ? m[1] : MAIN_URL;
-  }
-}
-
-function getHost(url) {
-  try {
-    return new URL(url).hostname
-      .toLowerCase()
-      .replace(/^www\./, "");
-  } catch (_) {
-    return "";
-  }
+  return decodeEntities(
+    String(s).replace(/<[^>]+>/g, " ")
+  )
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function guessQuality(url) {
   const u = (url || "").toLowerCase();
 
-  if (u.includes("2160") || u.includes("4k")) return "4K";
-  if (u.includes("1440")) return "1440p";
-  if (u.includes("1080")) return "1080p";
-  if (u.includes("720")) return "720p";
-  if (u.includes("576")) return "576p";
-  if (u.includes("480")) return "480p";
-  if (u.includes("360")) return "360p";
+  if (u.includes("2160") || u.includes("4k")) {
+    return "2160p";
+  }
+
+  if (u.includes("1440")) {
+    return "1440p";
+  }
+
+  if (u.includes("1080")) {
+    return "1080p";
+  }
+
+  if (u.includes("720")) {
+    return "720p";
+  }
+
+  if (u.includes("576")) {
+    return "576p";
+  }
+
+  if (u.includes("480")) {
+    return "480p";
+  }
+
+  if (u.includes("360")) {
+    return "360p";
+  }
 
   return "auto";
 }
 
-function looksLikePlayableUrl(url) {
-  if (!url) return false;
+function uniqueStrings(arr) {
+  const seen = new Set();
+  const out = [];
 
-  const u = String(url).toLowerCase();
+  for (const value of arr || []) {
+    if (!value) continue;
 
-  return (
-    u.includes(".m3u8") ||
-    u.includes(".mp4") ||
-    u.includes(".webm") ||
-    u.includes(".mkv") ||
-    u.includes("/master") ||
-    u.includes("/playlist") ||
-    u.includes("/hls/") ||
-    u.includes("/stream/")
-  );
+    const v = String(value).trim();
+
+    if (!v || seen.has(v)) continue;
+
+    seen.add(v);
+    out.push(v);
+  }
+
+  return out;
 }
 
-function unique(arr) {
-  return [...new Set(arr.filter(Boolean))];
+function uniqueStreams(streams) {
+  const seen = new Set();
+  const out = [];
+
+  for (const stream of streams || []) {
+    if (!stream || !stream.url) continue;
+
+    const key = String(stream.url).trim();
+
+    if (!key || seen.has(key)) continue;
+
+    seen.add(key);
+    out.push(stream);
+  }
+
+  return out;
 }
 
-// ============================================================================
+// -----------------------------------------------------------------------------
+// Title / slug helpers
+// -----------------------------------------------------------------------------
+
+function removeDiacritics(s) {
+  if (!s) return "";
+
+  // Do not depend on String.prototype.normalize().
+  return String(s)
+    .replace(/[ăĂ]/g, "a")
+    .replace(/[âÂ]/g, "a")
+    .replace(/[îÎ]/g, "i")
+    .replace(/[șȘşŞ]/g, "s")
+    .replace(/[țȚţŢ]/g, "t")
+    .replace(/[áÁàÀäÄâÂãÃåÅ]/g, "a")
+    .replace(/[éÉèÈëËêÊ]/g, "e")
+    .replace(/[íÍìÌïÏîÎ]/g, "i")
+    .replace(/[óÓòÒöÖôÔõÕ]/g, "o")
+    .replace(/[úÚùÙüÜûÛ]/g, "u");
+}
+
+function slugify(text) {
+  if (!text) return "";
+
+  let s = removeDiacritics(String(text));
+
+  s = s
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/['’]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+/g, "")
+    .replace(/-+$/g, "");
+
+  return s;
+}
+
+function titleWords(text) {
+  return removeDiacritics(String(text || ""))
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .split(/\s+/)
+    .filter(function (x) {
+      return x.length >= 3;
+    });
+}
+
+// -----------------------------------------------------------------------------
 // TMDB
-// ============================================================================
+// -----------------------------------------------------------------------------
 
 function looksLikeTmdbId(id) {
   return /^\d+$/.test(String(id));
@@ -376,14 +474,15 @@ function looksLikeTitle(id) {
 
 async function resolveMeta(id, type, season, episode) {
   if (looksLikeTitle(id)) {
-    log(`Incoming id is a title: "${id}"`);
+    log('Incoming id is a title: "' + id + '"');
 
     return {
       title: String(id),
       originalTitle: null,
       year: null,
-      season,
-      episode,
+      tmdbId: null,
+      season: season,
+      episode: episode,
     };
   }
 
@@ -391,38 +490,47 @@ async function resolveMeta(id, type, season, episode) {
     !TMDB_API_KEY ||
     TMDB_API_KEY === "YOUR_TMDB_API_KEY"
   ) {
-    log("TMDB key not set, using raw id");
+    log("TMDB key not configured; using raw id");
 
     return {
       title: String(id),
       originalTitle: null,
       year: null,
-      season,
-      episode,
+      tmdbId: null,
+      season: season,
+      episode: episode,
     };
   }
 
   try {
     let tmdbId = null;
 
-    // Nuvio normally gives us IMDb ids here.
     if (looksLikeImdbId(id)) {
-      log(`Resolving IMDb id through TMDB: ${id}`);
-
       const findUrl =
-        `${TMDB_BASE}/find/${id}` +
-        `?api_key=${TMDB_API_KEY}` +
-        `&external_source=imdb_id` +
-        `&language=${TMDB_LANG}`;
+        TMDB_BASE +
+        "/find/" +
+        encodeURIComponent(id) +
+        "?api_key=" +
+        TMDB_API_KEY +
+        "&external_source=imdb_id&language=" +
+        TMDB_LANG;
+
+      log("TMDB find: " + id);
 
       const data = await fetchJson(findUrl, {
         Accept: "application/json",
       });
 
-      const bucket =
+      // Nuvio uses movie/tv.
+      let bucket =
         type === "movie"
           ? data.movie_results
           : data.tv_results;
+
+      // Be slightly more forgiving if Nuvio sends another TV-like type.
+      if ((!bucket || !bucket.length) && type !== "movie") {
+        bucket = data.tv_results;
+      }
 
       if (bucket && bucket.length) {
         tmdbId = bucket[0].id;
@@ -432,28 +540,33 @@ async function resolveMeta(id, type, season, episode) {
     }
 
     if (!tmdbId) {
-      log(`Could not map ${id} to TMDB`);
+      log("Could not map " + id + " to TMDB");
 
       return {
         title: String(id),
         originalTitle: null,
         year: null,
-        season,
-        episode,
+        tmdbId: null,
+        season: season,
+        episode: episode,
       };
     }
 
     const endpoint =
-      type === "movie"
-        ? "movie"
-        : "tv";
+      type === "movie" ? "movie" : "tv";
 
-    const url =
-      `${TMDB_BASE}/${endpoint}/${tmdbId}` +
-      `?api_key=${TMDB_API_KEY}` +
-      `&language=${TMDB_LANG}`;
+    const detailUrl =
+      TMDB_BASE +
+      "/" +
+      endpoint +
+      "/" +
+      tmdbId +
+      "?api_key=" +
+      TMDB_API_KEY +
+      "&language=" +
+      TMDB_LANG;
 
-    const data = await fetchJson(url, {
+    const data = await fetchJson(detailUrl, {
       Accept: "application/json",
     });
 
@@ -474,63 +587,80 @@ async function resolveMeta(id, type, season, episode) {
       data.first_air_date ||
       "";
 
-    const year = dateStr
-      ? dateStr.slice(0, 4)
-      : null;
+    const year =
+      dateStr && dateStr.length >= 4
+        ? dateStr.slice(0, 4)
+        : null;
 
-    log(`TMDB: "${title}" (${year})`);
+    log(
+      'TMDB resolved: "' +
+        title +
+        '" / "' +
+        originalTitle +
+        '" (' +
+        year +
+        ") id=" +
+        tmdbId
+    );
 
     return {
-      title,
-      originalTitle,
-      year,
-      season,
-      episode,
+      title: title,
+      originalTitle: originalTitle,
+      year: year,
+      tmdbId: tmdbId,
+      season: season,
+      episode: episode,
     };
   } catch (e) {
-    log(`TMDB error: ${e.message}`);
+    log("TMDB error: " + e.message);
 
     return {
       title: String(id),
       originalTitle: null,
       year: null,
-      season,
-      episode,
+      tmdbId: null,
+      season: season,
+      episode: episode,
     };
   }
 }
 
+// -----------------------------------------------------------------------------
+// Search
+// -----------------------------------------------------------------------------
+
 function buildSearchQueries(meta, type) {
-  const {
-    title,
-    originalTitle,
-    year,
-    season,
-    episode,
-  } = meta;
+  const title = meta.title;
+  const originalTitle = meta.originalTitle;
+  const year = meta.year;
+  const season = meta.season;
+  const episode = meta.episode;
 
   const out = [];
 
-  const push = (q) => {
+  function push(q) {
     if (q && !out.includes(q)) {
       out.push(q);
     }
-  };
-
-  if (title) {
-    push(title);
   }
+
+  if (title) push(title);
 
   if (
     originalTitle &&
-    originalTitle !== title
+    originalTitle.toLowerCase() !==
+      String(title || "").toLowerCase()
   ) {
     push(originalTitle);
   }
 
   if (title && year) {
-    push(`${title} ${year}`);
-    push(`${title} (${year})`);
+    push(title + " " + year);
+    push(title + " (" + year + ")");
+  }
+
+  if (originalTitle && year) {
+    push(originalTitle + " " + year);
   }
 
   // Nuvio uses "tv", not "series".
@@ -539,27 +669,21 @@ function buildSearchQueries(meta, type) {
     title &&
     season
   ) {
-    push(`${title} sezonul ${season}`);
+    push(title + " sezonul " + season);
 
     if (episode) {
       push(
-        `${title} sezonul ${season} episodul ${episode}`
-      );
-
-      push(
-        `${title} S${String(season).padStart(2, "0")}E${String(
+        title +
+          " sezonul " +
+          season +
+          " episodul " +
           episode
-        ).padStart(2, "0")}`
       );
     }
   }
 
   return out;
 }
-
-// ============================================================================
-// Site search
-// ============================================================================
 
 async function trySearchUrl(template, query) {
   const url = template.replace(
@@ -573,62 +697,19 @@ async function trySearchUrl(template, query) {
     });
 
     return {
-      url,
-      html,
+      url: url,
+      html: html,
     };
   } catch (e) {
     log(
-      `Search URL failed (${url}): ${e.message}`
+      "Search failed " +
+        url +
+        ": " +
+        e.message
     );
 
     return null;
   }
-}
-
-async function searchSite(query) {
-  const patterns = [
-    `${MAIN_URL}/?s={q}`,
-    `${MAIN_URL}/cauta/{q}/`,
-    `${MAIN_URL}/search/{q}/`,
-  ];
-
-  for (const p of patterns) {
-    log(
-      `Trying search: ${p.replace(
-        "{q}",
-        query
-      )}`
-    );
-
-    const result =
-      await trySearchUrl(
-        p,
-        query
-      );
-
-    if (!result || !result.html) {
-      continue;
-    }
-
-    const candidates =
-      collectCandidates(
-        result.html,
-        query
-      );
-
-    if (candidates.length > 0) {
-      log(
-        `  -> best: ${candidates[0].href} ` +
-          `(score ${candidates[0].score})`
-      );
-
-      return candidates[0].href;
-    }
-
-    log("  -> no candidates");
-  }
-
-  return null;
 }
 
 function collectCandidates(html, query) {
@@ -639,21 +720,14 @@ function collectCandidates(html, query) {
 
   let m;
 
-  const qWords = String(query)
-    .toLowerCase()
-    .split(/\s+/)
-    .filter((w) => w.length > 2);
+  const qWords = titleWords(query);
 
-  while (
-    (m = linkRegex.exec(html)) !== null
-  ) {
-    const href =
-      absoluteUrl(m[1]);
+  while ((m = linkRegex.exec(html)) !== null) {
+    let href = cleanUrl(m[1]);
 
-    const text =
-      decodeEntities(
-        stripTags(m[2] || "")
-      ).toLowerCase();
+    if (!href) continue;
+
+    href = absoluteUrl(href);
 
     if (!href) continue;
 
@@ -661,21 +735,15 @@ function collectCandidates(html, query) {
       continue;
     }
 
-    if (
-      href.includes("/category/") ||
-      href.includes("/tag/")
-    ) {
-      continue;
-    }
+    const lowerHref = href.toLowerCase();
 
     if (
-      href.includes("/page/") ||
-      href.includes("/author/")
+      lowerHref.includes("/category/") ||
+      lowerHref.includes("/tag/") ||
+      lowerHref.includes("/author/") ||
+      lowerHref.includes("/page/") ||
+      lowerHref.includes("?s=")
     ) {
-      continue;
-    }
-
-    if (href.includes("?s=")) {
       continue;
     }
 
@@ -690,9 +758,7 @@ function collectCandidates(html, query) {
       .replace(MAIN_URL, "")
       .replace(/^\/|\/$/g, "");
 
-    if (!path || path.length < 3) {
-      continue;
-    }
+    if (!path || path.length < 3) continue;
 
     if (
       /\.(png|jpe?g|gif|svg|css|js|ico|webp)$/i.test(
@@ -702,64 +768,230 @@ function collectCandidates(html, query) {
       continue;
     }
 
-    let slug;
+    const slug =
+      removeDiacritics(path).toLowerCase();
 
-    try {
-      slug =
-        decodeURIComponent(
-          path
-        ).toLowerCase();
-    } catch (_) {
-      slug = path.toLowerCase();
-    }
+    const text =
+      stripTags(m[2] || "").toLowerCase();
 
     let score = 0;
 
-    for (const w of qWords) {
-      if (slug.includes(w)) {
-        score += 5;
+    for (const word of qWords) {
+      if (slug.includes(word)) {
+        score += 8;
       }
 
-      if (text.includes(w)) {
-        score += 3;
+      if (text.includes(word)) {
+        score += 5;
       }
     }
 
     if (
-      slug.split("/").length >= 2 ||
-      slug.split("-").length >= 3
+      lowerHref.includes("/film/")
     ) {
-      score += 2;
+      score += 12;
     }
 
-    // DeseneFaine episode pages use /epi/
-    if (href.includes("/epi/")) {
+    if (
+      lowerHref.includes("/desen/") ||
+      lowerHref.includes("/serial/")
+    ) {
       score += 5;
     }
 
-    const existing =
-      map.get(href);
+    if (score > 0) {
+      const existing = map.get(href);
 
-    if (
-      !existing ||
-      existing.score < score
-    ) {
-      map.set(href, {
-        href,
-        score,
-      });
+      if (!existing || existing.score < score) {
+        map.set(href, {
+          href: href,
+          score: score,
+        });
+      }
     }
   }
 
-  return [...map.values()].sort(
-    (a, b) =>
-      b.score - a.score
+  return Array.from(map.values()).sort(
+    function (a, b) {
+      return b.score - a.score;
+    }
   );
 }
 
-// ============================================================================
-// IFRAME / EMBED RESOLUTION
-// ============================================================================
+async function searchSite(query) {
+  const patterns = [
+    MAIN_URL + "/?s={q}",
+    MAIN_URL + "/cauta/{q}/",
+    MAIN_URL + "/search/{q}/",
+  ];
+
+  for (const pattern of patterns) {
+    log(
+      "Trying search: " +
+        pattern.replace("{q}", query)
+    );
+
+    const result = await trySearchUrl(
+      pattern,
+      query
+    );
+
+    if (!result || !result.html) {
+      continue;
+    }
+
+    const candidates = collectCandidates(
+      result.html,
+      query
+    );
+
+    if (candidates.length > 0) {
+      log(
+        "Search best: " +
+          candidates[0].href +
+          " score=" +
+          candidates[0].score
+      );
+
+      return candidates[0].href;
+    }
+
+    log("No candidates from this search");
+  }
+
+  return null;
+}
+
+// -----------------------------------------------------------------------------
+// Direct /film/ discovery
+// -----------------------------------------------------------------------------
+
+async function checkFilmPage(url, expectedTitle) {
+  try {
+    const html = await fetchText(url, {
+      Referer: MAIN_URL + "/",
+    });
+
+    if (!html || html.length < 100) {
+      return null;
+    }
+
+    const lower = html.toLowerCase();
+
+    // A DeseneFaine film page normally contains /film/ content.
+    const looksLikeFilm =
+      lower.includes("server 01") ||
+      lower.includes("server 02") ||
+      lower.includes("player4me") ||
+      lower.includes("streamp2p") ||
+      lower.includes("seekstreaming") ||
+      lower.includes("<iframe") ||
+      lower.includes("video");
+
+    if (!looksLikeFilm) {
+      return null;
+    }
+
+    if (expectedTitle) {
+      const words = titleWords(expectedTitle);
+      let matches = 0;
+
+      const sample = removeDiacritics(
+        stripTags(html)
+      ).toLowerCase();
+
+      for (const word of words) {
+        if (sample.includes(word)) {
+          matches++;
+        }
+      }
+
+      // Don't reject the page if the title is not present in
+      // the first rendered HTML. Some WordPress templates
+      // hide it in metadata.
+      if (words.length > 0 && matches === 0) {
+        log(
+          "Direct page found but title text was not visible: " +
+            url
+        );
+      }
+    }
+
+    return {
+      url: url,
+      html: html,
+    };
+  } catch (e) {
+    log(
+      "Direct film page failed " +
+        url +
+        ": " +
+        e.message
+    );
+
+    return null;
+  }
+}
+
+async function findDirectFilmPage(meta) {
+  const names = [];
+
+  if (meta.title) {
+    names.push(meta.title);
+  }
+
+  if (
+    meta.originalTitle &&
+    meta.originalTitle !== meta.title
+  ) {
+    names.push(meta.originalTitle);
+  }
+
+  const slugs = [];
+
+  for (const name of names) {
+    const slug = slugify(name);
+
+    if (slug) {
+      slugs.push(slug);
+    }
+  }
+
+  // A common Romanian title variation is "and" versus "-".
+  // Try both where applicable.
+  for (const slug of slugs.slice()) {
+    if (slug.includes("-and-")) {
+      slugs.push(
+        slug.replace(/-and-/g, "-")
+      );
+    }
+  }
+
+  const uniqueSlugs = uniqueStrings(slugs);
+
+  for (const slug of uniqueSlugs) {
+    const url =
+      MAIN_URL + "/film/" + slug + "/";
+
+    log("Trying direct film URL: " + url);
+
+    const result = await checkFilmPage(
+      url,
+      meta.title
+    );
+
+    if (result) {
+      log("Direct film page matched: " + url);
+      return result.url;
+    }
+  }
+
+  return null;
+}
+
+// -----------------------------------------------------------------------------
+// Embed/server URL extraction
+// -----------------------------------------------------------------------------
 
 const SKIP_HOSTS = [
   "facebook.com",
@@ -771,370 +1003,577 @@ const SKIP_HOSTS = [
   "disqus.com",
   "twitter.com",
   "instagram.com",
+  "google.com",
 ];
 
-function shouldSkipIframe(src) {
-  const l = src.toLowerCase();
+const EMBED_HOSTS = [
+  "player4me.com",
+  "streamp2p.com",
+  "seekstreaming.com",
+  "seekstreaming",
+  "byse",
+  "dsvplay",
+];
 
-  return SKIP_HOSTS.some((h) =>
-    l.includes(h)
-  );
+function shouldSkipUrl(url) {
+  if (!url) return true;
+
+  const l = String(url).toLowerCase();
+
+  return SKIP_HOSTS.some(function (host) {
+    return l.includes(host);
+  });
 }
 
-// ============================================================================
-// StreamEmbed hosts
-//
-// DeseneFaine currently uses hosts from the StreamEmbed family:
-//
-//   Player4Me
-//   StreamP2P
-//   SeekStreaming
-//
-// These hosts provide an /e/{filecode} player page.
-// Their resolver API is:
-//
-//   /api/v1/video?id={filecode}&w=2048&h=1152&r=
-//
-// The response is encrypted and contains the actual stream/master URL.
-//
-// IMPORTANT:
-// Discovery is completely independent from this resolver.
-// If this resolver fails, the DeseneFaine page discovery still works.
-// ============================================================================
+function isEmbedHost(url) {
+  if (!url) return false;
 
-const STREAMEMBED_HOSTS = [
+  const l = String(url).toLowerCase();
+
+  return EMBED_HOSTS.some(function (host) {
+    return l.includes(host);
+  });
+}
+
+function normalizeExtractedUrl(url) {
+  if (!url) return null;
+
+  let u = cleanUrl(url);
+
+  if (!u) return null;
+
+  // HTML entities / JS escaping.
+  u = u
+    .replace(/\\x3a/gi, ":")
+    .replace(/\\x2f/gi, "/")
+    .replace(/\\u003a/gi, ":")
+    .replace(/\\u002f/gi, "/")
+    .replace(/\\u0026/gi, "&");
+
+  if (u.startsWith("//")) {
+    u = "https:" + u;
+  }
+
+  return u;
+}
+
+function extractUrlsFromText(html) {
+  const out = [];
+
+  if (!html) return out;
+
+  // Normal quoted absolute URLs.
+  const absoluteRegex =
+    /https?:\/\/[^"'<>\\\s]+/gi;
+
+  let m;
+
+  while ((m = absoluteRegex.exec(html)) !== null) {
+    let url = normalizeExtractedUrl(m[0]);
+
+    if (!url) continue;
+
+    // Remove trailing punctuation frequently found
+    // after URLs in JS.
+    url = url.replace(
+      /[),;}\]]+$/,
+      ""
+    );
+
+    if (!shouldSkipUrl(url)) {
+      out.push(url);
+    }
+  }
+
+  // Protocol-relative URLs.
+  const protocolRelativeRegex =
+    /["'`(=]\s*(\/\/[^"'`<>\s]+)/gi;
+
+  while (
+    (m = protocolRelativeRegex.exec(html)) !== null
+  ) {
+    let url = normalizeExtractedUrl(m[1]);
+
+    if (!url) continue;
+
+    if (!shouldSkipUrl(url)) {
+      out.push(url);
+    }
+  }
+
+  return uniqueStrings(out);
+}
+
+function extractIframes(html) {
+  const out = [];
+
+  if (!html) return out;
+
+  const tagRegex =
+    /<iframe\b[^>]*>/gi;
+
+  const tags = html.match(tagRegex) || [];
+
+  for (const tag of tags) {
+    const attrRegex =
+      /(?:src|data-src|data-lazy-src|data-url|data-embed|data-player|data-video|data-link|data-href)\s*=\s*["']([^"']+)["']/gi;
+
+    let m;
+
+    while ((m = attrRegex.exec(tag)) !== null) {
+      const src =
+        normalizeExtractedUrl(m[1]);
+
+      if (!src) continue;
+
+      const finalUrl =
+        src.startsWith("http") ||
+        src.startsWith("//")
+          ? src
+          : absoluteUrl(src);
+
+      if (!finalUrl) continue;
+
+      if (!shouldSkipUrl(finalUrl)) {
+        out.push(finalUrl);
+      }
+    }
+  }
+
+  return uniqueStrings(out);
+}
+
+function extractAttributeEmbedUrls(html) {
+  const out = [];
+
+  if (!html) return out;
+
+  const patterns = [
+    /(?:src|href|data-src|data-url|data-embed|data-player|data-video|data-link|data-href)\s*=\s*["']([^"']+)["']/gi,
+    /(?:src|href|data-src|data-url|data-embed|data-player|data-video|data-link|data-href)\s*=\s*([^>\s]+)/gi,
+  ];
+
+  for (const regex of patterns) {
+    let m;
+
+    while ((m = regex.exec(html)) !== null) {
+      let url =
+        normalizeExtractedUrl(m[1]);
+
+      if (!url) continue;
+
+      if (
+        !url.startsWith("http") &&
+        !url.startsWith("//") &&
+        !url.startsWith("/")
+      ) {
+        continue;
+      }
+
+      if (url.startsWith("/")) {
+        url = absoluteUrl(url);
+      }
+
+      if (!url) continue;
+
+      if (
+        isEmbedHost(url) &&
+        !shouldSkipUrl(url)
+      ) {
+        out.push(url);
+      }
+    }
+  }
+
+  return uniqueStrings(out);
+}
+
+function extractInlineJsEmbedUrls(html) {
+  const out = [];
+
+  if (!html) return out;
+
+  // Absolute URLs already present in JS.
+  const all = extractUrlsFromText(html);
+
+  for (const url of all) {
+    if (isEmbedHost(url)) {
+      out.push(url);
+    }
+  }
+
+  // Escaped JSON/JS URLs.
+  const escapedRegex =
+    /(?:https?:)?\\\/\\\/[^"'`\s<>]+/gi;
+
+  let m;
+
+  while (
+    (m = escapedRegex.exec(html)) !== null
+  ) {
+    let url = m[0]
+      .replace(/\\\//g, "/")
+      .replace(/\\u002f/gi, "/")
+      .replace(/\\u003a/gi, ":");
+
+    if (
+      !url.startsWith("http") &&
+      url.startsWith("//")
+    ) {
+      url = "https:" + url;
+    }
+
+    if (
+      isEmbedHost(url) &&
+      !shouldSkipUrl(url)
+    ) {
+      out.push(url);
+    }
+  }
+
+  return uniqueStrings(out);
+}
+
+// -----------------------------------------------------------------------------
+// StreamEmbed / Player4me style resolution
+// -----------------------------------------------------------------------------
+
+const STREAM_EMBED_HOSTS = [
   "player4me.com",
   "streamp2p.com",
   "seekstreaming.com",
 ];
 
-const STREAMEMBED_KEY_HEX =
-  "6b69656d7469656e6d75613931316361";
+function getHostFromUrl(url) {
+  if (!url) return "";
 
-const STREAMEMBED_IV_HEX =
-  "313233343536373839306f6975797472";
+  const m = String(url).match(
+    /^https?:\/\/([^\/?#]+)/i
+  );
+
+  return m ? m[1].toLowerCase() : "";
+}
 
 function isStreamEmbedHost(url) {
-  const host = getHost(url);
+  const host = getHostFromUrl(url);
 
-  return STREAMEMBED_HOSTS.some(
-    (h) =>
-      host === h ||
-      host.endsWith("." + h)
+  return STREAM_EMBED_HOSTS.some(
+    function (item) {
+      return host.includes(item);
+    }
   );
 }
 
-function extractStreamEmbedFilecode(url) {
+function extractFilecode(url) {
   if (!url) return null;
 
-  const clean =
-    String(url).split("#")[0];
+  const u = String(url);
 
-  // /e/FILECODE
-  let m = clean.match(
-    /\/e\/([^\/?#]+)/i
-  );
+  // Common forms:
+  // /e/CODE
+  // /embed/CODE
+  // /video/CODE
+  // /v/CODE
+  // ?id=CODE
+  // ?file=CODE
+  // ?code=CODE
+  // ?filecode=CODE
 
-  if (m && m[1]) {
-    return decodeURIComponentSafe(
-      m[1]
-    );
-  }
+  const queryPatterns = [
+    /[?&](?:id|file|code|filecode)=([^&#]+)/i,
+  ];
 
-  // /embed/FILECODE
-  m = clean.match(
-    /\/embed\/([^\/?#]+)/i
-  );
+  for (const re of queryPatterns) {
+    const m = u.match(re);
 
-  if (m && m[1]) {
-    return decodeURIComponentSafe(
-      m[1]
-    );
-  }
-
-  // Some embeds may have ?id=FILECODE
-  try {
-    const parsed =
-      new URL(url);
-
-    const id =
-      parsed.searchParams.get("id");
-
-    if (id) {
-      return id;
+    if (m && m[1]) {
+      return decodeURIComponent(
+        m[1]
+      );
     }
-  } catch (_) {}
+  }
+
+  const pathPatterns = [
+    /\/(?:e|embed|video|v|play|watch)\/([^/?#]+)/i,
+    /\/([^/?#]+)\/?(?:\?.*)?$/i,
+  ];
+
+  for (const re of pathPatterns) {
+    const m = u.match(re);
+
+    if (m && m[1]) {
+      const candidate = decodeURIComponent(
+        m[1]
+      );
+
+      if (
+        candidate.length >= 3 &&
+        !candidate.includes(".html") &&
+        !candidate.includes(".php")
+      ) {
+        return candidate;
+      }
+    }
+  }
 
   return null;
 }
 
-function decodeURIComponentSafe(value) {
-  try {
-    return decodeURIComponent(value);
-  } catch (_) {
-    return value;
-  }
+function getStreamEmbedApiUrl(host, filecode) {
+  if (!host || !filecode) return null;
+
+  return (
+    "https://" +
+    host +
+    "/api/v1/video?id=" +
+    encodeURIComponent(filecode) +
+    "&w=2048&h=1152&r="
+  );
 }
 
-// -----------------------------------------------------------------------------
-// AES decrypt
-// -----------------------------------------------------------------------------
-
-function decryptStreamEmbedResponse(cipherText) {
-  if (!cipherText) {
-    throw new Error(
-      "Empty encrypted response"
-    );
-  }
-
-  cipherText =
-    String(cipherText).trim();
-
-  // Some versions may return JSON directly.
-  if (
-    cipherText.startsWith("{") &&
-    cipherText.endsWith("}")
-  ) {
-    return JSON.parse(cipherText);
-  }
-
-  let CryptoJS;
-
-  try {
-    CryptoJS =
-      require("crypto-js");
-  } catch (e) {
-    throw new Error(
-      "crypto-js unavailable: " +
-        e.message
-    );
-  }
-
-  const key =
-    CryptoJS.enc.Hex.parse(
-      STREAMEMBED_KEY_HEX
-    );
-
-  const iv =
-    CryptoJS.enc.Hex.parse(
-      STREAMEMBED_IV_HEX
-    );
-
-  const cipherParams =
-    CryptoJS.lib.CipherParams.create({
-      ciphertext:
-        CryptoJS.enc.Hex.parse(
-          cipherText
-        ),
-    });
-
-  const decrypted =
-    CryptoJS.AES.decrypt(
-      cipherParams,
-      key,
-      {
-        iv,
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7,
-      }
-    );
-
-  const plaintext =
-    decrypted.toString(
-      CryptoJS.enc.Utf8
-    );
-
-  if (!plaintext) {
-    throw new Error(
-      "AES decrypted to empty string"
-    );
-  }
-
-  try {
-    return JSON.parse(
-      plaintext
-    );
-  } catch (e) {
-    throw new Error(
-      "Decrypted response is not JSON: " +
-        plaintext.slice(0, 200)
-    );
-  }
+function hexToWordArray(CryptoJS, hex) {
+  return CryptoJS.enc.Hex.parse(hex);
 }
 
-// -----------------------------------------------------------------------------
-// Resolve Player4Me / StreamP2P / SeekStreaming
-// -----------------------------------------------------------------------------
-
-async function resolveStreamEmbed(
-  iframeUrl,
-  referer
-) {
+function decryptStreamEmbedResponse(text) {
   try {
-    const host =
-      getHost(iframeUrl);
+    const CryptoJS = require("crypto-js");
 
-    const origin =
-      getOrigin(iframeUrl);
+    // StreamEmbed/StreamFlow-style AES constants.
+    const keyHex =
+      "6b69656d7469656e6d75613931316361";
 
-    const filecode =
-      extractStreamEmbedFilecode(
-        iframeUrl
-      );
+    const ivHex =
+      "313233343536373839306f6975797472";
 
-    log(
-      `StreamEmbed detected: ${iframeUrl}`
-    );
+    const key =
+      hexToWordArray(CryptoJS, keyHex);
 
-    if (!filecode) {
-      log(
-        `Could not extract filecode from ${iframeUrl}`
-      );
-
-      return null;
-    }
-
-    log(
-      `StreamEmbed filecode: ${filecode}`
-    );
-
-    const apiUrl =
-      `${origin}/api/v1/video` +
-      `?id=${encodeURIComponent(filecode)}` +
-      `&w=2048&h=1152&r=`;
-
-    log(
-      `StreamEmbed API: ${apiUrl}`
-    );
+    const iv =
+      hexToWordArray(CryptoJS, ivHex);
 
     const encrypted =
-      await fetchText(
-        apiUrl,
+      CryptoJS.enc.Hex.parse(
+        String(text).trim()
+      );
+
+    const decrypted =
+      CryptoJS.AES.decrypt(
         {
-          Referer:
-            iframeUrl,
-          Origin:
-            origin,
-          Accept:
-            "text/plain,application/json,*/*",
+          ciphertext: encrypted,
+        },
+        key,
+        {
+          iv: iv,
+          mode: CryptoJS.mode.CBC,
+          padding: CryptoJS.pad.Pkcs7,
         }
       );
 
-    log(
-      `StreamEmbed response length: ${encrypted.length}`
-    );
-
-    const data =
-      decryptStreamEmbedResponse(
-        encrypted
+    const result =
+      decrypted.toString(
+        CryptoJS.enc.Utf8
       );
 
-    log(
-      `StreamEmbed decrypted keys: ${Object.keys(
-        data || {}
-      ).join(", ")}`
-    );
-
-    let videoUrl =
-      data &&
-      (
-        data.source ||
-        data.master ||
-        data.masterUrl ||
-        data.url ||
-        data.stream ||
-        data.file
-      );
-
-    if (!videoUrl) {
-      log(
-        "StreamEmbed response contains no source/master/url"
-      );
-
-      log(
-        `Decrypted data preview: ${JSON.stringify(
-          data
-        ).slice(0, 500)}`
-      );
-
-      return null;
-    }
-
-    videoUrl =
-      decodeJsUrl(
-        videoUrl
-      );
-
-    if (
-      videoUrl.startsWith("//")
-    ) {
-      videoUrl =
-        "https:" +
-        videoUrl;
-    }
-
-    if (
-      videoUrl.startsWith("/")
-    ) {
-      videoUrl =
-        origin +
-        videoUrl;
-    }
-
-    if (
-      !/^https?:\/\//i.test(
-        videoUrl
-      )
-    ) {
-      log(
-        `Rejected invalid stream URL: ${videoUrl}`
-      );
-
-      return null;
-    }
-
-    log(
-      `StreamEmbed RESOLVED: ${videoUrl}`
-    );
-
-    return {
-      url: videoUrl,
-
-      headers: {
-        Referer:
-          iframeUrl,
-        Origin:
-          origin,
-        "User-Agent":
-          USER_AGENT,
-      },
-
-      quality:
-        guessQuality(
-          videoUrl
-        ),
-
-      host,
-    };
+    return result || null;
   } catch (e) {
     log(
-      `StreamEmbed resolve failed (${iframeUrl}): ${e.message}`
+      "StreamEmbed decrypt unavailable/failed: " +
+        e.message
     );
 
     return null;
   }
 }
 
-// ============================================================================
-// OK.ru extractor
-// ============================================================================
+function extractMasterUrlFromPayload(payload) {
+  if (!payload) return null;
+
+  let text = String(payload).trim();
+
+  // Sometimes the decrypted result is JSON.
+  try {
+    const obj = JSON.parse(text);
+
+    if (obj) {
+      const candidates = [
+        obj.source,
+        obj.master,
+        obj.masterUrl,
+        obj.master_url,
+        obj.url,
+        obj.file,
+        obj.playlist,
+      ];
+
+      for (const value of candidates) {
+        if (
+          value &&
+          typeof value === "string" &&
+          /^https?:\/\//i.test(value)
+        ) {
+          return value;
+        }
+      }
+
+      // Nested data object.
+      if (obj.data) {
+        const nested =
+          extractMasterUrlFromPayload(
+            JSON.stringify(obj.data)
+          );
+
+        if (nested) return nested;
+      }
+    }
+  } catch (_) {}
+
+  // Look for source/master/masterUrl values
+  // in non-standard JSON.
+  const patterns = [
+    /["']?(?:source|masterUrl|master_url|master|url|file|playlist)["']?\s*[:=]\s*["'](https?:\/\/[^"']+)["']/i,
+    /(https?:\/\/[^"'\\\s<>]+\.m3u8[^"'\\\s<>]*)/i,
+    /(https?:\/\/[^"'\\\s<>]+\.mp4[^"'\\\s<>]*)/i,
+  ];
+
+  for (const re of patterns) {
+    const m = text.match(re);
+
+    if (m && m[1]) {
+      return m[1]
+        .replace(/\\\//g, "/")
+        .replace(/\\u0026/gi, "&");
+    }
+  }
+
+  // Sometimes the decrypted response itself is a URL.
+  if (/^https?:\/\//i.test(text)) {
+    return text;
+  }
+
+  return null;
+}
+
+async function resolveStreamEmbed(embedUrl, referer) {
+  if (!isStreamEmbedHost(embedUrl)) {
+    return null;
+  }
+
+  const filecode =
+    extractFilecode(embedUrl);
+
+  if (!filecode) {
+    log(
+      "No filecode extracted from embed: " +
+        embedUrl
+    );
+
+    return null;
+  }
+
+  const host =
+    getHostFromUrl(embedUrl);
+
+  const apiUrl =
+    getStreamEmbedApiUrl(
+      host,
+      filecode
+    );
+
+  if (!apiUrl) return null;
+
+  log(
+    "StreamEmbed: host=" +
+      host +
+      " filecode=" +
+      filecode
+  );
+
+  try {
+    const client = getHttpClient();
+
+    const res = await client(apiUrl, {
+      headers: {
+        Referer: embedUrl,
+        Origin:
+          "https://" + host,
+        "User-Agent": USER_AGENT,
+        Accept: "*/*",
+      },
+    });
+
+    if (!res.ok) {
+      log(
+        "StreamEmbed API HTTP " +
+          res.status
+      );
+
+      return null;
+    }
+
+    const body = await res.text();
+
+    // First try it as normal JSON/plain text.
+    let direct =
+      extractMasterUrlFromPayload(body);
+
+    if (direct) {
+      log(
+        "StreamEmbed direct response resolved"
+      );
+
+      return direct;
+    }
+
+    // Then try encrypted hex.
+    const decrypted =
+      decryptStreamEmbedResponse(body);
+
+    if (!decrypted) {
+      log(
+        "StreamEmbed response could not be decrypted"
+      );
+
+      return null;
+    }
+
+    direct =
+      extractMasterUrlFromPayload(
+        decrypted
+      );
+
+    if (direct) {
+      log(
+        "StreamEmbed decrypted -> " +
+          direct
+      );
+
+      return direct;
+    }
+
+    log(
+      "StreamEmbed decrypted payload had no stream URL"
+    );
+
+    return null;
+  } catch (e) {
+    log(
+      "StreamEmbed resolve failed: " +
+        e.message
+    );
+
+    return null;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Generic iframe/player resolver
+// -----------------------------------------------------------------------------
 
 function extractOkRuVideo(html) {
-  if (
-    !/ok\.ru|odnoklassniki/i.test(
-      html
-    )
-  ) {
+  if (!html) return null;
+
+  if (!/ok\.ru|odnoklassniki/i.test(html)) {
     return null;
   }
 
@@ -1146,28 +1585,20 @@ function extractOkRuVideo(html) {
   ];
 
   for (const re of patterns) {
-    const m =
-      html.match(re);
+    const m = html.match(re);
 
-    if (
-      m &&
-      m[1]
-    ) {
-      let url =
-        decodeJsUrl(
-          m[1]
-        );
+    if (m && m[1]) {
+      let url = m[1]
+        .replace(/\\\//g, "/")
+        .replace(/\\u0026/g, "&");
 
-      if (
-        url.startsWith("//")
-      ) {
-        url =
-          "https:" +
-          url;
+      if (url.startsWith("//")) {
+        url = "https:" + url;
       }
 
       if (
-        url.startsWith("http")
+        url.startsWith("http://") ||
+        url.startsWith("https://")
       ) {
         return url;
       }
@@ -1177,49 +1608,22 @@ function extractOkRuVideo(html) {
   return null;
 }
 
-// ============================================================================
-// Generic direct video extractor
-// ============================================================================
-
-function extractVideoUrlFromHtml(
-  html,
-  baseUrl
-) {
+function extractVideoUrlFromHtml(html) {
   if (!html) return null;
 
-  // OK.ru first
+  // OK.ru.
   const ok =
-    extractOkRuVideo(
-      html
-    );
+    extractOkRuVideo(html);
 
-  if (ok) {
-    return ok;
-  }
-
-  let m;
+  if (ok) return ok;
 
   // <source src="...">
-  m = html.match(
+  let m = html.match(
     /<source[^>]+src=["']([^"']+)["']/i
   );
 
-  if (m) {
-    const url =
-      decodeJsUrl(
-        m[1]
-      );
-
-    if (
-      looksLikePlayableUrl(
-        url
-      )
-    ) {
-      return absoluteUrl(
-        url,
-        baseUrl
-      );
-    }
+  if (m && m[1]) {
+    return normalizeExtractedUrl(m[1]);
   }
 
   // file: "..."
@@ -1227,207 +1631,64 @@ function extractVideoUrlFromHtml(
     /["']?file["']?\s*[:=]\s*["']([^"']+)["']/i
   );
 
-  if (m) {
+  if (m && m[1]) {
     const url =
-      decodeJsUrl(
-        m[1]
-      );
+      normalizeExtractedUrl(m[1]);
 
     if (
-      looksLikePlayableUrl(
-        url
-      )
+      url &&
+      /\.(?:mp4|m3u8)(?:[?#]|$)/i.test(url)
     ) {
-      return absoluteUrl(
-        url,
-        baseUrl
-      );
+      return url;
     }
   }
 
   // sources: [{file:"..."}]
   m = html.match(
-    /(?:sources|source)\s*:\s*\[\s*\{[^}]*?["']?(?:file|src|url)["']?\s*:\s*["']([^"']+)["']/i
+    /(?:sources|source)\s*:\s*\[\s*\{[^}]*?["']?(?:file|src)["']?\s*:\s*["']([^"']+)["']/i
   );
 
-  if (m) {
-    const url =
-      decodeJsUrl(
-        m[1]
-      );
-
-    if (
-      looksLikePlayableUrl(
-        url
-      )
-    ) {
-      return absoluteUrl(
-        url,
-        baseUrl
-      );
-    }
+  if (m && m[1]) {
+    return normalizeExtractedUrl(m[1]);
   }
 
-  // jwplayer playlist
+  // playlist: "..."
   m = html.match(
     /["']?playlist["']?\s*[:=]\s*["']([^"']+)["']/i
   );
 
-  if (m) {
+  if (m && m[1]) {
     const url =
-      decodeJsUrl(
-        m[1]
-      );
+      normalizeExtractedUrl(m[1]);
 
     if (
-      looksLikePlayableUrl(
-        url
-      )
+      url &&
+      /\.(?:mp4|m3u8)(?:[?#]|$)/i.test(url)
     ) {
-      return absoluteUrl(
-        url,
-        baseUrl
-      );
+      return url;
     }
   }
 
-  // Any bare .mp4/.m3u8 URL
+  // Any absolute .m3u8.
   m = html.match(
-    /https?:\/\/[^"'\s<>\\]+\.(?:mp4|m3u8)(?:\?[^"'\s<>\\]*)?/i
+    /https?:\/\/[^"'<>\\\s]+\.m3u8[^"'<>\\\s]*/i
   );
 
-  if (m) {
-    return decodeJsUrl(
-      m[0]
-    );
+  if (m && m[0]) {
+    return normalizeExtractedUrl(m[0]);
+  }
+
+  // Any absolute .mp4.
+  m = html.match(
+    /https?:\/\/[^"'<>\\\s]+\.mp4[^"'<>\\\s]*/i
+  );
+
+  if (m && m[0]) {
+    return normalizeExtractedUrl(m[0]);
   }
 
   return null;
 }
-
-// ============================================================================
-// Generic nested iframe resolver
-// ============================================================================
-
-async function resolveNestedIframe(
-  iframeUrl,
-  referer,
-  depth = 0
-) {
-  if (depth > 3) {
-    log(
-      `Nested iframe depth exceeded: ${iframeUrl}`
-    );
-
-    return null;
-  }
-
-  try {
-    log(
-      `Resolving nested iframe ${depth}: ${iframeUrl}`
-    );
-
-    // StreamEmbed hosts should always go through their API.
-    if (
-      isStreamEmbedHost(
-        iframeUrl
-      )
-    ) {
-      return await resolveStreamEmbed(
-        iframeUrl,
-        referer
-      );
-    }
-
-    const html =
-      await fetchText(
-        iframeUrl,
-        {
-          Referer:
-            referer ||
-            MAIN_URL + "/",
-        }
-      );
-
-    // First try direct stream extraction.
-    const direct =
-      extractVideoUrlFromHtml(
-        html,
-        iframeUrl
-      );
-
-    if (direct) {
-      log(
-        `Nested iframe direct stream: ${direct}`
-      );
-
-      return {
-        url: direct,
-        headers: {
-          Referer:
-            iframeUrl,
-          Origin:
-            getOrigin(
-              iframeUrl
-            ),
-          "User-Agent":
-            USER_AGENT,
-        },
-        quality:
-          guessQuality(
-            direct
-          ),
-      };
-    }
-
-    // Then look for another iframe.
-    const nested =
-      extractIframes(
-        html,
-        iframeUrl
-      );
-
-    for (const src of nested) {
-      if (
-        shouldSkipIframe(
-          src
-        )
-      ) {
-        continue;
-      }
-
-      const result =
-        await resolveNestedIframe(
-          src,
-          iframeUrl,
-          depth + 1
-        );
-
-      if (
-        result &&
-        result.url
-      ) {
-        return result;
-      }
-    }
-
-    log(
-      `No stream found in nested iframe: ${iframeUrl}`
-    );
-
-    return null;
-  } catch (e) {
-    log(
-      `Nested iframe failed (${iframeUrl}): ${e.message}`
-    );
-
-    return null;
-  }
-}
-
-// ============================================================================
-// Main iframe resolver
-// ============================================================================
 
 async function resolveIframe(
   iframeUrl,
@@ -1435,17 +1696,13 @@ async function resolveIframe(
 ) {
   try {
     log(
-      `Resolving iframe: ${iframeUrl}`
+      "Resolving embed: " +
+        iframeUrl
     );
 
-    // IMPORTANT:
-    // Do this BEFORE downloading the iframe.
-    // Player4Me / StreamP2P / SeekStreaming pages do not necessarily
-    // expose the actual m3u8 directly in their HTML.
+    // First: Player4me / StreamP2P / SeekStreaming.
     if (
-      isStreamEmbedHost(
-        iframeUrl
-      )
+      isStreamEmbedHost(iframeUrl)
     ) {
       const stream =
         await resolveStreamEmbed(
@@ -1456,124 +1713,158 @@ async function resolveIframe(
       if (stream) {
         return stream;
       }
-
-      log(
-        `StreamEmbed API resolver failed; trying generic iframe fallback`
-      );
     }
 
-    // Generic fallback
-    const result =
-      await resolveNestedIframe(
+    // Generic iframe.
+    const html =
+      await fetchText(
         iframeUrl,
-        referer,
-        0
+        {
+          Referer: referer,
+        }
       );
 
-    return result;
+    const direct =
+      extractVideoUrlFromHtml(
+        html
+      );
+
+    if (direct) {
+      const finalUrl =
+        absoluteUrl(direct);
+
+      log(
+        "Generic embed resolved -> " +
+          finalUrl
+      );
+
+      return finalUrl;
+    }
+
+    // The iframe itself may contain another
+    // Player4me/StreamP2P/SeekStreaming URL.
+    const nested =
+      extractInlineJsEmbedUrls(
+        html
+      ).concat(
+        extractAttributeEmbedUrls(
+          html
+        )
+      );
+
+    const nestedUnique =
+      uniqueStrings(nested);
+
+    for (const url of nestedUnique) {
+      if (
+        isStreamEmbedHost(url)
+      ) {
+        const stream =
+          await resolveStreamEmbed(
+            url,
+            iframeUrl
+          );
+
+        if (stream) {
+          return stream;
+        }
+      }
+    }
+
+    log(
+      "No direct video found in embed"
+    );
+
+    return null;
   } catch (e) {
     log(
-      `Iframe resolve failed (${iframeUrl}): ${e.message}`
+      "Embed resolve failed " +
+        iframeUrl +
+        ": " +
+        e.message
     );
 
     return null;
   }
 }
 
-// ============================================================================
+// -----------------------------------------------------------------------------
 // Page extraction
-// ============================================================================
+// -----------------------------------------------------------------------------
 
-function extractIframes(
-  html,
-  baseUrl = MAIN_URL
-) {
+function extractDirectLinks(html) {
   const out = [];
 
-  const tagRegex =
-    /<iframe\b[^>]*>/gi;
+  if (!html) return out;
 
-  const tagMatches =
-    html.match(
-      tagRegex
-    ) || [];
+  const patterns = [
+    /(?:src|href|file)\s*[:=]\s*["']([^"']+\.(?:mp4|m3u8)(?:[^"']*)?)["']/gi,
+    /https?:\/\/[^"'<>\\\s]+\.(?:mp4|m3u8)(?:[^"'<>\\\s]*)/gi,
+  ];
 
-  for (const tag of tagMatches) {
-    const srcMatch =
-      tag.match(
-        /(?:src|data-src|data-lazy-src|data-url|data-embed|data-player)=["']([^"']+)["']/i
-      );
+  for (const regex of patterns) {
+    let m;
 
-    if (!srcMatch) {
-      continue;
-    }
-
-    const raw =
-      decodeJsUrl(
-        srcMatch[1]
-      );
-
-    const src =
-      absoluteUrl(
-        raw,
-        baseUrl
-      );
-
-    if (!src) {
-      continue;
-    }
-
-    if (
-      shouldSkipIframe(
-        src
-      )
+    while (
+      (m = regex.exec(html)) !== null
     ) {
-      continue;
-    }
+      const raw =
+        m[1] || m[0];
 
-    out.push(src);
+      const url =
+        normalizeExtractedUrl(raw);
+
+      if (!url) continue;
+
+      if (
+        /\.(?:mp4|m3u8)(?:[?#]|$)/i.test(
+          url
+        )
+      ) {
+        out.push(
+          absoluteUrl(url)
+        );
+      }
+    }
   }
 
-  return unique(
-    out
-  );
+  return uniqueStrings(out);
 }
 
-function extractDirectLinks(
-  html,
-  baseUrl = MAIN_URL
-) {
+function extractAllEmbeds(html) {
   const out = [];
 
-  const regex =
-    /(?:src|href|file)\s*[:=]\s*["']([^"']+\.(?:mp4|m3u8)(?:\?[^"']*)?)["']/gi;
+  // Standard iframes.
+  out.push.apply(
+    out,
+    extractIframes(html)
+  );
 
-  let m;
+  // data-* / href attributes.
+  out.push.apply(
+    out,
+    extractAttributeEmbedUrls(
+      html
+    )
+  );
 
-  while (
-    (m = regex.exec(html)) !== null
-  ) {
-    const u =
-      absoluteUrl(
-        decodeJsUrl(
-          m[1]
-        ),
-        baseUrl
+  // Inline JS.
+  out.push.apply(
+    out,
+    extractInlineJsEmbedUrls(
+      html
+    )
+  );
+
+  return uniqueStrings(
+    out.filter(function (url) {
+      return (
+        url &&
+        !shouldSkipUrl(url)
       );
-
-    if (u) {
-      out.push(u);
-    }
-  }
-
-  return unique(
-    out
+    })
   );
 }
-
-// ============================================================================
-// Page processing
-// ============================================================================
 
 async function processPage(
   pageUrl,
@@ -1582,163 +1873,187 @@ async function processPage(
   let html;
 
   try {
-    html =
-      await fetchText(
-        pageUrl,
-        {
-          Referer:
-            MAIN_URL + "/",
-        }
-      );
+    html = await fetchText(
+      pageUrl,
+      {
+        Referer:
+          MAIN_URL + "/",
+      }
+    );
   } catch (e) {
     log(
-      `Page fetch failed (${pageUrl}): ${e.message}`
+      "Page fetch failed " +
+        pageUrl +
+        ": " +
+        e.message
     );
 
     return;
   }
 
-  // Keep DeseneFaine as the initial referer.
+  log(
+    "Fetched page " +
+      pageUrl +
+      " (" +
+      html.length +
+      " chars)"
+  );
+
   const baseHeaders = {
-    Referer:
-      pageUrl,
-    "User-Agent":
-      USER_AGENT,
-    Origin:
-      MAIN_URL,
+    Referer: pageUrl,
+    "User-Agent": USER_AGENT,
+    Origin: MAIN_URL,
   };
 
-  // --------------------------------------------------------------------------
-  // 1. Direct links on page
-  // --------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // 1. Direct MP4/M3U8 URLs.
+  // ---------------------------------------------------------------------------
 
-  for (
-    const url of extractDirectLinks(
-      html,
-      pageUrl
-    )
-  ) {
+  const directLinks =
+    extractDirectLinks(html);
+
+  log(
+    "Direct video URLs found: " +
+      directLinks.length
+  );
+
+  for (const url of directLinks) {
     streams.push({
-      name:
-        PROVIDER_NAME,
-
+      name: PROVIDER_NAME,
       title:
-        `${guessQuality(
-          url
-        )} | RO Dub`,
-
-      url,
-
+        guessQuality(url) +
+        " | RO Dub",
+      url: url,
       quality:
-        guessQuality(
-          url
-        ),
-
-      headers:
-        baseHeaders,
-
-      provider:
-        "desenefaine",
+        guessQuality(url),
+      headers: baseHeaders,
+      provider: PROVIDER_ID,
     });
   }
 
-  // --------------------------------------------------------------------------
-  // 2. Iframes
-  // --------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // 2. Extract all server/embed URLs.
+  // ---------------------------------------------------------------------------
 
-  const iframes =
-    extractIframes(
-      html,
-      pageUrl
-    );
+  const embeds =
+    extractAllEmbeds(html);
 
   log(
-    `Found ${iframes.length} iframe(s) on ${pageUrl}`
+    "Embed/server URLs found: " +
+      embeds.length
   );
 
-  if (!iframes.length) {
+  for (const url of embeds) {
     log(
-      "No iframe found on page."
-    );
-
-    log(
-      `Page preview: ${html
-        .slice(0, 1000)
-        .replace(/\s+/g, " ")}`
+      "Embed candidate: " +
+        url
     );
   }
 
-  const resolved =
-    await Promise.all(
-      iframes.map(
-        (src) =>
-          resolveIframe(
-            src,
-            pageUrl
-          )
-      )
-    );
+  // ---------------------------------------------------------------------------
+  // 3. Resolve embeds.
+  // ---------------------------------------------------------------------------
 
-  for (
-    const result of resolved
-  ) {
+  for (const embedUrl of embeds) {
+    // Don't waste time fetching obvious non-player links.
     if (
-      !result ||
-      !result.url
+      !isEmbedHost(embedUrl) &&
+      !/\/embed\/|\/e\/|\/player\/|\/video\/|\/watch\//i.test(
+        embedUrl
+      )
     ) {
       continue;
     }
 
-    if (
-      !looksLikePlayableUrl(
-        result.url
-      )
-    ) {
-      log(
-        `Rejected non-playable result: ${result.url}`
+    const videoUrl =
+      await resolveIframe(
+        embedUrl,
+        pageUrl
       );
 
+    if (!videoUrl) {
       continue;
     }
 
-    // IMPORTANT:
-    // Use the HOST iframe as Referer for the actual stream,
-    // not DeseneFaine.
-    //
-    // This is important for Player4Me/StreamP2P/SeekStreaming.
-    const headers =
-      result.headers ||
-      baseHeaders;
+    streams.push({
+      name: PROVIDER_NAME,
+      title:
+        guessQuality(videoUrl) +
+        " | RO Dub",
+      url: videoUrl,
+      quality:
+        guessQuality(videoUrl),
+      headers: {
+        Referer: embedUrl,
+        "User-Agent": USER_AGENT,
+        Origin:
+          MAIN_URL,
+      },
+      provider: PROVIDER_ID,
+    });
+  }
+
+  // ---------------------------------------------------------------------------
+  // 4. Sometimes the page has server URLs but they are encoded inside
+  //    attributes/JS in a way that doesn't look like a normal iframe.
+  //    Try direct StreamEmbed URLs one more time.
+  // ---------------------------------------------------------------------------
+
+  const rawUrls =
+    extractUrlsFromText(html);
+
+  const streamHosts =
+    rawUrls.filter(function (url) {
+      return isStreamEmbedHost(url);
+    });
+
+  const uniqueStreamHosts =
+    uniqueStrings(streamHosts);
+
+  for (
+    const embedUrl of uniqueStreamHosts
+  ) {
+    const already =
+      streams.some(function (s) {
+        return (
+          s &&
+          s.url &&
+          s.url === embedUrl
+        );
+      });
+
+    if (already) continue;
+
+    const videoUrl =
+      await resolveStreamEmbed(
+        embedUrl,
+        pageUrl
+      );
+
+    if (!videoUrl) continue;
 
     streams.push({
-      name:
-        PROVIDER_NAME,
-
+      name: PROVIDER_NAME,
       title:
-        `${guessQuality(
-          result.url
-        )} | RO Dub`,
-
-      url:
-        result.url,
-
+        guessQuality(videoUrl) +
+        " | RO Dub",
+      url: videoUrl,
       quality:
-        result.quality ||
-        guessQuality(
-          result.url
-        ),
-
-      headers,
-
-      provider:
-        "desenefaine",
+        guessQuality(videoUrl),
+      headers: {
+        Referer: embedUrl,
+        "User-Agent": USER_AGENT,
+        Origin:
+          MAIN_URL,
+      },
+      provider: PROVIDER_ID,
     });
   }
 }
 
-// ============================================================================
-// Core scraper
-// ============================================================================
+// -----------------------------------------------------------------------------
+// Main
+// -----------------------------------------------------------------------------
 
 async function actualGetStreams(
   id,
@@ -1749,123 +2064,119 @@ async function actualGetStreams(
   const streams = [];
 
   log(
-    `Invoked id=${id} type=${type} s=${season} e=${episode}`
+    "Invoked id=" +
+      id +
+      " type=" +
+      type +
+      " season=" +
+      season +
+      " episode=" +
+      episode
   );
 
-  // --------------------------------------------------------------------------
-  // 1. IMDb/TMDB resolution
-  // --------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // IMPORTANT:
+  // Nuvio normally sends:
+  //   movie
+  //   tv
+  //
+  // The old code checked "series", which meant season/episode handling
+  // was never activated for normal Nuvio TV requests.
+  // ---------------------------------------------------------------------------
+
+  const normalizedType =
+    type === "series"
+      ? "tv"
+      : type;
 
   const meta =
     await resolveMeta(
       id,
-      type,
+      normalizedType,
       season,
       episode
     );
 
-  // --------------------------------------------------------------------------
-  // 2. Build DeseneFaine search queries
-  // --------------------------------------------------------------------------
-
-  const queries =
-    buildSearchQueries(
-      meta,
-      type
-    );
-
   log(
-    `Queries: ${JSON.stringify(
-      queries
-    )}`
+    "Resolved metadata: " +
+      JSON.stringify(meta)
   );
 
-  // --------------------------------------------------------------------------
-  // 3. Find actual DeseneFaine page
-  // --------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // First choice: direct /film/ URL.
+  // This avoids depending on the WordPress search results.
+  // ---------------------------------------------------------------------------
 
   let pageUrl =
-    null;
+    await findDirectFilmPage(
+      meta
+    );
 
-  for (
-    const q of queries
-  ) {
-    pageUrl =
-      await searchSite(
-        q
+  // ---------------------------------------------------------------------------
+  // Second choice: normal site search.
+  // ---------------------------------------------------------------------------
+
+  if (!pageUrl) {
+    const queries =
+      buildSearchQueries(
+        meta,
+        normalizedType
       );
 
-    if (pageUrl) {
-      break;
+    log(
+      "Search queries: " +
+        JSON.stringify(
+          queries
+        )
+    );
+
+    for (const query of queries) {
+      pageUrl =
+        await searchSite(
+          query
+        );
+
+      if (pageUrl) {
+        break;
+      }
     }
   }
 
   if (!pageUrl) {
     log(
-      "No matching page found."
+      "No DeseneFaine page found."
     );
 
     return [];
   }
 
   log(
-    `Using page: ${pageUrl}`
+    "Using DeseneFaine page: " +
+      pageUrl
   );
-
-  // --------------------------------------------------------------------------
-  // 4. Resolve players
-  // --------------------------------------------------------------------------
 
   await processPage(
     pageUrl,
     streams
   );
 
-  // --------------------------------------------------------------------------
-  // 5. Deduplicate
-  // --------------------------------------------------------------------------
-
-  const seen =
-    new Set();
-
   const deduped =
-    streams.filter(
-      (s) => {
-        if (
-          !s.url ||
-          seen.has(
-            s.url
-          )
-        ) {
-          return false;
-        }
-
-        seen.add(
-          s.url
-        );
-
-        return true;
-      }
+    uniqueStreams(
+      streams
     );
 
   log(
-    `Returning ${deduped.length} stream(s)`
+    "Returning " +
+      deduped.length +
+      " stream(s)"
   );
-
-  for (
-    const stream of deduped
-  ) {
-    log(
-      `STREAM -> ${stream.url}`
-    );
-  }
 
   return deduped;
 }
 
-// ============================================================================
+// -----------------------------------------------------------------------------
 // Public Nuvio entry point
-// ============================================================================
+// -----------------------------------------------------------------------------
 
 async function getStreams(
   id,
@@ -1876,20 +2187,21 @@ async function getStreams(
   let timeoutId;
 
   const timeout =
-    new Promise(
-      (_, reject) => {
-        timeoutId =
-          setTimeout(
-            () =>
-              reject(
-                new Error(
-                  `Scraper timeout after ${SCRAPER_TIMEOUT_MS}ms`
-                )
-              ),
-            SCRAPER_TIMEOUT_MS
-          );
-      }
-    );
+    new Promise(function (_, reject) {
+      timeoutId =
+        setTimeout(
+          function () {
+            reject(
+              new Error(
+                "Scraper timeout after " +
+                  SCRAPER_TIMEOUT_MS +
+                  "ms"
+              )
+            );
+          },
+          SCRAPER_TIMEOUT_MS
+        );
+    });
 
   try {
     return await Promise.race([
@@ -1903,14 +2215,15 @@ async function getStreams(
     ]);
   } catch (e) {
     log(
-      `Fatal: ${e.message}`
+      "Fatal: " +
+        e.message
     );
 
     return [];
   } finally {
-    clearTimeout(
-      timeoutId
-    );
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
   }
 }
 
