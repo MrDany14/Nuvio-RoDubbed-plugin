@@ -4,14 +4,6 @@ var PROVIDER_NAME = "DeseneFaine";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c"; 
 
-var STREAM_HEADERS = {
-  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-  "Accept": "*/*",
-  "Connection": "keep-alive",
-  "Referer": MAIN_URL + "/",
-  "Origin": MAIN_URL
-};
-
 var FETCH_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
   "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
@@ -67,7 +59,7 @@ function normalizeTitle(value) {
 }
 
 // -----------------------------------------------------------------------------
-// PLAYER4ME / SPRINTCDN DECRYPTION LOGIC
+// PLAYER4ME / SPRINTCDN DECRYPTION
 // -----------------------------------------------------------------------------
 var STREAM_EMBED_HOSTS = ["player4me.com", "streamp2p.com", "seekstreaming.com"];
 
@@ -112,7 +104,6 @@ function decryptStreamEmbedResponse(text) {
     var decrypted = CryptoJS.AES.decrypt({ ciphertext: encrypted }, key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
     return decrypted.toString(CryptoJS.enc.Utf8) || null;
   } catch (e) {
-    log("Decryption failed: " + e.message);
     return null;
   }
 }
@@ -154,30 +145,37 @@ function resolveStreamEmbedAPI(embedUrl) {
   var host = getHostFromUrl(embedUrl);
   var apiUrl = "https://" + host + "/api/v1/video?id=" + encodeURIComponent(filecode) + "&w=2048&h=1152&r=";
 
-  log("Fetching Player4Me API: " + apiUrl);
-
   return fetchText(apiUrl, {
-    headers: { "Referer": embedUrl, "Origin": "https://" + host, "User-Agent": STREAM_HEADERS["User-Agent"] }
+    headers: { "Referer": embedUrl, "Origin": "https://" + host, "User-Agent": FETCH_HEADERS["User-Agent"] }
   }).then(function(body) {
     var direct = extractMasterUrlFromPayload(body);
     if (direct) return direct;
     
     var decrypted = decryptStreamEmbedResponse(body);
     if (decrypted) {
-        var finalUrl = extractMasterUrlFromPayload(decrypted);
-        log("DECRYPTED SPRINTCDN URL: " + finalUrl);
-        return finalUrl;
+        return extractMasterUrlFromPayload(decrypted);
     }
     return null;
-  }).catch(function(e) {
-    log("API Fetch failed: " + e.message);
+  }).catch(function() {
     return null; 
   });
 }
 
 // -----------------------------------------------------------------------------
-// MAIN SCRAPING LOGIC
+// MAIN STREAM BUILDER (Modeled exactly after 4khdhub)
 // -----------------------------------------------------------------------------
+function buildStream(name, directUrl, streamHeaders) {
+    return {
+        name: PROVIDER_NAME + " | " + name,
+        title: "1080p | RO Dub",
+        url: directUrl,
+        quality: "1080p",
+        headers: streamHeaders, // Send as native Object
+        behaviorHints: { bingeGroup: "desenefaine-1080p" }, // Required by some Nuvio forks for grouping/HLS detection
+        provider: "desenefaine"
+    };
+}
+
 function getStreams(id, type, season, episode) {
   log("Requested: ID=" + id + ", Type=" + type + ", S=" + season + ", E=" + episode);
   
@@ -200,10 +198,7 @@ function getStreams(id, type, season, episode) {
       enTitle = type === "tv" ? data.original_name : data.original_title;
     }
 
-    if (!roTitle && !enTitle) {
-      log("TMDB returned no title.");
-      return [];
-    }
+    if (!roTitle && !enTitle) return [];
 
     function tryDirectUrl(title) {
       var slug = normalizeSlug(title);
@@ -282,41 +277,30 @@ function getStreams(id, type, season, episode) {
       }
       return searchSite(roTitle);
     }).then(function(result) {
-      if (!result || !result.html) {
-        log("No valid page found.");
-        return [];
-      }
+      if (!result || !result.html) return [];
 
       var $$ = cheerio.load(result.html);
       var streams = [];
       var iframePromises = [];
       var serverCount = 1;
 
-      var currentHeaders = Object.assign({}, STREAM_HEADERS, {
+      var baseHeaders = {
+        "User-Agent": FETCH_HEADERS["User-Agent"],
         "Referer": result.url,
         "Origin": MAIN_URL
-      });
+      };
 
-      // 1. PRIORITY: Direct .mp4 or .m3u8 links in HTML
+      // 1. Direct Links
       $$("source, video").each(function(_, el) {
         var src = $$(el).attr("src");
         if (src && (src.indexOf(".mp4") !== -1 || src.indexOf(".m3u8") !== -1)) {
           if (src.startsWith("//")) src = "https:" + src;
           else if (!src.startsWith("http")) src = result.url + (src.startsWith("/") ? "" : "/") + src;
-          
-          streams.push({
-            name: PROVIDER_NAME + " | Direct",
-            title: "1080p | RO Dub",
-            url: src,
-            quality: "1080p",
-            isM3U8: src.indexOf(".m3u8") !== -1, // Nuvio Flag
-            headers: currentHeaders,
-            provider: "desenefaine"
-          });
+          streams.push(buildStream("Direct", src, baseHeaders));
         }
       });
 
-      // 2. FALLBACK: Decrypt the Player4Me Iframes to get SprintCDN .m3u8
+      // 2. Iframe Resolution
       if (streams.length === 0) {
         $$("iframe").each(function(_, el) {
           var src = $$(el).attr("src") || $$(el).attr("data-src") || $$(el).attr("data-lazy-src");
@@ -327,25 +311,16 @@ function getStreams(id, type, season, episode) {
 
           if (src.includes("facebook.com") || src.includes("youtube.com") || src.includes("doubleclick")) return;
 
-          log("FOUND IFRAME: " + src);
-
           if (isStreamEmbedHost(src)) {
               var p = resolveStreamEmbedAPI(src).then(function(directUrl) {
                   if (directUrl) {
                       var iframeDomain = src.match(/^https?:\/\/([^/?#]+)/i)[0];
-                      return {
-                          name: PROVIDER_NAME + " | Server " + serverCount++,
-                          title: "1080p | RO Dub",
-                          url: directUrl, // This is the decrypted sprintcdn .m3u8!
-                          quality: "1080p",
-                          isM3U8: directUrl.indexOf(".m3u8") !== -1, // Fixes loop!
-                          headers: {
-                              "User-Agent": STREAM_HEADERS["User-Agent"],
-                              "Referer": iframeDomain + "/",
-                              "Origin": iframeDomain
-                          },
-                          provider: "desenefaine"
+                      var customHeaders = {
+                          "User-Agent": FETCH_HEADERS["User-Agent"],
+                          "Referer": iframeDomain + "/",
+                          "Origin": iframeDomain
                       };
+                      return buildStream("Server " + serverCount++, directUrl, customHeaders);
                   }
                   return null;
               });
@@ -354,13 +329,11 @@ function getStreams(id, type, season, episode) {
         });
       }
 
-      // Resolve all decrypted iframes and return to Nuvio
       if (iframePromises.length > 0) {
           return Promise.all(iframePromises).then(function(results) {
               for (var i = 0; i < results.length; i++) {
                   if (results[i]) streams.push(results[i]);
               }
-              log("Extracted " + streams.length + " streams.");
               return streams;
           });
       }
