@@ -10,8 +10,6 @@ var FETCH_HEADERS = {
   "Accept-Language": "ro-RO,ro;q=0.9,en-US;q=0.8,en;q=0.7"
 };
 
-function log(msg) { console.log("[" + PROVIDER_NAME + "] " + msg); }
-
 function fetchText(url, options) {
   options = options || {};
   return fetch(url, {
@@ -43,104 +41,6 @@ function normalizeTitle(value) {
   return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
 }
 
-// -----------------------------------------------------------------------------
-// EMBED RESOLVER (Fetches the .m3u8 / .mp4 to fix Nuvio loops)
-// -----------------------------------------------------------------------------
-function resolveVideoUrl(url, pageUrl) {
-    var hostMatch = url.match(/^https?:\/\/([^/?#]+)/i);
-    var domain = hostMatch ? hostMatch[1] : "desenefaine.com";
-    
-    // Automatically name the server based on the host
-    var serverName = "Server";
-    var lUrl = url.toLowerCase();
-    if (lUrl.includes("player4me")) serverName = "Player4Me";
-    else if (lUrl.includes("streamp2p")) serverName = "StreamP2P";
-    else if (lUrl.includes("seekstreaming")) serverName = "SeekStreaming";
-    else if (lUrl.includes("byse")) serverName = "ByseHD";
-    else if (lUrl.includes("dsvplay")) serverName = "Dsvplay";
-    else if (lUrl.includes("ok.ru")) serverName = "Ok.ru";
-    else if (lUrl.includes("sprintcdn")) serverName = "Direct CDN";
-
-    // If we already have the direct video file
-    if (url.includes(".m3u8") || url.includes(".mp4")) {
-        return Promise.resolve({
-            name: PROVIDER_NAME + " | " + serverName,
-            title: "1080p | RO Dub",
-            url: url,
-            quality: "1080p",
-            isM3U8: url.includes(".m3u8"),
-            headers: { "Referer": "https://" + domain + "/", "Origin": "https://" + domain, "User-Agent": FETCH_HEADERS["User-Agent"] },
-            behaviorHints: { bingeGroup: "desenefaine-1080p" },
-            provider: "desenefaine"
-        });
-    }
-
-    // Try to silently fetch the iframe and pull the raw video file
-    return fetchText(url, { headers: { "Referer": pageUrl } }).then(function(html) {
-        var m3u8Match = html.match(/(https?:\/\/[^"'<>\\\s]+\.m3u8[^"'<>\\\s]*)/i);
-        var mp4Match = html.match(/(https?:\/\/[^"'<>\\\s]+\.mp4[^"'<>\\\s]*)/i);
-        var directUrl = null;
-
-        if (m3u8Match && m3u8Match[1]) directUrl = m3u8Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
-        else if (mp4Match && mp4Match[1]) directUrl = mp4Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
-
-        if (directUrl) {
-            return {
-                name: PROVIDER_NAME + " | " + serverName,
-                title: "1080p | RO Dub",
-                url: directUrl, // Direct File (Fixes Loop!)
-                quality: "1080p",
-                isM3U8: directUrl.includes(".m3u8"),
-                headers: { "Referer": "https://" + domain + "/", "Origin": "https://" + domain, "User-Agent": FETCH_HEADERS["User-Agent"] },
-                behaviorHints: { bingeGroup: "desenefaine-1080p" },
-                provider: "desenefaine"
-            };
-        }
-
-        // If encrypted (like Player4Me), return the iframe URL so it still shows up in Nuvio
-        return {
-            name: PROVIDER_NAME + " | " + serverName,
-            title: "Fallback (May Loop)",
-            url: url,
-            quality: "1080p",
-            headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
-            behaviorHints: { bingeGroup: "desenefaine-1080p" },
-            provider: "desenefaine"
-        };
-    }).catch(function() {
-        return {
-            name: PROVIDER_NAME + " | " + serverName,
-            title: "Network Error",
-            url: url,
-            quality: "1080p",
-            headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
-            behaviorHints: { bingeGroup: "desenefaine-1080p" },
-            provider: "desenefaine"
-        };
-    });
-}
-
-function extractAllVideoUrls(html) {
-    var urls = [];
-    var cleanHtml = html.replace(/\\\//g, "/").replace(/\\u0026/g, "&");
-    
-    // Aggressively scan for known video hosts inside the raw HTML
-    var regex = /https?:\/\/[a-zA-Z0-9.-]*\b(player4me|streamp2p|seekstreaming|byse[a-zA-Z0-9.-]*|dsvplay[a-zA-Z0-9.-]*|ok\.ru|sprintcdn)\b[^"'<>\\\s]*/gi;
-    var match;
-    while ((match = regex.exec(cleanHtml)) !== null) {
-        urls.push(match[0].replace(/[),;}\]]+$/, ""));
-    }
-    
-    var iframeRegex = /<iframe[^>]+src=["']([^"']+)["']/gi;
-    while ((match = iframeRegex.exec(html)) !== null) {
-        urls.push(match[1]);
-    }
-    return urls;
-}
-
-// -----------------------------------------------------------------------------
-// MAIN SCRAPER
-// -----------------------------------------------------------------------------
 function getStreams(id, type, season, episode) {
   var isImdb = String(id).startsWith("tt");
   var endpoint = isImdb ? "find/" + id + "?external_source=imdb_id" : (type === "tv" ? "tv/" : "movie/") + id;
@@ -224,65 +124,80 @@ function getStreams(id, type, season, episode) {
     }).then(function(result) {
       if (!result || !result.html) return [];
 
+      var $$ = cheerio.load(result.html);
       var streams = [];
-      var urlsToResolve = [];
-      var seenUrls = {};
 
-      function addUrl(u) {
-          if (!u) return;
-          if (u.startsWith("//")) u = "https:" + u;
-          if (u.includes("facebook.com") || u.includes("youtube.com") || u.includes("doubleclick")) return;
-          if (!seenUrls[u]) {
-              seenUrls[u] = true;
-              urlsToResolve.push(u);
-          }
-      }
-
-      // 1. Grab URLs explicitly pre-loaded in the HTML
-      var preloaded = extractAllVideoUrls(result.html);
-      preloaded.forEach(addUrl);
-
-      // 2. BRUTE-FORCE AJAX SERVERS: Bypass Dooplay's hiding mechanism
+      // TEST 1: Check for Dooplay Post ID
       var postIdMatch = result.html.match(/data-post=["'](\d+)["']/i) || result.html.match(/"post_id":"?(\d+)"?/i) || result.html.match(/\?p=(\d+)/i) || result.html.match(/postid=(\d+)/i);
-      
-      var ajaxPromises = [];
-      if (postIdMatch && postIdMatch[1]) {
-          var postId = postIdMatch[1];
+      var postId = postIdMatch ? postIdMatch[1] : "NOT_FOUND";
+      streams.push({
+          name: "Debug | Post ID",
+          title: postId,
+          url: "http://example.com/loop",
+          quality: "1080p",
+          provider: "desenefaine"
+      });
+
+      // TEST 2: Check for Server List in HTML
+      var serverList = [];
+      $$("li[data-post][data-nume]").each(function(_, el) {
+          serverList.push($$(el).attr("data-nume"));
+      });
+      streams.push({
+          name: "Debug | Found Server List",
+          title: serverList.length > 0 ? "Found " + serverList.length + " servers" : "HTML tags not found",
+          url: "http://example.com/loop",
+          quality: "1080p",
+          provider: "desenefaine"
+      });
+
+      // TEST 3: Check for Nonce (Security Token)
+      var nonceMatch = result.html.match(/"?nonce"?\s*:\s*["']([^"']+)["']/i) || result.html.match(/data-nonce=["']([^"']+)["']/i);
+      var nonce = nonceMatch ? nonceMatch[1] : "NOT_FOUND";
+      streams.push({
+          name: "Debug | Nonce",
+          title: nonce,
+          url: "http://example.com/loop",
+          quality: "1080p",
+          provider: "desenefaine"
+      });
+
+      // TEST 4: Blind-fire AJAX call to see if it blocks us
+      if (postId !== "NOT_FOUND") {
           var ajaxUrl = MAIN_URL + "/wp-admin/admin-ajax.php";
+          var bodyData = "action=doo_player_ajax&post=" + postId + "&nume=1&type=movie";
           
-          // Blind-fire fetch requests for Servers 1 through 6
-          for (var i = 1; i <= 6; i++) {
-              var bodyData = "action=doo_player_ajax&post=" + postId + "&nume=" + i + "&type=movie";
-              var p = fetchText(ajaxUrl, {
-                  method: "POST",
-                  headers: { "Content-Type": "application/x-www-form-urlencoded", "Referer": result.url, "X-Requested-With": "XMLHttpRequest" },
-                  body: bodyData
-              }).then(function(resText) {
-                  var embedMatch = resText.match(/src=["']?([^"'\s<>]+)["']?/i) || resText.match(/(https?:\/\/[^"'\s<>]+)/i);
-                  if (embedMatch && embedMatch[1] && !embedMatch[1].includes("admin-ajax")) {
-                      return embedMatch[1].replace(/\\\//g, "/");
-                  }
-                  return null;
-              }).catch(function() { return null; });
-              ajaxPromises.push(p);
-          }
-      }
-
-      // Wait for AJAX calls to finish, add them to our list, then resolve all of them
-      return Promise.all(ajaxPromises).then(function(ajaxResults) {
-          ajaxResults.forEach(addUrl);
-
-          var resolvePromises = urlsToResolve.map(function(u) {
-              return resolveVideoUrl(u, result.url);
-          });
-
-          return Promise.all(resolvePromises).then(function(resolvedStreams) {
-              for (var i = 0; i < resolvedStreams.length; i++) {
-                  if (resolvedStreams[i]) streams.push(resolvedStreams[i]);
-              }
+          return fetchText(ajaxUrl, {
+              method: "POST",
+              headers: { 
+                  "Content-Type": "application/x-www-form-urlencoded", 
+                  "Referer": result.url, 
+                  "X-Requested-With": "XMLHttpRequest" 
+              },
+              body: bodyData
+          }).then(function(resText) {
+              var cleanText = resText.replace(/</g, "").replace(/>/g, "").substring(0, 100);
+              streams.push({
+                  name: "Debug | AJAX Response",
+                  title: cleanText || "EMPTY_RESPONSE",
+                  url: "http://example.com/loop",
+                  quality: "1080p",
+                  provider: "desenefaine"
+              });
+              return streams;
+          }).catch(function(e) {
+              streams.push({
+                  name: "Debug | AJAX Error",
+                  title: e.message,
+                  url: "http://example.com/loop",
+                  quality: "1080p",
+                  provider: "desenefaine"
+              });
               return streams;
           });
-      });
+      }
+
+      return streams;
     });
   }).catch(function() {
     return [];
