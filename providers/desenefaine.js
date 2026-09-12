@@ -1,6 +1,6 @@
 var cheerio = require("cheerio-without-node-native");
 
-var PROVIDER_NAME = "DeseneFaine DEBUG";
+var PROVIDER_NAME = "DeseneFaine";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c"; 
 
@@ -41,6 +41,86 @@ function normalizeTitle(value) {
   return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
 }
 
+// -----------------------------------------------------------------------------
+// EMBED RESOLVER
+// -----------------------------------------------------------------------------
+function resolveVideoUrl(url, pageUrl) {
+    var hostMatch = url.match(/^https?:\/\/([^/?#]+)/i);
+    var domain = hostMatch ? hostMatch[1] : "desenefaine.com";
+    
+    // Automatically name the server based on the host
+    var serverName = "Server";
+    var lUrl = url.toLowerCase();
+    if (lUrl.includes("player4me")) serverName = "Player4Me";
+    else if (lUrl.includes("streamp2p")) serverName = "StreamP2P";
+    else if (lUrl.includes("seekstreaming")) serverName = "SeekStreaming";
+    else if (lUrl.includes("byse")) serverName = "ByseHD";
+    else if (lUrl.includes("dsvplay")) serverName = "Dsvplay";
+    else if (lUrl.includes("ok.ru")) serverName = "Ok.ru";
+    else if (lUrl.includes("sprintcdn")) serverName = "Direct CDN";
+
+    // If it's already a direct video file
+    if (url.includes(".m3u8") || url.includes(".mp4")) {
+        return Promise.resolve({
+            name: PROVIDER_NAME + " | " + serverName,
+            title: "1080p | RO Dub",
+            url: url,
+            quality: "1080p",
+            isM3U8: url.includes(".m3u8"),
+            headers: { "Referer": "https://" + domain + "/", "Origin": "https://" + domain, "User-Agent": FETCH_HEADERS["User-Agent"] },
+            behaviorHints: { bingeGroup: "desenefaine-1080p" },
+            provider: "desenefaine"
+        });
+    }
+
+    // Try to silently fetch the iframe and pull the raw unencrypted video file
+    return fetchText(url, { headers: { "Referer": pageUrl } }).then(function(html) {
+        var m3u8Match = html.match(/(https?:\/\/[^"'<>\\\s]+\.m3u8[^"'<>\\\s]*)/i);
+        var mp4Match = html.match(/(https?:\/\/[^"'<>\\\s]+\.mp4[^"'<>\\\s]*)/i);
+        var directUrl = null;
+
+        if (m3u8Match && m3u8Match[1]) directUrl = m3u8Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
+        else if (mp4Match && mp4Match[1]) directUrl = mp4Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
+
+        if (directUrl) {
+            return {
+                name: PROVIDER_NAME + " | " + serverName,
+                title: "1080p | RO Dub",
+                url: directUrl, // Direct File (Fixes Loop!)
+                quality: "1080p",
+                isM3U8: directUrl.includes(".m3u8"),
+                headers: { "Referer": "https://" + domain + "/", "Origin": "https://" + domain, "User-Agent": FETCH_HEADERS["User-Agent"] },
+                behaviorHints: { bingeGroup: "desenefaine-1080p" },
+                provider: "desenefaine"
+            };
+        }
+
+        // If encrypted (like Player4Me), return the iframe URL so it still shows up
+        return {
+            name: PROVIDER_NAME + " | " + serverName,
+            title: "Fallback (May Loop)",
+            url: url,
+            quality: "1080p",
+            headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
+            behaviorHints: { bingeGroup: "desenefaine-1080p" },
+            provider: "desenefaine"
+        };
+    }).catch(function() {
+        return {
+            name: PROVIDER_NAME + " | " + serverName,
+            title: "Network Error",
+            url: url,
+            quality: "1080p",
+            headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
+            behaviorHints: { bingeGroup: "desenefaine-1080p" },
+            provider: "desenefaine"
+        };
+    });
+}
+
+// -----------------------------------------------------------------------------
+// MAIN SCRAPER
+// -----------------------------------------------------------------------------
 function getStreams(id, type, season, episode) {
   var isImdb = String(id).startsWith("tt");
   var endpoint = isImdb ? "find/" + id + "?external_source=imdb_id" : (type === "tv" ? "tv/" : "movie/") + id;
@@ -124,80 +204,80 @@ function getStreams(id, type, season, episode) {
     }).then(function(result) {
       if (!result || !result.html) return [];
 
-      var $$ = cheerio.load(result.html);
       var streams = [];
+      var urlsToResolve = [];
+      var seenUrls = {};
 
-      // TEST 1: Check for Dooplay Post ID
-      var postIdMatch = result.html.match(/data-post=["'](\d+)["']/i) || result.html.match(/"post_id":"?(\d+)"?/i) || result.html.match(/\?p=(\d+)/i) || result.html.match(/postid=(\d+)/i);
-      var postId = postIdMatch ? postIdMatch[1] : "NOT_FOUND";
-      streams.push({
-          name: PROVIDER_NAME + " | ID: " + postId,
-          title: "Post ID",
-          url: "http://example.com/loop",
-          quality: "1080p",
-          provider: "desenefaine"
-      });
-
-      // TEST 2: Check for Server List in HTML
-      var serverList = [];
-      $$("li[data-post][data-nume]").each(function(_, el) {
-          serverList.push($$(el).attr("data-nume"));
-      });
-      streams.push({
-          name: PROVIDER_NAME + " | Servers: " + (serverList.length > 0 ? serverList.length : "0"),
-          title: "Found Server Count",
-          url: "http://example.com/loop",
-          quality: "1080p",
-          provider: "desenefaine"
-      });
-
-      // TEST 3: Check for Nonce (Security Token)
-      var nonceMatch = result.html.match(/"?nonce"?\s*:\s*["']([^"']+)["']/i) || result.html.match(/data-nonce=["']([^"']+)["']/i);
-      var nonce = nonceMatch ? nonceMatch[1] : "NOT_FOUND";
-      streams.push({
-          name: PROVIDER_NAME + " | Nonce: " + nonce,
-          title: "Security Token",
-          url: "http://example.com/loop",
-          quality: "1080p",
-          provider: "desenefaine"
-      });
-
-      // TEST 4: Blind-fire AJAX call to see if it blocks us
-      if (postId !== "NOT_FOUND") {
-          var ajaxUrl = MAIN_URL + "/wp-admin/admin-ajax.php";
-          var bodyData = "action=doo_player_ajax&post=" + postId + "&nume=1&type=movie";
-          
-          return fetchText(ajaxUrl, {
-              method: "POST",
-              headers: { 
-                  "Content-Type": "application/x-www-form-urlencoded", 
-                  "Referer": result.url, 
-                  "X-Requested-With": "XMLHttpRequest" 
-              },
-              body: bodyData
-          }).then(function(resText) {
-              var cleanText = resText.replace(/</g, "").replace(/>/g, "").substring(0, 35);
-              streams.push({
-                  name: PROVIDER_NAME + " | AJAX: " + (cleanText || "EMPTY"),
-                  title: "Backend Response",
-                  url: "http://example.com/loop",
-                  quality: "1080p",
-                  provider: "desenefaine"
-              });
-              return streams;
-          }).catch(function(e) {
-              streams.push({
-                  name: PROVIDER_NAME + " | AJAX ERR: " + e.message,
-                  title: "Backend Error",
-                  url: "http://example.com/loop",
-                  quality: "1080p",
-                  provider: "desenefaine"
-              });
-              return streams;
-          });
+      function addUrl(u) {
+          if (!u) return;
+          if (u.startsWith("//")) u = "https:" + u;
+          if (u.includes("facebook.com") || u.includes("youtube.com") || u.includes("doubleclick")) return;
+          if (!seenUrls[u]) {
+              seenUrls[u] = true;
+              urlsToResolve.push(u);
+          }
       }
 
-      return streams;
+      // 1. EXTRACT POST ID (Aggressive WordPress scraping)
+      var postIdMatch = result.html.match(/postid-(\d+)/i) || 
+                        result.html.match(/data-post=["']?(\d+)["']?/i) || 
+                        result.html.match(/\?p=(\d+)/i) || 
+                        result.html.match(/id=["']postid["']\s*value=["']?(\d+)["']?/i);
+      
+      var postId = postIdMatch ? postIdMatch[1] : null;
+
+      // 2. BLIND-FIRE AJAX CALLS TO FORCE UNPACK SERVERS
+      var ajaxPromises = [];
+      if (postId) {
+          var ajaxUrl = MAIN_URL + "/wp-admin/admin-ajax.php";
+          
+          // Test Servers 1 through 8
+          for (var i = 1; i <= 8; i++) {
+              (function(nume) {
+                  var bodyData = "action=doo_player_ajax&post=" + postId + "&nume=" + nume + "&type=" + (type === "tv" ? "tv" : "movie");
+                  var p = fetchText(ajaxUrl, {
+                      method: "POST",
+                      headers: { 
+                          "Content-Type": "application/x-www-form-urlencoded", 
+                          "Referer": result.url, 
+                          "X-Requested-With": "XMLHttpRequest" 
+                      },
+                      body: bodyData
+                  }).then(function(resText) {
+                      var embedMatch = resText.match(/src=["']?([^"'\s<>]+)["']?/i) || resText.match(/(https?:\/\/[^"'\s<>]+)/i);
+                      if (embedMatch && embedMatch[1] && !embedMatch[1].includes("admin-ajax")) {
+                          return embedMatch[1].replace(/\\\//g, "/");
+                      }
+                      return null;
+                  }).catch(function() { return null; });
+                  
+                  ajaxPromises.push(p);
+              })(i);
+          }
+      }
+
+      // Fallback: Check if there's an iframe loaded directly on the page
+      var iframeRegex = /<iframe[^>]+src=["']([^"']+)["']/gi;
+      var match;
+      while ((match = iframeRegex.exec(result.html)) !== null) {
+          addUrl(match[1]);
+      }
+
+      // Wait for AJAX, then process all found URLs
+      return Promise.all(ajaxPromises).then(function(ajaxResults) {
+          ajaxResults.forEach(addUrl);
+
+          var resolvePromises = urlsToResolve.map(function(u) {
+              return resolveVideoUrl(u, result.url);
+          });
+
+          return Promise.all(resolvePromises).then(function(resolvedStreams) {
+              for (var k = 0; k < resolvedStreams.length; k++) {
+                  if (resolvedStreams[k]) streams.push(resolvedStreams[k]);
+              }
+              return streams;
+          });
+      });
     });
   }).catch(function() {
     return [];
