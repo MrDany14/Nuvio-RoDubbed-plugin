@@ -42,9 +42,6 @@ function normalizeTitle(value) {
   return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
 }
 
-// -----------------------------------------------------------------------------
-// EXACT WORKING PLAYER4ME DECRYPTOR (From your original script)
-// -----------------------------------------------------------------------------
 function extractMasterUrlFromPayload(payload) {
   if (!payload) return null;
   var text = String(payload).trim();
@@ -75,13 +72,16 @@ function extractMasterUrlFromPayload(payload) {
   return null;
 }
 
+// -----------------------------------------------------------------------------
+// DIAGNOSTIC API RESOLVER
+// -----------------------------------------------------------------------------
 function resolvePlayer4MeAPI(embedUrl) {
   var filecodeMatch = embedUrl.match(/\/(?:e|embed|video|v|play|watch)\/([^/?#]+)/i);
-  if (!filecodeMatch) return Promise.resolve(null);
+  if (!filecodeMatch) return Promise.resolve({ error: "No filecode found in URL" });
   var filecode = filecodeMatch[1];
   
   var hostMatch = embedUrl.match(/^https?:\/\/([^/?#]+)/i);
-  if (!hostMatch) return Promise.resolve(null);
+  if (!hostMatch) return Promise.resolve({ error: "No host found in URL" });
   var host = hostMatch[1];
   
   var apiUrl = "https://" + host + "/api/v1/video?id=" + encodeURIComponent(filecode) + "&w=2048&h=1152&r=";
@@ -89,35 +89,37 @@ function resolvePlayer4MeAPI(embedUrl) {
   return fetchText(apiUrl, {
     headers: { "Referer": embedUrl, "Origin": "https://" + host, "Accept": "*/*" }
   }).then(function(body) {
-    if (!body) return null;
+    if (!body) return { error: "API returned empty body" };
     
     // 1. Try Unencrypted JSON
     var direct = extractMasterUrlFromPayload(body);
-    if (direct) return direct;
+    if (direct) return { url: direct, msg: "Unencrypted JSON Success" };
     
     // 2. Try AES Decryption
     try {
       var CryptoJS = require("crypto-js");
+      if (!CryptoJS) return { error: "Nuvio failed to load crypto-js module" };
+
       var key = CryptoJS.enc.Hex.parse("6b69656d7469656e6d75613931316361");
       var iv = CryptoJS.enc.Hex.parse("313233343536373839306f6975797472");
       var encrypted = CryptoJS.enc.Hex.parse(String(body).trim());
       var decrypted = CryptoJS.AES.decrypt({ ciphertext: encrypted }, key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
       var text = decrypted.toString(CryptoJS.enc.Utf8);
       
-      return extractMasterUrlFromPayload(text);
+      if (!text) return { error: "Decryption resulted in empty string" };
+
+      var finalUrl = extractMasterUrlFromPayload(text);
+      if (finalUrl) return { url: finalUrl, msg: "Decryption Success" };
+
+      return { error: "Decrypted successfully but no URL inside payload" };
     } catch (e) {
-      log("Crypto Error: " + e.message);
-      return null;
+      return { error: "Crypto Error: " + e.message };
     }
   }).catch(function(e) {
-    log("API Fetch Error: " + e.message);
-    return null;
+    return { error: "API Fetch Error: " + e.message };
   });
 }
 
-// -----------------------------------------------------------------------------
-// MAIN SCRAPING LOGIC
-// -----------------------------------------------------------------------------
 function getStreams(id, type, season, episode) {
   var isImdb = String(id).startsWith("tt");
   var endpoint = isImdb ? "find/" + id + "?external_source=imdb_id" : (type === "tv" ? "tv/" : "movie/") + id;
@@ -204,7 +206,6 @@ function getStreams(id, type, season, episode) {
       var $$ = cheerio.load(result.html);
       var streams = [];
       var iframePromises = [];
-      var serverCount = 1;
 
       $$("iframe").each(function(_, el) {
         var src = $$(el).attr("src") || $$(el).attr("data-src");
@@ -214,28 +215,29 @@ function getStreams(id, type, season, episode) {
 
         var iframeDomain = src.match(/^https?:\/\/([^/?#]+)/i)[0];
 
-        // Decrypt the iframe API to get the .m3u8
-        var p = resolvePlayer4MeAPI(src).then(function(directUrl) {
-            if (directUrl) {
+        var p = resolvePlayer4MeAPI(src).then(function(res) {
+            if (res && res.url) {
+                // SUCCESS! 
                 streams.push({
-                    name: PROVIDER_NAME + " | Server " + serverCount++,
+                    name: PROVIDER_NAME + " | " + res.msg,
                     title: "1080p | RO Dub",
-                    url: directUrl, // Success! Pushing the sprintcdn .m3u8
+                    url: res.url,
                     quality: "1080p",
-                    isM3U8: directUrl.includes(".m3u8"), // Nuvio Flag
-                    behaviorHints: { bingeGroup: "desenefaine-1080p" }, // Required for HLS
+                    isM3U8: res.url.includes(".m3u8"),
+                    behaviorHints: { bingeGroup: "desenefaine-1080p" },
                     headers: { 
                         "User-Agent": FETCH_HEADERS["User-Agent"], 
-                        "Referer": iframeDomain + "/", // Authorizes the stream
+                        "Referer": iframeDomain + "/",
                         "Origin": iframeDomain 
                     },
                     provider: "desenefaine"
                 });
             } else {
-                // If the stream is genuinely dead/failed, pass the iframe so it's not empty
+                // FAILURE - PRINT THE EXACT ERROR AS THE STREAM NAME
+                var errorMessage = res ? res.error : "Unknown Null Error";
                 streams.push({
-                    name: PROVIDER_NAME + " | Iframe Fallback",
-                    title: "May Loop",
+                    name: "Debug: " + errorMessage, // <--- THIS WILL TELL US WHY IT FAILS
+                    title: "Clicking this will loop. Read the title.",
                     url: src,
                     quality: "1080p",
                     headers: { "Referer": result.url, "User-Agent": FETCH_HEADERS["User-Agent"] },
