@@ -37,57 +37,28 @@ function fetchJson(url, options) {
 }
 
 function normalizeSlug(value) {
-  return String(value || "")
-    .toLowerCase()
-    .replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i")
-    .replace(/ș/g, "s").replace(/ț/g, "t")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
+  return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
 function normalizeTitle(value) {
-  return String(value || "")
-    .toLowerCase()
-    .replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i")
-    .replace(/ș/g, "s").replace(/ț/g, "t")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
+  return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
 }
 
-// -----------------------------------------------------------------------------
-// EXACT WORKING PLAYER4ME DECRYPTOR (From your original script)
-// -----------------------------------------------------------------------------
-function extractMasterUrlFromPayload(payload) {
-  if (!payload) return null;
-  var text = String(payload).trim();
-  try {
-    var obj = JSON.parse(text);
-    if (obj) {
-      var candidates = [ obj.source, obj.master, obj.masterUrl, obj.master_url, obj.url, obj.file, obj.playlist ];
-      for (var i = 0; i < candidates.length; i++) {
-        if (candidates[i] && typeof candidates[i] === "string" && /^https?:\/\//i.test(candidates[i])) return candidates[i];
-      }
-      if (obj.data) {
-        var nested = extractMasterUrlFromPayload(JSON.stringify(obj.data));
-        if (nested) return nested;
-      }
-    }
-  } catch (_) {}
-  
+function extractMasterUrlFromText(text) {
+  if (!text) return null;
   var patterns = [
-    /["']?(?:source|masterUrl|master_url|master|url|file|playlist)["']?\s*[:=]\s*["'](https?:\/\/[^"']+)["']/i,
     /(https?:\/\/[^"'\\\s<>]+\.m3u8[^"'\\\s<>]*)/i,
     /(https?:\/\/[^"'\\\s<>]+\.mp4[^"'\\\s<>]*)/i,
+    /["']?(?:source|masterUrl|master_url|master|url|file|playlist)["']?\s*[:=]\s*["'](https?:\/\/[^"']+)["']/i
   ];
   for (var j = 0; j < patterns.length; j++) {
     var m = text.match(patterns[j]);
     if (m && m[1]) return m[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
   }
-  if (/^https?:\/\//i.test(text)) return text;
   return null;
 }
 
-function resolvePlayer4MeAPI(embedUrl) {
+function resolvePlayer4Me(embedUrl) {
   var filecodeMatch = embedUrl.match(/\/(?:e|embed|video|v|play|watch)\/([^/?#]+)/i);
   if (!filecodeMatch) return Promise.resolve(null);
   var filecode = filecodeMatch[1];
@@ -95,41 +66,40 @@ function resolvePlayer4MeAPI(embedUrl) {
   var hostMatch = embedUrl.match(/^https?:\/\/([^/?#]+)/i);
   if (!hostMatch) return Promise.resolve(null);
   var host = hostMatch[1];
-  
+
   var apiUrl = "https://" + host + "/api/v1/video?id=" + encodeURIComponent(filecode) + "&w=2048&h=1152&r=";
 
-  return fetchText(apiUrl, {
-    headers: { "Referer": embedUrl, "Origin": "https://" + host, "Accept": "*/*" }
-  }).then(function(body) {
-    if (!body) return null;
-    
-    // 1. Check if the response is unencrypted JSON
-    var direct = extractMasterUrlFromPayload(body);
-    if (direct) return direct;
-    
-    // 2. Run the AES Decryptor on the payload
-    try {
-      var CryptoJS = require("crypto-js");
-      var key = CryptoJS.enc.Hex.parse("6b69656d7469656e6d75613931316361");
-      var iv = CryptoJS.enc.Hex.parse("313233343536373839306f6975797472");
-      var encrypted = CryptoJS.enc.Hex.parse(String(body).trim());
-      var decrypted = CryptoJS.AES.decrypt({ ciphertext: encrypted }, key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
-      var text = decrypted.toString(CryptoJS.enc.Utf8);
+  // 1. Try to fetch the iframe directly (sometimes unencrypted .m3u8 is right in the HTML)
+  return fetchText(embedUrl, { headers: { "Referer": MAIN_URL + "/" } }).then(function(html) {
+    var directUrl = extractMasterUrlFromText(html);
+    if (directUrl && directUrl.indexOf(".m3u8") !== -1) return directUrl;
+
+    // 2. If not in HTML, fetch the API
+    return fetchText(apiUrl, {
+      headers: { "Referer": embedUrl, "Origin": "https://" + host, "Accept": "*/*" }
+    }).then(function(body) {
+      if (!body) return null;
       
-      return extractMasterUrlFromPayload(text);
-    } catch (e) {
-      log("Crypto Error: " + e.message);
-      return null;
-    }
-  }).catch(function(e) {
-    log("API Fetch Error: " + e.message);
+      var apiDirect = extractMasterUrlFromText(body);
+      if (apiDirect && apiDirect.indexOf(".m3u8") !== -1) return apiDirect;
+      
+      try {
+        var CryptoJS = require("crypto-js");
+        var key = CryptoJS.enc.Hex.parse("6b69656d7469656e6d75613931316361");
+        var iv = CryptoJS.enc.Hex.parse("313233343536373839306f6975797472");
+        var encrypted = CryptoJS.enc.Hex.parse(String(body).trim());
+        var decrypted = CryptoJS.AES.decrypt({ ciphertext: encrypted }, key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
+        var text = decrypted.toString(CryptoJS.enc.Utf8);
+        return extractMasterUrlFromText(text);
+      } catch (e) {
+        return null;
+      }
+    });
+  }).catch(function() {
     return null;
   });
 }
 
-// -----------------------------------------------------------------------------
-// MAIN SCRAPING LOGIC
-// -----------------------------------------------------------------------------
 function getStreams(id, type, season, episode) {
   var isImdb = String(id).startsWith("tt");
   var endpoint = isImdb ? "find/" + id + "?external_source=imdb_id" : (type === "tv" ? "tv/" : "movie/") + id;
@@ -231,17 +201,17 @@ function getStreams(id, type, season, episode) {
         var isStreamHost = src.includes("player4me") || src.includes("streamp2p") || src.includes("seekstreaming");
 
         var p = Promise.resolve().then(function() {
-            if (isStreamHost) return resolvePlayer4MeAPI(src);
+            if (isStreamHost) return resolvePlayer4Me(src);
             return null;
         }).then(function(directUrl) {
-            // FORMAT EXACTLY LIKE TEST 1
-            if (directUrl) {
+            if (directUrl && directUrl.indexOf(".m3u8") !== -1) {
+                // FORMAT EXACTLY LIKE TEST 1
                 streams.push({
                     name: PROVIDER_NAME + " | Server " + serverCount++,
                     title: "1080p | RO Dub",
                     url: directUrl, 
                     quality: "1080p",
-                    isM3U8: directUrl.includes(".m3u8"),
+                    isM3U8: true,
                     behaviorHints: { bingeGroup: "desenefaine-1080p" },
                     headers: { 
                         "Referer": iframeDomain + "/",
@@ -250,7 +220,27 @@ function getStreams(id, type, season, episode) {
                     },
                     provider: "desenefaine"
                 });
+            } else {
+                // FAILSAFE: Push the original iframe URL if decryption fails, so it never returns 0 streams
+                streams.push({
+                    name: PROVIDER_NAME + " | Iframe Fallback",
+                    title: "Could not unpack stream",
+                    url: src,
+                    quality: "1080p",
+                    headers: { "Referer": result.url, "User-Agent": FETCH_HEADERS["User-Agent"] },
+                    provider: "desenefaine"
+                });
             }
+        }).catch(function() {
+            // CATCH ALL FAILURES: Push the original iframe URL
+            streams.push({
+                name: PROVIDER_NAME + " | Iframe Fallback",
+                title: "Network error during unpack",
+                url: src,
+                quality: "1080p",
+                headers: { "Referer": result.url, "User-Agent": FETCH_HEADERS["User-Agent"] },
+                provider: "desenefaine"
+            });
         });
         
         iframePromises.push(p);
