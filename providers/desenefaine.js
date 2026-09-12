@@ -18,7 +18,8 @@ function fetchText(url, options) {
   options = options || {};
   return fetch(url, {
     method: options.method || "GET",
-    headers: Object.assign({}, FETCH_HEADERS, options.headers || {})
+    headers: Object.assign({}, FETCH_HEADERS, options.headers || {}),
+    body: options.body
   }).then(function(res) {
     if (!res.ok) throw new Error("HTTP " + res.status);
     return res.text();
@@ -29,7 +30,8 @@ function fetchJson(url, options) {
   options = options || {};
   return fetch(url, {
     method: options.method || "GET",
-    headers: Object.assign({}, FETCH_HEADERS, options.headers || {})
+    headers: Object.assign({}, FETCH_HEADERS, options.headers || {}),
+    body: options.body
   }).then(function(res) {
     if (!res.ok) throw new Error("HTTP " + res.status);
     return res.json();
@@ -37,21 +39,64 @@ function fetchJson(url, options) {
 }
 
 function normalizeSlug(value) {
-  return String(value || "")
-    .toLowerCase()
-    .replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i")
-    .replace(/ș/g, "s").replace(/ț/g, "t")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
+  return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
 function normalizeTitle(value) {
-  return String(value || "")
-    .toLowerCase()
-    .replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i")
-    .replace(/ș/g, "s").replace(/ț/g, "t")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
+  return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+// -----------------------------------------------------------------------------
+// EMBED RESOLVER (Converts iframes to direct .m3u8/.mp4 to fix Nuvio loops)
+// -----------------------------------------------------------------------------
+function resolveEmbed(embedUrl, serverName, pageUrl) {
+    var hostMatch = embedUrl.match(/^https?:\/\/([^/?#]+)/i);
+    var domain = hostMatch ? hostMatch[1] : "desenefaine.com";
+
+    return fetchText(embedUrl, { headers: { "Referer": pageUrl } }).then(function(html) {
+        // Regex to find raw video files in the iframe's source code
+        var match = html.match(/(https?:\/\/[^"'<>\\\s]+\.(?:m3u8|mp4)[^"'<>\\\s]*)/i) || 
+                    html.match(/(?:file|src|url)["']?\s*[:=]\s*["'](https?:\/\/[^"']+(?:\.mp4|\.m3u8)[^"']*)["']/i);
+        
+        var directUrl = null;
+        if (match && match[1]) {
+            directUrl = match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
+        }
+
+        if (directUrl) {
+            return {
+                name: PROVIDER_NAME + " | " + serverName,
+                title: "1080p | RO Dub",
+                url: directUrl, 
+                quality: "1080p",
+                isM3U8: directUrl.includes(".m3u8"),
+                headers: { "Referer": "https://" + domain + "/", "Origin": "https://" + domain, "User-Agent": FETCH_HEADERS["User-Agent"] },
+                behaviorHints: { bingeGroup: "desenefaine-1080p" },
+                provider: "desenefaine"
+            };
+        } else {
+            // Failsafe: if extraction fails, push the iframe URL anyway so it appears in the list
+            return {
+                name: PROVIDER_NAME + " | " + serverName,
+                title: "Extraction Failed (May Loop)",
+                url: embedUrl,
+                quality: "1080p",
+                headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
+                behaviorHints: { bingeGroup: "desenefaine-1080p" },
+                provider: "desenefaine"
+            };
+        }
+    }).catch(function() {
+        return {
+            name: PROVIDER_NAME + " | " + serverName,
+            title: "Network Error (May Loop)",
+            url: embedUrl,
+            quality: "1080p",
+            headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
+            behaviorHints: { bingeGroup: "desenefaine-1080p" },
+            provider: "desenefaine"
+        };
+    });
 }
 
 function getStreams(id, type, season, episode) {
@@ -137,68 +182,92 @@ function getStreams(id, type, season, episode) {
     }).then(function(result) {
       if (!result || !result.html) return [];
 
+      var $$ = cheerio.load(result.html);
       var streams = [];
-      var foundUrls = {}; // Used to prevent duplicate servers
-      var html = result.html.replace(/\\\//g, "/"); // Unescape JSON slashes
+      var dooplayServers = [];
 
-      function addStream(url) {
-          if (!url) return;
-          if (url.startsWith("//")) url = "https:" + url;
-          if (url.includes("facebook.com") || url.includes("youtube.com")) return;
+      // 1. EXTRACT DOOPLAY AJAX SERVERS (This matches your screenshot!)
+      $$("li[data-post][data-nume][data-type]").each(function(_, el) {
+          var post = $$(el).attr("data-post");
+          var nume = $$(el).attr("data-nume");
+          var type = $$(el).attr("data-type");
+          var serverText = $$(el).find(".server").text().trim() || $$(el).find(".title").text().trim();
           
-          // Prevent duplicates
-          if (foundUrls[url]) return;
-          foundUrls[url] = true;
+          if (post && nume && type) {
+              // Clean up the name (e.g., "ByseHd - ROMANA" -> "ByseHD")
+              var cleanName = serverText ? serverText.split("-")[0].trim() : "Server " + nume;
+              dooplayServers.push({ post: post, nume: nume, type: type, name: cleanName });
+          }
+      });
 
-          var hostMatch = url.match(/^https?:\/\/([^/?#]+)/i);
-          var host = hostMatch ? hostMatch[1] : "desenefaine.com";
-          
-          // Name the servers nicely based on the host
-          var serverName = "Server";
-          if (url.includes("player4me")) serverName = "Player4Me";
-          else if (url.includes("streamp2p")) serverName = "StreamP2P";
-          else if (url.includes("seekstreaming")) serverName = "SeekStreaming";
-          else if (url.includes("byse")) serverName = "ByseHD";
-          else if (url.includes("dsvplay")) serverName = "Dsvplay";
-          else if (url.includes("ok.ru")) serverName = "Ok.ru";
+      var ajaxPromises = [];
+      var ajaxUrl = MAIN_URL + "/wp-admin/admin-ajax.php";
 
-          streams.push({
-              name: PROVIDER_NAME + " | " + serverName,
-              title: "1080p | RO Dub",
-              url: url,
-              quality: "1080p",
-              headers: { 
-                  "Referer": "https://" + host + "/",
-                  "Origin": "https://" + host,
-                  "User-Agent": FETCH_HEADERS["User-Agent"]
-              },
-              behaviorHints: { bingeGroup: "desenefaine-1080p" },
-              provider: "desenefaine"
+      // 2. FETCH THE HIDDEN IFRAMES FROM WORDPRESS BACKEND
+      if (dooplayServers.length > 0) {
+          dooplayServers.forEach(function(server) {
+              var bodyData = "action=doo_player_ajax&post=" + server.post + "&nume=" + server.nume + "&type=" + server.type;
+              
+              var p = fetchText(ajaxUrl, {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/x-www-form-urlencoded",
+                      "Referer": result.url,
+                      "X-Requested-With": "XMLHttpRequest"
+                  },
+                  body: bodyData
+              }).then(function(resText) {
+                  var embedStr = "";
+                  try {
+                      var json = JSON.parse(resText);
+                      embedStr = json.embed_url || "";
+                  } catch(e) {
+                      embedStr = resText; // Sometimes it just returns the iframe HTML directly
+                  }
+
+                  var srcMatch = embedStr.match(/src=["']([^"']+)["']/i);
+                  var finalEmbedUrl = srcMatch ? srcMatch[1] : embedStr;
+
+                  if (finalEmbedUrl && finalEmbedUrl.startsWith("http")) {
+                      return resolveEmbed(finalEmbedUrl, server.name, result.url);
+                  }
+                  return null;
+              }).catch(function() { return null; });
+
+              ajaxPromises.push(p);
+          });
+
+          return Promise.all(ajaxPromises).then(function(results) {
+              for (var i = 0; i < results.length; i++) {
+                  if (results[i]) streams.push(results[i]);
+              }
+              return streams;
           });
       }
 
-      // 1. CHEERIO: Extract standard iframes
-      var $$ = cheerio.load(result.html);
+      // 3. FALLBACK: IF NO AJAX SERVERS FOUND, SCAN DOM FOR PRELOADED IFRAMES
+      var serverCount = 1;
       $$("iframe").each(function(_, el) {
-          addStream($$(el).attr("src") || $$(el).attr("data-src") || $$(el).attr("data-lazy-src"));
+          var src = $$(el).attr("src") || $$(el).attr("data-src") || $$(el).attr("data-lazy-src");
+          if (!src) return;
+          if (src.startsWith("//")) src = "https:" + src;
+          else if (!src.startsWith("http")) src = MAIN_URL + (src.startsWith("/") ? "" : "/") + src;
+
+          if (src.includes("facebook.com") || src.includes("youtube.com") || src.includes("doubleclick")) return;
+
+          var hostMatch = src.match(/^https?:\/\/([^/?#]+)/i);
+          var serverName = hostMatch ? hostMatch[1].split(".")[0] : "Server " + serverCount++;
+
+          ajaxPromises.push(resolveEmbed(src, serverName, result.url));
       });
 
-      // 2. RAW REGEX: Extract hidden embeds from Dooplay inline scripts/data attributes
-      // This will grab Byse, Dsvplay, etc., even if they aren't loaded in an iframe yet.
-      var embedRegex = /(https?:)?\/\/(player4me\.com|streamp2p\.com|seekstreaming\.com|byse[a-zA-Z0-9.-]*\.[a-z]+|dsvplay[a-zA-Z0-9.-]*\.[a-z]+|ok\.ru)\/[a-zA-Z0-9_/?&=-]+/gi;
-      var match;
-      while ((match = embedRegex.exec(html)) !== null) {
-          addStream(match[0]);
-      }
+      return Promise.all(ajaxPromises).then(function(results) {
+          for (var i = 0; i < results.length; i++) {
+              if (results[i]) streams.push(results[i]);
+          }
+          return streams;
+      });
 
-      // 3. RAW REGEX: Extract any direct .mp4 or .m3u8 found in the source code
-      var directRegex = /(https?:\/\/[^"'<>\\\s]+\.(?:m3u8|mp4)[^"'<>\\\s]*)/gi;
-      var directMatch;
-      while ((directMatch = directRegex.exec(html)) !== null) {
-          addStream(directMatch[1]);
-      }
-
-      return streams;
     });
   }).catch(function() {
     return [];
