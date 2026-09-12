@@ -2,1329 +2,882 @@ var cheerio = require("cheerio-without-node-native");
 
 var PROVIDER_NAME = "DeseneFaine";
 var MAIN_URL = "https://desenefaine.com";
-var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
-
-var USER_AGENT =
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
-  "AppleWebKit/537.36 (KHTML, like Gecko) " +
-  "Chrome/124.0.0.0 Safari/537.36";
-
-var FETCH_HEADERS = {
-  "User-Agent": USER_AGENT,
-  "Accept":
-    "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-  "Accept-Language":
-    "ro-RO,ro;q=0.9,en-US;q=0.8,en;q=0.7"
-};
+var TMDB_API_KEY = "439478a771f35c05022f9feabcca01c";
 
 var STREAM_HEADERS = {
-  "User-Agent": USER_AGENT,
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
   "Accept": "*/*",
-  "Accept-Language":
-    "ro-RO,ro;q=0.9,en-US;q=0.8,en;q=0.7"
+  "Connection": "keep-alive",
+  "Referer": MAIN_URL + "/",
+  "Origin": MAIN_URL
+};
+
+var FETCH_HEADERS = {
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+  "Accept-Language": "ro-RO,ro;q=0.9,en-US;q=0.8,en;q=0.7"
 };
 
 function log(msg) {
   console.log("[" + PROVIDER_NAME + "] " + msg);
 }
 
-function fetchText(url, headers) {
+
+/* =========================================================
+   FETCH
+========================================================= */
+
+function fetchText(url, options) {
+  options = options || {};
+
   return fetch(url, {
-    method: "GET",
-    redirect: "follow",
-    headers: Object.assign(
-      {},
-      FETCH_HEADERS,
-      headers || {}
-    )
+    method: options.method || "GET",
+    redirect: options.redirect || "follow",
+    headers: Object.assign({}, FETCH_HEADERS, options.headers || {}),
+    body: options.body
   }).then(function(res) {
+
     if (!res.ok) {
-      throw new Error(
-        "HTTP " + res.status + " -> " + url
-      );
+      throw new Error("HTTP " + res.status + " -> " + url);
     }
 
     return res.text();
   });
 }
 
-function fetchJson(url, headers) {
+
+function fetchJson(url, options) {
+  options = options || {};
+
   return fetch(url, {
-    method: "GET",
-    redirect: "follow",
-    headers: Object.assign(
-      {},
-      FETCH_HEADERS,
-      headers || {}
-    )
+    method: options.method || "GET",
+    redirect: options.redirect || "follow",
+    headers: Object.assign({}, FETCH_HEADERS, options.headers || {}),
+    body: options.body
   }).then(function(res) {
+
     if (!res.ok) {
-      throw new Error(
-        "HTTP " + res.status + " -> " + url
-      );
+      throw new Error("HTTP " + res.status + " -> " + url);
     }
 
     return res.json();
   });
 }
 
+
+/* =========================================================
+   NORMALIZATION
+========================================================= */
+
 function normalizeSlug(value) {
+
   return String(value || "")
     .toLowerCase()
     .replace(/ă/g, "a")
     .replace(/â/g, "a")
     .replace(/î/g, "i")
     .replace(/ș/g, "s")
-    .replace(/ş/g, "s")
     .replace(/ț/g, "t")
-    .replace(/ţ/g, "t")
     .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replace(/(^-|-$)/g, "");
 }
 
+
 function normalizeTitle(value) {
+
   return String(value || "")
     .toLowerCase()
     .replace(/ă/g, "a")
     .replace(/â/g, "a")
     .replace(/î/g, "i")
     .replace(/ș/g, "s")
-    .replace(/ş/g, "s")
     .replace(/ț/g, "t")
-    .replace(/ţ/g, "t")
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
 }
 
-function absoluteUrl(base, value) {
-  if (!value) {
+
+/* =========================================================
+   URL HELPERS
+========================================================= */
+
+function absoluteUrl(url, baseUrl) {
+
+  if (!url) {
     return null;
   }
 
-  value = String(value)
-    .trim()
-    .replace(/&amp;/gi, "&")
-    .replace(/\\\//g, "/");
+  url = String(url).trim();
 
-  if (!value) {
+  if (!url) {
     return null;
   }
 
-  if (value.indexOf("//") === 0) {
-    return "https:" + value;
+  if (url.indexOf("\\/") !== -1) {
+    url = url.replace(/\\\//g, "/");
   }
 
-  if (/^https?:\/\//i.test(value)) {
-    return value;
+  if (url.indexOf("&amp;") !== -1) {
+    url = url.replace(/&amp;/g, "&");
   }
 
-  if (value.indexOf("javascript:") === 0) {
-    return null;
+  if (url.indexOf("&quot;") !== -1) {
+    url = url.replace(/&quot;/g, "\"");
   }
 
-  if (value.charAt(0) === "/") {
-    var originMatch =
-      String(base).match(
-        /^(https?:\/\/[^\/]+)/i
-      );
-
-    return originMatch
-      ? originMatch[1] + value
-      : MAIN_URL + value;
+  if (url.indexOf("&#x2F;") !== -1) {
+    url = url.replace(/&#x2F;/gi, "/");
   }
 
-  var cleanBase =
-    String(base).split("#")[0];
-
-  var slash =
-    cleanBase.lastIndexOf("/");
-
-  if (slash >= 0) {
-    cleanBase =
-      cleanBase.substring(
-        0,
-        slash + 1
-      );
+  if (url.indexOf("&#47;") !== -1) {
+    url = url.replace(/&#47;/g, "/");
   }
 
-  return cleanBase + value;
+  if (url.startsWith("//")) {
+    return "https:" + url;
+  }
+
+  if (url.startsWith("http://") || url.startsWith("https://")) {
+    return url;
+  }
+
+  try {
+    return new URL(url, baseUrl).href;
+  } catch (e) {
+    if (url.startsWith("/")) {
+      return MAIN_URL + url;
+    }
+
+    return MAIN_URL + "/" + url;
+  }
 }
 
-function cleanValue(value) {
-  if (!value) {
-    return null;
+
+/* =========================================================
+   DECODE POSSIBLE JS ESCAPING
+========================================================= */
+
+function cleanText(text) {
+
+  if (!text) {
+    return "";
   }
 
-  return String(value)
-    .trim()
-    .replace(/&amp;/gi, "&")
-    .replace(/\\u0026/g, "&")
-    .replace(/\\x26/g, "&")
+  var value = String(text);
+
+  value = value
+    .replace(/\\u002F/gi, "/")
+    .replace(/\\u0026/gi, "&")
+    .replace(/\\u003A/gi, ":")
+    .replace(/\\u003D/gi, "=")
+    .replace(/\\u002E/gi, ".")
     .replace(/\\\//g, "/")
-    .replace(/\\x3a/gi, ":")
-    .replace(/\\x2f/gi, "/")
-    .replace(/\\x3f/gi, "?")
-    .replace(/\\x3d/gi, "=")
-    .replace(/^["'`]+/, "")
-    .replace(/["'`;,]+$/, "");
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, "\"")
+    .replace(/&#x2F;/gi, "/")
+    .replace(/&#47;/g, "/");
+
+  return value;
 }
 
-function isHttp(url) {
-  return /^https?:\/\//i.test(
-    String(url || "")
-  );
-}
 
-function isM3U8(url) {
-  if (!url || !isHttp(url)) {
+/* =========================================================
+   DETECT MEDIA URL
+========================================================= */
+
+function isMediaUrl(url) {
+
+  if (!url) {
     return false;
   }
 
-  var value =
-    String(url).toLowerCase();
+  var value = String(url).toLowerCase();
 
   return (
-    value.indexOf(".m3u8") >= 0 ||
-    value.indexOf("master.m3u8") >= 0 ||
-    value.indexOf("playlist.m3u8") >= 0 ||
-    value.indexOf("index.m3u8") >= 0
+    value.indexOf(".m3u8") !== -1 ||
+    value.indexOf(".mp4") !== -1 ||
+    value.indexOf(".mkv") !== -1 ||
+    value.indexOf(".webm") !== -1
   );
 }
 
-function isMedia(url) {
-  if (!url || !isHttp(url)) {
-    return false;
+
+/* =========================================================
+   EXTRACT MEDIA URLS FROM RAW HTML / JAVASCRIPT
+========================================================= */
+
+function extractMediaUrls(text, baseUrl) {
+
+  var found = [];
+
+  if (!text) {
+    return found;
   }
 
-  var value =
-    String(url).toLowerCase();
-
-  return (
-    isM3U8(url) ||
-    value.indexOf(".mp4") >= 0 ||
-    value.indexOf(".mkv") >= 0 ||
-    value.indexOf(".webm") >= 0
-  );
-}
-
-function getFormat(url) {
-  return isM3U8(url)
-    ? "m3u8"
-    : String(url).toLowerCase().indexOf(".mkv") >= 0
-    ? "mkv"
-    : "mp4";
-}
-
-function getQuality(url) {
-  var value =
-    String(url || "").toLowerCase();
-
-  if (
-    value.indexOf("2160") >= 0 ||
-    value.indexOf("4k") >= 0
-  ) {
-    return 2160;
-  }
-
-  if (value.indexOf("1440") >= 0) {
-    return 1440;
-  }
-
-  if (value.indexOf("1080") >= 0) {
-    return 1080;
-  }
-
-  if (value.indexOf("720") >= 0) {
-    return 720;
-  }
-
-  if (value.indexOf("480") >= 0) {
-    return 480;
-  }
-
-  return 1080;
-}
-
-function addUnique(array, value) {
-  if (!value) {
-    return;
-  }
-
-  for (var i = 0; i < array.length; i++) {
-    if (array[i] === value) {
-      return;
-    }
-  }
-
-  array.push(value);
-}
-
-/*
- * ============================================================
- * M3U8 EXTRACTION
- * ============================================================
- *
- * This is the important part.
- *
- * DeseneFaine ultimately produces URLs like:
- *
- * https://edge1-madrid-sprintcdn.r66nv9ed.com/
- * hls2/.../master.m3u8?... 
- *
- * We therefore look for:
- *
- * 1. Full https://...m3u8 URLs
- * 2. Escaped URLs
- * 3. JSON/player configuration
- * 4. file:
- * 5. source:
- * 6. src:
- * 7. data-file
- * 8. data-src
- * 9. SprintCDN specifically
- */
-
-function extractM3U8(html, pageUrl) {
-  var results = [];
-
-  if (!html) {
-    return results;
-  }
-
-  function add(value) {
-    value = cleanValue(value);
-
-    if (!value) {
-      return;
-    }
-
-    if (value.indexOf("//") === 0) {
-      value = "https:" + value;
-    }
-
-    if (!isHttp(value)) {
-      value =
-        absoluteUrl(
-          pageUrl,
-          value
-        );
-    }
-
-    if (isM3U8(value)) {
-      addUnique(results, value);
-    }
-  }
+  var source = cleanText(text);
 
   /*
-   * 1. Standard complete URLs.
+   * Normal URLs
    */
-  var fullUrlPattern =
-    /https?:\/\/[^"'<>\\\s]+?\.m3u8(?:\?[^"'<>\\\s]*)?/gi;
-
+  var regex1 = /https?:\/\/[^\s"'<>\\]+/gi;
   var match;
 
-  while (
-    (match =
-      fullUrlPattern.exec(html)) !==
-    null
-  ) {
-    add(match[0]);
-  }
+  while ((match = regex1.exec(source)) !== null) {
 
-  /*
-   * 2. Escaped URLs inside JS.
-   */
-  var escapedPattern =
-    /https?:\\\/\\\/[^"'<>\\\s]+?\.m3u8(?:\\?[^"'<>\\\s]*)?/gi;
-
-  while (
-    (match =
-      escapedPattern.exec(html)) !==
-    null
-  ) {
-    add(
-      match[0]
-        .replace(/\\\//g, "/")
-        .replace(/\\u0026/g, "&")
-    );
-  }
-
-  /*
-   * 3. Player configuration.
-   *
-   * file: "..."
-   * source: "..."
-   * src: "..."
-   * url: "..."
-   */
-  var configPattern =
-    /(?:file|source|src|url|stream|video|playlist|hls)\s*[:=]\s*["'`]([^"'`]+)["'`]/gi;
-
-  while (
-    (match =
-      configPattern.exec(html)) !==
-    null
-  ) {
-    add(match[1]);
-  }
-
-  /*
-   * 4. JSON-style escaped configuration.
-   */
-  var jsonPattern =
-    /"(?:file|source|src|url|stream|video|playlist|hls)"\s*:\s*"([^"]+)"/gi;
-
-  while (
-    (match =
-      jsonPattern.exec(html)) !==
-    null
-  ) {
-    add(match[1]);
-  }
-
-  /*
-   * 5. Anything containing sprintcdn + m3u8.
-   *
-   * This is specifically aimed at the URL you found.
-   */
-  var sprintPattern =
-    /https?:\/\/[^"'<>\\\s]*sprintcdn[^"'<>\\\s]*\.m3u8[^"'<>\\\s]*/gi;
-
-  while (
-    (match =
-      sprintPattern.exec(html)) !==
-    null
-  ) {
-    add(match[0]);
-  }
-
-  /*
-   * 6. HTML video/source elements.
-   */
-  try {
-    var $ =
-      cheerio.load(html);
-
-    $("video, source").each(
-      function(_, el) {
-        add(
-          $(el).attr("src") ||
-            $(el).attr("data-src") ||
-            $(el).attr("data-file") ||
-            $(el).attr("data-url")
-        );
-      }
-    );
+    var url = match[0];
 
     /*
-     * Some players store the source in attributes
-     * that aren't standard video attributes.
+     * Remove JS punctuation at the end.
      */
-    $("*").each(
-      function(_, el) {
-        var attrs = el.attribs || {};
+    url = url.replace(/[),;}'"\]]+$/g, "");
 
-        for (var key in attrs) {
-          if (
-            !Object.prototype.hasOwnProperty.call(
-              attrs,
-              key
-            )
-          ) {
-            continue;
-          }
-
-          var attrValue =
-            attrs[key];
-
-          if (
-            String(attrValue)
-              .toLowerCase()
-              .indexOf(".m3u8") >= 0
-          ) {
-            add(attrValue);
-          }
-        }
-      }
-    );
-  } catch (e) {}
-
-  return results;
-}
-
-/*
- * ============================================================
- * IFRAME EXTRACTION
- * ============================================================
- */
-
-function extractIframes(
-  html,
-  pageUrl
-) {
-  var results = [];
-
-  if (!html) {
-    return results;
+    if (isMediaUrl(url)) {
+      found.push(url);
+    }
   }
 
-  function add(value) {
-    value = cleanValue(value);
 
-    if (!value) {
+  /*
+   * Specifically search for .m3u8 URLs that may contain
+   * unusual characters such as commas in the path.
+   */
+  var regex2 = /https?:\/\/[^"'<> ]+?\.m3u8(?:\?[^"'<> ]+)?/gi;
+
+  while ((match = regex2.exec(source)) !== null) {
+
+    var m3u8 = match[0]
+      .replace(/\\\//g, "/")
+      .replace(/&amp;/g, "&")
+      .replace(/[),;}'"\]]+$/g, "");
+
+    found.push(m3u8);
+  }
+
+
+  /*
+   * Relative .m3u8
+   */
+  var regex3 = /["']([^"']+\.m3u8(?:\?[^"']+)?)["']/gi;
+
+  while ((match = regex3.exec(source)) !== null) {
+
+    var relative = cleanText(match[1]);
+
+    if (relative.indexOf("http") !== 0) {
+      relative = absoluteUrl(relative, baseUrl);
+    }
+
+    if (relative) {
+      found.push(relative);
+    }
+  }
+
+
+  /*
+   * Generic file/source/player configuration.
+   *
+   * Examples:
+   *
+   * file: "https://....m3u8"
+   * source: "https://....m3u8"
+   * src: "https://....m3u8"
+   * url: "https://....m3u8"
+   */
+  var regex4 =
+    /(?:file|source|src|url|stream|playlist|hls)\s*[:=]\s*["']([^"']+)["']/gi;
+
+  while ((match = regex4.exec(source)) !== null) {
+
+    var configUrl = cleanText(match[1]);
+
+    if (isMediaUrl(configUrl)) {
+
+      if (configUrl.indexOf("http") !== 0) {
+        configUrl = absoluteUrl(configUrl, baseUrl);
+      }
+
+      if (configUrl) {
+        found.push(configUrl);
+      }
+    }
+  }
+
+
+  /*
+   * SprintCDN-specific detection.
+   *
+   * The M3U8 we found manually looks like:
+   *
+   * edge1-madrid-sprintcdn....
+   * /hls2/....
+   * master.m3u8
+   */
+  var regex5 =
+    /https?:\/\/[^"'<> ]*sprintcdn[^"'<> ]*\/[^"'<> ]*\.m3u8(?:\?[^"'<> ]*)?/gi;
+
+  while ((match = regex5.exec(source)) !== null) {
+
+    var sprint = cleanText(match[0])
+      .replace(/[),;}'"\]]+$/g, "");
+
+    found.push(sprint);
+  }
+
+
+  /*
+   * Remove duplicates while preserving order.
+   */
+  var unique = [];
+
+  for (var i = 0; i < found.length; i++) {
+
+    if (!found[i]) {
+      continue;
+    }
+
+    var duplicate = false;
+
+    for (var j = 0; j < unique.length; j++) {
+
+      if (unique[j] === found[i]) {
+        duplicate = true;
+        break;
+      }
+    }
+
+    if (!duplicate) {
+      unique.push(found[i]);
+    }
+  }
+
+  return unique;
+}
+
+
+/* =========================================================
+   EXTRACT IFRAME URLS
+========================================================= */
+
+function extractIframeUrls(html, pageUrl) {
+
+  var urls = [];
+  var $ = cheerio.load(html);
+
+  $("iframe").each(function(_, el) {
+
+    var src =
+      $(el).attr("src") ||
+      $(el).attr("data-src") ||
+      $(el).attr("data-lazy-src");
+
+    if (!src) {
       return;
     }
 
-    if (value.indexOf("//") === 0) {
-      value = "https:" + value;
-    }
+    src = absoluteUrl(src, pageUrl);
 
-    if (!isHttp(value)) {
-      value =
-        absoluteUrl(
-          pageUrl,
-          value
-        );
-    }
-
-    if (!isHttp(value)) {
+    if (!src) {
       return;
     }
 
     if (
-      value.indexOf("youtube.com") >= 0 ||
-      value.indexOf("facebook.com") >= 0 ||
-      value.indexOf("doubleclick") >= 0
+      src.indexOf("facebook.com") !== -1 ||
+      src.indexOf("youtube.com") !== -1 ||
+      src.indexOf("doubleclick") !== -1
     ) {
       return;
     }
 
-    addUnique(results, value);
-  }
+    urls.push(src);
+  });
 
-  try {
-    var $ =
-      cheerio.load(html);
+  return urls;
+}
 
-    $("iframe").each(
-      function(_, el) {
-        add(
-          $(el).attr("src") ||
-            $(el).attr("data-src") ||
-            $(el).attr("data-lazy-src") ||
-            $(el).attr("data-url")
-        );
-      }
-    );
-  } catch (e) {}
 
-  var pattern =
-    /(?:src|data-src|data-lazy-src|data-url)\s*=\s*["']([^"']+)["']/gi;
+/* =========================================================
+   EXTRACT DESENEIFAINE EMBED / TID LINKS
+========================================================= */
+
+function extractInternalPlayerUrls(html, pageUrl) {
+
+  var urls = [];
+
+  /*
+   * Look for:
+
+   * ?trembed=0&trid=29030&trtype=1
+   */
+  var trembedRegex =
+    /(?:https?:\/\/[^"'<> ]*)?\?trembed=\d+&trid=\d+&trtype=\d+/gi;
 
   var match;
 
-  while (
-    (match =
-      pattern.exec(html)) !==
-    null
-  ) {
-    add(match[1]);
+  while ((match = trembedRegex.exec(html)) !== null) {
+
+    var url = match[0];
+
+    if (url.indexOf("?") === 0) {
+      url = MAIN_URL + "/" + url;
+    }
+
+    url = absoluteUrl(url, pageUrl);
+
+    if (url) {
+      urls.push(url);
+    }
   }
 
-  return results;
-}
-
-/*
- * ============================================================
- * DESENEFAINE SERVER LINKS
- * ============================================================
- */
-
-function extractTrid(html) {
-  var ids = [];
-
-  var patterns = [
-    /trid\s*=\s*["']?(\d+)/gi,
-    /trid["']?\s*[:=]\s*["']?(\d+)/gi,
-    /["']trid["']\s*:\s*["']?(\d+)/gi
-  ];
-
-  patterns.forEach(
-    function(pattern) {
-      var match;
-
-      while (
-        (match =
-          pattern.exec(html || "")) !==
-        null
-      ) {
-        addUnique(
-          ids,
-          match[1]
-        );
-      }
-    }
-  );
-
-  return ids;
-}
-
-function extractTrembedUrls(html) {
-  var results = [];
-
-  var trids =
-    extractTrid(html);
 
   /*
-   * Preserve exact trembed URLs if present.
+   * Look for:
+
+   * ?tid=...&trhide=1
+   *
+   * This is important because DeseneFaine uses a second
+   * internal player page before the actual media.
    */
-  var exact =
-    /(?:https?:\/\/[^"'<> ]*)?\??trembed=(\d+)[^"'<> ]*trid=(\d+)[^"'<> ]*/gi;
+  var tidRegex =
+    /(?:https?:\/\/[^"'<> ]*)?\?tid=[a-zA-Z0-9]+&trhide=1/gi;
 
-  var match;
+  while ((match = tidRegex.exec(html)) !== null) {
 
-  while (
-    (match =
-      exact.exec(html || "")) !==
-    null
-  ) {
-    addUnique(
-      results,
-      MAIN_URL +
-        "/?trembed=" +
-        match[1] +
-        "&trid=" +
-        match[2] +
-        "&trtype=1"
-    );
+    var tidUrl = match[0];
+
+    if (tidUrl.indexOf("?") === 0) {
+      tidUrl = MAIN_URL + "/" + tidUrl;
+    }
+
+    tidUrl = absoluteUrl(tidUrl, pageUrl);
+
+    if (tidUrl) {
+      urls.push(tidUrl);
+    }
   }
 
+
   /*
-   * Build all server candidates.
+   * Also inspect links directly.
    */
-  trids.forEach(
-    function(trid) {
-      for (
-        var i = 0;
-        i <= 12;
-        i++
-      ) {
-        addUnique(
-          results,
-          MAIN_URL +
-            "/?trembed=" +
-            i +
-            "&trid=" +
-            trid +
-            "&trtype=1"
-        );
+  var $ = cheerio.load(html);
+
+  $("a").each(function(_, el) {
+
+    var href = $(el).attr("href");
+
+    if (!href) {
+      return;
+    }
+
+    if (
+      href.indexOf("trembed=") !== -1 ||
+      href.indexOf("tid=") !== -1
+    ) {
+
+      var absolute = absoluteUrl(href, pageUrl);
+
+      if (absolute) {
+        urls.push(absolute);
       }
     }
-  );
+  });
 
-  return results;
+
+  /*
+   * Deduplicate.
+   */
+  var unique = [];
+
+  for (var i = 0; i < urls.length; i++) {
+
+    if (unique.indexOf(urls[i]) === -1) {
+      unique.push(urls[i]);
+    }
+  }
+
+  return unique;
 }
 
-/*
- * ============================================================
- * PLAYER PAGE RESOLUTION
- * ============================================================
- */
 
-function resolvePage(
-  url,
-  depth
-) {
-  depth =
-    depth || 0;
+/* =========================================================
+   RESOLVE PLAYER RECURSIVELY
+========================================================= */
 
-  if (depth > 5) {
-    log(
-      "Maximum recursion reached: " +
-        url
-    );
+function resolvePlayer(startUrl, depth, visited) {
 
+  visited = visited || [];
+
+  if (depth > 6) {
+    log("Maximum resolver depth reached.");
     return Promise.resolve([]);
   }
 
-  log(
-    "RESOLVE [" +
-      depth +
-      "]: " +
-      url
-  );
+  if (!startUrl) {
+    return Promise.resolve([]);
+  }
+
 
   /*
-   * Already a direct stream.
+   * Avoid infinite loops.
    */
-  if (isMedia(url)) {
-    return Promise.resolve([
-      {
-        url: url,
-        source: url
-      }
-    ]);
+  if (visited.indexOf(startUrl) !== -1) {
+    return Promise.resolve([]);
   }
 
-  return fetchText(
-    url,
-    {
-      "Referer":
-        MAIN_URL + "/",
-      "Accept":
-        "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-    }
-  )
-    .then(
-      function(html) {
-        log(
-          "HTML LENGTH: " +
-            String(
-              html || ""
-            ).length
-        );
+  visited.push(startUrl);
 
-        /*
-         * FIRST PRIORITY:
-         * Find the actual M3U8.
-         */
-        var streams =
-          extractM3U8(
-            html,
-            url
-          );
+  log("Resolver [" + depth + "] -> " + startUrl);
 
-        if (
-          streams.length > 0
-        ) {
-          log(
-            "M3U8 FOUND: " +
-              streams.length
-          );
-
-          streams.forEach(
-            function(stream) {
-              log(
-                "STREAM URL: " +
-                  stream
-              );
-            }
-          );
-
-          return streams.map(
-            function(stream) {
-              return {
-                url: stream,
-                source: url
-              };
-            }
-          );
-        }
-
-        /*
-         * SECOND:
-         * Find nested iframe.
-         */
-        var iframes =
-          extractIframes(
-            html,
-            url
-          );
-
-        /*
-         * THIRD:
-         * DeseneFaine trembed links.
-         */
-        var trembeds =
-          extractTrembedUrls(
-            html
-          );
-
-        trembeds.forEach(
-          function(embed) {
-            addUnique(
-              iframes,
-              embed
-            );
-          }
-        );
-
-        log(
-          "CHILD CANDIDATES: " +
-            iframes.length
-        );
-
-        if (
-          iframes.length === 0
-        ) {
-          log(
-            "NO M3U8 AND NO CHILD PAGE"
-          );
-
-          return [];
-        }
-
-        /*
-         * Resolve candidates in parallel.
-         *
-         * Limit to 16 so one page can't explode
-         * into hundreds of requests.
-         */
-        var jobs =
-          iframes
-            .slice(0, 16)
-            .map(
-              function(child) {
-                return resolvePage(
-                  child,
-                  depth + 1
-                ).catch(
-                  function(error) {
-                    log(
-                      "CHILD FAILED: " +
-                        child +
-                        " -> " +
-                        (
-                          error &&
-                          error.message
-                            ? error.message
-                            : String(
-                                error
-                              )
-                        )
-                    );
-
-                    return [];
-                  }
-                );
-              }
-            );
-
-        return Promise.all(
-          jobs
-        ).then(
-          function(all) {
-            var merged = [];
-
-            all.forEach(
-              function(list) {
-                (list || []).forEach(
-                  function(item) {
-                    if (
-                      item &&
-                      item.url
-                    ) {
-                      var exists =
-                        false;
-
-                      for (
-                        var i = 0;
-                        i <
-                        merged.length;
-                        i++
-                      ) {
-                        if (
-                          merged[i]
-                            .url ===
-                          item.url
-                        ) {
-                          exists =
-                            true;
-                          break;
-                        }
-                      }
-
-                      if (
-                        !exists
-                      ) {
-                        merged.push(
-                          item
-                        );
-                      }
-                    }
-                  }
-                );
-              }
-            );
-
-            return merged;
-          }
-        );
-      }
-    )
-    .catch(
-      function(error) {
-        log(
-          "RESOLVE ERROR: " +
-            (
-              error &&
-              error.message
-                ? error.message
-                : String(error)
-            )
-        );
-
-        return [];
-      }
-    );
-}
-
-/*
- * ============================================================
- * DESENEFAINE SEARCH
- * ============================================================
- */
-
-function searchSite(query) {
-  log(
-    "SEARCHING: " +
-      query
-  );
-
-  var url =
-    MAIN_URL +
-    "/?s=" +
-    encodeURIComponent(
-      query
-    );
-
-  return fetchText(url)
-    .then(
-      function(html) {
-        var $ =
-          cheerio.load(html);
-
-        var candidates =
-          [];
-
-        var words =
-          normalizeTitle(
-            query
-          )
-            .split(" ")
-            .filter(
-              function(word) {
-                return (
-                  word.length > 2
-                );
-              }
-            );
-
-        $("a").each(
-          function(_, el) {
-            var href =
-              $(el).attr(
-                "href"
-              );
-
-            if (!href) {
-              return;
-            }
-
-            var full =
-              absoluteUrl(
-                url,
-                href
-              );
-
-            if (
-              !full ||
-              full.indexOf(
-                "desenefaine.com"
-              ) < 0
-            ) {
-              return;
-            }
-
-            if (
-              /\/(category|tag|author|page|feed|wp-)/i.test(
-                full
-              )
-            ) {
-              return;
-            }
-
-            var text =
-              $(el)
-                .text()
-                .trim();
-
-            if (
-              text.length < 4
-            ) {
-              return;
-            }
-
-            var normalized =
-              normalizeTitle(
-                text
-              );
-
-            var score = 0;
-
-            words.forEach(
-              function(word) {
-                if (
-                  normalized.indexOf(
-                    word
-                  ) >= 0
-                ) {
-                  score++;
-                }
-              }
-            );
-
-            if (
-              score >=
-              Math.max(
-                1,
-                Math.ceil(
-                  words.length /
-                    2
-                )
-              )
-            ) {
-              candidates.push({
-                url: full,
-                score: score,
-                text: text
-              });
-            }
-          }
-        );
-
-        candidates.sort(
-          function(a, b) {
-            if (
-              b.score !==
-              a.score
-            ) {
-              return (
-                b.score -
-                a.score
-              );
-            }
-
-            return (
-              a.text.length -
-              b.text.length
-            );
-          }
-        );
-
-        function tryCandidate(
-          index
-        ) {
-          if (
-            index >=
-            candidates.length
-          ) {
-            return Promise.resolve(
-              null
-            );
-          }
-
-          var candidate =
-            candidates[index];
-
-          return fetchText(
-            candidate.url
-          )
-            .then(
-              function(page) {
-                if (
-                  page &&
-                  page.length >
-                    1000
-                ) {
-                  return {
-                    url:
-                      candidate.url,
-                    html:
-                      page
-                  };
-                }
-
-                return tryCandidate(
-                  index + 1
-                );
-              }
-            )
-            .catch(
-              function() {
-                return tryCandidate(
-                  index + 1
-                );
-              }
-            );
-        }
-
-        return tryCandidate(
-          0
-        );
-      }
-    )
-    .catch(
-      function(error) {
-        log(
-          "SEARCH ERROR: " +
-            (
-              error &&
-              error.message
-                ? error.message
-                : String(error)
-            )
-        );
-
-        return null;
-      }
-    );
-}
-
-/*
- * ============================================================
- * DIRECT PAGE LOOKUP
- * ============================================================
- */
-
-function findDirectPage(
-  title,
-  type,
-  season,
-  episode
-) {
-  var slug =
-    normalizeSlug(
-      title
-    );
-
-  if (
-    type === "tv" &&
-    season != null &&
-    episode != null
-  ) {
-    slug =
-      slug +
-      "-sezonul-" +
-      season +
-      "-episodul-" +
-      episode;
-  }
-
-  var prefixes =
-    type === "tv"
-      ? [
-          "epi",
-          "serial",
-          "desene"
-        ]
-      : [
-          "film",
-          "desene"
-        ];
-
-  var jobs =
-    prefixes.map(
-      function(prefix) {
-        var url =
-          MAIN_URL +
-          "/" +
-          prefix +
-          "/" +
-          slug +
-          "/";
-
-        return fetchText(url)
-          .then(
-            function(html) {
-              if (
-                html &&
-                html.length >
-                  1500 &&
-                !/does not exist/i.test(
-                  html
-                ) &&
-                !/nu am găsit/i.test(
-                  html
-                )
-              ) {
-                return {
-                  url: url,
-                  html: html
-                };
-              }
-
-              return null;
-            }
-          )
-          .catch(
-            function() {
-              return null;
-            }
-          );
-      }
-    );
-
-  return Promise.all(
-    jobs
-  ).then(
-    function(results) {
-      for (
-        var i = 0;
-        i < results.length;
-        i++
-      ) {
-        if (
-          results[i]
-        ) {
-          log(
-            "DIRECT PAGE: " +
-              results[i].url
-          );
-
-          return results[i];
-        }
-      }
-
-      return null;
-    }
-  );
-}
-
-/*
- * ============================================================
- * BUILD STREAM
- * ============================================================
- */
-
-function makeStream(
-  item,
-  pageUrl,
-  index
-) {
-  var url =
-    cleanValue(
-      item.url
-    );
-
-  if (
-    !isMedia(url)
-  ) {
-    return null;
-  }
-
-  var format =
-    getFormat(url);
-
-  var quality =
-    getQuality(url);
 
   /*
    * IMPORTANT:
    *
-   * The CDN URL is temporary/signed.
-   * Do NOT modify it.
-   *
-   * In particular:
-   * - don't remove query parameters
-   * - don't rebuild the URL
-   * - don't URL-encode it again
-   *
-   * Those parameters are part of the CDN authorization.
+   * Referer must be the page from which this player was loaded,
+   * not always the main DeseneFaine URL.
    */
+  var headers = Object.assign({}, FETCH_HEADERS, {
+    "Referer": startUrl
+  });
 
-  var referer =
-    item.source ||
-    pageUrl ||
-    MAIN_URL + "/";
 
-  var originMatch =
-    String(referer).match(
-      /^(https?:\/\/[^\/]+)/i
+  return fetchText(startUrl, {
+    headers: headers
+  }).then(function(html) {
+
+    if (!html) {
+      return [];
+    }
+
+
+    /*
+     * FIRST:
+     * Search the complete HTML AND JavaScript for actual media.
+     */
+    var media = extractMediaUrls(html, startUrl);
+
+    if (media.length > 0) {
+
+      log(
+        "FOUND MEDIA at depth " +
+        depth +
+        ": " +
+        media[0]
+      );
+
+      return media;
+    }
+
+
+    /*
+     * SECOND:
+     * Follow DeseneFaine's internal trembed/tid pages.
+     */
+    var internalUrls =
+      extractInternalPlayerUrls(html, startUrl);
+
+
+    /*
+     * THIRD:
+     * Follow normal iframes.
+     */
+    var iframeUrls =
+      extractIframeUrls(html, startUrl);
+
+
+    var nextUrls = [];
+
+
+    for (var i = 0; i < internalUrls.length; i++) {
+
+      if (nextUrls.indexOf(internalUrls[i]) === -1) {
+        nextUrls.push(internalUrls[i]);
+      }
+    }
+
+
+    for (var j = 0; j < iframeUrls.length; j++) {
+
+      if (nextUrls.indexOf(iframeUrls[j]) === -1) {
+        nextUrls.push(iframeUrls[j]);
+      }
+    }
+
+
+    if (nextUrls.length === 0) {
+
+      log(
+        "No media or next player found at depth " +
+        depth
+      );
+
+      return [];
+    }
+
+
+    log(
+      "Found " +
+      nextUrls.length +
+      " next player URL(s) at depth " +
+      depth
     );
 
-  var origin =
-    originMatch
-      ? originMatch[1]
-      : MAIN_URL;
+
+    /*
+     * Resolve sequentially.
+     *
+     * This is intentional for Hermes/Nuvio stability.
+     */
+    var chain = Promise.resolve([]);
+
+    for (var k = 0; k < nextUrls.length; k++) {
+
+      (function(nextUrl) {
+
+        chain = chain.then(function(existing) {
+
+          if (existing && existing.length > 0) {
+            return existing;
+          }
+
+          return resolvePlayer(
+            nextUrl,
+            depth + 1,
+            visited
+          );
+        });
+
+      })(nextUrls[k]);
+    }
+
+    return chain;
+
+  }).catch(function(error) {
+
+    log(
+      "Resolver error at depth " +
+      depth +
+      ": " +
+      error.message
+    );
+
+    return [];
+  });
+}
+
+
+/* =========================================================
+   BUILD STREAM OBJECT
+========================================================= */
+
+function buildStream(url, referer, index) {
+
+  /*
+   * Keep the COMPLETE signed query string.
+   *
+   * This is critical for SprintCDN URLs because:
+   *
+   * ?t=...
+   * &s=...
+   * &e=...
+   * &f=...
+   * etc.
+   *
+   * are part of the authorization.
+   */
+  var headers = Object.assign({}, STREAM_HEADERS, {
+    "Referer": referer || MAIN_URL + "/",
+    "Origin": MAIN_URL
+  });
+
+
+  var title = "1080p | RO Dub";
+
+  if (url.toLowerCase().indexOf(".m3u8") !== -1) {
+
+    return {
+      name: PROVIDER_NAME + " | HLS " + index,
+      title: title,
+      url: url,
+      quality: "1080p",
+      type: "m3u8",
+      format: "m3u8",
+      headers: headers,
+      provider: "desenefaine"
+    };
+  }
+
 
   return {
-    name:
-      PROVIDER_NAME +
-      " | Server " +
-      index,
-
-    title:
-      String(quality) +
-      "p | RO Dub",
-
+    name: PROVIDER_NAME + " | Direct " + index,
+    title: title,
     url: url,
-
-    quality: quality,
-
-    format: format,
-
-    type: format,
-
-    provider:
-      "desenefaine",
-
-    headers: {
-      "User-Agent":
-        USER_AGENT,
-      "Accept":
-        "*/*",
-      "Referer":
-        referer,
-      "Origin":
-        origin
-    }
+    quality: "1080p",
+    type: "mp4",
+    format: "mp4",
+    headers: headers,
+    provider: "desenefaine"
   };
 }
 
-/*
- * ============================================================
- * MAIN
- * ============================================================
- */
 
-function getStreams(
-  id,
-  type,
-  season,
-  episode
-) {
+/* =========================================================
+   SEARCH DESENEIFAINE
+========================================================= */
+
+function searchSite(query) {
+
+  var searchUrl =
+    MAIN_URL +
+    "/?s=" +
+    encodeURIComponent(query);
+
+
+  return fetchText(searchUrl)
+    .then(function(html) {
+
+      var $ = cheerio.load(html);
+
+      var bestMatch = null;
+
+      var normQuery =
+        normalizeTitle(query);
+
+      var queryWords =
+        normQuery
+          .split(" ")
+          .filter(function(w) {
+            return w.length > 2;
+          });
+
+
+      $("a").each(function(_, el) {
+
+        var href = $(el).attr("href");
+
+        if (!href) {
+          return;
+        }
+
+        if (href.indexOf("desenefaine.com") === -1) {
+          return;
+        }
+
+        if (
+          /\/(category|tag|author|page|feed|wp-)/i.test(href)
+        ) {
+          return;
+        }
+
+
+        var text =
+          $(el).text().trim();
+
+        if (text.length < 5) {
+          return;
+        }
+
+
+        var normText =
+          normalizeTitle(text);
+
+        var matchCount = 0;
+
+
+        queryWords.forEach(function(word) {
+
+          if (normText.indexOf(word) !== -1) {
+            matchCount++;
+          }
+        });
+
+
+        if (
+          matchCount >=
+          Math.ceil(queryWords.length / 2)
+        ) {
+
+          if (
+            !bestMatch ||
+            text.length < bestMatch.text.length
+          ) {
+
+            bestMatch = {
+              href: href,
+              text: text,
+              score: matchCount
+            };
+          }
+        }
+      });
+
+
+      if (!bestMatch) {
+        return null;
+      }
+
+
+      return fetchText(bestMatch.href)
+        .then(function(pageHtml) {
+
+          return {
+            url: bestMatch.href,
+            html: pageHtml
+          };
+        });
+
+    })
+    .catch(function() {
+      return null;
+    });
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+function getStreams(id, type, season, episode) {
+
   log(
-    "========================================"
+    "Requested: ID=" +
+    id +
+    ", Type=" +
+    type +
+    ", S=" +
+    season +
+    ", E=" +
+    episode
   );
 
-  log(
-    "REQUEST: ID=" +
-      id +
-      " TYPE=" +
-      type +
-      " S=" +
-      season +
-      " E=" +
-      episode
-  );
 
   var isImdb =
-    String(id || "")
-      .indexOf("tt") ===
-    0;
+    String(id).startsWith("tt");
 
+
+  /*
+   * FIXED IMDb endpoint.
+   *
+   * Your original code produced:
+   *
+   * /find/tt123...?external_source=imdb_id?api_key=...
+   *
+   * which is invalid.
+   */
   var tmdbUrl;
 
+
   if (isImdb) {
+
     tmdbUrl =
       "https://api.themoviedb.org/3/find/" +
-      encodeURIComponent(id) +
-      "?api_key=" +
+      id +
+      "?external_source=imdb_id" +
+      "&api_key=" +
       TMDB_API_KEY +
-      "&external_source=imdb_id" +
       "&language=ro-RO";
+
   } else {
+
     tmdbUrl =
       "https://api.themoviedb.org/3/" +
       (
@@ -1332,446 +885,474 @@ function getStreams(
           ? "tv/"
           : "movie/"
       ) +
-      encodeURIComponent(id) +
+      id +
       "?api_key=" +
       TMDB_API_KEY +
       "&language=ro-RO";
   }
 
-  log(
-    "TMDB: " +
-      tmdbUrl
-  );
 
-  return fetchJson(
-    tmdbUrl
-  )
-    .then(
-      function(data) {
-        var roTitle = "";
-        var enTitle = "";
+  return fetchJson(tmdbUrl)
 
-        if (isImdb) {
-          var results =
+    .then(function(data) {
+
+      var roTitle = "";
+      var enTitle = "";
+
+
+      if (isImdb) {
+
+        var results =
+          type === "tv"
+            ? data.tv_results
+            : data.movie_results;
+
+
+        if (
+          results &&
+          results.length > 0
+        ) {
+
+          roTitle =
             type === "tv"
-              ? data.tv_results
-              : data.movie_results;
+              ? results[0].name
+              : results[0].title;
 
-          if (
-            results &&
-            results.length > 0
-          ) {
-            if (
-              type === "tv"
+          enTitle =
+            type === "tv"
+              ? results[0].original_name
+              : results[0].original_title;
+        }
+
+      } else {
+
+        roTitle =
+          type === "tv"
+            ? data.name
+            : data.title;
+
+        enTitle =
+          type === "tv"
+            ? data.original_name
+            : data.original_title;
+      }
+
+
+      log(
+        "TMDB title: " +
+        roTitle +
+        " / " +
+        enTitle
+      );
+
+
+      if (!roTitle && !enTitle) {
+
+        log("TMDB returned no title.");
+
+        return null;
+      }
+
+
+      /* =====================================================
+         DIRECT URL
+      ===================================================== */
+
+      function tryDirectUrl(title) {
+
+        if (!title) {
+          return Promise.resolve(null);
+        }
+
+
+        var slug =
+          normalizeSlug(title);
+
+
+        if (
+          type === "tv" &&
+          season &&
+          episode
+        ) {
+
+          slug =
+            normalizeSlug(title) +
+            "-sezonul-" +
+            season +
+            "-episodul-" +
+            episode;
+        }
+
+
+        var prefixes =
+          type === "tv"
+            ? ["epi", "serial", "desene"]
+            : ["film", "desene"];
+
+
+        var promises =
+          prefixes.map(function(prefix) {
+
+            var url =
+              MAIN_URL +
+              "/" +
+              prefix +
+              "/" +
+              slug +
+              "/";
+
+
+            return fetchText(url)
+              .then(function(html) {
+
+                if (
+                  html &&
+                  html.length > 2000 &&
+                  html.indexOf("does not exist") === -1 &&
+                  html.indexOf("Nu am găsit") === -1
+                ) {
+
+                  return {
+                    url: url,
+                    html: html
+                  };
+                }
+
+                return null;
+
+              })
+              .catch(function() {
+                return null;
+              });
+          });
+
+
+        return Promise.all(promises)
+          .then(function(results) {
+
+            for (
+              var i = 0;
+              i < results.length;
+              i++
             ) {
-              roTitle =
-                results[0].name ||
-                "";
-              enTitle =
-                results[0]
-                  .original_name ||
-                "";
-            } else {
-              roTitle =
-                results[0].title ||
-                "";
-              enTitle =
-                results[0]
-                  .original_title ||
-                "";
-            }
-          }
-        } else {
-          if (
-            type === "tv"
-          ) {
-            roTitle =
-              data.name || "";
-            enTitle =
-              data.original_name ||
-              "";
-          } else {
-            roTitle =
-              data.title || "";
-            enTitle =
-              data.original_title ||
-              "";
-          }
-        }
 
-        log(
-          "RO TITLE: " +
-            roTitle
-        );
+              if (results[i]) {
 
-        log(
-          "EN TITLE: " +
-            enTitle
-        );
-
-        var titles = [];
-
-        if (roTitle) {
-          titles.push(
-            roTitle
-          );
-        }
-
-        if (
-          enTitle &&
-          enTitle !==
-            roTitle
-        ) {
-          titles.push(
-            enTitle
-          );
-        }
-
-        function tryTitle(
-          index
-        ) {
-          if (
-            index >=
-            titles.length
-          ) {
-            return Promise.resolve(
-              null
-            );
-          }
-
-          return findDirectPage(
-            titles[index],
-            type,
-            season,
-            episode
-          ).then(
-            function(page) {
-              if (page) {
-                return page;
-              }
-
-              return tryTitle(
-                index + 1
-              );
-            }
-          );
-        }
-
-        return tryTitle(
-          0
-        ).then(
-          function(page) {
-            if (page) {
-              return page;
-            }
-
-            return searchSite(
-              roTitle ||
-                enTitle ||
-                String(id)
-            );
-          }
-        );
-      }
-    )
-    .catch(
-      function(error) {
-        log(
-          "TMDB ERROR: " +
-            (
-              error &&
-              error.message
-                ? error.message
-                : String(error)
-            )
-        );
-
-        /*
-         * Fallback search.
-         */
-        return searchSite(
-          String(id)
-        );
-      }
-    )
-    .then(
-      function(page) {
-        if (
-          !page ||
-          !page.html
-        ) {
-          log(
-            "NO DESENEFAINE PAGE"
-          );
-
-          return [];
-        }
-
-        log(
-          "USING PAGE: " +
-            page.url
-        );
-
-        /*
-         * First check whether the actual movie page
-         * already contains the M3U8.
-         */
-        var direct =
-          extractM3U8(
-            page.html,
-            page.url
-          );
-
-        if (
-          direct.length > 0
-        ) {
-          log(
-            "DIRECT M3U8 ON MOVIE PAGE!"
-          );
-
-          return direct.map(
-            function(url) {
-              return {
-                url: url,
-                source: page.url
-              };
-            }
-          );
-        }
-
-        /*
-         * Get iframe candidates.
-         */
-        var embeds =
-          extractIframes(
-            page.html,
-            page.url
-          );
-
-        /*
-         * Add trembed/trid candidates.
-         */
-        var trembeds =
-          extractTrembedUrls(
-            page.html
-          );
-
-        trembeds.forEach(
-          function(url) {
-            addUnique(
-              embeds,
-              url
-            );
-          }
-        );
-
-        log(
-          "EMBED CANDIDATES: " +
-            embeds.length
-        );
-
-        embeds.forEach(
-          function(url, index) {
-            log(
-              "EMBED " +
-                (index + 1) +
-                ": " +
-                url
-            );
-          }
-        );
-
-        if (
-          embeds.length ===
-          0
-        ) {
-          log(
-            "NO EMBEDS"
-          );
-
-          return [];
-        }
-
-        /*
-         * Resolve all server choices.
-         */
-        var jobs =
-          embeds
-            .slice(0, 16)
-            .map(
-              function(embed) {
-                return resolvePage(
-                  embed,
-                  0
+                log(
+                  "Direct URL match: " +
+                  results[i].url
                 );
+
+                return results[i];
               }
-            );
+            }
 
-        return Promise.all(
-          jobs
-        ).then(
-          function(all) {
-            var resolved =
-              [];
 
-            all.forEach(
-              function(list) {
-                (list || []).forEach(
-                  function(item) {
-                    if (
-                      !item ||
-                      !item.url
-                    ) {
-                      return;
+            return null;
+          });
+      }
+
+
+      /* =====================================================
+         FIND PAGE
+      ===================================================== */
+
+      return tryDirectUrl(roTitle)
+
+        .then(function(result) {
+
+          if (result) {
+            return result;
+          }
+
+
+          if (
+            enTitle &&
+            enTitle !== roTitle
+          ) {
+
+            return tryDirectUrl(enTitle)
+              .then(function(enResult) {
+
+                if (enResult) {
+                  return enResult;
+                }
+
+
+                return searchSite(roTitle)
+                  .then(function(searchResult) {
+
+                    if (searchResult) {
+                      return searchResult;
                     }
 
-                    for (
-                      var i = 0;
-                      i <
-                      resolved.length;
-                      i++
-                    ) {
-                      if (
-                        resolved[i]
-                          .url ===
-                        item.url
-                      ) {
-                        return;
-                      }
-                    }
-
-                    resolved.push(
-                      item
-                    );
-                  }
-                );
-              }
-            );
-
-            log(
-              "RESOLVED MEDIA: " +
-                resolved.length
-            );
-
-            var streams =
-              [];
-
-            resolved.forEach(
-              function(item, index) {
-                var stream =
-                  makeStream(
-                    item,
-                    page.url,
-                    index + 1
-                  );
-
-                if (stream) {
-                  log(
-                    "================================"
-                  );
-
-                  log(
-                    "FINAL STREAM " +
-                      (index + 1)
-                  );
-
-                  log(
-                    "URL: " +
-                      stream.url
-                  );
-
-                  log(
-                    "TYPE: " +
-                      stream.type
-                  );
-
-                  log(
-                    "REFERER: " +
-                      stream.headers
-                        .Referer
-                  );
-
-                  streams.push(
-                    stream
-                  );
-                }
-              }
-            );
-
-            /*
-             * M3U8 first.
-             */
-            streams.sort(
-              function(a, b) {
-                if (
-                  a.type ===
-                    "m3u8" &&
-                  b.type !==
-                    "m3u8"
-                ) {
-                  return -1;
-                }
-
-                if (
-                  a.type !==
-                    "m3u8" &&
-                  b.type ===
-                    "m3u8"
-                ) {
-                  return 1;
-                }
-
-                return (
-                  Number(
-                    b.quality ||
-                      0
-                  ) -
-                  Number(
-                    a.quality ||
-                      0
-                  )
-                );
-              }
-            );
-
-            log(
-              "RETURNING " +
-                streams.length +
-                " STREAMS"
-            );
-
-            return streams;
+                    return searchSite(enTitle);
+                  });
+              });
           }
-        );
+
+
+          return searchSite(roTitle);
+        });
+
+    })
+
+
+    /* =======================================================
+       RESOLVE ACTUAL PLAYER
+    ======================================================= */
+
+    .then(function(result) {
+
+      if (!result || !result.html) {
+
+        log("No valid page found.");
+
+        return [];
       }
-    )
-    .catch(
-      function(error) {
+
+
+      log(
+        "Found movie page: " +
+        result.url
+      );
+
+
+      /*
+       * IMPORTANT:
+       *
+       * Do NOT return the movie page iframe.
+       *
+       * Resolve it until we find the actual media.
+       */
+      return extractInternalPlayerUrls(
+        result.html,
+        result.url
+      ).concat(
+        extractIframeUrls(
+          result.html,
+          result.url
+        )
+      );
+
+    })
+
+    .then(function(playerUrls) {
+
+      if (!playerUrls || playerUrls.length === 0) {
+
         log(
-          "FATAL: " +
-            (
-              error &&
-              error.message
-                ? error.message
-                : String(error)
-            )
+          "No player/iframe URLs found."
         );
 
         return [];
       }
-    );
+
+
+      /*
+       * Deduplicate.
+       */
+      var unique = [];
+
+      for (var i = 0; i < playerUrls.length; i++) {
+
+        if (
+          playerUrls[i] &&
+          unique.indexOf(playerUrls[i]) === -1
+        ) {
+
+          unique.push(playerUrls[i]);
+        }
+      }
+
+
+      log(
+        "Starting resolver with " +
+        unique.length +
+        " player URL(s)"
+      );
+
+
+      /*
+       * Try each player sequentially.
+       */
+      var chain =
+        Promise.resolve([]);
+
+
+      for (
+        var j = 0;
+        j < unique.length;
+        j++
+      ) {
+
+        (function(playerUrl) {
+
+          chain =
+            chain.then(function(existing) {
+
+              if (
+                existing &&
+                existing.length > 0
+              ) {
+
+                return existing;
+              }
+
+
+              return resolvePlayer(
+                playerUrl,
+                0,
+                []
+              );
+            });
+
+        })(unique[j]);
+      }
+
+
+      return chain;
+    })
+
+
+    /* =======================================================
+       RETURN ONLY REAL MEDIA TO NUVIO
+    ======================================================= */
+
+    .then(function(mediaUrls) {
+
+      if (
+        !mediaUrls ||
+        mediaUrls.length === 0
+      ) {
+
+        log(
+          "FINAL RESULT: No direct media found."
+        );
+
+        return [];
+      }
+
+
+      var streams = [];
+
+
+      for (
+        var i = 0;
+        i < mediaUrls.length;
+        i++
+      ) {
+
+        var mediaUrl =
+          mediaUrls[i];
+
+
+        /*
+         * Absolutely do not give Nuvio:
+         *
+         * iframe HTML
+         * trembed page
+         * tid page
+         *
+         * Only media.
+         */
+        if (!isMediaUrl(mediaUrl)) {
+          continue;
+        }
+
+
+        /*
+         * Prefer HLS.
+         */
+        var duplicate = false;
+
+        for (
+          var j = 0;
+          j < streams.length;
+          j++
+        ) {
+
+          if (
+            streams[j].url === mediaUrl
+          ) {
+
+            duplicate = true;
+            break;
+          }
+        }
+
+
+        if (!duplicate) {
+
+          /*
+           * We don't know the exact player page that
+           * generated the URL here, so MAIN_URL is used
+           * as fallback. The media URL itself remains
+           * untouched.
+           */
+          streams.push(
+            buildStream(
+              mediaUrl,
+              MAIN_URL + "/",
+              streams.length + 1
+            )
+          );
+        }
+      }
+
+
+      log(
+        "FINAL RESULT: " +
+        streams.length +
+        " playable stream(s)"
+      );
+
+
+      for (
+        var k = 0;
+        k < streams.length;
+        k++
+      ) {
+
+        log(
+          "STREAM " +
+          (k + 1) +
+          ": " +
+          streams[k].url
+        );
+      }
+
+
+      return streams;
+    })
+
+
+    .catch(function(error) {
+
+      log(
+        "Fatal Error: " +
+        error.message
+      );
+
+      return [];
+    });
 }
 
+
+/* =========================================================
+   EXPORT
+========================================================= */
+
 if (
-  typeof module !==
-    "undefined" &&
+  typeof module !== "undefined" &&
   module.exports
 ) {
+
   module.exports = {
-    getStreams:
-      getStreams
+    getStreams: getStreams
   };
+
 } else {
-  global.getStreams =
-    getStreams;
+
+  global.getStreams = getStreams;
 }
