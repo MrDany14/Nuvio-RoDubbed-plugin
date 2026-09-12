@@ -6,11 +6,9 @@ var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
 var FETCH_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+  "Accept": "*/*",
   "Accept-Language": "ro-RO,ro;q=0.9,en-US;q=0.8,en;q=0.7"
 };
-
-function log(msg) { console.log("[" + PROVIDER_NAME + "] " + msg); }
 
 function fetchText(url, options) {
   options = options || {};
@@ -40,6 +38,48 @@ function normalizeSlug(value) {
 
 function normalizeTitle(value) {
   return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+// --- CORE PLAYER4ME DECRYPTION LOGIC ---
+function extractDecryptedM3U8(iframeUrl) {
+  return new Promise(function(resolve) {
+    var filecodeMatch = iframeUrl.match(/\/(?:e|embed|video|v|play|watch)\/([^/?#]+)/i);
+    if (!filecodeMatch) return resolve(null);
+    
+    var filecode = filecodeMatch[1];
+    var hostMatch = iframeUrl.match(/^https?:\/\/([^/?#]+)/i);
+    if (!hostMatch) return resolve(null);
+    var host = hostMatch[1];
+    
+    var apiUrl = "https://" + host + "/api/v1/video?id=" + encodeURIComponent(filecode) + "&w=2048&h=1152&r=";
+
+    fetchText(apiUrl, { "Referer": iframeUrl, "Origin": "https://" + host }).then(function(body) {
+      // 1. Check if it's unencrypted JSON
+      var m3u8Regex = /(https?:\/\/[^"'<>\\\s]+\.m3u8[^"'<>\\\s]*)/i;
+      var unencryptedMatch = body.match(m3u8Regex);
+      if (unencryptedMatch && unencryptedMatch[1]) {
+          return resolve(unencryptedMatch[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&"));
+      }
+
+      // 2. Run AES Decryption
+      try {
+        var CryptoJS = require("crypto-js");
+        var key = CryptoJS.enc.Hex.parse("6b69656d7469656e6d75613931316361");
+        var iv = CryptoJS.enc.Hex.parse("313233343536373839306f6975797472");
+        var encrypted = CryptoJS.enc.Hex.parse(String(body).trim());
+        var decrypted = CryptoJS.AES.decrypt({ ciphertext: encrypted }, key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
+        var text = decrypted.toString(CryptoJS.enc.Utf8);
+        
+        var decryptedMatch = text.match(m3u8Regex);
+        if (decryptedMatch && decryptedMatch[1]) {
+            return resolve(decryptedMatch[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&"));
+        }
+      } catch (e) {
+        // Crypto failed
+      }
+      resolve(null);
+    }).catch(function() { resolve(null); });
+  });
 }
 
 function getStreams(id, type, season, episode) {
@@ -97,34 +137,34 @@ function getStreams(id, type, season, episode) {
         if (src.startsWith("//")) src = "https:" + src;
         if (src.includes("facebook.com") || src.includes("youtube.com")) return;
 
-        // 1. ALWAYS push the raw iframe first (Guarantees Nuvio shows *something*)
-        streams.push({
-            name: PROVIDER_NAME + " | Iframe Fallback",
-            title: "Will likely loop",
-            url: src,
-            quality: "1080p",
-            headers: { "Referer": result.url, "User-Agent": FETCH_HEADERS["User-Agent"] },
-            provider: "desenefaine"
-        });
+        var iframeDomain = src.match(/^https?:\/\/([^/?#]+)/i)[0];
 
-        // 2. Try to fetch and extract the direct stream
-        var p = fetchText(src, { headers: { "Referer": result.url } }).then(function(iframeHtml) {
-            var match = iframeHtml.match(/(https?:\/\/[^"'<>\\\s]+\.(?:m3u8|mp4)[^"'<>\\\s]*)/i);
-            if (match && match[1]) {
-                var directUrl = match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
+        var p = extractDecryptedM3U8(src).then(function(directUrl) {
+            if (directUrl) {
                 streams.push({
-                    name: PROVIDER_NAME + " | Direct Test",
-                    title: "Should play without loop",
-                    url: directUrl,
+                    name: PROVIDER_NAME + " | Server 1 (HLS Decrypted)",
+                    title: "1080p | RO Dub",
+                    url: directUrl, // Successfully extracted sprintcdn m3u8
                     quality: "1080p",
-                    isM3U8: directUrl.includes(".m3u8"),
-                    headers: { "Referer": src, "Origin": src.match(/^https?:\/\/([^/?#]+)/i)[0], "User-Agent": FETCH_HEADERS["User-Agent"] },
+                    isM3U8: true, // Tells ExoPlayer to handle HLS chunks
                     behaviorHints: { bingeGroup: "desenefaine-1080p" },
+                    headers: { 
+                        "User-Agent": FETCH_HEADERS["User-Agent"], 
+                        "Referer": iframeDomain + "/", // Bypasses CDN Block
+                        "Origin": iframeDomain
+                    },
+                    provider: "desenefaine"
+                });
+            } else {
+                streams.push({
+                    name: PROVIDER_NAME + " | Iframe Fallback (Loop Warning)",
+                    title: "Extraction Failed",
+                    url: src,
+                    quality: "1080p",
+                    headers: { "Referer": result.url, "User-Agent": FETCH_HEADERS["User-Agent"] },
                     provider: "desenefaine"
                 });
             }
-        }).catch(function(e) {
-            log("Extraction failed: " + e.message);
         });
         
         iframePromises.push(p);
@@ -134,7 +174,7 @@ function getStreams(id, type, season, episode) {
           return streams;
       });
     });
-  }).catch(function(e) {
+  }).catch(function() {
     return [];
   });
 }
