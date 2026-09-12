@@ -1975,6 +1975,9 @@ async function processPage(
       continue;
     }
 
+    const hostStr = getHostFromUrl(embedUrl);
+    const correctOrigin = hostStr ? "https://" + hostStr : MAIN_URL;
+
     streams.push({
       name: PROVIDER_NAME,
       title:
@@ -1986,8 +1989,7 @@ async function processPage(
       headers: {
         Referer: embedUrl,
         "User-Agent": USER_AGENT,
-        Origin:
-          MAIN_URL,
+        Origin: correctOrigin,
       },
       provider: PROVIDER_ID,
     });
@@ -2032,6 +2034,9 @@ async function processPage(
 
     if (!videoUrl) continue;
 
+    const hostStr = getHostFromUrl(embedUrl);
+    const correctOrigin = hostStr ? "https://" + hostStr : MAIN_URL;
+
     streams.push({
       name: PROVIDER_NAME,
       title:
@@ -2043,8 +2048,7 @@ async function processPage(
       headers: {
         Referer: embedUrl,
         "User-Agent": USER_AGENT,
-        Origin:
-          MAIN_URL,
+        Origin: correctOrigin,
       },
       provider: PROVIDER_ID,
     });
