@@ -66,6 +66,118 @@ function normalizeTitle(value) {
     .trim();
 }
 
+// -----------------------------------------------------------------------------
+// PLAYER4ME / SPRINTCDN DECRYPTION LOGIC
+// -----------------------------------------------------------------------------
+var STREAM_EMBED_HOSTS = ["player4me.com", "streamp2p.com", "seekstreaming.com"];
+
+function getHostFromUrl(url) {
+  if (!url) return "";
+  var m = String(url).match(/^https?:\/\/([^\/?#]+)/i);
+  return m ? m[1].toLowerCase() : "";
+}
+
+function isStreamEmbedHost(url) {
+  var host = getHostFromUrl(url);
+  return STREAM_EMBED_HOSTS.some(function(item) { return host.includes(item); });
+}
+
+function extractFilecode(url) {
+  if (!url) return null;
+  var u = String(url);
+  var queryPatterns = [/[?&](?:id|file|code|filecode)=([^&#]+)/i];
+  for (var i = 0; i < queryPatterns.length; i++) {
+    var m = u.match(queryPatterns[i]);
+    if (m && m[1]) return decodeURIComponent(m[1]);
+  }
+  var pathPatterns = [/\/(?:e|embed|video|v|play|watch)\/([^/?#]+)/i, /\/([^/?#]+)\/?(?:\?.*)?$/i];
+  for (var j = 0; j < pathPatterns.length; j++) {
+    var m2 = u.match(pathPatterns[j]);
+    if (m2 && m2[1]) {
+      var candidate = decodeURIComponent(m2[1]);
+      if (candidate.length >= 3 && !candidate.includes(".html") && !candidate.includes(".php")) return candidate;
+    }
+  }
+  return null;
+}
+
+function decryptStreamEmbedResponse(text) {
+  try {
+    var CryptoJS = require("crypto-js");
+    var keyHex = "6b69656d7469656e6d75613931316361";
+    var ivHex = "313233343536373839306f6975797472";
+    var key = CryptoJS.enc.Hex.parse(keyHex);
+    var iv = CryptoJS.enc.Hex.parse(ivHex);
+    var encrypted = CryptoJS.enc.Hex.parse(String(text).trim());
+    var decrypted = CryptoJS.AES.decrypt({ ciphertext: encrypted }, key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
+    return decrypted.toString(CryptoJS.enc.Utf8) || null;
+  } catch (e) {
+    log("Decryption failed: " + e.message);
+    return null;
+  }
+}
+
+function extractMasterUrlFromPayload(payload) {
+  if (!payload) return null;
+  var text = String(payload).trim();
+  try {
+    var obj = JSON.parse(text);
+    if (obj) {
+      var candidates = [obj.source, obj.master, obj.masterUrl, obj.master_url, obj.url, obj.file, obj.playlist];
+      for (var i = 0; i < candidates.length; i++) {
+        if (candidates[i] && typeof candidates[i] === "string" && /^https?:\/\//i.test(candidates[i])) return candidates[i];
+      }
+      if (obj.data) {
+        var nested = extractMasterUrlFromPayload(JSON.stringify(obj.data));
+        if (nested) return nested;
+      }
+    }
+  } catch (_) {}
+
+  var patterns = [
+    /["']?(?:source|masterUrl|master_url|master|url|file|playlist)["']?\s*[:=]\s*["'](https?:\/\/[^"']+)["']/i,
+    /(https?:\/\/[^"'\\\s<>]+\.m3u8[^"'\\\s<>]*)/i,
+    /(https?:\/\/[^"'\\\s<>]+\.mp4[^"'\\\s<>]*)/i,
+  ];
+  for (var j = 0; j < patterns.length; j++) {
+    var m = text.match(patterns[j]);
+    if (m && m[1]) return m[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
+  }
+  if (/^https?:\/\//i.test(text)) return text;
+  return null;
+}
+
+function resolveStreamEmbedAPI(embedUrl) {
+  var filecode = extractFilecode(embedUrl);
+  if (!filecode) return Promise.resolve(null);
+  
+  var host = getHostFromUrl(embedUrl);
+  var apiUrl = "https://" + host + "/api/v1/video?id=" + encodeURIComponent(filecode) + "&w=2048&h=1152&r=";
+
+  log("Fetching Player4Me API: " + apiUrl);
+
+  return fetchText(apiUrl, {
+    headers: { "Referer": embedUrl, "Origin": "https://" + host, "User-Agent": STREAM_HEADERS["User-Agent"] }
+  }).then(function(body) {
+    var direct = extractMasterUrlFromPayload(body);
+    if (direct) return direct;
+    
+    var decrypted = decryptStreamEmbedResponse(body);
+    if (decrypted) {
+        var finalUrl = extractMasterUrlFromPayload(decrypted);
+        log("DECRYPTED SPRINTCDN URL: " + finalUrl);
+        return finalUrl;
+    }
+    return null;
+  }).catch(function(e) {
+    log("API Fetch failed: " + e.message);
+    return null; 
+  });
+}
+
+// -----------------------------------------------------------------------------
+// MAIN SCRAPING LOGIC
+// -----------------------------------------------------------------------------
 function getStreams(id, type, season, episode) {
   log("Requested: ID=" + id + ", Type=" + type + ", S=" + season + ", E=" + episode);
   
@@ -113,10 +225,7 @@ function getStreams(id, type, season, episode) {
       
       return Promise.all(promises).then(function(results) {
         for (var i = 0; i < results.length; i++) {
-          if (results[i]) {
-            log("Direct URL match: " + results[i].url);
-            return results[i];
-          }
+          if (results[i]) return results[i];
         }
         return null;
       });
@@ -178,9 +287,9 @@ function getStreams(id, type, season, episode) {
         return [];
       }
 
-      log("Extracting from: " + result.url);
       var $$ = cheerio.load(result.html);
       var streams = [];
+      var iframePromises = [];
       var serverCount = 1;
 
       var currentHeaders = Object.assign({}, STREAM_HEADERS, {
@@ -188,7 +297,7 @@ function getStreams(id, type, season, episode) {
         "Origin": MAIN_URL
       });
 
-      // 1. PRIORITY: Direct .mp4 or .m3u8 links
+      // 1. PRIORITY: Direct .mp4 or .m3u8 links in HTML
       $$("source, video").each(function(_, el) {
         var src = $$(el).attr("src");
         if (src && (src.indexOf(".mp4") !== -1 || src.indexOf(".m3u8") !== -1)) {
@@ -200,17 +309,15 @@ function getStreams(id, type, season, episode) {
             title: "1080p | RO Dub",
             url: src,
             quality: "1080p",
-            isM3U8: src.includes(".m3u8"),
+            isM3U8: src.indexOf(".m3u8") !== -1, // Nuvio Flag
             headers: currentHeaders,
             provider: "desenefaine"
           });
         }
       });
 
-      // 2. FALLBACK: Resolve Iframes to direct video files
+      // 2. FALLBACK: Decrypt the Player4Me Iframes to get SprintCDN .m3u8
       if (streams.length === 0) {
-        var iframePromises = [];
-        
         $$("iframe").each(function(_, el) {
           var src = $$(el).attr("src") || $$(el).attr("data-src") || $$(el).attr("data-lazy-src");
           if (!src) return;
@@ -218,73 +325,46 @@ function getStreams(id, type, season, episode) {
           if (src.startsWith("//")) src = "https:" + src;
           else if (!src.startsWith("http")) src = MAIN_URL + (src.startsWith("/") ? "" : "/") + src;
 
-          if (src.includes("facebook.com") || src.includes("youtube.com") || src.includes("doubleclick")) {
-            return;
-          }
+          if (src.includes("facebook.com") || src.includes("youtube.com") || src.includes("doubleclick")) return;
 
           log("FOUND IFRAME: " + src);
 
-          // Silently fetch iframe to grab .m3u8 without loops
-          var p = fetchText(src, { headers: { "Referer": result.url } }).then(function(html) {
-            var m3u8Match = html.match(/(https?:\/\/[^"'<>\\\s]+\.m3u8[^"'<>\\\s]*)/i);
-            var mp4Match = html.match(/(https?:\/\/[^"'<>\\\s]+\.mp4[^"'<>\\\s]*)/i);
-            var directUrl = null;
-
-            if (m3u8Match && m3u8Match[1]) directUrl = m3u8Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
-            else if (mp4Match && mp4Match[1]) directUrl = mp4Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
-
-            if (directUrl) {
-                var iframeDomain = src.match(/^https?:\/\/([^/?#]+)/i)[0];
-                return {
-                    name: PROVIDER_NAME + " | Server " + serverCount++,
-                    title: "1080p | RO Dub",
-                    url: directUrl, // Fixes loop
-                    quality: "1080p",
-                    isM3U8: directUrl.includes(".m3u8"),
-                    headers: {
-                        "User-Agent": STREAM_HEADERS["User-Agent"],
-                        "Referer": iframeDomain + "/",
-                        "Origin": iframeDomain
-                    },
-                    provider: "desenefaine"
-                };
-            } else {
-                // FALLBACK: If extraction fails, push the iframe anyway so it at least finds the stream
-                return {
-                    name: PROVIDER_NAME + " | Server " + serverCount++,
-                    title: "1080p | RO Dub",
-                    url: src,
-                    quality: "1080p",
-                    headers: currentHeaders,
-                    provider: "desenefaine"
-                };
-            }
-          }).catch(function() {
-             // FALLBACK: Network error
-             return {
-                 name: PROVIDER_NAME + " | Server " + serverCount++,
-                 title: "1080p | RO Dub",
-                 url: src,
-                 quality: "1080p",
-                 headers: currentHeaders,
-                 provider: "desenefaine"
-             };
-          });
-
-          iframePromises.push(p);
-        });
-
-        // Wait for extraction, then push to streams
-        return Promise.all(iframePromises).then(function(results) {
-            for (var i = 0; i < results.length; i++) {
-                if (results[i]) streams.push(results[i]);
-            }
-            log("Extracted " + streams.length + " streams.");
-            return streams;
+          if (isStreamEmbedHost(src)) {
+              var p = resolveStreamEmbedAPI(src).then(function(directUrl) {
+                  if (directUrl) {
+                      var iframeDomain = src.match(/^https?:\/\/([^/?#]+)/i)[0];
+                      return {
+                          name: PROVIDER_NAME + " | Server " + serverCount++,
+                          title: "1080p | RO Dub",
+                          url: directUrl, // This is the decrypted sprintcdn .m3u8!
+                          quality: "1080p",
+                          isM3U8: directUrl.indexOf(".m3u8") !== -1, // Fixes loop!
+                          headers: {
+                              "User-Agent": STREAM_HEADERS["User-Agent"],
+                              "Referer": iframeDomain + "/",
+                              "Origin": iframeDomain
+                          },
+                          provider: "desenefaine"
+                      };
+                  }
+                  return null;
+              });
+              iframePromises.push(p);
+          }
         });
       }
 
-      log("Extracted " + streams.length + " streams.");
+      // Resolve all decrypted iframes and return to Nuvio
+      if (iframePromises.length > 0) {
+          return Promise.all(iframePromises).then(function(results) {
+              for (var i = 0; i < results.length; i++) {
+                  if (results[i]) streams.push(results[i]);
+              }
+              log("Extracted " + streams.length + " streams.");
+              return streams;
+          });
+      }
+
       return streams;
     });
   }).catch(function(e) {
