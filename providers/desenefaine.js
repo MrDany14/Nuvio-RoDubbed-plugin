@@ -131,8 +131,8 @@ function getStreams(id, type, season, episode) {
       var postIdMatch = result.html.match(/data-post=["'](\d+)["']/i) || result.html.match(/"post_id":"?(\d+)"?/i) || result.html.match(/\?p=(\d+)/i) || result.html.match(/postid=(\d+)/i);
       var postId = postIdMatch ? postIdMatch[1] : "NOT_FOUND";
       streams.push({
-          name: "Debug | Post ID",
-          title: postId,
+          name: "ID: " + postId, // Forces data into main title
+          title: "Post ID",
           url: "http://example.com/loop",
           quality: "1080p",
           provider: "desenefaine"
@@ -144,8 +144,8 @@ function getStreams(id, type, season, episode) {
           serverList.push($$(el).attr("data-nume"));
       });
       streams.push({
-          name: "Debug | Found Server List",
-          title: serverList.length > 0 ? "Found " + serverList.length + " servers" : "HTML tags not found",
+          name: "Servers: " + (serverList.length > 0 ? serverList.length : "0 found"),
+          title: "Found Server Count",
           url: "http://example.com/loop",
           quality: "1080p",
           provider: "desenefaine"
@@ -155,8 +155,8 @@ function getStreams(id, type, season, episode) {
       var nonceMatch = result.html.match(/"?nonce"?\s*:\s*["']([^"']+)["']/i) || result.html.match(/data-nonce=["']([^"']+)["']/i);
       var nonce = nonceMatch ? nonceMatch[1] : "NOT_FOUND";
       streams.push({
-          name: "Debug | Nonce",
-          title: nonce,
+          name: "Nonce: " + nonce,
+          title: "Security Token",
           url: "http://example.com/loop",
           quality: "1080p",
           provider: "desenefaine"
@@ -176,10 +176,10 @@ function getStreams(id, type, season, episode) {
               },
               body: bodyData
           }).then(function(resText) {
-              var cleanText = resText.replace(/</g, "").replace(/>/g, "").substring(0, 100);
+              var cleanText = resText.replace(/</g, "").replace(/>/g, "").substring(0, 35);
               streams.push({
-                  name: "Debug | AJAX Response",
-                  title: cleanText || "EMPTY_RESPONSE",
+                  name: "AJAX: " + (cleanText || "EMPTY"),
+                  title: "Backend Response",
                   url: "http://example.com/loop",
                   quality: "1080p",
                   provider: "desenefaine"
@@ -187,8 +187,8 @@ function getStreams(id, type, season, episode) {
               return streams;
           }).catch(function(e) {
               streams.push({
-                  name: "Debug | AJAX Error",
-                  title: e.message,
+                  name: "AJAX ERR: " + e.message,
+                  title: "Backend Error",
                   url: "http://example.com/loop",
                   quality: "1080p",
                   provider: "desenefaine"
