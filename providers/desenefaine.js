@@ -1,272 +1,252 @@
- /**
- * allmovieland - Built from src/allmovieland/
- * Generated: 2026-03-21T08:41:32.620Z
- */
-var __create = Object.create;
-var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getOwnPropSymbols = Object.getOwnPropertySymbols;
-var __getProtoOf = Object.getPrototypeOf;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __propIsEnum = Object.prototype.propertyIsEnumerable;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp.call(b, prop))
-      __defNormalProp(a, prop, b[prop]);
-  if (__getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(b)) {
-      if (__propIsEnum.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
-    }
-  return a;
-};
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var __copyProps = (to, from, except, desc) => {
-  if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-  }
-  return to;
-};
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
-  // If the importer is in node compatibility mode or this is not an ESM
-  // file that has been converted to a CommonJS file using a Babel-
-  // compatible transform (i.e. "__esModule" has not been set), then set
-  // "default" to the CommonJS "module.exports" for node compatibility.
-  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
-  mod
-));
-var __async = (__this, __arguments, generator) => {
-  return new Promise((resolve, reject) => {
-    var fulfilled = (value) => {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    };
-    var rejected = (value) => {
-      try {
-        step(generator.throw(value));
-      } catch (e) {
-        reject(e);
-      }
-    };
-    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
-    step((generator = generator.apply(__this, __arguments)).next());
-  });
+var cheerio = require("cheerio-without-node-native");
+
+var PROVIDER_NAME = "DeseneFaine";
+var MAIN_URL = "https://desenefaine.com";
+var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c"; 
+
+// EXACT headers structure used by working Nuvio-TV plugins
+var STREAM_HEADERS = {
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+  "Accept": "*/*",
+  "Connection": "keep-alive",
+  "Referer": MAIN_URL + "/",
+  "Origin": MAIN_URL
 };
 
-// src/allmovieland/index.js
-var import_cheerio_without_node_native = __toESM(require("cheerio-without-node-native"));
-
-// src/allmovieland/constants.js
-var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
-var TMDB_BASE_URL = "https://api.themoviedb.org/3";
-var MAIN_URL = "https://allmovieland.io";
-var HEADERS = {
-  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+var FETCH_HEADERS = {
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
   "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-  "Accept-Language": "en-US,en;q=0.5"
+  "Accept-Language": "ro-RO,ro;q=0.9,en-US;q=0.8,en;q=0.7"
 };
 
-// src/allmovieland/utils.js
-function getTMDBDetails(tmdbId, mediaType) {
-  return __async(this, null, function* () {
-    var _a;
-    const endpoint = mediaType === "tv" ? "tv" : "movie";
-    const url = `${TMDB_BASE_URL}/${endpoint}/${tmdbId}?api_key=${TMDB_API_KEY}&append_to_response=external_ids`;
-    const response = yield fetch(url, {
-      method: "GET",
-      headers: { "Accept": "application/json", "User-Agent": "Mozilla/5.0" }
-    });
-    if (!response.ok)
-      throw new Error(`TMDB API error: ${response.status}`);
-    const data = yield response.json();
-    const title = mediaType === "tv" ? data.name : data.title;
-    const releaseDate = mediaType === "tv" ? data.first_air_date : data.release_date;
-    const year = releaseDate ? parseInt(releaseDate.split("-")[0]) : null;
-    return { title, year, imdbId: ((_a = data.external_ids) == null ? void 0 : _a.imdb_id) || null, data };
-  });
-}
-function normalizeTitle(title) {
-  if (!title)
-    return "";
-  return title.toLowerCase().replace(/\b(the|a|an)\b/g, "").replace(/[:\-_]/g, " ").replace(/\s+/g, " ").replace(/[^\w\s]/g, "").trim();
-}
-function calculateTitleSimilarity(title1, title2) {
-  const norm1 = normalizeTitle(title1);
-  const norm2 = normalizeTitle(title2);
-  if (norm1 === norm2)
-    return 1;
-  const words1 = norm1.split(/\s+/).filter((w) => w.length > 0);
-  const words2 = norm2.split(/\s+/).filter((w) => w.length > 0);
-  if (words1.length === 0 || words2.length === 0)
-    return 0;
-  const set1 = new Set(words1);
-  const set2 = new Set(words2);
-  const intersection = words1.filter((w) => set2.has(w));
-  const union = /* @__PURE__ */ new Set([...words1, ...words2]);
-  const jaccard = intersection.length / union.size;
-  const extraWordsCount = words2.filter((w) => !set1.has(w)).length;
-  let score = jaccard - extraWordsCount * 0.05;
-  if (words1.length > 0 && words1.every((w) => set2.has(w))) {
-    score += 0.2;
-  }
-  return score;
-}
-function findBestTitleMatch(mediaInfo, searchResults) {
-  if (!searchResults || searchResults.length === 0)
-    return null;
-  let bestMatch = null;
-  let bestScore = 0;
-  for (const result of searchResults) {
-    let score = calculateTitleSimilarity(mediaInfo.title, result.title);
-    if (mediaInfo.year && result.year) {
-      const yearDiff = Math.abs(mediaInfo.year - result.year);
-      if (yearDiff === 0)
-        score += 0.2;
-      else if (yearDiff <= 1)
-        score += 0.1;
-      else if (yearDiff > 5)
-        score -= 0.3;
-    }
-    if (score > bestScore && score > 0.3) {
-      bestScore = score;
-      bestMatch = result;
-    }
-  }
-  return bestMatch;
+function log(msg) {
+  console.log("[" + PROVIDER_NAME + "] " + msg);
 }
 
-// src/allmovieland/index.js
-function getStreams(tmdbId, mediaType = "movie", season = null, episode = null) {
-  return __async(this, null, function* () {
-    console.log(`[AllMovieLand] Fetching streams for TMDB ID: ${tmdbId}, Type: ${mediaType}`);
-    try {
-      const mediaInfo = yield getTMDBDetails(tmdbId, mediaType);
-      console.log(`[AllMovieLand] TMDB Info: "${mediaInfo.title}" (${mediaInfo.year || "N/A"})`);
-      const query = mediaInfo.title;
-      const searchUrl = `${MAIN_URL}/index.php?story=${encodeURIComponent(query)}&do=search&subaction=search`;
-      const res = yield fetch(searchUrl, { headers: HEADERS });
-      const html = yield res.text();
-      const $ = import_cheerio_without_node_native.default.load(html);
-      const searchResults = [];
-      $("article.short-mid").each((i, el) => {
-        const title = $(el).find("a > h3").text().trim();
-        const href = $(el).find("a").attr("href");
-        const yearMatch = title.match(/\((\d{4})\)/);
-        const year = yearMatch ? parseInt(yearMatch[1]) : null;
-        searchResults.push({ title, href, year });
-      });
-      if (searchResults.length === 0) {
-        console.log("[AllMovieLand] No search results found.");
-        return [];
+function fetchText(url, options) {
+  options = options || {};
+  return fetch(url, {
+    method: options.method || "GET",
+    redirect: options.redirect || "follow",
+    headers: Object.assign({}, FETCH_HEADERS, options.headers || {}),
+    body: options.body
+  }).then(function(res) {
+    if (!res.ok) throw new Error("HTTP " + res.status + " -> " + url);
+    return res.text();
+  });
+}
+
+function fetchJson(url, options) {
+  options = options || {};
+  return fetch(url, {
+    method: options.method || "GET",
+    redirect: options.redirect || "follow",
+    headers: Object.assign({}, FETCH_HEADERS, options.headers || {}),
+    body: options.body
+  }).then(function(res) {
+    if (!res.ok) throw new Error("HTTP " + res.status + " -> " + url);
+    return res.json();
+  });
+}
+
+function normalizeSlug(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i")
+    .replace(/ș/g, "s").replace(/ț/g, "t")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+function normalizeTitle(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i")
+    .replace(/ș/g, "s").replace(/ț/g, "t")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function getStreams(id, type, season, episode) {
+  log("Requested: ID=" + id + ", Type=" + type + ", S=" + season + ", E=" + episode);
+  
+  var isImdb = String(id).startsWith("tt");
+  var endpoint = isImdb ? "find/" + id + "?external_source=imdb_id" : (type === "tv" ? "tv/" : "movie/") + id;
+  var tmdbUrl = "https://api.themoviedb.org/3/" + endpoint + "?api_key=" + TMDB_API_KEY + "&language=ro-RO";
+
+  return fetchJson(tmdbUrl).then(function(data) {
+    var roTitle = "";
+    var enTitle = "";
+
+    if (isImdb) {
+      var results = type === "tv" ? data.tv_results : data.movie_results;
+      if (results && results.length > 0) {
+        roTitle = type === "tv" ? results[0].name : results[0].title;
+        enTitle = type === "tv" ? results[0].original_name : results[0].original_title;
       }
-      const bestMatch = findBestTitleMatch(mediaInfo, searchResults);
-      if (!bestMatch) {
-        console.log("[AllMovieLand] No confident match found.");
-        return [];
-      }
-      const selectedMedia = bestMatch;
-      console.log(`[AllMovieLand] Selected: "${selectedMedia.title}" (${selectedMedia.href})`);
-      const docRes = yield fetch(selectedMedia.href, { headers: HEADERS });
-      const docHtml = yield docRes.text();
-      const doc$ = import_cheerio_without_node_native.default.load(docHtml);
-      const tabsContent = doc$("div.tabs__content script").html() || "";
-      const playerScriptMatch = tabsContent.match(/const AwsIndStreamDomain\s*=\s*'([^']+)'/);
-      const playerDomain = playerScriptMatch ? playerScriptMatch[1].replace(/\/$/, "") : null;
-      const idMatch = tabsContent.match(/src:\s*'([^']+)'/);
-      const id = idMatch ? idMatch[1] : null;
-      if (!playerDomain || !id) {
-        console.log("[AllMovieLand] Could not find player domain or ID.");
-        return [];
-      }
-      const embedLink = `${playerDomain}/play/${id}`;
-      const embedRes = yield fetch(embedLink, { headers: __spreadProps(__spreadValues({}, HEADERS), { Referer: selectedMedia.href }) });
-      const embedHtml = yield embedRes.text();
-      const embed$ = import_cheerio_without_node_native.default.load(embedHtml);
-      const lastScript = embed$("body > script").last().html() || "";
-      const p3Match = lastScript.match(/let\s+p3\s*=\s*(\{.*\});/);
-      if (!p3Match) {
-        console.log("[AllMovieLand] No p3 JSON found in embed.");
-        return [];
-      }
-      const json = JSON.parse(p3Match[1]);
-      let fileUrl = json.file.replace(/\\\//g, "/");
-      if (!fileUrl.startsWith("http"))
-        fileUrl = `${playerDomain}${fileUrl}`;
-      const fileRes = yield fetch(fileUrl, {
-        method: "POST",
-        headers: __spreadProps(__spreadValues({}, HEADERS), { "X-CSRF-TOKEN": json.key, "Referer": embedLink })
-      });
-      const fileText = yield fileRes.text();
-      let targetFiles = [];
-      const parsedData = JSON.parse(fileText.replace(/,\]/g, "]"));
-      if (mediaType === "movie") {
-        targetFiles = parsedData.filter((s) => s && s.file);
-      } else if (mediaType === "tv") {
-        const seasonData = parsedData.find((s) => {
-          const sTitle = s.title || "";
-          const sNumMatch = sTitle.match(/Season\s*(\d+)/i) || sTitle.match(/(\d+)\s*Season/i);
-          const sNum = sNumMatch ? parseInt(sNumMatch[1]) : null;
-          return sNum === season || s.id == season;
-        });
-        if (seasonData && seasonData.folder) {
-          const episodeData = seasonData.folder.find((e) => {
-            const eTitle = e.title || "";
-            const eNumMatch = eTitle.match(/Episode\s*(\d+)/i) || eTitle.match(/(\d+)\s*Episode/i);
-            const eNum = eNumMatch ? parseInt(eNumMatch[1]) : null;
-            return eNum === episode || e.episode == episode;
-          });
-          if (episodeData && episodeData.folder) {
-            targetFiles = episodeData.folder.filter((s) => s && s.file);
-          }
-        }
-      }
-      if (targetFiles.length === 0) {
-        console.log("[AllMovieLand] No streams found for the requested media.");
-        return [];
-      }
-      const streams = [];
-      yield Promise.all(targetFiles.map((fileObj) => __async(this, null, function* () {
-        try {
-          const playlistFile = fileObj.file.replace(/^~/, "");
-          const playlistUrl = `${playerDomain}/playlist/${playlistFile}.txt`;
-          const postRes = yield fetch(playlistUrl, {
-            method: "POST",
-            headers: __spreadProps(__spreadValues({}, HEADERS), { "X-CSRF-TOKEN": json.key, "Referer": embedLink })
-          });
-          const m3u8Url = (yield postRes.text()).trim();
-          if (m3u8Url && m3u8Url.startsWith("http")) {
-            const qualityStr = fileObj.title || "Unknown";
-            streams.push({
-              name: "AllMovieLand",
-              title: `AllMovieLand - ${qualityStr}`,
-              url: m3u8Url,
-              quality: qualityStr,
-              headers: {
-                "Referer": `${playerDomain}/`,
-                "Origin": playerDomain,
-                "User-Agent": HEADERS["User-Agent"]
-              },
-              provider: "allmovieland"
-            });
-          }
-        } catch (e) {
-          console.error(`[AllMovieLand] Failed to extract stream: ${e.message}`);
-        }
-      })));
-      return streams;
-    } catch (error) {
-      console.error(`[AllMovieLand] Error: ${error.message}`);
+    } else {
+      roTitle = type === "tv" ? data.name : data.title;
+      enTitle = type === "tv" ? data.original_name : data.original_title;
+    }
+
+    if (!roTitle && !enTitle) {
+      log("TMDB returned no title.");
       return [];
     }
+
+    function tryDirectUrl(title) {
+      var slug = normalizeSlug(title);
+      if (type === "tv" && season && episode) {
+        slug = normalizeSlug(title) + "-sezonul-" + season + "-episodul-" + episode;
+      }
+      
+      var prefixes = type === "tv" ? ["epi", "serial", "desene"] : ["film", "desene"];
+      
+      var promises = prefixes.map(function(prefix) {
+        var url = MAIN_URL + "/" + prefix + "/" + slug + "/";
+        return fetchText(url).then(function(html) {
+          if (html && html.length > 2000 && !html.includes("does not exist") && !html.includes("Nu am găsit")) {
+            return { url: url, html: html };
+          }
+          return null;
+        }).catch(function() { return null; });
+      });
+      
+      return Promise.all(promises).then(function(results) {
+        for (var i = 0; i < results.length; i++) {
+          if (results[i]) {
+            log("Direct URL match: " + results[i].url);
+            return results[i];
+          }
+        }
+        return null;
+      });
+    }
+
+    function searchSite(query) {
+      var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
+      return fetchText(searchUrl).then(function(html) {
+        var $ = cheerio.load(html);
+        var bestMatch = null;
+        var normQuery = normalizeTitle(query);
+        var queryWords = normQuery.split(" ").filter(function(w) { return w.length > 2; });
+
+        $("a").each(function(_, el) {
+          var href = $(el).attr("href");
+          if (!href || !href.includes("desenefaine.com")) return;
+          if (/\/(category|tag|author|page|feed|wp-)/i.test(href)) return;
+
+          var text = $(el).text().trim();
+          if (text.length < 5) return;
+
+          var normText = normalizeTitle(text);
+          var matchCount = 0;
+          queryWords.forEach(function(word) {
+            if (normText.includes(word)) matchCount++;
+          });
+
+          if (matchCount >= Math.ceil(queryWords.length / 2)) {
+            if (!bestMatch || text.length < bestMatch.text.length) {
+              bestMatch = { href: href, text: text, score: matchCount };
+            }
+          }
+        });
+
+        if (bestMatch) {
+          return fetchText(bestMatch.href).then(function(html) {
+            return { url: bestMatch.href, html: html };
+          });
+        }
+        return null;
+      }).catch(function() { return null; });
+    }
+
+    return tryDirectUrl(roTitle).then(function(result) {
+      if (result) return result;
+      if (enTitle && enTitle !== roTitle) {
+        return tryDirectUrl(enTitle).then(function(enResult) {
+          if (enResult) return enResult;
+          return searchSite(roTitle).then(function(searchResult) {
+            if (searchResult) return searchResult;
+            return searchSite(enTitle);
+          });
+        });
+      }
+      return searchSite(roTitle);
+    }).then(function(result) {
+      if (!result || !result.html) {
+        log("No valid page found.");
+        return [];
+      }
+
+      log("Extracting from: " + result.url);
+      var $$ = cheerio.load(result.html);
+      var streams = [];
+      var serverCount = 1;
+
+      // Update the Referer in STREAM_HEADERS to the exact post URL
+      var currentHeaders = Object.assign({}, STREAM_HEADERS, {
+        "Referer": result.url,
+        "Origin": MAIN_URL
+      });
+
+      // 1. PRIORITY: Direct .mp4 or .m3u8 links
+      $$("source, video").each(function(_, el) {
+        var src = $$(el).attr("src");
+        if (src && (src.indexOf(".mp4") !== -1 || src.indexOf(".m3u8") !== -1)) {
+          if (src.startsWith("//")) src = "https:" + src;
+          else if (!src.startsWith("http")) src = result.url + (src.startsWith("/") ? "" : "/") + src;
+          
+          // EXACT structure from hdhub4u.js / dahmermovies.js
+          streams.push({
+            name: PROVIDER_NAME + " | Direct",
+            title: "1080p | RO Dub",
+            url: src,
+            quality: "1080p",
+            headers: currentHeaders,
+            provider: "desenefaine"
+          });
+        }
+      });
+
+      // 2. FALLBACK: Iframes (like player4me)
+      if (streams.length === 0) {
+        $$("iframe").each(function(_, el) {
+          var src = $$(el).attr("src") || $$(el).attr("data-src") || $$(el).attr("data-lazy-src");
+          if (!src) return;
+          
+          if (src.startsWith("//")) src = "https:" + src;
+          else if (!src.startsWith("http")) src = MAIN_URL + (src.startsWith("/") ? "" : "/") + src;
+
+          if (src.includes("facebook.com") || src.includes("youtube.com") || src.includes("doubleclick")) {
+            return;
+          }
+
+          log("FOUND IFRAME: " + src);
+
+          // EXACT structure from hdhub4u.js / dahmermovies.js
+          streams.push({
+    name: PROVIDER_NAME + " | Server " + serverCount++,
+    title: "1080p | RO Dub",
+    url: src,
+    quality: "1080p",
+    headers: currentHeaders,
+    provider: "desenefaine"
+});
+        });
+      }
+
+      log("Extracted " + streams.length + " streams.");
+      return streams;
+    });
+  }).catch(function(e) {
+    log("Fatal Error: " + e.message);
+    return [];
   });
 }
-module.exports = { getStreams };
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { getStreams: getStreams };
+} else {
+  global.getStreams = getStreams;
+}
