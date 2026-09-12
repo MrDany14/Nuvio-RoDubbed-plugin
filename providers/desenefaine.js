@@ -4,7 +4,6 @@ var PROVIDER_NAME = "DeseneFaine";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c"; 
 
-// EXACT headers structure used by working Nuvio-TV plugins
 var STREAM_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
   "Accept": "*/*",
@@ -184,7 +183,6 @@ function getStreams(id, type, season, episode) {
       var streams = [];
       var serverCount = 1;
 
-      // Update the Referer in STREAM_HEADERS to the exact post URL
       var currentHeaders = Object.assign({}, STREAM_HEADERS, {
         "Referer": result.url,
         "Origin": MAIN_URL
@@ -197,20 +195,22 @@ function getStreams(id, type, season, episode) {
           if (src.startsWith("//")) src = "https:" + src;
           else if (!src.startsWith("http")) src = result.url + (src.startsWith("/") ? "" : "/") + src;
           
-          // EXACT structure from hdhub4u.js / dahmermovies.js
           streams.push({
             name: PROVIDER_NAME + " | Direct",
             title: "1080p | RO Dub",
             url: src,
             quality: "1080p",
+            isM3U8: src.includes(".m3u8"),
             headers: currentHeaders,
             provider: "desenefaine"
           });
         }
       });
 
-      // 2. FALLBACK: Iframes (like player4me)
+      // 2. FALLBACK: Resolve Iframes to direct video files
       if (streams.length === 0) {
+        var iframePromises = [];
+        
         $$("iframe").each(function(_, el) {
           var src = $$(el).attr("src") || $$(el).attr("data-src") || $$(el).attr("data-lazy-src");
           if (!src) return;
@@ -224,15 +224,63 @@ function getStreams(id, type, season, episode) {
 
           log("FOUND IFRAME: " + src);
 
-          // EXACT structure from hdhub4u.js / dahmermovies.js
-          streams.push({
-            name: PROVIDER_NAME + " | Server " + serverCount++,
-            title: "1080p | RO Dub",
-            url: src,
-            quality: "1080p",
-            headers: currentHeaders,
-            provider: "desenefaine"
+          // Silently fetch iframe to grab .m3u8 without loops
+          var p = fetchText(src, { headers: { "Referer": result.url } }).then(function(html) {
+            var m3u8Match = html.match(/(https?:\/\/[^"'<>\\\s]+\.m3u8[^"'<>\\\s]*)/i);
+            var mp4Match = html.match(/(https?:\/\/[^"'<>\\\s]+\.mp4[^"'<>\\\s]*)/i);
+            var directUrl = null;
+
+            if (m3u8Match && m3u8Match[1]) directUrl = m3u8Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
+            else if (mp4Match && mp4Match[1]) directUrl = mp4Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
+
+            if (directUrl) {
+                var iframeDomain = src.match(/^https?:\/\/([^/?#]+)/i)[0];
+                return {
+                    name: PROVIDER_NAME + " | Server " + serverCount++,
+                    title: "1080p | RO Dub",
+                    url: directUrl, // Fixes loop
+                    quality: "1080p",
+                    isM3U8: directUrl.includes(".m3u8"),
+                    headers: {
+                        "User-Agent": STREAM_HEADERS["User-Agent"],
+                        "Referer": iframeDomain + "/",
+                        "Origin": iframeDomain
+                    },
+                    provider: "desenefaine"
+                };
+            } else {
+                // FALLBACK: If extraction fails, push the iframe anyway so it at least finds the stream
+                return {
+                    name: PROVIDER_NAME + " | Server " + serverCount++,
+                    title: "1080p | RO Dub",
+                    url: src,
+                    quality: "1080p",
+                    headers: currentHeaders,
+                    provider: "desenefaine"
+                };
+            }
+          }).catch(function() {
+             // FALLBACK: Network error
+             return {
+                 name: PROVIDER_NAME + " | Server " + serverCount++,
+                 title: "1080p | RO Dub",
+                 url: src,
+                 quality: "1080p",
+                 headers: currentHeaders,
+                 provider: "desenefaine"
+             };
           });
+
+          iframePromises.push(p);
+        });
+
+        // Wait for extraction, then push to streams
+        return Promise.all(iframePromises).then(function(results) {
+            for (var i = 0; i < results.length; i++) {
+                if (results[i]) streams.push(results[i]);
+            }
+            log("Extracted " + streams.length + " streams.");
+            return streams;
         });
       }
 
