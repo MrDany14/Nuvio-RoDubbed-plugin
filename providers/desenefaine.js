@@ -1,6 +1,6 @@
 var cheerio = require("cheerio-without-node-native");
 
-var PROVIDER_NAME = "DeseneFaine";
+var PROVIDER_NAME = "DeseneFaine DEBUG";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c"; 
 
@@ -131,7 +131,7 @@ function getStreams(id, type, season, episode) {
       var postIdMatch = result.html.match(/data-post=["'](\d+)["']/i) || result.html.match(/"post_id":"?(\d+)"?/i) || result.html.match(/\?p=(\d+)/i) || result.html.match(/postid=(\d+)/i);
       var postId = postIdMatch ? postIdMatch[1] : "NOT_FOUND";
       streams.push({
-          name: "ID: " + postId, // Forces data into main title
+          name: PROVIDER_NAME + " | ID: " + postId,
           title: "Post ID",
           url: "http://example.com/loop",
           quality: "1080p",
@@ -144,7 +144,7 @@ function getStreams(id, type, season, episode) {
           serverList.push($$(el).attr("data-nume"));
       });
       streams.push({
-          name: "Servers: " + (serverList.length > 0 ? serverList.length : "0 found"),
+          name: PROVIDER_NAME + " | Servers: " + (serverList.length > 0 ? serverList.length : "0"),
           title: "Found Server Count",
           url: "http://example.com/loop",
           quality: "1080p",
@@ -155,7 +155,7 @@ function getStreams(id, type, season, episode) {
       var nonceMatch = result.html.match(/"?nonce"?\s*:\s*["']([^"']+)["']/i) || result.html.match(/data-nonce=["']([^"']+)["']/i);
       var nonce = nonceMatch ? nonceMatch[1] : "NOT_FOUND";
       streams.push({
-          name: "Nonce: " + nonce,
+          name: PROVIDER_NAME + " | Nonce: " + nonce,
           title: "Security Token",
           url: "http://example.com/loop",
           quality: "1080p",
@@ -178,7 +178,7 @@ function getStreams(id, type, season, episode) {
           }).then(function(resText) {
               var cleanText = resText.replace(/</g, "").replace(/>/g, "").substring(0, 35);
               streams.push({
-                  name: "AJAX: " + (cleanText || "EMPTY"),
+                  name: PROVIDER_NAME + " | AJAX: " + (cleanText || "EMPTY"),
                   title: "Backend Response",
                   url: "http://example.com/loop",
                   quality: "1080p",
@@ -187,7 +187,7 @@ function getStreams(id, type, season, episode) {
               return streams;
           }).catch(function(e) {
               streams.push({
-                  name: "AJAX ERR: " + e.message,
+                  name: PROVIDER_NAME + " | AJAX ERR: " + e.message,
                   title: "Backend Error",
                   url: "http://example.com/loop",
                   quality: "1080p",
