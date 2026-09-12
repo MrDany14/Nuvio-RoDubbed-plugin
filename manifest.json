@@ -1,7 +1,7 @@
 {
   "id": "ro-cartoons-repo",
   "name": "Romanian Cartoons Repository",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Romanian dubbed cartoons and movies",
   "author": "MrDany14",
   "scrapers": [
