@@ -2,161 +2,189 @@ var cheerio = require("cheerio-without-node-native");
 
 var PROVIDER_NAME = "DeseneFaine";
 var MAIN_URL = "https://desenefaine.com";
-var DEFAULT_HEADERS = {
-  "User-Agent": "Mozilla/5.0 (Linux; Android 11; BRAVIA 4K UR3) AppleWebKit/537.36 Chrome/100.0.4896.127 Safari/537.36",
-  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-  "Accept-Language": "ro-RO,ro;q=0.9,en-US;q=0.8,en;q=0.7"
+var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
+
+var FETCH_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
 };
 
-function fetchText(url, headers) {
-  return fetch(url, {
-    redirect: "follow",
-    headers: Object.assign({}, DEFAULT_HEADERS, headers || {})
-  }).then(function(res) {
-    if (!res.ok) throw new Error("HTTP " + res.status + " -> " + url);
-    return res.text();
-  });
+function fetchText(url, options) {
+    options = options || {};
+    return fetch(url, { method: options.method || "GET", headers: Object.assign({}, FETCH_HEADERS, options.headers || {}) })
+        .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); return res.text(); });
 }
 
-function decodeBase64(value) {
-  try {
-    if (typeof atob === "function") return atob(value);
-  } catch (e) {}
-
-  var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-  var output = "";
-  var i = 0;
-  value = value.replace(/[^A-Za-z0-9+/=]/g, "");
-  while (i < value.length) {
-    var a = chars.indexOf(value.charAt(i++));
-    var b = chars.indexOf(value.charAt(i++));
-    var c = chars.indexOf(value.charAt(i++));
-    var d = chars.indexOf(value.charAt(i++));
-    output += String.fromCharCode((a << 2) | (b >> 4));
-    if (c !== 64) output += String.fromCharCode(((b & 15) << 4) | (c >> 2));
-    if (d !== 64) output += String.fromCharCode(((c & 3) << 6) | d);
-  }
-  return output;
+function fetchJson(url, options) {
+    options = options || {};
+    return fetch(url, { method: options.method || "GET", headers: Object.assign({}, FETCH_HEADERS, options.headers || {}) })
+        .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); return res.json(); });
 }
 
-function reverse(value) {
-  return value.split("").reverse().join("");
+function normalizeSlug(value) {
+    return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
-function decodeHex(value) {
-  var output = "";
-  for (var i = 0; i + 1 < value.length; i += 2) {
-    output += String.fromCharCode(parseInt(value.substr(i, 2), 16));
-  }
-  return output;
+function normalizeTitle(value) {
+    return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
 }
 
-function absoluteUrl(value) {
-  if (value.indexOf("//") === 0) return "https:" + value;
-  if (value.indexOf("http://") === 0 || value.indexOf("https://") === 0) return value;
-  return MAIN_URL + (value.indexOf("/") === 0 ? "" : "/") + value;
-}
-
-function findIframeUrl(html) {
-  var match = html.match(/<iframe[^>]+src=["']([^"']+)["']/i);
-  return match ? absoluteUrl(match[1]) : null;
-}
-
-function resolveServer(embedUrl) {
-  return fetchText(embedUrl, { Referer: MAIN_URL + "/" }).then(function(wrapperHtml) {
-    var iframeUrl = findIframeUrl(wrapperHtml);
-    if (!iframeUrl) return null;
-
-    var tidMatch = iframeUrl.match(/[?&]tid=([^&]+)/i);
-    if (!tidMatch) return iframeUrl;
-
-    // DeseneFaine reverses this value before exposing it as trhex.
-    var trhex = reverse(tidMatch[1]);
-    var decodedUrl = decodeHex(trhex);
-    if (decodedUrl.indexOf("http://") === 0 || decodedUrl.indexOf("https://") === 0) {
-      return decodedUrl;
+function decodeBase64(str) {
+    try { if (typeof atob !== 'undefined') return atob(str); } catch (e) { }
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+    var output = ''; var chr1, chr2, chr3, enc1, enc2, enc3, enc4; var i = 0;
+    str = str.replace(/[^A-Za-z0-9\+\/\=]/g, '');
+    while (i < str.length) {
+        enc1 = chars.indexOf(str.charAt(i++)); enc2 = chars.indexOf(str.charAt(i++));
+        enc3 = chars.indexOf(str.charAt(i++)); enc4 = chars.indexOf(str.charAt(i++));
+        chr1 = (enc1 << 2) | (enc2 >> 4); chr2 = ((enc2 & 15) << 4) | (enc3 >> 2); chr3 = ((enc3 & 3) << 6) | enc4;
+        output += String.fromCharCode(chr1);
+        if (enc3 != 64) output += String.fromCharCode(chr2);
+        if (enc4 != 64) output += String.fromCharCode(chr3);
     }
-    return iframeUrl.replace(/[?&]tid=[^&]+/i, "&trhex=" + trhex);
-  });
+    return output;
 }
 
-function searchPage(title) {
-  return fetchText(MAIN_URL + "/?s=" + encodeURIComponent(title)).then(function(html) {
-    var $ = cheerio.load(html);
-    var wanted = String(title || "").toLowerCase();
-    var result = null;
-    $("article a, .post a, a[href*='/film/']").each(function(_, element) {
-      if (result) return;
-      var href = $(element).attr("href");
-      var text = $(element).text().toLowerCase();
-      if (href && !/\/(director|cast|actiune|animatie|comedie|film\/?$)/i.test(href) &&
-          (text.indexOf(wanted) >= 0 || href.toLowerCase().indexOf(wanted.replace(/\s+/g, "-")) >= 0)) {
-        result = absoluteUrl(href);
-      }
-    });
-    return result;
-  });
-}
+function processRouter(routerUrl, pageUrl) {
+    return fetchText(routerUrl, { headers: { "Referer": pageUrl } }).then(function (html) {
+        var iframeMatch = html.match(/<iframe[^>]+src=["']([^"']+)["']/i);
+        if (!iframeMatch || !iframeMatch[1]) return null;
 
-function getTmdbTitle(tmdbId, type) {
-  var endpoint = type === "tv" ? "tv/" : "movie/";
-  return fetchText("https://api.themoviedb.org/3/" + endpoint + tmdbId +
-    "?api_key=ccd8c6e162505e91ef8dc65b323ff4be&language=ro-RO").then(function(text) {
-    var data = JSON.parse(text);
-    return data.title || data.name || data.original_title || data.original_name;
-  });
-}
+        var innerUrl = iframeMatch[1].replace(/\\\//g, "/");
+        if (innerUrl.startsWith("//")) innerUrl = "https:" + innerUrl;
 
-function extractStreams(pageUrl) {
-  return fetchText(pageUrl).then(function(html) {
-    var $ = cheerio.load(html);
-    var servers = [];
+        var hostMatch = innerUrl.match(/^https?:\/\/([^/?#]+)/i);
+        var domain = hostMatch ? hostMatch[1].replace("www.", "") : "Unknown Server";
 
-    $("a[data-option][data-src]").each(function(_, element) {
-      var encodedUrl = $(element).attr("data-src");
-      var label = $(element).find(".option").text().trim() || ("Server " + (servers.length + 1));
-      if (!encodedUrl) return;
-      servers.push({ label: label, url: absoluteUrl(decodeBase64(encodedUrl)) });
-    });
+        // Friendly names for known servers
+        if (domain.includes("player4me")) domain = "Player4Me";
+        else if (domain.includes("filemoon")) domain = "Filemoon";
+        else if (domain.includes("byse")) domain = "ByseHD";
+        else if (domain.includes("streamp2p")) domain = "StreamP2P";
 
-    return Promise.all(servers.map(function(server) {
-      return resolveServer(server.url).then(function(url) {
-        if (!url) return null;
+        // Attempt a quick Filemoon unpacking if it's Filemoon
+        if (domain === "Filemoon") {
+            return fetchText(innerUrl, { headers: { "Referer": MAIN_URL } }).then(function (fmHtml) {
+                var pMatch = fmHtml.match(/eval\(function\(p,a,c,k,e,d\)\{.*?return p\}\('(.*?)',(\d+),(\d+),'([^']+)'\.split\('\|'\)/);
+                if (pMatch) {
+                    var p = pMatch[1], a = parseInt(pMatch[2]), c = parseInt(pMatch[3]), k = pMatch[4].split('|');
+                    var e = function (c) { return (c < a ? '' : e(parseInt(c / a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36)); };
+                    while (c--) { if (k[c]) p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]); }
+                    var m3u8Match = p.match(/['"](https?:\/\/[^\s"'<>]+?\.m3u8(?:\?[^\s"'<>]+)?)['"]/i);
+                    if (m3u8Match) {
+                        return {
+                            name: PROVIDER_NAME + " | Filemoon Direct",
+                            title: "1080p | RO Dub | Extracted",
+                            url: m3u8Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&"),
+                            quality: "1080p",
+                            isM3U8: true,
+                            headers: { "Referer": "https://filemoon.sx/", "Origin": "https://filemoon.sx", "User-Agent": FETCH_HEADERS["User-Agent"] },
+                            behaviorHints: { bingeGroup: "desenefaine-1080p" },
+                            provider: "desenefaine"
+                        };
+                    }
+                }
+                throw new Error("Fallback");
+            }).catch(function () {
+                // Fallback to returning the raw iframe
+                return {
+                    name: PROVIDER_NAME + " | Filemoon Iframe",
+                    title: "1080p | RO Dub | May Loop",
+                    url: innerUrl,
+                    quality: "1080p",
+                    headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
+                    provider: "desenefaine"
+                };
+            });
+        }
+
+        // Return raw iframe for all other servers
         return {
-          name: PROVIDER_NAME,
-          title: server.label,
-          url: url,
-          quality: "1080p",
-          behaviorHints: {
-            notWebReady: true,
-            proxyHeaders: {
-              request: {
-                Referer: pageUrl,
-                "User-Agent": DEFAULT_HEADERS["User-Agent"]
-              }
-            }
-          }
+            name: PROVIDER_NAME + " | " + domain,
+            title: "1080p | RO Dub | Iframe",
+            url: innerUrl,
+            quality: "1080p",
+            headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
+            provider: "desenefaine"
         };
-      }).catch(function(error) {
-        console.log("[DeseneFaine] Server error:", server.label, error.message);
-        return null;
-      });
-    })).then(function(streams) {
-      return streams.filter(function(stream) { return stream !== null; });
-    });
-  });
+    }).catch(function () { return null; });
 }
 
-function getStreams(tmdbId, mediaType) {
-  return getTmdbTitle(tmdbId, mediaType).then(function(title) {
-    return searchPage(title).then(function(pageUrl) {
-      if (!pageUrl) return [];
-      return extractStreams(pageUrl);
+function getStreams(id, type, season, episode) {
+    var isImdb = String(id).startsWith("tt");
+    var endpoint = isImdb ? "find/" + id + "?external_source=imdb_id" : (type === "tv" ? "tv/" : "movie/") + id;
+    var tmdbUrl = "https://api.themoviedb.org/3/" + endpoint + "?api_key=" + TMDB_API_KEY + "&language=ro-RO";
+
+    return fetchJson(tmdbUrl).then(function (data) {
+        var roTitle = ""; var enTitle = "";
+        if (isImdb) {
+            var results = type === "tv" ? data.tv_results : data.movie_results;
+            if (results && results.length > 0) { roTitle = type === "tv" ? results[0].name : results[0].title; enTitle = type === "tv" ? results[0].original_name : results[0].original_title; }
+        } else { roTitle = type === "tv" ? data.name : data.title; enTitle = type === "tv" ? data.original_name : data.original_title; }
+
+        if (!roTitle) return [];
+
+        function searchSite(query) {
+            return fetchText(MAIN_URL + "/?s=" + encodeURIComponent(query)).then(function (html) {
+                var $ = cheerio.load(html); var bestMatch = null; var queryWords = normalizeTitle(query).split(" ").filter(function (w) { return w.length > 2; });
+                $("a").each(function (_, el) {
+                    var href = $(el).attr("href");
+                    if (!href || !href.includes("desenefaine.com") || /\/(category|tag|author|page|feed|wp-)/i.test(href)) return;
+                    var text = normalizeTitle($(el).text().trim());
+                    var matchCount = 0; queryWords.forEach(function (word) { if (text.includes(word)) matchCount++; });
+                    if (matchCount >= Math.ceil(queryWords.length / 2)) { if (!bestMatch || text.length < bestMatch.text.length) bestMatch = { href: href, text: text, score: matchCount }; }
+                });
+                if (bestMatch) return fetchText(bestMatch.href).then(function (resHtml) { return { url: bestMatch.href, html: resHtml }; });
+                return null;
+            }).catch(function () { return null; });
+        }
+
+        var slug = normalizeSlug(roTitle);
+        if (type === "tv" && season && episode) slug = normalizeSlug(roTitle) + "-sezonul-" + season + "-episodul-" + episode;
+        var directUrl = MAIN_URL + "/film/" + slug + "/";
+
+        return fetchText(directUrl).then(function (html) {
+            if (html && html.length > 2000 && !html.includes("Nu am găsit")) return { url: directUrl, html: html };
+            return searchSite(roTitle);
+        }).catch(function () { return searchSite(roTitle); })
+            .then(function (result) {
+                if (!result || !result.html) return [];
+
+                var $$ = cheerio.load(result.html);
+                var routerUrls = [];
+
+                // Extract all hidden Base64 buttons
+                $$("[data-src]").each(function (_, el) {
+                    var src = $$(el).attr("data-src");
+                    if (src && src.startsWith("aHR0")) {
+                        var decoded = decodeBase64(src);
+                        if (decoded.includes("trembed") && !routerUrls.includes(decoded)) {
+                            routerUrls.push(decoded);
+                        }
+                    }
+                });
+
+                if (routerUrls.length === 0) {
+                    return [{ name: "Scrape Error", title: "No Base64 Routers Found on Page", url: "http://err", quality: "1080p", provider: "desenefaine" }];
+                }
+
+                // Process each router to find the server iframe
+                var processPromises = routerUrls.map(function (rUrl) {
+                    return processRouter(rUrl, result.url);
+                });
+
+                return Promise.all(processPromises).then(function (streams) {
+                    var finalStreams = [];
+                    for (var i = 0; i < streams.length; i++) {
+                        if (streams[i]) finalStreams.push(streams[i]);
+                    }
+                    return finalStreams.length > 0 ? finalStreams : [{ name: "Error", title: "Could not extract any iframes", url: "http://err", quality: "1080p", provider: "desenefaine" }];
+                });
+            });
+    }).catch(function () {
+        return [];
     });
-  }).catch(function(error) {
-    console.log("[DeseneFaine] Error:", error.message);
-    return [];
-  });
 }
 
-module.exports = { getStreams: getStreams };
+if (typeof module !== "undefined" && module.exports) module.exports = { getStreams: getStreams };
+else global.getStreams = getStreams;
