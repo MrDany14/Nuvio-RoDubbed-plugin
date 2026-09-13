@@ -42,16 +42,19 @@ function normalizeTitle(value) {
 
 function resolveVideoUrl(url, pageUrl, prefix) {
     var hostMatch = url.match(/^https?:\/\/([^/?#]+)/i);
-    var domain = hostMatch ? hostMatch[1] : "desenefaine.com";
+    var domain = hostMatch ? hostMatch[1] : "Unknown_Host";
     
-    var serverName = "Server";
+    // Default to the actual domain name instead of "Server"
+    var serverName = domain.replace("www.", ""); 
     var lUrl = url.toLowerCase();
+    
     if (lUrl.includes("player4me")) serverName = "Player4Me";
     else if (lUrl.includes("streamp2p")) serverName = "StreamP2P";
     else if (lUrl.includes("seekstreaming")) serverName = "SeekStreaming";
     else if (lUrl.includes("byse")) serverName = "ByseHD";
     else if (lUrl.includes("dsvplay")) serverName = "Dsvplay";
     else if (lUrl.includes("ok.ru")) serverName = "Ok.ru";
+    else if (lUrl.includes("youtube")) serverName = "YouTube";
     
     var finalName = prefix ? (prefix + " | " + serverName) : serverName;
 
@@ -225,9 +228,7 @@ function getStreams(id, type, season, episode) {
 
       $$("iframe").each(function(_, el) {
           var src = $$(el).attr("src") || $$(el).attr("data-src");
-          if (src && !src.includes("facebook") && !src.includes("youtube")) {
-              urlsToInvestigate.push(src);
-          }
+          if (src && !src.includes("facebook")) urlsToInvestigate.push(src);
       });
 
       var b64Matches = result.html.match(/(aHR0cHM6Ly[a-zA-Z0-9+/=]+)/g) || [];
@@ -239,16 +240,6 @@ function getStreams(id, type, season, episode) {
               }
           } catch(e) {}
       });
-
-      if (urlsToInvestigate.length === 0) {
-          streams.push({
-              name: PROVIDER_NAME + " | Error",
-              title: "No hidden routers found",
-              url: "http://example.com",
-              quality: "1080p"
-          });
-          return streams;
-      }
 
       var processPromises = urlsToInvestigate.map(function(u) {
           return processExtractedUrl(u, result.url);
