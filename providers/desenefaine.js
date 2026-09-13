@@ -1,4 +1,6 @@
 var cheerio = require("cheerio-without-node-native");
+var CryptoJS;
+try { CryptoJS = require("crypto-js"); } catch (e) {}
 
 var PROVIDER_NAME = "DeseneFaine";
 var MAIN_URL = "https://desenefaine.com";
@@ -40,7 +42,6 @@ function normalizeTitle(value) {
 
 function decodeBase64(str) {
     try { if (typeof atob !== 'undefined') { var a = atob(str); if (a && a.indexOf("http") !== -1) return a; } } catch (e) { }
-    try { if (typeof Buffer !== 'undefined') return Buffer.from(str, 'base64').toString('utf-8'); } catch (e2) { }
     var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
     var output = ''; var chr1, chr2, chr3, enc1, enc2, enc3, enc4; var i = 0;
     str = str.replace(/[^A-Za-z0-9\+\/\=]/g, '');
@@ -64,6 +65,7 @@ function extractTrhexId(html) {
     if (m && m[1]) return m[1];
     return null;
 }
+
 function extractAllIframes(html) {
     var out = [];
     var re = /<iframe[^>]+src=(?:"([^"]+)"|'([^']+)')/gi;
@@ -74,6 +76,7 @@ function extractAllIframes(html) {
     }
     return out;
 }
+
 function resolveUrl2(u) {
     if (!u) return null;
     u = String(u).split("\\").join("/").split("&amp;").join("&").trim();
@@ -84,6 +87,79 @@ function resolveUrl2(u) {
     return u;
 }
 
+function buildFinalStream(domain, url, referer) {
+    return {
+        name: PROVIDER_NAME + " | " + domain,
+        title: "1080p | RO Dub | Direct",
+        url: url,
+        quality: "1080p",
+        isM3U8: true,
+        headers: { "Referer": referer, "Origin": referer, "User-Agent": FETCH_HEADERS["User-Agent"] },
+        behaviorHints: {
+            bingeGroup: "desenefaine-1080p",
+            notWebReady: false,
+            // Forces Nuvio to attach the strict verification headers to every .ts chunk request
+            proxyHeaders: { request: { "Referer": referer, "Origin": referer, "User-Agent": FETCH_HEADERS["User-Agent"] } }
+        },
+        provider: "desenefaine"
+    };
+}
+
+function buildFallback(domain, iframeUrl) {
+     return {
+        name: PROVIDER_NAME + " | " + domain,
+        title: "1080p | RO Dub | Iframe",
+        url: iframeUrl,
+        quality: "1080p",
+        headers: { "User-Agent": FETCH_HEADERS["User-Agent"] },
+        behaviorHints: { notWebReady: true, bingeGroup: "desenefaine-iframe" },
+        provider: "desenefaine"
+    };
+}
+
+function processExternalPage(innerUrl, html, pageUrl) {
+    var hostMatch = innerUrl.match(/^https?:\/\/([^/?#]+)/i);
+    var host = hostMatch ? hostMatch[1].toLowerCase().replace(/^www\./, "") : "unknown";
+    var domain = host.includes("player4me") ? "Player4Me" : host.includes("filemoon") ? "Filemoon" : host.includes("byse") ? "ByseHD" : host.includes("streamp2p") ? "StreamP2P" : host;
+
+    // Layer 3 Verification Simulation: Player4Me Crypto
+    if (domain === "Player4Me") {
+        var idMatch = innerUrl.match(/\/[ve]\/([a-zA-Z0-9]+)/);
+        if (idMatch && typeof CryptoJS !== 'undefined') {
+            var apiUrl = "https://player4me.com/api/v1/video?id=" + idMatch[1] + "&w=2048&h=1152&r=";
+            return fetchJson(apiUrl, { headers: { "Referer": "https://player4me.com/" } }).then(function(apiRes) {
+                if (apiRes && apiRes.data) {
+                    var key = CryptoJS.enc.Hex.parse("6b69656d7469656e6d75613931316361");
+                    var iv = CryptoJS.enc.Hex.parse("313233343536373839306f6975797472");
+                    var dec = CryptoJS.AES.decrypt(apiRes.data, key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 }).toString(CryptoJS.enc.Utf8);
+                    var vData = JSON.parse(dec);
+                    var mUrl = vData.file || (vData.sources && vData.sources[0] && vData.sources[0].file);
+                    if (mUrl) return buildFinalStream(domain, mUrl, "https://player4me.com/");
+                }
+                return buildFallback(domain, innerUrl);
+            }).catch(function() { return buildFallback(domain, innerUrl); });
+        }
+    }
+
+    // Layer 3 Verification Simulation: Filemoon Eval Unpacker
+    var searchHtml = String(html || "").replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
+    var pMatch = String(html || "").match(/eval\(function\(p,a,c,k,e,d\)\{.*?return p\}\('(.*?)',(\d+),(\d+),'([^']+)'\.split\('\|'\)/);
+    
+    if (pMatch) {
+        var p = pMatch[1], a = parseInt(pMatch[2]), c = parseInt(pMatch[3]), k = pMatch[4].split("|");
+        var unpackKey = function (value) { return (value < a ? "" : unpackKey(parseInt(value / a))) + ((value = value % a) > 35 ? String.fromCharCode(value + 29) : value.toString(36)); };
+        while (c--) { if (k[c]) p = p.replace(new RegExp("\\b" + unpackKey(c) + "\\b", "g"), k[c]); }
+        searchHtml += "\n" + p.replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
+    }
+
+    var m3u8Match = searchHtml.match(/(https?:\/\/[^\s'"<>]+?\.m3u8(?:\?[^\s'"<>]+)?)/i);
+    if (m3u8Match) {
+        var origin = host ? "https://" + host : MAIN_URL;
+        return buildFinalStream(domain, m3u8Match[1].replace(/[\\"']+$/, ""), origin);
+    }
+
+    return buildFallback(domain, innerUrl);
+}
 
 function processRouter(routerUrl, pageUrl, depth) {
     depth = depth || 0;
@@ -95,8 +171,6 @@ function processRouter(routerUrl, pageUrl, depth) {
         var hostMatch = currentUrl.match(/^https?:\/\/([^/?#]+)/i);
         var host = hostMatch ? hostMatch[1].toLowerCase().replace(/^www\./, "") : "";
 
-        // fetch() follows redirects. If the router already ended at an external player,
-        // process that final page instead of returning the DeseneFaine URL.
         if (host && host !== "desenefaine.com" && host !== "www.desenefaine.com") {
             return processExternalPage(currentUrl, html, pageUrl);
         }
@@ -114,6 +188,7 @@ function processRouter(routerUrl, pageUrl, depth) {
                 return processRouter(nextUrl, splash.url || innerUrl2, depth + 1);
             }).catch(function () { return null; });
         }
+
         if (innerUrl2) {
             var ih2 = innerUrl2.match(/^https?:\/\/([^/?#]+)/i);
             var ihn2 = ih2 ? ih2[1].toLowerCase().replace(/^www\./, "") : "";
@@ -125,12 +200,10 @@ function processRouter(routerUrl, pageUrl, depth) {
                 .then(function (ep) { return processExternalPage(innerUrl2, ep.text || "", currentUrl); });
         }
 
-
         var iframeMatch = html.match(/<iframe[^>]+src=["']([^"']+)["']/i);
         var encodedNext = html.match(/trhex=([^'"&]+)/i);
         var innerUrl = iframeMatch && iframeMatch[1];
 
-        // The intermediate trhide page creates the next iframe in JavaScript.
         if (!innerUrl && encodedNext) {
             innerUrl = currentUrl.split("?")[0] + "?trhide=1&trhex=" + encodedNext[1];
         }
@@ -149,54 +222,6 @@ function processRouter(routerUrl, pageUrl, depth) {
         return fetchPage(innerUrl, { headers: { "Referer": currentUrl } })
             .then(function (externalPage) { return processExternalPage(innerUrl, externalPage.text, currentUrl); });
     }).catch(function () { return null; });
-}
-
-function processExternalPage(innerUrl, html, pageUrl) {
-    var hostMatch = innerUrl.match(/^https?:\/\/([^/?#]+)/i);
-    var host = hostMatch ? hostMatch[1].toLowerCase().replace(/^www\./, "") : "unknown";
-    var domain = host.includes("player4me") ? "Player4Me" : host.includes("filemoon") ? "Filemoon" : host.includes("byse") ? "ByseHD" : host.includes("streamp2p") ? "StreamP2P" : host;
-    var norm = String(html || "").replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
-    var searchHtml = norm;
-
-    // Filemoon may hide the playlist in a packed eval() payload.
-    var pMatch = String(html || "").match(/eval\(function\(p,a,c,k,e,d\)\{.*?return p\}\('(.*?)',(\d+),(\d+),'([^']+)'\.split\('\|'\)/);
-    if (pMatch) {
-        var p = pMatch[1], a = parseInt(pMatch[2]), c = parseInt(pMatch[3]), k = pMatch[4].split("|");
-        var unpackKey = function (value) { return (value < a ? "" : unpackKey(parseInt(value / a))) + ((value = value % a) > 35 ? String.fromCharCode(value + 29) : value.toString(36)); };
-        while (c--) { if (k[c]) p = p.replace(new RegExp("\\b" + unpackKey(c) + "\\b", "g"), k[c]); }
-        searchHtml += "\n" + p.replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
-    }
-
-    var m3u8Match = searchHtml.match(/(https?:\/\/[^\s'"<>]+?\.m3u8(?:\?[^\s'"<>]+)?)/i);
-
-    if (m3u8Match) {
-        var streamUrl = m3u8Match[1].replace(/[\\"']+$/, "");
-        var origin = host ? "https://" + host : MAIN_URL;
-        return {
-            name: PROVIDER_NAME + " | " + domain + " Direct",
-            title: "1080p | RO Dub | Extracted",
-            url: streamUrl,
-            quality: "1080p",
-            isM3U8: true,
-            headers: { "Referer": innerUrl, "Origin": origin, "User-Agent": FETCH_HEADERS["User-Agent"] },
-            behaviorHints: {
-                bingeGroup: "desenefaine-1080p",
-                notWebReady: false,
-                proxyHeaders: { request: { "Referer": innerUrl, "Origin": origin, "User-Agent": FETCH_HEADERS["User-Agent"] } }
-            },
-            provider: "desenefaine"
-        };
-    }
-
-    return {
-        name: PROVIDER_NAME + " | " + domain,
-        title: "1080p | RO Dub | Iframe",
-        url: innerUrl,
-        quality: "1080p",
-        headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
-        behaviorHints: { notWebReady: true, bingeGroup: "desenefaine-iframe" },
-        provider: "desenefaine"
-    };
 }
 
 function getStreams(id, type, season, episode) {
@@ -243,43 +268,32 @@ function getStreams(id, type, season, episode) {
                 }
                 return result;
             })
-            .then(function (result2) {
-                var result = result2;
+            .then(function (result) {
                 if (!result || !result.html) return [];
 
                 var $$ = cheerio.load(result.html);
                 var routerUrls = [];
+                var routerLabels = {};
 
-                // Extract all hidden Base64 buttons
                 $$("[data-src]").each(function (_, el) {
                     var src = $$(el).attr("data-src");
                     if (src && src.startsWith("aHR0")) {
                         var decoded = decodeBase64(src);
                         if (decoded.includes("trembed") && !routerUrls.includes(decoded)) {
                             routerUrls.push(decoded);
+                            var lbl = $$(el).find(".option").text().trim() || $$(el).text().trim().replace(/\s+/g, " ").slice(0, 40);
+                            if (lbl) routerLabels[decoded] = lbl;
                         }
                     }
                 });
 
                 if (routerUrls.length === 0) return [];
 
-                // Process each router to find the server iframe, keep server labels
-                var routerLabels = {};
-                $$("[data-src]").each(function (_, el) {
-                    var s2 = $$(el).attr("data-src");
-                    if (s2 && s2.indexOf("aHR0") === 0) {
-                        try {
-                            var d2 = decodeBase64(s2);
-                            var lbl = $$(el).find(".option").text().trim() || $$(el).text().trim().replace(/\s+/g, " ").slice(0, 40);
-                            if (d2 && routerLabels[d2] === undefined && lbl) routerLabels[d2] = lbl;
-                        } catch (e) { }
-                    }
-                });
                 var processPromises = routerUrls.map(function (rUrl) {
                     return processRouter(rUrl, result.url).then(function (s) {
                         if (s && routerLabels[rUrl]) {
-                            s.title = routerLabels[rUrl] + " | " + (s.title || "RO Dub");
-                            s.name = PROVIDER_NAME + " | " + routerLabels[rUrl];
+                            // Only append label if we successfully pulled a stream object
+                            if (s.name) s.name = PROVIDER_NAME + " | " + routerLabels[rUrl];
                         }
                         return s;
                     });
