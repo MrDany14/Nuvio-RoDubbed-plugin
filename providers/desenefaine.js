@@ -39,7 +39,8 @@ function normalizeTitle(value) {
 }
 
 function decodeBase64(str) {
-    try { if (typeof atob !== 'undefined') return atob(str); } catch (e) { }
+    try { if (typeof atob !== 'undefined') { var a = atob(str); if (a && a.indexOf("http") !== -1) return a; } } catch (e) { }
+    try { if (typeof Buffer !== 'undefined') return Buffer.from(str, 'base64').toString('utf-8'); } catch (e2) { }
     var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
     var output = ''; var chr1, chr2, chr3, enc1, enc2, enc3, enc4; var i = 0;
     str = str.replace(/[^A-Za-z0-9\+\/\=]/g, '');
@@ -53,6 +54,36 @@ function decodeBase64(str) {
     }
     return output;
 }
+
+function reverseStr(s) { return String(s || "").split("").reverse().join(""); }
+function extractTrhexId(html) {
+    html = String(html || "");
+    var m = html.match(/trde\s*\(\s*['"]([0-9a-fA-F]+)['"]\s*\)/);
+    if (m && m[1]) return reverseStr(m[1]);
+    m = html.match(/[?&]trhex=([0-9a-fA-F]{16,})/i);
+    if (m && m[1]) return m[1];
+    return null;
+}
+function extractAllIframes(html) {
+    var out = [];
+    var re = /<iframe[^>]+src=(?:"([^"]+)"|'([^']+)')/gi;
+    var m;
+    while ((m = re.exec(html)) !== null) {
+        var src = m[1] || m[2];
+        if (src && out.indexOf(src) === -1) out.push(src);
+    }
+    return out;
+}
+function resolveUrl2(u) {
+    if (!u) return null;
+    u = String(u).split("\\").join("/").split("&amp;").join("&").trim();
+    u = u.replace(/&+$/, "");
+    if (u.indexOf("//") === 0) return "https:" + u;
+    if (u.indexOf("/") === 0) return MAIN_URL + u;
+    if (!/^https?:\/\//i.test(u)) return null;
+    return u;
+}
+
 
 function processRouter(routerUrl, pageUrl, depth) {
     depth = depth || 0;
@@ -69,6 +100,31 @@ function processRouter(routerUrl, pageUrl, depth) {
         if (host && host !== "desenefaine.com" && host !== "www.desenefaine.com") {
             return processExternalPage(currentUrl, html, pageUrl);
         }
+
+        var frames = extractAllIframes(html);
+        var innerUrl2 = frames.length > 0 ? resolveUrl2(frames[0]) : null;
+        if (!innerUrl2) {
+            var trhex0 = extractTrhexId(html);
+            if (trhex0) innerUrl2 = currentUrl.split("?")[0] + "?trhide=1&trhex=" + trhex0;
+        } else if (/[?&]tid=/i.test(innerUrl2) && !/[?&]trhex=/i.test(innerUrl2)) {
+            return fetchPage(innerUrl2, { headers: { "Referer": currentUrl } }).then(function (splash) {
+                var trhex2 = extractTrhexId(splash.text || "");
+                if (!trhex2) return null;
+                var nextUrl = (splash.url || innerUrl2).split("?")[0] + "?trhide=1&trhex=" + trhex2;
+                return processRouter(nextUrl, splash.url || innerUrl2, depth + 1);
+            }).catch(function () { return null; });
+        }
+        if (innerUrl2) {
+            var ih2 = innerUrl2.match(/^https?:\/\/([^/?#]+)/i);
+            var ihn2 = ih2 ? ih2[1].toLowerCase().replace(/^www\./, "") : "";
+            if (ihn2 === "desenefaine.com" || ihn2 === "www.desenefaine.com") {
+                if (!/[?&](tid|trhex)=/i.test(innerUrl2)) return null;
+                return processRouter(innerUrl2, currentUrl, depth + 1);
+            }
+            return fetchPage(innerUrl2, { headers: { "Referer": currentUrl } })
+                .then(function (ep) { return processExternalPage(innerUrl2, ep.text || "", currentUrl); });
+        }
+
 
         var iframeMatch = html.match(/<iframe[^>]+src=["']([^"']+)["']/i);
         var encodedNext = html.match(/trhex=([^'"&]+)/i);
@@ -125,6 +181,7 @@ function processExternalPage(innerUrl, html, pageUrl) {
             headers: { "Referer": innerUrl, "Origin": origin, "User-Agent": FETCH_HEADERS["User-Agent"] },
             behaviorHints: {
                 bingeGroup: "desenefaine-1080p",
+                notWebReady: false,
                 proxyHeaders: { request: { "Referer": innerUrl, "Origin": origin, "User-Agent": FETCH_HEADERS["User-Agent"] } }
             },
             provider: "desenefaine"
@@ -137,6 +194,7 @@ function processExternalPage(innerUrl, html, pageUrl) {
         url: innerUrl,
         quality: "1080p",
         headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
+        behaviorHints: { notWebReady: true, bingeGroup: "desenefaine-iframe" },
         provider: "desenefaine"
     };
 }
@@ -179,6 +237,14 @@ function getStreams(id, type, season, episode) {
             return searchSite(roTitle);
         }).catch(function () { return searchSite(roTitle); })
             .then(function (result) {
+                if (!result || !result.html) {
+                    if (enTitle && enTitle !== roTitle) return searchSite(enTitle);
+                    return [];
+                }
+                return result;
+            })
+            .then(function (result2) {
+                var result = result2;
                 if (!result || !result.html) return [];
 
                 var $$ = cheerio.load(result.html);
@@ -195,13 +261,28 @@ function getStreams(id, type, season, episode) {
                     }
                 });
 
-                if (routerUrls.length === 0) {
-                    return [{ name: "Scrape Error", title: "No Base64 Routers Found on Page", url: "http://err", quality: "1080p", provider: "desenefaine" }];
-                }
+                if (routerUrls.length === 0) return [];
 
-                // Process each router to find the server iframe
+                // Process each router to find the server iframe, keep server labels
+                var routerLabels = {};
+                $$("[data-src]").each(function (_, el) {
+                    var s2 = $$(el).attr("data-src");
+                    if (s2 && s2.indexOf("aHR0") === 0) {
+                        try {
+                            var d2 = decodeBase64(s2);
+                            var lbl = $$(el).find(".option").text().trim() || $$(el).text().trim().replace(/\s+/g, " ").slice(0, 40);
+                            if (d2 && routerLabels[d2] === undefined && lbl) routerLabels[d2] = lbl;
+                        } catch (e) { }
+                    }
+                });
                 var processPromises = routerUrls.map(function (rUrl) {
-                    return processRouter(rUrl, result.url);
+                    return processRouter(rUrl, result.url).then(function (s) {
+                        if (s && routerLabels[rUrl]) {
+                            s.title = routerLabels[rUrl] + " | " + (s.title || "RO Dub");
+                            s.name = PROVIDER_NAME + " | " + routerLabels[rUrl];
+                        }
+                        return s;
+                    });
                 });
 
                 return Promise.all(processPromises).then(function (streams) {
@@ -209,7 +290,7 @@ function getStreams(id, type, season, episode) {
                     for (var i = 0; i < streams.length; i++) {
                         if (streams[i]) finalStreams.push(streams[i]);
                     }
-                    return finalStreams.length > 0 ? finalStreams : [{ name: "Error", title: "Could not extract any iframes", url: "http://err", quality: "1080p", provider: "desenefaine" }];
+                    return finalStreams;
                 });
             });
     }).catch(function () {
