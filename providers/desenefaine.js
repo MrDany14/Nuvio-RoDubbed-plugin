@@ -1,12 +1,10 @@
-var PROVIDER_NAME = "Extractor Test";
-
-// ---> PASTE YOUR EXACT WORKING M3U8 LINK HERE <---
-var TARGET_URL = "https://edge1.sprintcdn.com/master.m3u8?token=PASTE_YOUR_LINK_HERE"; 
+var PROVIDER_NAME = "Filemoon Extractor Test";
+var TARGET_URL = "https://edge1-moscow-sprintcdn.owphbf24.com/hls2/06/06323/7lw4veaf96an_x/master.m3u8?t=hQZXGlVjsBmcbheQb5MKKKGAB0wguj61GZHK-1ElqWs&s=1789300723&e=10800&f=45949933&srv=1070&asn=8708&sp=5500&p=0";
 
 var FETCH_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-  "Referer": "https://player4me.com/",
-  "Origin": "https://player4me.com"
+  "Referer": "https://filemoon.sx/",
+  "Origin": "https://filemoon.sx"
 };
 
 function decodeBase64(str) {
@@ -45,9 +43,16 @@ function getStreams(id, type, season, episode) {
     function check(testNum, approachName, extractedString) {
         var isSuccess = (extractedString === TARGET_URL);
         var status = isSuccess ? "SUCCESS" : "FAILED";
+        var diagText = extractedString ? extractedString.substring(0, 45) + "..." : "null";
+        
+        // If it failed but extracted something, show what got cut off
+        if (!isSuccess && extractedString && extractedString.includes("m3u8")) {
+            diagText = "TRUNCATED: " + extractedString.split("?")[1]; 
+        }
+
         streams.push({
             name: "T" + testNum + " | " + status,
-            title: approachName + "\nExtracted: " + (extractedString ? extractedString.substring(0, 30) + "..." : "null"),
+            title: approachName + "\nResult: " + diagText,
             url: isSuccess ? TARGET_URL : "http://example.com/loop",
             quality: "1080p",
             isM3U8: isSuccess,
@@ -57,106 +62,99 @@ function getStreams(id, type, season, episode) {
         });
     }
 
-    // 1. Direct Baseline (Control Test)
-    check(1, "Direct String Baseline", TARGET_URL);
+    // 1. Direct Baseline (Verifies Nuvio plays this exact link)
+    check(1, "Hardcoded Working Link", TARGET_URL);
 
     // 2. Standard JSON Parse
     var sim2 = '{"file": "' + TARGET_URL + '"}';
     try { check(2, "JSON.parse Extraction", JSON.parse(sim2).file); } catch(e) { check(2, "JSON.parse", null); }
 
-    // 3. Regex on JSON Array
+    // 3. Regex on JSON (Stopping at quotes)
     var sim3 = '{"sources":[{"file":"' + TARGET_URL + '"}]}';
     var m3 = sim3.match(/"file"\s*:\s*"(https?:\/\/[^"]+)"/);
-    check(3, "Regex on JSON Array", m3 ? m3[1] : null);
+    check(3, "Regex to next Quote", m3 ? m3[1] : null);
 
-    // 4. Split Method
-    var sim4 = 'video_url="' + TARGET_URL + '";';
-    var s4 = sim4.split('video_url="')[1] ? sim4.split('video_url="')[1].split('"')[0] : null;
-    check(4, "String Split Method", s4);
+    // 4. Loose M3U8 Regex (Often truncates query params!)
+    var sim4 = '<a href="' + TARGET_URL + '">Click</a>';
+    var m4 = sim4.match(/(https?:\/\/[^\s"'<>]+?\.m3u8)/i);
+    check(4, "Loose M3U8 Regex (No Params)", m4 ? m4[1] : null);
 
-    // 5. Unescape Slashes (\/)
-    var sim5 = TARGET_URL.replace(/\//g, '\\/');
-    var m5 = sim5.match(/(https?:\\[/][/][^"'\s<>]+)/);
-    check(5, "Unescape Forward Slashes", m5 ? m5[1].replace(/\\\//g, "/") : null);
+    // 5. Strict M3U8 Regex (Captures query params properly)
+    var sim5 = "src='" + TARGET_URL + "'";
+    var m5 = sim5.match(/(https?:\/\/[^\s"'<>]+?\.m3u8(?:\?[^\s"'<>]+)?)/i);
+    check(5, "Strict M3U8 Regex (With Params)", m5 ? m5[1] : null);
 
     // 6. Base64 Decode
     var sim6 = encodeBase64(TARGET_URL);
     var dec6 = decodeBase64(sim6);
     check(6, "Base64 Decoding", dec6);
 
-    // 7. General M3U8 Regex
-    var sim7 = '<a href="' + TARGET_URL + '">Click</a>';
-    var m7 = sim7.match(/(https?:\/\/[^\s"'<>]+?\.m3u8[^\s"'<>]*)/i);
-    check(7, "Broad M3U8 Regex", m7 ? m7[1] : null);
+    // 7. Unicode Ampersand Fix
+    var sim7 = TARGET_URL.replace(/&/g, '\\u0026');
+    var s7 = sim7.replace(/\\u0026/gi, "&");
+    check(7, "Unicode Ampersand Unescape", s7);
 
-    // 8. Unicode Unescape (\u0026)
-    var sim8 = TARGET_URL.replace(/&/g, '\\u0026');
-    var s8 = sim8.replace(/\\u0026/gi, "&");
-    check(8, "Unicode Ampersand Unescape", s8);
+    // 8. Unescape Forward Slashes
+    var sim8 = TARGET_URL.replace(/\//g, '\\/');
+    var m8 = sim8.match(/(https?:\\[/][/][^"'\s<>]+(?:\?[^"'\s<>]+)?)/);
+    check(8, "Unescape Forward Slashes", m8 ? m8[1].replace(/\\\//g, "/") : null);
 
-    // 9. DOM <source> Regex
-    var sim9 = '<video><source src="' + TARGET_URL + '" type="application/x-mpegURL"></video>';
-    var m9 = sim9.match(/<source[^>]+src=["']([^"']+)["']/i);
-    check(9, "DOM Source Attribute", m9 ? m9[1] : null);
+    // 9. Iframe Data-Src with Params
+    var sim9 = '<iframe data-src="' + TARGET_URL + '"></iframe>';
+    var m9 = sim9.match(/data-src=["']([^"']+)["']/i);
+    check(9, "Iframe data-src Boundary Regex", m9 ? m9[1] : null);
 
-    // 10. Query Parameter Extraction
-    var sim10 = 'https://player4me.com/api?redirect=' + encodeURIComponent(TARGET_URL);
-    var m10 = sim10.match(/redirect=([^&]+)/);
-    check(10, "URI Component Decode", m10 ? decodeURIComponent(m10[1]) : null);
+    // 10. Split String Method
+    var sim10 = 'file:"' + TARGET_URL + '",label';
+    var s10 = sim10.split('file:"')[1] ? sim10.split('file:"')[1].split('"')[0] : null;
+    check(10, "Split String Method", s10);
 
-    // 11. Iframe Data-Src
-    var sim11 = '<iframe data-src="' + TARGET_URL + '"></iframe>';
-    var m11 = sim11.match(/data-src=["']([^"']+)["']/i);
-    check(11, "Iframe data-src Regex", m11 ? m11[1] : null);
+    // 11. HTML5 Video Tag Source
+    var sim11 = '<video><source src="' + TARGET_URL + '" type="application/x-mpegURL"></video>';
+    var m11 = sim11.match(/<source[^>]+src=["']([^"']+)["']/i);
+    check(11, "DOM Source Attribute", m11 ? m11[1] : null);
 
-    // 12. ATOB Javascript Match
-    var sim12 = 'var link = atob("' + encodeBase64(TARGET_URL) + '");';
-    var m12 = sim12.match(/atob\(['"]([^'"]+)['"]\)/i);
-    check(12, "Embedded atob() Match", m12 ? decodeBase64(m12[1]) : null);
+    // 12. Packed Eval Regex (Filemoon often uses this)
+    var sim12 = 'eval(function(p,a,c,k,e,d){return "' + TARGET_URL + '"})';
+    var m12 = sim12.match(/return\s+["'](https?:\/\/[^"']+)["']/i);
+    check(12, "Packed Eval Regex", m12 ? m12[1] : null);
 
-    // 13. IndexOf / Substring
-    var sim13 = 'stream_link:' + TARGET_URL + '|end';
-    var start13 = sim13.indexOf('stream_link:') + 12;
-    var end13 = sim13.indexOf('|end');
-    check(13, "IndexOf Substring", sim13.substring(start13, end13));
+    // 13. Filemoon Specific File Parameter
+    var sim13 = 'file:"' + TARGET_URL + '",';
+    var m13 = sim13.match(/file\s*:\s*["'](https?:\/\/[^"']+)["']/i);
+    check(13, "Filemoon 'file:' JS Regex", m13 ? m13[1] : null);
 
-    // 14. Nested JSON Stringified Parse
-    var sim14 = '{"data": "' + TARGET_URL.replace(/"/g, '\\"') + '"}';
-    try { check(14, "Nested Object Parse", JSON.parse(sim14).data); } catch(e) { check(14, "Nested Object Parse", null); }
+    // 14. Nested Object Parse
+    var sim14 = '{"video": {"url": "' + TARGET_URL.replace(/"/g, '\\"') + '"}}';
+    try { check(14, "Nested JSON Parse", JSON.parse(sim14).video.url); } catch(e) { check(14, "Nested JSON", null); }
 
-    // 15. Regex specific to SprintCDN edge format
-    var sim15 = 'src="' + TARGET_URL + '"';
-    var m15 = sim15.match(/(https?:\/\/(?:edge[0-9]+|eu)[^\s"'<>]+sprintcdn[^\s"'<>]+)/i);
-    check(15, "SprintCDN Specific Regex", m15 ? m15[1] : null);
+    // 15. ATOB Extraction
+    var sim15 = 'var link = atob("' + encodeBase64(TARGET_URL) + '");';
+    var m15 = sim15.match(/atob\(['"]([^'"]+)['"]\)/i);
+    check(15, "Embedded atob() JS Match", m15 ? decodeBase64(m15[1]) : null);
 
-    // 16. Single Quote Regex
-    var sim16 = "file: '" + TARGET_URL + "'";
-    var m16 = sim16.match(/file:\s*'([^']+)'/i);
-    check(16, "Single Quote Boundary", m16 ? m16[1] : null);
+    // 16. URL Parsing Verification
+    try { var u = new URL(TARGET_URL); check(16, "Native URL Object", u.href); } catch(e) { check(16, "URL Object", null); }
 
-    // 17. Base Domain Assembly
-    var parts = TARGET_URL.split('?');
-    var sim17Domain = parts[0];
-    var sim17Query = parts[1];
-    check(17, "String Assembly (Domain + Query)", sim17Domain + '?' + sim17Query);
+    // 17. JwPlayer Format Regex
+    var sim17 = '[{file:"' + TARGET_URL + '"}]';
+    var m17 = sim17.match(/\{file:\s*["']([^"']+)["']/i);
+    check(17, "JWPlayer Array Format", m17 ? m17[1] : null);
 
-    // 18. Match Without Protocol (//edge1...)
+    // 18. Protocol-less Extraction
     var sim18 = TARGET_URL.replace("https://", "//");
-    var m18 = sim18.match(/(\/\/[^\s"'<>]+?\.m3u8[^\s"'<>]*)/i);
-    check(18, "Protocol-less Assembly", m18 ? "https:" + m18[1] : null);
+    var m18 = sim18.match(/(\/\/[^\s"'<>]+?\.m3u8(?:\?[^\s"'<>]+)?)/i);
+    check(18, "Protocol-less (//edge...) Assembly", m18 ? "https:" + m18[1] : null);
 
-    // 19. Eval Sandbox Simulation (Regexing packed code)
-    var sim19 = 'eval(function(p,a,c,k,e,d){return "' + TARGET_URL + '"})';
-    var m19 = sim19.match(/return\s+["'](https?:\/\/[^"']+)["']/i);
-    check(19, "Packed Eval Regex", m19 ? m19[1] : null);
+    // 19. SprintCDN Subdomain Regex
+    var sim19 = "link='" + TARGET_URL + "'";
+    var m19 = sim19.match(/(https?:\/\/(?:edge[0-9]+-.*?)sprintcdn[^\s"'<>]+)/i);
+    check(19, "SprintCDN Dedicated Regex", m19 ? m19[1] : null);
 
-    // 20. URL Object Protocol Enforcement
-    try {
-        var u = new URL(TARGET_URL);
-        check(20, "URL Object Parsing", u.href);
-    } catch(e) {
-        check(20, "URL Object Parsing", null);
-    }
+    // 20. URI Component Decoding
+    var sim20 = 'https://filemoon.sx/api?redirect=' + encodeURIComponent(TARGET_URL);
+    var m20 = sim20.match(/redirect=([^&]+)/);
+    check(20, "URI Component Decoding", m20 ? decodeURIComponent(m20[1]) : null);
 
     return Promise.resolve(streams);
 }
