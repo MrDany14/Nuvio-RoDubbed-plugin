@@ -6,7 +6,7 @@ var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
 var FETCH_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+  "Accept": "*/*",
   "Accept-Language": "ro-RO,ro;q=0.9,en-US;q=0.8,en;q=0.7"
 };
 
@@ -17,8 +17,11 @@ function fetchText(url, options) {
     headers: Object.assign({}, FETCH_HEADERS, options.headers || {}),
     body: options.body
   }).then(function(res) {
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    return res.text();
+    return res.text().then(function(text) {
+        return { status: res.status, text: text };
+    });
+  }).catch(function(e) {
+    return { status: "ERR", text: e.message };
   });
 }
 
@@ -39,77 +42,6 @@ function normalizeSlug(value) {
 
 function normalizeTitle(value) {
   return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
-}
-
-function resolveVideoUrl(url, pageUrl, customName) {
-    var hostMatch = url.match(/^https?:\/\/([^/?#]+)/i);
-    var domain = hostMatch ? hostMatch[1] : "desenefaine.com";
-    
-    var serverName = customName || "Server";
-    var lUrl = url.toLowerCase();
-    if (serverName === "Server") {
-        if (lUrl.includes("player4me")) serverName = "Player4Me";
-        else if (lUrl.includes("streamp2p")) serverName = "StreamP2P";
-        else if (lUrl.includes("seekstreaming")) serverName = "SeekStreaming";
-        else if (lUrl.includes("byse")) serverName = "ByseHD";
-        else if (lUrl.includes("dsvplay")) serverName = "Dsvplay";
-        else if (lUrl.includes("ok.ru")) serverName = "Ok.ru";
-    }
-
-    if (url.includes(".m3u8") || url.includes(".mp4")) {
-        return Promise.resolve({
-            name: PROVIDER_NAME + " | " + serverName,
-            title: "1080p | RO Dub",
-            url: url,
-            quality: "1080p",
-            isM3U8: url.includes(".m3u8"),
-            headers: { "Referer": "https://" + domain + "/", "Origin": "https://" + domain, "User-Agent": FETCH_HEADERS["User-Agent"] },
-            behaviorHints: { bingeGroup: "desenefaine-1080p" },
-            provider: "desenefaine"
-        });
-    }
-
-    return fetchText(url, { headers: { "Referer": pageUrl } }).then(function(html) {
-        var m3u8Match = html.match(/(https?:\/\/[^"'<>\\\s]+\.m3u8[^"'<>\\\s]*)/i);
-        var mp4Match = html.match(/(https?:\/\/[^"'<>\\\s]+\.mp4[^"'<>\\\s]*)/i);
-        var directUrl = null;
-
-        if (m3u8Match && m3u8Match[1]) directUrl = m3u8Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
-        else if (mp4Match && mp4Match[1]) directUrl = mp4Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
-
-        if (directUrl) {
-            return {
-                name: PROVIDER_NAME + " | " + serverName,
-                title: "1080p | RO Dub",
-                url: directUrl, 
-                quality: "1080p",
-                isM3U8: directUrl.includes(".m3u8"),
-                headers: { "Referer": "https://" + domain + "/", "Origin": "https://" + domain, "User-Agent": FETCH_HEADERS["User-Agent"] },
-                behaviorHints: { bingeGroup: "desenefaine-1080p" },
-                provider: "desenefaine"
-            };
-        }
-
-        return {
-            name: PROVIDER_NAME + " | " + serverName,
-            title: "Fallback (May Loop)",
-            url: url,
-            quality: "1080p",
-            headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
-            behaviorHints: { bingeGroup: "desenefaine-1080p" },
-            provider: "desenefaine"
-        };
-    }).catch(function() {
-        return {
-            name: PROVIDER_NAME + " | " + serverName,
-            title: "Network Error",
-            url: url,
-            quality: "1080p",
-            headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
-            behaviorHints: { bingeGroup: "desenefaine-1080p" },
-            provider: "desenefaine"
-        };
-    });
 }
 
 function getStreams(id, type, season, episode) {
@@ -139,8 +71,8 @@ function getStreams(id, type, season, episode) {
       
       var promises = prefixes.map(function(prefix) {
         var url = MAIN_URL + "/" + prefix + "/" + slug + "/";
-        return fetchText(url).then(function(html) {
-          if (html && html.length > 2000 && !html.includes("Nu am găsit")) return { url: url, html: html };
+        return fetchText(url).then(function(res) {
+          if (res.text && res.text.length > 2000 && !res.text.includes("Nu am găsit")) return { url: url, html: res.text };
           return null;
         }).catch(function() { return null; });
       });
@@ -150,154 +82,82 @@ function getStreams(id, type, season, episode) {
       });
     }
 
-    function searchSite(query) {
-      var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
-      return fetchText(searchUrl).then(function(html) {
-        var $ = cheerio.load(html);
-        var bestMatch = null;
-        var normQuery = normalizeTitle(query);
-        var queryWords = normQuery.split(" ").filter(function(w) { return w.length > 2; });
-
-        $("a").each(function(_, el) {
-          var href = $(el).attr("href");
-          if (!href || !href.includes("desenefaine.com")) return;
-          if (/\/(category|tag|author|page|feed|wp-)/i.test(href)) return;
-
-          var text = $(el).text().trim();
-          if (text.length < 5) return;
-
-          var normText = normalizeTitle(text);
-          var matchCount = 0;
-          queryWords.forEach(function(word) { if (normText.includes(word)) matchCount++; });
-
-          if (matchCount >= Math.ceil(queryWords.length / 2)) {
-            if (!bestMatch || text.length < bestMatch.text.length) bestMatch = { href: href, text: text, score: matchCount };
-          }
-        });
-
-        if (bestMatch) return fetchText(bestMatch.href).then(function(html) { return { url: bestMatch.href, html: html }; });
-        return null;
-      }).catch(function() { return null; });
-    }
-
     return tryDirectUrl(roTitle).then(function(result) {
-      if (result) return result;
-      if (enTitle && enTitle !== roTitle) {
-        return tryDirectUrl(enTitle).then(function(enResult) {
-          if (enResult) return enResult;
-          return searchSite(roTitle).then(function(searchResult) {
-            if (searchResult) return searchResult;
-            return searchSite(enTitle);
-          });
-        });
-      }
-      return searchSite(roTitle);
-    }).then(function(result) {
       if (!result || !result.html) return [];
 
       var streams = [];
-      var urlsToResolve = [];
-      var seenUrls = {};
       var $$ = cheerio.load(result.html);
 
-      // 1. EXTRACT POST ID
-      var m1 = result.html.match(/shortlink["'][^>]+p=(\d+)/i);
-      var m2 = result.html.match(/postid-(\d+)/i);
-      var m3 = result.html.match(/data-post=["']?(\d+)["']?/i);
-      var postId = (m1&&m1[1]) || (m2&&m2[1]) || (m3&&m3[1]) || null;
+      // 1. EXTRACT EXACT DATA DIRECTLY FROM THE SERVER BUTTON
+      var firstServerBtn = $$("li[data-post][data-nume]").first();
+      var s_post = firstServerBtn.attr("data-post") || "29025"; // Fallback to Toy Story 5 ID
+      var s_nume = firstServerBtn.attr("data-nume") || "1";
+      var s_type = firstServerBtn.attr("data-type") || "movie";
 
-      // 2. SMART EXTRACT AJAX CONFIG (Nonce & Action)
-      var nonce = "";
-      var action = "doo_player_ajax";
-      
-      // Look for the site's injected JS object
-      var jsObjectMatch = result.html.match(/var\s+[a-zA-Z0-9_]+\s*=\s*(\{.*?admin-ajax.*?\});/i) || 
-                          result.html.match(/var\s+[a-zA-Z0-9_]+\s*=\s*(\{.*?"nonce".*?\});/i);
-      
-      if (jsObjectMatch && jsObjectMatch[1]) {
-          try {
-              var jsObj = JSON.parse(jsObjectMatch[1]);
-              if (jsObj.nonce) nonce = jsObj.nonce;
-              else if (jsObj.security) nonce = jsObj.security;
-              
-              if (jsObj.action) action = jsObj.action;
-          } catch(e) {}
-      }
-
-      // Fallback manual regex if JSON parse fails
-      if (!nonce) {
-          var nMatch = result.html.match(/["'](?:nonce|security)["']\s*:\s*["']([a-z0-9]+)["']/i) || result.html.match(/data-nonce=["']([a-z0-9]+)["']/i);
-          if (nMatch) nonce = nMatch[1];
-      }
-      if (action === "doo_player_ajax") {
-          var aMatch = result.html.match(/["']action["']\s*:\s*["']([a-z_]+_ajax|[a-z_]+_player)["']/i);
-          if (aMatch) action = aMatch[1];
-      }
-
-      if (!postId) return [];
+      // 2. EXTRACT NONCE
+      var nonceMatch = result.html.match(/["']nonce["']\s*:\s*["']([^"']+)["']/i) || result.html.match(/data-nonce=["']([^"']+)["']/i);
+      var nonce = nonceMatch ? nonceMatch[1] : "";
 
       var ajaxUrl = MAIN_URL + "/wp-admin/admin-ajax.php";
-      var ajaxPromises = [];
-      var ajaxErrors = [];
 
-      // 3. FIRE REQUESTS FOR SERVERS 1 THROUGH 6
-      for (var i = 1; i <= 6; i++) {
-          (function(nume) {
-              // Properly format the payload parameters
-              var bodyData = "action=" + encodeURIComponent(action) + "&post=" + encodeURIComponent(postId) + "&nume=" + nume + "&type=" + (type === "tv" ? "tv" : "movie");
-              if (nonce) bodyData += "&nonce=" + encodeURIComponent(nonce) + "&security=" + encodeURIComponent(nonce);
+      // 3. DEFINE 10 DIFFERENT ATTACK VECTORS
+      var tests = [
+          { id: "T1", desc: "Standard doo_player", body: "action=doo_player_ajax&post="+s_post+"&nume="+s_nume+"&type="+s_type },
+          { id: "T2", desc: "doo_player + nonce", body: "action=doo_player_ajax&post="+s_post+"&nume="+s_nume+"&type="+s_type+"&nonce="+nonce },
+          { id: "T3", desc: "doo_player + security", body: "action=doo_player_ajax&post="+s_post+"&nume="+s_nume+"&type="+s_type+"&security="+nonce },
+          { id: "T4", desc: "dt_player_ajax", body: "action=dt_player_ajax&post="+s_post+"&nume="+s_nume+"&type="+s_type+"&nonce="+nonce },
+          { id: "T5", desc: "Both security tokens", body: "action=doo_player_ajax&post="+s_post+"&nume="+s_nume+"&type="+s_type+"&nonce="+nonce+"&security="+nonce },
+          { id: "T6", desc: "No Origin Headers", body: "action=doo_player_ajax&post="+s_post+"&nume="+s_nume+"&type="+s_type+"&nonce="+nonce, dropHeaders: true },
+          { id: "T7", desc: "GET Method", method: "GET", urlMod: "?action=doo_player_ajax&post="+s_post+"&nume="+s_nume+"&type="+s_type+"&nonce="+nonce },
+          { id: "T8", desc: "action=player_ajax", body: "action=player_ajax&post="+s_post+"&nume="+s_nume+"&type="+s_type+"&nonce="+nonce },
+          { id: "T9", desc: "Hardcoded Toy Story ID", body: "action=doo_player_ajax&post=29025&nume=1&type=movie&nonce="+nonce },
+          { id: "T10", desc: "DATA CHECK", isInfo: true, infoText: "Btn ID: " + s_post + " | Nonce: " + nonce }
+      ];
 
-              var p = fetchText(ajaxUrl, {
-                  method: "POST",
-                  headers: { 
-                      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8", 
-                      "Referer": result.url,
-                      "Origin": MAIN_URL,
-                      "X-Requested-With": "XMLHttpRequest",
-                      "User-Agent": FETCH_HEADERS["User-Agent"]
-                  },
-                  body: bodyData
-              }).then(function(resText) {
-                  // Find URL inside response
-                  var embedMatch = resText.match(/src=["']?([^"'\s<>]+)["']?/i) || resText.match(/(https?:\/\/[^"'\s<>]+)/i);
-                  if (embedMatch && embedMatch[1] && !embedMatch[1].includes("admin-ajax") && !embedMatch[1].includes("404")) {
-                      var foundUrl = embedMatch[1].replace(/\\\//g, "/");
-                      if (!seenUrls[foundUrl]) {
-                          seenUrls[foundUrl] = true;
-                          urlsToResolve.push({ url: foundUrl, name: "Server " + nume });
-                      }
-                  }
-              }).catch(function(e) {
-                  ajaxErrors.push(e.message);
-              });
-              ajaxPromises.push(p);
-          })(i);
-      }
-
-      return Promise.all(ajaxPromises).then(function() {
-          // If we successfully pulled URLs, resolve them and push to Nuvio
-          if (urlsToResolve.length > 0) {
-              var resolvePromises = urlsToResolve.map(function(obj) {
-                  return resolveVideoUrl(obj.url, result.url, obj.name);
-              });
-
-              return Promise.all(resolvePromises).then(function(resolvedStreams) {
-                  for (var k = 0; k < resolvedStreams.length; k++) {
-                      if (resolvedStreams[k]) streams.push(resolvedStreams[k]);
-                  }
-                  return streams;
-              });
-          } else {
-              // If we STILL found nothing, print exactly what the scraper used so we can debug it
-              streams.push({
-                  name: "AJAX Failed | ID: " + postId,
-                  title: "Action: " + action + " | Nonce: " + (nonce ? nonce : "NONE"),
-                  url: "http://example.com",
+      var testPromises = tests.map(function(t) {
+          if (t.isInfo) {
+              return Promise.resolve({
+                  name: t.id + " | " + t.desc,
+                  title: t.infoText,
+                  url: "http://example.com/info",
                   quality: "1080p",
                   provider: "desenefaine"
               });
-              return streams;
           }
+
+          var reqOptions = {
+              method: t.method || "POST",
+              headers: {
+                  "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                  "X-Requested-With": "XMLHttpRequest"
+              }
+          };
+
+          if (!t.dropHeaders) {
+              reqOptions.headers["Referer"] = result.url;
+              reqOptions.headers["Origin"] = MAIN_URL;
+          }
+
+          if (t.body) reqOptions.body = t.body;
+
+          var fetchUrl = t.urlMod ? ajaxUrl + t.urlMod : ajaxUrl;
+
+          return fetchText(fetchUrl, reqOptions).then(function(res) {
+              var cleanText = res.text.replace(/</g, "").replace(/>/g, "").substring(0, 45);
+              var isSuccess = res.text.includes("http") ? " (FOUND URL!)" : "";
+              
+              return {
+                  name: t.id + " | Stat: " + res.status + isSuccess,
+                  title: cleanText || "EMPTY_RESPONSE",
+                  url: "http://example.com/loop",
+                  quality: "1080p",
+                  provider: "desenefaine"
+              };
+          });
+      });
+
+      return Promise.all(testPromises).then(function(results) {
+          return results;
       });
     });
   }).catch(function() {
