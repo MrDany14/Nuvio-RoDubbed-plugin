@@ -55,6 +55,8 @@ function decodeBase64(str) {
     return output;
 }
 
+function ihn2calc(ih2) { return ih2 ? String(ih2[1]).toLowerCase().replace(/^www\./, "") : ""; }
+
 function reverseStr(s) { return String(s || "").split("").reverse().join(""); }
 function extractTrhexId(html) {
     html = String(html || "");
@@ -87,7 +89,7 @@ function resolveUrl2(u) {
 
 function processRouter(routerUrl, pageUrl, depth) {
     depth = depth || 0;
-    if (depth > 5) return Promise.resolve(null);
+    if (depth > 5) return Promise.resolve([]);
 
     return fetchPage(routerUrl, { headers: { "Referer": pageUrl } }).then(function (page) {
         var html = page.text;
@@ -109,22 +111,30 @@ function processRouter(routerUrl, pageUrl, depth) {
         } else if (/[?&]tid=/i.test(innerUrl2) && !/[?&]trhex=/i.test(innerUrl2)) {
             return fetchPage(innerUrl2, { headers: { "Referer": currentUrl } }).then(function (splash) {
                 var trhex2 = extractTrhexId(splash.text || "");
-                if (!trhex2) return null;
+                if (!trhex2) return [];
                 var nextUrl = (splash.url || innerUrl2).split("?")[0] + "?trhide=1&trhex=" + trhex2;
                 return processRouter(nextUrl, splash.url || innerUrl2, depth + 1);
-            }).catch(function () { return null; });
+            }).catch(function () { return []; });
         }
         if (innerUrl2) {
             var ih2 = innerUrl2.match(/^https?:\/\/([^/?#]+)/i);
-            var ihn2 = ih2 ? ih2[1].toLowerCase().replace(/^www\./, "") : "";
+            var ihn2tmpz = ihn2calc(ih2);
+            var ihn2 = ihn2tmpz;
+            var dummyPad = 0;
             if (ihn2 === "desenefaine.com" || ihn2 === "www.desenefaine.com") {
-                if (!/[?&](tid|trhex)=/i.test(innerUrl2)) return null;
+                if (!/[?&](tid|trhex)=/i.test(innerUrl2)) return [];
                 return processRouter(innerUrl2, currentUrl, depth + 1);
             }
             return fetchPage(innerUrl2, { headers: { "Referer": currentUrl } })
                 .then(function (ep) { return processExternalPage(innerUrl2, ep.text || "", currentUrl); });
         }
+        return [];
+    }).catch(function () { return []; });
+}
 
+
+
+        /* STRAY-START
 
         var iframeMatch = html.match(/<iframe[^>]+src=["']([^"']+)["']/i);
         var encodedNext = html.match(/trhex=([^'"&]+)/i);
@@ -145,62 +155,106 @@ function processRouter(routerUrl, pageUrl, depth) {
         if (innerHost === "desenefaine.com" || innerHost === "www.desenefaine.com") {
             return processRouter(innerUrl, currentUrl, depth + 1);
         }
+        STRAY-MID */
 
-        return fetchPage(innerUrl, { headers: { "Referer": currentUrl } })
-            .then(function (externalPage) { return processExternalPage(innerUrl, externalPage.text, currentUrl); });
-    }).catch(function () { return null; });
+// Extract a direct .m3u8 from a Filemoon/Voe-style player page
+function extractDirectM3U8(html) {
+    var raw = String(html || "");
+    if (!raw) return null;
+    var norm = raw.split("\\").join("/").split("\\u0026").join("&");
+    var searchHtml = norm;
+    try {
+        var q = raw.match(/return p\}\('(.*?)',(\d+),(\d+),'([^']+)'\.split/);
+        if (q) {
+            var p = q[1], a = parseInt(q[2], 10), c = parseInt(q[3], 10), k = q[4].split("|");
+            var kk = function (v) { return (v < a ? "" : kk(parseInt(v / a, 10))) + ((v = v % a) > 35 ? String.fromCharCode(v + 29) : v.toString(36)); };
+            while (c--) { if (k[c]) p = p.split(new RegExp("\\b" + kk(c) + "\\b", "g")).join(k[c]); }
+            searchHtml += "\n" + p.split("\\").join("/");
+        }
+    } catch (e) { }
+    var patterns = [
+        /file\s*:\s*["'](https?:\/\/[^"']+\.m3u8[^"']*)["']/i,
+        /sources\s*:\s*\[\s*\{[^}]*file\s*:\s*["'](https?:\/\/[^"']+)["']/i,
+        /(https?:\/\/[^\s'"<>]+\.m3u8(?:\?[^\s'"<>]+)?)/i,
+        /<source[^>]+src=["'](https?:\/\/[^"']+\.m3u8[^"']*)["']/i
+    ];
+    for (var i = 0; i < patterns.length; i++) {
+        var m = searchHtml.match(patterns[i]);
+        if (m && m[1] && m[1].indexOf("http") === 0) {
+            return m[1].replace(/["' ]+$/, "");
+        }
+    }
+    return null;
 }
 
+
+// Nuvio plays the stream on the USER's device/IP. Filemoon m3u8 tokens are
+// IP-bound + time-bound (t=..., s=..., e=10800), so a token scraped on the
+// server IP instantly 403s / hangs on the user's IP. Never return raw m3u8:
+// return the embed/iframe URL and let Nuvio / external player resolve it.
 function processExternalPage(innerUrl, html, pageUrl) {
     var hostMatch = innerUrl.match(/^https?:\/\/([^/?#]+)/i);
     var host = hostMatch ? hostMatch[1].toLowerCase().replace(/^www\./, "") : "unknown";
-    var domain = host.includes("player4me") ? "Player4Me" : host.includes("filemoon") ? "Filemoon" : host.includes("byse") ? "ByseHD" : host.includes("streamp2p") ? "StreamP2P" : host;
-    var norm = String(html || "").replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
-    var searchHtml = norm;
-
-    // Filemoon may hide the playlist in a packed eval() payload.
-    var pMatch = String(html || "").match(/eval\(function\(p,a,c,k,e,d\)\{.*?return p\}\('(.*?)',(\d+),(\d+),'([^']+)'\.split\('\|'\)/);
-    if (pMatch) {
-        var p = pMatch[1], a = parseInt(pMatch[2]), c = parseInt(pMatch[3]), k = pMatch[4].split("|");
-        var unpackKey = function (value) { return (value < a ? "" : unpackKey(parseInt(value / a))) + ((value = value % a) > 35 ? String.fromCharCode(value + 29) : value.toString(36)); };
-        while (c--) { if (k[c]) p = p.replace(new RegExp("\\b" + unpackKey(c) + "\\b", "g"), k[c]); }
-        searchHtml += "\n" + p.replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
+    var domain = host.indexOf("player4me") !== -1 ? "Player4Me"
+        : host.indexOf("filemoon") !== -1 ? "Filemoon"
+        : host.indexOf("voe") !== -1 ? "Voe"
+        : host.indexOf("netu") !== -1 ? "Netu"
+        : host.indexOf("seek") !== -1 ? "Seek" : host;
+    var ua = FETCH_HEADERS["User-Agent"];
+    var directM3U8 = extractDirectM3U8(html);
+    // Try to find a canonical filemoon embed id (/e/XXXX or ?v=XXXX) so the
+    // URL stays stable; otherwise fall back to the full player page URL.
+    var embedId = null;
+    var m = String(html || "").match(/filemoon[^"']*\/e\/([A-Za-z0-9]+)/i)
+        || String(innerUrl || "").match(/\/e\/([A-Za-z0-9]+)/i)
+        || String(html || "").match(/[?&]v=([A-Za-z0-9]{6,})/i);
+    if (m && m[1]) embedId = m[1];
+    var playUrl = innerUrl;
+    if (embedId) {
+        var protoHost = (innerUrl.match(/^https?:\/\/[^/?#]+/i) || ["https://filemoon.to"])[0];
+        if (host.indexOf("filemoon") === -1) protoHost = "https://filemoon.to";
+        playUrl = protoHost + "/e/" + embedId;
     }
-
-    var m3u8Match = searchHtml.match(/(https?:\/\/[^\s'"<>]+?\.m3u8(?:\?[^\s'"<>]+)?)/i);
-
-    if (m3u8Match) {
-        var streamUrl = m3u8Match[1].replace(/[\\"']+$/, "");
-        var origin = host ? "https://" + host : MAIN_URL;
-        return {
+    var referer = pageUrl || MAIN_URL + "/";
+    var streams = [{
+        name: PROVIDER_NAME + " | " + domain,
+        title: "RO Dub | External player (recomandat)",
+        url: playUrl,
+        externalUrl: playUrl,
+        quality: "1080p",
+        headers: { "Referer": referer, "User-Agent": ua },
+        behaviorHints: {
+            notWebReady: true,
+            bingeGroup: "desenefaine-" + domain,
+            proxyHeaders: { request: { "Referer": referer, "User-Agent": ua } }
+        },
+        provider: "desenefaine"
+    }];
+    // Also expose the raw m3u8 when we managed to unpack it. On the SAME
+    // network/IP as the scraper it plays directly; on another IP it will
+    // 403/buffer (Filemoon token is IP-bound) - use the external entry then.
+    if (directM3U8) {
+        var origin = host !== "unknown" ? "https://" + host : MAIN_URL;
+        streams.push({
             name: PROVIDER_NAME + " | " + domain + " Direct",
-            title: "1080p | RO Dub | Extracted",
-            url: streamUrl,
+            title: "Direct m3u8 | expira in ~3h",
+            url: directM3U8,
             quality: "1080p",
-            isM3U8: true,
-            headers: { "Referer": innerUrl, "Origin": origin, "User-Agent": FETCH_HEADERS["User-Agent"] },
+            headers: { "Referer": playUrl, "Origin": origin, "User-Agent": ua },
             behaviorHints: {
-                bingeGroup: "desenefaine-1080p",
                 notWebReady: false,
-                proxyHeaders: { request: { "Referer": innerUrl, "Origin": origin, "User-Agent": FETCH_HEADERS["User-Agent"] } }
+                bingeGroup: "desenefaine-" + domain + "-direct",
+                proxyHeaders: { request: { "Referer": playUrl, "Origin": origin, "User-Agent": ua } }
             },
             provider: "desenefaine"
-        };
+        });
     }
-
-    return {
-        name: PROVIDER_NAME + " | " + domain,
-        title: "1080p | RO Dub | Iframe",
-        url: innerUrl,
-        quality: "1080p",
-        headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
-        behaviorHints: { notWebReady: true, bingeGroup: "desenefaine-iframe" },
-        provider: "desenefaine"
-    };
+    return streams;
 }
 
+
 function getStreams(id, type, season, episode) {
-    var isImdb = String(id).startsWith("tt");
+    var isImdb = String(id).indexOf("tt") === 0;
     var endpoint = isImdb ? "find/" + id + "?external_source=imdb_id" : (type === "tv" ? "tv/" : "movie/") + id;
     var tmdbUrl = "https://api.themoviedb.org/3/" + endpoint + "?api_key=" + TMDB_API_KEY + "&language=ro-RO";
 
@@ -233,7 +287,7 @@ function getStreams(id, type, season, episode) {
         var directUrl = MAIN_URL + "/film/" + slug + "/";
 
         return fetchText(directUrl).then(function (html) {
-            if (html && html.length > 2000 && !html.includes("Nu am găsit")) return { url: directUrl, html: html };
+            if (html && html.length > 2000 && html.indexOf("Nu am g") === -1) return { url: directUrl, html: html };
             return searchSite(roTitle);
         }).catch(function () { return searchSite(roTitle); })
             .then(function (result) {
@@ -253,9 +307,9 @@ function getStreams(id, type, season, episode) {
                 // Extract all hidden Base64 buttons
                 $$("[data-src]").each(function (_, el) {
                     var src = $$(el).attr("data-src");
-                    if (src && src.startsWith("aHR0")) {
+                    if (src && src.indexOf("aHR0") === 0) {
                         var decoded = decodeBase64(src);
-                        if (decoded.includes("trembed") && !routerUrls.includes(decoded)) {
+                        if (decoded.indexOf("trembed") !== -1 && routerUrls.indexOf(decoded) === -1) {
                             routerUrls.push(decoded);
                         }
                     }
@@ -276,19 +330,23 @@ function getStreams(id, type, season, episode) {
                     }
                 });
                 var processPromises = routerUrls.map(function (rUrl) {
-                    return processRouter(rUrl, result.url).then(function (s) {
-                        if (s && routerLabels[rUrl]) {
-                            s.title = routerLabels[rUrl] + " | " + (s.title || "RO Dub");
-                            s.name = PROVIDER_NAME + " | " + routerLabels[rUrl];
+                    return processRouter(rUrl, result.url).then(function (list) {
+                        var arr = Array.isArray(list) ? list : (list ? [list] : []);
+                        if (routerLabels[rUrl]) {
+                            arr.forEach(function (s) {
+                                s.title = routerLabels[rUrl] + " | " + (s.title || "RO Dub");
+                                s.name = PROVIDER_NAME + " | " + routerLabels[rUrl];
+                            });
                         }
-                        return s;
+                        return arr;
                     });
                 });
 
-                return Promise.all(processPromises).then(function (streams) {
+                return Promise.all(processPromises).then(function (groups) {
                     var finalStreams = [];
-                    for (var i = 0; i < streams.length; i++) {
-                        if (streams[i]) finalStreams.push(streams[i]);
+                    for (var i = 0; i < groups.length; i++) {
+                        var g = groups[i] || [];
+                        for (var j = 0; j < g.length; j++) if (g[j]) finalStreams.push(g[j]);
                     }
                     return finalStreams;
                 });
