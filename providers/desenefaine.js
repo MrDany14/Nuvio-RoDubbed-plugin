@@ -1,7 +1,7 @@
 var cheerio = require("cheerio-without-node-native");
 
-var PROVIDER_NAME = "DeseneleDublate";
-var MAIN_URL = "https://deseneledublate.com";
+var PROVIDER_NAME = "FilmeDublate";
+var MAIN_URL = "https://filmedublate.net";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c"; 
 
 var FETCH_HEADERS = {
@@ -47,14 +47,12 @@ function getStreams(id, type, season, episode) {
   var tmdbUrl = "https://api.themoviedb.org/3/" + endpoint + "?api_key=" + TMDB_API_KEY + "&language=ro-RO";
 
   return fetchJson(tmdbUrl).then(function(data) {
-    var roTitle = ""; var enTitle = ""; var year = "";
+    var roTitle = ""; var enTitle = ""; 
     if (isImdb) {
       var results = type === "tv" ? data.tv_results : data.movie_results;
       if (results && results.length > 0) { 
           roTitle = type === "tv" ? results[0].name : results[0].title; 
           enTitle = type === "tv" ? results[0].original_name : results[0].original_title; 
-          var dateStr = type === "tv" ? results[0].first_air_date : results[0].release_date;
-          if (dateStr) year = dateStr.split("-")[0];
       }
     } else { 
         roTitle = type === "tv" ? data.name : data.title; 
@@ -71,8 +69,8 @@ function getStreams(id, type, season, episode) {
         
         $("a").each(function(_, el) {
           var href = $(el).attr("href");
-          if (!href || (!href.includes("/desen/") && !href.includes("/film/"))) return;
-          if (href.includes("/category/") || href.includes("/tag/")) return;
+          if (!href || !href.includes("filmedublate.net")) return;
+          if (href.includes("/category/") || href.includes("/tag/") || href.includes("/page/")) return;
 
           var text = normalizeTitle($(el).text().trim());
           if (text.length < 3) return;
@@ -91,12 +89,11 @@ function getStreams(id, type, season, episode) {
       }).catch(function() { return null; });
     }
 
-    // Try Romanian title first, fallback to English
     return searchSite(roTitle).then(function(result) {
         if (!result && enTitle && enTitle !== roTitle) return searchSite(enTitle);
         return result;
     }).then(function(result) {
-      if (!result || !result.html) return [{ name: PROVIDER_NAME, title: "Movie not found on site", url: "http://err", provider: "deseneledublate" }];
+      if (!result || !result.html) return [{ name: PROVIDER_NAME, title: "Movie not found on site", url: "http://err", provider: "filmedublate" }];
 
       var $$ = cheerio.load(result.html);
       var streams = [];
@@ -120,19 +117,17 @@ function getStreams(id, type, season, episode) {
               isM3U8: false,
               headers: { "Referer": result.url, "User-Agent": FETCH_HEADERS["User-Agent"] },
               behaviorHints: { 
-                  notWebReady: true, // Forces Nuvio's browser so human captchas can load if present
-                  bingeGroup: "deseneledublate-webview" 
+                  notWebReady: true,
+                  bingeGroup: "filmedublate-webview" 
               },
-              provider: "deseneledublate"
+              provider: "filmedublate"
           });
       }
 
-      // 1. Extract raw iframes
       $$("iframe").each(function(_, el) {
           addStream($$(el).attr("src") || $$(el).attr("data-src"), "Iframe");
       });
 
-      // 2. Extract hidden data-src attributes (Dooplay style)
       $$("[data-src]").each(function(_, el) {
           var src = $$(el).attr("data-src");
           if (src && src.startsWith("http")) {
@@ -145,16 +140,15 @@ function getStreams(id, type, season, episode) {
           }
       });
 
-      // 3. Look for standard shortcode buttons or generic links
-      $$("a.play-btn, .server-link").each(function(_, el) {
+      $$(".player_options a, .server_line a").each(function(_, el) {
           var href = $$(el).attr("href");
-          if (href && href.startsWith("http") && !href.includes("deseneledublate.com")) {
+          if (href && href.startsWith("http") && !href.includes("filmedublate.net")) {
               addStream(href, "Button Link");
           }
       });
 
       if (streams.length === 0) {
-          return [{ name: PROVIDER_NAME, title: "No iframes found on page", url: "http://err", provider: "deseneledublate" }];
+          return [{ name: PROVIDER_NAME, title: "No iframes found on page", url: "http://err", provider: "filmedublate" }];
       }
 
       return streams;
