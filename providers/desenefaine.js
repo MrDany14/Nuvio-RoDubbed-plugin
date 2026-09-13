@@ -6,7 +6,8 @@ var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
 var FETCH_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
+  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+  "Accept-Language": "ro-RO,ro;q=0.9,en-US;q=0.8,en;q=0.7"
 };
 
 function fetchText(url, options) {
@@ -35,89 +36,237 @@ function normalizeSlug(value) {
   return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
+function normalizeTitle(value) {
+  return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+// -----------------------------------------------------------------------------
+// STAGE 2: RESOLVE THE EXTERNAL VIDEO HOST
+// -----------------------------------------------------------------------------
+function resolveVideoUrl(url, pageUrl, prefix) {
+    var hostMatch = url.match(/^https?:\/\/([^/?#]+)/i);
+    var domain = hostMatch ? hostMatch[1] : "desenefaine.com";
+    
+    var serverName = "Server";
+    var lUrl = url.toLowerCase();
+    if (lUrl.includes("player4me")) serverName = "Player4Me";
+    else if (lUrl.includes("streamp2p")) serverName = "StreamP2P";
+    else if (lUrl.includes("seekstreaming")) serverName = "SeekStreaming";
+    else if (lUrl.includes("byse")) serverName = "ByseHD";
+    else if (lUrl.includes("dsvplay")) serverName = "Dsvplay";
+    else if (lUrl.includes("ok.ru")) serverName = "Ok.ru";
+    
+    var finalName = prefix ? (prefix + " | " + serverName) : serverName;
+
+    // If it's already a direct video file
+    if (url.includes(".m3u8") || url.includes(".mp4")) {
+        return Promise.resolve({
+            name: PROVIDER_NAME + " | " + finalName,
+            title: "1080p | RO Dub",
+            url: url,
+            quality: "1080p",
+            isM3U8: url.includes(".m3u8"),
+            headers: { "Referer": "https://" + domain + "/", "Origin": "https://" + domain, "User-Agent": FETCH_HEADERS["User-Agent"] },
+            behaviorHints: { bingeGroup: "desenefaine-1080p" },
+            provider: "desenefaine"
+        });
+    }
+
+    // Unpack direct URL from iframe to stop ExoPlayer loops
+    return fetchText(url, { headers: { "Referer": pageUrl } }).then(function(html) {
+        var m3u8Match = html.match(/(https?:\/\/[^"'<>\\\s]+\.m3u8[^"'<>\\\s]*)/i);
+        var mp4Match = html.match(/(https?:\/\/[^"'<>\\\s]+\.mp4[^"'<>\\\s]*)/i);
+        var directUrl = null;
+
+        if (m3u8Match && m3u8Match[1]) directUrl = m3u8Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
+        else if (mp4Match && mp4Match[1]) directUrl = mp4Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
+
+        if (directUrl) {
+            return {
+                name: PROVIDER_NAME + " | " + finalName,
+                title: "1080p | RO Dub",
+                url: directUrl, 
+                quality: "1080p",
+                isM3U8: directUrl.includes(".m3u8"),
+                headers: { "Referer": "https://" + domain + "/", "Origin": "https://" + domain, "User-Agent": FETCH_HEADERS["User-Agent"] },
+                behaviorHints: { bingeGroup: "desenefaine-1080p" },
+                provider: "desenefaine"
+            };
+        }
+
+        // Failsafe: Return raw iframe
+        return {
+            name: PROVIDER_NAME + " | " + finalName,
+            title: "Fallback (May Loop)",
+            url: url,
+            quality: "1080p",
+            headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
+            behaviorHints: { bingeGroup: "desenefaine-1080p" },
+            provider: "desenefaine"
+        };
+    }).catch(function() {
+        return {
+            name: PROVIDER_NAME + " | " + finalName,
+            title: "Network Error",
+            url: url,
+            quality: "1080p",
+            headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
+            behaviorHints: { bingeGroup: "desenefaine-1080p" },
+            provider: "desenefaine"
+        };
+    });
+}
+
+// -----------------------------------------------------------------------------
+// STAGE 1: PROCESS INTERNAL ROUTER URLS
+// -----------------------------------------------------------------------------
+function processExtractedUrl(url, pageUrl) {
+    if (!url) return Promise.resolve(null);
+    if (url.startsWith("//")) url = "https:" + url;
+
+    // If it's the internal Desenefaine router (e.g. ?trembed=)
+    if (url.includes("desenefaine.com/?")) {
+        var prefix = url.includes("trembed") ? "Trailer" : "Movie";
+        
+        return fetchText(url, { headers: { "Referer": pageUrl } }).then(function(html) {
+            var iframeMatch = html.match(/<iframe[^>]+src=["']([^"']+)["']/i);
+            if (iframeMatch && iframeMatch[1]) {
+                var innerUrl = iframeMatch[1].replace(/\\\//g, "/");
+                return resolveVideoUrl(innerUrl, url, prefix);
+            }
+            
+            var directMatch = html.match(/(https?:\/\/[^"'<>\\\s]+\.(?:m3u8|mp4)[^"'<>\\\s]*)/i);
+            if (directMatch && directMatch[1]) {
+                return resolveVideoUrl(directMatch[1].replace(/\\\//g, "/"), url, prefix);
+            }
+            return null;
+        }).catch(function() { return null; });
+    }
+
+    // If it's already an external player
+    return resolveVideoUrl(url, pageUrl, "Stream");
+}
+
+// -----------------------------------------------------------------------------
+// MAIN SCRAPER
+// -----------------------------------------------------------------------------
 function getStreams(id, type, season, episode) {
   var isImdb = String(id).startsWith("tt");
   var endpoint = isImdb ? "find/" + id + "?external_source=imdb_id" : (type === "tv" ? "tv/" : "movie/") + id;
   var tmdbUrl = "https://api.themoviedb.org/3/" + endpoint + "?api_key=" + TMDB_API_KEY + "&language=ro-RO";
 
   return fetchJson(tmdbUrl).then(function(data) {
-    var roTitle = "";
+    var roTitle = ""; var enTitle = "";
     if (isImdb) {
       var results = type === "tv" ? data.tv_results : data.movie_results;
       if (results && results.length > 0) {
         roTitle = type === "tv" ? results[0].name : results[0].title;
+        enTitle = type === "tv" ? results[0].original_name : results[0].original_title;
       }
     } else {
       roTitle = type === "tv" ? data.name : data.title;
+      enTitle = type === "tv" ? data.original_name : data.original_title;
     }
 
-    if (!roTitle) return [];
+    if (!roTitle && !enTitle) return [];
 
-    var slug = normalizeSlug(roTitle);
-    if (type === "tv" && season && episode) slug = slug + "-sezonul-" + season + "-episodul-" + episode;
-    var url = MAIN_URL + (type === "tv" ? "/desene/" : "/film/") + slug + "/";
+    function tryDirectUrl(title) {
+      var slug = normalizeSlug(title);
+      if (type === "tv" && season && episode) slug = normalizeSlug(title) + "-sezonul-" + season + "-episodul-" + episode;
+      var prefixes = type === "tv" ? ["epi", "serial", "desene"] : ["film", "desene"];
+      
+      var promises = prefixes.map(function(prefix) {
+        var url = MAIN_URL + "/" + prefix + "/" + slug + "/";
+        return fetchText(url).then(function(html) {
+          if (html && html.length > 2000 && !html.includes("Nu am găsit")) return { url: url, html: html };
+          return null;
+        }).catch(function() { return null; });
+      });
+      return Promise.all(promises).then(function(results) {
+        for (var i = 0; i < results.length; i++) if (results[i]) return results[i];
+        return null;
+      });
+    }
 
-    return fetchText(url).then(function(html) {
+    function searchSite(query) {
+      var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
+      return fetchText(searchUrl).then(function(html) {
+        var $ = cheerio.load(html);
+        var bestMatch = null;
+        var normQuery = normalizeTitle(query);
+        var queryWords = normQuery.split(" ").filter(function(w) { return w.length > 2; });
+
+        $("a").each(function(_, el) {
+          var href = $(el).attr("href");
+          if (!href || !href.includes("desenefaine.com")) return;
+          if (/\/(category|tag|author|page|feed|wp-)/i.test(href)) return;
+
+          var text = $(el).text().trim();
+          if (text.length < 5) return;
+
+          var normText = normalizeTitle(text);
+          var matchCount = 0;
+          queryWords.forEach(function(word) { if (normText.includes(word)) matchCount++; });
+
+          if (matchCount >= Math.ceil(queryWords.length / 2)) {
+            if (!bestMatch || text.length < bestMatch.text.length) bestMatch = { href: href, text: text, score: matchCount };
+          }
+        });
+
+        if (bestMatch) return fetchText(bestMatch.href).then(function(html) { return { url: bestMatch.href, html: html }; });
+        return null;
+      }).catch(function() { return null; });
+    }
+
+    return tryDirectUrl(roTitle).then(function(result) {
+      if (result) return result;
+      if (enTitle && enTitle !== roTitle) {
+        return tryDirectUrl(enTitle).then(function(enResult) {
+          if (enResult) return enResult;
+          return searchSite(roTitle).then(function(searchResult) {
+            if (searchResult) return searchResult;
+            return searchSite(enTitle);
+          });
+        });
+      }
+      return searchSite(roTitle);
+    }).then(function(result) {
+      if (!result || !result.html) return [];
+
       var streams = [];
-      var $$ = cheerio.load(html);
+      var urlsToInvestigate = [];
+      var $$ = cheerio.load(result.html);
 
-      // 1. IFRAME SRC
-      var iframeSrc = $$("iframe").first().attr("src") || $$("iframe").first().attr("data-src") || "NONE";
-      streams.push({
-          name: "1. SRC: " + iframeSrc.substring(0, 40),
-          title: "Diagnostic",
-          url: "http://example.com/loop1",
-          quality: "1080p",
-          provider: "desenefaine"
+      // 1. Find all raw iframes
+      $$("iframe").each(function(_, el) {
+          var src = $$(el).attr("src") || $$(el).attr("data-src");
+          if (src && !src.includes("facebook") && !src.includes("youtube")) {
+              urlsToInvestigate.push(src);
+          }
       });
 
-      // 2. BUTTON ATTRIBUTES
-      var firstBtn = $$("li[data-post]").first();
-      var attrs = "NONE";
-      if (firstBtn.length > 0) {
-          attrs = "P:" + (firstBtn.attr("data-post")||"") + " N:" + (firstBtn.attr("data-nume")||"") + " T:" + (firstBtn.attr("data-type")||"");
-      }
-      streams.push({
-          name: "2. BTN: " + attrs,
-          title: "Diagnostic",
-          url: "http://example.com/loop2",
-          quality: "1080p",
-          provider: "desenefaine"
-      });
-
-      // 3. BASE64 URLS
-      var b64Matches = html.match(/(aHR0cHM6Ly[a-zA-Z0-9+/=]+)/g) || [];
-      var decodedUrl = "NONE";
-      for (var i = 0; i < b64Matches.length; i++) {
+      // 2. Find and decode all Base64 URLs
+      var b64Matches = result.html.match(/(aHR0cHM6Ly[a-zA-Z0-9+/=]+)/g) || [];
+      b64Matches.forEach(function(b64) {
           try {
-              // Simple b64 decode fallback since Node Buffer might not be in Nuvio
-              var dec = typeof atob !== 'undefined' ? atob(b64Matches[i]) : "B64_FOUND_NO_ATOB"; 
-              if (dec.includes("http")) { decodedUrl = dec; break; }
+              var dec = typeof atob !== 'undefined' ? atob(b64) : null;
+              if (dec && dec.includes("http") && urlsToInvestigate.indexOf(dec) === -1) {
+                  urlsToInvestigate.push(dec);
+              }
           } catch(e) {}
-      }
-      if (decodedUrl === "NONE" && b64Matches.length > 0) decodedUrl = "B64_FOUND_FAILED_DECODE";
-      
-      streams.push({
-          name: "3. B64: " + decodedUrl.substring(0, 40),
-          title: "Diagnostic",
-          url: "http://example.com/loop3",
-          quality: "1080p",
-          provider: "desenefaine"
-      });
-      
-      // 4. JS DATA CHECK
-      var jsCheck = html.match(/doo_player_ajax/i) ? "USES_DOO_AJAX" : "NO_DOO_AJAX";
-      streams.push({
-          name: "4. JS: " + jsCheck,
-          title: "Diagnostic",
-          url: "http://example.com/loop4",
-          quality: "1080p",
-          provider: "desenefaine"
       });
 
-      return streams;
-    }).catch(function() {
-      return [];
+      // 3. Process every found URL
+      var processPromises = urlsToInvestigate.map(function(u) {
+          return processExtractedUrl(u, result.url);
+      });
+
+      return Promise.all(processPromises).then(function(resolvedStreams) {
+          for (var k = 0; k < resolvedStreams.length; k++) {
+              if (resolvedStreams[k]) streams.push(resolvedStreams[k]);
+          }
+          return streams;
+      });
     });
   }).catch(function() {
     return [];
