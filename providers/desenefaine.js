@@ -1,6 +1,6 @@
 var cheerio = require("cheerio-without-node-native");
 
-var PROVIDER_NAME = "DeseneFaine";
+var PROVIDER_NAME = "Desene Router Fix";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c"; 
 
@@ -40,9 +40,6 @@ function normalizeTitle(value) {
   return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
 }
 
-// -----------------------------------------------------------------------------
-// STAGE 2: RESOLVE THE EXTERNAL VIDEO HOST
-// -----------------------------------------------------------------------------
 function resolveVideoUrl(url, pageUrl, prefix) {
     var hostMatch = url.match(/^https?:\/\/([^/?#]+)/i);
     var domain = hostMatch ? hostMatch[1] : "desenefaine.com";
@@ -58,7 +55,6 @@ function resolveVideoUrl(url, pageUrl, prefix) {
     
     var finalName = prefix ? (prefix + " | " + serverName) : serverName;
 
-    // If it's already a direct video file
     if (url.includes(".m3u8") || url.includes(".mp4")) {
         return Promise.resolve({
             name: PROVIDER_NAME + " | " + finalName,
@@ -72,7 +68,6 @@ function resolveVideoUrl(url, pageUrl, prefix) {
         });
     }
 
-    // Unpack direct URL from iframe to stop ExoPlayer loops
     return fetchText(url, { headers: { "Referer": pageUrl } }).then(function(html) {
         var m3u8Match = html.match(/(https?:\/\/[^"'<>\\\s]+\.m3u8[^"'<>\\\s]*)/i);
         var mp4Match = html.match(/(https?:\/\/[^"'<>\\\s]+\.mp4[^"'<>\\\s]*)/i);
@@ -94,7 +89,6 @@ function resolveVideoUrl(url, pageUrl, prefix) {
             };
         }
 
-        // Failsafe: Return raw iframe
         return {
             name: PROVIDER_NAME + " | " + finalName,
             title: "Fallback (May Loop)",
@@ -117,14 +111,10 @@ function resolveVideoUrl(url, pageUrl, prefix) {
     });
 }
 
-// -----------------------------------------------------------------------------
-// STAGE 1: PROCESS INTERNAL ROUTER URLS
-// -----------------------------------------------------------------------------
 function processExtractedUrl(url, pageUrl) {
     if (!url) return Promise.resolve(null);
     if (url.startsWith("//")) url = "https:" + url;
 
-    // If it's the internal Desenefaine router (e.g. ?trembed=)
     if (url.includes("desenefaine.com/?")) {
         var prefix = url.includes("trembed") ? "Trailer" : "Movie";
         
@@ -143,13 +133,9 @@ function processExtractedUrl(url, pageUrl) {
         }).catch(function() { return null; });
     }
 
-    // If it's already an external player
     return resolveVideoUrl(url, pageUrl, "Stream");
 }
 
-// -----------------------------------------------------------------------------
-// MAIN SCRAPER
-// -----------------------------------------------------------------------------
 function getStreams(id, type, season, episode) {
   var isImdb = String(id).startsWith("tt");
   var endpoint = isImdb ? "find/" + id + "?external_source=imdb_id" : (type === "tv" ? "tv/" : "movie/") + id;
@@ -237,7 +223,6 @@ function getStreams(id, type, season, episode) {
       var urlsToInvestigate = [];
       var $$ = cheerio.load(result.html);
 
-      // 1. Find all raw iframes
       $$("iframe").each(function(_, el) {
           var src = $$(el).attr("src") || $$(el).attr("data-src");
           if (src && !src.includes("facebook") && !src.includes("youtube")) {
@@ -245,7 +230,6 @@ function getStreams(id, type, season, episode) {
           }
       });
 
-      // 2. Find and decode all Base64 URLs
       var b64Matches = result.html.match(/(aHR0cHM6Ly[a-zA-Z0-9+/=]+)/g) || [];
       b64Matches.forEach(function(b64) {
           try {
@@ -256,7 +240,16 @@ function getStreams(id, type, season, episode) {
           } catch(e) {}
       });
 
-      // 3. Process every found URL
+      if (urlsToInvestigate.length === 0) {
+          streams.push({
+              name: PROVIDER_NAME + " | Error",
+              title: "No hidden routers found",
+              url: "http://example.com",
+              quality: "1080p"
+          });
+          return streams;
+      }
+
       var processPromises = urlsToInvestigate.map(function(u) {
           return processExtractedUrl(u, result.url);
       });
