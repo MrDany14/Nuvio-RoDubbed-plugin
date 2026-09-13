@@ -35,106 +35,81 @@ function normalizeSlug(value) {
   return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
-function normalizeTitle(value) {
-  return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
-}
-
 function getStreams(id, type, season, episode) {
   var isImdb = String(id).startsWith("tt");
   var endpoint = isImdb ? "find/" + id + "?external_source=imdb_id" : (type === "tv" ? "tv/" : "movie/") + id;
   var tmdbUrl = "https://api.themoviedb.org/3/" + endpoint + "?api_key=" + TMDB_API_KEY + "&language=ro-RO";
 
   return fetchJson(tmdbUrl).then(function(data) {
-    var roTitle = ""; var enTitle = "";
+    var roTitle = "";
     if (isImdb) {
       var results = type === "tv" ? data.tv_results : data.movie_results;
       if (results && results.length > 0) {
         roTitle = type === "tv" ? results[0].name : results[0].title;
-        enTitle = type === "tv" ? results[0].original_name : results[0].original_title;
       }
     } else {
       roTitle = type === "tv" ? data.name : data.title;
-      enTitle = type === "tv" ? data.original_name : data.original_title;
     }
 
-    if (!roTitle && !enTitle) return [];
+    if (!roTitle) return [];
 
-    function tryDirectUrl(title) {
-      var slug = normalizeSlug(title);
-      if (type === "tv" && season && episode) slug = normalizeSlug(title) + "-sezonul-" + season + "-episodul-" + episode;
-      var prefixes = type === "tv" ? ["epi", "serial", "desene"] : ["film", "desene"];
-      
-      var promises = prefixes.map(function(prefix) {
-        var url = MAIN_URL + "/" + prefix + "/" + slug + "/";
-        return fetchText(url).then(function(html) {
-          if (html && html.length > 2000 && !html.includes("Nu am găsit")) return { url: url, html: html };
-          return null;
-        }).catch(function() { return null; });
-      });
-      return Promise.all(promises).then(function(results) {
-        for (var i = 0; i < results.length; i++) if (results[i]) return results[i];
-        return null;
-      });
-    }
+    var slug = normalizeSlug(roTitle);
+    if (type === "tv" && season && episode) slug = slug + "-sezonul-" + season + "-episodul-" + episode;
+    var url = MAIN_URL + (type === "tv" ? "/desene/" : "/film/") + slug + "/";
 
-    return tryDirectUrl(roTitle).then(function(result) {
-      if (!result || !result.html) return [];
-
+    return fetchText(url).then(function(html) {
       var streams = [];
-      var $$ = cheerio.load(result.html);
+      var $$ = cheerio.load(html);
 
-      // 1. DUMP FIRST IFRAME SRC
-      var iframeSrc = $$("iframe").first().attr("src") || $$("iframe").first().attr("data-src") || "NO IFRAME FOUND";
+      // 1. IFRAME SRC
+      var iframeSrc = $$("iframe").first().attr("src") || $$("iframe").first().attr("data-src") || "NONE";
       streams.push({
-          name: "1. IFRAME SRC",
-          title: iframeSrc.substring(0, 50),
+          name: "1. SRC: " + iframeSrc.substring(0, 40),
+          title: "Diagnostic",
           url: "http://example.com/loop1",
           quality: "1080p",
           provider: "desenefaine"
       });
 
-      // 2. DUMP SERVER BUTTON ATTRIBUTES
+      // 2. BUTTON ATTRIBUTES
       var firstBtn = $$("li[data-post]").first();
-      var attrs = "";
-      if (firstBtn.length > 0 && firstBtn[0].attribs) {
-          for (var key in firstBtn[0].attribs) {
-              attrs += key + "=" + firstBtn[0].attribs[key] + " | ";
-          }
+      var attrs = "NONE";
+      if (firstBtn.length > 0) {
+          attrs = "P:" + (firstBtn.attr("data-post")||"") + " N:" + (firstBtn.attr("data-nume")||"") + " T:" + (firstBtn.attr("data-type")||"");
       }
       streams.push({
-          name: "2. BUTTON ATTRS",
-          title: (attrs.substring(0, 50) || "NO BUTTON FOUND"),
+          name: "2. BTN: " + attrs,
+          title: "Diagnostic",
           url: "http://example.com/loop2",
           quality: "1080p",
           provider: "desenefaine"
       });
 
-      // 3. LOOK FOR BASE64 URLS IN THE HTML
-      // "https://" encoded in base64 starts with "aHR0cHM6Ly"
-      var b64Matches = result.html.match(/(aHR0cHM6Ly[a-zA-Z0-9+/=]+)/g) || [];
-      var decodedUrl = "NONE FOUND";
+      // 3. BASE64 URLS
+      var b64Matches = html.match(/(aHR0cHM6Ly[a-zA-Z0-9+/=]+)/g) || [];
+      var decodedUrl = "NONE";
       for (var i = 0; i < b64Matches.length; i++) {
           try {
-              var dec = typeof atob !== 'undefined' ? atob(b64Matches[i]) : "No atob support";
-              if (dec.includes("http")) {
-                  decodedUrl = dec;
-                  break;
-              }
+              // Simple b64 decode fallback since Node Buffer might not be in Nuvio
+              var dec = typeof atob !== 'undefined' ? atob(b64Matches[i]) : "B64_FOUND_NO_ATOB"; 
+              if (dec.includes("http")) { decodedUrl = dec; break; }
           } catch(e) {}
       }
+      if (decodedUrl === "NONE" && b64Matches.length > 0) decodedUrl = "B64_FOUND_FAILED_DECODE";
+      
       streams.push({
-          name: "3. BASE64 URL",
-          title: decodedUrl.substring(0, 50),
+          name: "3. B64: " + decodedUrl.substring(0, 40),
+          title: "Diagnostic",
           url: "http://example.com/loop3",
           quality: "1080p",
           provider: "desenefaine"
       });
       
-      // 4. CHECK FOR JAVASCRIPT ARRAYS (Hidden video configs)
-      var jsServers = result.html.match(/(?:player_data|servers|video_links)\s*=\s*(\[.*?\]|\{.*?\})/i);
+      // 4. JS DATA CHECK
+      var jsCheck = html.match(/doo_player_ajax/i) ? "USES_DOO_AJAX" : "NO_DOO_AJAX";
       streams.push({
-          name: "4. JS DATA",
-          title: (jsServers && jsServers[1]) ? jsServers[1].substring(0, 50) : "NONE FOUND",
+          name: "4. JS: " + jsCheck,
+          title: "Diagnostic",
           url: "http://example.com/loop4",
           quality: "1080p",
           provider: "desenefaine"
