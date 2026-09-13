@@ -65,24 +65,48 @@ function processRouter(routerUrl, pageUrl) {
         // Attempt a quick Filemoon unpacking if it's Filemoon
         if (domain === "Filemoon") {
             return fetchText(innerUrl, { headers: { "Referer": MAIN_URL } }).then(function (fmHtml) {
-                var pMatch = fmHtml.match(/eval\(function\(p,a,c,k,e,d\)\{.*?return p\}\('(.*?)',(\d+),(\d+),'([^']+)'\.split\('\|'\)/);
-                if (pMatch) {
-                    var p = pMatch[1], a = parseInt(pMatch[2]), c = parseInt(pMatch[3]), k = pMatch[4].split('|');
-                    var e = function (c) { return (c < a ? '' : e(parseInt(c / a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36)); };
-                    while (c--) { if (k[c]) p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]); }
-                    var m3u8Match = p.match(/['"](https?:\/\/[^\s"'<>]+?\.m3u8(?:\?[^\s"'<>]+)?)['"]/i);
-                    if (m3u8Match) {
+                // Try multiple strategies to extract a .m3u8 URL from Filemoon pages
+                try {
+                    // Normalize common escape sequences to make regexes simpler
+                    var norm = fmHtml.replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
+
+                    // 1) Try old-school packed eval(unpack) pattern
+                    var pMatch = fmHtml.match(/eval\(function\(p,a,c,k,e,d\)\{.*?return p\}\('(.*?)',(\d+),(\d+),'([^']+)'\.split\('\|'\)/);
+                    if (pMatch) {
+                        var p = pMatch[1], a = parseInt(pMatch[2]), c = parseInt(pMatch[3]), k = pMatch[4].split('|');
+                        var e = function (c) { return (c < a ? '' : e(parseInt(c / a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36)); };
+                        while (c--) { if (k[c]) p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]); }
+                        var m3u8Match = p.match(/(https?:\/\/[^\s'"<>]+?\.m3u8(?:\?[^\s'"<>]+)?)/i);
+                        if (m3u8Match) {
+                            return {
+                                name: PROVIDER_NAME + " | Filemoon Direct",
+                                title: "1080p | RO Dub | Extracted",
+                                url: m3u8Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&"),
+                                quality: "1080p",
+                                isM3U8: true,
+                                headers: { "Referer": "https://filemoon.sx/", "Origin": "https://filemoon.sx", "User-Agent": FETCH_HEADERS["User-Agent"] },
+                                behaviorHints: { bingeGroup: "desenefaine-1080p" },
+                                provider: "desenefaine"
+                            };
+                        }
+                    }
+
+                    // 2) Generic search in normalized HTML for any .m3u8 URL (covers many embedding styles)
+                    var genericMatch = norm.match(/(https?:\/\/[^\s'"<>]+?\.m3u8(?:\?[^\s'"<>]+)?)/i);
+                    if (genericMatch) {
                         return {
                             name: PROVIDER_NAME + " | Filemoon Direct",
                             title: "1080p | RO Dub | Extracted",
-                            url: m3u8Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&"),
+                            url: genericMatch[1],
                             quality: "1080p",
                             isM3U8: true,
-                            headers: { "Referer": "https://filemoon.sx/", "Origin": "https://filemoon.sx", "User-Agent": FETCH_HEADERS["User-Agent"] },
+                            headers: { "Referer": innerUrl, "Origin": (new URL(innerUrl)).origin, "User-Agent": FETCH_HEADERS["User-Agent"] },
                             behaviorHints: { bingeGroup: "desenefaine-1080p" },
                             provider: "desenefaine"
                         };
                     }
+                } catch (e) {
+                    // fallthrough to fallback below
                 }
                 throw new Error("Fallback");
             }).catch(function () {
