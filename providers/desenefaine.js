@@ -15,6 +15,15 @@ function fetchText(url, options) {
         .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); return res.text(); });
 }
 
+function fetchPage(url, options) {
+    options = options || {};
+    return fetch(url, { method: options.method || "GET", headers: Object.assign({}, FETCH_HEADERS, options.headers || {}) })
+        .then(function (res) {
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            return res.text().then(function (text) { return { url: res.url || url, text: text }; });
+        });
+}
+
 function fetchJson(url, options) {
     options = options || {};
     return fetch(url, { method: options.method || "GET", headers: Object.assign({}, FETCH_HEADERS, options.headers || {}) })
@@ -45,93 +54,91 @@ function decodeBase64(str) {
     return output;
 }
 
-function processRouter(routerUrl, pageUrl) {
-    return fetchText(routerUrl, { headers: { "Referer": pageUrl } }).then(function (html) {
-        var iframeMatch = html.match(/<iframe[^>]+src=["']([^"']+)["']/i);
-        if (!iframeMatch || !iframeMatch[1]) return null;
+function processRouter(routerUrl, pageUrl, depth) {
+    depth = depth || 0;
+    if (depth > 5) return Promise.resolve(null);
 
-        var innerUrl = iframeMatch[1].replace(/\\\//g, "/");
-        if (innerUrl.startsWith("//")) innerUrl = "https:" + innerUrl;
+    return fetchPage(routerUrl, { headers: { "Referer": pageUrl } }).then(function (page) {
+        var html = page.text;
+        var currentUrl = page.url || routerUrl;
+        var hostMatch = currentUrl.match(/^https?:\/\/([^/?#]+)/i);
+        var host = hostMatch ? hostMatch[1].toLowerCase().replace(/^www\./, "") : "";
 
-        var hostMatch = innerUrl.match(/^https?:\/\/([^/?#]+)/i);
-        var domain = hostMatch ? hostMatch[1].replace("www.", "") : "Unknown Server";
-
-        // Friendly names for known servers
-        if (domain.includes("player4me")) domain = "Player4Me";
-        else if (domain.includes("filemoon")) domain = "Filemoon";
-        else if (domain.includes("byse")) domain = "ByseHD";
-        else if (domain.includes("streamp2p")) domain = "StreamP2P";
-
-        // Attempt a quick Filemoon unpacking if it's Filemoon
-        if (domain === "Filemoon") {
-            return fetchText(innerUrl, { headers: { "Referer": MAIN_URL } }).then(function (fmHtml) {
-                // Try multiple strategies to extract a .m3u8 URL from Filemoon pages
-                try {
-                    // Normalize common escape sequences to make regexes simpler
-                    var norm = fmHtml.replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
-
-                    // 1) Try old-school packed eval(unpack) pattern
-                    var pMatch = fmHtml.match(/eval\(function\(p,a,c,k,e,d\)\{.*?return p\}\('(.*?)',(\d+),(\d+),'([^']+)'\.split\('\|'\)/);
-                    if (pMatch) {
-                        var p = pMatch[1], a = parseInt(pMatch[2]), c = parseInt(pMatch[3]), k = pMatch[4].split('|');
-                        var e = function (c) { return (c < a ? '' : e(parseInt(c / a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36)); };
-                        while (c--) { if (k[c]) p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]); }
-                        var m3u8Match = p.match(/(https?:\/\/[^\s'"<>]+?\.m3u8(?:\?[^\s'"<>]+)?)/i);
-                        if (m3u8Match) {
-                            return {
-                                name: PROVIDER_NAME + " | Filemoon Direct",
-                                title: "1080p | RO Dub | Extracted",
-                                url: m3u8Match[1].replace(/\\\//g, "/").replace(/\\u0026/gi, "&"),
-                                quality: "1080p",
-                                isM3U8: true,
-                                headers: { "Referer": "https://filemoon.sx/", "Origin": "https://filemoon.sx", "User-Agent": FETCH_HEADERS["User-Agent"] },
-                                behaviorHints: { bingeGroup: "desenefaine-1080p" },
-                                provider: "desenefaine"
-                            };
-                        }
-                    }
-
-                    // 2) Generic search in normalized HTML for any .m3u8 URL (covers many embedding styles)
-                    var genericMatch = norm.match(/(https?:\/\/[^\s'"<>]+?\.m3u8(?:\?[^\s'"<>]+)?)/i);
-                    if (genericMatch) {
-                        return {
-                            name: PROVIDER_NAME + " | Filemoon Direct",
-                            title: "1080p | RO Dub | Extracted",
-                            url: genericMatch[1],
-                            quality: "1080p",
-                            isM3U8: true,
-                            headers: { "Referer": innerUrl, "Origin": (new URL(innerUrl)).origin, "User-Agent": FETCH_HEADERS["User-Agent"] },
-                            behaviorHints: { bingeGroup: "desenefaine-1080p" },
-                            provider: "desenefaine"
-                        };
-                    }
-                } catch (e) {
-                    // fallthrough to fallback below
-                }
-                throw new Error("Fallback");
-            }).catch(function () {
-                // Fallback to returning the raw iframe
-                return {
-                    name: PROVIDER_NAME + " | Filemoon Iframe",
-                    title: "1080p | RO Dub | May Loop",
-                    url: innerUrl,
-                    quality: "1080p",
-                    headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
-                    provider: "desenefaine"
-                };
-            });
+        // fetch() follows redirects. If the router already ended at an external player,
+        // process that final page instead of returning the DeseneFaine URL.
+        if (host && host !== "desenefaine.com" && host !== "www.desenefaine.com") {
+            return processExternalPage(currentUrl, html, pageUrl);
         }
 
-        // Return raw iframe for all other servers
+        var iframeMatch = html.match(/<iframe[^>]+src=["']([^"']+)["']/i);
+        var encodedNext = html.match(/trhex=([^'"&]+)/i);
+        var innerUrl = iframeMatch && iframeMatch[1];
+
+        // The intermediate trhide page creates the next iframe in JavaScript.
+        if (!innerUrl && encodedNext) {
+            innerUrl = currentUrl.split("?")[0] + "?trhide=1&trhex=" + encodedNext[1];
+        }
+        if (!innerUrl) return null;
+
+        innerUrl = innerUrl.replace(/\\\//g, "/");
+        if (innerUrl.startsWith("//")) innerUrl = "https:" + innerUrl;
+        else if (innerUrl.startsWith("/")) innerUrl = MAIN_URL + innerUrl;
+
+        var innerHostMatch = innerUrl.match(/^https?:\/\/([^/?#]+)/i);
+        var innerHost = innerHostMatch ? innerHostMatch[1].toLowerCase().replace(/^www\./, "") : "";
+        if (innerHost === "desenefaine.com" || innerHost === "www.desenefaine.com") {
+            return processRouter(innerUrl, currentUrl, depth + 1);
+        }
+
+        return fetchPage(innerUrl, { headers: { "Referer": currentUrl } })
+            .then(function (externalPage) { return processExternalPage(innerUrl, externalPage.text, currentUrl); });
+    }).catch(function () { return null; });
+}
+
+function processExternalPage(innerUrl, html, pageUrl) {
+    var hostMatch = innerUrl.match(/^https?:\/\/([^/?#]+)/i);
+    var host = hostMatch ? hostMatch[1].toLowerCase().replace(/^www\./, "") : "unknown";
+    var domain = host.includes("player4me") ? "Player4Me" : host.includes("filemoon") ? "Filemoon" : host.includes("byse") ? "ByseHD" : host.includes("streamp2p") ? "StreamP2P" : host;
+    var norm = String(html || "").replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
+    var searchHtml = norm;
+
+    // Filemoon may hide the playlist in a packed eval() payload.
+    var pMatch = String(html || "").match(/eval\(function\(p,a,c,k,e,d\)\{.*?return p\}\('(.*?)',(\d+),(\d+),'([^']+)'\.split\('\|'\)/);
+    if (pMatch) {
+        var p = pMatch[1], a = parseInt(pMatch[2]), c = parseInt(pMatch[3]), k = pMatch[4].split("|");
+        var unpackKey = function (value) { return (value < a ? "" : unpackKey(parseInt(value / a))) + ((value = value % a) > 35 ? String.fromCharCode(value + 29) : value.toString(36)); };
+        while (c--) { if (k[c]) p = p.replace(new RegExp("\\b" + unpackKey(c) + "\\b", "g"), k[c]); }
+        searchHtml += "\n" + p.replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
+    }
+
+    var m3u8Match = searchHtml.match(/(https?:\/\/[^\s'"<>]+?\.m3u8(?:\?[^\s'"<>]+)?)/i);
+
+    if (m3u8Match) {
+        var streamUrl = m3u8Match[1].replace(/[\\"']+$/, "");
+        var origin = host ? "https://" + host : MAIN_URL;
         return {
-            name: PROVIDER_NAME + " | " + domain,
-            title: "1080p | RO Dub | Iframe",
-            url: innerUrl,
+            name: PROVIDER_NAME + " | " + domain + " Direct",
+            title: "1080p | RO Dub | Extracted",
+            url: streamUrl,
             quality: "1080p",
-            headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
+            isM3U8: true,
+            headers: { "Referer": innerUrl, "Origin": origin, "User-Agent": FETCH_HEADERS["User-Agent"] },
+            behaviorHints: {
+                bingeGroup: "desenefaine-1080p",
+                proxyHeaders: { request: { "Referer": innerUrl, "Origin": origin, "User-Agent": FETCH_HEADERS["User-Agent"] } }
+            },
             provider: "desenefaine"
         };
-    }).catch(function () { return null; });
+    }
+
+    return {
+        name: PROVIDER_NAME + " | " + domain,
+        title: "1080p | RO Dub | Iframe",
+        url: innerUrl,
+        quality: "1080p",
+        headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
+        provider: "desenefaine"
+    };
 }
 
 function getStreams(id, type, season, episode) {
