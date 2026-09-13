@@ -2,7 +2,7 @@
 var cheerio = require("cheerio-without-node-native");
 
 var PROVIDER_NAME = "DozaAnimata";
-var MAIN_URL = "https://dozaanimata.net";
+var MAIN_URL = "https://www.dozaanimata.net";
 var TMDB_API_KEY = "ccd8c6e162505e91ef8dc65b323ff4be";
 
 var DEFAULT_HEADERS = {
@@ -80,7 +80,7 @@ function getTmdbDetails(tmdbId, mediaType) {
 }
 
 function searchContent(query, mediaType, season, episode) {
-  var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
+  var searchUrl = MAIN_URL + "/search/" + encodeURIComponent(query) + "/";
   
   return fetchText(searchUrl).then(function(html) {
     var $ = cheerio.load(html);
@@ -96,13 +96,17 @@ function searchContent(query, mediaType, season, episode) {
       var hrefLower = href.toLowerCase();
 
       if (mediaType === "tv" && season && episode) {
-        var epPattern = new RegExp("sezonul[-s]*" + season + "[-s]*episodul[-s]*" + episode, "i");
+        var epPattern = new RegExp(
+          "sezonul[^a-z0-9]*" + season + "[^a-z0-9]*episodul[^a-z0-9]*" + episode,
+          "i"
+        );
         if (hrefLower.includes("/episode/") && (epPattern.test(hrefLower) || epPattern.test(postText))) {
           exactPostUrl = href;
           return false; // break loop
         }
       } else if (mediaType === "movie") {
-        if (hrefLower.includes(titleSlug) && !hrefLower.includes("/episode/")) {
+        if (hrefLower.includes(titleSlug) && !hrefLower.includes("/episode/") &&
+            (hrefLower.includes("/movies/") || hrefLower.includes("/film-") || hrefLower.includes("/movie/"))) {
           exactPostUrl = href;
           return false; // break loop
         }
@@ -153,6 +157,33 @@ function extractStreams(contentUrl) {
         }
       });
     });
+
+    // Doza currently puts the fallback player in an @XX-encoded script.
+    // Decode it so the player URL remains usable when the primary player is unavailable.
+    var encodedIframe = postHtml.match(/str\s*=\s*'([^']+)'/i);
+    if (encodedIframe) {
+      var decoded = encodedIframe[1].replace(/@([0-9a-f]{2})/gi, function(_, hex) {
+        return String.fromCharCode(parseInt(hex, 16));
+      });
+      var decodedSrc = decoded.match(/<iframe[^>]+src=["']([^"']+)["']/i);
+      if (decodedSrc && decodedSrc[1]) {
+        streams.push({
+          name: PROVIDER_NAME,
+          title: "Server " + serverCount++ + " | RO Dub",
+          url: decodedSrc[1],
+          quality: "1080p",
+          behaviorHints: {
+            notWebReady: true,
+            proxyHeaders: {
+              request: {
+                "Referer": MAIN_URL + "/",
+                "User-Agent": DEFAULT_HEADERS["User-Agent"]
+              }
+            }
+          }
+        });
+      }
+    }
 
     console.log("[DozaAnimata] Found", streams.length, "streams for", contentUrl);
     return streams;
