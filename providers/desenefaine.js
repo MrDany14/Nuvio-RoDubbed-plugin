@@ -5,7 +5,7 @@ var MAIN_URL = "https://filmedublate.net";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c"; 
 
 var FETCH_HEADERS = {
-  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
   "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
 };
 
@@ -23,22 +23,6 @@ function fetchJson(url, options) {
 
 function normalizeTitle(value) {
   return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
-}
-
-function decodeBase64(str) {
-    try { if (typeof atob !== 'undefined') return atob(str); } catch (e) {}
-    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-    var output = ''; var chr1, chr2, chr3, enc1, enc2, enc3, enc4; var i = 0;
-    str = str.replace(/[^A-Za-z0-9\+\/\=]/g, '');
-    while (i < str.length) {
-        enc1 = chars.indexOf(str.charAt(i++)); enc2 = chars.indexOf(str.charAt(i++));
-        enc3 = chars.indexOf(str.charAt(i++)); enc4 = chars.indexOf(str.charAt(i++));
-        chr1 = (enc1 << 2) | (enc2 >> 4); chr2 = ((enc2 & 15) << 4) | (enc3 >> 2); chr3 = ((enc3 & 3) << 6) | enc4;
-        output += String.fromCharCode(chr1);
-        if (enc3 != 64) output += String.fromCharCode(chr2);
-        if (enc4 != 64) output += String.fromCharCode(chr3);
-    }
-    return output;
 }
 
 function getStreams(id, type, season, episode) {
@@ -93,65 +77,68 @@ function getStreams(id, type, season, episode) {
         if (!result && enTitle && enTitle !== roTitle) return searchSite(enTitle);
         return result;
     }).then(function(result) {
-      if (!result || !result.html) return [{ name: PROVIDER_NAME, title: "Movie not found on site", url: "http://err", provider: "filmedublate" }];
+      if (!result || !result.html) return [{ name: PROVIDER_NAME, title: "Movie not found", url: "http://err", provider: "filmedublate" }];
 
       var $$ = cheerio.load(result.html);
-      var streams = [];
-      var seenUrls = {};
-
-      function addStream(url, label) {
-          if (!url || seenUrls[url]) return;
-          if (url.includes("youtube.com") || url.includes("facebook.com") || url.includes("imdb.com")) return;
-          
-          seenUrls[url] = true;
-          if (url.startsWith("//")) url = "https:" + url;
-
-          var hostMatch = url.match(/^https?:\/\/([^/?#]+)/i);
-          var domain = hostMatch ? hostMatch[1].replace("www.", "") : "Unknown Server";
-          
-          streams.push({
-              name: PROVIDER_NAME + " | " + domain,
-              title: label + " | 1080p RO Dub",
-              url: url,
-              quality: "1080p",
-              isM3U8: false,
-              headers: { "Referer": result.url, "User-Agent": FETCH_HEADERS["User-Agent"] },
-              behaviorHints: { 
-                  notWebReady: true,
-                  bingeGroup: "filmedublate-webview" 
-              },
-              provider: "filmedublate"
-          });
-      }
-
+      
+      // 1. Find the internal wrapper iframe (/embed/filmsrv.php)
+      var wrapperUrl = null;
       $$("iframe").each(function(_, el) {
-          addStream($$(el).attr("src") || $$(el).attr("data-src"), "Iframe");
+          var src = $$(el).attr("src") || $$(el).attr("data-src");
+          if (src && src.includes("filmsrv.php")) wrapperUrl = src;
       });
 
-      $$("[data-src]").each(function(_, el) {
-          var src = $$(el).attr("data-src");
-          if (src && src.startsWith("http")) {
-              addStream(src, "Data-Src");
-          } else if (src && src.startsWith("aHR0")) {
-              try {
-                  var decoded = decodeBase64(src);
-                  if (decoded.startsWith("http")) addStream(decoded, "Base64");
-              } catch(e) {}
-          }
+      if (!wrapperUrl) return [{ name: PROVIDER_NAME, title: "No wrapper iframe found", url: "http://err", provider: "filmedublate" }];
+      if (wrapperUrl.startsWith("/")) wrapperUrl = MAIN_URL + wrapperUrl;
+
+      // 2. Fetch the wrapper to get the raw mirror links (ABYServer, Filemoon)
+      return fetchText(wrapperUrl, { headers: { "Referer": result.url } }).then(function(wrapperHtml) {
+          var streams = [];
+          var seen = {};
+
+          // Look for raw URLs in the javascript of the wrapper
+          var urls = wrapperHtml.match(/(https?:\/\/[^\s"'<>]+)/gi) || [];
+          
+          urls.forEach(function(u) {
+              if (seen[u]) return;
+              
+              var serverName = "Unknown Server";
+              var resQuality = "1080p";
+              var shouldAdd = false;
+
+              if (u.includes("absplayer")) {
+                  serverName = "ABYServer (Abyss)";
+                  resQuality = "480p"; // According to trace, abyss caps at 480p
+                  shouldAdd = true;
+              } else if (u.includes("byse") || u.includes("filemoon")) {
+                  serverName = "Filemoon";
+                  shouldAdd = true;
+              } else if (u.includes("streamtape")) {
+                  serverName = "Streamtape (Ad Heavy)";
+                  shouldAdd = true;
+              }
+
+              if (shouldAdd) {
+                  seen[u] = true;
+                  streams.push({
+                      name: PROVIDER_NAME + " | " + serverName,
+                      title: "Web Player\n⚠️ TAP 2-3 TIMES TO PLAY (Bypass Ads)",
+                      url: u,
+                      quality: resQuality,
+                      isM3U8: false,
+                      headers: { "Referer": wrapperUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
+                      behaviorHints: { 
+                          notWebReady: true, // Force Nuvio WebView
+                          bingeGroup: "filmedublate-webview" 
+                      },
+                      provider: "filmedublate"
+                  });
+              }
+          });
+
+          if (streams.length === 0) return [{ name: PROVIDER_NAME, title: "No usable mirrors in wrapper", url: wrapperUrl, provider: "filmedublate" }];
+          return streams;
       });
-
-      $$(".player_options a, .server_line a").each(function(_, el) {
-          var href = $$(el).attr("href");
-          if (href && href.startsWith("http") && !href.includes("filmedublate.net")) {
-              addStream(href, "Button Link");
-          }
-      });
-
-      if (streams.length === 0) {
-          return [{ name: PROVIDER_NAME, title: "No iframes found on page", url: "http://err", provider: "filmedublate" }];
-      }
-
-      return streams;
     });
   }).catch(function() {
     return [];
