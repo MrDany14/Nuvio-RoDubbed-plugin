@@ -1,47 +1,36 @@
 var cheerio = require("cheerio-without-node-native");
-var CryptoJS;
-try { CryptoJS = require("crypto-js"); } catch (e) {}
 
 var PROVIDER_NAME = "DeseneFaine";
 var MAIN_URL = "https://desenefaine.com";
-var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
+var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c"; 
 
 var FETCH_HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
 };
 
 function fetchText(url, options) {
-    options = options || {};
-    return fetch(url, { method: options.method || "GET", headers: Object.assign({}, FETCH_HEADERS, options.headers || {}) })
-        .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); return res.text(); });
-}
-
-function fetchPage(url, options) {
-    options = options || {};
-    return fetch(url, { method: options.method || "GET", headers: Object.assign({}, FETCH_HEADERS, options.headers || {}) })
-        .then(function (res) {
-            if (!res.ok) throw new Error("HTTP " + res.status);
-            return res.text().then(function (text) { return { url: res.url || url, text: text }; });
-        });
+  options = options || {};
+  return fetch(url, { method: options.method || "GET", headers: Object.assign({}, FETCH_HEADERS, options.headers || {}) })
+    .then(function(res) { if (!res.ok) throw new Error("HTTP " + res.status); return res.text(); });
 }
 
 function fetchJson(url, options) {
-    options = options || {};
-    return fetch(url, { method: options.method || "GET", headers: Object.assign({}, FETCH_HEADERS, options.headers || {}) })
-        .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); return res.json(); });
+  options = options || {};
+  return fetch(url, { method: options.method || "GET", headers: Object.assign({}, FETCH_HEADERS, options.headers || {}) })
+    .then(function(res) { if (!res.ok) throw new Error("HTTP " + res.status); return res.json(); });
 }
 
 function normalizeSlug(value) {
-    return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
 function normalizeTitle(value) {
-    return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
+  return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
 }
 
 function decodeBase64(str) {
-    try { if (typeof atob !== 'undefined') { var a = atob(str); if (a && a.indexOf("http") !== -1) return a; } } catch (e) { }
+    try { if (typeof atob !== 'undefined') return atob(str); } catch (e) {}
     var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
     var output = ''; var chr1, chr2, chr3, enc1, enc2, enc3, enc4; var i = 0;
     str = str.replace(/[^A-Za-z0-9\+\/\=]/g, '');
@@ -56,260 +45,113 @@ function decodeBase64(str) {
     return output;
 }
 
-function reverseStr(s) { return String(s || "").split("").reverse().join(""); }
-function extractTrhexId(html) {
-    html = String(html || "");
-    var m = html.match(/trde\s*\(\s*['"]([0-9a-fA-F]+)['"]\s*\)/);
-    if (m && m[1]) return reverseStr(m[1]);
-    m = html.match(/[?&]trhex=([0-9a-fA-F]{16,})/i);
-    if (m && m[1]) return m[1];
-    return null;
-}
-
-function extractAllIframes(html) {
-    var out = [];
-    var re = /<iframe[^>]+src=(?:"([^"]+)"|'([^']+)')/gi;
-    var m;
-    while ((m = re.exec(html)) !== null) {
-        var src = m[1] || m[2];
-        if (src && out.indexOf(src) === -1) out.push(src);
-    }
-    return out;
-}
-
-function resolveUrl2(u) {
-    if (!u) return null;
-    u = String(u).split("\\").join("/").split("&amp;").join("&").trim();
-    u = u.replace(/&+$/, "");
-    if (u.indexOf("//") === 0) return "https:" + u;
-    if (u.indexOf("/") === 0) return MAIN_URL + u;
-    if (!/^https?:\/\//i.test(u)) return null;
-    return u;
-}
-
-function buildFinalStream(domain, url, referer) {
-    return {
-        name: PROVIDER_NAME + " | " + domain,
-        title: "1080p | RO Dub | Direct",
-        url: url,
-        quality: "1080p",
-        isM3U8: true,
-        headers: { "Referer": referer, "Origin": referer, "User-Agent": FETCH_HEADERS["User-Agent"] },
-        behaviorHints: {
-            bingeGroup: "desenefaine-1080p",
-            notWebReady: false,
-            // Forces Nuvio to attach the strict verification headers to every .ts chunk request
-            proxyHeaders: { request: { "Referer": referer, "Origin": referer, "User-Agent": FETCH_HEADERS["User-Agent"] } }
-        },
-        provider: "desenefaine"
-    };
-}
-
-function buildFallback(domain, iframeUrl) {
-     return {
-        name: PROVIDER_NAME + " | " + domain,
-        title: "1080p | RO Dub | Iframe",
-        url: iframeUrl,
-        quality: "1080p",
-        headers: { "User-Agent": FETCH_HEADERS["User-Agent"] },
-        behaviorHints: { notWebReady: true, bingeGroup: "desenefaine-iframe" },
-        provider: "desenefaine"
-    };
-}
-
-function processExternalPage(innerUrl, html, pageUrl) {
-    var hostMatch = innerUrl.match(/^https?:\/\/([^/?#]+)/i);
-    var host = hostMatch ? hostMatch[1].toLowerCase().replace(/^www\./, "") : "unknown";
-    var domain = host.includes("player4me") ? "Player4Me" : host.includes("filemoon") ? "Filemoon" : host.includes("byse") ? "ByseHD" : host.includes("streamp2p") ? "StreamP2P" : host;
-
-    // Layer 3 Verification Simulation: Player4Me Crypto
-    if (domain === "Player4Me") {
-        var idMatch = innerUrl.match(/\/[ve]\/([a-zA-Z0-9]+)/);
-        if (idMatch && typeof CryptoJS !== 'undefined') {
-            var apiUrl = "https://player4me.com/api/v1/video?id=" + idMatch[1] + "&w=2048&h=1152&r=";
-            return fetchJson(apiUrl, { headers: { "Referer": "https://player4me.com/" } }).then(function(apiRes) {
-                if (apiRes && apiRes.data) {
-                    var key = CryptoJS.enc.Hex.parse("6b69656d7469656e6d75613931316361");
-                    var iv = CryptoJS.enc.Hex.parse("313233343536373839306f6975797472");
-                    var dec = CryptoJS.AES.decrypt(apiRes.data, key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 }).toString(CryptoJS.enc.Utf8);
-                    var vData = JSON.parse(dec);
-                    var mUrl = vData.file || (vData.sources && vData.sources[0] && vData.sources[0].file);
-                    if (mUrl) return buildFinalStream(domain, mUrl, "https://player4me.com/");
-                }
-                return buildFallback(domain, innerUrl);
-            }).catch(function() { return buildFallback(domain, innerUrl); });
-        }
-    }
-
-    // Layer 3 Verification Simulation: Filemoon Eval Unpacker
-    var searchHtml = String(html || "").replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
-    var pMatch = String(html || "").match(/eval\(function\(p,a,c,k,e,d\)\{.*?return p\}\('(.*?)',(\d+),(\d+),'([^']+)'\.split\('\|'\)/);
-    
-    if (pMatch) {
-        var p = pMatch[1], a = parseInt(pMatch[2]), c = parseInt(pMatch[3]), k = pMatch[4].split("|");
-        var unpackKey = function (value) { return (value < a ? "" : unpackKey(parseInt(value / a))) + ((value = value % a) > 35 ? String.fromCharCode(value + 29) : value.toString(36)); };
-        while (c--) { if (k[c]) p = p.replace(new RegExp("\\b" + unpackKey(c) + "\\b", "g"), k[c]); }
-        searchHtml += "\n" + p.replace(/\\\//g, "/").replace(/\\u0026/gi, "&");
-    }
-
-    var m3u8Match = searchHtml.match(/(https?:\/\/[^\s'"<>]+?\.m3u8(?:\?[^\s'"<>]+)?)/i);
-    if (m3u8Match) {
-        var origin = host ? "https://" + host : MAIN_URL;
-        return buildFinalStream(domain, m3u8Match[1].replace(/[\\"']+$/, ""), origin);
-    }
-
-    return buildFallback(domain, innerUrl);
-}
-
-function processRouter(routerUrl, pageUrl, depth) {
-    depth = depth || 0;
-    if (depth > 5) return Promise.resolve(null);
-
-    return fetchPage(routerUrl, { headers: { "Referer": pageUrl } }).then(function (page) {
-        var html = page.text;
-        var currentUrl = page.url || routerUrl;
-        var hostMatch = currentUrl.match(/^https?:\/\/([^/?#]+)/i);
-        var host = hostMatch ? hostMatch[1].toLowerCase().replace(/^www\./, "") : "";
-
-        if (host && host !== "desenefaine.com" && host !== "www.desenefaine.com") {
-            return processExternalPage(currentUrl, html, pageUrl);
-        }
-
-        var frames = extractAllIframes(html);
-        var innerUrl2 = frames.length > 0 ? resolveUrl2(frames[0]) : null;
-        if (!innerUrl2) {
-            var trhex0 = extractTrhexId(html);
-            if (trhex0) innerUrl2 = currentUrl.split("?")[0] + "?trhide=1&trhex=" + trhex0;
-        } else if (/[?&]tid=/i.test(innerUrl2) && !/[?&]trhex=/i.test(innerUrl2)) {
-            return fetchPage(innerUrl2, { headers: { "Referer": currentUrl } }).then(function (splash) {
-                var trhex2 = extractTrhexId(splash.text || "");
-                if (!trhex2) return null;
-                var nextUrl = (splash.url || innerUrl2).split("?")[0] + "?trhide=1&trhex=" + trhex2;
-                return processRouter(nextUrl, splash.url || innerUrl2, depth + 1);
-            }).catch(function () { return null; });
-        }
-
-        if (innerUrl2) {
-            var ih2 = innerUrl2.match(/^https?:\/\/([^/?#]+)/i);
-            var ihn2 = ih2 ? ih2[1].toLowerCase().replace(/^www\./, "") : "";
-            if (ihn2 === "desenefaine.com" || ihn2 === "www.desenefaine.com") {
-                if (!/[?&](tid|trhex)=/i.test(innerUrl2)) return null;
-                return processRouter(innerUrl2, currentUrl, depth + 1);
-            }
-            return fetchPage(innerUrl2, { headers: { "Referer": currentUrl } })
-                .then(function (ep) { return processExternalPage(innerUrl2, ep.text || "", currentUrl); });
-        }
-
+function processRouterForWebView(routerUrl, pageUrl, label) {
+    return fetchText(routerUrl, { headers: { "Referer": pageUrl } }).then(function(html) {
         var iframeMatch = html.match(/<iframe[^>]+src=["']([^"']+)["']/i);
-        var encodedNext = html.match(/trhex=([^'"&]+)/i);
-        var innerUrl = iframeMatch && iframeMatch[1];
+        if (!iframeMatch || !iframeMatch[1]) return null;
 
-        if (!innerUrl && encodedNext) {
-            innerUrl = currentUrl.split("?")[0] + "?trhide=1&trhex=" + encodedNext[1];
-        }
-        if (!innerUrl) return null;
-
-        innerUrl = innerUrl.replace(/\\\//g, "/");
+        var innerUrl = iframeMatch[1].replace(/\\\//g, "/");
         if (innerUrl.startsWith("//")) innerUrl = "https:" + innerUrl;
-        else if (innerUrl.startsWith("/")) innerUrl = MAIN_URL + innerUrl;
 
-        var innerHostMatch = innerUrl.match(/^https?:\/\/([^/?#]+)/i);
-        var innerHost = innerHostMatch ? innerHostMatch[1].toLowerCase().replace(/^www\./, "") : "";
-        if (innerHost === "desenefaine.com" || innerHost === "www.desenefaine.com") {
-            return processRouter(innerUrl, currentUrl, depth + 1);
-        }
+        var hostMatch = innerUrl.match(/^https?:\/\/([^/?#]+)/i);
+        var domain = hostMatch ? hostMatch[1].replace("www.", "") : "Unknown Server";
+        
+        if (domain.includes("player4me")) domain = "Player4Me";
+        else if (domain.includes("filemoon")) domain = "Filemoon";
+        else if (domain.includes("byse")) domain = "ByseHD";
+        else if (domain.includes("streamp2p")) domain = "StreamP2P";
 
-        return fetchPage(innerUrl, { headers: { "Referer": currentUrl } })
-            .then(function (externalPage) { return processExternalPage(innerUrl, externalPage.text, currentUrl); });
-    }).catch(function () { return null; });
+        var finalName = label ? label : domain;
+
+        return {
+            name: PROVIDER_NAME + " | " + finalName,
+            title: "1080p | RO Dub | Web Player",
+            url: innerUrl,
+            quality: "1080p",
+            isM3U8: false,
+            headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
+            behaviorHints: { 
+                notWebReady: true, 
+                bingeGroup: "desenefaine-webview" 
+            },
+            provider: "desenefaine"
+        };
+    }).catch(function() { return null; });
 }
 
 function getStreams(id, type, season, episode) {
-    var isImdb = String(id).startsWith("tt");
-    var endpoint = isImdb ? "find/" + id + "?external_source=imdb_id" : (type === "tv" ? "tv/" : "movie/") + id;
-    var tmdbUrl = "https://api.themoviedb.org/3/" + endpoint + "?api_key=" + TMDB_API_KEY + "&language=ro-RO";
+  var isImdb = String(id).startsWith("tt");
+  var endpoint = isImdb ? "find/" + id + "?external_source=imdb_id" : (type === "tv" ? "tv/" : "movie/") + id;
+  var tmdbUrl = "https://api.themoviedb.org/3/" + endpoint + "?api_key=" + TMDB_API_KEY + "&language=ro-RO";
 
-    return fetchJson(tmdbUrl).then(function (data) {
-        var roTitle = ""; var enTitle = "";
-        if (isImdb) {
-            var results = type === "tv" ? data.tv_results : data.movie_results;
-            if (results && results.length > 0) { roTitle = type === "tv" ? results[0].name : results[0].title; enTitle = type === "tv" ? results[0].original_name : results[0].original_title; }
-        } else { roTitle = type === "tv" ? data.name : data.title; enTitle = type === "tv" ? data.original_name : data.original_title; }
+  return fetchJson(tmdbUrl).then(function(data) {
+    var roTitle = ""; var enTitle = "";
+    if (isImdb) {
+      var results = type === "tv" ? data.tv_results : data.movie_results;
+      if (results && results.length > 0) { roTitle = type === "tv" ? results[0].name : results[0].title; enTitle = type === "tv" ? results[0].original_name : results[0].original_title; }
+    } else { roTitle = type === "tv" ? data.name : data.title; enTitle = type === "tv" ? data.original_name : data.original_title; }
 
-        if (!roTitle) return [];
+    if (!roTitle) return [];
 
-        function searchSite(query) {
-            return fetchText(MAIN_URL + "/?s=" + encodeURIComponent(query)).then(function (html) {
-                var $ = cheerio.load(html); var bestMatch = null; var queryWords = normalizeTitle(query).split(" ").filter(function (w) { return w.length > 2; });
-                $("a").each(function (_, el) {
-                    var href = $(el).attr("href");
-                    if (!href || !href.includes("desenefaine.com") || /\/(category|tag|author|page|feed|wp-)/i.test(href)) return;
-                    var text = normalizeTitle($(el).text().trim());
-                    var matchCount = 0; queryWords.forEach(function (word) { if (text.includes(word)) matchCount++; });
-                    if (matchCount >= Math.ceil(queryWords.length / 2)) { if (!bestMatch || text.length < bestMatch.text.length) bestMatch = { href: href, text: text, score: matchCount }; }
-                });
-                if (bestMatch) return fetchText(bestMatch.href).then(function (resHtml) { return { url: bestMatch.href, html: resHtml }; });
-                return null;
-            }).catch(function () { return null; });
-        }
+    function searchSite(query) {
+      return fetchText(MAIN_URL + "/?s=" + encodeURIComponent(query)).then(function(html) {
+        var $ = cheerio.load(html); var bestMatch = null; var queryWords = normalizeTitle(query).split(" ").filter(function(w) { return w.length > 2; });
+        $("a").each(function(_, el) {
+          var href = $(el).attr("href");
+          if (!href || !href.includes("desenefaine.com") || /\/(category|tag|author|page|feed|wp-)/i.test(href)) return;
+          var text = normalizeTitle($(el).text().trim());
+          var matchCount = 0; queryWords.forEach(function(word) { if (text.includes(word)) matchCount++; });
+          if (matchCount >= Math.ceil(queryWords.length / 2)) { if (!bestMatch || text.length < bestMatch.text.length) bestMatch = { href: href, text: text, score: matchCount }; }
+        });
+        if (bestMatch) return fetchText(bestMatch.href).then(function(resHtml) { return { url: bestMatch.href, html: resHtml }; });
+        return null;
+      }).catch(function() { return null; });
+    }
 
-        var slug = normalizeSlug(roTitle);
-        if (type === "tv" && season && episode) slug = normalizeSlug(roTitle) + "-sezonul-" + season + "-episodul-" + episode;
-        var directUrl = MAIN_URL + "/film/" + slug + "/";
+    var slug = normalizeSlug(roTitle);
+    if (type === "tv" && season && episode) slug = normalizeSlug(roTitle) + "-sezonul-" + season + "-episodul-" + episode;
+    var directUrl = MAIN_URL + "/film/" + slug + "/";
 
-        return fetchText(directUrl).then(function (html) {
-            if (html && html.length > 2000 && !html.includes("Nu am găsit")) return { url: directUrl, html: html };
-            return searchSite(roTitle);
-        }).catch(function () { return searchSite(roTitle); })
-            .then(function (result) {
-                if (!result || !result.html) {
-                    if (enTitle && enTitle !== roTitle) return searchSite(enTitle);
-                    return [];
-                }
-                return result;
-            })
-            .then(function (result) {
-                if (!result || !result.html) return [];
+    return fetchText(directUrl).then(function(html) {
+        if (html && html.length > 2000 && !html.includes("Nu am găsit")) return { url: directUrl, html: html };
+        return searchSite(roTitle);
+    }).catch(function() { return searchSite(roTitle); })
+    .then(function(result) {
+      if (!result || !result.html) return [];
 
-                var $$ = cheerio.load(result.html);
-                var routerUrls = [];
-                var routerLabels = {};
+      var $$ = cheerio.load(result.html);
+      var routerUrls = [];
+      var routerLabels = {};
 
-                $$("[data-src]").each(function (_, el) {
-                    var src = $$(el).attr("data-src");
-                    if (src && src.startsWith("aHR0")) {
-                        var decoded = decodeBase64(src);
-                        if (decoded.includes("trembed") && !routerUrls.includes(decoded)) {
-                            routerUrls.push(decoded);
-                            var lbl = $$(el).find(".option").text().trim() || $$(el).text().trim().replace(/\s+/g, " ").slice(0, 40);
-                            if (lbl) routerLabels[decoded] = lbl;
-                        }
-                    }
-                });
+      $$("[data-src]").each(function(_, el) {
+          var src = $$(el).attr("data-src");
+          if (src && src.startsWith("aHR0")) {
+              var decoded = decodeBase64(src);
+              if (decoded.includes("trembed") && !routerUrls.includes(decoded)) {
+                  routerUrls.push(decoded);
+                  var lbl = $$(el).find(".option").text().trim() || $$(el).text().trim().replace(/\s+/g, " ").slice(0, 30);
+                  if (lbl) routerLabels[decoded] = lbl;
+              }
+          }
+      });
 
-                if (routerUrls.length === 0) return [];
+      if (routerUrls.length === 0) return [];
 
-                var processPromises = routerUrls.map(function (rUrl) {
-                    return processRouter(rUrl, result.url).then(function (s) {
-                        if (s && routerLabels[rUrl]) {
-                            // Only append label if we successfully pulled a stream object
-                            if (s.name) s.name = PROVIDER_NAME + " | " + routerLabels[rUrl];
-                        }
-                        return s;
-                    });
-                });
+      var processPromises = routerUrls.map(function(rUrl) {
+          return processRouterForWebView(rUrl, result.url, routerLabels[rUrl]);
+      });
 
-                return Promise.all(processPromises).then(function (streams) {
-                    var finalStreams = [];
-                    for (var i = 0; i < streams.length; i++) {
-                        if (streams[i]) finalStreams.push(streams[i]);
-                    }
-                    return finalStreams;
-                });
-            });
-    }).catch(function () {
-        return [];
+      return Promise.all(processPromises).then(function(streams) {
+          var finalStreams = [];
+          for (var i = 0; i < streams.length; i++) {
+              if (streams[i]) finalStreams.push(streams[i]);
+          }
+          return finalStreams;
+      });
     });
+  }).catch(function() {
+    return [];
+  });
 }
 
 if (typeof module !== "undefined" && module.exports) module.exports = { getStreams: getStreams };
