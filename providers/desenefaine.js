@@ -125,10 +125,13 @@ function extractStreams(pageUrl) {
         return {
           name: PROVIDER_NAME,
           title: server.label,
-          url: url,
+          // These hosts return HTML player pages, not media manifests. Passing
+          // them as url makes Nuvio's native player retry forever.
+          url: null,
+          externalUrl: url,
           quality: "1080p",
           behaviorHints: {
-            notWebReady: true,
+            notWebReady: false,
             proxyHeaders: {
               request: {
                 Referer: pageUrl,
