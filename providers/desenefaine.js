@@ -47,36 +47,40 @@ function normalizeTitle(value) {
   return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
 }
 
-function extractPlayer4Me(iframeUrl, pageUrl) {
+function decodeBase64(str) {
+    try {
+        if (typeof atob !== 'undefined') return atob(str);
+    } catch (e) {}
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+    var output = '';
+    var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+    var i = 0;
+    str = str.replace(/[^A-Za-z0-9\+\/\=]/g, '');
+    while (i < str.length) {
+        enc1 = chars.indexOf(str.charAt(i++)); enc2 = chars.indexOf(str.charAt(i++));
+        enc3 = chars.indexOf(str.charAt(i++)); enc4 = chars.indexOf(str.charAt(i++));
+        chr1 = (enc1 << 2) | (enc2 >> 4); chr2 = ((enc2 & 15) << 4) | (enc3 >> 2); chr3 = ((enc3 & 3) << 6) | enc4;
+        output += String.fromCharCode(chr1);
+        if (enc3 != 64) output += String.fromCharCode(chr2);
+        if (enc4 != 64) output += String.fromCharCode(chr3);
+    }
+    return output;
+}
+
+function extractPlayer4Me(iframeUrl) {
     var idMatch = iframeUrl.match(/\/[ve]\/([a-zA-Z0-9]+)/);
     if (!idMatch) {
-        return Promise.resolve([{
-            name: "P4M Error",
-            title: "Could not extract File ID from iframe",
-            url: "http://example.com/error",
-            quality: "1080p",
-            provider: "desenefaine"
-        }]);
+        return Promise.resolve([{ name: "P4M Error", title: "Could not extract File ID", url: "http://example.com", quality: "1080p", provider: "desenefaine" }]);
     }
-
-    var fileId = idMatch[1];
 
     if (cryptoError || !CryptoJS || !CryptoJS.AES) {
-        return Promise.resolve([{
-            name: "Crypto Module Error",
-            title: cryptoError || "crypto-js is unavailable in Nuvio",
-            url: "http://example.com/error",
-            quality: "1080p",
-            provider: "desenefaine"
-        }]);
+        return Promise.resolve([{ name: "Crypto Missing", title: cryptoError || "crypto-js module unavailable", url: "http://example.com", quality: "1080p", provider: "desenefaine" }]);
     }
 
-    var apiUrl = "https://player4me.com/api/v1/video?id=" + fileId + "&w=2048&h=1152&r=";
+    var apiUrl = "https://player4me.com/api/v1/video?id=" + idMatch[1] + "&w=2048&h=1152&r=";
 
     return fetchJson(apiUrl, { headers: { "Referer": "https://player4me.com/" } }).then(function(apiRes) {
-        if (!apiRes || !apiRes.data) {
-             return [{ name: "API Error", title: "Empty response from P4M API", url: "http://example.com/error", quality: "1080p", provider: "desenefaine" }];
-        }
+        if (!apiRes || !apiRes.data) return [{ name: "API Error", title: "Empty API response", url: "http://example.com", quality: "1080p", provider: "desenefaine" }];
 
         try {
             var key = CryptoJS.enc.Hex.parse("6b69656d7469656e6d75613931316361");
@@ -98,14 +102,13 @@ function extractPlayer4Me(iframeUrl, pageUrl) {
                     provider: "desenefaine"
                 }];
             } else {
-                 return [{ name: "Decryption Failed", title: "Missing .file in decrypted JSON", url: "http://example.com/error", quality: "1080p", provider: "desenefaine" }];
+                 return [{ name: "Decryption Fail", title: "No file in JSON", url: "http://example.com", quality: "1080p", provider: "desenefaine" }];
             }
-
         } catch (err) {
-             return [{ name: "Decryption Crash", title: err.message.substring(0, 50), url: "http://example.com/error", quality: "1080p", provider: "desenefaine" }];
+             return [{ name: "Decryption Crash", title: err.message.substring(0, 50), url: "http://example.com", quality: "1080p", provider: "desenefaine" }];
         }
     }).catch(function(err) {
-        return [{ name: "API Fetch Error", title: err.message, url: "http://example.com/error", quality: "1080p", provider: "desenefaine" }];
+        return [{ name: "Network Error", title: err.message, url: "http://example.com", quality: "1080p", provider: "desenefaine" }];
     });
 }
 
@@ -153,16 +156,12 @@ function getStreams(id, type, season, episode) {
 
         $("a").each(function(_, el) {
           var href = $(el).attr("href");
-          if (!href || !href.includes("desenefaine.com")) return;
-          if (/\/(category|tag|author|page|feed|wp-)/i.test(href)) return;
-
+          if (!href || !href.includes("desenefaine.com") || /\/(category|tag|author|page|feed|wp-)/i.test(href)) return;
           var text = $(el).text().trim();
           if (text.length < 5) return;
-
           var normText = normalizeTitle(text);
           var matchCount = 0;
           queryWords.forEach(function(word) { if (normText.includes(word)) matchCount++; });
-
           if (matchCount >= Math.ceil(queryWords.length / 2)) {
             if (!bestMatch || text.length < bestMatch.text.length) bestMatch = { href: href, text: text, score: matchCount };
           }
@@ -189,18 +188,29 @@ function getStreams(id, type, season, episode) {
       if (!result || !result.html) return [];
 
       var $$ = cheerio.load(result.html);
-      var player4MeIframe = null;
+      var player4MeUrl = null;
 
-      $$("iframe").each(function(_, el) {
-          var src = $$(el).attr("src") || $$(el).attr("data-src");
-          if (src && src.includes("player4me")) player4MeIframe = src;
+      // Unpack Base64 Buttons to find Player4Me
+      $$("[data-src]").each(function(_, el) {
+          var src = $$(el).attr("data-src");
+          if (src && src.startsWith("aHR0")) {
+              var decoded = decodeBase64(src);
+              if (decoded.includes("player4me")) player4MeUrl = decoded;
+          } else if (src && src.includes("player4me")) {
+              player4MeUrl = src;
+          }
       });
 
-      if (!player4MeIframe) {
-          return [{ name: "Scrape Error", title: "Player4Me iframe not found on page", url: "http://example.com/error", quality: "1080p", provider: "desenefaine" }];
+      if (!player4MeUrl) {
+          $$("iframe").each(function(_, el) {
+              var src = $$(el).attr("src") || $$(el).attr("data-src");
+              if (src && src.includes("player4me")) player4MeUrl = src;
+          });
       }
 
-      return extractPlayer4Me(player4MeIframe, result.url);
+      if (!player4MeUrl) return [{ name: "Scrape Error", title: "Base64 decode found no Player4Me link", url: "http://example.com", quality: "1080p", provider: "desenefaine" }];
+
+      return extractPlayer4Me(player4MeUrl);
     });
   }).catch(function() {
     return [];
