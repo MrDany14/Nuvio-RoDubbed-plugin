@@ -1,4 +1,10 @@
 var cheerio = require("cheerio-without-node-native");
+var CryptoJS = null;
+try {
+  CryptoJS = require("crypto-js");
+} catch (error) {
+  CryptoJS = null;
+}
 
 var PROVIDER_NAME = "DeseneFaine";
 var MAIN_URL = "https://desenefaine.com";
@@ -364,9 +370,11 @@ function decryptBysePlayback(playback) {
 }
 
 function hexBytes(value) {
-  var bytes = new Uint8Array(Math.floor(String(value || "").length / 2));
+  var hex = String(value || "").trim();
+  if (hex.length % 2) hex = hex.slice(0, -1);
+  var bytes = new Uint8Array(Math.floor(hex.length / 2));
   for (var index = 0; index < bytes.length; index += 1) {
-    bytes[index] = parseInt(String(value).slice(index * 2, index * 2 + 2), 16);
+    bytes[index] = parseInt(hex.slice(index * 2, index * 2 + 2), 16);
   }
   return bytes;
 }
@@ -384,35 +392,72 @@ function player4meKey() {
 }
 
 function decryptPlayer4meResponse(body) {
-  return player4meKey().then(function(key) {
-    return crypto.subtle.decrypt(
-      { name: "AES-CBC", iv: binaryBytes("1234567890oiuytr") },
-      key,
-      hexBytes(body)
-    );
-  }).then(function(bytes) {
-    var text = typeof TextDecoder === "function"
-      ? new TextDecoder().decode(bytes)
-      : String.fromCharCode.apply(null, new Uint8Array(bytes));
-    return JSON.parse(text);
-  });
+  if (byseCrypto()) {
+    return player4meKey().then(function(key) {
+      return crypto.subtle.decrypt(
+        { name: "AES-CBC", iv: binaryBytes("1234567890oiuytr") },
+        key,
+        hexBytes(body)
+      );
+    }).then(function(bytes) {
+      var text = typeof TextDecoder === "function"
+        ? new TextDecoder().decode(bytes)
+        : String.fromCharCode.apply(null, new Uint8Array(bytes));
+      return JSON.parse(text);
+    });
+  }
+
+  if (!CryptoJS || !CryptoJS.AES) return Promise.reject(new Error("AES-CBC unavailable"));
+  try {
+    var key = CryptoJS.enc.Utf8.parse("kiemtienmua911ca");
+    var iv = CryptoJS.enc.Utf8.parse("1234567890oiuytr");
+    var cipherText = String(body || "").trim();
+    if (cipherText.length % 2) cipherText = cipherText.slice(0, -1);
+    var cipherParams = CryptoJS.lib.CipherParams.create({
+      ciphertext: CryptoJS.enc.Hex.parse(cipherText)
+    });
+    var decrypted = CryptoJS.AES.decrypt(cipherParams, key, {
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
+    });
+    return Promise.resolve(JSON.parse(decrypted.toString(CryptoJS.enc.Utf8)));
+  } catch (error) {
+    return Promise.reject(error);
+  }
 }
 
 function encryptPlayer4meValue(value) {
-  return player4meKey().then(function(key) {
-    return crypto.subtle.encrypt(
-      { name: "AES-CBC", iv: binaryBytes("1234567890oiuytr") },
-      key,
-      binaryBytes(value)
-    );
-  }).then(function(bytes) {
-    var result = "";
-    var view = new Uint8Array(bytes);
-    for (var index = 0; index < view.length; index += 1) {
-      result += ("0" + view[index].toString(16)).slice(-2);
-    }
-    return result;
-  });
+  if (byseCrypto()) {
+    return player4meKey().then(function(key) {
+      return crypto.subtle.encrypt(
+        { name: "AES-CBC", iv: binaryBytes("1234567890oiuytr") },
+        key,
+        binaryBytes(value)
+      );
+    }).then(function(bytes) {
+      var result = "";
+      var view = new Uint8Array(bytes);
+      for (var index = 0; index < view.length; index += 1) {
+        result += ("0" + view[index].toString(16)).slice(-2);
+      }
+      return result;
+    });
+  }
+
+  if (!CryptoJS || !CryptoJS.AES) return Promise.reject(new Error("AES-CBC unavailable"));
+  try {
+    var key = CryptoJS.enc.Utf8.parse("kiemtienmua911ca");
+    var iv = CryptoJS.enc.Utf8.parse("1234567890oiuytr");
+    var encrypted = CryptoJS.AES.encrypt(String(value), key, {
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
+    });
+    return Promise.resolve(encrypted.ciphertext.toString(CryptoJS.enc.Hex));
+  } catch (error) {
+    return Promise.reject(error);
+  }
 }
 
 function urlHost(url) {
