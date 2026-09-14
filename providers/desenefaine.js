@@ -9,12 +9,6 @@ try {
 var PROVIDER_NAME = "DeseneFaine";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
-var KNOWN_BYSE_PROVIDERS = {
-  "tt26743210": "https://bysewihe.com/e/musdr6iea7y4",
-  "1087192": "https://bysewihe.com/e/musdr6iea7y4",
-  "tt0892769": "https://bysewihe.com/e/tilio6qz0vwo",
-  "10191": "https://bysewihe.com/e/tilio6qz0vwo"
-};
 
 var FETCH_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
@@ -642,6 +636,74 @@ function resolvePlayer4meProvider(providerUrl, pageUrl) {
   });
 }
 
+function randomDoodToken(length) {
+  var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var result = "";
+  for (var index = 0; index < length; index += 1) {
+    result += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+  }
+  return result;
+}
+
+function directVideoStream(url, label, providerUrl, referrer) {
+  var requestHeaders = {
+    Referer: referrer || providerUrl,
+    Origin: providerUrl ? String(providerUrl).match(/^https?:\/\/[^/]+/i)[0] : MAIN_URL,
+    "User-Agent": FETCH_HEADERS["User-Agent"]
+  };
+
+  return {
+    name: PROVIDER_NAME + " | " + label,
+    title: "Direct video stream",
+    url: url,
+    quality: "1080p",
+    type: "mp4",
+    isM3U8: false,
+    headers: requestHeaders,
+    behaviorHints: {
+      notWebReady: true,
+      bingeGroup: "desenefaine-video",
+      proxyHeaders: { request: requestHeaders }
+    },
+    provider: "desenefaine"
+  };
+}
+
+function resolveDoodProvider(providerUrl, pageUrl) {
+  var pageHeaders = Object.assign({}, FETCH_HEADERS, { Referer: pageUrl });
+
+  return fetch(providerUrl, { headers: pageHeaders }).then(function(res) {
+    return res.text().then(function(html) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return { html: html, url: res.url || providerUrl };
+    });
+  }).then(function(page) {
+    var passMatch = String(page.html).match(/\/pass_md5\/[^"'<>\\s]+/i);
+    if (!passMatch) {
+      var videoMatch = String(page.html).match(/<video\\b[^>]*src=["'](https?:\/\/[^"']+)["']/i);
+      if (!videoMatch) throw new Error("Dood media path missing");
+      return [directVideoStream(cleanUrl(videoMatch[1]), "Doodstream", providerUrl, pageUrl)];
+    }
+
+    var passPath = cleanUrl(passMatch[0]);
+    var token = passPath.split("/").pop().split("?")[0];
+    var passUrl = absoluteUrl(passPath, page.url);
+    if (!token || !passUrl) throw new Error("Dood token missing");
+
+    return fetch(passUrl, { headers: pageHeaders }).then(function(res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.text();
+    }).then(function(mediaBase) {
+      mediaBase = cleanUrl(mediaBase);
+      if (!mediaBase || mediaBase === "RELOAD") throw new Error("Dood media path missing");
+      if (!/^https?:\/\//i.test(mediaBase)) mediaBase = absoluteUrl(mediaBase, page.url);
+      var mediaUrl = mediaBase + randomDoodToken(10) +
+        "?token=" + encodeURIComponent(token) + "&expiry=" + Date.now();
+      return [directVideoStream(mediaUrl, "Doodstream", providerUrl, pageUrl)];
+    });
+  });
+}
+
 function directHlsStream(url, label, providerUrl, referrer) {
   var requestHeaders = {
     Referer: referrer || providerUrl,
@@ -1059,20 +1121,9 @@ function searchSeries(query, season, episode) {
   });
 }
 
-function searchSite(query, expectedYear, alternateTitle) {
-  var titleVariants = [query];
-  if (alternateTitle && normalizeTitle(alternateTitle) !== normalizeTitle(query)) {
-    titleVariants.push(alternateTitle);
-  }
-  var words = titleWords(query);
-  if (!words.length && alternateTitle) words = titleWords(alternateTitle);
-  if (!words.length) return Promise.resolve(null);
-
-  return findDirectFilmPage(query, words, expectedYear, titleVariants).then(function(directResult) {
-    if (directResult) return directResult;
-
-    var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
-    return fetchText(searchUrl).then(function(html) {
+function searchFilmIndex(query, expectedYear, titleVariants, words, path) {
+  var searchUrl = MAIN_URL + path + encodeURIComponent(query);
+  return fetchText(searchUrl).then(function(html) {
     var $ = cheerio.load(html);
     var best = null;
 
@@ -1081,7 +1132,7 @@ function searchSite(query, expectedYear, alternateTitle) {
       if (!href || !/desenefaine\.com\/film\//i.test(href)) return;
       if (/\/film\/$/i.test(href)) return;
 
-      var text = normalizeTitle($(element).text() || $(element).attr("title"));
+      var text = normalizeTitle($(element).text() || $(element).attr("title") || href);
       var score = 0;
       titleVariants.forEach(function(variant) {
         score = Math.max(score, titleScore(text, titleWords(variant)));
@@ -1093,8 +1144,25 @@ function searchSite(query, expectedYear, alternateTitle) {
       }
     });
 
-      if (!best) return null;
-      return readFilmPage(best.href, words, expectedYear, true, titleVariants, "movie");
+    if (!best) return null;
+    return readFilmPage(best.href, words, expectedYear, true, titleVariants, "movie");
+  });
+}
+
+function searchSite(query, expectedYear, alternateTitle) {
+  var titleVariants = [query];
+  if (alternateTitle && normalizeTitle(alternateTitle) !== normalizeTitle(query)) {
+    titleVariants.push(alternateTitle);
+  }
+  var words = titleWords(query);
+  if (!words.length && alternateTitle) words = titleWords(alternateTitle);
+  if (!words.length) return Promise.resolve(null);
+
+  return findDirectFilmPage(query, words, expectedYear, titleVariants).then(function(directResult) {
+    if (directResult) return directResult;
+    return searchFilmIndex(query, expectedYear, titleVariants, words, "/?s=").then(function(result) {
+      if (result) return result;
+      return searchFilmIndex(query, expectedYear, titleVariants, words, "/feed/?s=");
     });
   }).catch(function() {
     return null;
@@ -1227,6 +1295,15 @@ function resolveProvider(providerUrl, pageUrl, displayTitle) {
   if (/player\.desenefaine\.net|netu/i.test(providerUrl)) {
     return Promise.resolve([]);
   }
+  if (/dood(?:stream)?\./i.test(providerUrl)) {
+    return resolveDoodProvider(providerUrl, pageUrl).then(function(streams) {
+      return streams.map(function(stream) {
+        return decorateStream(stream, displayTitle, providerUrl);
+      });
+    }).catch(function() {
+      return [];
+    });
+  }
   if (/byse(?:wihe)?\./i.test(providerUrl)) {
     return resolveByseProvider(providerUrl, pageUrl).then(function(streams) {
       return streams.map(function(stream) {
@@ -1264,10 +1341,6 @@ function resolveProvider(providerUrl, pageUrl, displayTitle) {
   });
 }
 
-function knownByseProvider(id) {
-  return KNOWN_BYSE_PROVIDERS[String(id || "").toLowerCase()] || null;
-}
-
 function resolveServerUrls(serverUrls, pageUrl, index, displayTitle) {
   if (index >= serverUrls.length) return Promise.resolve([]);
 
@@ -1290,6 +1363,13 @@ function resolveServerUrls(serverUrls, pageUrl, index, displayTitle) {
       return uniqueStreams((streams || []).concat(nextStreams || []));
     });
   });
+}
+
+function resolveFilmPageResult(result, displayTitle) {
+  if (!result || !result.html) return Promise.resolve([]);
+  var serverUrls = findServerUrls(result.html, result.url);
+  if (!serverUrls.length) return Promise.resolve([]);
+  return resolveServerUrls(serverUrls, result.url, 0, displayTitle);
 }
 
 function normalizeCatalogId(id) {
@@ -1332,11 +1412,6 @@ function getStreams(id, type, season, episode) {
 
     var findPage = isTv ? searchSeries : searchSite;
     var displayTitle = originalTitle || romanianTitle;
-    var knownProvider = !isTv && knownByseProvider(cleanId);
-    if (knownProvider) {
-      return resolveProvider(knownProvider, MAIN_URL, displayTitle);
-    }
-
     var pageResult = isTv
       ? findPage(romanianTitle || originalTitle, season, episode)
        : findPage(romanianTitle || originalTitle, releaseYear, originalTitle);
@@ -1349,11 +1424,7 @@ function getStreams(id, type, season, episode) {
       }
       return result;
     }).then(function(result) {
-      if (!result || !result.html) return [];
-
-       var serverUrls = findServerUrls(result.html, result.url);
-       if (!serverUrls.length) return [];
-        return resolveServerUrls(serverUrls, result.url, 0, displayTitle);
+      return resolveFilmPageResult(result, displayTitle);
     });
   }).catch(function() {
     return [];
