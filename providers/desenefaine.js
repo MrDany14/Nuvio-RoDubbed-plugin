@@ -588,11 +588,12 @@ function siteSlug(value) {
 function readFilmPage(url, expectedWords) {
   return fetchText(url).then(function(html) {
     var normalized = normalizeTitle(html);
-    var hasPlayer = /data-src=["'][^"']+["']/i.test(html) || /<iframe\b/i.test(html);
+    var hasPlayer = /data-src=["'][^"']+["']/i.test(html) || /(?:trembed=|trhide=1&tid=)/i.test(html);
+    var hasEpisodes = /s\s*\d+\s+e\s*\d+/i.test(normalized);
     var hasTitle = expectedWords.every(function(word) {
       return normalized.indexOf(word) >= 0;
     });
-    if (!hasPlayer && !hasTitle) return null;
+    if (!hasPlayer && !hasTitle && !hasEpisodes) return null;
     return { url: url, html: html };
   }).catch(function() {
     return null;
@@ -617,6 +618,113 @@ function findDirectFilmPage(query, words) {
     });
   });
   return result;
+}
+
+function episodePageSlugs(query, season, episode) {
+  var slug = siteSlug(query);
+  var s = parseInt(season, 10) || 1;
+  var e = parseInt(episode, 10) || 1;
+  var paddedSeason = s < 10 ? "0" + s : String(s);
+  var paddedEpisode = e < 10 ? "0" + e : String(e);
+  return [
+    slug + "-s" + s + "-ep" + e,
+    slug + "-s" + paddedSeason + "-e" + paddedEpisode,
+    slug + "-sezonul-" + s + "-episodul-" + e,
+    slug + "-sezon-" + s + "-episodul-" + e
+  ];
+}
+
+function findDirectEpisodePage(query, words, season, episode) {
+  var slugs = episodePageSlugs(query, season, episode);
+  var result = Promise.resolve(null);
+  slugs.forEach(function(slug) {
+    result = result.then(function(found) {
+      if (found) return found;
+      return readFilmPage(MAIN_URL + "/epi/" + slug + "/", words);
+    });
+  });
+  return result;
+}
+
+function seriesPageSlugs(query) {
+  var slug = siteSlug(query);
+  return [slug, slug + "-serial", slug + "-sezonul-1"];
+}
+
+function readEpisodeFromSeriesPage(seriesResult, words, season, episode) {
+  if (!seriesResult) return Promise.resolve(null);
+  var $ = cheerio.load(seriesResult.html);
+  var seasonText = "s" + (parseInt(season, 10) || 1);
+  var episodeText = "e" + (parseInt(episode, 10) || 1);
+  var candidate = null;
+
+  $("a[href]").each(function(_, element) {
+    if (candidate) return;
+    var href = absoluteUrl($(element).attr("href"), seriesResult.url);
+    var text = normalizeTitle(($(element).text() || "") + " " + (href || ""));
+    if (!href || !/\/(?:epi|episode)\//i.test(href)) return;
+    if (text.indexOf(seasonText) < 0 || text.indexOf(episodeText) < 0) return;
+    candidate = href;
+  });
+
+  return candidate ? readFilmPage(candidate, words) : Promise.resolve(null);
+}
+
+function findDirectSeriesEpisodePage(query, words, season, episode) {
+  var slugs = seriesPageSlugs(query);
+  var urls = [];
+  slugs.forEach(function(slug) {
+    urls.push(MAIN_URL + "/serial/" + slug + "/");
+    urls.push(MAIN_URL + "/sez/" + slug + "/");
+    urls.push(MAIN_URL + "/sez/" + slug + "-sezonul-1/");
+  });
+  var result = Promise.resolve(null);
+  urls.forEach(function(url) {
+    result = result.then(function(found) {
+      if (found) return found;
+      return readFilmPage(url, words).then(function(seriesResult) {
+        return readEpisodeFromSeriesPage(seriesResult, words, season, episode);
+      });
+    });
+  });
+  return result;
+}
+
+function searchSeries(query, season, episode) {
+  var words = normalizeTitle(query).split(" ").filter(function(word) {
+    return word.length > 2;
+  });
+  if (!words.length) return Promise.resolve(null);
+
+  return findDirectEpisodePage(query, words, season, episode).then(function(result) {
+    if (result) return result;
+    return findDirectSeriesEpisodePage(query, words, season, episode);
+  }).then(function(result) {
+    if (result) return result;
+
+    var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
+    return fetchText(searchUrl).then(function(html) {
+      var $ = cheerio.load(html);
+      var best = null;
+      $("a[href]").each(function(_, element) {
+        var href = absoluteUrl($(element).attr("href"), searchUrl);
+        if (!href || !/\/(?:serial|epi|sez)\//i.test(href)) return;
+        var text = normalizeTitle($(element).text() || $(element).attr("title") || href);
+        var score = titleScore(text, words);
+        if (/\/epi\//i.test(href)) score += 2;
+        if (score < Math.ceil(words.length / 2)) return;
+        if (!best || score > best.score) best = { href: href, score: score };
+      });
+      if (!best) return null;
+      return fetchText(best.href).then(function(pageHtml) {
+        var page = { url: best.href, html: pageHtml };
+        if (/\/epi\//i.test(best.href)) return page;
+        return readEpisodeFromSeriesPage(page, words, season, episode);
+      });
+    });
+  }).catch(function() {
+    return null;
+  });
 }
 
 function searchSite(query) {
@@ -842,9 +950,16 @@ function getStreams(id, type, season, episode) {
       originalTitle = isTv ? data.original_name : data.original_title;
     }
 
-    return searchSite(romanianTitle || originalTitle).then(function(result) {
+    var findPage = isTv ? searchSeries : searchSite;
+    var pageResult = isTv
+      ? findPage(romanianTitle || originalTitle, season, episode)
+      : findPage(romanianTitle || originalTitle);
+
+    return pageResult.then(function(result) {
       if (!result && originalTitle && originalTitle !== romanianTitle) {
-        return searchSite(originalTitle);
+        return isTv
+          ? searchSeries(originalTitle, season, episode)
+          : searchSite(originalTitle);
       }
       return result;
     }).then(function(result) {
