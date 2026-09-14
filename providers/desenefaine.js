@@ -194,6 +194,7 @@ function resolveProvider(url, wrapperUrl) {
         title: "Direct HLS stream",
         url: m3u8,
         quality: "1080p",
+        type: "hls",
         isM3U8: true,
         headers: requestHeaders,
         behaviorHints: {
@@ -374,6 +375,7 @@ function getStreams(id, type, season, episode) {
             title: "HLS stream",
             url: m3u8,
             quality: "1080p",
+            type: "hls",
             isM3U8: true,
             headers: { Referer: wrapperUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
             behaviorHints: { bingeGroup: "filmedublate-hls" },
