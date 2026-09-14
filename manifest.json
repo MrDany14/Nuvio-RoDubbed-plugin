@@ -19,22 +19,6 @@
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": true
-    },
-    {
-      "id": "filmedublate-pro",
-      "name": "FilmeDublate Pro",
-      "description": "Romanian dubbed cartoons from filmedublate.net",
-      "version": "1.0.61",
-      "author": "MrDany14",
-      "supportedTypes": ["movie", "tv"],
-      "filename": "providers/filmedublate.js",
-      "enabled": true,
-      "logo": "https://www.google.com/s2/favicons?domain=dozaanimata.net&sz=128",
-      "contentLanguage": ["ro"],
-      "formats": ["mp4", "mkv", "m3u8"],
-      "limited": false,
-      "disabledPlatforms": [],
-      "supportsExternalPlayer": true
     }
   ]
 }
