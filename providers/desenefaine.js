@@ -7,6 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.7";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -1438,6 +1439,9 @@ function tmdbUrl(id, type) {
 function getStreams(id, type, season, episode) {
   var isTv = type === "tv" || type === "series";
   var cleanId = normalizeCatalogId(id);
+  if (typeof console !== "undefined" && console.log) {
+    console.log("[DeseneFaine " + DESENEFAINE_PLUGIN_VERSION + "] lookup", String(id || ""), "=>", cleanId, String(type || ""));
+  }
 
   return fetchJson(tmdbUrl(cleanId, type)).then(function(data) {
     var isImdb = cleanId.startsWith("tt");
