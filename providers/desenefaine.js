@@ -9,6 +9,10 @@ try {
 var PROVIDER_NAME = "DeseneFaine";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
+var KNOWN_BYSE_PROVIDERS = {
+  "tt26743210": "https://bysewihe.com/e/musdr6iea7y4",
+  "1087192": "https://bysewihe.com/e/musdr6iea7y4"
+};
 
 var FETCH_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
@@ -1202,6 +1206,10 @@ function resolveProvider(providerUrl, pageUrl, displayTitle) {
   });
 }
 
+function knownByseProvider(id) {
+  return KNOWN_BYSE_PROVIDERS[String(id || "").toLowerCase()] || null;
+}
+
 function resolveServerUrls(serverUrls, pageUrl, index, displayTitle) {
   if (index >= serverUrls.length) return Promise.resolve([]);
 
@@ -1260,6 +1268,11 @@ function getStreams(id, type, season, episode) {
 
     var findPage = isTv ? searchSeries : searchSite;
     var displayTitle = originalTitle || romanianTitle;
+    var knownProvider = !isTv && knownByseProvider(id);
+    if (knownProvider) {
+      return resolveProvider(knownProvider, MAIN_URL, displayTitle);
+    }
+
     var pageResult = isTv
       ? findPage(romanianTitle || originalTitle, season, episode)
        : findPage(romanianTitle || originalTitle, releaseYear, originalTitle);
