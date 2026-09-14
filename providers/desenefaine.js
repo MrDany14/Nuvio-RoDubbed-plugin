@@ -1,7 +1,7 @@
 var cheerio = require("cheerio-without-node-native");
 
-var PROVIDER_NAME = "DeseneFaine";
-var MAIN_URL = "https://desenefaine.com";
+var PROVIDER_NAME = "DozaAnimata";
+var MAIN_URL = "https://www.dozaanimata.net";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c"; 
 
 var FETCH_HEADERS = {
@@ -21,59 +21,8 @@ function fetchJson(url, options) {
     .then(function(res) { if (!res.ok) throw new Error("HTTP " + res.status); return res.json(); });
 }
 
-function normalizeSlug(value) {
-  return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-}
-
 function normalizeTitle(value) {
   return String(value || "").toLowerCase().replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t").replace(/[^a-z0-9]+/g, " ").trim();
-}
-
-function decodeBase64(str) {
-    try { if (typeof atob !== 'undefined') return atob(str); } catch (e) {}
-    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-    var output = ''; var chr1, chr2, chr3, enc1, enc2, enc3, enc4; var i = 0;
-    str = str.replace(/[^A-Za-z0-9\+\/\=]/g, '');
-    while (i < str.length) {
-        enc1 = chars.indexOf(str.charAt(i++)); enc2 = chars.indexOf(str.charAt(i++));
-        enc3 = chars.indexOf(str.charAt(i++)); enc4 = chars.indexOf(str.charAt(i++));
-        chr1 = (enc1 << 2) | (enc2 >> 4); chr2 = ((enc2 & 15) << 4) | (enc3 >> 2); chr3 = ((enc3 & 3) << 6) | enc4;
-        output += String.fromCharCode(chr1);
-        if (enc3 != 64) output += String.fromCharCode(chr2);
-        if (enc4 != 64) output += String.fromCharCode(chr3);
-    }
-    return output;
-}
-
-function processRouter(routerUrl, pageUrl, label) {
-    return fetchText(routerUrl, { headers: { "Referer": pageUrl } }).then(function(html) {
-        var iframeMatch = html.match(/<iframe[^>]+src=["']([^"']+)["']/i);
-        if (!iframeMatch || !iframeMatch[1]) return null;
-
-        var innerUrl = iframeMatch[1].replace(/\\\//g, "/");
-        if (innerUrl.startsWith("//")) innerUrl = "https:" + innerUrl;
-
-        var hostMatch = innerUrl.match(/^https?:\/\/([^/?#]+)/i);
-        var domain = hostMatch ? hostMatch[1].replace("www.", "") : "Unknown Server";
-        
-        if (domain.includes("player4me")) domain = "Player4Me";
-        else if (domain.includes("filemoon") || domain.includes("byse")) domain = "Filemoon";
-        else if (domain.includes("streamp2p")) domain = "StreamP2P";
-
-        return {
-            name: PROVIDER_NAME + " | " + domain,
-            title: (label ? label + " | " : "") + "Web Player (Bypass Ads)",
-            url: innerUrl,
-            quality: "1080p",
-            isM3U8: false,
-            headers: { "Referer": pageUrl, "User-Agent": FETCH_HEADERS["User-Agent"] },
-            behaviorHints: { 
-                notWebReady: true, // Force Nuvio WebView to handle CAPTCHAs manually
-                bingeGroup: "desenefaine-webview" 
-            },
-            provider: "desenefaine"
-        };
-    }).catch(function() { return null; });
 }
 
 function getStreams(id, type, season, episode) {
@@ -82,69 +31,111 @@ function getStreams(id, type, season, episode) {
   var tmdbUrl = "https://api.themoviedb.org/3/" + endpoint + "?api_key=" + TMDB_API_KEY + "&language=ro-RO";
 
   return fetchJson(tmdbUrl).then(function(data) {
-    var roTitle = ""; var enTitle = "";
+    var roTitle = ""; var enTitle = ""; 
     if (isImdb) {
       var results = type === "tv" ? data.tv_results : data.movie_results;
-      if (results && results.length > 0) { roTitle = type === "tv" ? results[0].name : results[0].title; enTitle = type === "tv" ? results[0].original_name : results[0].original_title; }
-    } else { roTitle = type === "tv" ? data.name : data.title; enTitle = type === "tv" ? data.original_name : data.original_title; }
+      if (results && results.length > 0) { 
+          roTitle = type === "tv" ? results[0].name : results[0].title; 
+          enTitle = type === "tv" ? results[0].original_name : results[0].original_title; 
+      }
+    } else { 
+        roTitle = type === "tv" ? data.name : data.title; 
+        enTitle = type === "tv" ? data.original_name : data.original_title; 
+    }
 
-    if (!roTitle) return [];
+    if (!roTitle && !enTitle) return [];
 
     function searchSite(query) {
       return fetchText(MAIN_URL + "/?s=" + encodeURIComponent(query)).then(function(html) {
-        var $ = cheerio.load(html); var bestMatch = null; var queryWords = normalizeTitle(query).split(" ").filter(function(w) { return w.length > 2; });
+        var $ = cheerio.load(html); 
+        var bestMatch = null; 
+        var queryWords = normalizeTitle(query).split(" ").filter(function(w) { return w.length > 2; });
+        
+        // Search through article and anchor tags
         $("a").each(function(_, el) {
           var href = $(el).attr("href");
-          if (!href || !href.includes("desenefaine.com") || /\/(category|tag|author|page|feed|wp-)/i.test(href)) return;
-          var text = normalizeTitle($(el).text().trim());
-          var matchCount = 0; queryWords.forEach(function(word) { if (text.includes(word)) matchCount++; });
-          if (matchCount >= Math.ceil(queryWords.length / 2)) { if (!bestMatch || text.length < bestMatch.text.length) bestMatch = { href: href, text: text, score: matchCount }; }
+          if (!href || !href.includes("dozaanimata.net")) return;
+          if (href.includes("/category/") || href.includes("/tag/") || href.includes("/page/")) return;
+
+          var text = normalizeTitle($(el).text().trim() || $$(el).attr("title") || "");
+          if (text.length < 3) return;
+
+          var matchCount = 0; 
+          queryWords.forEach(function(word) { if (text.includes(word)) matchCount++; });
+          
+          if (matchCount >= Math.ceil(queryWords.length / 2)) { 
+              if (!bestMatch || text.length < bestMatch.text.length) {
+                  bestMatch = { href: href, text: text, score: matchCount }; 
+              }
+          }
         });
+        
         if (bestMatch) return fetchText(bestMatch.href).then(function(resHtml) { return { url: bestMatch.href, html: resHtml }; });
         return null;
       }).catch(function() { return null; });
     }
 
-    var slug = normalizeSlug(roTitle);
-    if (type === "tv" && season && episode) slug = normalizeSlug(roTitle) + "-sezonul-" + season + "-episodul-" + episode;
-    var directUrl = MAIN_URL + "/film/" + slug + "/";
-
-    return fetchText(directUrl).then(function(html) {
-        if (html && html.length > 2000 && !html.includes("Nu am găsit")) return { url: directUrl, html: html };
-        return searchSite(roTitle);
-    }).catch(function() { return searchSite(roTitle); })
-    .then(function(result) {
-      if (!result || !result.html) return [];
+    return searchSite(roTitle).then(function(result) {
+        if (!result && enTitle && enTitle !== roTitle) return searchSite(enTitle);
+        return result;
+    }).then(function(result) {
+      if (!result || !result.html) return [{ name: PROVIDER_NAME, title: "Movie not found on DozaAnimata", url: "http://err", provider: "dozaanimata" }];
 
       var $$ = cheerio.load(result.html);
-      var routerUrls = [];
-      var routerLabels = {};
+      var streams = [];
+      var seenUrls = {};
 
+      function addStream(url) {
+          if (!url || seenUrls[url]) return;
+          if (url.includes("youtube.com") || url.includes("facebook.com") || url.includes("imdb.com")) return;
+          
+          seenUrls[url] = true;
+          if (url.startsWith("//")) url = "https:" + url;
+
+          var hostMatch = url.match(/^https?:\/\/([^/?#]+)/i);
+          var domain = hostMatch ? hostMatch[1].replace("www.", "") : "Unknown Server";
+          
+          streams.push({
+              name: PROVIDER_NAME + " | " + domain,
+              title: "1080p | RO Dub",
+              url: url,
+              quality: "1080p",
+              isM3U8: false,
+              headers: { "Referer": result.url, "User-Agent": FETCH_HEADERS["User-Agent"] },
+              behaviorHints: { 
+                  // Set to false initially so Nuvio can attempt native extraction via resolvers
+                  notWebReady: false, 
+                  bingeGroup: "dozaanimata-dub" 
+              },
+              provider: "dozaanimata"
+          });
+      }
+
+      // 1. Grab visible iframes (Standard for DozaAnimata)
+      $$("iframe").each(function(_, el) {
+          addStream($$(el).attr("src") || $$(el).attr("data-src"));
+      });
+
+      // 2. Grab hidden data-src attributes (Dooplay style server switchers)
       $$("[data-src]").each(function(_, el) {
           var src = $$(el).attr("data-src");
-          if (src && src.startsWith("aHR0")) {
-              var decoded = decodeBase64(src);
-              if (decoded.includes("trembed") && !routerUrls.includes(decoded)) {
-                  routerUrls.push(decoded);
-                  var lbl = $$(el).find(".option").text().trim() || $$(el).text().trim().replace(/\s+/g, " ").slice(0, 30);
-                  if (lbl) routerLabels[decoded] = lbl;
-              }
-          }
+          if (src && src.startsWith("http")) addStream(src);
+      });
+      
+      // 3. Fallback to WebView streams if Nuvio native extract fails
+      var webViewStreams = streams.map(function(stream) {
+          var newStream = Object.assign({}, stream);
+          newStream.title = "Web Player | " + newStream.title;
+          newStream.behaviorHints = { notWebReady: true, bingeGroup: "dozaanimata-web" };
+          return newStream;
       });
 
-      if (routerUrls.length === 0) return [{ name: PROVIDER_NAME, title: "No streams found", url: "http://err", provider: "desenefaine" }];
+      if (streams.length === 0) {
+          return [{ name: PROVIDER_NAME, title: "No usable servers found", url: "http://err", provider: "dozaanimata" }];
+      }
 
-      var processPromises = routerUrls.map(function(rUrl) {
-          return processRouter(rUrl, result.url, routerLabels[rUrl]);
-      });
-
-      return Promise.all(processPromises).then(function(streams) {
-          var finalStreams = [];
-          for (var i = 0; i < streams.length; i++) {
-              if (streams[i]) finalStreams.push(streams[i]);
-          }
-          return finalStreams;
-      });
+      // Return native attempts first, followed by WebView fallbacks
+      return streams.concat(webViewStreams);
     });
   }).catch(function() {
     return [];
