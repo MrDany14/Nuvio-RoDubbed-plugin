@@ -684,18 +684,43 @@ function titleScore(text, words) {
   return score;
 }
 
+function pageTitleText(html) {
+  var $ = cheerio.load(String(html || ""));
+  return normalizeTitle([
+    $("h1.entry-title").first().text(),
+    $(".entry-content").first().text(),
+    $(".details-lst").first().text(),
+    $("meta[property='og:title']").attr("content"),
+    $("title").first().text()
+  ].join(" "));
+}
+
+function pageYear(html) {
+  var $ = cheerio.load(String(html || ""));
+  var source = [
+    $(".year").first().text(),
+    $("meta[property='og:title']").attr("content"),
+    $("title").first().text()
+  ].join(" ");
+  var match = source.match(/\b(19|20)\d{2}\b/);
+  return match ? parseInt(match[0], 10) : null;
+}
+
 function siteSlug(value) {
   return normalizeTitle(value).replace(/\s+/g, "-");
 }
 
-function readFilmPage(url, expectedWords) {
+function readFilmPage(url, expectedWords, expectedYear, strictTitle) {
   return fetchText(url).then(function(html) {
     var normalized = normalizeTitle(html);
+    var titleSource = strictTitle ? pageTitleText(html) : normalized;
     var hasPlayer = /data-src=["'][^"']+["']/i.test(html) || /(?:trembed=|trhide=1&tid=)/i.test(html);
     var hasEpisodes = /s\s*\d+\s+e\s*\d+/i.test(normalized);
     var hasTitle = expectedWords.every(function(word) {
-      return normalized.indexOf(word) >= 0;
+      return titleSource.indexOf(word) >= 0;
     });
+    var hasYear = !expectedYear || pageYear(html) === expectedYear;
+    if (strictTitle && (!hasTitle || !hasYear)) return null;
     if (!hasPlayer && !hasTitle && !hasEpisodes) return null;
     return { url: url, html: html };
   }).catch(function() {
@@ -711,13 +736,13 @@ function filmPageSlugs(query) {
   return slugs;
 }
 
-function findDirectFilmPage(query, words) {
+function findDirectFilmPage(query, words, expectedYear) {
   var slugs = filmPageSlugs(query);
   var result = Promise.resolve(null);
   slugs.forEach(function(slug) {
     result = result.then(function(found) {
       if (found) return found;
-      return readFilmPage(MAIN_URL + "/film/" + slug + "/", words);
+      return readFilmPage(MAIN_URL + "/film/" + slug + "/", words, expectedYear, true);
     });
   });
   return result;
@@ -743,7 +768,7 @@ function findDirectEpisodePage(query, words, season, episode) {
   slugs.forEach(function(slug) {
     result = result.then(function(found) {
       if (found) return found;
-      return readFilmPage(MAIN_URL + "/epi/" + slug + "/", words);
+      return readFilmPage(MAIN_URL + "/epi/" + slug + "/", words, null, false);
     });
   });
   return result;
@@ -780,7 +805,7 @@ function readEpisodeFromSeriesPage(seriesResult, words, season, episode) {
     candidate = href;
   });
 
-  return candidate ? readFilmPage(candidate, words) : Promise.resolve(null);
+  return candidate ? readFilmPage(candidate, words, null, false) : Promise.resolve(null);
 }
 
 function findDirectSeriesEpisodePage(query, words, season, episode) {
@@ -795,7 +820,7 @@ function findDirectSeriesEpisodePage(query, words, season, episode) {
   urls.forEach(function(url) {
     result = result.then(function(found) {
       if (found) return found;
-      return readFilmPage(url, words).then(function(seriesResult) {
+      return readFilmPage(url, words, null, false).then(function(seriesResult) {
         return readEpisodeFromSeriesPage(seriesResult, words, season, episode);
       });
     });
@@ -852,13 +877,13 @@ function searchSeries(query, season, episode) {
   });
 }
 
-function searchSite(query) {
+function searchSite(query, expectedYear) {
   var words = normalizeTitle(query).split(" ").filter(function(word) {
     return word.length > 2;
   });
   if (!words.length) return Promise.resolve(null);
 
-  return findDirectFilmPage(query, words).then(function(directResult) {
+  return findDirectFilmPage(query, words, expectedYear).then(function(directResult) {
     if (directResult) return directResult;
 
     var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
@@ -881,9 +906,7 @@ function searchSite(query) {
     });
 
       if (!best) return null;
-      return fetchText(best.href).then(function(pageHtml) {
-        return { url: best.href, html: pageHtml };
-      });
+      return readFilmPage(best.href, words, expectedYear, true);
     });
   }).catch(function() {
     return null;
@@ -919,7 +942,7 @@ function findByseProviderUrl(embedHtml) {
   }
 
   return fetchText(nestedUrl).then(function(nestedHtml) {
-    var hexMatch = String(nestedHtml).match(/trde\(\s*["']([0-9a-f]+)["']\s*\)/i);
+    var hexMatch = String(nestedHtml).match(/trde\s*\(\s*["']([0-9a-f]+)["']\s*\)/i);
     if (!hexMatch) return null;
 
     var reversed = hexMatch[1].split("").reverse().join("");
@@ -1043,19 +1066,16 @@ function resolveServerUrls(serverUrls, pageUrl, index, displayTitle) {
   if (index >= serverUrls.length) return Promise.resolve([]);
 
   return fetchText(serverUrls[index], { headers: { Referer: pageUrl } }).then(function(embedHtml) {
-    var directHls = findHlsUrls(embedHtml);
-    if (directHls.length) {
-      return directHls.map(function(url) {
+    return findByseProviderUrl(embedHtml).then(function(providerUrl) {
+      if (providerUrl) return resolveProvider(providerUrl, serverUrls[index], displayTitle);
+
+      return findHlsUrls(embedHtml).map(function(url) {
         return decorateStream(
           directHlsStream(url, "HLS", serverUrls[index], pageUrl),
           displayTitle,
           serverUrls[index]
         );
       });
-    }
-
-    return findByseProviderUrl(embedHtml).then(function(providerUrl) {
-      return providerUrl ? resolveProvider(providerUrl, serverUrls[index], displayTitle) : [];
     });
   }).catch(function() {
     return [];
@@ -1084,28 +1104,31 @@ function getStreams(id, type, season, episode) {
     var isImdb = String(id).startsWith("tt");
     var romanianTitle;
     var originalTitle;
+    var releaseYear;
 
     if (isImdb) {
       var results = isTv ? data.tv_results : data.movie_results;
       var result = results && results[0];
       romanianTitle = result && (isTv ? result.name : result.title);
       originalTitle = result && (isTv ? result.original_name : result.original_title);
+      releaseYear = result && parseInt(String(isTv ? result.first_air_date : result.release_date).slice(0, 4), 10);
     } else {
       romanianTitle = isTv ? data.name : data.title;
       originalTitle = isTv ? data.original_name : data.original_title;
+      releaseYear = parseInt(String(isTv ? data.first_air_date : data.release_date).slice(0, 4), 10);
     }
 
     var findPage = isTv ? searchSeries : searchSite;
     var displayTitle = originalTitle || romanianTitle;
     var pageResult = isTv
       ? findPage(romanianTitle || originalTitle, season, episode)
-      : findPage(romanianTitle || originalTitle);
+       : findPage(romanianTitle || originalTitle, releaseYear);
 
     return pageResult.then(function(result) {
       if (!result && originalTitle && originalTitle !== romanianTitle) {
         return isTv
           ? searchSeries(originalTitle, season, episode)
-          : searchSite(originalTitle);
+           : searchSite(originalTitle, releaseYear);
       }
       return result;
     }).then(function(result) {
