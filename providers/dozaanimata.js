@@ -454,14 +454,33 @@ function readFilmPage(url, expectedWords) {
   });
 }
 
+function filmPageSlugs(query) {
+  var slug = siteSlug(query);
+  var slugs = [slug, slug + "-filmul", slug + "-film", slug + "-dublat-in-romana"];
+  if (slug === "moana") slugs.unshift("vaiana-filmul");
+  if (slug === "vaiana") slugs.unshift("vaiana-filmul");
+  return slugs;
+}
+
+function findDirectFilmPage(query, words) {
+  var slugs = filmPageSlugs(query);
+  var result = Promise.resolve(null);
+  slugs.forEach(function(slug) {
+    result = result.then(function(found) {
+      if (found) return found;
+      return readFilmPage(MAIN_URL + "/film/" + slug + "/", words);
+    });
+  });
+  return result;
+}
+
 function searchSite(query) {
   var words = normalizeTitle(query).split(" ").filter(function(word) {
     return word.length > 2;
   });
   if (!words.length) return Promise.resolve(null);
 
-  var directUrl = MAIN_URL + "/film/" + siteSlug(query) + "/";
-  return readFilmPage(directUrl, words).then(function(directResult) {
+  return findDirectFilmPage(query, words).then(function(directResult) {
     if (directResult) return directResult;
 
     var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
