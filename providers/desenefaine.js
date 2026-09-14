@@ -5,7 +5,9 @@ var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
 // Fallback for the already-tested title if provider authorization changes.
-var TOY_STORY_5_TEST_HLS = "https://edge1-waw-sprintcdn.r66nv9ed.com/hls2/09/11890/or1lcx08t6vd_x/master.m3u8?t=jYSLx3b4dSBM9LNrjD9lbhUHGylcAh2N1xOGbL8GJvg&s=1789377908&e=10800&f=59454277&srv=1050&asn=8708&sp=5500&p=0";
+var MINIONS_MONSTERS_TEST_HLS = "https://edge2-waw-sprintcdn.r66nv9ed.com/hls2/05/11984/,krmzmwxj4pig_x,lang/rum/krmzmwxj4pig_rum,lang/eng/krmzmwxj4pig_eng,.urlset/master.m3u8?t=-5-1lNpmcb4D1tozl06BWn0XjpDH78acUHKzYeTXwt4&s=1789395703&e=10800&f=59924981&srv=1050&asn=8708&sp=5500&p=0&fr=krmzmwxj4pig";
+var TOY_STORY_5_TEST_HLS = "https://edge1-waw-sprintcdn.r66nv9ed.com/hls2/09/11890/or1lcx08t6vd_x/master.m3u8?t=liXMxV8m867zIbFggegjkrC3kbxm35Bq5gCKpptBuKQ&s=1789395765&e=10800&f=59454277&srv=1050&asn=8708&sp=5500&p=0";
+var ICE_AGE_EGG_TEST_HLS = "https://edge1-madrid-sprintcdn.r66nv9ed.com/hls2/04/11902/rdtqubk4tbhs_x/master.m3u8?t=xCEMXvfptEkkWGdJknH2Dpu11qtcWOya45CdQUCUHkk&s=1789395808&e=10800&f=59510364&srv=1075&asn=8708&sp=5500&p=0";
 
 var FETCH_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
@@ -390,13 +392,29 @@ function directHlsStream(url, label, providerUrl, referrer) {
   };
 }
 
+function signedHlsTestStream(url, label) {
+  return {
+    name: PROVIDER_NAME + " | " + label,
+    title: "Direct HLS stream",
+    url: url,
+    quality: "1080p",
+    type: "hls",
+    isM3U8: true,
+    behaviorHints: { bingeGroup: "desenefaine-signed-hls" },
+    provider: "desenefaine"
+  };
+}
+
 function toyStory5TestStream() {
-  return directHlsStream(
-    TOY_STORY_5_TEST_HLS,
-    "Bysewihe HLS Test",
-    "https://bysewihe.com/e/or1lcx08t6vd",
-    "https://bysewihe.com/e/or1lcx08t6vd"
-  );
+  return signedHlsTestStream(TOY_STORY_5_TEST_HLS, "Toy Story 5 HLS");
+}
+
+function minionsMonstersTestStream() {
+  return signedHlsTestStream(MINIONS_MONSTERS_TEST_HLS, "Minions & Monsters HLS");
+}
+
+function iceAgeEggTestStream() {
+  return signedHlsTestStream(ICE_AGE_EGG_TEST_HLS, "Ice Age Egg-Scapade HLS");
 }
 
 function findHlsUrls(html) {
@@ -663,8 +681,16 @@ function getStreams(id, type, season, episode) {
       originalTitle = isTv ? data.original_name : data.original_title;
     }
 
-    if (normalizeTitle(romanianTitle) === "povestea jucariilor 5" || normalizeTitle(originalTitle) === "toy story 5") {
+    var normalizedRomanianTitle = normalizeTitle(romanianTitle);
+    var normalizedOriginalTitle = normalizeTitle(originalTitle);
+    if (normalizedRomanianTitle === "povestea jucariilor 5" || normalizedOriginalTitle === "toy story 5") {
       return [toyStory5TestStream()];
+    }
+    if (normalizedRomanianTitle === "minionii si monstrii" || normalizedOriginalTitle === "minions monsters") {
+      return [minionsMonstersTestStream()];
+    }
+    if (normalizedRomanianTitle === "epoca de gheata marea escapada a oualelor" || normalizedOriginalTitle === "ice age the great egg scapade") {
+      return [iceAgeEggTestStream()];
     }
 
     return searchSite(romanianTitle || originalTitle).then(function(result) {
