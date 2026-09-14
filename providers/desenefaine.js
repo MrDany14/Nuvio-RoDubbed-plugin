@@ -651,6 +651,16 @@ function seriesPageSlugs(query) {
   return [slug, slug + "-serial", slug + "-sezonul-1"];
 }
 
+function seriesTitleVariants(query) {
+  var variants = [query];
+  var localized = String(query)
+    .replace(/the first/ig, "intai")
+    .replace(/royal magic/ig, "magia regala")
+    .replace(/magical friends/ig, "prieteni magici");
+  if (normalizeTitle(localized) !== normalizeTitle(query)) variants.push(localized);
+  return variants;
+}
+
 function readEpisodeFromSeriesPage(seriesResult, words, season, episode) {
   if (!seriesResult) return Promise.resolve(null);
   var $ = cheerio.load(seriesResult.html);
@@ -696,10 +706,22 @@ function searchSeries(query, season, episode) {
   });
   if (!words.length) return Promise.resolve(null);
 
-  return findDirectEpisodePage(query, words, season, episode).then(function(result) {
-    if (result) return result;
-    return findDirectSeriesEpisodePage(query, words, season, episode);
-  }).then(function(result) {
+  var variants = seriesTitleVariants(query);
+  var directResult = Promise.resolve(null);
+  variants.forEach(function(variant) {
+    directResult = directResult.then(function(result) {
+      if (result) return result;
+      var variantWords = normalizeTitle(variant).split(" ").filter(function(word) {
+        return word.length > 2;
+      });
+      return findDirectEpisodePage(variant, variantWords, season, episode).then(function(episodeResult) {
+        if (episodeResult) return episodeResult;
+        return findDirectSeriesEpisodePage(variant, variantWords, season, episode);
+      });
+    });
+  });
+
+  return directResult.then(function(result) {
     if (result) return result;
 
     var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
