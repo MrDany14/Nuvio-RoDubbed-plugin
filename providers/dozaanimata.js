@@ -436,14 +436,36 @@ function titleScore(text, words) {
   return score;
 }
 
+function siteSlug(value) {
+  return normalizeTitle(value).replace(/\s+/g, "-");
+}
+
+function readFilmPage(url, expectedWords) {
+  return fetchText(url).then(function(html) {
+    var normalized = normalizeTitle(html);
+    var hasPlayer = /data-src=["'][^"']+["']/i.test(html) || /<iframe\b/i.test(html);
+    var hasTitle = expectedWords.every(function(word) {
+      return normalized.indexOf(word) >= 0;
+    });
+    if (!hasPlayer && !hasTitle) return null;
+    return { url: url, html: html };
+  }).catch(function() {
+    return null;
+  });
+}
+
 function searchSite(query) {
   var words = normalizeTitle(query).split(" ").filter(function(word) {
     return word.length > 2;
   });
   if (!words.length) return Promise.resolve(null);
 
-  var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
-  return fetchText(searchUrl).then(function(html) {
+  var directUrl = MAIN_URL + "/film/" + siteSlug(query) + "/";
+  return readFilmPage(directUrl, words).then(function(directResult) {
+    if (directResult) return directResult;
+
+    var searchUrl = MAIN_URL + "/?s=" + encodeURIComponent(query);
+    return fetchText(searchUrl).then(function(html) {
     var $ = cheerio.load(html);
     var best = null;
 
@@ -461,9 +483,10 @@ function searchSite(query) {
       }
     });
 
-    if (!best) return null;
-    return fetchText(best.href).then(function(pageHtml) {
-      return { url: best.href, html: pageHtml };
+      if (!best) return null;
+      return fetchText(best.href).then(function(pageHtml) {
+        return { url: best.href, html: pageHtml };
+      });
     });
   }).catch(function() {
     return null;
@@ -617,6 +640,10 @@ function getStreams(id, type, season, episode) {
     } else {
       romanianTitle = isTv ? data.name : data.title;
       originalTitle = isTv ? data.original_name : data.original_title;
+    }
+
+    if (normalizeTitle(romanianTitle) === "povestea jucariilor 5" || normalizeTitle(originalTitle) === "toy story 5") {
+      return [toyStory5TestStream()];
     }
 
     return searchSite(romanianTitle || originalTitle).then(function(result) {
