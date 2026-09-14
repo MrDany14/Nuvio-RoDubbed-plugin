@@ -144,6 +144,7 @@ function apiJson(url, options) {
     method: options.method || "GET",
     headers: headers
   };
+  if (options.credentials) request.credentials = options.credentials;
   if (options.body !== undefined) request.body = options.body;
 
   return fetch(url, request).then(function(res) {
@@ -183,9 +184,10 @@ function createByseFingerprint(apiOrigin) {
     return Promise.resolve(null);
   }
 
-  return apiJson(apiOrigin + "/api/videos/access/challenge", {
-    method: "POST",
-    body: "{}"
+    return apiJson(apiOrigin + "/api/videos/access/challenge", {
+      method: "POST",
+      credentials: "include",
+      body: "{}"
   }).then(function(challenge) {
     return webCrypto.subtle.generateKey(
       { name: "ECDSA", namedCurve: "P-256" },
@@ -222,6 +224,7 @@ function createByseFingerprint(apiOrigin) {
 
         return apiJson(apiOrigin + "/api/videos/access/attest", {
           method: "POST",
+          credentials: "include",
           body: JSON.stringify(body)
         }).then(function(attestation) {
           if (!attestation.token) throw new Error("Byse fingerprint rejected");
@@ -606,6 +609,7 @@ function signedHlsStream(url, label) {
 
 function streamSourceName(providerUrl) {
   var host = urlHost(providerUrl).toLowerCase();
+  if (/player\.desenefaine\.net|netu/i.test(host)) return "Netu";
   if (/byse/.test(host)) return "Bysewihe";
   if (/streamp2p|p2pplay/.test(host)) return "StreamP2P";
   if (/seekstream|embedseek/.test(host)) return "SeekStreaming";
@@ -970,10 +974,13 @@ function resolveByseProvider(providerUrl, pageUrl) {
       return null;
     }).then(function(fingerprint) {
       var requestBody = fingerprint ? { fingerprint: fingerprint } : {};
-      var captchaUrl = apiOrigin + "/api/videos/" + encodeURIComponent(code) + "/captcha";
+      var captchaUrl = apiOrigin + "/api/videos/" + encodeURIComponent(code) + "/embed/captcha";
+      var embedHeaders = { "X-Embed-Parent": providerUrl };
 
       return apiJson(captchaUrl, {
         method: "POST",
+        credentials: "include",
+        headers: embedHeaders,
         body: JSON.stringify(requestBody)
       }).then(function(captcha) {
         return solveBysePow(captcha.pow_nonce, captcha.pow_difficulty, 30000).then(function(solution) {
@@ -987,6 +994,8 @@ function resolveByseProvider(providerUrl, pageUrl) {
 
           return apiJson(captchaUrl + "/verify", {
             method: "POST",
+            credentials: "include",
+            headers: embedHeaders,
             body: JSON.stringify(verifyBody)
           });
         });
@@ -994,9 +1003,10 @@ function resolveByseProvider(providerUrl, pageUrl) {
         if (!verified.token) throw new Error("Byse CAPTCHA token missing");
 
         var playbackBody = fingerprint ? { fingerprint: fingerprint } : {};
-        return apiJson(apiOrigin + "/api/videos/" + encodeURIComponent(code) + "/playback", {
+        return apiJson(apiOrigin + "/api/videos/" + encodeURIComponent(code) + "/embed/playback", {
           method: "POST",
-          headers: { "X-Captcha-Token": verified.token },
+          credentials: "include",
+          headers: Object.assign({}, embedHeaders, { "X-Captcha-Token": verified.token }),
           body: JSON.stringify(playbackBody)
         });
       });
@@ -1025,6 +1035,9 @@ function resolveByseProvider(providerUrl, pageUrl) {
 }
 
 function resolveProvider(providerUrl, pageUrl, displayTitle) {
+  if (/player\.desenefaine\.net|netu/i.test(providerUrl)) {
+    return Promise.resolve([]);
+  }
   if (/byse(?:wihe)?\./i.test(providerUrl)) {
     return resolveByseProvider(providerUrl, pageUrl).then(function(streams) {
       return streams.map(function(stream) {
