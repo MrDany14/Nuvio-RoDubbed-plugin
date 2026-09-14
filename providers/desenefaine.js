@@ -1401,7 +1401,26 @@ function resolveFilmPageResult(result, displayTitle) {
 }
 
 function normalizeCatalogId(id) {
-  return String(id || "").replace(/^(?:tmdb|imdb):/i, "");
+  var value = String(id || "").trim();
+  try {
+    value = decodeURIComponent(value);
+  } catch (error) {
+    // Keep the original ID when Nuvio passes malformed escaping.
+  }
+  var tmdbUrl = value.match(/themoviedb\.org\/(?:movie|tv)\/(\d+)/i);
+  if (tmdbUrl) return tmdbUrl[1];
+
+  var imdbId = value.match(/(?:^|[^a-z])tt\d{7,}/i);
+  if (imdbId) return imdbId[0].replace(/^[^t]+/i, "");
+
+  value = value.split(/[?#]/)[0];
+  value = value.replace(/^(?:movie|tv|series):/i, "");
+  value = value.replace(/^(?:tmdb|imdb):\/*/i, "");
+  value = value.replace(/^(?:movie|tv|series):/i, "");
+
+  var numericId = value.match(/^\d+/);
+  if (numericId) return numericId[0];
+  return value;
 }
 
 function tmdbUrl(id, type) {
@@ -1451,10 +1470,18 @@ function getStreams(id, type, season, episode) {
            : searchSite(originalTitle, releaseYear, romanianTitle);
       }
       return result;
-    }).then(function(result) {
+  }).then(function(result) {
       return resolveFilmPageResult(result, displayTitle);
     });
-  }).catch(function() {
+  }).catch(function(error) {
+    if (typeof console !== "undefined" && console.error) {
+      console.error(
+        "[DeseneFaine] stream lookup failed",
+        String(id || ""),
+        String(type || ""),
+        String(error && error.message || error || "unknown error")
+      );
+    }
     return [];
   });
 }
