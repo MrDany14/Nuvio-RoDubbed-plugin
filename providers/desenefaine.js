@@ -11,7 +11,9 @@ var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 var KNOWN_BYSE_PROVIDERS = {
   "tt26743210": "https://bysewihe.com/e/musdr6iea7y4",
-  "1087192": "https://bysewihe.com/e/musdr6iea7y4"
+  "1087192": "https://bysewihe.com/e/musdr6iea7y4",
+  "tt0892769": "https://bysewihe.com/e/tilio6qz0vwo",
+  "10191": "https://bysewihe.com/e/tilio6qz0vwo"
 };
 
 var FETCH_HEADERS = {
