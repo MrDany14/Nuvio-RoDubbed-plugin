@@ -514,7 +514,7 @@ function searchSite(query) {
 
 function findFirstServerUrl(pageHtml, pageUrl) {
   var match = String(pageHtml).match(
-    /<a\b[^>]*data-src=["']([^"']+)["'][^>]*>[\s\S]*?Bysewihe/i
+    /<a\b[^>]*data-src=["']([^"']+)["'][^>]*>/i
   );
   if (!match) return null;
 
@@ -549,8 +549,9 @@ function resolveByseProvider(providerUrl, pageUrl) {
     var frameMatch = String(html).match(
       /<iframe\b[^>]*src=["'](https?:\/\/[^"']+\/[^"']*\/[^"']+)["']/i
     );
+    var frameUrl = frameMatch ? cleanUrl(frameMatch[1]) : null;
     var apiOrigin = frameMatch
-      ? String(frameMatch[1]).match(/^https?:\/\/[^/]+/i)[0]
+      ? frameUrl.match(/^https?:\/\/[^/]+/i)[0]
       : String(providerUrl).match(/^https?:\/\/[^/]+/i)[0];
 
     return createByseFingerprint(apiOrigin).catch(function() {
@@ -598,11 +599,12 @@ function resolveByseProvider(providerUrl, pageUrl) {
       if (!source || !source.url) return;
       var mime = String(source.mime_type || "").toLowerCase();
       if (mime.indexOf("mpegurl") < 0 && !/\.m3u8(?:\?|$)/i.test(source.url)) return;
+      var playerUrl = frameUrl || providerUrl;
       streams.push(directHlsStream(
         source.url,
         source.label || source.quality || "Bysewihe HLS",
-        providerUrl,
-        pageUrl
+        playerUrl,
+        playerUrl
       ));
     });
     if (!streams.length) throw new Error("Byse returned no HLS source");
