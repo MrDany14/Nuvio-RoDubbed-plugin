@@ -363,6 +363,162 @@ function decryptBysePlayback(playback) {
   });
 }
 
+function hexBytes(value) {
+  var bytes = new Uint8Array(Math.floor(String(value || "").length / 2));
+  for (var index = 0; index < bytes.length; index += 1) {
+    bytes[index] = parseInt(String(value).slice(index * 2, index * 2 + 2), 16);
+  }
+  return bytes;
+}
+
+function player4meKey() {
+  var webCrypto = byseCrypto();
+  if (!webCrypto || !webCrypto.subtle) return Promise.reject(new Error("AES-CBC unavailable"));
+  return webCrypto.subtle.importKey(
+    "raw",
+    binaryBytes("kiemtienmua911ca"),
+    { name: "AES-CBC" },
+    false,
+    ["decrypt", "encrypt"]
+  );
+}
+
+function decryptPlayer4meResponse(body) {
+  return player4meKey().then(function(key) {
+    return crypto.subtle.decrypt(
+      { name: "AES-CBC", iv: binaryBytes("1234567890oiuytr") },
+      key,
+      hexBytes(body)
+    );
+  }).then(function(bytes) {
+    var text = typeof TextDecoder === "function"
+      ? new TextDecoder().decode(bytes)
+      : String.fromCharCode.apply(null, new Uint8Array(bytes));
+    return JSON.parse(text);
+  });
+}
+
+function encryptPlayer4meValue(value) {
+  return player4meKey().then(function(key) {
+    return crypto.subtle.encrypt(
+      { name: "AES-CBC", iv: binaryBytes("1234567890oiuytr") },
+      key,
+      binaryBytes(value)
+    );
+  }).then(function(bytes) {
+    var result = "";
+    var view = new Uint8Array(bytes);
+    for (var index = 0; index < view.length; index += 1) {
+      result += ("0" + view[index].toString(16)).slice(-2);
+    }
+    return result;
+  });
+}
+
+function urlHost(url) {
+  var match = String(url || "").match(/^https?:\/\/([^/]+)/i);
+  return match ? match[1].replace(/^www\./i, "") : "";
+}
+
+function addPlayerKey(url, keyData) {
+  if (!keyData || !keyData.k || /[?&]k=/i.test(url)) return url;
+  var separator = url.indexOf("?") >= 0 ? "&" : "?";
+  return url + separator + "k=" + encodeURIComponent(keyData.k) + "&kx=" + encodeURIComponent(keyData.kx || "");
+}
+
+function player4meSource(video, providerUrl, pageUrl) {
+  var config = {};
+  try {
+    config = JSON.parse(video.streamingConfig || "{}");
+  } catch (error) {
+    config = {};
+  }
+
+  var sources = {
+    Tiktok: video.hlsVideoTiktok,
+    Google: video.hlsVideoGoogle,
+    Cloudflare: video.cfNative || video.cf,
+    "In-House": video.source
+  };
+  var order = Array.isArray(config.order)
+    ? config.order
+    : ["Tiktok", "Google", "Cloudflare", "In-House"];
+  var adjust = config.adjust || {};
+  var selected = null;
+  var selectedKey = video.pk || null;
+
+  order.some(function(provider) {
+    var value = sources[provider];
+    var settings = adjust[provider] || {};
+    if (!value || settings.disabled) return false;
+    var url = absoluteUrl(value, providerUrl);
+    if (!url) return false;
+
+    if (settings.domain && url.indexOf("/hls/") >= 0) {
+      url = url.replace("/hls/", "/hlsmod/" + settings.domain + "/");
+    }
+    var params = settings.params || {};
+    Object.keys(params).forEach(function(name) {
+      url += (url.indexOf("?") >= 0 ? "&" : "?") + encodeURIComponent(name) + "=" + encodeURIComponent(params[name]);
+    });
+    selected = addPlayerKey(url, selectedKey);
+    return true;
+  });
+
+  return selected;
+}
+
+function resolvePlayer4meProvider(providerUrl, pageUrl) {
+  var originMatch = String(providerUrl).match(/^https?:\/\/[^/]+/i);
+  var idMatch = String(providerUrl).match(/#([^&#]+)/);
+  if (!originMatch || !idMatch) return Promise.reject(new Error("Player4me video id missing"));
+
+  var origin = originMatch[0];
+  var id = idMatch[1];
+  var referrerHost = urlHost(pageUrl);
+  var infoUrl = origin + "/api/v1/info?id=" + encodeURIComponent(id);
+  var videoUrl = origin + "/api/v1/video?id=" + encodeURIComponent(id) + "&w=1920&h=1080&r=" + encodeURIComponent(referrerHost);
+
+  return Promise.all([
+    fetchText(infoUrl).then(decryptPlayer4meResponse),
+    fetchText(videoUrl).then(decryptPlayer4meResponse)
+  ]).then(function(values) {
+    var info = values[0];
+    var video = values[1];
+    var keyData = video.pk;
+
+    if (!keyData && video.metric) {
+      var payload = {
+        website: referrerHost || null,
+        playing: true,
+        sessionId: randomId(),
+        userId: video.metric.userId,
+        playerId: video.metric.playerId,
+        videoId: video.metric.videoId || id,
+        country: video.metric.country,
+        platform: video.metric.platform,
+        browser: video.metric.browser,
+        os: video.metric.os
+      };
+      return encryptPlayer4meValue(JSON.stringify(payload)).then(function(encrypted) {
+        return fetchJson(origin + "/api/v1/player?t=" + encrypted).then(function(token) {
+          return { info: info, video: video, keyData: token };
+        });
+      });
+    }
+
+    return { info: info, video: video, keyData: keyData };
+  }).then(function(result) {
+    var video = result.video;
+    if (!video.pk && result.keyData) video.pk = result.keyData;
+    var streamUrl = player4meSource(video, providerUrl, pageUrl);
+    if (!streamUrl || !/\.m3u8(?:\?|$)/i.test(streamUrl)) {
+      throw new Error("Player4me returned no HLS source");
+    }
+    return [signedHlsStream(streamUrl, video.title || "Player4me HLS")];
+  });
+}
+
 function directHlsStream(url, label, providerUrl, referrer) {
   var requestHeaders = {
     Referer: referrer || providerUrl,
@@ -414,18 +570,6 @@ function findHlsUrls(html) {
     }
   }
   return candidates;
-}
-
-function fallbackStream(url) {
-  return {
-    name: PROVIDER_NAME + " | Web Player",
-    title: "Open in web player",
-    url: url,
-    quality: "1080p",
-    isM3U8: false,
-    behaviorHints: { notWebReady: true, bingeGroup: "desenefaine-webview" },
-    provider: "desenefaine"
-  };
 }
 
 function titleScore(text, words) {
@@ -513,14 +657,19 @@ function searchSite(query) {
   });
 }
 
-function findFirstServerUrl(pageHtml, pageUrl) {
-  var match = String(pageHtml).match(
-    /<a\b[^>]*data-src=["']([^"']+)["'][^>]*>/i
-  );
-  if (!match) return null;
-
-  var decoded = decodeBase64(match[1]);
-  return absoluteUrl(decoded, pageUrl);
+function findServerUrls(pageHtml, pageUrl) {
+  var urls = [];
+  var seen = {};
+  var serverRe = /<a\b[^>]*data-src=["']([^"']+)["'][^>]*>/gi;
+  var match;
+  while ((match = serverRe.exec(String(pageHtml))) !== null) {
+    var url = absoluteUrl(decodeBase64(match[1]), pageUrl);
+    if (url && !seen[url]) {
+      seen[url] = true;
+      urls.push(url);
+    }
+  }
+  return urls;
 }
 
 function findByseProviderUrl(embedHtml) {
@@ -530,6 +679,12 @@ function findByseProviderUrl(embedHtml) {
   if (!tidMatch) return null;
 
   var nestedUrl = cleanUrl(tidMatch[1]);
+  var tokenMatch = nestedUrl.match(/[?&]tid=([0-9a-f]+)(?:&|$)/i);
+  if (tokenMatch) {
+    var directDecoded = decodeHex(tokenMatch[1].split("").reverse().join(""));
+    if (/^https?:\/\//i.test(directDecoded)) return Promise.resolve(directDecoded);
+  }
+
   return fetchText(nestedUrl).then(function(nestedHtml) {
     var hexMatch = String(nestedHtml).match(/trde\(\s*["']([0-9a-f]+)["']\s*\)/i);
     if (!hexMatch) return null;
@@ -616,6 +771,11 @@ function resolveProvider(providerUrl, pageUrl) {
       return [];
     });
   }
+  if (/(?:player4me|4meplayer|embed4me)\./i.test(providerUrl)) {
+    return resolvePlayer4meProvider(providerUrl, pageUrl).catch(function() {
+      return [];
+    });
+  }
 
   return fetchText(providerUrl, { headers: { Referer: pageUrl } }).then(function(html) {
     var hls = findHlsUrls(html);
@@ -625,9 +785,31 @@ function resolveProvider(providerUrl, pageUrl) {
       });
     }
 
-    return [fallbackStream(providerUrl)];
+    return [];
   }).catch(function() {
-    return [fallbackStream(providerUrl)];
+    return [];
+  });
+}
+
+function resolveServerUrls(serverUrls, pageUrl, index) {
+  if (index >= serverUrls.length) return Promise.resolve([]);
+
+  return fetchText(serverUrls[index], { headers: { Referer: pageUrl } }).then(function(embedHtml) {
+    var directHls = findHlsUrls(embedHtml);
+    if (directHls.length) {
+      return directHls.map(function(url) {
+        return directHlsStream(url, "HLS", serverUrls[index], pageUrl);
+      });
+    }
+
+    return findByseProviderUrl(embedHtml).then(function(providerUrl) {
+      return providerUrl ? resolveProvider(providerUrl, serverUrls[index]) : [];
+    });
+  }).catch(function() {
+    return [];
+  }).then(function(streams) {
+    if (streams && streams.length) return streams;
+    return resolveServerUrls(serverUrls, pageUrl, index + 1);
   });
 }
 
@@ -668,21 +850,9 @@ function getStreams(id, type, season, episode) {
     }).then(function(result) {
       if (!result || !result.html) return [];
 
-      var serverUrl = findFirstServerUrl(result.html, result.url);
-      if (!serverUrl) return [];
-
-      return fetchText(serverUrl, { headers: { Referer: result.url } }).then(function(embedHtml) {
-        var directHls = findHlsUrls(embedHtml);
-        if (directHls.length) {
-          return directHls.map(function(url) {
-            return directHlsStream(url, "HLS", serverUrl, result.url);
-          });
-        }
-
-        return findByseProviderUrl(embedHtml).then(function(providerUrl) {
-          return providerUrl ? resolveProvider(providerUrl, serverUrl) : [fallbackStream(serverUrl)];
-        });
-      });
+       var serverUrls = findServerUrls(result.html, result.url);
+       if (!serverUrls.length) return [];
+       return resolveServerUrls(serverUrls, result.url, 0);
     });
   }).catch(function() {
     return [];
