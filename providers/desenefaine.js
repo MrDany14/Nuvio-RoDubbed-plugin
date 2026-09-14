@@ -162,6 +162,18 @@ function findProviderHls(html) {
   return candidates;
 }
 
+function findProviderMp4(html) {
+  var match = String(html).match(
+    /getElementById\(\s*['"]botlink['"]\s*\)[\s\S]*?['"]([^'"]+\/get_video\?[^'"]+)['"]\s*\)\.substring\(\s*(\d+)\s*\)/i
+  );
+  if (!match) return [];
+
+  var offset = parseInt(match[2], 10);
+  var streamUrl = "https://stream" + match[1].slice(offset);
+  if (!/[?&]stream=/.test(streamUrl)) streamUrl += "&stream=1";
+  return [streamUrl];
+}
+
 function fallbackProviderStream(url) {
   return {
     name: PROVIDER_NAME + " | " + providerName(url),
@@ -178,6 +190,35 @@ function resolveProvider(url, wrapperUrl) {
   return Promise.resolve().then(function() {
     return fetchText(url, { headers: { Referer: wrapperUrl } });
   }).then(function(html) {
+    var mp4 = findProviderMp4(html);
+    if (mp4.length) {
+      return mp4.map(function(videoUrl) {
+        return {
+          name: PROVIDER_NAME + " | " + providerName(url) + " MP4",
+          title: "Direct MP4 stream",
+          url: videoUrl,
+          quality: "1080p",
+          type: "mp4",
+          isM3U8: false,
+          headers: {
+            Referer: url,
+            "User-Agent": FETCH_HEADERS["User-Agent"]
+          },
+          behaviorHints: {
+            notWebReady: true,
+            bingeGroup: "filmedublate-mp4",
+            proxyHeaders: {
+              request: {
+                Referer: url,
+                "User-Agent": FETCH_HEADERS["User-Agent"]
+              }
+            }
+          },
+          provider: "filmedublate"
+        };
+      });
+    }
+
     var hls = findProviderHls(html);
     if (!hls.length) return [fallbackProviderStream(url)];
 
