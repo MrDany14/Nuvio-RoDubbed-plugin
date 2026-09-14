@@ -3,7 +3,6 @@ var cheerio = require("cheerio-without-node-native");
 var PROVIDER_NAME = "FilmeDublate";
 var MAIN_URL = "https://filmedublate.net";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
-var SERVER_4_TEST_MP4 = "https://3652634701.tapecontent.net/radosgw/0DW0aKMo32HbrMp/O6Po1DWS9t1S5RigU2vOzaFiF8bS76pD5rlZ3cDjiy0IvBhPLNN4dxRDJuCl66v9gSGB4WeLRgPd5O8qg3qcEQ3c-CXDl-PmSQUtsIPvsbp5v08w_Hxe_YW1X-4u2Y1gVhiPDcS8Q2EdMhmEZvBdSKWcGwpmhrp_8DhyumU7nJjqhp9mhVX8lXXNq0hv4kU1AgmOkP_zpfmPvb8u2ZoWyqL9OL691a94gmABMDRDRNJMmfeaADYSEvxgh6YKwAGRzczi5yeslVqAdFD-Xa0_Hb0NoJ-3yRkj6mYWnQ/kung-fu-panda-4.mp4?stream=1";
 
 var FETCH_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
@@ -42,9 +41,12 @@ function resolveRedirectUrl(url, options) {
   options = options || {};
 
   function requestRedirect(mode) {
+    var requestHeaders = Object.assign({}, FETCH_HEADERS, options.headers || {});
+    requestHeaders.Accept = "video/mp4,video/*;q=0.9,*/*;q=0.8";
+    requestHeaders.Range = "bytes=0-1";
     var request = {
       method: options.method || "GET",
-      headers: Object.assign({}, FETCH_HEADERS, options.headers || {})
+      headers: requestHeaders
     };
     if (mode) request.redirect = mode;
 
@@ -194,26 +196,31 @@ function findProviderHls(html) {
 }
 
 function findProviderMp4(html) {
+  var match = String(html).match(
+    /getElementById\(\s*['"]botlink['"]\s*\)[\s\S]*?['"]([^'"]*)['"]\s*\+\s*(?:['"][^'"]*['"]\s*\+\s*)?\(\s*['"]([^'"]+)['"]\s*\)\.substring\(\s*(\d+)\s*\)/i
+  );
+  if (match) {
+    var offset = parseInt(match[3], 10);
+    var streamUrl = absoluteUrl(match[1] + match[2].slice(offset), "https://streamtape.com/");
+    if (!/[?&]stream=/.test(streamUrl)) streamUrl += "&stream=1";
+    return [streamUrl];
+  }
+
   var directMatch = String(html).match(
     /<span\b[^>]*\bid\s*=\s*["']botlink["'][^>]*>([^<]*\/get_video\?[^<]*)<\/span>/i
   );
-  if (directMatch) {
-    var directUrl = absoluteUrl(directMatch[1], "https://streamtape.com/");
-    if (directUrl) {
-      if (!/[?&]stream=/.test(directUrl)) directUrl += "&stream=1";
-      return [directUrl];
-    }
+  if (!directMatch) return [];
+
+  var directValue = cleanUrl(directMatch[1]).trim();
+  var directUrl;
+  if (/^\/?streamtape\.com\//i.test(directValue)) {
+    directUrl = "https://" + directValue.replace(/^\/+/, "");
+  } else {
+    directUrl = absoluteUrl(directValue, "https://streamtape.com/");
   }
-
-  var match = String(html).match(
-    /getElementById\(\s*['"]botlink['"]\s*\)[\s\S]*?['"]([^'"]+\/get_video\?[^'"]+)['"]\s*\)\.substring\(\s*(\d+)\s*\)/i
-  );
-  if (!match) return [];
-
-  var offset = parseInt(match[2], 10);
-  var streamUrl = "https://streamtape.co" + match[1].slice(offset);
-  if (!/[?&]stream=/.test(streamUrl)) streamUrl += "&stream=1";
-  return [streamUrl];
+  if (!directUrl) return [];
+  if (!/[?&]stream=/.test(directUrl)) directUrl += "&stream=1";
+  return [directUrl];
 }
 
 function fallbackProviderStream(url) {
@@ -237,19 +244,6 @@ function directMp4Stream(videoUrl, providerUrl) {
     type: "mp4",
     isM3U8: false,
     behaviorHints: { bingeGroup: "filmedublate-mp4" },
-    provider: "filmedublate"
-  };
-}
-
-function server4TestStream() {
-  return {
-    name: PROVIDER_NAME + " | Server 4 Test MP4",
-    title: "Hardcoded direct MP4 test",
-    url: SERVER_4_TEST_MP4,
-    quality: "1080p",
-    type: "mp4",
-    isM3U8: false,
-    behaviorHints: { bingeGroup: "filmedublate-server4-test" },
     provider: "filmedublate"
   };
 }
@@ -448,10 +442,6 @@ function getStreams(id, type, season, episode) {
         var seen = {};
         var providers = [];
         var match;
-
-        if (/kung-fu-panda-4-dublat-in-romana/i.test(result.url)) {
-          streams.push(server4TestStream());
-        }
 
         function addStream(stream) {
           var value = stream.url || stream.externalUrl;
