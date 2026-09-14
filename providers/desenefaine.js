@@ -181,6 +181,62 @@ function byseCrypto() {
   return null;
 }
 
+function createByseNodeFingerprint(apiOrigin) {
+  var nodeCrypto;
+  try {
+    nodeCrypto = require("crypto");
+  } catch (error) {
+    return Promise.resolve(null);
+  }
+  if (!nodeCrypto || !nodeCrypto.generateKeyPairSync || !nodeCrypto.createSign) {
+    return Promise.resolve(null);
+  }
+
+  return apiJson(apiOrigin + "/api/videos/access/challenge", {
+    method: "POST",
+    credentials: "include",
+    body: "{}"
+  }).then(function(challenge) {
+    var pair = nodeCrypto.generateKeyPairSync("ec", { namedCurve: "prime256v1" });
+    var publicKey = pair.publicKey.export({ format: "jwk" });
+    var signature = nodeCrypto.createSign("SHA256")
+      .update(String(challenge.nonce))
+      .sign({ key: pair.privateKey, dsaEncoding: "ieee-p1363" });
+    var viewerId = randomId();
+    var deviceId = randomId();
+    var client = {
+      user_agent: FETCH_HEADERS["User-Agent"],
+      languages: ["ro-RO", "en-US"],
+      timezone: "UTC",
+      extra: { vendor: "", appVersion: FETCH_HEADERS["User-Agent"] }
+    };
+
+    return apiJson(apiOrigin + "/api/videos/access/attest", {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify({
+        viewer_id: viewerId,
+        device_id: deviceId,
+        challenge_id: challenge.challenge_id,
+        nonce: challenge.nonce,
+        signature: base64UrlEncode(signature),
+        public_key: publicKey,
+        client: client,
+        storage: {},
+        attributes: { entropy: "low" }
+      })
+    }).then(function(attestation) {
+      if (!attestation.token) throw new Error("Byse fingerprint rejected");
+      return {
+        token: attestation.token,
+        viewer_id: attestation.viewer_id || viewerId,
+        device_id: attestation.device_id || deviceId,
+        confidence: attestation.confidence || 0
+      };
+    });
+  });
+}
+
 function randomId() {
   var bytes = new Uint8Array(16);
   var webCrypto = byseCrypto();
@@ -197,7 +253,7 @@ function randomId() {
 function createByseFingerprint(apiOrigin) {
   var webCrypto = byseCrypto();
   if (!webCrypto || !webCrypto.subtle || !webCrypto.subtle.generateKey) {
-    return Promise.resolve(null);
+    return createByseNodeFingerprint(apiOrigin);
   }
 
     return apiJson(apiOrigin + "/api/videos/access/challenge", {
