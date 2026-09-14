@@ -901,7 +901,7 @@ function resolveProvider(providerUrl, pageUrl) {
       return [];
     });
   }
-  if (/(?:player4me|4meplayer|embed4me)\./i.test(providerUrl)) {
+  if (/(?:player4me|4meplayer|embed4me|streamp2p|p2pplay|seekstream|embedseek)\./i.test(providerUrl)) {
     return resolvePlayer4meProvider(providerUrl, pageUrl).catch(function() {
       return [];
     });
