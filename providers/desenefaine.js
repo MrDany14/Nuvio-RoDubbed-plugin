@@ -515,7 +515,10 @@ function resolvePlayer4meProvider(providerUrl, pageUrl) {
     if (!streamUrl || !/\.m3u8(?:\?|$)/i.test(streamUrl)) {
       throw new Error("Player4me returned no HLS source");
     }
-    return [signedHlsStream(streamUrl, video.title || "Player4me HLS")];
+    var stream = signedHlsStream(streamUrl, video.title || "Player4me HLS");
+    stream.audioLanguage = (video.player && video.player.defaultAudio) || video.defaultAudio || video.audioLanguage || video.audio_language || (video.metric && video.metric.language);
+    stream.resolution = video.resolution || video.quality || "1080p";
+    return [stream];
   });
 }
 
@@ -554,6 +557,61 @@ function signedHlsStream(url, label) {
     behaviorHints: { bingeGroup: "desenefaine-signed-hls" },
     provider: "desenefaine"
   };
+}
+
+function streamSourceName(providerUrl) {
+  var host = urlHost(providerUrl).toLowerCase();
+  if (/byse/.test(host)) return "Bysewihe";
+  if (/streamp2p|p2pplay/.test(host)) return "StreamP2P";
+  if (/seekstream|embedseek/.test(host)) return "SeekStreaming";
+  if (/4meplayer/.test(host)) return "4MePlayer";
+  if (/player4me/.test(host)) return "Player4me";
+  if (/dfbk/.test(host)) return "Dfbk";
+  if (/desenefaine/.test(host)) return "DeseneFaine";
+  return host || "DeseneFaine";
+}
+
+function streamAudioName(value) {
+  var audio = normalizeTitle(value);
+  if (!audio) return "RO";
+  if (audio === "ro" || audio.indexOf("roman") >= 0) return "RO";
+  if (audio === "en" || audio.indexOf("english") >= 0) return "EN";
+  if (audio === "fr" || audio.indexOf("french") >= 0) return "FR";
+  if (audio === "de" || audio.indexOf("german") >= 0) return "DE";
+  return String(value).trim().toUpperCase();
+}
+
+function streamResolutionName(value) {
+  var resolution = String(value || "").trim().toLowerCase();
+  var dimensions = resolution.match(/(\d{3,4})\s*[x/]\s*(\d{3,4})/);
+  if (dimensions) return dimensions[2] + "p";
+  var height = resolution.match(/(\d{3,4})\s*p?/);
+  if (height) return height[1] + "p";
+  return "1080p";
+}
+
+function decorateStream(stream, displayTitle, providerUrl) {
+  var title = String(displayTitle || "DeseneFaine")
+    .replace(/\.(?:mkv|mp4|avi)$/i, "")
+    .trim();
+  var source = stream.sourceName || streamSourceName(providerUrl);
+  var audio = streamAudioName(stream.audioLanguage || stream.audio || stream.language);
+  var resolution = streamResolutionName(stream.resolution || stream.quality);
+
+  stream.name = [title, source, audio, resolution].join(" | ");
+  stream.title = title;
+  stream.quality = resolution;
+  return stream;
+}
+
+function uniqueStreams(streams) {
+  var seen = {};
+  return (streams || []).filter(function(stream) {
+    var key = String(stream && stream.url || "");
+    if (!key || seen[key]) return false;
+    seen[key] = true;
+    return true;
+  });
 }
 
 function findHlsUrls(html) {
@@ -804,7 +862,7 @@ function findServerUrls(pageHtml, pageUrl) {
 
 function findByseProviderUrl(embedHtml) {
   var tidMatch = String(embedHtml).match(
-    /<iframe\b[^>]*src=["']([^"']*\?trhide=1&tid=[^"']+)["']/i
+    /<iframe\b[^>]*src=["']([^"']*\?trhide=1(?:&|&amp;)tid=[^"']+)["']/i
   );
   if (!tidMatch) return null;
 
@@ -885,24 +943,35 @@ function resolveByseProvider(providerUrl, pageUrl) {
       if (!source || !source.url) return;
       var mime = String(source.mime_type || "").toLowerCase();
       if (mime.indexOf("mpegurl") < 0 && !/\.m3u8(?:\?|$)/i.test(source.url)) return;
-      streams.push(signedHlsStream(
+      var stream = signedHlsStream(
         source.url,
         source.label || source.quality || "Bysewihe HLS"
-      ));
+      );
+      stream.audioLanguage = source.audio_language || source.audioLanguage || source.language || playback.default_audio || playback.defaultAudio;
+      stream.resolution = source.resolution || source.quality;
+      streams.push(stream);
     });
     if (!streams.length) throw new Error("Byse returned no HLS source");
     return streams;
   });
 }
 
-function resolveProvider(providerUrl, pageUrl) {
+function resolveProvider(providerUrl, pageUrl, displayTitle) {
   if (/byse(?:wihe)?\./i.test(providerUrl)) {
-    return resolveByseProvider(providerUrl, pageUrl).catch(function() {
+    return resolveByseProvider(providerUrl, pageUrl).then(function(streams) {
+      return streams.map(function(stream) {
+        return decorateStream(stream, displayTitle, providerUrl);
+      });
+    }).catch(function() {
       return [];
     });
   }
   if (/(?:player4me|4meplayer|embed4me|streamp2p|p2pplay|seekstream|embedseek)\./i.test(providerUrl)) {
-    return resolvePlayer4meProvider(providerUrl, pageUrl).catch(function() {
+    return resolvePlayer4meProvider(providerUrl, pageUrl).then(function(streams) {
+      return streams.map(function(stream) {
+        return decorateStream(stream, displayTitle, providerUrl);
+      });
+    }).catch(function() {
       return [];
     });
   }
@@ -911,7 +980,11 @@ function resolveProvider(providerUrl, pageUrl) {
     var hls = findHlsUrls(html);
     if (hls.length) {
       return hls.map(function(url) {
-        return directHlsStream(url, "HLS", providerUrl, pageUrl);
+        return decorateStream(
+          directHlsStream(url, "HLS", providerUrl, pageUrl),
+          displayTitle,
+          providerUrl
+        );
       });
     }
 
@@ -921,25 +994,30 @@ function resolveProvider(providerUrl, pageUrl) {
   });
 }
 
-function resolveServerUrls(serverUrls, pageUrl, index) {
+function resolveServerUrls(serverUrls, pageUrl, index, displayTitle) {
   if (index >= serverUrls.length) return Promise.resolve([]);
 
   return fetchText(serverUrls[index], { headers: { Referer: pageUrl } }).then(function(embedHtml) {
     var directHls = findHlsUrls(embedHtml);
     if (directHls.length) {
       return directHls.map(function(url) {
-        return directHlsStream(url, "HLS", serverUrls[index], pageUrl);
+        return decorateStream(
+          directHlsStream(url, "HLS", serverUrls[index], pageUrl),
+          displayTitle,
+          serverUrls[index]
+        );
       });
     }
 
     return findByseProviderUrl(embedHtml).then(function(providerUrl) {
-      return providerUrl ? resolveProvider(providerUrl, serverUrls[index]) : [];
+      return providerUrl ? resolveProvider(providerUrl, serverUrls[index], displayTitle) : [];
     });
   }).catch(function() {
     return [];
   }).then(function(streams) {
-    if (streams && streams.length) return streams;
-    return resolveServerUrls(serverUrls, pageUrl, index + 1);
+    return resolveServerUrls(serverUrls, pageUrl, index + 1, displayTitle).then(function(nextStreams) {
+      return uniqueStreams((streams || []).concat(nextStreams || []));
+    });
   });
 }
 
@@ -973,6 +1051,7 @@ function getStreams(id, type, season, episode) {
     }
 
     var findPage = isTv ? searchSeries : searchSite;
+    var displayTitle = originalTitle || romanianTitle;
     var pageResult = isTv
       ? findPage(romanianTitle || originalTitle, season, episode)
       : findPage(romanianTitle || originalTitle);
@@ -989,7 +1068,7 @@ function getStreams(id, type, season, episode) {
 
        var serverUrls = findServerUrls(result.html, result.url);
        if (!serverUrls.length) return [];
-       return resolveServerUrls(serverUrls, result.url, 0);
+        return resolveServerUrls(serverUrls, result.url, 0, displayTitle);
     });
   }).catch(function() {
     return [];
