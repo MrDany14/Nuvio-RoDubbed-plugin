@@ -1,4 +1,4 @@
-ar cheerio = require("cheerio-without-node-native");
+var cheerio = require("cheerio-without-node-native");
 
 var PROVIDER_NAME = "FilmeDublate";
 var MAIN_URL = "https://filmedublate.net";
