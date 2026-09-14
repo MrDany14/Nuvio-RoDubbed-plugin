@@ -1236,12 +1236,17 @@ function resolveServerUrls(serverUrls, pageUrl, index, displayTitle) {
   });
 }
 
+function normalizeCatalogId(id) {
+  return String(id || "").replace(/^(?:tmdb|imdb):/i, "");
+}
+
 function tmdbUrl(id, type) {
+  var cleanId = normalizeCatalogId(id);
   var isTv = type === "tv" || type === "series";
-  var isImdb = String(id).startsWith("tt");
+  var isImdb = cleanId.startsWith("tt");
   var endpoint = isImdb
-    ? "find/" + encodeURIComponent(id)
-    : (isTv ? "tv/" : "movie/") + encodeURIComponent(id);
+    ? "find/" + encodeURIComponent(cleanId)
+    : (isTv ? "tv/" : "movie/") + encodeURIComponent(cleanId);
   var query = "?api_key=" + encodeURIComponent(TMDB_API_KEY) + "&language=ro-RO";
   if (isImdb) query += "&external_source=imdb_id";
   return "https://api.themoviedb.org/3/" + endpoint + query;
@@ -1249,9 +1254,10 @@ function tmdbUrl(id, type) {
 
 function getStreams(id, type, season, episode) {
   var isTv = type === "tv" || type === "series";
+  var cleanId = normalizeCatalogId(id);
 
-  return fetchJson(tmdbUrl(id, type)).then(function(data) {
-    var isImdb = String(id).startsWith("tt");
+  return fetchJson(tmdbUrl(cleanId, type)).then(function(data) {
+    var isImdb = cleanId.startsWith("tt");
     var romanianTitle;
     var originalTitle;
     var releaseYear;
@@ -1270,7 +1276,7 @@ function getStreams(id, type, season, episode) {
 
     var findPage = isTv ? searchSeries : searchSite;
     var displayTitle = originalTitle || romanianTitle;
-    var knownProvider = !isTv && knownByseProvider(id);
+    var knownProvider = !isTv && knownByseProvider(cleanId);
     if (knownProvider) {
       return resolveProvider(knownProvider, MAIN_URL, displayTitle);
     }
