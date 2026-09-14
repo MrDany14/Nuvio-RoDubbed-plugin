@@ -166,10 +166,10 @@ function fallbackProviderStream(url) {
   return {
     name: PROVIDER_NAME + " | " + providerName(url),
     title: "Open in web player",
-    externalUrl: url,
+    url: url,
     quality: "1080p",
     isM3U8: false,
-    behaviorHints: { notWebReady: false, bingeGroup: "filmedublate-webview" },
+    behaviorHints: { notWebReady: true, bingeGroup: "filmedublate-webview" },
     provider: "filmedublate"
   };
 }
