@@ -126,6 +126,9 @@ function base64UrlEncode(bytes) {
   if (typeof btoa === "function") {
     return btoa(binary).replace(/=+$/g, "").replace(/\+/g, "-").replace(/\//g, "_");
   }
+  if (typeof Buffer !== "undefined") {
+    return Buffer.from(bytes).toString("base64").replace(/=+$/g, "").replace(/\+/g, "-").replace(/\//g, "_");
+  }
   return binary;
 }
 
@@ -162,14 +165,21 @@ function apiJson(url, options) {
 }
 
 function byseCrypto() {
-  if (typeof crypto === "undefined" || !crypto.subtle) return null;
-  return crypto;
+  if (typeof crypto !== "undefined" && crypto.subtle) return crypto;
+  try {
+    var nodeCrypto = require("crypto");
+    if (nodeCrypto.webcrypto && nodeCrypto.webcrypto.subtle) return nodeCrypto.webcrypto;
+  } catch (error) {
+    // Browser runtimes do not expose Node's crypto module.
+  }
+  return null;
 }
 
 function randomId() {
   var bytes = new Uint8Array(16);
-  if (typeof crypto !== "undefined" && crypto.getRandomValues) {
-    crypto.getRandomValues(bytes);
+  var webCrypto = byseCrypto();
+  if (webCrypto && webCrypto.getRandomValues) {
+    webCrypto.getRandomValues(bytes);
   } else {
     for (var index = 0; index < bytes.length; index += 1) {
       bytes[index] = Math.floor(Math.random() * 256);
@@ -1114,13 +1124,18 @@ function resolveByseProvider(providerUrl, pageUrl) {
       }).then(function(verified) {
         if (!verified.token) throw new Error("Byse CAPTCHA token missing");
 
-        var playbackBody = fingerprint ? { fingerprint: fingerprint } : {};
-        return apiJson(apiOrigin + "/api/videos/" + encodeURIComponent(code) + "/embed/playback", {
-          method: "POST",
+        var playbackRequest = {
           credentials: "include",
-          headers: Object.assign({}, embedHeaders, { "X-Captcha-Token": verified.token }),
-          body: JSON.stringify(playbackBody)
-        });
+          headers: Object.assign({}, embedHeaders, { "X-Captcha-Token": verified.token })
+        };
+        if (fingerprint) {
+          playbackRequest.method = "POST";
+          playbackRequest.body = JSON.stringify({ fingerprint: fingerprint });
+        } else {
+          // Byse expects a GET when fingerprint attestation is unavailable.
+          playbackRequest.method = "GET";
+        }
+        return apiJson(apiOrigin + "/api/videos/" + encodeURIComponent(code) + "/embed/playback", playbackRequest);
       });
     });
   }).then(function(response) {
