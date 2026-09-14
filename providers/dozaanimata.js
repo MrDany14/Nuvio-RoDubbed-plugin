@@ -16,6 +16,17 @@ function fetchText(url) {
   });
 }
 
+function fetchPage(url, referer) {
+  var headers = Object.assign({}, FETCH_HEADERS);
+  if (referer) headers.Referer = referer;
+  return fetch(url, { headers: headers }).then(function(res) {
+    return res.text().then(function(html) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return { html: html, url: res.url || url };
+    });
+  });
+}
+
 function fetchJson(url) {
   return fetch(url, { headers: Object.assign({}, FETCH_HEADERS, { Accept: "application/json" }) }).then(function(res) {
     return res.json().then(function(data) {
@@ -33,13 +44,16 @@ function cleanUrl(value) {
     .trim();
 }
 
-function absoluteUrl(value) {
+function absoluteUrl(value, baseUrl) {
   var url = cleanUrl(value);
   if (!url) return null;
   if (/^https?:\/\//i.test(url)) return url;
   if (url.indexOf("//") === 0) return "https:" + url;
-  if (url.charAt(0) === "/") return MAIN_URL + url;
-  return MAIN_URL + "/" + url;
+  var origin = MAIN_URL;
+  var baseMatch = String(baseUrl || "").match(/^(https?:\/\/[^/]+)/i);
+  if (baseMatch) origin = baseMatch[1];
+  if (url.charAt(0) === "/") return origin + url;
+  return origin + "/" + url;
 }
 
 function decodeBase64(value) {
@@ -258,23 +272,82 @@ function iframeSources(html) {
   }).filter(function(url, index, all) {
     if (!/^https?:\/\//i.test(url)) return false;
     if (/youtube\.com|youtu\.be|dozaanimata\.net|storage\.googleapis\.com|about:blank/i.test(url)) return false;
-    if (!/(?:hqq\.tv|playmogo\.|hideiframe\.|dood\w*\.|\.m3u8(?:\?|$)|\.mp4(?:\?|$)|\/embed|\/e\/)/i.test(url)) return false;
+    if (!/(?:hqq\.tv|playmogo\.|vidply\.|hideiframe\.|dood\w*\.|\.m3u8(?:\?|$)|\.mp4(?:\?|$)|\/embed|\/e\/)/i.test(url)) return false;
     return all.indexOf(url) === index;
   });
 }
 
-function makeStream(url, index) {
+function randomToken(length) {
+  var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var result = "";
+  for (var index = 0; index < length; index += 1) {
+    result += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+  }
+  return result;
+}
+
+function makeStream(url, index, referer) {
+  var isHls = /\.m3u8(?:\?|$)/i.test(url);
+  var headers = Object.assign({}, FETCH_HEADERS);
+  if (referer) headers.Referer = referer;
   return {
     name: PROVIDER_NAME + " | Server " + (index + 1),
-    title: "External player",
+    title: isHls ? "Direct HLS stream" : "Direct MP4 stream",
     url: url,
     quality: "HD Rip",
-    behaviorHints: {
-      notWebReady: true,
-      bingeGroup: "dozaanimata"
-    },
+    type: isHls ? "hls" : "mp4",
+    isM3U8: isHls,
+    headers: headers,
+    behaviorHints: { bingeGroup: "dozaanimata" },
     provider: "dozaanimata"
   };
+}
+
+function directMediaFromPage(page, referer, index) {
+  var html = String(page.html || "");
+  var directUrls = html.match(/https?:[^"'<>\s\\]+\.(?:m3u8|mp4)(?:\?[^"'<>\s\\]*)?/gi) || [];
+  if (directUrls.length) return Promise.resolve(makeStream(cleanUrl(directUrls[0]), index, referer));
+
+  var passMatch = html.match(/\/pass_md5\/[^"'<>\s\\]+/i);
+  if (!passMatch) return Promise.resolve(null);
+
+  var passPath = cleanUrl(passMatch[0]);
+  var token = passPath.split("/").pop().split("?")[0];
+  var passUrl = absoluteUrl(passPath, page.url);
+  if (!passUrl || !token) return Promise.resolve(null);
+
+  return fetchPage(passUrl, page.url).then(function(passPage) {
+    var mediaBase = cleanUrl(passPage.html);
+    if (!mediaBase || mediaBase === "RELOAD") return null;
+    if (!/^https?:\/\//i.test(mediaBase)) mediaBase = absoluteUrl(mediaBase, page.url);
+    if (!mediaBase) return null;
+    var mediaUrl = mediaBase + randomToken(10) +
+      "?token=" + encodeURIComponent(token) + "&expiry=" + Date.now();
+    return makeStream(mediaUrl, index, page.url);
+  }).catch(function() {
+    return null;
+  });
+}
+
+function resolveSource(url, pageUrl, index) {
+  if (/\.m3u8(?:\?|$)|\.mp4(?:\?|$)/i.test(url)) {
+    return Promise.resolve(makeStream(url, index, pageUrl));
+  }
+  if (/hqq\.tv/i.test(url)) return Promise.resolve(null);
+  return fetchPage(url, pageUrl).then(function(page) {
+    return directMediaFromPage(page, url, index);
+  }).catch(function() {
+    return null;
+  });
+}
+
+function resolveSources(urls, pageUrl, index) {
+  if (index >= urls.length) return Promise.resolve([]);
+  return resolveSource(urls[index], pageUrl, index).then(function(stream) {
+    return resolveSources(urls, pageUrl, index + 1).then(function(rest) {
+      return stream ? [stream].concat(rest) : rest;
+    });
+  });
 }
 
 function getStreams(id, type, season, episode) {
@@ -297,7 +370,7 @@ function getStreams(id, type, season, episode) {
   }).then(function(pageUrl) {
     if (!pageUrl) return [];
     return fetchText(pageUrl).then(function(html) {
-      return iframeSources(html).map(makeStream);
+      return resolveSources(iframeSources(html), pageUrl, 0);
     });
   }).catch(function(error) {
     if (typeof console !== "undefined" && console.error) {
