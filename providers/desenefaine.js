@@ -182,14 +182,25 @@ function resolveProvider(url, wrapperUrl) {
     if (!hls.length) return [fallbackProviderStream(url)];
 
     return hls.map(function(m3u8) {
+      var originMatch = String(url).match(/^(https?:\/\/[^/]+)/i);
+      var requestHeaders = {
+        Referer: url,
+        Origin: originMatch ? originMatch[1] : String(url),
+        "User-Agent": FETCH_HEADERS["User-Agent"]
+      };
+
       return {
         name: PROVIDER_NAME + " | " + providerName(url) + " HLS",
         title: "Direct HLS stream",
         url: m3u8,
         quality: "1080p",
         isM3U8: true,
-        headers: { Referer: url, "User-Agent": FETCH_HEADERS["User-Agent"] },
-        behaviorHints: { bingeGroup: "filmedublate-hls" },
+        headers: requestHeaders,
+        behaviorHints: {
+          notWebReady: true,
+          bingeGroup: "filmedublate-hls",
+          proxyHeaders: { request: requestHeaders }
+        },
         provider: "filmedublate"
       };
     });
