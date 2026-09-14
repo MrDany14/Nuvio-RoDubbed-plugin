@@ -3,6 +3,7 @@ var cheerio = require("cheerio-without-node-native");
 var PROVIDER_NAME = "FilmeDublate";
 var MAIN_URL = "https://filmedublate.net";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
+var SERVER_4_TEST_MP4 = "https://3652634701.tapecontent.net/radosgw/0DW0aKMo32HbrMp/O6Po1DWS9t1S5RigU2vOzaFiF8bS76pD5rlZ3cDjiy0IvBhPLNN4dxRDJuCl66v9gSGB4WeLRgPd5O8qg3qcEQ3c-CXDl-PmSQUtsIPvsbp5v08w_Hxe_YW1X-4u2Y1gVhiPDcS8Q2EdMhmEZvBdSKWcGwpmhrp_8DhyumU7nJjqhp9mhVX8lXXNq0hv4kU1AgmOkP_zpfmPvb8u2ZoWyqL9OL691a94gmABMDRDRNJMmfeaADYSEvxgh6YKwAGRzczi5yeslVqAdFD-Xa0_Hb0NoJ-3yRkj6mYWnQ/kung-fu-panda-4.mp4?stream=1";
 
 var FETCH_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
@@ -34,6 +35,18 @@ function fetchJson(url, options) {
   return fetch(url, request).then(function(res) {
     if (!res.ok) throw new Error("HTTP " + res.status);
     return res.json();
+  });
+}
+
+function resolveRedirectUrl(url, options) {
+  options = options || {};
+  var request = {
+    method: options.method || "GET",
+    headers: Object.assign({}, FETCH_HEADERS, options.headers || {})
+  };
+
+  return fetch(url, request).then(function(res) {
+    return res.url || url;
   });
 }
 
@@ -186,37 +199,55 @@ function fallbackProviderStream(url) {
   };
 }
 
+function directMp4Stream(videoUrl, providerUrl) {
+  var requestHeaders = {
+    Referer: providerUrl,
+    "User-Agent": FETCH_HEADERS["User-Agent"]
+  };
+
+  return {
+    name: PROVIDER_NAME + " | " + providerName(providerUrl) + " MP4",
+    title: "Direct MP4 stream",
+    url: videoUrl,
+    quality: "1080p",
+    type: "mp4",
+    isM3U8: false,
+    headers: requestHeaders,
+    behaviorHints: {
+      notWebReady: true,
+      bingeGroup: "filmedublate-mp4",
+      proxyHeaders: { request: requestHeaders }
+    },
+    provider: "filmedublate"
+  };
+}
+
+function server4TestStream() {
+  return {
+    name: PROVIDER_NAME + " | Server 4 Test MP4",
+    title: "Hardcoded direct MP4 test",
+    url: SERVER_4_TEST_MP4,
+    quality: "1080p",
+    type: "mp4",
+    isM3U8: false,
+    behaviorHints: { bingeGroup: "filmedublate-server4-test" },
+    provider: "filmedublate"
+  };
+}
+
 function resolveProvider(url, wrapperUrl) {
   return Promise.resolve().then(function() {
     return fetchText(url, { headers: { Referer: wrapperUrl } });
   }).then(function(html) {
     var mp4 = findProviderMp4(html);
     if (mp4.length) {
-      return mp4.map(function(videoUrl) {
-        return {
-          name: PROVIDER_NAME + " | " + providerName(url) + " MP4",
-          title: "Direct MP4 stream",
-          url: videoUrl,
-          quality: "1080p",
-          type: "mp4",
-          isM3U8: false,
-          headers: {
-            Referer: url,
-            "User-Agent": FETCH_HEADERS["User-Agent"]
-          },
-          behaviorHints: {
-            notWebReady: true,
-            bingeGroup: "filmedublate-mp4",
-            proxyHeaders: {
-              request: {
-                Referer: url,
-                "User-Agent": FETCH_HEADERS["User-Agent"]
-              }
-            }
-          },
-          provider: "filmedublate"
-        };
-      });
+      return resolveRedirectUrl(mp4[0], { headers: { Referer: url } })
+        .then(function(resolvedUrl) {
+          return [directMp4Stream(resolvedUrl, url)];
+        })
+        .catch(function() {
+          return [directMp4Stream(mp4[0], url)];
+        });
     }
 
     var hls = findProviderHls(html);
@@ -397,6 +428,10 @@ function getStreams(id, type, season, episode) {
         var seen = {};
         var providers = [];
         var match;
+
+        if (/kung-fu-panda-4-dublat-in-romana/i.test(result.url)) {
+          streams.push(server4TestStream());
+        }
 
         function addStream(stream) {
           var value = stream.url || stream.externalUrl;
