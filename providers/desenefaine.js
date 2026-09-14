@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.8";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.7";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -977,29 +977,20 @@ function filmPageSlugs(query) {
 }
 
 function findDirectFilmPage(query, words, expectedYear, titleVariants) {
-  var variants = [query].concat(titleVariants || []).filter(function(variant, index, values) {
-    return variant && values.indexOf(variant) === index;
-  });
-
-  function tryVariant(index) {
-    if (index >= variants.length) return Promise.resolve(null);
-    var slugs = filmPageSlugs(variants[index]);
-    return Promise.all(slugs.map(function(slug) {
-      return readFilmPage(
-        MAIN_URL + "/film/" + slug + "/",
-        words,
-        expectedYear,
-        true,
-        titleVariants,
-        "movie"
-      );
-    })).then(function(results) {
-      var match = results.find(function(result) { return Boolean(result); });
-      return match || tryVariant(index + 1);
+  var slugs = [];
+  [query].concat(titleVariants || []).forEach(function(variant) {
+    filmPageSlugs(variant).forEach(function(slug) {
+      if (slugs.indexOf(slug) < 0) slugs.push(slug);
     });
-  }
-
-  return tryVariant(0);
+  });
+  var result = Promise.resolve(null);
+  slugs.forEach(function(slug) {
+    result = result.then(function(found) {
+      if (found) return found;
+      return readFilmPage(MAIN_URL + "/film/" + slug + "/", words, expectedYear, true, titleVariants, "movie");
+    });
+  });
+  return result;
 }
 
 function episodePageSlugs(query, season, episode) {
@@ -1379,55 +1370,27 @@ function resolveProvider(providerUrl, pageUrl, displayTitle) {
   });
 }
 
-function withTimeout(promise, timeoutMs) {
-  return new Promise(function(resolve, reject) {
-    var settled = false;
-    var timer = setTimeout(function() {
-      if (settled) return;
-      settled = true;
-      reject(new Error("Timed out after " + timeoutMs + "ms"));
-    }, timeoutMs);
+function resolveServerUrls(serverUrls, pageUrl, index, displayTitle) {
+  if (index >= serverUrls.length) return Promise.resolve([]);
 
-    Promise.resolve(promise).then(function(value) {
-      if (settled) return;
-      settled = true;
-      clearTimeout(timer);
-      resolve(value);
-    }, function(error) {
-      if (settled) return;
-      settled = true;
-      clearTimeout(timer);
-      reject(error);
-    });
-  });
-}
-
-function resolveServerUrl(serverUrl, pageUrl, displayTitle) {
-  return withTimeout(fetchText(serverUrl, { headers: { Referer: pageUrl } }), 12000).then(function(embedHtml) {
+  return fetchText(serverUrls[index], { headers: { Referer: pageUrl } }).then(function(embedHtml) {
     return findByseProviderUrl(embedHtml).then(function(providerUrl) {
-      if (providerUrl) return resolveProvider(providerUrl, serverUrl, displayTitle);
+      if (providerUrl) return resolveProvider(providerUrl, serverUrls[index], displayTitle);
 
       return findHlsUrls(embedHtml).map(function(url) {
         return decorateStream(
-          directHlsStream(url, "HLS", serverUrl, pageUrl),
+          directHlsStream(url, "HLS", serverUrls[index], pageUrl),
           displayTitle,
-          serverUrl
+          serverUrls[index]
         );
       });
     });
   }).catch(function() {
     return [];
-  });
-}
-
-function resolveServerUrls(serverUrls, pageUrl, index, displayTitle) {
-  var start = index || 0;
-  return Promise.all(serverUrls.slice(start).map(function(serverUrl) {
-    return withTimeout(resolveServerUrl(serverUrl, pageUrl, displayTitle), 15000).catch(function() {
-      return [];
+  }).then(function(streams) {
+    return resolveServerUrls(serverUrls, pageUrl, index + 1, displayTitle).then(function(nextStreams) {
+      return uniqueStreams((streams || []).concat(nextStreams || []));
     });
-  })).then(function(groups) {
-    return uniqueStreams([].concat.apply([], groups));
   });
 }
 
