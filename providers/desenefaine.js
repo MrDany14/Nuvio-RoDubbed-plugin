@@ -1125,7 +1125,8 @@ function searchFilmIndex(query, expectedYear, titleVariants, words, path) {
   var searchUrl = MAIN_URL + path + encodeURIComponent(query);
   return fetchText(searchUrl).then(function(html) {
     var $ = cheerio.load(html);
-    var best = null;
+    var candidates = [];
+    var seen = {};
 
     $("a[href]").each(function(_, element) {
       var href = absoluteUrl($(element).attr("href"), searchUrl);
@@ -1133,19 +1134,46 @@ function searchFilmIndex(query, expectedYear, titleVariants, words, path) {
       if (/\/film\/$/i.test(href)) return;
 
       var text = normalizeTitle($(element).text() || $(element).attr("title") || href);
+      var context = String($(element).closest("article").text() || $(element).parent().text() || text);
+      var yearMatch = context.match(/\b(19|20)\d{2}\b/);
       var score = 0;
       titleVariants.forEach(function(variant) {
         score = Math.max(score, titleScore(text, titleWords(variant)));
       });
       if (score < Math.ceil(words.length / 2)) return;
 
-      if (!best || score > best.score || (score === best.score && text.length < best.text.length)) {
-        best = { href: href, text: text, score: score };
+      var candidate = {
+        href: href,
+        text: text,
+        score: score,
+        year: yearMatch ? parseInt(yearMatch[0], 10) : null
+      };
+      var existing = candidates.find(function(item) {
+        return item.href === href;
+      });
+      if (!existing) {
+        candidates.push(candidate);
+      } else if (candidate.score > existing.score || (!existing.year && candidate.year)) {
+        Object.assign(existing, candidate);
       }
     });
 
-    if (!best) return null;
-    return readFilmPage(best.href, words, expectedYear, true, titleVariants, "movie");
+    candidates.sort(function(left, right) {
+      var leftYearRank = expectedYear && left.year === expectedYear ? 2 : (left.year ? 0 : 1);
+      var rightYearRank = expectedYear && right.year === expectedYear ? 2 : (right.year ? 0 : 1);
+      if (leftYearRank !== rightYearRank) return rightYearRank - leftYearRank;
+      if (left.score !== right.score) return right.score - left.score;
+      return left.text.length - right.text.length;
+    });
+
+    function tryCandidate(index) {
+      if (index >= candidates.length) return Promise.resolve(null);
+      return readFilmPage(candidates[index].href, words, expectedYear, true, titleVariants, "movie").then(function(result) {
+        return result || tryCandidate(index + 1);
+      });
+    }
+
+    return tryCandidate(0);
   });
 }
 
