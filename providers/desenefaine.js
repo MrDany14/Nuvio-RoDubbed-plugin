@@ -42,11 +42,21 @@ function resolveRedirectUrl(url, options) {
   options = options || {};
   var request = {
     method: options.method || "GET",
-    headers: Object.assign({}, FETCH_HEADERS, options.headers || {})
+    headers: Object.assign({}, FETCH_HEADERS, options.headers || {}),
+    redirect: "manual"
   };
 
   return fetch(url, request).then(function(res) {
-    return res.url || url;
+    var location = res.headers && res.headers.get
+      ? res.headers.get("location")
+      : null;
+
+    if (location) return absoluteUrl(location, url);
+
+    var resolvedUrl = res.url || null;
+    if (resolvedUrl && resolvedUrl !== url) return resolvedUrl;
+
+    return null;
   });
 }
 
@@ -268,10 +278,14 @@ function resolveProvider(url, wrapperUrl) {
           headers: { Referer: url }
         })
           .then(function(resolvedUrl) {
+            if (!resolvedUrl) {
+              throw new Error("Streamtape redirect URL unavailable");
+            }
+
             return [directMp4Stream(resolvedUrl, url)];
           })
           .catch(function() {
-            return [directMp4Stream(mp4[0], url)];
+            return [fallbackProviderStream(url)];
           });
       }
 
