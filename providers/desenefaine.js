@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.22";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.23";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -631,7 +631,12 @@ function resolvePlayer4meProvider(providerUrl, pageUrl) {
     if (!streamUrl || !/\.m3u8(?:\?|$)/i.test(streamUrl)) {
       throw new Error("Player4me returned no HLS source");
     }
-    var stream = signedHlsStream(streamUrl, video.title || "Player4me HLS");
+    var stream = directHlsStream(
+      streamUrl,
+      video.title || "Player4me HLS",
+      providerUrl,
+      providerUrl
+    );
     stream.audioLanguage = (video.player && video.player.defaultAudio) || video.defaultAudio || video.audioLanguage || video.audio_language || (video.metric && video.metric.language);
     stream.resolution = video.resolution || video.quality || "1080p";
     return [stream];
