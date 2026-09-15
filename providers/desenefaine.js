@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.16";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.19";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -828,6 +828,8 @@ function signedHlsStream(url, label) {
 function streamSourceName(providerUrl) {
   var host = urlHost(providerUrl).toLowerCase();
   if (/player\.desenefaine\.net|netu/i.test(host)) return "Netu";
+  if (/videasy\./i.test(host)) return "Netu";
+  if (/vsembed|vidsrc|cloudorchestranova/.test(host)) return "Vsrc";
   if (/byse/.test(host)) return "Bysewihe";
   if (/streamp2p|p2pplay/.test(host)) return "StreamP2P";
   if (/seekstream|embedseek/.test(host)) return "SeekStreaming";
@@ -838,14 +840,56 @@ function streamSourceName(providerUrl) {
   return host || "DeseneFaine";
 }
 
-function streamAudioName(value) {
-  var audio = normalizeTitle(value);
-  if (!audio) return "RO";
-  if (audio === "ro" || audio.indexOf("roman") >= 0) return "RO";
-  if (audio === "en" || audio.indexOf("english") >= 0) return "EN";
-  if (audio === "fr" || audio.indexOf("french") >= 0) return "FR";
-  if (audio === "de" || audio.indexOf("german") >= 0) return "DE";
-  return String(value).trim().toUpperCase();
+function audioLanguageCode(value) {
+  var audio = normalizeTitle(value).replace(/[_-]+/g, " ");
+  if (!audio) return "";
+  if (/\b(ro|ron|romana|romanian)\b/.test(audio) || audio.indexOf("roman") >= 0) return "RO";
+  if (/\b(en|eng|english|engleza)\b/.test(audio)) return "EN";
+  if (/\b(fr|fra|french|franceza)\b/.test(audio)) return "FR";
+  if (/\b(de|deu|german|germana)\b/.test(audio)) return "DE";
+  if (/\b(es|spa|spanish|spaniola)\b/.test(audio)) return "ES";
+  if (/\b(it|ita|italian|italiana)\b/.test(audio)) return "IT";
+  if (/\b(ru|rus|russian|rusa)\b/.test(audio)) return "RU";
+  if (/\b(uk|ukr|ukrainian|ucraineana)\b/.test(audio)) return "UK";
+  if (/\b(he|heb|hebrew|ebraica)\b/.test(audio)) return "HE";
+  return "";
+}
+
+function streamAudioLanguages(stream) {
+  var languages = [];
+  var values = [
+    stream && stream.audioLanguages,
+    stream && stream.audioLanguage,
+    stream && stream.audio,
+    stream && stream.language,
+    stream && stream.audio_language,
+    stream && stream.languages
+  ];
+
+  function collect(value) {
+    if (!value) return;
+    if (Array.isArray(value)) {
+      value.forEach(collect);
+      return;
+    }
+    if (typeof value === "object") {
+      collect(value.language || value.lang || value.name || value.label);
+      return;
+    }
+    String(value).split(/[,|/+;&]+/).forEach(function(part) {
+      var code = audioLanguageCode(part);
+      if (code && languages.indexOf(code) < 0) languages.push(code);
+    });
+  }
+
+  values.forEach(collect);
+  return languages;
+}
+
+function streamAudioDisplay(languages) {
+  if (languages.length === 1 && languages[0] === "RO") return "🇷🇴 RO Dub";
+  if (languages.length) return "🌐 " + languages.length + " audio tracks • " + languages.join(" • ");
+  return "🎧 Audio language unavailable";
 }
 
 function streamResolutionName(value) {
@@ -858,15 +902,12 @@ function streamResolutionName(value) {
 }
 
 function decorateStream(stream, displayTitle, providerUrl) {
-  var title = String(displayTitle || "DeseneFaine")
-    .replace(/\.(?:mkv|mp4|avi)$/i, "")
-    .trim();
   var source = stream.sourceName || streamSourceName(providerUrl);
-  var audio = streamAudioName(stream.audioLanguage || stream.audio || stream.language);
+  var languages = streamAudioLanguages(stream);
   var resolution = streamResolutionName(stream.resolution || stream.quality);
 
-  stream.name = [title, source, audio, resolution].join(" | ");
-  stream.title = title;
+  stream.name = "✦ [" + resolution + "] DeseneFaine";
+  stream.title = "⭐ " + streamAudioDisplay(languages) + "\n🔗 " + source;
   stream.quality = resolution;
   return stream;
 }
