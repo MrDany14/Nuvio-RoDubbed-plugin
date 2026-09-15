@@ -1,4 +1,4 @@
-var DESENELEDUBLATE_PLUGIN_VERSION = "0.1.0";
+var DESENELEDUBLATE_PLUGIN_VERSION = "0.1.2";
 var PROVIDER_NAME = "DeseneleDublate";
 var MAIN_URL = "https://deseneledublate.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
@@ -302,6 +302,12 @@ function audioLabel(html, pageUrl) {
 
 function makeStream(url, source, referer, audio, quality, isEmbed) {
   var isHls = /\.m3u8(?:\?|$)/i.test(url);
+  var originMatch = String(referer || "").match(/^https?:\/\/[^/]+/i);
+  var requestHeaders = {
+    Referer: referer || MAIN_URL,
+    Origin: originMatch ? originMatch[0] : MAIN_URL,
+    "User-Agent": FETCH_HEADERS["User-Agent"]
+  };
   var stream = {
     name: "✦ " + source + (audio ? "\n⭐ " + audio : ""),
     title: audio ? "⭐ " + audio : "",
@@ -310,10 +316,11 @@ function makeStream(url, source, referer, audio, quality, isEmbed) {
     quality: quality || "1080p",
     type: isHls ? "hls" : "mp4",
     isM3U8: isHls,
-    headers: { Referer: referer || MAIN_URL, "User-Agent": FETCH_HEADERS["User-Agent"] },
+    headers: requestHeaders,
     behaviorHints: {
       notWebReady: Boolean(isEmbed || !isHls),
-      bingeGroup: "deseneledublate-" + source.toLowerCase().replace(/[^a-z0-9]+/g, "-")
+      bingeGroup: "deseneledublate-" + source.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      proxyHeaders: { request: requestHeaders }
     },
     provider: "deseneledublate"
   };
@@ -373,16 +380,17 @@ function resolveEmbed4me(embedUrl, pageUrl, source, audio) {
 }
 
 function resolveStreamtape(embedUrl, pageUrl, source, audio) {
-  return fetchText(embedUrl, pageUrl).then(function(html) {
-    var match = html.match(/<(?:span|div)\b[^>]*id\s*=\s*["'](?:botlink|robotlink|ideoolink)["'][^>]*>([^<]+)<\//i);
+  var viewUrl = String(embedUrl).replace(/\/e\//i, "/v/");
+  return fetchText(viewUrl, pageUrl).then(function(html) {
+    var match = html.match(/<(?:span|div)\b[^>]*id\s*=\s*["'](?:captchalink|norobotlink|botlink|robotlink|ideoooolink|ideoolink)["'][^>]*>([^<]+)<\//i);
     if (!match) match = html.match(/https?:?\\?\/\\?\/streamtape\.com\/get_video\?[^"'<\s]+/i);
     if (!match) throw new Error("Streamtape media URL missing");
     var url = cleanUrl(match[1] || match[0]);
     if (/^streamtape\.com\//i.test(url)) url = "https://" + url;
-    url = absoluteUrl(url, embedUrl);
+    url = absoluteUrl(url, viewUrl);
     url = url.replace(/^https?:\/\/streamtape\.com\/streamtape\.com\//i, "https://streamtape.com/");
     if (url.indexOf("&stream=") < 0) url += "&stream=1";
-    return [makeStream(url, source, embedUrl, audio, "1080p")];
+    return [makeStream(url, source, viewUrl, audio, "1080p")];
   }).catch(function() {
     return [];
   });
