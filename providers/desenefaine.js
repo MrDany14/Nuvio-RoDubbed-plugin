@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.23";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.24";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -676,6 +676,12 @@ function directVideoStream(url, label, providerUrl, referrer) {
   };
 }
 
+function embeddedVideoStream(url, label, providerUrl, referrer) {
+  var stream = directVideoStream(url, label, providerUrl, referrer);
+  stream.audioLanguage = "ro";
+  return stream;
+}
+
 function resolveDoodProvider(providerUrl, pageUrl) {
   var pageHeaders = Object.assign({}, FETCH_HEADERS, { Referer: pageUrl });
 
@@ -833,6 +839,7 @@ function signedHlsStream(url, label) {
 function streamSourceName(providerUrl) {
   var host = urlHost(providerUrl).toLowerCase();
   if (/player\.desenefaine\.net|netu/i.test(host)) return "Netu";
+  if (/voe\./i.test(host)) return "Voe";
   if (/videasy\./i.test(host)) return "Netu";
   if (/vsembed|vidsrc|cloudorchestranova/.test(host)) return "Vsrc";
   if (/byse/.test(host)) return "Bysewihe";
@@ -1513,7 +1520,22 @@ function resolveByseProvider(providerUrl, pageUrl) {
 
 function resolveProvider(providerUrl, pageUrl, displayTitle) {
   if (/player\.desenefaine\.net|netu/i.test(providerUrl)) {
-    return Promise.resolve([]);
+    return Promise.resolve([
+      embeddedVideoStream(providerUrl, streamSourceName(providerUrl), providerUrl, pageUrl)
+    ]).then(function(streams) {
+      return streams.map(function(stream) {
+        return decorateStream(stream, displayTitle, providerUrl);
+      });
+    });
+  }
+  if (/voe\./i.test(providerUrl)) {
+    return Promise.resolve([
+      embeddedVideoStream(providerUrl, "Voe", providerUrl, pageUrl)
+    ]).then(function(streams) {
+      return streams.map(function(stream) {
+        return decorateStream(stream, displayTitle, providerUrl);
+      });
+    });
   }
   if (/(?:dood(?:stream)?|playmogo)\./i.test(providerUrl)) {
     return resolveDoodProvider(providerUrl, pageUrl).then(function(streams) {
