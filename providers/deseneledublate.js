@@ -1,4 +1,4 @@
-var DESENELEDUBLATE_PLUGIN_VERSION = "0.1.6";
+var DESENELEDUBLATE_PLUGIN_VERSION = "0.1.7";
 var PROVIDER_NAME = "DeseneleDublate";
 var MAIN_URL = "https://deseneledublate.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
@@ -436,7 +436,12 @@ function resolveStreamtape(embedUrl, pageUrl, source, audio) {
     url = absoluteUrl(url, viewUrl);
     url = url.replace(/^https?:\/\/streamtape\.com\/streamtape\.com\//i, "https://streamtape.com/");
     if (url.indexOf("&stream=") < 0) url += "&stream=1";
-    return [makeStream(url, source, viewUrl, audio, "1080p")];
+    var stream = makeStream(url, source, viewUrl, audio, "1080p");
+    // Streamtape rejects the redirected CDN request when these browser-only
+    // headers are forwarded by the player.
+    delete stream.headers;
+    delete stream.behaviorHints.proxyHeaders;
+    return [stream];
   }).catch(function() {
     return [];
   });
