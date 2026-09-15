@@ -1,4 +1,4 @@
-var DESENELEDUBLATE_PLUGIN_VERSION = "0.1.2";
+var DESENELEDUBLATE_PLUGIN_VERSION = "0.1.3";
 var PROVIDER_NAME = "DeseneleDublate";
 var MAIN_URL = "https://deseneledublate.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
@@ -108,13 +108,13 @@ function titleWords(value) {
   });
 }
 
-function htmlLinks(html) {
+function htmlLinks(html, allowExternal) {
   var links = [];
   var regex = /<a\b[^>]*href\s*=\s*(["'])([\s\S]*?)\1[^>]*>([\s\S]*?)<\/a>/gi;
   var match;
   while ((match = regex.exec(String(html || "")))) {
     var href = absoluteUrl(match[2]);
-    if (!href || href.indexOf("deseneledublate.com") < 0) continue;
+    if (!href || (!allowExternal && href.indexOf("deseneledublate.com") < 0)) continue;
     links.push({ href: href, text: stripHtml(match[3]) });
   }
   return links;
@@ -207,13 +207,29 @@ function episodeNumber(url, text) {
 
 function findEpisodePage(seriesHtml, season, episode) {
   var best = null;
-  htmlLinks(seriesHtml).forEach(function(candidate) {
-    if (candidate.href.indexOf("/episoade/") < 0) return;
+  htmlLinks(seriesHtml, true).forEach(function(candidate) {
     var numbers = episodeNumber(candidate.href, candidate.text);
     if (!numbers || numbers.season !== season || numbers.episode !== episode) return;
     best = candidate.href;
   });
   return best;
+}
+
+function resolveContentPage(pageUrl, html, audio) {
+  var direct = genericMediaUrls(html).map(function(url) {
+    return makeStream(url, sourceName(pageUrl, "Player"), pageUrl, audio, "1080p");
+  });
+  if (direct.length) return Promise.resolve(direct);
+
+  var iframe = String(html || "").match(/<iframe\b[^>]*\bsrc\s*=\s*(["'])([\s\S]*?)\1/i);
+  if (iframe) {
+    return resolveEmbed(absoluteUrl(iframe[2], pageUrl), pageUrl, "Player", audio, 0);
+  }
+
+  if (String(pageUrl || "").indexOf(MAIN_URL) !== 0) {
+    return Promise.resolve([makeStream(pageUrl, sourceName(pageUrl, "Player"), pageUrl, audio, "1080p", true)]);
+  }
+  return Promise.resolve([]);
 }
 
 function findContentPage(meta, type, season, episode) {
@@ -266,7 +282,7 @@ function playerOptions(html) {
 
 function extractEmbedUrls(value, baseUrl) {
   var text = cleanUrl(value);
-  var urls = [];
+  var urls = decodePlayerIdSources(text);
   var iframe = text.match(/<iframe\b[^>]*\bsrc\s*=\s*(["'])([\s\S]*?)\1/i);
   if (iframe) urls.push(iframe[2]);
   else if (/^(?:https?:)?\/\//i.test(text)) urls.push(text);
@@ -276,6 +292,29 @@ function extractEmbedUrls(value, baseUrl) {
   }).filter(function(url, index, all) {
     return url && all.indexOf(url) === index && !/youtube\.com|youtu\.be/i.test(url);
   });
+}
+
+function decodePlayerIdSources(value) {
+  var sources = [];
+  var regex = /\bid\s*=\s*(["'])([0-9a-f]{30,})\1/gi;
+  var match;
+  while ((match = regex.exec(String(value || "")))) {
+    var encoded = match[2];
+    if (encoded.length % 3 !== 0) continue;
+    var decoded = "";
+    for (var index = 0; index < encoded.length; index += 3) {
+      decoded += String.fromCharCode(parseInt("0" + encoded.slice(index, index + 3), 16));
+    }
+    try {
+      var data = JSON.parse(decoded);
+      if (data && data.v) {
+        sources.push("https://hqq.tv/player/embed_player.php?vid=" + encodeURIComponent(data.v) + "&autoplay=none");
+      }
+    } catch (error) {
+      // Other site IDs are not player payloads.
+    }
+  }
+  return sources;
 }
 
 function sourceName(embedUrl, optionLabel) {
@@ -288,6 +327,8 @@ function sourceName(embedUrl, optionLabel) {
   if (/embed4me/.test(host)) return "Embed4me";
   if (/dood/.test(host)) return "Doodstream";
   if (/playmogo/.test(host)) return "PlayMogo";
+  if (/hqq\./.test(host)) return "HQQ";
+  if (/gounlimited/.test(host)) return "Gounlimited";
   return label || host || PROVIDER_NAME;
 }
 
@@ -318,7 +359,7 @@ function makeStream(url, source, referer, audio, quality, isEmbed) {
     isM3U8: isHls,
     headers: requestHeaders,
     behaviorHints: {
-      notWebReady: Boolean(isEmbed || !isHls),
+      notWebReady: Boolean(isEmbed),
       bingeGroup: "deseneledublate-" + source.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
       proxyHeaders: { request: requestHeaders }
     },
@@ -382,7 +423,8 @@ function resolveEmbed4me(embedUrl, pageUrl, source, audio) {
 function resolveStreamtape(embedUrl, pageUrl, source, audio) {
   var viewUrl = String(embedUrl).replace(/\/e\//i, "/v/");
   return fetchText(viewUrl, pageUrl).then(function(html) {
-    var match = html.match(/<(?:span|div)\b[^>]*id\s*=\s*["'](?:captchalink|norobotlink|botlink|robotlink|ideoooolink|ideoolink)["'][^>]*>([^<]+)<\//i);
+    var match = html.match(/<(?:span|div)\b[^>]*id\s*=\s*["'](?:norobotlink|ideoooolink|botlink|robotlink|ideoolink)["'][^>]*>([^<]+)<\//i);
+    if (!match) match = html.match(/<(?:span|div)\b[^>]*id\s*=\s*["']captchalink["'][^>]*>([^<]+)<\//i);
     if (!match) match = html.match(/https?:?\\?\/\\?\/streamtape\.com\/get_video\?[^"'<\s]+/i);
     if (!match) throw new Error("Streamtape media URL missing");
     var url = cleanUrl(match[1] || match[0]);
@@ -393,6 +435,18 @@ function resolveStreamtape(embedUrl, pageUrl, source, audio) {
     return [makeStream(url, source, viewUrl, audio, "1080p")];
   }).catch(function() {
     return [];
+  });
+}
+
+function resolveHqq(embedUrl, pageUrl, source, audio) {
+  return fetchText(embedUrl, pageUrl).then(function(html) {
+    var direct = genericMediaUrls(html).map(function(url) {
+      return makeStream(url, source, embedUrl, audio, "1080p");
+    });
+    if (direct.length) return direct;
+    return [makeStream(embedUrl, source, pageUrl, audio, "1080p", true)];
+  }).catch(function() {
+    return [makeStream(embedUrl, source, pageUrl, audio, "1080p", true)];
   });
 }
 
@@ -461,9 +515,12 @@ function randomToken(length) {
 
 function genericMediaUrls(html) {
   var urls = [];
+  var source = String(html || "")
+    .replace(/<!--[\s\S]*?-->/g, " ")
+    .replace(/\/\*[\s\S]*?\*\//g, " ");
   var regex = /https?:[^"'<\s\\]+?(?:\.m3u8|\.mp4)(?:\?[^"'<\s\\]*)?/gi;
   var match;
-  while ((match = regex.exec(String(html || "")))) {
+  while ((match = regex.exec(source))) {
     var url = cleanUrl(match[0]);
     if (urls.indexOf(url) < 0) urls.push(url);
   }
@@ -477,6 +534,7 @@ function resolveEmbed(embedUrl, pageUrl, optionLabel, audio, depth) {
     return Promise.resolve([makeStream(embedUrl, source, pageUrl, audio)]);
   }
   if (/streamtape\.com/i.test(embedUrl)) return resolveStreamtape(embedUrl, pageUrl, source, audio);
+  if (/hqq\./i.test(embedUrl)) return resolveHqq(embedUrl, pageUrl, source, audio);
   if (/ok\.ru|odnoklassniki/i.test(embedUrl)) return resolveOkru(embedUrl, pageUrl, source, audio);
   if (/embed4me/i.test(embedUrl)) return resolveEmbed4me(embedUrl, pageUrl, source, audio);
   if (/dood\w*\.|playmogo\./i.test(embedUrl)) return resolveDood(embedUrl, pageUrl, source, audio);
@@ -544,7 +602,13 @@ function getStreams(id, type, season, episode) {
     return fetchText(pageUrl).then(function(html) {
       var options = playerOptions(html);
       var audio = audioLabel(html, pageUrl);
-      return resolveOptions(options, pageUrl, audio, 0);
+      if (options.length) return resolveOptions(options, pageUrl, audio, 0);
+      return resolveContentPage(pageUrl, html, audio || "🇷🇴 RO Dub");
+    }).catch(function() {
+      if (String(pageUrl || "").indexOf(MAIN_URL) !== 0) {
+        return [makeStream(pageUrl, sourceName(pageUrl, "Player"), pageUrl, "🇷🇴 RO Dub", "1080p", true)];
+      }
+      return [];
     });
   }).then(function(streams) {
     return uniqueStreams(streams);
