@@ -1,4 +1,4 @@
-var DESENELEDUBLATE_PLUGIN_VERSION = "0.1.3";
+var DESENELEDUBLATE_PLUGIN_VERSION = "0.1.5";
 var PROVIDER_NAME = "DeseneleDublate";
 var MAIN_URL = "https://deseneledublate.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
@@ -359,7 +359,8 @@ function makeStream(url, source, referer, audio, quality, isEmbed) {
     isM3U8: isHls,
     headers: requestHeaders,
     behaviorHints: {
-      notWebReady: Boolean(isEmbed),
+      // Nuvio only applies proxyHeaders when the stream is marked not web-ready.
+      notWebReady: true,
       bingeGroup: "deseneledublate-" + source.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
       proxyHeaders: { request: requestHeaders }
     },
@@ -444,9 +445,9 @@ function resolveHqq(embedUrl, pageUrl, source, audio) {
       return makeStream(url, source, embedUrl, audio, "1080p");
     });
     if (direct.length) return direct;
-    return [makeStream(embedUrl, source, pageUrl, audio, "1080p", true)];
+    return [];
   }).catch(function() {
-    return [makeStream(embedUrl, source, pageUrl, audio, "1080p", true)];
+    return [];
   });
 }
 
