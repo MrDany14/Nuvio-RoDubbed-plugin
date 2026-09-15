@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.9";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.10";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -930,6 +930,9 @@ function pageMatch(metadata, expectedWords, expectedYear, titleVariants, expecte
   });
 
   var hasTitle = fullMatch || (bestMatched >= 2 && bestMatched / Math.max(bestRequired, 1) >= 0.75);
+  if (expectedType === "series" && metadata.secondaryTitle && bestMatched >= 1 && bestRequired <= 2) {
+    hasTitle = true;
+  }
   var yearConflict = Boolean(expectedYear && metadata.year && metadata.year !== expectedYear);
   var typeConflict = Boolean(expectedType && metadata.type && metadata.type !== expectedType);
   return {
@@ -951,6 +954,7 @@ function readFilmPage(url, expectedWords, expectedYear, strictTitle, titleVarian
     var hasPlayer = /data-src=["'][^"']+["']/i.test(html) || /(?:trembed=|trhide=1&tid=)/i.test(html);
     var hasEpisodes = /s\s*\d+\s+e\s*\d+/i.test(normalized);
     if (match.typeConflict) return null;
+    if (expectedYear && match.yearConflict) return null;
     if (strictTitle && (!match.hasTitle || match.yearConflict)) return null;
     if (!hasPlayer && !match.hasTitle && !hasEpisodes) return null;
     return { url: url, html: html };
@@ -1034,26 +1038,49 @@ function seriesTitleVariants(query) {
   return variants;
 }
 
-function readEpisodeFromSeriesPage(seriesResult, words, season, episode) {
+function seriesSearchQueries(query) {
+  var queries = seriesTitleVariants(query);
+  var additions = [];
+  queries.forEach(function(variant) {
+    titleWords(variant).forEach(function(word) {
+      if (word.length < 4 || queries.indexOf(word) >= 0 || additions.indexOf(word) >= 0) return;
+      additions.push(word);
+    });
+  });
+  return queries.concat(additions);
+}
+
+function episodePartMatches(tokens, prefixes, number) {
+  var expected = String(number);
+  return tokens.some(function(token, index) {
+    if (token === expected && index > 0 && prefixes.indexOf(tokens[index - 1]) >= 0) return true;
+    return prefixes.some(function(prefix) {
+      return token === prefix + expected;
+    });
+  });
+}
+
+function readEpisodeFromSeriesPage(seriesResult, words, season, episode, expectedYear) {
   if (!seriesResult) return Promise.resolve(null);
   var $ = cheerio.load(seriesResult.html);
-  var seasonText = "s" + (parseInt(season, 10) || 1);
-  var episodeText = "e" + (parseInt(episode, 10) || 1);
+  var seasonNumber = parseInt(season, 10) || 1;
+  var episodeNumber = parseInt(episode, 10) || 1;
   var candidate = null;
 
   $("a[href]").each(function(_, element) {
     if (candidate) return;
     var href = absoluteUrl($(element).attr("href"), seriesResult.url);
-    var text = normalizeTitle(($(element).text() || "") + " " + (href || ""));
+    var tokens = normalizeTitle(($(element).text() || "") + " " + (href || "")).split(" ");
     if (!href || !/\/(?:epi|episode)\//i.test(href)) return;
-    if (text.indexOf(seasonText) < 0 || text.indexOf(episodeText) < 0) return;
+    if (!episodePartMatches(tokens, ["s", "season", "sezon", "sezonul"], seasonNumber)) return;
+    if (!episodePartMatches(tokens, ["e", "ep", "episode", "episod", "episodul"], episodeNumber)) return;
     candidate = href;
   });
 
-  return candidate ? readFilmPage(candidate, words, null, false) : Promise.resolve(null);
+  return candidate ? readFilmPage(candidate, words, expectedYear, false) : Promise.resolve(null);
 }
 
-function findDirectSeriesEpisodePage(query, words, season, episode) {
+function findDirectSeriesEpisodePage(query, words, season, episode, expectedYear) {
   var slugs = seriesPageSlugs(query);
   var urls = [];
   slugs.forEach(function(slug) {
@@ -1065,15 +1092,15 @@ function findDirectSeriesEpisodePage(query, words, season, episode) {
   urls.forEach(function(url) {
     result = result.then(function(found) {
       if (found) return found;
-      return readFilmPage(url, words, null, false).then(function(seriesResult) {
-        return readEpisodeFromSeriesPage(seriesResult, words, season, episode);
+      return readFilmPage(url, words, expectedYear, false).then(function(seriesResult) {
+        return readEpisodeFromSeriesPage(seriesResult, words, season, episode, expectedYear);
       });
     });
   });
   return result;
 }
 
-function searchSeries(query, season, episode) {
+function searchSeries(query, season, episode, expectedYear) {
   var words = normalizeTitle(query).split(" ").filter(function(word) {
     return word.length > 2;
   });
@@ -1089,7 +1116,7 @@ function searchSeries(query, season, episode) {
       });
       return findDirectEpisodePage(variant, variantWords, season, episode).then(function(episodeResult) {
         if (episodeResult) return episodeResult;
-        return findDirectSeriesEpisodePage(variant, variantWords, season, episode);
+        return findDirectSeriesEpisodePage(variant, variantWords, season, episode, expectedYear);
       });
     });
   });
@@ -1097,7 +1124,7 @@ function searchSeries(query, season, episode) {
   return directResult.then(function(result) {
     if (result) return result;
 
-    var variantsForSearch = seriesTitleVariants(query);
+    var variantsForSearch = seriesSearchQueries(query);
     var searchResult = Promise.resolve(null);
     variantsForSearch.forEach(function(variant) {
       searchResult = searchResult.then(function(found) {
@@ -1129,13 +1156,13 @@ function searchSeries(query, season, episode) {
             return fetchText(candidate.href).then(function(pageHtml) {
               var page = { url: candidate.href, html: pageHtml };
               var metadata = pageMetadata(pageHtml, candidate.href);
-              var match = pageMatch(metadata, words, null, variantsForSearch, "series");
+              var match = pageMatch(metadata, words, expectedYear, variants, "series");
               var hasEpisodes = /s\s*\d+\s*[- ]\s*e\s*\d+/i.test(normalizeTitle(pageHtml));
-              if (match.typeConflict || (!match.hasTitle && !hasEpisodes)) {
+              if (match.typeConflict || match.yearConflict || (!match.hasTitle && !hasEpisodes)) {
                 return inspectCandidate(index + 1);
               }
               if (/\/epi\//i.test(candidate.href)) return readFilmPage(candidate.href, words, null, false);
-              return readEpisodeFromSeriesPage(page, words, season, episode);
+              return readEpisodeFromSeriesPage(page, words, season, episode, expectedYear);
             }).catch(function() {
               return inspectCandidate(index + 1);
             });
@@ -1495,13 +1522,13 @@ function getStreams(id, type, season, episode) {
     var findPage = isTv ? searchSeries : searchSite;
     var displayTitle = originalTitle || romanianTitle;
     var pageResult = isTv
-      ? findPage(romanianTitle || originalTitle, season, episode)
+       ? findPage(romanianTitle || originalTitle, season, episode, releaseYear)
        : findPage(romanianTitle || originalTitle, releaseYear, originalTitle);
 
     return pageResult.then(function(result) {
       if (!result && originalTitle && originalTitle !== romanianTitle) {
         return isTv
-          ? searchSeries(originalTitle, season, episode)
+           ? searchSeries(originalTitle, season, episode, releaseYear)
            : searchSite(originalTitle, releaseYear, romanianTitle);
       }
       return result;
