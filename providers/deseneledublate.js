@@ -1,10 +1,10 @@
-var DESENELEDUBLATE_PLUGIN_VERSION = "0.1.8";
+var DESENELEDUBLATE_PLUGIN_VERSION = "0.1.9";
 var PROVIDER_NAME = "DeseneleDublate";
 var MAIN_URL = "https://deseneledublate.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
 var FETCH_HEADERS = {
-  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+  "User-Agent": "Mozilla/5.0 (Linux; Android 13; Android TV) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
   Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
 };
 
