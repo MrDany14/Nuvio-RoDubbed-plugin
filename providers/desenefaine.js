@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.10";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.12";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -875,13 +875,15 @@ function pageMetadata(html, url) {
     }
   });
 
-  var yearSources = [
-    $(".year").first().text(),
+  var pageYearSources = [
     $("meta[property='og:title']").attr("content"),
     $("title").first().text(),
     $("script[type='application/ld+json']").text()
   ].join(" ");
-  var yearMatch = yearSources.match(/\b(19|20)\d{2}\b/);
+  var yearMatch = pageYearSources.match(/\b(19|20)\d{2}\b/);
+  if (!yearMatch) {
+    yearMatch = $(".year").first().text().match(/\b(19|20)\d{2}\b/);
+  }
   var ogType = normalizeTitle($("meta[property='og:type']").attr("content"));
   var pagePath = String(url || "").toLowerCase();
   var categoryType = categories.some(function(category) {
