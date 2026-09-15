@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.24";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.25";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -674,12 +674,6 @@ function directVideoStream(url, label, providerUrl, referrer) {
     },
     provider: "desenefaine"
   };
-}
-
-function embeddedVideoStream(url, label, providerUrl, referrer) {
-  var stream = directVideoStream(url, label, providerUrl, referrer);
-  stream.audioLanguage = "ro";
-  return stream;
 }
 
 function resolveDoodProvider(providerUrl, pageUrl) {
@@ -1518,20 +1512,88 @@ function resolveByseProvider(providerUrl, pageUrl) {
   });
 }
 
+function voeRot13(value) {
+  return String(value || "").replace(/[A-Za-z]/g, function(character) {
+    var code = character.charCodeAt(0);
+    var base = code <= 90 ? 65 : 97;
+    return String.fromCharCode((code - base + 13) % 26 + base);
+  });
+}
+
+function voeDecrypt(value) {
+  var encoded = voeRot13(value)
+    .replace(/@\$|\^\^|~@|%\?|\*~|!!|#&/g, "_")
+    .replace(/_/g, "");
+  var decoded = decodeBase64(encoded);
+  var shifted = "";
+  for (var index = 0; index < decoded.length; index += 1) {
+    shifted += String.fromCharCode(decoded.charCodeAt(index) - 3);
+  }
+  return JSON.parse(decodeBase64(shifted.split("").reverse().join("")));
+}
+
+function voePayload(html) {
+  var scriptMatch = String(html || "").match(
+    /<script\b[^>]*type\s*=\s*["']application\/json["'][^>]*>([\s\S]*?)<\/script>/i
+  );
+  if (!scriptMatch) throw new Error("Voe payload missing");
+
+  var script = scriptMatch[1].trim();
+  var arrayMatch = script.match(/\[\s*["']([\s\S]*?)["']\s*\]/);
+  var encoded = arrayMatch ? arrayMatch[1] : script;
+  return voeDecrypt(encoded);
+}
+
+function fetchVoePage(providerUrl, pageUrl, depth) {
+  depth = depth || 0;
+  return fetch(providerUrl, {
+    headers: Object.assign({}, FETCH_HEADERS, { Referer: pageUrl || MAIN_URL })
+  }).then(function(res) {
+    return res.text().then(function(html) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      var redirectMatch = html.match(/window\.location\.href\s*=\s*["']([^"']+)["']/i);
+      if (redirectMatch && depth < 2) {
+        return fetchVoePage(absoluteUrl(redirectMatch[1], providerUrl), pageUrl, depth + 1);
+      }
+      return { html: html, url: res.url || providerUrl };
+    });
+  });
+}
+
+function resolveVoeProvider(providerUrl, pageUrl) {
+  return fetchVoePage(providerUrl, pageUrl).then(function(page) {
+    var directHls = findHlsUrls(page.html).map(function(url) {
+      var stream = directHlsStream(url, "Voe HLS", providerUrl, providerUrl);
+      stream.audioLanguage = "ro";
+      return stream;
+    });
+    if (directHls.length) return directHls;
+
+    var payload = voePayload(page.html);
+    var streams = [];
+    var hls = payload && payload.source;
+    var mp4 = payload && (payload.direct_access_url || payload.directAccessUrl);
+    if (/^https?:\/\//i.test(String(hls || ""))) {
+      var hlsStream = directHlsStream(hls, "Voe HLS", providerUrl, providerUrl);
+      hlsStream.audioLanguage = "ro";
+      streams.push(hlsStream);
+    }
+    if (/^https?:\/\//i.test(String(mp4 || ""))) {
+      var mp4Stream = directVideoStream(mp4, "Voe MP4", providerUrl, providerUrl);
+      mp4Stream.audioLanguage = "ro";
+      streams.push(mp4Stream);
+    }
+    if (!streams.length) throw new Error("Voe returned no media URL");
+    return streams;
+  });
+}
+
 function resolveProvider(providerUrl, pageUrl, displayTitle) {
   if (/player\.desenefaine\.net|netu/i.test(providerUrl)) {
-    return Promise.resolve([
-      embeddedVideoStream(providerUrl, streamSourceName(providerUrl), providerUrl, pageUrl)
-    ]).then(function(streams) {
-      return streams.map(function(stream) {
-        return decorateStream(stream, displayTitle, providerUrl);
-      });
-    });
+    return Promise.resolve([]);
   }
   if (/voe\./i.test(providerUrl)) {
-    return Promise.resolve([
-      embeddedVideoStream(providerUrl, "Voe", providerUrl, pageUrl)
-    ]).then(function(streams) {
+    return resolveVoeProvider(providerUrl, pageUrl).then(function(streams) {
       return streams.map(function(stream) {
         return decorateStream(stream, displayTitle, providerUrl);
       });
