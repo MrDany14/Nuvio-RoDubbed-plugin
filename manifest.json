@@ -24,7 +24,7 @@
       "id": "deseneledublate",
       "name": "DeseneleDublate",
       "description": "Romanian dubbed cartoons, films, and series from deseneledublate.com",
-      "version": "0.1.8",
+      "version": "0.1.9",
       "author": "MrDany14",
       "supportedTypes": ["movie", "tv"],
       "filename": "providers/deseneledublate.js",
