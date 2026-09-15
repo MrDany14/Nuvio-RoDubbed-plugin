@@ -1,10 +1,10 @@
-var DESENELEDUBLATE_PLUGIN_VERSION = "0.1.7";
+var DESENELEDUBLATE_PLUGIN_VERSION = "0.1.8";
 var PROVIDER_NAME = "DeseneleDublate";
 var MAIN_URL = "https://deseneledublate.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
 var FETCH_HEADERS = {
-  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
   Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
 };
 
@@ -437,10 +437,11 @@ function resolveStreamtape(embedUrl, pageUrl, source, audio) {
     url = url.replace(/^https?:\/\/streamtape\.com\/streamtape\.com\//i, "https://streamtape.com/");
     if (url.indexOf("&stream=") < 0) url += "&stream=1";
     var stream = makeStream(url, source, viewUrl, audio, "1080p");
-    // Streamtape rejects the redirected CDN request when these browser-only
-    // headers are forwarded by the player.
-    delete stream.headers;
-    delete stream.behaviorHints.proxyHeaders;
+    // Match the browser agent used to resolve the signed URL, but do not
+    // forward Referer or Origin to the redirected CDN request.
+    var playbackHeaders = { "User-Agent": FETCH_HEADERS["User-Agent"] };
+    stream.headers = playbackHeaders;
+    stream.behaviorHints.proxyHeaders = { request: playbackHeaders };
     return [stream];
   }).catch(function() {
     return [];
