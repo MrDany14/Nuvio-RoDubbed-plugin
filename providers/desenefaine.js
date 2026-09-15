@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.15";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.16";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -778,6 +778,16 @@ function resolveVsembedProvider(providerUrl, pageUrl) {
   });
 }
 
+function videasySourceUrl(providerUrl) {
+  var match = String(providerUrl).match(/\/(tv|movie)\/(\d+)(?:\/(\d+)\/(\d+))?/i);
+  if (!match) return null;
+
+  var url = "https://vsembed.su/embed/" + match[1].toLowerCase() + "?tmdb=" + match[2];
+  if (match[3]) url += "&season=" + encodeURIComponent(match[3]);
+  if (match[4]) url += "&episode=" + encodeURIComponent(match[4]);
+  return url;
+}
+
 function directHlsStream(url, label, providerUrl, referrer) {
   var requestHeaders = {
     Referer: referrer || providerUrl,
@@ -1468,6 +1478,17 @@ function resolveProvider(providerUrl, pageUrl, displayTitle) {
   }
   if (/vsembed\./i.test(providerUrl)) {
     return resolveVsembedProvider(providerUrl, pageUrl).then(function(streams) {
+      return streams.map(function(stream) {
+        return decorateStream(stream, displayTitle, providerUrl);
+      });
+    }).catch(function() {
+      return [];
+    });
+  }
+  if (/videasy\.(?:net|to)\//i.test(providerUrl)) {
+    var sourceUrl = videasySourceUrl(providerUrl);
+    if (!sourceUrl) return Promise.resolve([]);
+    return resolveVsembedProvider(sourceUrl, pageUrl).then(function(streams) {
       return streams.map(function(stream) {
         return decorateStream(stream, displayTitle, providerUrl);
       });
