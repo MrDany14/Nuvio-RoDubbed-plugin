@@ -20,21 +20,5 @@
       "disabledPlatforms": [],
       "supportsExternalPlayer": true
     },
-    {
-      "id": "deseneledublate",
-      "name": "DeseneleDublate",
-      "description": "Romanian dubbed cartoons, films, and series from deseneledublate.com",
-      "version": "0.1.3",
-      "author": "MrDany14",
-      "supportedTypes": ["movie", "tv"],
-      "filename": "providers/deseneledublate.js",
-      "enabled": true,
-      "logo": "https://www.google.com/s2/favicons?domain=deseneledublate.com&sz=128",
-      "contentLanguage": ["ro"],
-      "formats": ["mp4", "mkv", "m3u8"],
-      "limited": false,
-      "disabledPlatforms": [],
-      "supportsExternalPlayer": false
-    }
   ]
 }
