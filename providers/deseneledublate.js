@@ -1,4 +1,4 @@
-var DESENELEDUBLATE_PLUGIN_VERSION = "0.1.5";
+var DESENELEDUBLATE_PLUGIN_VERSION = "0.1.6";
 var PROVIDER_NAME = "DeseneleDublate";
 var MAIN_URL = "https://deseneledublate.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
@@ -424,8 +424,11 @@ function resolveEmbed4me(embedUrl, pageUrl, source, audio) {
 function resolveStreamtape(embedUrl, pageUrl, source, audio) {
   var viewUrl = String(embedUrl).replace(/\/e\//i, "/v/");
   return fetchText(viewUrl, pageUrl).then(function(html) {
-    var match = html.match(/<(?:span|div)\b[^>]*id\s*=\s*["'](?:norobotlink|ideoooolink|botlink|robotlink|ideoolink)["'][^>]*>([^<]+)<\//i);
+    // Streamtape's player uses captchalink; ideoooolink is an intentionally
+    // obfuscated get_viddeo decoy and must not be preferred.
+    var match = html.match(/<(?:span|div)\b[^>]*id\s*=\s*["'](?:captchalink|norobotlink|botlink|robotlink)["'][^>]*>([^<]+)<\//i);
     if (!match) match = html.match(/<(?:span|div)\b[^>]*id\s*=\s*["']captchalink["'][^>]*>([^<]+)<\//i);
+    if (!match) match = html.match(/<(?:span|div)\b[^>]*id\s*=\s*["'](?:ideoooolink|ideoolink)["'][^>]*>([^<]+)<\//i);
     if (!match) match = html.match(/https?:?\\?\/\\?\/streamtape\.com\/get_video\?[^"'<\s]+/i);
     if (!match) throw new Error("Streamtape media URL missing");
     var url = cleanUrl(match[1] || match[0]);
