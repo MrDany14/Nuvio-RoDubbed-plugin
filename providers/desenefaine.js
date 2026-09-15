@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.19";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.20";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -905,9 +905,11 @@ function decorateStream(stream, displayTitle, providerUrl) {
   var source = stream.sourceName || streamSourceName(providerUrl);
   var languages = streamAudioLanguages(stream);
   var resolution = streamResolutionName(stream.resolution || stream.quality);
+  var details = "⭐ " + streamAudioDisplay(languages) + "\n🔗 " + source;
 
   stream.name = "✦ [" + resolution + "] DeseneFaine";
-  stream.title = "⭐ " + streamAudioDisplay(languages) + "\n🔗 " + source;
+  stream.title = details;
+  stream.description = details;
   stream.quality = resolution;
   return stream;
 }
