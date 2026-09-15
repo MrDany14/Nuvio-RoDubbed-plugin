@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.12";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.15";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -62,6 +62,7 @@ function cleanUrl(value) {
   return String(value || "")
     .replace(/\\\//g, "/")
     .replace(/\\u002F/g, "/")
+    .replace(/\\u0026/g, "&")
     .replace(/&amp;/g, "&")
     .replace(/[),;]+$/, "")
     .trim();
@@ -701,6 +702,78 @@ function resolveDoodProvider(providerUrl, pageUrl) {
       var mediaUrl = mediaBase + randomDoodToken(10) +
         "?token=" + encodeURIComponent(token) + "&expiry=" + Date.now();
       return [directVideoStream(mediaUrl, "Doodstream", providerUrl, pageUrl)];
+    });
+  });
+}
+
+function decodeVsembedStreamUrls(payload) {
+  if (payload && payload.data && Array.isArray(payload.data.stream_urls)) {
+    return Promise.resolve(payload.data.stream_urls);
+  }
+  if (!payload || !payload.data || typeof payload.data.stream_urls !== "string" || !payload.vs || !payload.vs.wasm_url) {
+    return Promise.reject(new Error("Vsembed stream data missing"));
+  }
+  if (typeof WebAssembly === "undefined") return Promise.reject(new Error("WebAssembly unavailable"));
+
+  var encrypted = binaryBytes(decodeBase64(payload.data.stream_urls));
+  return fetch(payload.vs.wasm_url, { headers: FETCH_HEADERS }).then(function(res) {
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    return res.arrayBuffer();
+  }).then(function(bytes) {
+    return WebAssembly.instantiate(bytes, {});
+  }).then(function(instance) {
+    var exports = instance.instance ? instance.instance.exports : instance.exports;
+    if (!exports || !exports.alloc || !exports.decrypt || !exports.memory) {
+      throw new Error("Vsembed decryptor exports missing");
+    }
+    var pointer = exports.alloc(encrypted.length);
+    new Uint8Array(exports.memory.buffer, pointer, encrypted.length).set(encrypted);
+    var outputLength = exports.decrypt(pointer, encrypted.length);
+    var output = new Uint8Array(exports.memory.buffer, pointer + 12, outputLength);
+    var text = typeof TextDecoder === "function"
+      ? new TextDecoder().decode(output)
+      : String.fromCharCode.apply(null, output);
+    return text.split("\n").filter(function(url) { return url; });
+  });
+}
+
+function vsembedQueryValue(url, name) {
+  var match = String(url || "").match(new RegExp("[?&]" + name + "=([^&#]*)", "i"));
+  if (!match) return "";
+  try {
+    return decodeURIComponent(match[1]);
+  } catch (error) {
+    return match[1];
+  }
+}
+
+function resolveVsembedProvider(providerUrl, pageUrl) {
+  var typeMatch = String(providerUrl).match(/\/embed\/([^/?#]+)/i);
+  var id = vsembedQueryValue(providerUrl, "tmdb");
+  if (!typeMatch || !id) return Promise.reject(new Error("Vsembed parameters missing"));
+
+  var params = [
+    "type=" + encodeURIComponent(typeMatch[1]),
+    "tmdb=" + encodeURIComponent(id)
+  ];
+  ["season", "episode", "autonext", "autoplay", "ds_lang"].forEach(function(name) {
+    var value = vsembedQueryValue(providerUrl, name);
+    if (value) params.push(name + "=" + encodeURIComponent(value));
+  });
+
+  var apiUrl = "https://data.vidsrcme.ru/api.php?" + params.join("&") + "&stream_urls";
+  var playerPath = "/embed/player/" + typeMatch[1] + "/" + id;
+  var season = vsembedQueryValue(providerUrl, "season");
+  var episode = vsembedQueryValue(providerUrl, "episode");
+  if (season) playerPath += "/" + encodeURIComponent(season);
+  if (episode) playerPath += "/" + encodeURIComponent(episode);
+  var playerUrl = "https://cloudorchestranova.com" + playerPath;
+
+  return apiJson(apiUrl).then(function(payload) {
+    return decodeVsembedStreamUrls(payload).then(function(urls) {
+      return urls.map(function(url) {
+        return directHlsStream(url, "Vsembed HLS", playerUrl, playerUrl);
+      });
     });
   });
 }
@@ -1386,6 +1459,15 @@ function resolveProvider(providerUrl, pageUrl, displayTitle) {
   }
   if (/(?:dood(?:stream)?|playmogo)\./i.test(providerUrl)) {
     return resolveDoodProvider(providerUrl, pageUrl).then(function(streams) {
+      return streams.map(function(stream) {
+        return decorateStream(stream, displayTitle, providerUrl);
+      });
+    }).catch(function() {
+      return [];
+    });
+  }
+  if (/vsembed\./i.test(providerUrl)) {
+    return resolveVsembedProvider(providerUrl, pageUrl).then(function(streams) {
       return streams.map(function(stream) {
         return decorateStream(stream, displayTitle, providerUrl);
       });
