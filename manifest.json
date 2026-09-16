@@ -21,13 +21,13 @@
       "supportsExternalPlayer": true
     },
     {
-      "id": "desenefaine-test",
-      "name": "DeseneFaine TEST",
+      "id": "veziserialeonline-test",
+      "name": "VeziSerialeOnline TEST",
       "description": "Romanian dubbed cartoons from desenefaine.com",
       "version": "1.8.4",
       "author": "MrDany14",
       "supportedTypes": ["movie", "tv"],
-      "filename": "providers/desenefaineTest.js",
+      "filename": "providers/veziserialeonline.js",
       "enabled": true,
       "logo": "https://www.google.com/s2/favicons?domain=desenefaine.com&sz=128",
       "contentLanguage": ["ro"],
