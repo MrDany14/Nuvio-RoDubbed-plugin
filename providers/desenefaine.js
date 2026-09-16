@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.25";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.26";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -553,7 +553,9 @@ function player4meSource(video, providerUrl, pageUrl) {
   var sources = {
     Tiktok: video.hlsVideoTiktok,
     Google: video.hlsVideoGoogle,
-    Cloudflare: video.cfNative || video.cf,
+    // Match Player4me's own order: the .txt playlist is primary and the
+    // native .m3u8 source is a fallback when the primary HLS source fails.
+    Cloudflare: video.cf || video.cfNative,
     "In-House": video.source
   };
   var order = Array.isArray(config.order)
@@ -628,7 +630,7 @@ function resolvePlayer4meProvider(providerUrl, pageUrl) {
     var video = result.video;
     if (!video.pk && result.keyData) video.pk = result.keyData;
     var streamUrl = player4meSource(video, providerUrl, pageUrl);
-    if (!streamUrl || !/\.m3u8(?:\?|$)/i.test(streamUrl)) {
+    if (!streamUrl || !/^https?:\/\//i.test(streamUrl) || !/\.(?:m3u8|txt)(?:[?#]|$)/i.test(streamUrl)) {
       throw new Error("Player4me returned no HLS source");
     }
     var stream = directHlsStream(
@@ -794,8 +796,9 @@ function videasySourceUrl(providerUrl) {
 }
 
 function directHlsStream(url, label, providerUrl, referrer) {
+  var httpReferrer = String(referrer || providerUrl || "").split("#")[0];
   var requestHeaders = {
-    Referer: referrer || providerUrl,
+    Referer: httpReferrer,
     Origin: providerUrl ? String(providerUrl).match(/^https?:\/\/[^/]+/i)[0] : MAIN_URL,
     "User-Agent": FETCH_HEADERS["User-Agent"]
   };
