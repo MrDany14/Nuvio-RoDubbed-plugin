@@ -1,14 +1,14 @@
 {
   "id": "ro-cartoons-repo",
   "name": "Romanian Cartoons Repository",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Romanian dubbed cartoons, films, and series",
   "scrapers": [
     {
       "id": "desenefaine-pro",
       "name": "DeseneFaine Pro",
       "description": "Romanian dubbed cartoons from desenefaine.com",
-      "version": "1.9.8",
+      "version": "1.9.9",
       "author": "MrDany14",
       "supportedTypes": ["movie", "tv"],
       "filename": "providers/desenefaine.js",
