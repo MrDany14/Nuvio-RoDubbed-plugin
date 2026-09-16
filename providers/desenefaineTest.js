@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.8.4";
+var DESENEFAINE_PLUGIN_VERSION = "1.8.3";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 var REQUEST_TIMEOUT_MS = 15000;
@@ -28,11 +28,6 @@ function fetchWithTimeout(url, options, timeoutMs) {
   }
 
   var request = Object.assign({}, options || {});
-  // Nuvio's older sandbox may not expose timer or Promise.race APIs.
-  if (typeof setTimeout !== "function" || typeof Promise.race !== "function") {
-    return fetch(target, request);
-  }
-
   var timer = null;
   var timeout = parseInt(timeoutMs, 10) || REQUEST_TIMEOUT_MS;
   var timeoutPromise = new Promise(function(_, reject) {
