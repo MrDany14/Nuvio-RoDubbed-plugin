@@ -1,7 +1,7 @@
 {
   "id": "ro-cartoons-repo",
   "name": "Romanian Cartoons Repository",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "Romanian dubbed cartoons, films, and series",
   "scrapers": [
     {
