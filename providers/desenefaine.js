@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.27";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.28";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -562,6 +562,15 @@ function player4meSource(video, providerUrl, pageUrl) {
     ? config.order
     : ["Tiktok", "Google", "Cloudflare", "In-House"];
   var adjust = config.adjust || {};
+
+  // Nuvio handles the direct in-house playlist more reliably than the
+  // browser-oriented Cloudflare playlist, whose segment host can be blocked.
+  if (sources["In-House"] && !(adjust["In-House"] || {}).disabled) {
+    order = ["In-House"].concat(order.filter(function(provider) {
+      return provider !== "In-House";
+    }));
+  }
+
   var selected = null;
   var selectedKey = video.pk || null;
 
