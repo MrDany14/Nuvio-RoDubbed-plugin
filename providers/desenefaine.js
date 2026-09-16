@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.26";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.27";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -553,9 +553,9 @@ function player4meSource(video, providerUrl, pageUrl) {
   var sources = {
     Tiktok: video.hlsVideoTiktok,
     Google: video.hlsVideoGoogle,
-    // Match Player4me's own order: the .txt playlist is primary and the
-    // native .m3u8 source is a fallback when the primary HLS source fails.
-    Cloudflare: video.cf || video.cfNative,
+    // The native playlist carries the access key into child playlists and
+    // segments. The .txt playlist needs Player4me's custom HLS loader.
+    Cloudflare: video.cfNative || video.cf,
     "In-House": video.source
   };
   var order = Array.isArray(config.order)
