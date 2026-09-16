@@ -1,7 +1,7 @@
 {
   "id": "ro-cartoons-repo",
   "name": "Romanian Cartoons Repository",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Romanian dubbed cartoons, films, and series",
   "scrapers": [
     {
@@ -24,7 +24,7 @@
       "id": "veziserialeonline-test",
       "name": "VeziSerialeOnline TEST",
       "description": "Romanian dubbed cartoons from desenefaine.com",
-      "version": "1.8.4",
+      "version": "0.1.0",
       "author": "MrDany14",
       "supportedTypes": ["movie", "tv"],
       "filename": "providers/veziserialeonline.js",
