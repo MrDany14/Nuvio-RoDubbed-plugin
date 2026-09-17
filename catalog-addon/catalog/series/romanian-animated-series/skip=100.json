@@ -1,0 +1,705 @@
+{
+  "metas": [
+    {
+      "id": "tmdb:154820",
+      "type": "series",
+      "name": "Alice în Cofetăria Minunilor",
+      "poster": "https://image.tmdb.org/t/p/w500/v50857Lu73mPr5Gma5rYqqebiBj.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:228880",
+      "type": "series",
+      "name": "Beast Boy: Lone Wolf",
+      "poster": "https://image.tmdb.org/t/p/w500/tyyGdF6DJbQA1dLxyFWFPuYXSjo.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:133529",
+      "type": "series",
+      "name": "Uimitoarea Lume a Lui Gumball: Cronicile Gumball",
+      "poster": "https://image.tmdb.org/t/p/w500/5Qukre5usOvrt27knGlVuQngT9I.jpg",
+      "releaseInfo": "2020"
+    },
+    {
+      "id": "tmdb:236364",
+      "type": "series",
+      "name": "Lana Barbălungă",
+      "poster": "https://image.tmdb.org/t/p/w500/njT0P7cpJvqsDGsbb7iPV0CyVK8.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:39898",
+      "type": "series",
+      "name": "Kung Fu Panda: Legendele teribilității",
+      "poster": "https://image.tmdb.org/t/p/w500/rkq5Jt7boR5v65bDbELHz3DW7sv.jpg",
+      "releaseInfo": "2011"
+    },
+    {
+      "id": "tmdb:71412",
+      "type": "series",
+      "name": "Războaiele stelare: Forțele destinului",
+      "poster": "https://image.tmdb.org/t/p/w500/7xe9Hx4sVxuRa3uPGXYvPclTcnq.jpg",
+      "releaseInfo": "2017"
+    },
+    {
+      "id": "tmdb:126824",
+      "type": "series",
+      "name": "The Patrick Star Show",
+      "poster": "https://image.tmdb.org/t/p/w500/44zbV1t35gxgcSN7sTlkUY85GC9.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:204024",
+      "type": "series",
+      "name": "Rock, Paper, Scissors",
+      "poster": "https://image.tmdb.org/t/p/w500/2DZI8fK4eFlKqAsroe3YlPCaXEo.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:214875",
+      "type": "series",
+      "name": "Rubble & Crew",
+      "poster": "https://image.tmdb.org/t/p/w500/5MA1tqT0yI57IlPBy0KRN6G2mhN.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:1848",
+      "type": "series",
+      "name": "Clubul zânelor",
+      "poster": "https://image.tmdb.org/t/p/w500/5MZwCSsG9tyWhbYSMSC6Xolblwc.jpg",
+      "releaseInfo": "2004"
+    },
+    {
+      "id": "tmdb:232869",
+      "type": "series",
+      "name": "Clubul Lui Mickey Mouse+",
+      "poster": "https://image.tmdb.org/t/p/w500/w4vgYff7qKO8jBQgVIt7F2Buobf.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:305165",
+      "type": "series",
+      "name": "LEGO Marvel Răzbunătorii: Povești Inedite",
+      "poster": "https://image.tmdb.org/t/p/w500/5wsZ7Bj3z43pLJ1hHTsJWLBmOok.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:3656",
+      "type": "series",
+      "name": "Horseland",
+      "poster": "https://image.tmdb.org/t/p/w500/xN6bWeZ7Ft7W5XQkDIKMmbA439v.jpg",
+      "releaseInfo": "2006"
+    },
+    {
+      "id": "tmdb:41293",
+      "type": "series",
+      "name": "SimsalaGrimm",
+      "poster": "https://image.tmdb.org/t/p/w500/MpeeEk48DBncD4ZGYZHxLKOcwq.jpg",
+      "releaseInfo": "1999"
+    },
+    {
+      "id": "tmdb:17572",
+      "type": "series",
+      "name": "Kick Buttowski: Temerarul suburban",
+      "poster": "https://image.tmdb.org/t/p/w500/syxcG3suyf3U00z5HOuLbZ9eozl.jpg",
+      "releaseInfo": "2010"
+    },
+    {
+      "id": "tmdb:618",
+      "type": "series",
+      "name": "Brandy și Domnul Mustăcilă",
+      "poster": "https://image.tmdb.org/t/p/w500/58Ao40FU4uA35WUTyMcd6XdN1ns.jpg",
+      "releaseInfo": "2004"
+    },
+    {
+      "id": "tmdb:138505",
+      "type": "series",
+      "name": "Zombii Marvel",
+      "poster": "https://image.tmdb.org/t/p/w500/wPknQce9sZjKGYrA6gdpzQTbkB8.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:50035",
+      "type": "series",
+      "name": "Clarence",
+      "poster": "https://image.tmdb.org/t/p/w500/rUWNAR3FlJDFRabvCBDNA3ryZJw.jpg",
+      "releaseInfo": "2014"
+    },
+    {
+      "id": "tmdb:112334",
+      "type": "series",
+      "name": "Piloții de Drone",
+      "poster": "https://image.tmdb.org/t/p/w500/x8cU11CtDVYgDQsoRGtVpPbbYD4.jpg",
+      "releaseInfo": "2020"
+    },
+    {
+      "id": "tmdb:88069",
+      "type": "series",
+      "name": "Grădinița Dramei Totale",
+      "poster": "https://image.tmdb.org/t/p/w500/nQTd9eRDa8IOV0eme15WTFTLA23.jpg",
+      "releaseInfo": "2018"
+    },
+    {
+      "id": "tmdb:212171",
+      "type": "series",
+      "name": "Interstellar Ella",
+      "poster": "https://image.tmdb.org/t/p/w500/ts78UV7RyAKVsHxNnX597gbcGuM.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:105034",
+      "type": "series",
+      "name": "Rhyme Time Town",
+      "poster": "https://image.tmdb.org/t/p/w500/k2eRTQDUg2OkYao3Po6Rydlm7JF.jpg",
+      "releaseInfo": "2020"
+    },
+    {
+      "id": "tmdb:81665",
+      "type": "series",
+      "name": "Insula Taberei de Vară",
+      "poster": "https://image.tmdb.org/t/p/w500/zMXAVKOXBIEbcwnlQerRoOjHG5o.jpg",
+      "releaseInfo": "2018"
+    },
+    {
+      "id": "tmdb:94280",
+      "type": "series",
+      "name": "Steven Univers: Viitor",
+      "poster": "https://image.tmdb.org/t/p/w500/dKvmMGWPhh9DI1qAYtrsGiT50w9.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:21269",
+      "type": "series",
+      "name": "Cartea Cărților",
+      "poster": "https://image.tmdb.org/t/p/w500/eWdaReQRGqL8KETKPTCTZJ5kgtn.jpg",
+      "releaseInfo": "1981"
+    },
+    {
+      "id": "tmdb:109330",
+      "type": "series",
+      "name": "Madagascar: A Little Wild",
+      "poster": "https://image.tmdb.org/t/p/w500/c9d59YbGDlg15tNOQ18oqRmf09t.jpg",
+      "releaseInfo": "2020"
+    },
+    {
+      "id": "tmdb:128071",
+      "type": "series",
+      "name": "Jellystone!",
+      "poster": "https://image.tmdb.org/t/p/w500/7SwSAG48QvvMy8jlAgm3LGt3VGq.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:220595",
+      "type": "series",
+      "name": "Kiya & the Kimoja Heroes",
+      "poster": "https://image.tmdb.org/t/p/w500/g9KCPzYin7lnsdGu70vJdOIWBOa.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:289411",
+      "type": "series",
+      "name": "LEGO Star Wars: Rebuild the Galaxy - Pieces of the Past",
+      "poster": "https://image.tmdb.org/t/p/w500/ld6K4sIuTAlgAsIPYwW2yAvSz2m.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:70823",
+      "type": "series",
+      "name": "Mickey and the Roadster Racers",
+      "poster": "https://image.tmdb.org/t/p/w500/3D4275Ck9eXdMlXEQgNrOsikmMS.jpg",
+      "releaseInfo": "2017"
+    },
+    {
+      "id": "tmdb:95543",
+      "type": "series",
+      "name": "The Rocketeer",
+      "poster": "https://image.tmdb.org/t/p/w500/jtXnWs7zOyde3VYEvz9eDWGPvZ7.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:138987",
+      "type": "series",
+      "name": "Micii pompieri",
+      "poster": "https://image.tmdb.org/t/p/w500/5hwSxcYP951bpbK4JTH8cYsgK9V.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:3319",
+      "type": "series",
+      "name": "Darkwing Duck",
+      "poster": "https://image.tmdb.org/t/p/w500/1gJMSXS0gwM8gDJnzVSITcxbQc.jpg",
+      "releaseInfo": "1991"
+    },
+    {
+      "id": "tmdb:114502",
+      "type": "series",
+      "name": "Mașini la Drum",
+      "poster": "https://image.tmdb.org/t/p/w500/6QXirTPUQecr1BAEfgVSXPD1np0.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:8379",
+      "type": "series",
+      "name": "Clifford, marele câine roșu",
+      "poster": "https://image.tmdb.org/t/p/w500/tZLS8aT8Iqnbw8oMKIi1WHidCA1.jpg",
+      "releaseInfo": "2000"
+    },
+    {
+      "id": "tmdb:34109",
+      "type": "series",
+      "name": "Luptătorii Bakugan",
+      "poster": "https://image.tmdb.org/t/p/w500/wAqs4kdvCUNlzF9NK4OEV7WheHP.jpg",
+      "releaseInfo": "2007"
+    },
+    {
+      "id": "tmdb:1863",
+      "type": "series",
+      "name": "Gașca Rațelor (Quack Pack)",
+      "poster": "https://image.tmdb.org/t/p/w500/d6VewnlRManLlOzV06jPUb08Hgf.jpg",
+      "releaseInfo": "1996"
+    },
+    {
+      "id": "tmdb:47035",
+      "type": "series",
+      "name": "Unchiul Bunic",
+      "poster": "https://image.tmdb.org/t/p/w500/bXSx23BtUCuJFKax5zQ0Hj5I75S.jpg",
+      "releaseInfo": "2013"
+    },
+    {
+      "id": "tmdb:80056",
+      "type": "series",
+      "name": "Fancy Nancy",
+      "poster": "https://image.tmdb.org/t/p/w500/2iNKvpHmh5IWlkycIGmY6yr1q7H.jpg",
+      "releaseInfo": "2018"
+    },
+    {
+      "id": "tmdb:236234",
+      "type": "series",
+      "name": "DORA",
+      "poster": "https://image.tmdb.org/t/p/w500/jga8v6e4S5ZPJRpMuEwiyXbTJuf.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:228672",
+      "type": "series",
+      "name": "StuGo",
+      "poster": "https://image.tmdb.org/t/p/w500/9wFxvTx9ge2Ge8AAnrztTQ9oKXZ.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:225361",
+      "type": "series",
+      "name": "Familia Batman",
+      "poster": "https://image.tmdb.org/t/p/w500/xhSmgLsXqSLsE76GxL2RfYB7ODM.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:156613",
+      "type": "series",
+      "name": "Omul Zăpezilor De Neoprit",
+      "poster": "https://image.tmdb.org/t/p/w500/nC8vuBqxtCBXHNHgSePjJLNb9qm.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:257720",
+      "type": "series",
+      "name": "Super Duper Bunny League",
+      "poster": "https://image.tmdb.org/t/p/w500/giZgqdjJ5UZ44s7TkttUcVv00Dh.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:606",
+      "type": "series",
+      "name": "Ed, Edd și Eddy",
+      "poster": "https://image.tmdb.org/t/p/w500/nfKenwmfmdtoXGhaYiDIftrBchw.jpg",
+      "releaseInfo": "1999"
+    },
+    {
+      "id": "tmdb:302540",
+      "type": "series",
+      "name": "Băieții răi: Îmblânzirea",
+      "poster": "https://image.tmdb.org/t/p/w500/6STJhPMmqsFi0SeiADIuRSUHPrE.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:273454",
+      "type": "series",
+      "name": "Bakugan: Battle Planet",
+      "poster": "https://image.tmdb.org/t/p/w500/go2IfyqSK7YJ403tvugctEQgjxQ.jpg",
+      "releaseInfo": "2018"
+    },
+    {
+      "id": "tmdb:74323",
+      "type": "series",
+      "name": "Vampirina",
+      "poster": "https://image.tmdb.org/t/p/w500/18Mmri8vmBKbGbiymFPlSHlg71o.jpg",
+      "releaseInfo": "2017"
+    },
+    {
+      "id": "tmdb:291904",
+      "type": "series",
+      "name": "Năstrușnica lume a lui Gumball",
+      "poster": "https://image.tmdb.org/t/p/w500/f1uzzES1MFR33G92YNcH1YC4abY.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:79732",
+      "type": "series",
+      "name": "She-Ra și prințesele puterii",
+      "poster": "https://image.tmdb.org/t/p/w500/y6YLtlnV5FGh3Mhs5SUc80IQSV5.jpg",
+      "releaseInfo": "2018"
+    },
+    {
+      "id": "tmdb:66762",
+      "type": "series",
+      "name": "LoliRock",
+      "poster": "https://image.tmdb.org/t/p/w500/DGuBvzXHsgPBCMlxzAGca74kqq.jpg",
+      "releaseInfo": "2014"
+    },
+    {
+      "id": "tmdb:44305",
+      "type": "series",
+      "name": "Dragonii",
+      "poster": "https://image.tmdb.org/t/p/w500/gFhBIF8oXjpdVk1NbI4kP4l8LAe.jpg",
+      "releaseInfo": "2012"
+    },
+    {
+      "id": "tmdb:668",
+      "type": "series",
+      "name": "Oamenii X: Evoluție",
+      "poster": "https://image.tmdb.org/t/p/w500/At5aZIKkN8zHTAXOnQR9D3b7usW.jpg",
+      "releaseInfo": "2000"
+    },
+    {
+      "id": "tmdb:2901",
+      "type": "series",
+      "name": "Cei Patru Fantastici",
+      "poster": "https://image.tmdb.org/t/p/w500/jy7fvS9ow4MadFZuhwadshj0yes.jpg",
+      "releaseInfo": "1994"
+    },
+    {
+      "id": "tmdb:155280",
+      "type": "series",
+      "name": "Moby Dick și Secretul lui Mu",
+      "poster": "https://image.tmdb.org/t/p/w500/wEr06YX4w0XAK9V2GctgxjWgaHc.jpg",
+      "releaseInfo": "2005"
+    },
+    {
+      "id": "tmdb:212989",
+      "type": "series",
+      "name": "Ninjago: Ascensiunea dragonilor",
+      "poster": "https://image.tmdb.org/t/p/w500/4wqL9NEEsJsTgeSE5ArQlhoWYfq.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:231727",
+      "type": "series",
+      "name": "Regele Lup",
+      "poster": "https://image.tmdb.org/t/p/w500/tC6mrnKKASpoJwIW37BquR4cyER.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:221301",
+      "type": "series",
+      "name": "Pokémon Concierge",
+      "poster": "https://image.tmdb.org/t/p/w500/q8uOnLZuifazForeYigYqYVJhdF.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:82728",
+      "type": "series",
+      "name": "Bluey",
+      "poster": "https://image.tmdb.org/t/p/w500/b9mY0X5T20ZM073hoa5n0dgmbfN.jpg",
+      "releaseInfo": "2018"
+    },
+    {
+      "id": "tmdb:256953",
+      "type": "series",
+      "name": "Bluey Minisodes",
+      "poster": "https://image.tmdb.org/t/p/w500/jizhUuOFmTI9pYP4PvJtGH5VjOL.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:293703",
+      "type": "series",
+      "name": "Pește roșu, pește albastru",
+      "poster": "https://image.tmdb.org/t/p/w500/84OUhADkwjWQVB4iQYGnYE97HB5.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:127706",
+      "type": "series",
+      "name": "Kiff",
+      "poster": "https://image.tmdb.org/t/p/w500/h7xhJ1uWu7FurJ3W5iKzrfiPF3K.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:6040",
+      "type": "series",
+      "name": "Ben 10: Echipa extraterestră",
+      "poster": "https://image.tmdb.org/t/p/w500/pGhCUqPaXZ0Xp4dUCT7Q6hjJArf.jpg",
+      "releaseInfo": "2008"
+    },
+    {
+      "id": "tmdb:92788",
+      "type": "series",
+      "name": "Fetița Lună și Dinozaurul Diabolic",
+      "poster": "https://image.tmdb.org/t/p/w500/3PXDth7fIfmco9TLhcZ0cWOPF92.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:604",
+      "type": "series",
+      "name": "Tinerii Titani",
+      "poster": "https://image.tmdb.org/t/p/w500/7DCq6XbJx5WGKPvSMBxYK9uJQWQ.jpg",
+      "releaseInfo": "2003"
+    },
+    {
+      "id": "tmdb:46922",
+      "type": "series",
+      "name": "Ben 10: Omniverse",
+      "poster": "https://image.tmdb.org/t/p/w500/Re9I5tauOspaJxYCIqRqavKT4F.jpg",
+      "releaseInfo": "2012"
+    },
+    {
+      "id": "tmdb:1458",
+      "type": "series",
+      "name": "Franklin",
+      "poster": "https://image.tmdb.org/t/p/w500/rkUNucXagKjXXcIykQfrQgPgbVb.jpg",
+      "releaseInfo": "1997"
+    },
+    {
+      "id": "tmdb:274388",
+      "type": "series",
+      "name": "Omul de Fier și Prietenii lui Uimitori",
+      "poster": "https://image.tmdb.org/t/p/w500/3NlFaIdOkBg2VC3Imi1kbeeGynw.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:92684",
+      "type": "series",
+      "name": "Ultimii Copii de pe Pământ",
+      "poster": "https://image.tmdb.org/t/p/w500/lTpGn2hgB0WGFGp6Q6ArkEWWTsk.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:231610",
+      "type": "series",
+      "name": "Hamsterii din Hamsterani",
+      "poster": "https://image.tmdb.org/t/p/w500/lPhfyYMJVPmpAb73U4OJurTXEUG.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:93233",
+      "type": "series",
+      "name": "Centaurworld",
+      "poster": "https://image.tmdb.org/t/p/w500/2klp8BwNDbmV5pfBSWhNjr1MktC.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:202905",
+      "type": "series",
+      "name": "My Little Pony: Spune-ți povestea",
+      "poster": "https://image.tmdb.org/t/p/w500/e5RbECKKop0CnavnI5BAWfUZQhu.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:32296",
+      "type": "series",
+      "name": "Voltron Forța",
+      "poster": "https://image.tmdb.org/t/p/w500/pOQ5bfYIEm9Po0KYksPBhVt5tHe.jpg",
+      "releaseInfo": "2011"
+    },
+    {
+      "id": "tmdb:85422",
+      "type": "series",
+      "name": "Abby Hatcher",
+      "poster": "https://image.tmdb.org/t/p/w500/eaICMIigEShZEcpp1StYuRg1gdw.jpg",
+      "releaseInfo": "2018"
+    },
+    {
+      "id": "tmdb:234586",
+      "type": "series",
+      "name": "Barbie Mysteries",
+      "poster": "https://image.tmdb.org/t/p/w500/zKfE4AevCL8RjfcrhfJZat5vWTb.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:33765",
+      "type": "series",
+      "name": "Micul meu Ponei: Prietenia este magică",
+      "poster": "https://image.tmdb.org/t/p/w500/fwW7WgJIjhBsnzk87Gyh6g9187m.jpg",
+      "releaseInfo": "2010"
+    },
+    {
+      "id": "tmdb:45140",
+      "type": "series",
+      "name": "Haideți, Tineri Titani!",
+      "poster": "https://image.tmdb.org/t/p/w500/ooqvN9JHuMZ9hzJaApTdkWYCv9B.jpg",
+      "releaseInfo": "2013"
+    },
+    {
+      "id": "tmdb:111474",
+      "type": "series",
+      "name": "Casa de păpuși a lui Gabby",
+      "poster": "https://image.tmdb.org/t/p/w500/wRAsEtDrHzS9XeBM8JNvOclMRY8.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:33217",
+      "type": "series",
+      "name": "Tinerii justițiari",
+      "poster": "https://image.tmdb.org/t/p/w500/zMJw34G4OJhcd9NjKSRjJdDqjbR.jpg",
+      "releaseInfo": "2010"
+    },
+    {
+      "id": "tmdb:52051",
+      "type": "series",
+      "name": "Eu și Mia",
+      "poster": "https://image.tmdb.org/t/p/w500/o2CL46XLxUmn4i9Kb2ZcM02RkNA.jpg",
+      "releaseInfo": "2012"
+    },
+    {
+      "id": "tmdb:158691",
+      "type": "series",
+      "name": "My Little Pony: Redescoperă magia",
+      "poster": "https://image.tmdb.org/t/p/w500/pRVwWo90aKk2vuqpCc3ShXvK8kS.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:2395",
+      "type": "series",
+      "name": "Legenda lui Tarzan",
+      "poster": "https://image.tmdb.org/t/p/w500/w5mGLHBT59nFilSPgd5TgJnZ1ix.jpg",
+      "releaseInfo": "2001"
+    },
+    {
+      "id": "tmdb:241388",
+      "type": "series",
+      "name": "Ochii Wakandei",
+      "poster": "https://image.tmdb.org/t/p/w500/mgMy4y7NmTl13JikSOf5LngPF4r.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:231728",
+      "type": "series",
+      "name": "Cei șapte ursuleți",
+      "poster": "https://image.tmdb.org/t/p/w500/sS4EyRACSSifP1RTOr77MZ1mI9M.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:138503",
+      "type": "series",
+      "name": "Omul-Păianjen: Vecinul prietenos",
+      "poster": "https://image.tmdb.org/t/p/w500/gDZqd0yiwz4WKiH90tRsWLMRXTp.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:288055",
+      "type": "series",
+      "name": "Războiul Stelelor: Povești din lumea underground",
+      "poster": "https://image.tmdb.org/t/p/w500/nOGLVmPTDvjwlNOHdhsBENDGt7l.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:122781",
+      "type": "series",
+      "name": "Asterix și Obelix: Bătălia dintre șefi",
+      "poster": "https://image.tmdb.org/t/p/w500/3xTpTvM1VpuuqiT4GzgSe9qzVYV.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:204139",
+      "type": "series",
+      "name": "Primos",
+      "poster": "https://image.tmdb.org/t/p/w500/hmFnWvPiXoPuxsei1CuoWuNra56.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:114500",
+      "type": "series",
+      "name": "Câștigi sau pierzi",
+      "poster": "https://image.tmdb.org/t/p/w500/fnQVSf2pYnnACZgUDzMXmdaqQ43.jpg",
+      "releaseInfo": "2025"
+    },
+    {
+      "id": "tmdb:157747",
+      "type": "series",
+      "name": "Transformers: Scântei pe Pământ",
+      "poster": "https://image.tmdb.org/t/p/w500/jLwU37QusZDkkOuFNb1TA6NQZNT.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:12612",
+      "type": "series",
+      "name": "Roary Bolidul de Curse",
+      "poster": "https://image.tmdb.org/t/p/w500/k3tiL0hjA9ROQJedFjYB3YF3qAU.jpg",
+      "releaseInfo": "2007"
+    },
+    {
+      "id": "tmdb:14636",
+      "type": "series",
+      "name": "Secretele Familiei Sâmbătă",
+      "poster": "https://image.tmdb.org/t/p/w500/A6ulaU7kehrXmMOhuaBW98qx2aL.jpg",
+      "releaseInfo": "2008"
+    },
+    {
+      "id": "tmdb:61174",
+      "type": "series",
+      "name": "Bee Și Pisicuțu",
+      "poster": "https://image.tmdb.org/t/p/w500/lSvaxHqan42Y8zTX28GQx1MaL0p.jpg",
+      "releaseInfo": "2014"
+    },
+    {
+      "id": "tmdb:233779",
+      "type": "series",
+      "name": "Calea Misterelor",
+      "poster": "https://image.tmdb.org/t/p/w500/dOwlnXAyDbWnD7GoxNALstXWzAl.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:90281",
+      "type": "series",
+      "name": "Oswaldo",
+      "poster": "https://image.tmdb.org/t/p/w500/qU3bnWMQZ4uaXhZirBYCUXSRo9S.jpg",
+      "releaseInfo": "2017"
+    },
+    {
+      "id": "tmdb:129294",
+      "type": "series",
+      "name": "Dogmatix și neînduplecații",
+      "poster": "https://image.tmdb.org/t/p/w500/cBjxnPUu0vRssmhJVxcym2kg4tt.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:84368",
+      "type": "series",
+      "name": "Patrula Dino",
+      "poster": "https://image.tmdb.org/t/p/w500/ljvcV1R3n9ZprRbuJLfxAmH1Hoh.jpg",
+      "releaseInfo": "2007"
+    },
+    {
+      "id": "tmdb:224024",
+      "type": "series",
+      "name": "Max și Minicavalerii",
+      "poster": "https://image.tmdb.org/t/p/w500/5o8XZUngjs9wHzd3Kra9JPID9Cp.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:156606",
+      "type": "series",
+      "name": "Hamster & Gretel",
+      "poster": "https://image.tmdb.org/t/p/w500/2f10coDnMUtLgojkhszLycnFwuS.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:74916",
+      "type": "series",
+      "name": "Curse Trăsnite",
+      "poster": "https://image.tmdb.org/t/p/w500/rgmUxN8vPB4WvvWKEhEpWs8SR9D.jpg",
+      "releaseInfo": "2017"
+    }
+  ]
+}
+
