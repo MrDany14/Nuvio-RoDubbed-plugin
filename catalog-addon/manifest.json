@@ -1,8 +1,8 @@
 {
   "id": "com.mrdany14.romanian.catalog",
   "version": "1.0.0",
-  "name": "Romanian Dubbed Catalog",
-  "description": "Static TMDB catalogs for Romanian dubbed and animated movies and series.",
+  "name": "Catalog românesc",
+  "description": "Cataloage TMDB cu filme și seriale dublate sau animate.",
   "resources": [
     "catalog"
   ],
@@ -17,23 +17,22 @@
     {
       "type": "movie",
       "id": "romanian-dubbed-movies",
-      "name": "Romanian Dubbed Movies"
+      "name": "Filme dublate în română"
     },
     {
       "type": "movie",
       "id": "romanian-animated-movies",
-      "name": "Romanian Animated Movies"
+      "name": "Filme animate"
     },
     {
       "type": "series",
       "id": "romanian-dubbed-series",
-      "name": "Romanian Dubbed Series"
+      "name": "Seriale dublate în română"
     },
     {
       "type": "series",
       "id": "romanian-animated-series",
-      "name": "Romanian Animated Series"
+      "name": "Seriale animate"
     }
   ]
 }
-
