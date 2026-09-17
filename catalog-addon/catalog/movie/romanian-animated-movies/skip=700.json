@@ -1,0 +1,334 @@
+{
+  "metas": [
+    {
+      "id": "tmdb:862",
+      "type": "movie",
+      "name": "Povestea jucăriilor",
+      "poster": "https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg",
+      "releaseInfo": "1995"
+    },
+    {
+      "id": "tmdb:14787",
+      "type": "movie",
+      "name": "Tom & Jerry: Inelul Fermecat",
+      "poster": "https://image.tmdb.org/t/p/w500/fF6I48WGKktHfGYYSVKPTVildWE.jpg",
+      "releaseInfo": "2002"
+    },
+    {
+      "id": "tmdb:13676",
+      "type": "movie",
+      "name": "Mica sirenă: Începutul lui Ariel",
+      "poster": "https://image.tmdb.org/t/p/w500/LJs21HQ7foXB37tDI0JiGkuEAC.jpg",
+      "releaseInfo": "2008"
+    },
+    {
+      "id": "tmdb:14873",
+      "type": "movie",
+      "name": "Cartea junglei 2",
+      "poster": "https://image.tmdb.org/t/p/w500/DhuskQc9lSjPiYKr9hy0AZ7uiC.jpg",
+      "releaseInfo": "2003"
+    },
+    {
+      "id": "tmdb:9325",
+      "type": "movie",
+      "name": "Cartea junglei",
+      "poster": "https://image.tmdb.org/t/p/w500/7a6VJd4TXNrTlY6MDvZL1kqPVg7.jpg",
+      "releaseInfo": "1967"
+    },
+    {
+      "id": "tmdb:10112",
+      "type": "movie",
+      "name": "Pisicile aristocrate",
+      "poster": "https://image.tmdb.org/t/p/w500/1BVOSmQUhphMgnTxnXyfQ9tL1Sc.jpg",
+      "releaseInfo": "1970"
+    },
+    {
+      "id": "tmdb:37135",
+      "type": "movie",
+      "name": "Tarzan",
+      "poster": "https://image.tmdb.org/t/p/w500/a0Syo09bmNJgehjfeVL6meR9Mjh.jpg",
+      "releaseInfo": "1999"
+    },
+    {
+      "id": "tmdb:77931",
+      "type": "movie",
+      "name": "Ștrumpfii 2",
+      "poster": "https://image.tmdb.org/t/p/w500/4zu8hbjp7bedcbetQssylLhpguk.jpg",
+      "releaseInfo": "2013"
+    },
+    {
+      "id": "tmdb:408",
+      "type": "movie",
+      "name": "Albă ca Zăpada și cei șapte pitici",
+      "poster": "https://image.tmdb.org/t/p/w500/1P9eGGlT7eV7kAAvvSh9jfygr1C.jpg",
+      "releaseInfo": "1938"
+    },
+    {
+      "id": "tmdb:10882",
+      "type": "movie",
+      "name": "Frumoasa adormită",
+      "poster": "https://image.tmdb.org/t/p/w500/j2mTyUukcLwDIeQohyZUVKfqdlB.jpg",
+      "releaseInfo": "1959"
+    },
+    {
+      "id": "tmdb:2062",
+      "type": "movie",
+      "name": "Ratatouille",
+      "poster": "https://image.tmdb.org/t/p/w500/npHNjldbeTHdKKw28bJKs7lzqzj.jpg",
+      "releaseInfo": "2007"
+    },
+    {
+      "id": "tmdb:10198",
+      "type": "movie",
+      "name": "Prințesa și Broscoiul",
+      "poster": "https://image.tmdb.org/t/p/w500/yprv5PbnEksoVj2v6XEnDBg9joR.jpg",
+      "releaseInfo": "2009"
+    },
+    {
+      "id": "tmdb:10193",
+      "type": "movie",
+      "name": "Povestea jucăriilor 3",
+      "poster": "https://image.tmdb.org/t/p/w500/AbbXspMOwdvwWZgVN0nabZq03Ec.jpg",
+      "releaseInfo": "2010"
+    },
+    {
+      "id": "tmdb:10693",
+      "type": "movie",
+      "name": "Peter Pan",
+      "poster": "https://image.tmdb.org/t/p/w500/fJJOs1iyrhKfZceANxoPxPwNGF1.jpg",
+      "releaseInfo": "1953"
+    },
+    {
+      "id": "tmdb:12233",
+      "type": "movie",
+      "name": "Oliver și prietenii",
+      "poster": "https://image.tmdb.org/t/p/w500/15CP0xItV3oIoL5VSb8hM27e9xQ.jpg",
+      "releaseInfo": "1988"
+    },
+    {
+      "id": "tmdb:12242",
+      "type": "movie",
+      "name": "Neînfricata Mulan II",
+      "poster": "https://image.tmdb.org/t/p/w500/8cUIHYXpDFYX6r5ZviQuRKCVLJ2.jpg",
+      "releaseInfo": "2004"
+    },
+    {
+      "id": "tmdb:10674",
+      "type": "movie",
+      "name": "Neînfricata Mulan",
+      "poster": "https://image.tmdb.org/t/p/w500/5TYgKxYhnhRNNwqnRAKHkgfqi2G.jpg",
+      "releaseInfo": "1998"
+    },
+    {
+      "id": "tmdb:15512",
+      "type": "movie",
+      "name": "Monștri contra extratereștri",
+      "poster": "https://image.tmdb.org/t/p/w500/hpHarddVj34j53T7NsoUGdKj4mP.jpg",
+      "releaseInfo": "2009"
+    },
+    {
+      "id": "tmdb:18269",
+      "type": "movie",
+      "name": "Doamna și vagabondul II: Aventura lui Scamp",
+      "poster": "https://image.tmdb.org/t/p/w500/nS3nhUZUSY8dWEsRmKILfiOC3F0.jpg",
+      "releaseInfo": "2001"
+    },
+    {
+      "id": "tmdb:10340",
+      "type": "movie",
+      "name": "Doamna și Vagabondul",
+      "poster": "https://image.tmdb.org/t/p/w500/r9FiDSdBwNHdRwN0NMRrqfEHJGO.jpg",
+      "releaseInfo": "1955"
+    },
+    {
+      "id": "tmdb:13313",
+      "type": "movie",
+      "name": "Frumoasa și Bestia: Crăciunul fermecat",
+      "poster": "https://image.tmdb.org/t/p/w500/qxtpbcbf6KEIHzLetWZOVGJT2lv.jpg",
+      "releaseInfo": "1997"
+    },
+    {
+      "id": "tmdb:10020",
+      "type": "movie",
+      "name": "Frumoasa și bestia",
+      "poster": "https://image.tmdb.org/t/p/w500/7oCAPOphDKpIaxTrnukmDrZ8XKD.jpg",
+      "releaseInfo": "1991"
+    },
+    {
+      "id": "tmdb:12",
+      "type": "movie",
+      "name": "În căutarea lui Nemo",
+      "poster": "https://image.tmdb.org/t/p/w500/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg",
+      "releaseInfo": "2003"
+    },
+    {
+      "id": "tmdb:36617",
+      "type": "movie",
+      "name": "El ratón Pérez",
+      "poster": "https://image.tmdb.org/t/p/w500/jpc8Zdn5Ju0tkQdkqbL4T4tKw61.jpg",
+      "releaseInfo": "2006"
+    },
+    {
+      "id": "tmdb:11360",
+      "type": "movie",
+      "name": "Dumbo",
+      "poster": "https://image.tmdb.org/t/p/w500/4x9FmvdJ464Fg7A9XcbYSmxfVw3.jpg",
+      "releaseInfo": "1941"
+    },
+    {
+      "id": "tmdb:11224",
+      "type": "movie",
+      "name": "Cenușăreasa",
+      "poster": "https://image.tmdb.org/t/p/w500/4nssBcQUBadCTBjrAkX46mVEKts.jpg",
+      "releaseInfo": "1950"
+    },
+    {
+      "id": "tmdb:13205",
+      "type": "movie",
+      "name": "Bambi II",
+      "poster": "https://image.tmdb.org/t/p/w500/wIVLCnwYynKIiAheJoEQtC8gTjq.jpg",
+      "releaseInfo": "2006"
+    },
+    {
+      "id": "tmdb:3170",
+      "type": "movie",
+      "name": "Bambi",
+      "poster": "https://image.tmdb.org/t/p/w500/nJMyNN2nSOg9FmU5fYqEjWmsH8W.jpg",
+      "releaseInfo": "1942"
+    },
+    {
+      "id": "tmdb:9642",
+      "type": "movie",
+      "name": "Asterix şi Vikingii",
+      "poster": "https://image.tmdb.org/t/p/w500/4YG3fv8qu20PMhDbna0sL1J00Np.jpg",
+      "releaseInfo": "2006"
+    },
+    {
+      "id": "tmdb:9444",
+      "type": "movie",
+      "name": "Anastasia",
+      "poster": "https://image.tmdb.org/t/p/w500/lQwTsdtJwxanuJPdS4Ltx5ngUBJ.jpg",
+      "releaseInfo": "1997"
+    },
+    {
+      "id": "tmdb:12092",
+      "type": "movie",
+      "name": "Alice în Țara Minunilor",
+      "poster": "https://image.tmdb.org/t/p/w500/zeGjDBihxJTqjafI2Zlf2dmjmGa.jpg",
+      "releaseInfo": "1951"
+    },
+    {
+      "id": "tmdb:11238",
+      "type": "movie",
+      "name": "Aladdin și regele hoților",
+      "poster": "https://image.tmdb.org/t/p/w500/kTH7qEyvdDYMoQraQZm3LFKCge3.jpg",
+      "releaseInfo": "1996"
+    },
+    {
+      "id": "tmdb:812",
+      "type": "movie",
+      "name": "Aladdin",
+      "poster": "https://image.tmdb.org/t/p/w500/oakAd8syy7jNQ4ZoaAGCQkTqcOV.jpg",
+      "releaseInfo": "1992"
+    },
+    {
+      "id": "tmdb:12230",
+      "type": "movie",
+      "name": "101 dalmațieni",
+      "poster": "https://image.tmdb.org/t/p/w500/9klDisS1sVb5LljRhpYJ0TUbPzt.jpg",
+      "releaseInfo": "1961"
+    },
+    {
+      "id": "tmdb:76492",
+      "type": "movie",
+      "name": "Hotel Transilvania",
+      "poster": "https://image.tmdb.org/t/p/w500/eJGvzGrsfe2sqTUPv5IwLWXjVuR.jpg",
+      "releaseInfo": "2012"
+    },
+    {
+      "id": "tmdb:205081",
+      "type": "movie",
+      "name": "Nume de Cod: Clanul Nebunaticilor de Alături - Operatiunea Z.E.R.O.",
+      "poster": "https://image.tmdb.org/t/p/w500/fwgLVVHcDT2XtR3I9ozHN2CwC0v.jpg",
+      "releaseInfo": "2006"
+    },
+    {
+      "id": "tmdb:7450",
+      "type": "movie",
+      "name": "Titan A.E.",
+      "poster": "https://image.tmdb.org/t/p/w500/el2iHk3LTJWfEnwrvcRkvWY501G.jpg",
+      "releaseInfo": "2000"
+    },
+    {
+      "id": "tmdb:75372",
+      "type": "movie",
+      "name": "Maria, Mirabela",
+      "poster": "https://image.tmdb.org/t/p/w500/j9mY3WCmkH8YYzNDt0dVVKGPOHs.jpg",
+      "releaseInfo": "1982"
+    },
+    {
+      "id": "tmdb:13654",
+      "type": "movie",
+      "name": "101 dalmațieni II: Aventura în Londra a lui Petic",
+      "poster": "https://image.tmdb.org/t/p/w500/mcl56J7tDPjzEesgpX4UPgAdbvf.jpg",
+      "releaseInfo": "2003"
+    },
+    {
+      "id": "tmdb:12227",
+      "type": "movie",
+      "name": "Colț Alb",
+      "poster": "https://image.tmdb.org/t/p/w500/imJ75w2pFecLpmTQNYN4HK0E1jb.jpg",
+      "releaseInfo": "1991"
+    },
+    {
+      "id": "tmdb:25475",
+      "type": "movie",
+      "name": "Clopoțica și comoara pierdută",
+      "poster": "https://image.tmdb.org/t/p/w500/6tNldk2zPUzXVKkU9aeirM9Wotu.jpg",
+      "releaseInfo": "2009"
+    },
+    {
+      "id": "tmdb:44683",
+      "type": "movie",
+      "name": "Clopoțica și aventurile ei în lumea oamenilor",
+      "poster": "https://image.tmdb.org/t/p/w500/cb7PrVIYbwIadQqWxgSU6CGHJjj.jpg",
+      "releaseInfo": "2010"
+    },
+    {
+      "id": "tmdb:13179",
+      "type": "movie",
+      "name": "Clopoțica",
+      "poster": "https://image.tmdb.org/t/p/w500/3Ma0r1n8kfH7UaQMS7bJ9KsYUjT.jpg",
+      "releaseInfo": "2008"
+    },
+    {
+      "id": "tmdb:13700",
+      "type": "movie",
+      "name": "O fermă trăznită",
+      "poster": "https://image.tmdb.org/t/p/w500/9xIIo4FMquy5SRqn8hppyr2QadR.jpg",
+      "releaseInfo": "2004"
+    },
+    {
+      "id": "tmdb:170687",
+      "type": "movie",
+      "name": "Boxtroli",
+      "poster": "https://image.tmdb.org/t/p/w500/npBf0yc5Gt7aAyyVOcYtFyT2IPa.jpg",
+      "releaseInfo": "2014"
+    },
+    {
+      "id": "tmdb:151960",
+      "type": "movie",
+      "name": "Avioane",
+      "poster": "https://image.tmdb.org/t/p/w500/yVbtaT9HQaJVNwhCXzh5AeJt9G8.jpg",
+      "releaseInfo": "2013"
+    },
+    {
+      "id": "tmdb:109445",
+      "type": "movie",
+      "name": "Regatul de gheață",
+      "poster": "https://image.tmdb.org/t/p/w500/kgwjIb2JDHRhNk13lmSxiClFjVk.jpg",
+      "releaseInfo": "2013"
+    }
+  ]
+}
+
