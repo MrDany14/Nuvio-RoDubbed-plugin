@@ -1,0 +1,705 @@
+{
+  "metas": [
+    {
+      "id": "tmdb:645757",
+      "type": "movie",
+      "name": "Acel Crăciun",
+      "poster": "https://image.tmdb.org/t/p/w500/arGXWNYAjoAhE5ngytmEmRrFks7.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:1147416",
+      "type": "movie",
+      "name": "Lumea Miraculoasă - Londra: Viitor Incert",
+      "poster": "https://image.tmdb.org/t/p/w500/l8EXUQUtzUVCBOOQodZq100QWGe.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:953",
+      "type": "movie",
+      "name": "Madagascar",
+      "poster": "https://image.tmdb.org/t/p/w500/m8rA0QRJooGk1BdbU7rHXcpgxdX.jpg",
+      "releaseInfo": "2005"
+    },
+    {
+      "id": "tmdb:592983",
+      "type": "movie",
+      "name": "Vrăjiți",
+      "poster": "https://image.tmdb.org/t/p/w500/5c23kYrDwLUl57u2NoUH7eKyeVs.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:23521",
+      "type": "movie",
+      "name": "Daffy Duck's Quackbusters",
+      "poster": "https://image.tmdb.org/t/p/w500/3qZF2KvosVuyx0FRbm5rteBGrnF.jpg",
+      "releaseInfo": "1988"
+    },
+    {
+      "id": "tmdb:1359227",
+      "type": "movie",
+      "name": "LEGO Marvel Răzbunătorii: Marea Demolare",
+      "poster": "https://image.tmdb.org/t/p/w500/kDioiyEiFoxAkTAMvmFutEbqhoh.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:13151",
+      "type": "movie",
+      "name": "Scooby Doo pe Insula Zombie",
+      "poster": "https://image.tmdb.org/t/p/w500/7EdvFUGvT5Pn8rUFRKCrdUzNthf.jpg",
+      "releaseInfo": "1998"
+    },
+    {
+      "id": "tmdb:49948",
+      "type": "movie",
+      "name": "Fantezia 2000",
+      "poster": "https://image.tmdb.org/t/p/w500/9kkDpN3HWBR88pvlAYe8xyEFWaT.jpg",
+      "releaseInfo": "2000"
+    },
+    {
+      "id": "tmdb:46929",
+      "type": "movie",
+      "name": "Fun and Fancy Free",
+      "poster": "https://image.tmdb.org/t/p/w500/8aTbrurbB7DyWGqyYKfBZiebpVE.jpg",
+      "releaseInfo": "1947"
+    },
+    {
+      "id": "tmdb:20558",
+      "type": "movie",
+      "name": "Scooby Doo Unde-i Mumia Mea?",
+      "poster": "https://image.tmdb.org/t/p/w500/svtAzhRb4ueCLXZX8r3whHrE5x3.jpg",
+      "releaseInfo": "2005"
+    },
+    {
+      "id": "tmdb:1329336",
+      "type": "movie",
+      "name": "Băieții răi: Jaf bântuit",
+      "poster": "https://image.tmdb.org/t/p/w500/oEJC05CqPugMxC4rFu9r6r6vg6m.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:550738",
+      "type": "movie",
+      "name": "Mâț și Chiț: Spioni Blană",
+      "poster": "https://image.tmdb.org/t/p/w500/qYswjkNhKie6TWzjA04eeEcZwiC.jpg",
+      "releaseInfo": "2020"
+    },
+    {
+      "id": "tmdb:1192209",
+      "type": "movie",
+      "name": "Arca lui Noe",
+      "poster": "https://image.tmdb.org/t/p/w500/iI79rRbcwPKVlbEN5Sc4EwppRpa.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:519182",
+      "type": "movie",
+      "name": "Sunt un mic ticălos 4",
+      "poster": "https://image.tmdb.org/t/p/w500/wPsNPPzKbXYu1jTzqaPtjVsVL06.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:1022789",
+      "type": "movie",
+      "name": "Întors pe dos 2",
+      "poster": "https://image.tmdb.org/t/p/w500/5KdfyPucvMW78HiyBHjKdmdymYB.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:831815",
+      "type": "movie",
+      "name": "Sandy Obrăjori: Salvăm Fundul Oceanului",
+      "poster": "https://image.tmdb.org/t/p/w500/pz3wCXSDKSONPbRwhnjI6oBkTWN.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:639720",
+      "type": "movie",
+      "name": "Prieteni imaginari",
+      "poster": "https://image.tmdb.org/t/p/w500/1KuzZY3XdeokweaSoOSoEbuV3cd.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:515789",
+      "type": "movie",
+      "name": "Câinele Stelar și TurboMotanul",
+      "poster": "https://image.tmdb.org/t/p/w500/cR2w9bqQdEpdLk6ToWnvE2BKXIa.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:748783",
+      "type": "movie",
+      "name": "Garfield",
+      "poster": "https://image.tmdb.org/t/p/w500/iCABvSHVIyDFbVPA5W4VhfzTuTF.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:928833",
+      "type": "movie",
+      "name": "Craig Înainte de Dumbravă",
+      "poster": "https://image.tmdb.org/t/p/w500/4gDNAsYbCOP3z4xyM0IhbPl5Rq3.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:829402",
+      "type": "movie",
+      "name": "Ultraman: Ascensiunea",
+      "poster": "https://image.tmdb.org/t/p/w500/l7gYBgv9wBohG7DB4EKshVXqd72.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:1011985",
+      "type": "movie",
+      "name": "Kung Fu Panda 4",
+      "poster": "https://image.tmdb.org/t/p/w500/9NpCebDOebTWlPlZYDwIjgZonhX.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:739547",
+      "type": "movie",
+      "name": "Unicornul Thelma",
+      "poster": "https://image.tmdb.org/t/p/w500/zgz9RqWAHLA13IBVWhRyKLfeoAJ.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:597845",
+      "type": "movie",
+      "name": "Финник",
+      "poster": "https://image.tmdb.org/t/p/w500/lA9wFnUOwPabUuYqL2Sp2Ivyl7O.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:586742",
+      "type": "movie",
+      "name": "Fabrica de vise",
+      "poster": "https://image.tmdb.org/t/p/w500/pLRmYQv0l6spxiGV8uvqb5t4sSH.jpg",
+      "releaseInfo": "2020"
+    },
+    {
+      "id": "tmdb:606149",
+      "type": "movie",
+      "name": "Căpitanul Colți-de-sabie și diamantul fermecat",
+      "poster": "https://image.tmdb.org/t/p/w500/rgh6GM6kY5j33M3N1GYWww3dSbz.jpg",
+      "releaseInfo": "2020"
+    },
+    {
+      "id": "tmdb:809717",
+      "type": "movie",
+      "name": "Peterchens Mondfahrt",
+      "poster": "https://image.tmdb.org/t/p/w500/AgeS0Jy3a8atOABG523WVA7S6yv.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:638220",
+      "type": "movie",
+      "name": "Die Heinzels - Rückkehr der Heinzelmännchen",
+      "poster": "https://image.tmdb.org/t/p/w500/8srGFwmzGoWBZtOYThQQyuox7oc.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:814831",
+      "type": "movie",
+      "name": "Tvojazem",
+      "poster": "https://image.tmdb.org/t/p/w500/jnNfUqnV1fSymeoTwk7q4X4HLIq.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:421126",
+      "type": "movie",
+      "name": "Dragonul vrăjit",
+      "poster": "https://image.tmdb.org/t/p/w500/y9LPVQ32nA8AEQeaca1wF9hRfy2.jpg",
+      "releaseInfo": "2016"
+    },
+    {
+      "id": "tmdb:809",
+      "type": "movie",
+      "name": "Shrek 2",
+      "poster": "https://image.tmdb.org/t/p/w500/2yYP0PQjG8zVqturh1BAqu2Tixl.jpg",
+      "releaseInfo": "2004"
+    },
+    {
+      "id": "tmdb:408355",
+      "type": "movie",
+      "name": "Tronul Elfilor",
+      "poster": "https://image.tmdb.org/t/p/w500/byaBhHMwt9BzYyb4CdVtSY1swzL.jpg",
+      "releaseInfo": "2016"
+    },
+    {
+      "id": "tmdb:940551",
+      "type": "movie",
+      "name": "Marea migrație",
+      "poster": "https://image.tmdb.org/t/p/w500/uH2dBjz4VsnCHhwKl4VG4TbTc14.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:1139829",
+      "type": "movie",
+      "name": "Orion și Întunericul",
+      "poster": "https://image.tmdb.org/t/p/w500/f7P8ERG6DpkXlq1xqPmobP89uJu.jpg",
+      "releaseInfo": "2024"
+    },
+    {
+      "id": "tmdb:372058",
+      "type": "movie",
+      "name": "Numele tău.",
+      "poster": "https://image.tmdb.org/t/p/w500/gCYGhDtlsHr5hPjpe2Yh0MSrntG.jpg",
+      "releaseInfo": "2016"
+    },
+    {
+      "id": "tmdb:1139087",
+      "type": "movie",
+      "name": "A fost odată un studio",
+      "poster": "https://image.tmdb.org/t/p/w500/AbP2DJ0TD4Dy2SRPkkCuOV78VNa.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:1022796",
+      "type": "movie",
+      "name": "Dorința",
+      "poster": "https://image.tmdb.org/t/p/w500/fHBjrRxSsBRuVbHvti3hU29HzwD.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:901362",
+      "type": "movie",
+      "name": "Trolii: Se strânge trupa",
+      "poster": "https://image.tmdb.org/t/p/w500/4BKbyQev4M34meJte9T5X48YWil.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:261103",
+      "type": "movie",
+      "name": "Albinuța maya: Filmul artistic",
+      "poster": "https://image.tmdb.org/t/p/w500/pMQ88CvnQroSjxk4IhM7YNbcjTx.jpg",
+      "releaseInfo": "2014"
+    },
+    {
+      "id": "tmdb:234862",
+      "type": "movie",
+      "name": "Mr Hublot",
+      "poster": "https://image.tmdb.org/t/p/w500/4X9cVXprefURePliKoJvhN0Ypns.jpg",
+      "releaseInfo": "2013"
+    },
+    {
+      "id": "tmdb:756",
+      "type": "movie",
+      "name": "Fantasia",
+      "poster": "https://image.tmdb.org/t/p/w500/5m9njnidjR0syG2gpVPVgcEMB2X.jpg",
+      "releaseInfo": "1940"
+    },
+    {
+      "id": "tmdb:62214",
+      "type": "movie",
+      "name": "Frankenweenie",
+      "poster": "https://image.tmdb.org/t/p/w500/yGjVbLVdZRBlZTTQVBsj2KUjL1s.jpg",
+      "releaseInfo": "2012"
+    },
+    {
+      "id": "tmdb:973608",
+      "type": "movie",
+      "name": "Pandantivul Larvei",
+      "poster": "https://image.tmdb.org/t/p/w500/zDG3Jx9mCHm0da3Vmp0rJPWsYnl.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:41394",
+      "type": "movie",
+      "name": "Looney, Looney, Looney Bugs Bunny Film",
+      "poster": "https://image.tmdb.org/t/p/w500/k4qMlWQ420zkUBIHrUkcwmAasxH.jpg",
+      "releaseInfo": "1981"
+    },
+    {
+      "id": "tmdb:520758",
+      "type": "movie",
+      "name": "Evadare din coteț: Chicken Nugget",
+      "poster": "https://image.tmdb.org/t/p/w500/zgBW2eNkN0Ez09GgRaWret90C1T.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:88212",
+      "type": "movie",
+      "name": "Prep & Landing Stocking Stuffer: Operation: Secret Santa",
+      "poster": "https://image.tmdb.org/t/p/w500/h6G0miMzxWEGLxlfn0BbdfzZQ50.jpg",
+      "releaseInfo": "2010"
+    },
+    {
+      "id": "tmdb:15789",
+      "type": "movie",
+      "name": "Filmul lui Goofy: Peripeții în familie",
+      "poster": "https://image.tmdb.org/t/p/w500/bycmMhO3iIoEDzP768sUjq2RV4T.jpg",
+      "releaseInfo": "1995"
+    },
+    {
+      "id": "tmdb:11497",
+      "type": "movie",
+      "name": "Toți câinii merg în Rai",
+      "poster": "https://image.tmdb.org/t/p/w500/nmWh1NglDinfkHD9zCNqGWyhl7Q.jpg",
+      "releaseInfo": "1989"
+    },
+    {
+      "id": "tmdb:51162",
+      "type": "movie",
+      "name": "Winnie de pluș",
+      "poster": "https://image.tmdb.org/t/p/w500/wMZU69sPEP8dSNU0nMWVt7b54EQ.jpg",
+      "releaseInfo": "2011"
+    },
+    {
+      "id": "tmdb:13706",
+      "type": "movie",
+      "name": "Winnie de Plus: Un an nou fericit",
+      "poster": "https://image.tmdb.org/t/p/w500/1Xfh2PPZsjEwFyLqp6bisrbdxZs.jpg",
+      "releaseInfo": "2002"
+    },
+    {
+      "id": "tmdb:13682",
+      "type": "movie",
+      "name": "Pooh's Heffalump Movie",
+      "poster": "https://image.tmdb.org/t/p/w500/5kd5JqccroxOnC9sVMP5NtLrbkr.jpg",
+      "releaseInfo": "2005"
+    },
+    {
+      "id": "tmdb:26187",
+      "type": "movie",
+      "name": "Unstable Fables: Goldilocks and the Three Bears",
+      "poster": "https://image.tmdb.org/t/p/w500/99cnZdIoVLC2xBXIC7Bp5iQ8Poi.jpg",
+      "releaseInfo": "2010"
+    },
+    {
+      "id": "tmdb:60293",
+      "type": "movie",
+      "name": "Tom și Jerry: Pe mustața mea!",
+      "poster": "https://image.tmdb.org/t/p/w500/b964RtitRMbUSwTnv4qdbRzUwug.jpg",
+      "releaseInfo": "2006"
+    },
+    {
+      "id": "tmdb:42246",
+      "type": "movie",
+      "name": "Tom si Jerry: Furios si Iute",
+      "poster": "https://image.tmdb.org/t/p/w500/4pQhh5bU1KcUeXqPOteWsCkNZPK.jpg",
+      "releaseInfo": "2005"
+    },
+    {
+      "id": "tmdb:72972",
+      "type": "movie",
+      "name": "Tom și Jerry îl întâlnesc pe Vrăjitorul din Oz",
+      "poster": "https://image.tmdb.org/t/p/w500/hcQa849CPFKem48VLESReeyFfdY.jpg",
+      "releaseInfo": "2011"
+    },
+    {
+      "id": "tmdb:134623",
+      "type": "movie",
+      "name": "Tom și Jerry: Robin Hood și ceata lui",
+      "poster": "https://image.tmdb.org/t/p/w500/ex7D0geka2LLSBb0bRdRHTpXQeR.jpg",
+      "releaseInfo": "2012"
+    },
+    {
+      "id": "tmdb:21078",
+      "type": "movie",
+      "name": "Tom and Jerry Blast Off to Mars!",
+      "poster": "https://image.tmdb.org/t/p/w500/oxVDcmStxKn4ChxdzfuCOLZiE9W.jpg",
+      "releaseInfo": "2005"
+    },
+    {
+      "id": "tmdb:287233",
+      "type": "movie",
+      "name": "Tom and Jerry: The Lost Dragon",
+      "poster": "https://image.tmdb.org/t/p/w500/s2Tegfa5IOUkFx988FgTFZth189.jpg",
+      "releaseInfo": "2014"
+    },
+    {
+      "id": "tmdb:86130",
+      "type": "movie",
+      "name": "Clopoțica: Jocurile din Valea Zânelor",
+      "poster": "https://image.tmdb.org/t/p/w500/c962jDNYejdctu7pb8zqS2Miey9.jpg",
+      "releaseInfo": "2011"
+    },
+    {
+      "id": "tmdb:19164",
+      "type": "movie",
+      "name": "The Land Before Time IV: Călătorie prin ceață",
+      "poster": "https://image.tmdb.org/t/p/w500/sqBhPAvSwPCZq4Kg79CvxGrU7nj.jpg",
+      "releaseInfo": "1996"
+    },
+    {
+      "id": "tmdb:19004",
+      "type": "movie",
+      "name": "The Land Before Time III: Timpul Marii Dăruiri",
+      "poster": "https://image.tmdb.org/t/p/w500/abcJUBDHi6hxibSgm2bxYK1wAZK.jpg",
+      "releaseInfo": "1995"
+    },
+    {
+      "id": "tmdb:203696",
+      "type": "movie",
+      "name": "Scooby-Doo! Frica de Scenă",
+      "poster": "https://image.tmdb.org/t/p/w500/stpQ7moeDenEJssukENxaPWgNoz.jpg",
+      "releaseInfo": "2013"
+    },
+    {
+      "id": "tmdb:284908",
+      "type": "movie",
+      "name": "Scooby-Doo! Jocuri înfricoșătoare",
+      "poster": "https://image.tmdb.org/t/p/w500/3zlCZ6n5XTQkw0uU9qwJoCcR73t.jpg",
+      "releaseInfo": "2012"
+    },
+    {
+      "id": "tmdb:13355",
+      "type": "movie",
+      "name": "Scooby Doo și Pirații Ahoy!",
+      "poster": "https://image.tmdb.org/t/p/w500/32OFjpuWxCIdcciRkw56ZHepl2I.jpg",
+      "releaseInfo": "2006"
+    },
+    {
+      "id": "tmdb:45752",
+      "type": "movie",
+      "name": "Scooby Doo şi Coşmarul din Tabăra de Vară",
+      "poster": "https://image.tmdb.org/t/p/w500/qTEFkyef3tJiBnVeN3cuNfTrhob.jpg",
+      "releaseInfo": "2010"
+    },
+    {
+      "id": "tmdb:314387",
+      "type": "movie",
+      "name": "Scooby-Doo! Amenințarea Dulăului Mecanic",
+      "poster": "https://image.tmdb.org/t/p/w500/6qLU4vChPzCFEkQnrZDlAYLX9BC.jpg",
+      "releaseInfo": "2013"
+    },
+    {
+      "id": "tmdb:284995",
+      "type": "movie",
+      "name": "Scooby-Doo! Frankencreepy",
+      "poster": "https://image.tmdb.org/t/p/w500/9Ql1KEdLPr0bl5503qFiUscDT1q.jpg",
+      "releaseInfo": "2014"
+    },
+    {
+      "id": "tmdb:286387",
+      "type": "movie",
+      "name": "Scooby-Doo! and the Spooky Scarecrow",
+      "poster": "https://image.tmdb.org/t/p/w500/6dQaUo915upitv5ylYKJFARroRq.jpg",
+      "releaseInfo": "2013"
+    },
+    {
+      "id": "tmdb:12903",
+      "type": "movie",
+      "name": "Scooby-Doo! și Regele Spiridușilor",
+      "poster": "https://image.tmdb.org/t/p/w500/tWBCvtJRlZo83Pn5kF8HNrOiZnE.jpg",
+      "releaseInfo": "2008"
+    },
+    {
+      "id": "tmdb:12902",
+      "type": "movie",
+      "name": "Scooby-Doo! și Monstrul din Loch Ness",
+      "poster": "https://image.tmdb.org/t/p/w500/srUFQS7Wn7cJLZIZnp42jYeCI8O.jpg",
+      "releaseInfo": "2004"
+    },
+    {
+      "id": "tmdb:210769",
+      "type": "movie",
+      "name": "Scooby-Doo! Adventures: The Mystery Map",
+      "poster": "https://image.tmdb.org/t/p/w500/pulFY8KAuF6BiySNkVHgAN7cI0H.jpg",
+      "releaseInfo": "2013"
+    },
+    {
+      "id": "tmdb:30074",
+      "type": "movie",
+      "name": "Scooby-Doo! și Legenda Vampirului",
+      "poster": "https://image.tmdb.org/t/p/w500/x8GJ7evV6YBISijuBuGLQjvckYA.jpg",
+      "releaseInfo": "2003"
+    },
+    {
+      "id": "tmdb:119321",
+      "type": "movie",
+      "name": "Big Top Scooby-Doo!",
+      "poster": "https://image.tmdb.org/t/p/w500/fUNIuRkSyUPCjIeSnIe7skV2L52.jpg",
+      "releaseInfo": "2012"
+    },
+    {
+      "id": "tmdb:230767",
+      "type": "movie",
+      "name": "Hiccups",
+      "poster": "https://image.tmdb.org/t/p/w500/uel0QbbmC97y4Q1dM72GWh0OpPc.jpg",
+      "releaseInfo": "2013"
+    },
+    {
+      "id": "tmdb:13926",
+      "type": "movie",
+      "name": "Red's Dream",
+      "poster": "https://image.tmdb.org/t/p/w500/ebPNnYqoEYntnrGdwtmppvBRHpu.jpg",
+      "releaseInfo": "1987"
+    },
+    {
+      "id": "tmdb:13924",
+      "type": "movie",
+      "name": "The Adventures of André and Wally B.",
+      "poster": "https://image.tmdb.org/t/p/w500/vynPRSjD78EWQpWbvEimlU55Ke.jpg",
+      "releaseInfo": "1984"
+    },
+    {
+      "id": "tmdb:546728",
+      "type": "movie",
+      "name": "Mătușa Edna",
+      "poster": "https://image.tmdb.org/t/p/w500/cmvGFfq6J63YXvOUGqY5wrZ4b3m.jpg",
+      "releaseInfo": "2018"
+    },
+    {
+      "id": "tmdb:24480",
+      "type": "movie",
+      "name": "Partly Cloudy",
+      "poster": "https://image.tmdb.org/t/p/w500/oqYX2AJV53ibLVPrUZ1Z5XlGv5U.jpg",
+      "releaseInfo": "2009"
+    },
+    {
+      "id": "tmdb:13929",
+      "type": "movie",
+      "name": "Jocul lui Geri",
+      "poster": "https://image.tmdb.org/t/p/w500/8PdCk3T9EkcKniUviDogWFCXx28.jpg",
+      "releaseInfo": "1997"
+    },
+    {
+      "id": "tmdb:13042",
+      "type": "movie",
+      "name": "Presto",
+      "poster": "https://image.tmdb.org/t/p/w500/asmKQG2qhpVM1KD6x5kODAZPmZl.jpg",
+      "releaseInfo": "2008"
+    },
+    {
+      "id": "tmdb:811367",
+      "type": "movie",
+      "name": "22 vs. Earth",
+      "poster": "https://image.tmdb.org/t/p/w500/32vLDKSzcCMh55zqqaSqqUA8naz.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:258152",
+      "type": "movie",
+      "name": "Party Central",
+      "poster": "https://image.tmdb.org/t/p/w500/whqMDEZq4TYv0zU0UV0iw4i2qi8.jpg",
+      "releaseInfo": "2014"
+    },
+    {
+      "id": "tmdb:514754",
+      "type": "movie",
+      "name": "Bao",
+      "poster": "https://image.tmdb.org/t/p/w500/tKz7XRXvdy1i7pW4eotaWZSrAx2.jpg",
+      "releaseInfo": "2018"
+    },
+    {
+      "id": "tmdb:355338",
+      "type": "movie",
+      "name": "Prima întâlnire a lui Riley",
+      "poster": "https://image.tmdb.org/t/p/w500/cGLwfmLqg39822RFQMUDat0UJev.jpg",
+      "releaseInfo": "2015"
+    },
+    {
+      "id": "tmdb:40619",
+      "type": "movie",
+      "name": "Ziua și Noaptea",
+      "poster": "https://image.tmdb.org/t/p/w500/hn2tOtidoYZ0D56jR4yknpdP1mU.jpg",
+      "releaseInfo": "2010"
+    },
+    {
+      "id": "tmdb:13413",
+      "type": "movie",
+      "name": "BURN·E",
+      "poster": "https://image.tmdb.org/t/p/w500/uNnRYHbkH0YSvVvsQo7sckbRJSp.jpg",
+      "releaseInfo": "2008"
+    },
+    {
+      "id": "tmdb:13062",
+      "type": "movie",
+      "name": "Boundin'",
+      "poster": "https://image.tmdb.org/t/p/w500/bQBFIwb77jrsXiH7TQVFu7onwN7.jpg",
+      "releaseInfo": "2003"
+    },
+    {
+      "id": "tmdb:38580",
+      "type": "movie",
+      "name": "The Little Matchgirl",
+      "poster": "https://image.tmdb.org/t/p/w500/lMZ5Xb302XF8u50ct4G1kOz0iXk.jpg",
+      "releaseInfo": "2006"
+    },
+    {
+      "id": "tmdb:13060",
+      "type": "movie",
+      "name": "Lifted",
+      "poster": "https://image.tmdb.org/t/p/w500/iwI3R8ZR3MQ5dnTx9tHSiS81i4W.jpg",
+      "releaseInfo": "2006"
+    },
+    {
+      "id": "tmdb:399106",
+      "type": "movie",
+      "name": "Piper",
+      "poster": "https://image.tmdb.org/t/p/w500/rfEkkVzmrMYqGezNLl02mVyJCP2.jpg",
+      "releaseInfo": "2016"
+    },
+    {
+      "id": "tmdb:13930",
+      "type": "movie",
+      "name": "Pentru păsări",
+      "poster": "https://image.tmdb.org/t/p/w500/50j57HZij4mR1wZCNAAdXzTyeCq.jpg",
+      "releaseInfo": "2000"
+    },
+    {
+      "id": "tmdb:24589",
+      "type": "movie",
+      "name": "Misiunea specială a lui Dug",
+      "poster": "https://image.tmdb.org/t/p/w500/qvK30UQ5cPxGH7ZBVpUhO6DPIM5.jpg",
+      "releaseInfo": "2009"
+    },
+    {
+      "id": "tmdb:83666",
+      "type": "movie",
+      "name": "Regatul unde răsare Luna",
+      "poster": "https://image.tmdb.org/t/p/w500/Boua5LFL3Xyn2ldIV6Dw7E5qCZ.jpg",
+      "releaseInfo": "2012"
+    },
+    {
+      "id": "tmdb:13925",
+      "type": "movie",
+      "name": "Luxo Jr.",
+      "poster": "https://image.tmdb.org/t/p/w500/5IM6KmDyYX1rDPlZ4bQE617T8rZ.jpg",
+      "releaseInfo": "1986"
+    },
+    {
+      "id": "tmdb:286192",
+      "type": "movie",
+      "name": "Lava",
+      "poster": "https://image.tmdb.org/t/p/w500/n7C5rbdwEsVGdzBTayjjhavB8b9.jpg",
+      "releaseInfo": "2015"
+    },
+    {
+      "id": "tmdb:13927",
+      "type": "movie",
+      "name": "Tin Toy",
+      "poster": "https://image.tmdb.org/t/p/w500/yRjtvmRXgZoY8P9Ug28G9OITD9E.jpg",
+      "releaseInfo": "1988"
+    },
+    {
+      "id": "tmdb:345637",
+      "type": "movie",
+      "name": "Sanjay's Super Team",
+      "poster": "https://image.tmdb.org/t/p/w500/mShcGzOctlq6zs33UdrCdAwZMGq.jpg",
+      "releaseInfo": "2015"
+    },
+    {
+      "id": "tmdb:293299",
+      "type": "movie",
+      "name": "Feast",
+      "poster": "https://image.tmdb.org/t/p/w500/6hAgSxgd2YIK5pYhwowtnlGpwbe.jpg",
+      "releaseInfo": "2014"
+    },
+    {
+      "id": "tmdb:16604",
+      "type": "movie",
+      "name": "Super Rhino",
+      "poster": "https://image.tmdb.org/t/p/w500/hXgRhk8mDMEY4OSh3fI98X3LNol.jpg",
+      "releaseInfo": "2009"
+    },
+    {
+      "id": "tmdb:200481",
+      "type": "movie",
+      "name": "Umbrela albastră",
+      "poster": "https://image.tmdb.org/t/p/w500/iSWV7ra8HJ3gYnZFMMrPe8CBbrv.jpg",
+      "releaseInfo": "2013"
+    }
+  ]
+}
+
