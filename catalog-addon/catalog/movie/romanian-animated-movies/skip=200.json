@@ -1,0 +1,705 @@
+{
+  "metas": [
+    {
+      "id": "tmdb:140420",
+      "type": "movie",
+      "name": "Paperman",
+      "poster": "https://image.tmdb.org/t/p/w500/6MXYNvGmI63W8fI3HKlcZzEy1U5.jpg",
+      "releaseInfo": "2012"
+    },
+    {
+      "id": "tmdb:664574",
+      "type": "movie",
+      "name": "Noapte liniștită",
+      "poster": "https://image.tmdb.org/t/p/w500/zKnenwvQB6xA4mxc8zxL2S8qVbR.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:876716",
+      "type": "movie",
+      "name": "Ciao Alberto",
+      "poster": "https://image.tmdb.org/t/p/w500/1SyTnaY0wte69oKdqxQLvxPT3hs.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:77887",
+      "type": "movie",
+      "name": "Povestea jucăriilor: Vacanța Hawaiană",
+      "poster": "https://image.tmdb.org/t/p/w500/tByW10AkjWG0DtZwN2E2trT88DD.jpg",
+      "releaseInfo": "2011"
+    },
+    {
+      "id": "tmdb:747059",
+      "type": "movie",
+      "name": "Burrow",
+      "poster": "https://image.tmdb.org/t/p/w500/zkQcHvMc7gVG6OWVotVLDeRkrRl.jpg",
+      "releaseInfo": "2020"
+    },
+    {
+      "id": "tmdb:1333609",
+      "type": "movie",
+      "name": "Nona",
+      "poster": "https://image.tmdb.org/t/p/w500/jWlFOOpijBeNMws7KwtFBB79v2S.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:852719",
+      "type": "movie",
+      "name": "Twenty Something",
+      "poster": "https://image.tmdb.org/t/p/w500/zLaGPqNxhkxkzEqPd6hb58FB8t4.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:574093",
+      "type": "movie",
+      "name": "Float",
+      "poster": "https://image.tmdb.org/t/p/w500/mgwObpU1NCXfPqF7ZaTpi80mxsF.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:574074",
+      "type": "movie",
+      "name": "Kitbull",
+      "poster": "https://image.tmdb.org/t/p/w500/mwKO3cZbxipgd9QAPboJVTDLPiN.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:646053",
+      "type": "movie",
+      "name": "Loop",
+      "poster": "https://image.tmdb.org/t/p/w500/pUA0cnrZnm8IRx1NMcr9FiOsAI7.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:697173",
+      "type": "movie",
+      "name": "Out",
+      "poster": "https://image.tmdb.org/t/p/w500/kU3YYulx2RNB8TYns7a2QR9CqEP.jpg",
+      "releaseInfo": "2020"
+    },
+    {
+      "id": "tmdb:574091",
+      "type": "movie",
+      "name": "Wind",
+      "poster": "https://image.tmdb.org/t/p/w500/eCQOiAWjXmRPlktXFEu4vt22Kz2.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:532952",
+      "type": "movie",
+      "name": "Smash and Grab",
+      "poster": "https://image.tmdb.org/t/p/w500/bsDQdjuGAhj6JrmCKVBFTUBeIrb.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:532953",
+      "type": "movie",
+      "name": "Purl",
+      "poster": "https://image.tmdb.org/t/p/w500/A8to7TlVMBwMuDgi2DJ9rVJsobE.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:148605",
+      "type": "movie",
+      "name": "Mater Camion Monstru",
+      "poster": "https://image.tmdb.org/t/p/w500/ikdzBp4KIDazYgbJJLakZJmfnhn.jpg",
+      "releaseInfo": "2010"
+    },
+    {
+      "id": "tmdb:296137",
+      "type": "movie",
+      "name": "Spinning",
+      "poster": "https://image.tmdb.org/t/p/w500/rrnf2Q6doMoFr68Ai6Y2IgF8Fel.jpg",
+      "releaseInfo": "2013"
+    },
+    {
+      "id": "tmdb:148608",
+      "type": "movie",
+      "name": "Moon Mater",
+      "poster": "https://image.tmdb.org/t/p/w500/d4du70hEkq5nBznMcW89BxDY2Zb.jpg",
+      "releaseInfo": "2010"
+    },
+    {
+      "id": "tmdb:140967",
+      "type": "movie",
+      "name": "Mater the Greater",
+      "poster": "https://image.tmdb.org/t/p/w500/tVrU8hUW2xTjAlIiyAvYVOFFQwd.jpg",
+      "releaseInfo": "2008"
+    },
+    {
+      "id": "tmdb:39030",
+      "type": "movie",
+      "name": "El Materdor",
+      "poster": "https://image.tmdb.org/t/p/w500/sW4IdZHsUOi6I4hAYtR92aeHUsC.jpg",
+      "releaseInfo": "2008"
+    },
+    {
+      "id": "tmdb:148607",
+      "type": "movie",
+      "name": "Heavy Metal Mater",
+      "poster": "https://image.tmdb.org/t/p/w500/5WFqQ6VhbPP1JGDe0RDWW5PPLgE.jpg",
+      "releaseInfo": "2010"
+    },
+    {
+      "id": "tmdb:171536",
+      "type": "movie",
+      "name": "Unidentified Flying Mater",
+      "poster": "https://image.tmdb.org/t/p/w500/i6To4oegSvLEW9CTsrCANgko1Gj.jpg",
+      "releaseInfo": "2009"
+    },
+    {
+      "id": "tmdb:56553",
+      "type": "movie",
+      "name": "Rescue Squad Mater",
+      "poster": "https://image.tmdb.org/t/p/w500/2mLBoPMSXshWjknql6dxc2DAfZ1.jpg",
+      "releaseInfo": "2008"
+    },
+    {
+      "id": "tmdb:148606",
+      "type": "movie",
+      "name": "Mater Private Eye",
+      "poster": "https://image.tmdb.org/t/p/w500/xy5fx1rJXfJPxNHx0qqdcTYr1Wp.jpg",
+      "releaseInfo": "2010"
+    },
+    {
+      "id": "tmdb:483396",
+      "type": "movie",
+      "name": "Miss Fritter's Racing Skoool",
+      "poster": "https://image.tmdb.org/t/p/w500/hyFYjn7OjmEg8HkQVjQm2rXOTo1.jpg",
+      "releaseInfo": "2017"
+    },
+    {
+      "id": "tmdb:13934",
+      "type": "movie",
+      "name": "Mater și lumina fantomă",
+      "poster": "https://image.tmdb.org/t/p/w500/thZHluscCvT3SCzVckmFszOVVtM.jpg",
+      "releaseInfo": "2006"
+    },
+    {
+      "id": "tmdb:24328",
+      "type": "movie",
+      "name": "Tokyo Mater",
+      "poster": "https://image.tmdb.org/t/p/w500/sBFxPsjKNDZgnV1kcOzAXU205wa.jpg",
+      "releaseInfo": "2008"
+    },
+    {
+      "id": "tmdb:286189",
+      "type": "movie",
+      "name": "The Radiator Springs 500½",
+      "poster": "https://image.tmdb.org/t/p/w500/oKuGXTnggOmut8A0ZvU1Hh2yOa8.jpg",
+      "releaseInfo": "2014"
+    },
+    {
+      "id": "tmdb:509080",
+      "type": "movie",
+      "name": "LEGO: Marvel Super Heroes – Gardienii galaxiei",
+      "poster": "https://image.tmdb.org/t/p/w500/e5h1RlnQzjgEAh4s96k50S8XkKa.jpg",
+      "releaseInfo": "2017"
+    },
+    {
+      "id": "tmdb:528222",
+      "type": "movie",
+      "name": "LEGO: Marvel Super Heroes – Pantera Neagră",
+      "poster": "https://image.tmdb.org/t/p/w500/2t6V87sYjESrtBj9flbHWhZKtAp.jpg",
+      "releaseInfo": "2018"
+    },
+    {
+      "id": "tmdb:870358",
+      "type": "movie",
+      "name": "Crăciunul cu micul Batman",
+      "poster": "https://image.tmdb.org/t/p/w500/sZI81uzQncVuYgM58yMUE2MIJMK.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:1123093",
+      "type": "movie",
+      "name": "Jurnalul unui puști: Arest la domiciliu de Crăciun",
+      "poster": "https://image.tmdb.org/t/p/w500/tV0996od52EJ6S8dLKvcVGsO7B.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:66816",
+      "type": "movie",
+      "name": "A Knight for a Day",
+      "poster": "https://image.tmdb.org/t/p/w500/uccgNllBobc7mWec1WFyEoszJvO.jpg",
+      "releaseInfo": "1946"
+    },
+    {
+      "id": "tmdb:49077",
+      "type": "movie",
+      "name": "All in a Nutshell",
+      "poster": "https://image.tmdb.org/t/p/w500/n48x4oozcMNAjmDZ7AfGhHpoJme.jpg",
+      "releaseInfo": "1949"
+    },
+    {
+      "id": "tmdb:52482",
+      "type": "movie",
+      "name": "Elmer Elephant",
+      "poster": "https://image.tmdb.org/t/p/w500/xeROPnW0JWQOF380WGtGPlYNkzV.jpg",
+      "releaseInfo": "1936"
+    },
+    {
+      "id": "tmdb:234567",
+      "type": "movie",
+      "name": "Get a Horse!",
+      "poster": "https://image.tmdb.org/t/p/w500/axVSbOZxa6Xp0ticSJA6faVeyDY.jpg",
+      "releaseInfo": "2013"
+    },
+    {
+      "id": "tmdb:66884",
+      "type": "movie",
+      "name": "How to Fish",
+      "poster": "https://image.tmdb.org/t/p/w500/bCu4PyNkVZ02UlXdUMjrE72s1Jz.jpg",
+      "releaseInfo": "1942"
+    },
+    {
+      "id": "tmdb:132714",
+      "type": "movie",
+      "name": "Gulliver Mickey",
+      "poster": "https://image.tmdb.org/t/p/w500/kJlHoCpjjqMcNl2VuVzWZGZ4RtY.jpg",
+      "releaseInfo": "1934"
+    },
+    {
+      "id": "tmdb:55566",
+      "type": "movie",
+      "name": "Goliath II",
+      "poster": "https://image.tmdb.org/t/p/w500/6L3TLqnx1VCaOiWgeFHR7rjYRTd.jpg",
+      "releaseInfo": "1960"
+    },
+    {
+      "id": "tmdb:54184",
+      "type": "movie",
+      "name": "Lambert the Sheepish Lion",
+      "poster": "https://image.tmdb.org/t/p/w500/hnJpKnhfLG3zPpHk1lFkxbEUCsn.jpg",
+      "releaseInfo": "1952"
+    },
+    {
+      "id": "tmdb:32428",
+      "type": "movie",
+      "name": "Lonesome Ghosts",
+      "poster": "https://image.tmdb.org/t/p/w500/ydAWe33OKMxkwd4piuQdKDVr3qO.jpg",
+      "releaseInfo": "1937"
+    },
+    {
+      "id": "tmdb:67132",
+      "type": "movie",
+      "name": "Mr. Mouse Takes a Trip",
+      "poster": "https://image.tmdb.org/t/p/w500/aHwYLRD0r4gB1zd5z5Cp2x14njw.jpg",
+      "releaseInfo": "1940"
+    },
+    {
+      "id": "tmdb:31135",
+      "type": "movie",
+      "name": "Mickey and the Beanstalk",
+      "poster": "https://image.tmdb.org/t/p/w500/yJ5vx5U4Dj8iU3IcyyLzonNnmJT.jpg",
+      "releaseInfo": "1947"
+    },
+    {
+      "id": "tmdb:14813",
+      "type": "movie",
+      "name": "Colinda de Crăciun a lui Mickey",
+      "poster": "https://image.tmdb.org/t/p/w500/kIv4dXyFm8SW2crbsagbVeRqMiF.jpg",
+      "releaseInfo": "1983"
+    },
+    {
+      "id": "tmdb:67167",
+      "type": "movie",
+      "name": "Atelierul lui Moș Crăciun",
+      "poster": "https://image.tmdb.org/t/p/w500/21eoNIxYWj63hHWoXkzreQCWOnx.jpg",
+      "releaseInfo": "1932"
+    },
+    {
+      "id": "tmdb:67572",
+      "type": "movie",
+      "name": "The Band Concert",
+      "poster": "https://image.tmdb.org/t/p/w500/veEJ9AjgdcuGT9Yylvw2xdcJlUa.jpg",
+      "releaseInfo": "1935"
+    },
+    {
+      "id": "tmdb:44293",
+      "type": "movie",
+      "name": "Paul Bunyan",
+      "poster": "https://image.tmdb.org/t/p/w500/b6BNmkxDtoKUW3XHM79lzOWn8z3.jpg",
+      "releaseInfo": "1958"
+    },
+    {
+      "id": "tmdb:81077",
+      "type": "movie",
+      "name": "The Grasshopper and the Ants",
+      "poster": "https://image.tmdb.org/t/p/w500/rTRYC5loiIL5EuQgZv7NXEiH0Pd.jpg",
+      "releaseInfo": "1934"
+    },
+    {
+      "id": "tmdb:22752",
+      "type": "movie",
+      "name": "The Reluctant Dragon",
+      "poster": "https://image.tmdb.org/t/p/w500/woyLqPJLeHP7gzF7DOtEapqaJQx.jpg",
+      "releaseInfo": "1941"
+    },
+    {
+      "id": "tmdb:25831",
+      "type": "movie",
+      "name": "Print si cersetor",
+      "poster": "https://image.tmdb.org/t/p/w500/i5HhTVZo50hbCccUBwZpMTwBuLS.jpg",
+      "releaseInfo": "1990"
+    },
+    {
+      "id": "tmdb:91815",
+      "type": "movie",
+      "name": "The Wise Little Hen",
+      "poster": "https://image.tmdb.org/t/p/w500/oMKqAHgr4aC194UKlLt4N8nbwtM.jpg",
+      "releaseInfo": "1934"
+    },
+    {
+      "id": "tmdb:987337",
+      "type": "movie",
+      "name": "The Wonderful Summer of Mickey Mouse",
+      "poster": "https://image.tmdb.org/t/p/w500/9sdmCWZlLwFF4GbohSQxlD24g6m.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:27287",
+      "type": "movie",
+      "name": "The Small One",
+      "poster": "https://image.tmdb.org/t/p/w500/dumrBarjoCd7tSarOYSRLiPFcPC.jpg",
+      "releaseInfo": "1978"
+    },
+    {
+      "id": "tmdb:67609",
+      "type": "movie",
+      "name": "Three Blind Mouseketeers",
+      "poster": "https://image.tmdb.org/t/p/w500/oqh31E3VVFUVRZiUdoxajWj57qT.jpg",
+      "releaseInfo": "1936"
+    },
+    {
+      "id": "tmdb:939336",
+      "type": "movie",
+      "name": "The Wonderful Winter of Mickey Mouse",
+      "poster": "https://image.tmdb.org/t/p/w500/3dspgMFx64kA8BqkGZQK6Hk1sCV.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:34463",
+      "type": "movie",
+      "name": "Cei trei porcușori",
+      "poster": "https://image.tmdb.org/t/p/w500/aPmSY3y4A2xMSkF24tdIfDQNKJy.jpg",
+      "releaseInfo": "1933"
+    },
+    {
+      "id": "tmdb:67661",
+      "type": "movie",
+      "name": "Thru the Mirror",
+      "poster": "https://image.tmdb.org/t/p/w500/ykONqQgAnLDySxbXHwmFzmueWO3.jpg",
+      "releaseInfo": "1936"
+    },
+    {
+      "id": "tmdb:109329",
+      "type": "movie",
+      "name": "Three Little Wolves",
+      "poster": "https://image.tmdb.org/t/p/w500/AsoHl5o6ewvrlL5y38gQLNHj46A.jpg",
+      "releaseInfo": "1936"
+    },
+    {
+      "id": "tmdb:418956",
+      "type": "movie",
+      "name": "The Ugly Duckling",
+      "poster": "https://image.tmdb.org/t/p/w500/nCkMoq2penMxvdhQa0LGwK1G6fJ.jpg",
+      "releaseInfo": "1939"
+    },
+    {
+      "id": "tmdb:67790",
+      "type": "movie",
+      "name": "Zilele de altădată",
+      "poster": "https://image.tmdb.org/t/p/w500/bz6ARhFsKEpNSA0dBvegSvgN1jM.jpg",
+      "releaseInfo": "1933"
+    },
+    {
+      "id": "tmdb:15906",
+      "type": "movie",
+      "name": "Barbie și magia lui Pegas 3-D",
+      "poster": "https://image.tmdb.org/t/p/w500/wqKNLSzGN9lqnmtFFwu40g2eWgQ.jpg",
+      "releaseInfo": "2005"
+    },
+    {
+      "id": "tmdb:23566",
+      "type": "movie",
+      "name": "Barbie și cei trei muschetari",
+      "poster": "https://image.tmdb.org/t/p/w500/zR0ts7zL2P1kQIQXYlnS4KCqqmu.jpg",
+      "releaseInfo": "2009"
+    },
+    {
+      "id": "tmdb:13283",
+      "type": "movie",
+      "name": "Barbie prințesa insulei",
+      "poster": "https://image.tmdb.org/t/p/w500/oguRPUFeHt0H0wO0He4ewTseMXo.jpg",
+      "releaseInfo": "2007"
+    },
+    {
+      "id": "tmdb:57737",
+      "type": "movie",
+      "name": "Barbie: Secretul zânelor",
+      "poster": "https://image.tmdb.org/t/p/w500/wn2aoYKOonwMNKkzfgO5y4ji8pB.jpg",
+      "releaseInfo": "2011"
+    },
+    {
+      "id": "tmdb:481583",
+      "type": "movie",
+      "name": "Barbie: Dreamtopia Festival of Fun",
+      "poster": "https://image.tmdb.org/t/p/w500/zybhquH38BMn55GIwMQ6E3mGabR.jpg",
+      "releaseInfo": "2018"
+    },
+    {
+      "id": "tmdb:15167",
+      "type": "movie",
+      "name": "Barbie in the Nutcracker",
+      "poster": "https://image.tmdb.org/t/p/w500/eIkXJggVmzN4MyPgJ2kDjOy9lmQ.jpg",
+      "releaseInfo": "2001"
+    },
+    {
+      "id": "tmdb:13459",
+      "type": "movie",
+      "name": "Barbie și colindele de Crăciun",
+      "poster": "https://image.tmdb.org/t/p/w500/fX9g1AE1JIqjX3LPPKVjcmHs6fd.jpg",
+      "releaseInfo": "2008"
+    },
+    {
+      "id": "tmdb:18198",
+      "type": "movie",
+      "name": "Barbie Mariposa și prietenele zâne-fluture",
+      "poster": "https://image.tmdb.org/t/p/w500/qsb1OQCNVMAX3KRT6xhKOl3mM6P.jpg",
+      "releaseInfo": "2008"
+    },
+    {
+      "id": "tmdb:73456",
+      "type": "movie",
+      "name": "Barbie la școala prințeselor",
+      "poster": "https://image.tmdb.org/t/p/w500/lI2jPbssax6XX5vDqB9mTJHGzfH.jpg",
+      "releaseInfo": "2011"
+    },
+    {
+      "id": "tmdb:255718",
+      "type": "movie",
+      "name": "Barbie: Prințesa perlelor",
+      "poster": "https://image.tmdb.org/t/p/w500/zA4csIbIKzPOd6DwN5rKxHkVCu6.jpg",
+      "releaseInfo": "2014"
+    },
+    {
+      "id": "tmdb:16418",
+      "type": "movie",
+      "name": "Barbie prezintă Thumbelina",
+      "poster": "https://image.tmdb.org/t/p/w500/ytKd2jWnzWLCiccutqqMNzcP5RE.jpg",
+      "releaseInfo": "2009"
+    },
+    {
+      "id": "tmdb:11047",
+      "type": "movie",
+      "name": "Astérix le Gaulois",
+      "poster": "https://image.tmdb.org/t/p/w500/hTjdYzjOvSCyO4Un8NQszX9nwwg.jpg",
+      "releaseInfo": "1967"
+    },
+    {
+      "id": "tmdb:828397",
+      "type": "movie",
+      "name": "Ben Gen 10",
+      "poster": "https://image.tmdb.org/t/p/w500/nxWAw5kaYjSH8EIcUz6VtHj8jyd.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:834802",
+      "type": "movie",
+      "name": "Ben 10.010",
+      "poster": "https://image.tmdb.org/t/p/w500/6aDh4yH5FHaMfjdsqw4n97rl7FJ.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:882878",
+      "type": "movie",
+      "name": "Ben 10 Extraterestro-Mania",
+      "poster": "https://image.tmdb.org/t/p/w500/pgL3pJEPv1K4Bb1isw5PFlA1MJ3.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:27653",
+      "type": "movie",
+      "name": "O coadă americană: misterul monstrului de noapte",
+      "poster": "https://image.tmdb.org/t/p/w500/oTV5TwZ4i6wDcWxoNpczk4CQBbM.jpg",
+      "releaseInfo": "1999"
+    },
+    {
+      "id": "tmdb:262549",
+      "type": "movie",
+      "name": "Donald Duck - Cele mai frumoase aventuri de Craciun",
+      "poster": "https://image.tmdb.org/t/p/w500/wd1mpVo5MP7PlVe0CWuF8bMVScL.jpg",
+      "releaseInfo": "2012"
+    },
+    {
+      "id": "tmdb:459159",
+      "type": "movie",
+      "name": "Puppy!",
+      "poster": "https://image.tmdb.org/t/p/w500/sNxIazoQqDQukfQqkYxTgx9DRbu.jpg",
+      "releaseInfo": "2017"
+    },
+    {
+      "id": "tmdb:893723",
+      "type": "movie",
+      "name": "Patrula Cățelușilor: Filmul cel Mare",
+      "poster": "https://image.tmdb.org/t/p/w500/n5x6FvGTDj061Ei8fbgGfCuxCyB.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:429657",
+      "type": "movie",
+      "name": "Albert",
+      "poster": "https://image.tmdb.org/t/p/w500/6hEXYAJ88eQZFN3niaBsjn52os9.jpg",
+      "releaseInfo": "2016"
+    },
+    {
+      "id": "tmdb:1166714",
+      "type": "movie",
+      "name": "Mickey and Friends: Trick or Treats",
+      "poster": "https://image.tmdb.org/t/p/w500/ntL7axfE0W0HHcF0wAmlRVla20o.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:1046032",
+      "type": "movie",
+      "name": "Băieții răi: Sărbători foarte rele",
+      "poster": "https://image.tmdb.org/t/p/w500/cvleTuXZnMhp3VyhN60yJo5B2x7.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:1075794",
+      "type": "movie",
+      "name": "Leo",
+      "poster": "https://image.tmdb.org/t/p/w500/gSOVog7ydsaF1YpgAqBqnKYFGY.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:392536",
+      "type": "movie",
+      "name": "LEGO Scooby-Doo! Haunted Hollywood",
+      "poster": "https://image.tmdb.org/t/p/w500/fZ53SvgcryXaWctiiRtlxR1p4Uq.jpg",
+      "releaseInfo": "2016"
+    },
+    {
+      "id": "tmdb:718100",
+      "type": "movie",
+      "name": "The Swan Princess: A Royal Wedding",
+      "poster": "https://image.tmdb.org/t/p/w500/mJaNBADFKRiMys8DiGemrLGYd9U.jpg",
+      "releaseInfo": "2020"
+    },
+    {
+      "id": "tmdb:1154598",
+      "type": "movie",
+      "name": "LEGO Marvel Avengers: Code Red",
+      "poster": "https://image.tmdb.org/t/p/w500/rDzig50dj7VpLwJ7SThbamETK1G.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:1175959",
+      "type": "movie",
+      "name": "The Swan Princess: Far Longer Than Forever",
+      "poster": "https://image.tmdb.org/t/p/w500/dWyxPokAp4eiJXWriYbNvU2v1V.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:1040148",
+      "type": "movie",
+      "name": "Ruby Gillman, adolescenta kraken",
+      "poster": "https://image.tmdb.org/t/p/w500/wrSFglhDHVhyHHCWsbso6XkqV9m.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:1146348",
+      "type": "movie",
+      "name": "Scooby-Doo! and Krypto, Too!",
+      "poster": "https://image.tmdb.org/t/p/w500/ntMOnvlYYnio7Fx3xqBu9B1Sz7f.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:614930",
+      "type": "movie",
+      "name": "Țestoasele Ninja: Haosul mutanților",
+      "poster": "https://image.tmdb.org/t/p/w500/4ympvYV3A0MhtDTf56pHmdOQATq.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:601131",
+      "type": "movie",
+      "name": "Norm of the North: King Sized Adventure",
+      "poster": "https://image.tmdb.org/t/p/w500/lc2ZqIBQGSyETa7V37V6jDS8W2o.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:1186402",
+      "type": "movie",
+      "name": "Strawberry Shortcake and the Beast of Berry Bog",
+      "poster": "https://image.tmdb.org/t/p/w500/mxF63zcLcKn3pytKxYI3PbXqatA.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:676705",
+      "type": "movie",
+      "name": "Aventurile lui Pil",
+      "poster": "https://image.tmdb.org/t/p/w500/eSOWxoIIIrVjJYWO8yLsaotxuya.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:587284",
+      "type": "movie",
+      "name": "Lucky",
+      "poster": "https://image.tmdb.org/t/p/w500/pecbGfL7xM7ERapRRwPCWN8PF14.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:439058",
+      "type": "movie",
+      "name": "Hey Arnold: Filmul Junglei",
+      "poster": "https://image.tmdb.org/t/p/w500/asBhWDiqGxelve0DtMfMFIzR0Jm.jpg",
+      "releaseInfo": "2018"
+    },
+    {
+      "id": "tmdb:2899",
+      "type": "movie",
+      "name": "Asterix și Obelix - Misiune: Cleopatra",
+      "poster": "https://image.tmdb.org/t/p/w500/eBPaDAdVBMBp6ZaotSvyF1B5ipK.jpg",
+      "releaseInfo": "2002"
+    },
+    {
+      "id": "tmdb:676710",
+      "type": "movie",
+      "name": "Năstrușnicul Motan Maurice",
+      "poster": "https://image.tmdb.org/t/p/w500/tUNsQXAqOen09PwDN3Xw1yHE8CZ.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:1153222",
+      "type": "movie",
+      "name": "LEGO Disney Prințese: Aventură la castel",
+      "poster": "https://image.tmdb.org/t/p/w500/yVOUMUxndWI4HWUH89l63maH5vr.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:832502",
+      "type": "movie",
+      "name": "Regele Maimuță",
+      "poster": "https://image.tmdb.org/t/p/w500/i6ye8ueFhVE5pXatgyRrZ83LBD8.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:569094",
+      "type": "movie",
+      "name": "Omul-Păianjen: Prin lumea păianjenului",
+      "poster": "https://image.tmdb.org/t/p/w500/xxgHYTS38rvMqUBain8auWvnV6o.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:976573",
+      "type": "movie",
+      "name": "Elementar",
+      "poster": "https://image.tmdb.org/t/p/w500/zEIdfI4TWMILyMclKvlkntNNjdP.jpg",
+      "releaseInfo": "2023"
+    }
+  ]
+}
+
