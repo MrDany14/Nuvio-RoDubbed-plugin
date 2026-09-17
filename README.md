@@ -1,2 +1,3 @@
 # Nuvio-TV
-Nuvio Android TV compatible Plugins.
+
+Nuvio Android TV compatible Romanian-language plugin.
