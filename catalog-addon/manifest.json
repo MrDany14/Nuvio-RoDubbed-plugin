@@ -16,23 +16,23 @@
   "catalogs": [
     {
       "type": "movie",
-      "id": "romanian-dubbed-movies",
-      "name": "Filme dublate în română"
-    },
-    {
-      "type": "movie",
       "id": "romanian-animated-movies",
       "name": "Filme animate"
     },
     {
       "type": "series",
-      "id": "romanian-dubbed-series",
-      "name": "Seriale dublate în română"
+      "id": "romanian-animated-series",
+      "name": "Seriale animate"
+    },
+    {
+      "type": "movie",
+      "id": "romanian-dubbed-movies",
+      "name": "Filme dublate în română"
     },
     {
       "type": "series",
-      "id": "romanian-animated-series",
-      "name": "Seriale animate"
+      "id": "romanian-dubbed-series",
+      "name": "Seriale dublate în română"
     }
   ]
 }
