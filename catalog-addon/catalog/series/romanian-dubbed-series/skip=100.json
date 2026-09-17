@@ -1,0 +1,215 @@
+{
+  "metas": [
+    {
+      "id": "tmdb:83867",
+      "type": "series",
+      "name": "Războiul stelelor: Andor",
+      "poster": "https://image.tmdb.org/t/p/w500/59SVNwLfoMnZPPB6ukW6dlPxAdI.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:71914",
+      "type": "series",
+      "name": "Roata timpului",
+      "poster": "https://image.tmdb.org/t/p/w500/qxFKL8oquXbhQywyaaUPnVYU9wl.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:84773",
+      "type": "series",
+      "name": "Stăpânul Inelelor: Inelele Puterii",
+      "poster": "https://image.tmdb.org/t/p/w500/igQLDoZwvDKNM7AyzUdpjHWXENA.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:114461",
+      "type": "series",
+      "name": "Ahsoka",
+      "poster": "https://image.tmdb.org/t/p/w500/laCJxobHoPVaLQTKxc14Y2zV64J.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:114922",
+      "type": "series",
+      "name": "Citadela",
+      "poster": "https://image.tmdb.org/t/p/w500/AcrDB32TqpAGwvQFbICALGxSzn3.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:114472",
+      "type": "series",
+      "name": "Invazia Secretă",
+      "poster": "https://image.tmdb.org/t/p/w500/12uMoFlLP550DwI7TsYuFTPhIem.jpg",
+      "releaseInfo": "2023"
+    },
+    {
+      "id": "tmdb:76479",
+      "type": "series",
+      "name": "The Boys",
+      "poster": "https://image.tmdb.org/t/p/w500/cmoiQRckDbwA2aPY2Izz3ClXsXn.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:71915",
+      "type": "series",
+      "name": "Semne bune",
+      "poster": "https://image.tmdb.org/t/p/w500/wj45RgxafVTq3QN9zJ36bqpns3V.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:61720",
+      "type": "series",
+      "name": "Violetta",
+      "poster": "https://image.tmdb.org/t/p/w500/b3MUGJeKakAZwQa7lNJxTP1pJmD.jpg",
+      "releaseInfo": "2012"
+    },
+    {
+      "id": "tmdb:66203",
+      "type": "series",
+      "name": "Soy Luna",
+      "poster": "https://image.tmdb.org/t/p/w500/qeU9NIxLuNFTZVFUOSFpAXB4ZLU.jpg",
+      "releaseInfo": "2016"
+    },
+    {
+      "id": "tmdb:92783",
+      "type": "series",
+      "name": "She-Hulk: Avocata apărării",
+      "poster": "https://image.tmdb.org/t/p/w500/zNKVhijwhmkcMcgonCQ2yHLc7Ca.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:196511",
+      "type": "series",
+      "name": "Echipa majoretelor rebele: Revanșa",
+      "poster": "https://image.tmdb.org/t/p/w500/7a0milHiNVtENcf4XEPLXQcumA1.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:84958",
+      "type": "series",
+      "name": "Loki",
+      "poster": "https://image.tmdb.org/t/p/w500/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:68654",
+      "type": "series",
+      "name": "MECH-X4",
+      "poster": "https://image.tmdb.org/t/p/w500/acHYpTfMVKHxpI91Y6qjR4w75VC.jpg",
+      "releaseInfo": "2016"
+    },
+    {
+      "id": "tmdb:92749",
+      "type": "series",
+      "name": "Moon Knight",
+      "poster": "https://image.tmdb.org/t/p/w500/vKDUmKO6F9bSKKyHhg7YGbgcEeF.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:92830",
+      "type": "series",
+      "name": "Obi-Wan Kenobi: Întoarcerea unui Jedi",
+      "poster": "https://image.tmdb.org/t/p/w500/qJRB789ceLryrLvOKrZqLKr2CGf.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:85271",
+      "type": "series",
+      "name": "WandaVision",
+      "poster": "https://image.tmdb.org/t/p/w500/frobUz2X5Pc8OiVZU8Oo5K3NKMM.jpg",
+      "releaseInfo": "2021"
+    },
+    {
+      "id": "tmdb:92782",
+      "type": "series",
+      "name": "Ms. Marvel",
+      "poster": "https://image.tmdb.org/t/p/w500/cdkyMYdu8ao26XOBvilNzLneUg1.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:129141",
+      "type": "series",
+      "name": "O vară în valuri",
+      "poster": "https://image.tmdb.org/t/p/w500/3ACSUbLIYeNz1DuWkTN5LUQ7so5.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:89315",
+      "type": "series",
+      "name": "Să Improvizăm!",
+      "poster": "https://image.tmdb.org/t/p/w500/4edOWIihP3jn4BjHckEGytLZPZy.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:67660",
+      "type": "series",
+      "name": "Ce ciudat",
+      "poster": "https://image.tmdb.org/t/p/w500/3FHNrPPTCaRFerdKb1FTrUpvIYx.jpg",
+      "releaseInfo": "2015"
+    },
+    {
+      "id": "tmdb:38867",
+      "type": "series",
+      "name": "Copiii Bionici",
+      "poster": "https://image.tmdb.org/t/p/w500/6aqLN3szS9zTpnRl9czt4dCDjJT.jpg",
+      "releaseInfo": "2012"
+    },
+    {
+      "id": "tmdb:61851",
+      "type": "series",
+      "name": "Binny și fantoma",
+      "poster": "https://image.tmdb.org/t/p/w500/qktTg7bJRAocxmLK3bO5CJIwz65.jpg",
+      "releaseInfo": "2013"
+    },
+    {
+      "id": "tmdb:90823",
+      "type": "series",
+      "name": "BIA",
+      "poster": "https://image.tmdb.org/t/p/w500/vFS6fSilrVWSQ4pbuNzQgWZyGGP.jpg",
+      "releaseInfo": "2019"
+    },
+    {
+      "id": "tmdb:196556",
+      "type": "series",
+      "name": "MaveriX",
+      "poster": "https://image.tmdb.org/t/p/w500/kb6NH1HXMBoSprurYr6ftRJjZ3p.jpg",
+      "releaseInfo": "2022"
+    },
+    {
+      "id": "tmdb:82199",
+      "type": "series",
+      "name": "O balerină la Paris",
+      "poster": "https://image.tmdb.org/t/p/w500/uOTYMzTlXFbWDZCxxc0vX9CvBsl.jpg",
+      "releaseInfo": "2018"
+    },
+    {
+      "id": "tmdb:38974",
+      "type": "series",
+      "name": "Jessie",
+      "poster": "https://image.tmdb.org/t/p/w500/tspQe0FuiaUj0U1R1norNbiYTe4.jpg",
+      "releaseInfo": "2011"
+    },
+    {
+      "id": "tmdb:86833",
+      "type": "series",
+      "name": "Penny De La M.A.R.S.",
+      "poster": "https://image.tmdb.org/t/p/w500/aa34y9dNmEULV3UmXyyPY9Q6dRb.jpg",
+      "releaseInfo": "2018"
+    },
+    {
+      "id": "tmdb:4610",
+      "type": "series",
+      "name": "Hannah Montana",
+      "poster": "https://image.tmdb.org/t/p/w500/q2gRVmDreweuX7FeGppw6MJE1bu.jpg",
+      "releaseInfo": "2006"
+    },
+    {
+      "id": "tmdb:114547",
+      "type": "series",
+      "name": "Secretele din Sulphur Springs",
+      "poster": "https://image.tmdb.org/t/p/w500/2huc4Ef44MBNlbYMa2qjqFvyW2q.jpg",
+      "releaseInfo": "2021"
+    }
+  ]
+}
+
