@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.34";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.35";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -17,6 +17,8 @@ var FETCH_HEADERS = {
 };
 
 var M3U8_RE = /(?:https?:)?\/\/[^\s"'<>\\]+?(?:\.m3u8|\/master\.txt)(?:\?[^\s"'<>\\]*)?/gi;
+var BYSE_STREAM_CACHE_MS = 10 * 60 * 1000;
+var byseStreamCache = {};
 
 function fetchText(url, options) {
   options = options || {};
@@ -554,17 +556,24 @@ function createByseFingerprint(apiOrigin) {
     return createByseFallbackFingerprint(apiOrigin);
   }
 
+  var keyPairPromise;
+  try {
+    keyPairPromise = webCrypto.subtle.generateKey(
+      { name: "ECDSA", namedCurve: "P-256" },
+      true,
+      ["sign", "verify"]
+    );
+  } catch (error) {
+    return createByseFallbackFingerprint(apiOrigin);
+  }
+
+  return Promise.resolve(keyPairPromise).then(function(keys) {
     return apiJson(apiOrigin + "/api/videos/access/challenge", {
       method: "POST",
       credentials: "include",
       headers: byseAccessHeaders(apiOrigin),
       body: "{}"
-  }).then(function(challenge) {
-    return webCrypto.subtle.generateKey(
-      { name: "ECDSA", namedCurve: "P-256" },
-      true,
-      ["sign", "verify"]
-    ).then(function(keys) {
+    }).then(function(challenge) {
       return Promise.all([
         webCrypto.subtle.exportKey("jwk", keys.publicKey),
         webCrypto.subtle.sign(
@@ -607,10 +616,12 @@ function createByseFingerprint(apiOrigin) {
             confidence: attestation.confidence || 0
           };
         });
+      }, function() {
+        return createByseFallbackFingerprint(apiOrigin);
       });
-    }).catch(function() {
-      return createByseFallbackFingerprint(apiOrigin);
     });
+  }, function() {
+    return createByseFallbackFingerprint(apiOrigin);
   });
 }
 
@@ -2020,13 +2031,32 @@ function resolveByseProviderOnce(providerUrl, pageUrl) {
 }
 
 function resolveByseProvider(providerUrl, pageUrl) {
+  var cacheKey = String(providerUrl || "");
+  var cached = byseStreamCache[cacheKey];
+  function copyStreams(streams) {
+    return (streams || []).map(function(stream) {
+      return Object.assign({}, stream);
+    });
+  }
+
+  if (cached && cached.expiresAt > Date.now()) {
+    return Promise.resolve(copyStreams(cached.streams));
+  }
+  if (cached) delete byseStreamCache[cacheKey];
+
   var retried = false;
   function resolve() {
     return resolveByseProviderOnce(providerUrl, pageUrl).then(function(streams) {
+      if (streams && streams.length) {
+        byseStreamCache[cacheKey] = {
+          expiresAt: Date.now() + BYSE_STREAM_CACHE_MS,
+          streams: copyStreams(streams)
+        };
+      }
       return streams;
     }).catch(function(error) {
       var message = String(error && error.message || error || "");
-      var retryable = /HTTP\s+(?:408|425|429|5\d\d)\b/i.test(message) ||
+      var retryable = /HTTP\s+(?:408|425|5\d\d)\b/i.test(message) ||
         /failed to fetch|load failed|network|connection|socket/i.test(message);
       if (retried || !retryable) throw error;
       retried = true;
@@ -2200,33 +2230,80 @@ function resolveProvider(providerUrl, pageUrl, displayTitle) {
 function resolveServerUrls(serverUrls, pageUrl, index, displayTitle) {
   if (index >= serverUrls.length) return Promise.resolve([]);
 
-  var server = serverUrls[index];
-  var serverUrl = typeof server === "string" ? server : server && server.url;
-  var serverLabel = typeof server === "string" ? "" : server && server.label;
-  if (!serverUrl) return resolveServerUrls(serverUrls, pageUrl, index + 1, displayTitle);
+  var byseServers = [];
+  var otherServers = [];
+  serverUrls.slice(index).forEach(function(server) {
+    if (/byse/i.test(server && server.label || "")) byseServers.push(server);
+    else otherServers.push(server);
+  });
 
-  return fetchText(serverUrl, { headers: { Referer: pageUrl } }).then(function(embedHtml) {
-    return Promise.resolve(findByseProviderUrl(embedHtml)).then(function(providerUrl) {
-      if (providerUrl) return resolveProvider(providerUrl, serverUrl, displayTitle);
+  function resolveGroup(servers, timeoutMs) {
+    return Promise.all(servers.map(function(server) {
+      var serverUrl = typeof server === "string" ? server : server && server.url;
+      var serverLabel = typeof server === "string" ? "" : server && server.label;
+      if (!serverUrl) return Promise.resolve([]);
 
-      return findHlsUrls(embedHtml).map(function(url) {
-        return decorateStream(
-          directHlsStream(url, "HLS", serverUrl, pageUrl),
-          displayTitle,
-          serverUrl
-        );
+      var resolution = fetchText(serverUrl, { headers: { Referer: pageUrl } }).then(function(embedHtml) {
+        return Promise.resolve(findByseProviderUrl(embedHtml)).then(function(providerUrl) {
+          if (providerUrl) return resolveProvider(providerUrl, serverUrl, displayTitle);
+
+          return findHlsUrls(embedHtml).map(function(url) {
+            return decorateStream(
+              directHlsStream(url, "HLS", serverUrl, pageUrl),
+              displayTitle,
+              serverUrl
+            );
+          });
+        });
+      }).catch(function() {
+        return [];
       });
+
+      if (typeof setTimeout !== "function") {
+        return resolution.then(function(streams) {
+          return labelStreams(streams, serverLabel);
+        });
+      }
+
+      var timer;
+      var timeout = new Promise(function(resolve) {
+        timer = setTimeout(function() { resolve([]); }, timeoutMs);
+      });
+      return Promise.race([resolution, timeout]).then(function(streams) {
+        if (timer && typeof clearTimeout === "function") clearTimeout(timer);
+        return labelStreams(streams, serverLabel);
+      }).catch(function() {
+        if (timer && typeof clearTimeout === "function") clearTimeout(timer);
+        return [];
+      });
+    })).then(function(groups) {
+      return uniqueStreams(groups.reduce(function(all, streams) {
+        return all.concat(streams || []);
+      }, []));
     });
-  }).catch(function() {
-    return [];
-  }).then(function(streams) {
-    var labeledStreams = labelStreams(streams, serverLabel);
-    if (labeledStreams.length && /byse/i.test(serverLabel)) {
-      return uniqueStreams(labeledStreams);
-    }
-    return resolveServerUrls(serverUrls, pageUrl, index + 1, displayTitle).then(function(nextStreams) {
-      return uniqueStreams(labeledStreams.concat(nextStreams || []));
-    });
+  }
+
+  // Resolve fallbacks in parallel so a dead embed cannot block working ones.
+  var otherResults = resolveGroup(otherServers, 6000);
+  if (!byseServers.length) return otherResults;
+
+  var byseResults = resolveGroup(byseServers, 18000);
+  var byseWaitTimer;
+  var byseWait = typeof setTimeout === "function"
+    ? new Promise(function(resolve) {
+      byseWaitTimer = setTimeout(function() { resolve(null); }, 15000);
+    })
+    : byseResults.then(function() { return null; });
+
+  return Promise.race([
+    byseResults.then(function(streams) {
+      return streams.length ? { streams: streams } : null;
+    }),
+    byseWait
+  ]).then(function(result) {
+    if (byseWaitTimer && typeof clearTimeout === "function") clearTimeout(byseWaitTimer);
+    if (result && result.streams) return result.streams;
+    return otherResults;
   });
 }
 
@@ -2234,13 +2311,6 @@ function resolveFilmPageResult(result, displayTitle) {
   if (!result || !result.html) return Promise.resolve([]);
   var serverUrls = findServerUrls(result.html, result.url);
   if (!serverUrls.length) return Promise.resolve([]);
-  var byseServers = [];
-  var otherServers = [];
-  serverUrls.forEach(function(server) {
-    if (/byse/i.test(server && server.label || "")) byseServers.push(server);
-    else otherServers.push(server);
-  });
-  serverUrls = byseServers.concat(otherServers);
   return resolveServerUrls(serverUrls, result.url, 0, displayTitle);
 }
 
