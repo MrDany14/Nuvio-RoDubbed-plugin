@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.36";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.37";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -625,32 +625,49 @@ function createByseFingerprint(apiOrigin) {
   });
 }
 
-function byseRotate(value, shift) {
-  return (value << shift | value >>> (32 - shift)) >>> 0;
-}
-
 function byseMix(state) {
-  state[0] = state[0] + state[1] >>> 0;
-  state[3] = byseRotate(state[3] ^ state[0], 16);
-  state[2] = state[2] + state[3] >>> 0;
-  state[1] = byseRotate(state[1] ^ state[2], 12);
-  state[0] = state[0] + state[1] >>> 0;
-  state[3] = byseRotate(state[3] ^ state[0], 8);
-  state[2] = state[2] + state[3] >>> 0;
-  state[1] = byseRotate(state[1] ^ state[2], 7);
+  var a = state[0];
+  var b = state[1];
+  var c = state[2];
+  var d = state[3];
+
+  a = (a + b) >>> 0;
+  d = (d ^ a) >>> 0;
+  d = (d << 16 | d >>> 16) >>> 0;
+  c = (c + d) >>> 0;
+  b = (b ^ c) >>> 0;
+  b = (b << 12 | b >>> 20) >>> 0;
+  a = (a + b) >>> 0;
+  d = (d ^ a) >>> 0;
+  d = (d << 8 | d >>> 24) >>> 0;
+  c = (c + d) >>> 0;
+  b = (b ^ c) >>> 0;
+  b = (b << 7 | b >>> 25) >>> 0;
+
+  state[0] = a;
+  state[1] = b;
+  state[2] = c;
+  state[3] = d;
 }
 
-function bysePowHash(bytes) {
-  var state = new Uint32Array([1779033703, 3144134277, 1013904242, 2773480762]);
+function bysePowHash(bytes, workspace, byteLength) {
+  workspace = workspace || {};
+  var state = workspace.state || new Uint32Array(4);
+  state[0] = 1779033703;
+  state[1] = 3144134277;
+  state[2] = 1013904242;
+  state[3] = 2773480762;
+
+  var inputLength = typeof byteLength === "number" ? byteLength : bytes.length;
   var index;
-  for (index = 0; index < bytes.length; index += 1) {
+  for (index = 0; index < inputLength; index += 1) {
     state[0] = state[0] + bytes[index] >>> 0;
-    state[0] = byseRotate(state[0], 7);
+    state[0] = (state[0] << 7 | state[0] >>> 25) >>> 0;
     byseMix(state);
   }
   for (index = 0; index < 8; index += 1) byseMix(state);
 
-  var table = new Uint32Array(512);
+  var table = workspace.table || new Uint32Array(512);
   for (index = 0; index < 512; index += 1) {
     byseMix(state);
     table[index] = (state[0] ^ state[2]) >>> 0;
@@ -661,7 +678,7 @@ function bysePowHash(bytes) {
     for (index = 0; index < 512; index += 1) {
       var target = table[index] & 511;
       var value = table[index] + table[target] >>> 0;
-      value = byseRotate(value, 13);
+      value = (value << 13 | value >>> 19) >>> 0;
       value = (value ^ Math.imul(table[(index + 1) & 511], 2654435761)) >>> 0;
       table[index] = value;
       state[0] = (state[0] ^ value) >>> 0;
@@ -669,7 +686,7 @@ function bysePowHash(bytes) {
     }
   }
 
-  var result = new Uint32Array(8);
+  var result = workspace.result || new Uint32Array(8);
   for (index = 0; index < 8; index += 1) {
     byseMix(state);
     var sum = state[0];
@@ -677,7 +694,7 @@ function bysePowHash(bytes) {
     for (var offset = 0; offset < 64; offset += 1) {
       var item = table[start + offset];
       sum = sum + item >>> 0;
-      sum = byseRotate(sum, 5);
+      sum = (sum << 5 | sum >>> 27) >>> 0;
       sum = (sum ^ Math.imul(item, 2246822519)) >>> 0;
     }
     result[index] = (sum ^ state[2]) >>> 0;
@@ -700,6 +717,14 @@ function byseLeadingZeroBits(words) {
 function solveBysePow(nonce, difficulty, timeoutMs) {
   if (!difficulty || difficulty <= 0) return Promise.resolve("0");
   var prefix = String(nonce) + ":";
+  var prefixBytes = textBytes(prefix);
+  var powInput = new Uint8Array(prefixBytes.length + 20);
+  powInput.set(prefixBytes, 0);
+  var workspace = {
+    state: new Uint32Array(4),
+    table: new Uint32Array(512),
+    result: new Uint32Array(8)
+  };
   var solution = 0;
   var started = Date.now();
   var timeout = parseInt(timeoutMs, 10) || 20000;
@@ -707,7 +732,11 @@ function solveBysePow(nonce, difficulty, timeoutMs) {
   if (typeof setTimeout !== "function") {
     while (Date.now() - started <= timeout) {
       for (var syncCount = 0; syncCount < 1024; syncCount += 1) {
-        if (byseLeadingZeroBits(bysePowHash(textBytes(prefix + solution))) >= difficulty) {
+        var syncCounter = String(solution);
+        for (var syncDigit = 0; syncDigit < syncCounter.length; syncDigit += 1) {
+          powInput[prefixBytes.length + syncDigit] = syncCounter.charCodeAt(syncDigit);
+        }
+        if (byseLeadingZeroBits(bysePowHash(powInput, workspace, prefixBytes.length + syncCounter.length)) >= difficulty) {
           return Promise.resolve(String(solution));
         }
         solution += 1;
@@ -718,7 +747,11 @@ function solveBysePow(nonce, difficulty, timeoutMs) {
 
   function step() {
     for (var count = 0; count < 1024; count += 1) {
-      if (byseLeadingZeroBits(bysePowHash(textBytes(prefix + solution))) >= difficulty) {
+      var counter = String(solution);
+      for (var digit = 0; digit < counter.length; digit += 1) {
+        powInput[prefixBytes.length + digit] = counter.charCodeAt(digit);
+      }
+      if (byseLeadingZeroBits(bysePowHash(powInput, workspace, prefixBytes.length + counter.length)) >= difficulty) {
         return Promise.resolve(String(solution));
       }
       solution += 1;
@@ -1925,7 +1958,20 @@ function findServerUrls(pageHtml, pageUrl) {
   return servers;
 }
 
-function findByseProviderUrl(embedHtml) {
+function byseDiagnosticHint(error) {
+  var message = String(error && error.message || error || "").toLowerCase();
+  var status = message.match(/\bhttp\s+\d{3}\b/i);
+  if (/proof of work timed out/.test(message)) return "proof-of-work timeout";
+  if (/fingerprint/.test(message)) return "device fingerprint error";
+  if (status) return status[0].toUpperCase();
+  if (/decrypt|aes|payload|key version|no hls source/.test(message)) return "playback decode/source error";
+  if (/timeout|timed out/.test(message)) return "request timeout";
+  if (/fetch|network|connection|socket/.test(message)) return "network error";
+  return "provider resolution error";
+}
+
+function findByseProviderUrl(embedHtml, diagnostics) {
+  diagnostics = diagnostics || {};
   var tidMatch = String(embedHtml).match(
     /<iframe\b[^>]*src=["']([^"']*\?trhide=1(?:&|&amp;)tid=[^"']+)["']/i
   );
@@ -1940,11 +1986,17 @@ function findByseProviderUrl(embedHtml) {
 
   return fetchText(nestedUrl).then(function(nestedHtml) {
     var hexMatch = String(nestedHtml).match(/trde\s*\(\s*["']([0-9a-f]+)["']\s*\)/i);
-    if (!hexMatch) return null;
+    if (!hexMatch) {
+      diagnostics.byseError = "embed code not found";
+      return null;
+    }
 
     var reversed = hexMatch[1].split("").reverse().join("");
-    return decodeHex(reversed);
+    var providerUrl = decodeHex(reversed);
+    if (!/^https?:\/\//i.test(providerUrl)) diagnostics.byseError = "embed link decode failed";
+    return providerUrl;
   }).catch(function() {
+    diagnostics.byseError = "embed request failed";
     return null;
   });
 }
@@ -2143,7 +2195,7 @@ function resolveVoeProvider(providerUrl, pageUrl) {
   });
 }
 
-function resolveProvider(providerUrl, pageUrl, displayTitle) {
+function resolveProvider(providerUrl, pageUrl, displayTitle, diagnostics) {
   if (/player\.desenefaine\.net|netu/i.test(providerUrl)) {
     return Promise.resolve([]);
   }
@@ -2189,6 +2241,7 @@ function resolveProvider(providerUrl, pageUrl, displayTitle) {
         return decorateStream(stream, displayTitle, providerUrl);
       });
     }).catch(function(error) {
+      if (diagnostics) diagnostics.byseError = byseDiagnosticHint(error);
       if (typeof console !== "undefined" && console.error) {
         console.error(
           "[DeseneFaine] Byse stream resolution failed",
@@ -2227,17 +2280,18 @@ function resolveProvider(providerUrl, pageUrl, displayTitle) {
   });
 }
 
-function resolveServerUrls(serverUrls, pageUrl, index, displayTitle) {
+function resolveServerUrls(serverUrls, pageUrl, index, displayTitle, diagnostics) {
+  diagnostics = diagnostics || {};
   if (index >= serverUrls.length) return Promise.resolve([]);
 
   var server = serverUrls[index];
   var serverUrl = typeof server === "string" ? server : server && server.url;
   var serverLabel = typeof server === "string" ? "" : server && server.label;
-  if (!serverUrl) return resolveServerUrls(serverUrls, pageUrl, index + 1, displayTitle);
+  if (!serverUrl) return resolveServerUrls(serverUrls, pageUrl, index + 1, displayTitle, diagnostics);
 
   return fetchText(serverUrl, { headers: { Referer: pageUrl } }).then(function(embedHtml) {
-    return Promise.resolve(findByseProviderUrl(embedHtml)).then(function(providerUrl) {
-      if (providerUrl) return resolveProvider(providerUrl, serverUrl, displayTitle);
+    return Promise.resolve(findByseProviderUrl(embedHtml, diagnostics)).then(function(providerUrl) {
+      if (providerUrl) return resolveProvider(providerUrl, serverUrl, displayTitle, diagnostics);
 
       return findHlsUrls(embedHtml).map(function(url) {
         return decorateStream(
@@ -2247,14 +2301,19 @@ function resolveServerUrls(serverUrls, pageUrl, index, displayTitle) {
         );
       });
     });
-  }).catch(function() {
+  }).catch(function(error) {
+    if (/byse/i.test(serverLabel)) diagnostics.byseError = byseDiagnosticHint(error);
     return [];
   }).then(function(streams) {
     var labeledStreams = labelStreams(streams, serverLabel);
+    if (diagnostics.byseError && !diagnostics.hintShown && labeledStreams.length) {
+      labeledStreams[0].name += "\nByse check: " + diagnostics.byseError;
+      diagnostics.hintShown = true;
+    }
     if (labeledStreams.length && /byse/i.test(serverLabel)) {
       return uniqueStreams(labeledStreams);
     }
-    return resolveServerUrls(serverUrls, pageUrl, index + 1, displayTitle).then(function(nextStreams) {
+    return resolveServerUrls(serverUrls, pageUrl, index + 1, displayTitle, diagnostics).then(function(nextStreams) {
       return uniqueStreams(labeledStreams.concat(nextStreams || []));
     });
   });
@@ -2264,7 +2323,7 @@ function resolveFilmPageResult(result, displayTitle) {
   if (!result || !result.html) return Promise.resolve([]);
   var serverUrls = findServerUrls(result.html, result.url);
   if (!serverUrls.length) return Promise.resolve([]);
-  return resolveServerUrls(serverUrls, result.url, 0, displayTitle);
+  return resolveServerUrls(serverUrls, result.url, 0, displayTitle, {});
 }
 
 function normalizeCatalogId(id) {
