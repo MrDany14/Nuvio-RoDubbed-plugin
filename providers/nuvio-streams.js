@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.35";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.36";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -2230,80 +2230,33 @@ function resolveProvider(providerUrl, pageUrl, displayTitle) {
 function resolveServerUrls(serverUrls, pageUrl, index, displayTitle) {
   if (index >= serverUrls.length) return Promise.resolve([]);
 
-  var byseServers = [];
-  var otherServers = [];
-  serverUrls.slice(index).forEach(function(server) {
-    if (/byse/i.test(server && server.label || "")) byseServers.push(server);
-    else otherServers.push(server);
-  });
+  var server = serverUrls[index];
+  var serverUrl = typeof server === "string" ? server : server && server.url;
+  var serverLabel = typeof server === "string" ? "" : server && server.label;
+  if (!serverUrl) return resolveServerUrls(serverUrls, pageUrl, index + 1, displayTitle);
 
-  function resolveGroup(servers, timeoutMs) {
-    return Promise.all(servers.map(function(server) {
-      var serverUrl = typeof server === "string" ? server : server && server.url;
-      var serverLabel = typeof server === "string" ? "" : server && server.label;
-      if (!serverUrl) return Promise.resolve([]);
+  return fetchText(serverUrl, { headers: { Referer: pageUrl } }).then(function(embedHtml) {
+    return Promise.resolve(findByseProviderUrl(embedHtml)).then(function(providerUrl) {
+      if (providerUrl) return resolveProvider(providerUrl, serverUrl, displayTitle);
 
-      var resolution = fetchText(serverUrl, { headers: { Referer: pageUrl } }).then(function(embedHtml) {
-        return Promise.resolve(findByseProviderUrl(embedHtml)).then(function(providerUrl) {
-          if (providerUrl) return resolveProvider(providerUrl, serverUrl, displayTitle);
-
-          return findHlsUrls(embedHtml).map(function(url) {
-            return decorateStream(
-              directHlsStream(url, "HLS", serverUrl, pageUrl),
-              displayTitle,
-              serverUrl
-            );
-          });
-        });
-      }).catch(function() {
-        return [];
+      return findHlsUrls(embedHtml).map(function(url) {
+        return decorateStream(
+          directHlsStream(url, "HLS", serverUrl, pageUrl),
+          displayTitle,
+          serverUrl
+        );
       });
-
-      if (typeof setTimeout !== "function") {
-        return resolution.then(function(streams) {
-          return labelStreams(streams, serverLabel);
-        });
-      }
-
-      var timer;
-      var timeout = new Promise(function(resolve) {
-        timer = setTimeout(function() { resolve([]); }, timeoutMs);
-      });
-      return Promise.race([resolution, timeout]).then(function(streams) {
-        if (timer && typeof clearTimeout === "function") clearTimeout(timer);
-        return labelStreams(streams, serverLabel);
-      }).catch(function() {
-        if (timer && typeof clearTimeout === "function") clearTimeout(timer);
-        return [];
-      });
-    })).then(function(groups) {
-      return uniqueStreams(groups.reduce(function(all, streams) {
-        return all.concat(streams || []);
-      }, []));
     });
-  }
-
-  // Resolve fallbacks in parallel so a dead embed cannot block working ones.
-  var otherResults = resolveGroup(otherServers, 6000);
-  if (!byseServers.length) return otherResults;
-
-  var byseResults = resolveGroup(byseServers, 18000);
-  var byseWaitTimer;
-  var byseWait = typeof setTimeout === "function"
-    ? new Promise(function(resolve) {
-      byseWaitTimer = setTimeout(function() { resolve(null); }, 15000);
-    })
-    : byseResults.then(function() { return null; });
-
-  return Promise.race([
-    byseResults.then(function(streams) {
-      return streams.length ? { streams: streams } : null;
-    }),
-    byseWait
-  ]).then(function(result) {
-    if (byseWaitTimer && typeof clearTimeout === "function") clearTimeout(byseWaitTimer);
-    if (result && result.streams) return result.streams;
-    return otherResults;
+  }).catch(function() {
+    return [];
+  }).then(function(streams) {
+    var labeledStreams = labelStreams(streams, serverLabel);
+    if (labeledStreams.length && /byse/i.test(serverLabel)) {
+      return uniqueStreams(labeledStreams);
+    }
+    return resolveServerUrls(serverUrls, pageUrl, index + 1, displayTitle).then(function(nextStreams) {
+      return uniqueStreams(labeledStreams.concat(nextStreams || []));
+    });
   });
 }
 
