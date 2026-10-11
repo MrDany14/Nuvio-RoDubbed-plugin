@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.38";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.39";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -2321,9 +2321,6 @@ function resolveServerUrls(serverUrls, pageUrl, index, displayTitle) {
     var labeledStreams = labelStreams(streams, serverLabel);
     if (diagnostics.byseError && typeof console !== "undefined" && console.warn) {
       console.warn("[DeseneFaine] Byse check failed for " + (serverLabel || serverUrl) + ": " + diagnostics.byseError);
-    }
-    if (labeledStreams.length && /byse/i.test(serverLabel)) {
-      return uniqueStreams(labeledStreams);
     }
     return resolveServerUrls(serverUrls, pageUrl, index + 1, displayTitle).then(function(nextStreams) {
       return uniqueStreams(labeledStreams.concat(nextStreams || []));
