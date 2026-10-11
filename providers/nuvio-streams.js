@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.37";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.38";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -1444,10 +1444,30 @@ function decorateStream(stream, displayTitle, providerUrl) {
   return stream;
 }
 
+function streamDeduplicationKey(value) {
+  var url = String(value || "").trim().split("#")[0];
+  var queryIndex = url.indexOf("?");
+  if (queryIndex < 0) return url;
+
+  var path = url.slice(0, queryIndex);
+  var params = url.slice(queryIndex + 1).split("&").filter(function(param) {
+    var equalsIndex = param.indexOf("=");
+    var name = equalsIndex < 0 ? param : param.slice(0, equalsIndex);
+    try {
+      name = decodeURIComponent(name.replace(/\+/g, " "));
+    } catch (error) {
+      // Keep malformed parameter names as-is.
+    }
+    return !/^(?:sig|signature|expires|expiry|exp|policy|key-pair-id|awsaccesskeyid|hdnea|hdnts|x-amz-[\w-]+|x-goog-[\w-]+|x-amzn-[\w-]+|x-ms-[\w-]+|utm_[\w-]+|fbclid|gclid|mc_cid|mc_eid|_)$/i.test(name);
+  });
+
+  return path + (params.length ? "?" + params.join("&") : "");
+}
+
 function uniqueStreams(streams) {
   var seen = {};
   return (streams || []).filter(function(stream) {
-    var key = String(stream && stream.url || "");
+    var key = streamDeduplicationKey(stream && stream.url);
     if (!key || seen[key]) return false;
     seen[key] = true;
     return true;
@@ -2242,13 +2262,6 @@ function resolveProvider(providerUrl, pageUrl, displayTitle, diagnostics) {
       });
     }).catch(function(error) {
       if (diagnostics) diagnostics.byseError = byseDiagnosticHint(error);
-      if (typeof console !== "undefined" && console.error) {
-        console.error(
-          "[DeseneFaine] Byse stream resolution failed",
-          String(providerUrl || ""),
-          String(error && error.message || error || "unknown error")
-        );
-      }
       return [];
     });
   }
@@ -2280,14 +2293,14 @@ function resolveProvider(providerUrl, pageUrl, displayTitle, diagnostics) {
   });
 }
 
-function resolveServerUrls(serverUrls, pageUrl, index, displayTitle, diagnostics) {
-  diagnostics = diagnostics || {};
+function resolveServerUrls(serverUrls, pageUrl, index, displayTitle) {
   if (index >= serverUrls.length) return Promise.resolve([]);
 
   var server = serverUrls[index];
   var serverUrl = typeof server === "string" ? server : server && server.url;
   var serverLabel = typeof server === "string" ? "" : server && server.label;
-  if (!serverUrl) return resolveServerUrls(serverUrls, pageUrl, index + 1, displayTitle, diagnostics);
+  if (!serverUrl) return resolveServerUrls(serverUrls, pageUrl, index + 1, displayTitle);
+  var diagnostics = {};
 
   return fetchText(serverUrl, { headers: { Referer: pageUrl } }).then(function(embedHtml) {
     return Promise.resolve(findByseProviderUrl(embedHtml, diagnostics)).then(function(providerUrl) {
@@ -2306,14 +2319,13 @@ function resolveServerUrls(serverUrls, pageUrl, index, displayTitle, diagnostics
     return [];
   }).then(function(streams) {
     var labeledStreams = labelStreams(streams, serverLabel);
-    if (diagnostics.byseError && !diagnostics.hintShown && labeledStreams.length) {
-      labeledStreams[0].name += "\nByse check: " + diagnostics.byseError;
-      diagnostics.hintShown = true;
+    if (diagnostics.byseError && typeof console !== "undefined" && console.warn) {
+      console.warn("[DeseneFaine] Byse check failed for " + (serverLabel || serverUrl) + ": " + diagnostics.byseError);
     }
     if (labeledStreams.length && /byse/i.test(serverLabel)) {
       return uniqueStreams(labeledStreams);
     }
-    return resolveServerUrls(serverUrls, pageUrl, index + 1, displayTitle, diagnostics).then(function(nextStreams) {
+    return resolveServerUrls(serverUrls, pageUrl, index + 1, displayTitle).then(function(nextStreams) {
       return uniqueStreams(labeledStreams.concat(nextStreams || []));
     });
   });
@@ -2323,7 +2335,7 @@ function resolveFilmPageResult(result, displayTitle) {
   if (!result || !result.html) return Promise.resolve([]);
   var serverUrls = findServerUrls(result.html, result.url);
   if (!serverUrls.length) return Promise.resolve([]);
-  return resolveServerUrls(serverUrls, result.url, 0, displayTitle, {});
+  return resolveServerUrls(serverUrls, result.url, 0, displayTitle);
 }
 
 function normalizeCatalogId(id) {
