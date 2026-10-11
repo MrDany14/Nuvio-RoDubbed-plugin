@@ -7,7 +7,7 @@ try {
 }
 
 var PROVIDER_NAME = "DeseneFaine";
-var DESENEFAINE_PLUGIN_VERSION = "1.7.39";
+var DESENEFAINE_PLUGIN_VERSION = "1.7.40";
 var MAIN_URL = "https://desenefaine.com";
 var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
 
@@ -1482,9 +1482,23 @@ function labelStreams(streams, serverLabel) {
     var label = "✦ " + serverLabel;
     var normalizedLabel = normalizeTitle(serverLabel);
     var normalizedSource = normalizeTitle(sourceName);
+    var audioLanguages = streamAudioLanguages(stream);
+    if (!audioLanguages.length && /\b(?:romana|romanian|ro dub)\b/.test(normalizedLabel)) {
+      stream.audioLanguage = "ro";
+      audioLanguages = ["RO"];
+    }
+    var audioDetails = audioLanguages.length ? "⭐ " + streamAudioDisplay(audioLanguages) : "";
     var isByseAlias = normalizedSource === "bysewihe" && normalizedLabel.indexOf("byse") >= 0;
     if (sourceName && normalizedLabel.indexOf(normalizedSource) < 0 && !isByseAlias) {
       label += " | " + sourceName;
+    }
+    var hasAudioDetails = nameParts.slice(1).some(function(part) {
+      return /^\s*(?:⭐|🌐|🎧)/.test(part);
+    });
+    if (audioDetails && !hasAudioDetails) nameParts.push(audioDetails);
+    if (audioDetails) {
+      stream.title = audioDetails;
+      stream.description = audioDetails;
     }
     stream.name = label + (nameParts.length ? "\n" + nameParts.join("\n") : "");
     return stream;
