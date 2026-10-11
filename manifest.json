@@ -1,14 +1,14 @@
 {
   "id": "ro-cartoons-repo",
   "name": "Romanian Streams Repository",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Romanian-language movie and series streams",
   "scrapers": [
     {
       "id": "nuvio-streams",
       "name": "Romanian Streams",
       "description": "Romanian-language streams for movies and series",
-      "version": "1.7.29",
+      "version": "1.8.5",
       "author": "MrDany14",
       "supportedTypes": ["movie", "tv"],
       "filename": "providers/nuvio-streams.js",
