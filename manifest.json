@@ -1,7 +1,7 @@
 {
   "id": "ro-rodubbed-parallel-repo",
   "name": "RoDubbed Parallel Streams",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Independent StreamP2P, Byse, Player4me, and SeekStreaming scrapers",
   "scrapers": [
     {
