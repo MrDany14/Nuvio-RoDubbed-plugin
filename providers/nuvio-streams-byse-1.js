@@ -444,7 +444,7 @@ function resolveFilmPageResult(e,r){if(!e||!e.html)return Promise.resolve([]);va
 
 
 (function() {
-  PLUGIN_VERSION = "2.0.2-1";
+  PLUGIN_VERSION = "2.0.3-1";
   var resolveByseNumbered = resolveProvider;
   resolveProvider = function(providerUrl, pageUrl, displayTitle) {
     return resolveByseNumbered(providerUrl, pageUrl, displayTitle).then(function(streams) {
@@ -455,5 +455,222 @@ function resolveFilmPageResult(e,r){if(!e||!e.html)return Promise.resolve([]);va
         return stream;
       });
     });
+  };
+})();
+
+
+(function() {
+  function byseCompatRawBytes(value) {
+    var text = String(value || "");
+    var bytes = new Uint8Array(text.length);
+    for (var index = 0; index < text.length; index += 1) {
+      bytes[index] = text.charCodeAt(index) & 255;
+    }
+    return bytes;
+  }
+
+  function byseCompatKeyBytes(playback) {
+    var version = parseInt(playback.version, 10);
+    var first = version;
+    var second = 31 - version;
+    var parts = playback.key_parts || [];
+    if (!first || !second || !parts[first - 1] || !parts[second - 1]) {
+      throw new Error("Unsupported Byse key version");
+    }
+    var left = byseCompatRawBytes(decodeBase64(parts[first - 1]));
+    var right = byseCompatRawBytes(decodeBase64(parts[second - 1]));
+    var key = new Uint8Array(left.length + right.length);
+    key.set(left, 0);
+    key.set(right, left.length);
+    return key;
+  }
+
+  function byseCompatHex(bytes) {
+    var text = "";
+    for (var index = 0; index < bytes.length; index += 1) {
+      text += ("0" + bytes[index].toString(16)).slice(-2);
+    }
+    return text;
+  }
+
+  function byseCompatEncryptBlock(encryptor, bytes) {
+    var words = [0, 0, 0, 0];
+    for (var index = 0; index < 16; index += 1) {
+      words[index >> 2] |= bytes[index] << (24 - (index & 3) * 8);
+    }
+    encryptor.encryptBlock(words, 0);
+    var output = new Uint8Array(16);
+    for (var outputIndex = 0; outputIndex < 16; outputIndex += 1) {
+      output[outputIndex] = (words[outputIndex >> 2] >>> (24 - (outputIndex & 3) * 8)) & 255;
+    }
+    return output;
+  }
+
+  function byseCompatGhashMultiply(value, hashSubkey) {
+    var product = new Uint8Array(16);
+    var factor = new Uint8Array(hashSubkey);
+    for (var bit = 0; bit < 128; bit += 1) {
+      if ((value[bit >> 3] & (1 << (7 - (bit & 7)))) !== 0) {
+        for (var byteIndex = 0; byteIndex < 16; byteIndex += 1) product[byteIndex] ^= factor[byteIndex];
+      }
+      var lowBit = factor[15] & 1;
+      var carry = 0;
+      for (var shiftIndex = 0; shiftIndex < 16; shiftIndex += 1) {
+        var current = factor[shiftIndex];
+        factor[shiftIndex] = (current >>> 1) | carry;
+        carry = (current & 1) ? 128 : 0;
+      }
+      if (lowBit) factor[0] ^= 225;
+    }
+    return product;
+  }
+
+  function byseCompatGhashBlock(state, block, hashSubkey) {
+    var value = new Uint8Array(16);
+    for (var index = 0; index < 16; index += 1) value[index] = state[index] ^ block[index];
+    return byseCompatGhashMultiply(value, hashSubkey);
+  }
+
+  function byseCompatDecryptCryptoJs(playback, keyBytes) {
+    if (!CryptoJS || !CryptoJS.algo || !CryptoJS.algo.AES) {
+      throw new Error("AES-GCM unavailable in QuickJS");
+    }
+    var iv = byseCompatRawBytes(decodeBase64(playback.iv));
+    var payload = byseCompatRawBytes(decodeBase64(playback.payload));
+    if (iv.length !== 12 || payload.length < 16) throw new Error("Unsupported Byse AES-GCM payload");
+
+    var encryptor = CryptoJS.algo.AES.createEncryptor(CryptoJS.enc.Hex.parse(byseCompatHex(keyBytes)));
+    var hashSubkey = byseCompatEncryptBlock(encryptor, new Uint8Array(16));
+    var j0 = new Uint8Array(16);
+    j0.set(iv, 0);
+    j0[15] = 1;
+
+    var ciphertextLength = payload.length - 16;
+    var ciphertext = payload.subarray(0, ciphertextLength);
+    var authTag = payload.subarray(ciphertextLength);
+    var hash = new Uint8Array(16);
+    for (var offset = 0; offset < ciphertext.length; offset += 16) {
+      var block = new Uint8Array(16);
+      block.set(ciphertext.subarray(offset, offset + 16));
+      hash = byseCompatGhashBlock(hash, block, hashSubkey);
+    }
+
+    var lengthBlock = new Uint8Array(16);
+    var bitLength = ciphertext.length * 8;
+    for (var lengthIndex = 15; lengthIndex >= 8; lengthIndex -= 1) {
+      lengthBlock[lengthIndex] = bitLength & 255;
+      bitLength = Math.floor(bitLength / 256);
+    }
+    hash = byseCompatGhashBlock(hash, lengthBlock, hashSubkey);
+    var expectedTag = byseCompatEncryptBlock(encryptor, j0);
+    var tagDifference = 0;
+    for (var tagIndex = 0; tagIndex < 16; tagIndex += 1) {
+      tagDifference |= authTag[tagIndex] ^ hash[tagIndex] ^ expectedTag[tagIndex];
+    }
+    if (tagDifference !== 0) throw new Error("Byse AES-GCM authentication failed");
+
+    var counter = new Uint8Array(j0);
+    var plaintext = new Uint8Array(ciphertext.length);
+    for (var counterOffset = 0; counterOffset < ciphertext.length; counterOffset += 16) {
+      for (var counterIndex = 15; counterIndex >= 12; counterIndex -= 1) {
+        counter[counterIndex] = (counter[counterIndex] + 1) & 255;
+        if (counter[counterIndex] !== 0) break;
+      }
+      var stream = byseCompatEncryptBlock(encryptor, counter);
+      var count = Math.min(16, ciphertext.length - counterOffset);
+      for (var streamIndex = 0; streamIndex < count; streamIndex += 1) {
+        plaintext[counterOffset + streamIndex] = ciphertext[counterOffset + streamIndex] ^ stream[streamIndex];
+      }
+    }
+
+    var text;
+    if (typeof TextDecoder === "function") {
+      text = new TextDecoder().decode(plaintext);
+    } else {
+      var words = [];
+      for (var wordIndex = 0; wordIndex < plaintext.length; wordIndex += 1) {
+        words[wordIndex >> 2] |= plaintext[wordIndex] << (24 - (wordIndex & 3) * 8);
+      }
+      text = CryptoJS.enc.Utf8.stringify(CryptoJS.lib.WordArray.create(words, plaintext.length));
+    }
+    return JSON.parse(text);
+  }
+
+  function byseCompatDecryptFallback(playback, keyBytes) {
+    if (CryptoJS && CryptoJS.algo && CryptoJS.algo.AES) {
+      return Promise.resolve().then(function() {
+        return byseCompatDecryptCryptoJs(playback, keyBytes);
+      });
+    }
+    try {
+      var nodeCrypto = require("crypto");
+      if (nodeCrypto.createDecipheriv && typeof Buffer !== "undefined") {
+        var payload = byseCompatRawBytes(decodeBase64(playback.payload));
+        var iv = byseCompatRawBytes(decodeBase64(playback.iv));
+        var decipher = nodeCrypto.createDecipheriv("aes-256-gcm", Buffer.from(keyBytes), Buffer.from(iv));
+        decipher.setAuthTag(Buffer.from(payload.subarray(payload.length - 16)));
+        var plaintext = Buffer.concat([
+          decipher.update(Buffer.from(payload.subarray(0, payload.length - 16))),
+          decipher.final()
+        ]);
+        return Promise.resolve(JSON.parse(plaintext.toString("utf8")));
+      }
+    } catch (error) {
+      return Promise.reject(error);
+    }
+    return Promise.reject(new Error("AES-GCM unavailable"));
+  }
+
+  fetchText = function(url, options) {
+    options = options || {};
+    var request = {
+      method: options.method || "GET",
+      headers: Object.assign({}, FETCH_HEADERS, options.headers || {})
+    };
+    if (options.body !== undefined) request.body = options.body;
+    if (options.credentials) request.credentials = options.credentials;
+    return fetchWithTimeout(url, request, options.timeoutMs).then(function(response) {
+      if (!response.ok) throw new Error("HTTP " + response.status);
+      return response.text();
+    });
+  };
+
+  fetchJson = function(url, options) {
+    options = options || {};
+    var request = {
+      method: options.method || "GET",
+      headers: Object.assign({}, FETCH_HEADERS, options.headers || {})
+    };
+    if (options.body !== undefined) request.body = options.body;
+    if (options.credentials) request.credentials = options.credentials;
+    return fetchWithTimeout(url, request, options.timeoutMs).then(function(response) {
+      if (!response.ok) throw new Error("HTTP " + response.status);
+      return response.json();
+    });
+  };
+
+  decryptBysePlayback = function(playback) {
+    var webCrypto = byseCrypto();
+    var keyBytes;
+    try {
+      keyBytes = byseCompatKeyBytes(playback);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+    if (!webCrypto || !webCrypto.subtle) return byseCompatDecryptFallback(playback, keyBytes);
+
+    var iv = byseCompatRawBytes(decodeBase64(playback.iv));
+    var payload = byseCompatRawBytes(decodeBase64(playback.payload));
+    return webCrypto.subtle.importKey("raw", keyBytes, { name: "AES-GCM" }, false, ["decrypt"])
+      .then(function(key) {
+        return webCrypto.subtle.decrypt({ name: "AES-GCM", iv: iv }, key, payload);
+      }).then(function(bytes) {
+        var text = typeof TextDecoder === "function"
+          ? new TextDecoder().decode(bytes)
+          : String.fromCharCode.apply(null, new Uint8Array(bytes));
+        return JSON.parse(text);
+      }).catch(function() {
+        return byseCompatDecryptFallback(playback, keyBytes);
+      });
   };
 })();
