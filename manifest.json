@@ -1,7 +1,7 @@
 {
   "id": "ro-cartoons-repo",
   "name": "Romanian Streams Repository",
-  "version": "4.0.6",
+  "version": "4.0.7",
   "description": "Romanian-language movie and series streams",
   "scrapers": [
     {
