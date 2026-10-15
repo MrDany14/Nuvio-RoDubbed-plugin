@@ -1,20 +1,189 @@
 {
-  "id": "ro-cartoons-repo",
-  "name": "Romanian Streams Repository",
-  "version": "4.0.8",
-  "description": "Romanian-language movie and series streams",
+  "id": "ro-rodubbed-parallel-repo",
+  "name": "RoDubbed Parallel Streams",
+  "version": "4.0.10",
+  "description": "Independent RoDubbed stream-host scrapers for parallel lookup",
   "scrapers": [
     {
-      "id": "nuvio-streams",
-      "name": "Romanian Streams",
-      "description": "Romanian-language streams for movies and series",
-      "version": "2.0.1",
+      "id": "rodubbed-voe",
+      "name": "RoDubbed Voe",
+      "description": "Voe streams from RoDubbed",
+      "version": "1.0.0",
       "author": "MrDany14",
-      "supportedTypes": ["movie", "tv"],
-      "filename": "providers/nuvio-streams.js",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/nuvio-streams-voe.js",
       "enabled": true,
-      "contentLanguage": ["ro"],
-      "formats": ["mp4", "mkv", "m3u8"],
+      "contentLanguage": [
+        "ro"
+      ],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "limited": false,
+      "disabledPlatforms": [],
+      "supportsExternalPlayer": true
+    },
+    {
+      "id": "rodubbed-dood",
+      "name": "RoDubbed Dood",
+      "description": "Doodstream and PlayMogo streams from RoDubbed",
+      "version": "1.0.0",
+      "author": "MrDany14",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/nuvio-streams-dood.js",
+      "enabled": true,
+      "contentLanguage": [
+        "ro"
+      ],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "limited": false,
+      "disabledPlatforms": [],
+      "supportsExternalPlayer": true
+    },
+    {
+      "id": "rodubbed-mixdrop",
+      "name": "RoDubbed MixDrop",
+      "description": "MixDrop streams from RoDubbed",
+      "version": "1.0.0",
+      "author": "MrDany14",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/nuvio-streams-mixdrop.js",
+      "enabled": true,
+      "contentLanguage": [
+        "ro"
+      ],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "limited": false,
+      "disabledPlatforms": [],
+      "supportsExternalPlayer": true
+    },
+    {
+      "id": "rodubbed-vsembed",
+      "name": "RoDubbed Vsembed",
+      "description": "Vsembed and VidSrc streams from RoDubbed",
+      "version": "1.0.0",
+      "author": "MrDany14",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/nuvio-streams-vsembed.js",
+      "enabled": true,
+      "contentLanguage": [
+        "ro"
+      ],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "limited": false,
+      "disabledPlatforms": [],
+      "supportsExternalPlayer": true
+    },
+    {
+      "id": "rodubbed-videasy",
+      "name": "RoDubbed Videasy",
+      "description": "Videasy streams from RoDubbed",
+      "version": "1.0.0",
+      "author": "MrDany14",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/nuvio-streams-videasy.js",
+      "enabled": true,
+      "contentLanguage": [
+        "ro"
+      ],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "limited": false,
+      "disabledPlatforms": [],
+      "supportsExternalPlayer": true
+    },
+    {
+      "id": "rodubbed-byse",
+      "name": "RoDubbed Byse",
+      "description": "Byse streams from RoDubbed",
+      "version": "1.0.0",
+      "author": "MrDany14",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/nuvio-streams-byse.js",
+      "enabled": true,
+      "contentLanguage": [
+        "ro"
+      ],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "limited": false,
+      "disabledPlatforms": [],
+      "supportsExternalPlayer": true
+    },
+    {
+      "id": "rodubbed-player4me",
+      "name": "RoDubbed Player4me",
+      "description": "Player4me-family streams from RoDubbed",
+      "version": "1.0.0",
+      "author": "MrDany14",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/nuvio-streams-player4me.js",
+      "enabled": true,
+      "contentLanguage": [
+        "ro"
+      ],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "limited": false,
+      "disabledPlatforms": [],
+      "supportsExternalPlayer": true
+    },
+    {
+      "id": "rodubbed-direct-hls",
+      "name": "RoDubbed Direct HLS",
+      "description": "Direct HLS streams from RoDubbed server pages",
+      "version": "1.0.0",
+      "author": "MrDany14",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/nuvio-streams-direct-hls.js",
+      "enabled": true,
+      "contentLanguage": [
+        "ro"
+      ],
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": true
