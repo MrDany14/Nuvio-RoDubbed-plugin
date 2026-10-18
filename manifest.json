@@ -35,8 +35,8 @@
       "supportsExternalPlayer": true
     },
     {
-      "id": "rodubbed-byse1",
-      "name": "RoDubbed Byse1",
+      "id": "rodubbed-byse",
+      "name": "RoDubbed Byse",
       "description": "Byse HLS streams discovered through the Romanian catalog",
       "version": "2.0.4",
       "author": "MrDany14",
