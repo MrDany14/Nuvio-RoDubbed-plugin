@@ -48,36 +48,6 @@
       "limited": false,
       "disabledPlatforms": [],
       "supportsExternalPlayer": true
-    },
-    {
-      "id": "rodubbed-byse",
-      "name": "RoDubbed Byse",
-      "description": "Byse HLS streams discovered through the Romanian catalog",
-      "version": "2.0.6",
-      "author": "MrDany14",
-      "supportedTypes": ["movie", "tv"],
-      "filename": "providers/nuvio-streams-byse-v2.0.6.js",
-      "enabled": true,
-      "contentLanguage": ["ro"],
-      "formats": ["mp4", "m3u8"],
-      "limited": false,
-      "disabledPlatforms": [],
-      "supportsExternalPlayer": true
-    },
-    {
-      "id": "rodubbed-player4me",
-      "name": "RoDubbed Player4me",
-      "description": "Player4me HLS streams discovered through the Romanian catalog",
-      "version": "2.0.2",
-      "author": "MrDany14",
-      "supportedTypes": ["movie", "tv"],
-      "filename": "providers/nuvio-streams-player4me-v2.0.2.js",
-      "enabled": true,
-      "contentLanguage": ["ro"],
-      "formats": ["mp4", "m3u8"],
-      "limited": false,
-      "disabledPlatforms": [],
-      "supportsExternalPlayer": true
     }
   ]
 }
