@@ -41,7 +41,7 @@
       "version": "2.0.2",
       "author": "MrDany14",
       "supportedTypes": ["movie", "tv"],
-      "filename": "providers/nuvio-streams-byse-1.js",
+      "filename": "providers/nuvio-streams-byse-v2.0.4.js",
       "enabled": true,
       "contentLanguage": ["ro"],
       "formats": ["mp4", "m3u8"],
