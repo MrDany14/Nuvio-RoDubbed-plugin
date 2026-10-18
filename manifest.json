@@ -1,7 +1,7 @@
 {
   "id": "ro-rodubbed-parallel-repo",
   "name": "RoDubbed Parallel Streams",
-  "version": "4.2.1",
+  "version": "4.2.2",
   "description": "Independent StreamP2P, Byse, Player4me, and SeekStreaming scrapers",
   "scrapers": [
     {
@@ -38,10 +38,10 @@
       "id": "rodubbed-byse",
       "name": "RoDubbed Byse",
       "description": "Byse HLS streams discovered through the Romanian catalog",
-      "version": "2.0.8",
+      "version": "2.0.9",
       "author": "MrDany14",
       "supportedTypes": ["movie", "tv"],
-      "filename": "providers/nuvio-streams-byse-v2.0.8.js",
+      "filename": "providers/nuvio-streams-byse-v2.0.9.js",
       "enabled": true,
       "contentLanguage": ["ro"],
       "formats": ["mp4", "m3u8"],
