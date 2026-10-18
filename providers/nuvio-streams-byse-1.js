@@ -1,4 +1,5 @@
-var cheerio=require("cheerio-without-node-native"),CryptoJS=null;try{CryptoJS=require("crypto-js")}catch(e){CryptoJS=null}var PROVIDER_NAME="Romanian Streams",PLUGIN_VERSION="2.0.2",MAIN_URL=decodeURIComponent("https%3A%2F%2F%64%65%73%65%6e%65%66%61%69%6e%65%2e%63%6f%6d"),SITE_KEY=decodeURIComponent("%64%65%73%65%6e%65%66%61%69%6e%65"),TMDB_API_KEY="439c478a771f35c05022f9feabcca01c",FETCH_HEADERS={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",Accept:"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"},M3U8_RE=/(?:https?:)?\/\/[^\s"'<>\\]+?(?:\.m3u8|\/master\.txt)(?:\?[^\s"'<>\\]*)?/gi;function fetchWithTimeout(url,options,timeoutMs){var target=String(url||"");if(!/^https?:\/\//i.test(target))return Promise.reject(new Error("Unsupported request URL"));var request=Object.assign({},options||{});if(typeof setTimeout!=="function"||typeof Promise.race!=="function")return fetch(target,request);var timer=null,timeout=parseInt(timeoutMs,10)||15000,timeoutPromise=new Promise(function(_,reject){timer=setTimeout(function(){reject(new Error("Request timed out"));},timeout);}),clear=function(){if(timer!==null)clearTimeout(timer);timer=null;},result;try{result=fetch(target,request);}catch(error){clear();return Promise.reject(error);}return Promise.race([result,timeoutPromise]).then(function(response){clear();return response;},function(error){clear();throw error;});}function fetchText(e,r){var t={method:(r=r||{}).method||"GET",headers:Object.assign({},FETCH_HEADERS,r.headers||{})};return void 0!==r.body&&(t.body=r.body),fetchWithTimeout(e,t,r.timeoutMs).then((function(e){if(!e.ok)throw new Error("HTTP "+e.status);return e.text()}))}function fetchJson(e,r){var t={method:(r=r||{}).method||"GET",headers:Object.assign({},FETCH_HEADERS,r.headers||{})};return void 0!==r.body&&(t.body=r.body),fetchWithTimeout(e,t,r.timeoutMs).then((function(e){if(!e.ok)throw new Error("HTTP "+e.status);return e.json()}))}function normalizeTitle(e){return String(e||"").toLowerCase().replace(/ă/g,"a").replace(/â/g,"a").replace(/î/g,"i").replace(/ș/g,"s").replace(/ț/g,"t").replace(/[^a-z0-9]+/g," ").trim()}function cleanUrl(e){return String(e||"").replace(/\\\//g,"/").replace(/\\u002F/g,"/").replace(/\\u0026/g,"&").replace(/&amp;/g,"&").replace(/[),;]+$/,"").trim()}function absoluteUrl(e,r){var t=cleanUrl(e);if(!t)return null;if(/^https?:\/\//i.test(t))return t;if(0===t.indexOf("//"))return"https:"+t;var n=String(r).match(/^(https?:\/\/[^/]+)/i);return n?"/"===t.charAt(0)?n[1]+t:String(r).split("?")[0].replace(/\/[^/]*$/,"/")+t:null}function decodeBase64(e){var r=String(e||"").replace(/-/g,"+").replace(/_/g,"/");if(r+="===".slice((r.length+3)%4),"function"==typeof atob)return atob(r);for(var t="",n=0,i=0,a=0;a<r.length;a+=1){var o="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".indexOf(r.charAt(a));o<0||(n=n<<6|o,(i+=6)>=8&&(i-=8,t+=String.fromCharCode(n>>i&255)))}return t}function decodeHex(e){for(var r="",t=0;t+1<e.length;t+=2)r+=String.fromCharCode(parseInt(e.slice(t,t+2),16));return r}function binaryBytes(e){for(var r=new Uint8Array(e.length),t=0;t<e.length;t+=1)r[t]=255&e.charCodeAt(t);return r}function base64UrlEncode(e){for(var r="",t=0;t<e.length;t+=1)r+=String.fromCharCode(e[t]);return"function"==typeof btoa?btoa(r).replace(/=+$/g,"").replace(/\+/g,"-").replace(/\//g,"_"):"undefined"!=typeof Buffer?Buffer.from(e).toString("base64").replace(/=+$/g,"").replace(/\+/g,"-").replace(/\//g,"_"):r}function textBytes(e){return binaryBytes(String(e))}function apiJson(e,r){r=r||{};var t=Object.assign({Accept:"application/json","Content-Type":"application/json"},r.headers||{}),n={method:r.method||"GET",headers:t};return r.credentials&&(n.credentials=r.credentials),void 0!==r.body&&(n.body=r.body),fetch(e,n).then((function(e){return e.text().then((function(r){var t;try{t=r?JSON.parse(r):{}}catch(e){t={error:r}}if(!e.ok)throw new Error("HTTP "+e.status+": "+(t.error||r));return t}))}))}function byseCrypto(){if("undefined"!=typeof crypto&&crypto.subtle)return crypto;try{var e=require("crypto");if(e.webcrypto&&e.webcrypto.subtle)return e.webcrypto}catch(e){}return null}function createByseNodeFingerprint(e){var r;try{r=require("crypto")}catch(e){return Promise.resolve(null)}return r&&r.generateKeyPairSync&&r.createSign?apiJson(e+"/api/videos/access/challenge",{method:"POST",credentials:"include",headers:{Referer:e,Origin:e},body:"{}"}).then((function(t){var n=r.generateKeyPairSync("ec",{namedCurve:"prime256v1"}),i=n.publicKey.export({format:"jwk"}),a=r.createSign("SHA256").update(String(t.nonce)).sign({key:n.privateKey,dsaEncoding:"ieee-p1363"}),o=randomId(),s=randomId(),u={user_agent:FETCH_HEADERS["User-Agent"],languages:["ro-RO","en-US"],timezone:"UTC",extra:{vendor:"",appVersion:FETCH_HEADERS["User-Agent"]}};return apiJson(e+"/api/videos/access/attest",{method:"POST",credentials:"include",headers:{Referer:e,Origin:e},body:JSON.stringify({viewer_id:o,device_id:s,challenge_id:t.challenge_id,nonce:t.nonce,signature:base64UrlEncode(a),public_key:i,client:u,storage:{},attributes:{entropy:"low"}})}).then((function(e){if(!e.token)throw new Error("Byse fingerprint rejected");return{token:e.token,viewer_id:e.viewer_id||o,device_id:e.device_id||s,confidence:e.confidence||0}}))})):Promise.resolve(null)}function randomId(){var e=new Uint8Array(16),r=byseCrypto();if(r&&r.getRandomValues)r.getRandomValues(e);else for(var t=0;t<e.length;t+=1)e[t]=Math.floor(256*Math.random());return base64UrlEncode(e)}function createByseFingerprint(e){var r=byseCrypto();if(!(r&&r.subtle&&r.subtle.generateKey))return createByseNodeFingerprint(e);return apiJson(e+"/api/videos/access/challenge",{method:"POST",credentials:"include",headers:{Referer:e,Origin:e},body:"{}"}).then(function(t){return r.subtle.generateKey({name:"ECDSA",namedCurve:"P-256"},!0,["sign","verify"]).then(function(n){return Promise.all([r.subtle.exportKey("jwk",n.publicKey),r.subtle.sign({name:"ECDSA",hash:"SHA-256"},n.privateKey,textBytes(t.nonce))]).then(function(v){var i=randomId(),a=randomId(),o={user_agent:FETCH_HEADERS["User-Agent"],languages:["ro-RO","en-US"],timezone:"UTC",extra:{vendor:"",appVersion:FETCH_HEADERS["User-Agent"]}},s={viewer_id:i,device_id:a,challenge_id:t.challenge_id,nonce:t.nonce,signature:base64UrlEncode(new Uint8Array(v[1])),public_key:v[0],client:o,storage:{},attributes:{entropy:"low"}};return apiJson(e+"/api/videos/access/attest",{method:"POST",credentials:"include",headers:{Referer:e,Origin:e},body:JSON.stringify(s)}).then(function(q){if(!q.token)throw new Error("Byse fingerprint rejected");return{token:q.token,viewer_id:q.viewer_id||i,device_id:q.device_id||a,confidence:q.confidence||0}})})})}).catch(function(){return createByseNodeFingerprint(e)})}function bysePowHash(bytes, byteLength, scratch) {
+var cheerio=require("cheerio-without-node-native"),CryptoJS=null;try{CryptoJS=require("crypto-js")}catch(e){CryptoJS=null}var PROVIDER_NAME="Romanian Streams",PLUGIN_VERSION="2.0.4",MAIN_URL=decodeURIComponent("https%3A%2F%2F%64%65%73%65%6e%65%66%61%69%6e%65%2e%63%6f%6d"),SITE_KEY=decodeURIComponent("%64%65%73%65%6e%65%66%61%69%6e%65"),TMDB_API_KEY="439c478a771f35c05022f9feabcca01c",FETCH_HEADERS={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",Accept:"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"},M3U8_RE=/(?:https?:)?\/\/[^\s"'<>\\]+?(?:\.m3u8|\/master\.txt)(?:\?[^\s"'<>\\]*)?/gi;function fetchWithTimeout(url,options,timeoutMs){var target=String(url||"");if(!/^https?:\/\//i.test(target))return Promise.reject(new Error("Unsupported request URL"));var request=Object.assign({},options||{});if(typeof setTimeout!=="function"||typeof Promise.race!=="function")return fetch(target,request);var timer=null,timeout=parseInt(timeoutMs,10)||15000,timeoutPromise=new Promise(function(_,reject){timer=setTimeout(function(){reject(new Error("Request timed out"));},timeout);}),clear=function(){if(timer!==null)clearTimeout(timer);timer=null;},result;try{result=fetch(target,request);}catch(error){clear();return Promise.reject(error);}return Promise.race([result,timeoutPromise]).then(function(response){clear();return response;},function(error){clear();throw error;});}function fetchText(e,r){var t={method:(r=r||{}).method||"GET",headers:Object.assign({},FETCH_HEADERS,r.headers||{})};return void 0!==r.body&&(t.body=r.body),fetchWithTimeout(e,t,r.timeoutMs).then((function(e){if(!e.ok)throw new Error("HTTP "+e.status);return e.text()}))}function fetchJson(e,r){var t={method:(r=r||{}).method||"GET",headers:Object.assign({},FETCH_HEADERS,r.headers||{})};return void 0!==r.body&&(t.body=r.body),fetchWithTimeout(e,t,r.timeoutMs).then((function(e){if(!e.ok)throw new Error("HTTP "+e.status);return e.json()}))}function normalizeTitle(e){return String(e||"").toLowerCase().replace(/ă/g,"a").replace(/â/g,"a").replace(/î/g,"i").replace(/ș/g,"s").replace(/ț/g,"t").replace(/[^a-z0-9]+/g," ").trim()}function cleanUrl(e){return String(e||"").replace(/\\\//g,"/").replace(/\\u002F/g,"/").replace(/\\u0026/g,"&").replace(/&amp;/g,"&").replace(/[),;]+$/,"").trim()}function absoluteUrl(e,r){var t=cleanUrl(e);if(!t)return null;if(/^https?:\/\//i.test(t))return t;if(0===t.indexOf("//"))return"https:"+t;var n=String(r).match(/^(https?:\/\/[^/]+)/i);return n?"/"===t.charAt(0)?n[1]+t:String(r).split("?")[0].replace(/\/[^/]*$/,"/")+t:null}function decodeBase64(e){var r=String(e||"").replace(/-/g,"+").replace(/_/g,"/");if(r+="===".slice((r.length+3)%4),"function"==typeof atob)return atob(r);for(var t="",n=0,i=0,a=0;a<r.length;a+=1){var o="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".indexOf(r.charAt(a));o<0||(n=n<<6|o,(i+=6)>=8&&(i-=8,t+=String.fromCharCode(n>>i&255)))}return t}function decodeHex(e){for(var r="",t=0;t+1<e.length;t+=2)r+=String.fromCharCode(parseInt(e.slice(t,t+2),16));return r}function binaryBytes(e){for(var r=new Uint8Array(e.length),t=0;t<e.length;t+=1)r[t]=255&e.charCodeAt(t);return r}function base64UrlEncode(e){for(var r="",t=0;t<e.length;t+=1)r+=String.fromCharCode(e[t]);return"function"==typeof btoa?btoa(r).replace(/=+$/g,"").replace(/\+/g,"-").replace(/\//g,"_"):"undefined"!=typeof Buffer?Buffer.from(e).toString("base64").replace(/=+$/g,"").replace(/\+/g,"-").replace(/\//g,"_"):r}function textBytes(e){return binaryBytes(String(e))}function apiJson(e,r){r=r||{};var t=Object.assign({Accept:"application/json","Content-Type":"application/json"},r.headers||{}),n={method:r.method||"GET",headers:t};return r.credentials&&(n.credentials=r.credentials),void 0!==r.body&&(n.body=r.body),fetch(e,n).then((function(e){return e.text().then((function(r){var t;try{t=r?JSON.parse(r):{}}catch(e){t={error:r}}if(!e.ok)throw new Error("HTTP "+e.status+": "+(t.error||r));return t}))}))}function byseCrypto(){if("undefined"!=typeof crypto&&crypto.subtle)return crypto;try{var e=require("crypto");if(e.webcrypto&&e.webcrypto.subtle)return e.webcrypto}catch(e){}return null}function createByseNodeFingerprint(e){var r;try{r=require("crypto")}catch(e){return Promise.resolve(null)}return r&&r.generateKeyPairSync&&r.createSign?apiJson(e+"/api/videos/access/challenge",{method:"POST",credentials:"include",headers:{Referer:e,Origin:e},body:"{}"}).then((function(t){var n=r.generateKeyPairSync("ec",{namedCurve:"prime256v1"}),i=n.publicKey.export({format:"jwk"}),a=r.createSign("SHA256").update(String(t.nonce)).sign({key:n.privateKey,dsaEncoding:"ieee-p1363"}),o=randomId(),s=randomId(),u={user_agent:FETCH_HEADERS["User-Agent"],languages:["ro-RO","en-US"],timezone:"UTC",extra:{vendor:"",appVersion:FETCH_HEADERS["User-Agent"]}};return apiJson(e+"/api/videos/access/attest",{method:"POST",credentials:"include",headers:{Referer:e,Origin:e},body:JSON.stringify({viewer_id:o,device_id:s,challenge_id:t.challenge_id,nonce:t.nonce,signature:base64UrlEncode(a),public_key:i,client:u,storage:{},attributes:{entropy:"low"}})}).then((function(e){if(!e.token)throw new Error("Byse fingerprint rejected");return{token:e.token,viewer_id:e.viewer_id||o,device_id:e.device_id||s,confidence:e.confidence||0}}))})):Promise.resolve(null)}function randomId(){var e=new Uint8Array(16),r=byseCrypto();if(r&&r.getRandomValues)r.getRandomValues(e);else for(var t=0;t<e.length;t+=1)e[t]=Math.floor(256*Math.random());return base64UrlEncode(e)}function createByseFingerprint(e){var r=byseCrypto();if(!(r&&r.subtle&&r.subtle.generateKey))return createByseNodeFingerprint(e);return apiJson(e+"/api/videos/access/challenge",{method:"POST",credentials:"include",headers:{Referer:e,Origin:e},body:"{}"}).then(function(t){return r.subtle.generateKey({name:"ECDSA",namedCurve:"P-256"},!0,["sign","verify"]).then(function(n){return Promise.all([r.subtle.exportKey("jwk",n.publicKey),r.subtle.sign({name:"ECDSA",hash:"SHA-256"},n.privateKey,textBytes(t.nonce))]).then(function(v){var i=randomId(),a=randomId(),o={user_agent:FETCH_HEADERS["User-Agent"],languages:["ro-RO","en-US"],timezone:"UTC",extra:{vendor:"",appVersion:FETCH_HEADERS["User-Agent"]}},s={viewer_id:i,device_id:a,challenge_id:t.challenge_id,nonce:t.nonce,signature:base64UrlEncode(new Uint8Array(v[1])),public_key:v[0],client:o,storage:{},attributes:{entropy:"low"}};return apiJson(e+"/api/videos/access/attest",{method:"POST",credentials:"include",headers:{Referer:e,Origin:e},body:JSON.stringify(s)}).then(function(q){if(!q.token)throw new Error("Byse fingerprint rejected");return{token:q.token,viewer_id:q.viewer_id||i,device_id:q.device_id||a,confidence:q.confidence||0}})})})}).catch(function(){return createByseNodeFingerprint(e)})}function bysePowHash(bytes, byteLength, scratch, firstOnly) {
+  var imul = Math.imul;
   var s0 = 1779033703;
   var s1 = 3144134277;
   var s2 = 1013904242;
@@ -61,7 +62,7 @@ var cheerio=require("cheerio-without-node-native"),CryptoJS=null;try{CryptoJS=re
       var target = table[index] & 511;
       var value = table[index] + table[target] >>> 0;
       value = (value << 13 | value >>> 19) >>> 0;
-      value = (value ^ Math.imul(table[(index + 1) & 511], 2654435761)) >>> 0;
+      value = (value ^ imul(table[(index + 1) & 511], 2654435761)) >>> 0;
       table[index] = value;
       s0 = (s0 ^ value) >>> 0;
       s0 = s0 + s1 >>> 0;
@@ -80,7 +81,7 @@ var cheerio=require("cheerio-without-node-native"),CryptoJS=null;try{CryptoJS=re
   }
 
   var result = scratch.result;
-  for (index = 0; index < 8; index += 1) {
+  for (index = 0; index < (firstOnly ? 1 : 8); index += 1) {
     s0 = s0 + s1 >>> 0;
     mixed = s3 ^ s0;
     s3 = (mixed << 16 | mixed >>> 16) >>> 0;
@@ -100,7 +101,7 @@ var cheerio=require("cheerio-without-node-native"),CryptoJS=null;try{CryptoJS=re
       var item = table[start + offset];
       sum = sum + item >>> 0;
       sum = (sum << 5 | sum >>> 27) >>> 0;
-      sum = (sum ^ Math.imul(item, 2246822519)) >>> 0;
+      sum = (sum ^ imul(item, 2246822519)) >>> 0;
     }
     result[index] = (sum ^ s2) >>> 0;
   }
@@ -144,7 +145,7 @@ function solveBysePow(nonce, difficulty, timeoutMs) {
         bytes[prefixBytes.length + index] = counter.charCodeAt(index);
       }
 
-      if (byseLeadingZeroBits(bysePowHash(bytes, byteLength, scratch)) >= difficulty) {
+      if (byseLeadingZeroBits(bysePowHash(bytes, byteLength, scratch, difficulty <= 32)) >= difficulty) {
         return Promise.resolve(String(solution));
       }
       solution += 1;
@@ -444,13 +445,100 @@ function resolveFilmPageResult(e,r){if(!e||!e.html)return Promise.resolve([]);va
 
 
 (function() {
-  PLUGIN_VERSION = "2.0.3-1";
+  function resolveAtPlayerOrigin(providerUrl, frameUrl, code, useEmbedHeaders) {
+    var apiOriginMatch = String(frameUrl || "").match(/^https?:\/\/[^/]+/i);
+    if (!apiOriginMatch) return Promise.reject(new Error("Byse player origin missing"));
+    var apiOrigin = apiOriginMatch[0];
+    var providerHost = String(providerUrl || "").match(/^https?:\/\/([^/]+)/i);
+    var headers = {};
+
+    if (useEmbedHeaders && providerHost) {
+      headers["X-Embed-Parent"] = providerUrl;
+      headers.Referer = frameUrl;
+    } else if (frameUrl) {
+      headers.Referer = frameUrl;
+    }
+
+    return createByseFingerprint(apiOrigin).then(function(fingerprint) {
+      if (!fingerprint || !fingerprint.token) throw new Error("Byse fingerprint missing");
+      var captchaUrl = apiOrigin + "/api/videos/" + encodeURIComponent(code) + "/embed/captcha";
+      var captchaBody = fingerprint ? { fingerprint: fingerprint } : {};
+
+      return apiJson(captchaUrl, {
+        method: "POST",
+        credentials: "include",
+        headers: headers,
+        body: JSON.stringify(captchaBody)
+      }).then(function(challenge) {
+        return solveBysePow(challenge.pow_nonce, challenge.pow_difficulty, 30000).then(function(solution) {
+          if (solution === null) throw new Error("Byse proof of work timed out");
+          var verifyBody = { pow_token: challenge.pow_token, solution: solution };
+          if (fingerprint) verifyBody.fingerprint = fingerprint;
+          return apiJson(captchaUrl + "/verify", {
+            method: "POST",
+            credentials: "include",
+            headers: headers,
+            body: JSON.stringify(verifyBody)
+          });
+        });
+      }).then(function(verification) {
+        if (!verification.token) throw new Error("Byse CAPTCHA token missing");
+        var playbackOptions = {
+          method: "POST",
+          credentials: "include",
+          headers: Object.assign({}, headers, { "X-Captcha-Token": verification.token })
+        };
+        if (fingerprint) playbackOptions.body = JSON.stringify({ fingerprint: fingerprint });
+        return apiJson(apiOrigin + "/api/videos/" + encodeURIComponent(code) + "/embed/playback", playbackOptions);
+      });
+    }).then(function(response) {
+      if (!response.playback) throw new Error("Byse playback payload missing");
+      return decryptBysePlayback(response.playback);
+    }).then(function(playback) {
+      var streams = [];
+      (playback.sources || []).forEach(function(source) {
+        if (!source || !source.url || (
+          String(source.mime_type || "").toLowerCase().indexOf("mpegurl") < 0 &&
+          !/\.m3u8(?:\?|$)/i.test(source.url)
+        )) return;
+        var stream = signedHlsStream(source.url, source.label || source.quality || "Byse HLS");
+        stream.audioLanguage = source.audio_language || source.audioLanguage || source.language || playback.default_audio || playback.defaultAudio;
+        stream.resolution = source.resolution || source.quality;
+        streams.push(stream);
+      });
+      if (!streams.length) throw new Error("Byse returned no HLS source");
+      return streams;
+    });
+  }
+
+  resolveByseProvider = function(providerUrl, pageUrl) {
+    var codeMatch = String(providerUrl || "").match(/\/e\/([^/?#]+)/i);
+    var originMatch = String(providerUrl || "").match(/^https?:\/\/[^/]+/i);
+    if (!codeMatch || !originMatch) return Promise.reject(new Error("Byse video URL invalid"));
+    var code = codeMatch[1];
+    var detailsUrl = originMatch[0] + "/api/videos/" + encodeURIComponent(code) + "/embed/details";
+
+    return apiJson(detailsUrl, {
+      method: "GET",
+      credentials: "include",
+      headers: { Referer: pageUrl || providerUrl }
+    }).then(function(details) {
+      var frameUrl = String(details && details.embed_frame_url || "");
+      if (!/^https?:\/\//i.test(frameUrl)) throw new Error("Byse embed frame missing from details");
+      return resolveAtPlayerOrigin(providerUrl, frameUrl, code, true);
+    });
+  };
+})();
+
+
+(function() {
+  PLUGIN_VERSION = "2.0.4";
   var resolveByseNumbered = resolveProvider;
   resolveProvider = function(providerUrl, pageUrl, displayTitle) {
     return resolveByseNumbered(providerUrl, pageUrl, displayTitle).then(function(streams) {
       return (streams || []).map(function(stream) {
         var nameParts = String(stream.name || "").split("\n");
-        nameParts[0] = "✦ Byse 1";
+        nameParts[0] = "✦ Byse";
         stream.name = nameParts.join("\n");
         return stream;
       });
