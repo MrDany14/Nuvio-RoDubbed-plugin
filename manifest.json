@@ -1,7 +1,7 @@
 {
   "id": "ro-rodubbed-parallel-repo",
   "name": "RoDubbed Parallel Streams",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "Independent StreamP2P, Byse, Player4me, and SeekStreaming scrapers",
   "scrapers": [
     {
@@ -53,10 +53,10 @@
       "id": "rodubbed-netu",
       "name": "RoDubbed Netu",
       "description": "Netu HLS streams discovered through the Romanian catalog",
-      "version": "2.0.2",
+      "version": "2.0.3",
       "author": "MrDany14",
       "supportedTypes": ["movie", "tv"],
-      "filename": "providers/nuvio-streams-netu-v2.0.2.js",
+      "filename": "providers/nuvio-streams-netu-v2.0.3.js",
       "enabled": true,
       "contentLanguage": ["ro"],
       "formats": ["mp4", "m3u8"],
