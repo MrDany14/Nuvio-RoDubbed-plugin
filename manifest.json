@@ -1,7 +1,7 @@
 {
   "id": "ro-rodubbed-parallel-repo",
   "name": "RoDubbed Parallel Streams",
-  "version": "4.1.4",
+  "version": "4.1.5",
   "description": "Independent StreamP2P, Byse, Player4me, and SeekStreaming scrapers",
   "scrapers": [
     {
@@ -38,7 +38,7 @@
       "id": "rodubbed-byse1",
       "name": "RoDubbed Byse1",
       "description": "Byse HLS streams discovered through the Romanian catalog",
-      "version": "2.0.2",
+      "version": "2.0.4",
       "author": "MrDany14",
       "supportedTypes": ["movie", "tv"],
       "filename": "providers/nuvio-streams-byse-v2.0.4.js",
