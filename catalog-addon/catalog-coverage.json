@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T18:47:47.418Z",
+  "generatedAt": "2026-10-19T19:40:36.873Z",
   "complete": true,
   "scope": "Romanian declarations, supported host routes and actual official canonical-page/S1E1 matching. No host requests, media requests, deletion checks or playback tests.",
   "seriesScope": "Only TMDB/Nuvio S1E1 checked. Later episodes and seasons are not covered by this audit.",
@@ -38,15 +38,15 @@
       "runtimeCheckedAt": "2026-10-19T15:09:36.966Z"
     }
   },
-  "publisherPagesChecked": 5394,
-  "officialMatcherAcceptedPages": 1572,
-  "qualifyingSupportedPages": 1570,
-  "uniqueTitles": 1149,
+  "publisherPagesChecked": 5949,
+  "officialMatcherAcceptedPages": 2086,
+  "qualifyingSupportedPages": 2084,
+  "uniqueTitles": 1438,
   "listCounts": {
-    "romanian-animated-movies": 410,
-    "romanian-animated-series": 248,
-    "romanian-dubbed-movies": 396,
-    "romanian-dubbed-series": 95
+    "romanian-animated-movies": 598,
+    "romanian-animated-series": 333,
+    "romanian-dubbed-movies": 402,
+    "romanian-dubbed-series": 105
   },
   "excluded": {
     "unsupported-or-no-host": 2247,
@@ -58,7 +58,7 @@
     "unverified-title-metadata": 29,
     "official-matcher-rejected": 9
   },
-  "duplicateWebsiteEntriesMerged": 421,
+  "duplicateWebsiteEntriesMerged": 646,
   "unsupportedHostCounts": [
     {
       "site": "df",
@@ -422,5 +422,35 @@
       "Descendants (2015)"
     ],
     "limits": "Four actual emulator playback/seek samples; muted audio, Romanian speech based on publisher declarations. Host subsequently required CAPTCHA; this feature does not solve or bypass it. Other catalog titles were not playback-tested."
+  },
+  "incrementalDesenflixValidation": {
+    "generatedAt": "2026-10-19T19:40:36.873Z",
+    "pluginVersion": 13,
+    "catalogVersion": "1.0.6",
+    "inventory": 555,
+    "scanned": 555,
+    "qualifyingPages": 514,
+    "addedTitles": 289,
+    "previousTitles": 1149,
+    "totalTitles": 1438,
+    "listCounts": {
+      "romanian-animated-movies": 598,
+      "romanian-animated-series": 333,
+      "romanian-dubbed-movies": 402,
+      "romanian-dubbed-series": 105
+    },
+    "exclusions": {
+      "candidate": 514,
+      "missing-S1E1": 16,
+      "conflicting-year": 12,
+      "search-address-not-found": 1,
+      "request-error": 1,
+      "missing-player": 8,
+      "unsupported-host": 2,
+      "not-dubbed": 1
+    },
+    "nativePassed": 514,
+    "nativeCandidates": 514,
+    "limits": "Publisher Romanian dubbing declarations; series S1E1 only; no host resolution, playback or deletion testing. Ambiguous title/year/identity and unreached native addresses excluded."
   }
 }

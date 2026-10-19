@@ -41390,6 +41390,25 @@
         }
       ],
       "count": 1
+    },
+    {
+      "site": "desenflix",
+      "family": "byseraguci.com",
+      "publisherPages": [
+        {
+          "title": "Clopoțica: Secretul aripilor (2012) (Dublat în Română)",
+          "url": "https://desenflix.online/clopotica-secretul-aripilor-2012-dublat-in-romana/",
+          "type": "movie",
+          "scope": "movie"
+        },
+        {
+          "title": "Clopoțica și Legenda Bestiei de Nicăieri (2014) (Dublat în Română)",
+          "url": "https://desenflix.online/clopotica-si-legenda-bestiei-de-nicaieri-2014-dublat-in-romana/",
+          "type": "movie",
+          "scope": "movie"
+        }
+      ],
+      "count": 2
     }
   ]
 }

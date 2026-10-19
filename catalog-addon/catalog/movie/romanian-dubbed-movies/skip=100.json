@@ -1,84 +1,12 @@
 {
   "metas": [
     {
-      "id": "tmdb:1304606",
+      "id": "tmdb:1369091",
       "type": "movie",
-      "name": "Noaptea lui Vlad",
+      "name": "Zăpadă, Ceai și Dragoste 2: Cu puțin noroc",
       "releaseInfo": "2024",
-      "poster": "https://image.tmdb.org/t/p/w500/o9DkyF7BhpLbetiLTV7G2nSCpv9.jpg",
-      "description": "Într-o noapte la muzeu copilul Vlad se întâlnește cu personalități marcante ale istoriei neamului românesc.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1208251",
-      "type": "movie",
-      "name": "Visul",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/oNQYhILe9xS7tx9eAh0rjZSZWi6.jpg",
-      "description": "Inspirat din fapte reale, filmul regizat de Cătălin Saizescu după un scenariu semnat de Gabriel Gheorghe, este o comedie în care visul unui actor de provincie pare să se năruie, în timp ce visurile celor din jur sau ale deținuților cu care ajunge să pună în scenă un spectacol de teatru par să se apropie mai mult de îndeplinire.  Alex e un artist ocolit de succes, înlănțuit într-o relație amoroasă căzută în ruină. Trimis la un penitenciar de maximă siguranță să regizeze o piesă de teatru, alege o scenă din „Visul unei nopți de vară”, a marelui Shakespeare. În fața eforturilor hoților semianalfabeti de a-și depăși limitele, Alex realizează că este prizonier în propria viață. La rândul lor, deținuții fac totul pentru a fi selectionati în cadrul Festivalului de teatru de penitenciar, știind că fiecare scenă are o trapă prin care ar putea evada.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:787699",
-      "type": "movie",
-      "name": "Wonka",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/deNN34J6LcX8lIJKUnUZt6VGu5s.jpg",
-      "description": "Bazat pe personajul extraordinar din centrul poveștii “Charlie și fabrica de ciocolată”, cea mai emblematică carte pentru copii a lui Roald Dahl și una dintre cele mai bine vândute cărți pentru copii din toate timpurile, „Wonka” spune povestea minunată prin care cel mai mare inventator, magician și producător de ciocolată a devenit îndrăgitul personaj Willy Wonka, așa cum îl cunoaștem astăzi\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:798021",
-      "type": "movie",
-      "name": "Schimb în familie",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/Q1SV68npDRKMO69j1qQ6gv75vw.jpg",
-      "description": "În prag de Crăciun, într-o familie se dezlănțuie haosul. După un eveniment cosmic rar, părinții fac schimb de corpuri cu copiii lor adolescenți.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1022964",
-      "type": "movie",
-      "name": "Aleea Acadelelor",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/7GIn80gpgEWIDX2CojXpaytFNv2.jpg",
-      "description": "Eddie Murphy joacă într-o comedie de sărbători despre un bărbat care își dorește să câștige concursul anual al caselor decorate de Crăciun și care face o înțelegere cu un elf viclean, ce aduce colindele de Crăciun la viață.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1208422",
-      "type": "movie",
-      "name": "Castelul Crăiței",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/7sHqLudT57fRsnGL7voMBorzLAg.jpg",
-      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1166603",
-      "type": "movie",
-      "name": "Miami Bici 2",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/3MzpmVvv2muKaRlwGXaA3Do8nWV.jpg",
-      "description": "Ion Bilă și Ilie Piciu călătoresc de la Miami la Los Angeles în căutarea visului american adaptat la cel românesc, în stilul \"dolari mulți pe muncă puțină\". Ei ajung în situația de a face diferite infracțiuni într-un anturaj de “băieți răi” de care apoi încearcă să se descotorosească.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1193145",
-      "type": "movie",
-      "name": "Warboy",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/sPKrNbz3Ed8MWTej5iONniqObJQ.jpg",
-      "description": "Finalul celui de-al Doilea Război Mondial, în toamna anului 1944. Un adolescent încearcă să salveze cei doi cai ai familiei pornind cu ei într-o călătorie inițiatică în peisajul sălbatic al Munților Apuseni.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1001884",
-      "type": "movie",
-      "name": "Magie de Crăciun",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/4l62UB7xjfVZKMz6gdQXI42VjPF.jpg",
-      "description": "Eddie Garrick este un om cu inimă bună care nu mai crede în magia Crăciunului. În Ajun cât petrecea timp cu fetița lui de nouă ani, întâlnește un personaj misterios, în costum roșu, pe nume Nick.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:936059",
-      "type": "movie",
-      "name": "Cei nouă obraznici",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/hOXo7GVwyxMrkFYgFHAIpltEDiF.jpg",
-      "description": "Andy, un adolescent problemă, strânge o echipă de copii de pe \"lista celor obraznici\" pentru a pune la cale un jaf de zile mari la Polul Nord și a primi cadourile pe care ei cred ca le merită.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/mvaYpCYZwPkvDW7jIePMaj8xeTE.jpg",
+      "description": "Tu ce ai face dacă te-ai trezi în Dacia anului 85? Asta este și întrebarea pe care și-o pun cei trei protagoniști Zăpadă, Ceai și Dragoste care descoperă o modalitate de a călători în timp când încercau să evadeze din închisoare. Cei trei sunt supuși unor încercări teribile și trebuie să găsească o cale de a se întoarce în prezent, dar și să supraviețuiască conflictelor și tentațiilor vremii. Războiul este în toi, împărații sunt însetați de luptă și bogăție, iar timpul se scurge, atât în trecut, cât și în prezent pentru cei rămași să „colecționeze”. Dacă iese ceaiul macha? Poate un fulg mic să răstoarne un bulgăre mare? În latină Dragoste este amor, sau „A, mor!”? Numai dacă ar avea puțin Noroc de partea lor...\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:1203122",
@@ -89,12 +17,20 @@
       "description": "Film interzis !!! Nina,  este o tânără procuroare, care, împreună cu iubitul ei, Yuri , regizor de film, lucrează la dezvoltarea unui scenariu, inspirat dintr-o poveste de familie.Tensiunile politice de la sfârșitul anului 2022, o aduc pe Nina în atenția publică, numele ei fiind vehiculat pentru poziția de Procuror General al României. Numirea în această funcție depinde, însă, de Mickey Mandovanis , Secretar de Stat al Guvernului american, și de Nicoletta Delalachiessa , reprezentanta Comisiei Europene. Întâlnirile cu aceștia se transformă într-un veritabil examen, care, dublat de căutările artistice și de relația amoroasă cu Yuri, îi dezvăluie Ninei chipul societății în care trăiește.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1203123",
+      "id": "tmdb:964980",
       "type": "movie",
-      "name": "Mai departe",
+      "name": "Air",
       "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/ryS9qDj5gE3uOyE2KEB9qHlm08f.jpg",
-      "description": "„Această lume este arena mea” este povestea lui George Balta, un jucător de rugby paralizat în urma unui accident, care se reinventează ca maratonist în scaun cu rotile și speaker motivațional.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/39EeOmBVeAQu3m2yrDNOjffC7AP.jpg",
+      "description": "Descoperiți parteneriatul care a schimbat jocul dintre un Michael Jordan nedescoperit pe atunci și divizia de baschet a Nike, care a revoluționat lumea sportului și a culturii cu brandul Air Jordan.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1022964",
+      "type": "movie",
+      "name": "Aleea Acadelelor",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/7GIn80gpgEWIDX2CojXpaytFNv2.jpg",
+      "description": "Eddie Murphy joacă într-o comedie de sărbători despre un bărbat care își dorește să câștige concursul anual al caselor decorate de Crăciun și care face o înțelegere cu un elf viclean, ce aduce colindele de Crăciun la viață.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:1190987",
@@ -105,115 +41,11 @@
       "description": "Un film de acțiune-comedie care îi are în prim-plan pe Leo, Alex și Costi, o echipă de polițiști suspendați care sunt chemați înapoi la datorie pentru a investiga un baron local al drogurilor, Narcis, cu care au o istorie îndelungată. În mijlocul acțiunii înflorește o surprinzătoare poveste de dragoste între Leo și Lara, mâna dreaptă a traficantului. Vor reuși oare cei trei polițiști să îl captureze pe Narcis? Răsturnările de situație spectaculoase, scenele de acțiune pline de adrenalină, trădările neașteptate, umorul și încurcăturile celor trei polițiști simpatici fac din film o experiență de neratat.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:985895",
+      "id": "tmdb:1030319",
       "type": "movie",
-      "name": "MMXX",
+      "name": "Boss",
       "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/noXUQ6ZCrIokWRRz1evNbeL7rkw.jpg",
-      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1189532",
-      "type": "movie",
-      "name": "Nuntă pe bani",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/xyNUW7bUvc2KLy0IZUhOb18coVd.jpg",
-      "description": "Mircea urăște nunțile. Și toată lumea află asta atunci când după participarea la încă o nuntă din obligație, face o postare controversată pe Facebook care devine virală. Însă când trebuie să restituie o sumă uriașă de bani din cauza unor decizii greșite, singura soluție pentru el rămâne propria nuntă.  Pentru Mircea urmează o cursă contracronometru pentru a găsi sală, nași și invitați cu scopul de a face un business cât mai profitabil.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1140259",
-      "type": "movie",
-      "name": "Libertate",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/z4QSxgzYQXvj99Msx3oOiDjWxnh.jpg",
-      "description": "Sibiu, decembrie 1989. În haosul și panica generate de protestele mulțimii împotriva autorităților, o unitate de miliție devine ținta unui asalt violent care degenerează într-o confruntare sângeroasă între soldați, milițieni, securiști și civili. Încercând să scape de asediu, căpitanul de miliție Viorel e capturat și acuzat că e terorist.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1039960",
-      "type": "movie",
-      "name": "Monster High 2",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/9RaCErx1ofEBiUsifGFaA6F6rKt.jpg",
-      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1185954",
-      "type": "movie",
-      "name": "Dragoste pe muchie de cuțit",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/7IxxJ6PbhXR1Bqx2KP24k4fcAk8.jpg",
-      "description": "Ducu și Marina au fost împreună în copilărie, dar s-au despărțit din cauza rivalității dintre familiile lor. La maturitate, cei doi se reîntâlnesc întâmplător și decid să își deschidă împreună un restaurant.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1059373",
-      "type": "movie",
-      "name": "Tigru",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/9YWLAAuLcJkbQQMXGeKmokYHuTC.jpg",
-      "description": "Vera, medic veterinar într-un pitoresc oraș transilvănean, este măcinată de probleme personale și are o cădere nervoasă. În ziua când un tigru confiscat de la un interlop local este adus la grădina zoologică unde lucrează, femeia descoperă un secret care o dă peste cap. Tigrul scapă din cuşcă, iar Vera trebuie să pornească în căutarea lui. Filmul este inspirat de fapte reale petrecute la Sibiu în 2011.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1081676",
-      "type": "movie",
-      "name": "Dragoste uitată",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/zRYoe2YQNB46UuDlCmx8YzeIS0P.jpg",
-      "description": "Un chirurg respectat cândva, care și-a pierdut familia și memoria, primește o șansă la izbăvire când reia legătura cu cineva din trecutul său uitat.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1203744",
-      "type": "movie",
-      "name": "Puterea Probabilității",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/1hbWtQK5PXn1OFgYnSQYgG197DG.jpg",
-      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1152797",
-      "type": "movie",
-      "name": "Cracovia Freestyle",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/x6HrGmmpVUX8XBI9Vg4hbSsdBCX.jpg",
-      "description": "Un rapper în ascensiune cu un trecut de infractor are nevoie de bani pentru înregistrări, așa că pune la cale o vânzare de droguri care l-ar putea costa totul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:790493",
-      "type": "movie",
-      "name": "Joaca de-a spionii: Armageddon",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/oUhudk1IlIAQqVcXXAFxXX0lW4F.jpg",
-      "description": "Când copiii celor mai mari agenți secreți ai lumii ajută fără să vrea un puternic dezvoltator de jocuri să dezlănțuie un virus de computer care îi oferă controlul asupra întregii tehnologii, ei trebuie să devină ei înșiși spioni pentru a-și salva părinții și lumea.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:958064",
-      "type": "movie",
-      "name": "Mammalia",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/96mM9l0QQ6y50mkgAWHXGZVvKhq.jpg",
-      "description": "Camil, un bărbat în vârstă de 39 de ani, se lansează într-o călătorie onirică în care banalul și fantasticul se întrepătrund. Odată cu pierderea controlului asupra muncii lui, asupra statutului social și asupra relației lui amoroase, pornește într-o căutare care îl face să-și chestioneze identitatea și masculinitatea. Pe urmele partenerei lui, ajunge într-o comunitate bizară, cu ritualuri tulburătoare, în care, în cele din urmă, se confruntă cu o răsturnare tragicomică de roluri.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:818511",
-      "type": "movie",
-      "name": "Încărcătură periculoasă",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/ocKoEvCPX809gWsyEXRP2zTViY5.jpg",
-      "description": "Roger, un pilot de curse cu camioane, pierde totul, dar primește o ofertă tentantă și periculoasă: să devină șoferul unei bande de hoți.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1149381",
-      "type": "movie",
-      "name": "Operațiunea: Soulcatcher",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/jQWnit4BWnDYG60Q8YTJoqDO5O4.jpg",
-      "description": "„Kiel” a lucrat anterior pentru instituțiile guvernamentale poloneze în lupta împotriva terorismului. Dar acum este un mercenar care lucrează pentru o companie militară privată. Împreună cu fratele său, Piotr, acceptă un contract profitabil într-o țară condusă de un localnic. Deși sarcina pe care li se cere să o îndeplinească pare simplă la început, în curând devine evident că este vorba de fapt despre o armă experimentală periculoasă care transformă oamenii în mașini de ucis - iar diferitele părți implicate vor să pună mâna pe dispozitiv.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1071866",
-      "type": "movie",
-      "name": "Space Pups",
-      "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/jKrQikFt0fhkGTZ79d9DsS7y73z.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/tDbXRGofDToyjvLr2TC4wATIONG.jpg",
       "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
@@ -225,6 +57,38 @@
       "description": "Gabbie, o mamă singură, angajează un ghid turistic, un clarvăzător, un preot și un istoric pentru a ajuta la exorcizarea conacului lor nou cumpărat după ce descoperă că este populat de fantome.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
+      "id": "tmdb:1208422",
+      "type": "movie",
+      "name": "Castelul Crăiței",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/7sHqLudT57fRsnGL7voMBorzLAg.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:936059",
+      "type": "movie",
+      "name": "Cei nouă obraznici",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/hOXo7GVwyxMrkFYgFHAIpltEDiF.jpg",
+      "description": "Andy, un adolescent problemă, strânge o echipă de copii de pe \"lista celor obraznici\" pentru a pune la cale un jaf de zile mari la Polul Nord și a primi cadourile pe care ei cred ca le merită.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:736790",
+      "type": "movie",
+      "name": "Chupa",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/ij2eeDXAhMLPLCYmaPvy8Bc2kLS.jpg",
+      "description": "În timp ce își vizitează familia în Mexic, un băiat singuratic se împrietenește cu o creatură mitică ascunsă la ferma bunicului său și pornește într-o aventură uimitoare.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1152797",
+      "type": "movie",
+      "name": "Cracovia Freestyle",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/x6HrGmmpVUX8XBI9Vg4hbSsdBCX.jpg",
+      "description": "Un rapper în ascensiune cu un trecut de infractor are nevoie de bani pentru înregistrări, așa că pune la cale o vânzare de droguri care l-ar putea costa totul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:1059638",
       "type": "movie",
       "name": "Dl Automobil și cavalerii templieri",
@@ -233,27 +97,20 @@
       "description": "Un istoric de artă găsește o veche cruce a cavalerilor templieri și trebuie să-și unească forțele cu un grup de aventurieri pentru a-i descoperi secretele.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:335977",
+      "id": "tmdb:1185954",
       "type": "movie",
-      "name": "Indiana Jones și cadranul destinului",
+      "name": "Dragoste pe muchie de cuțit",
       "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/epIPXh4n7l3fD26805Tn4BhdQRN.jpg",
-      "description": "În 1969, arheologul și aventurierul american Indiana Jones s-a opus Cursei Spațiale din cauza faptului că Statele Unite au recrutat foști naziști pentru a învinge Uniunea Sovietică în această competiție. În această luptă îl însoțește fiica sa Helena. Între timp, Jürgen Voller, un angajat NASA și fost nazist implicat în programul lunar, încearcă să facă din lume un loc mai bun pentru el. Arheologul Indiana Jones pornește într-o cursă contracronometru pentru a recupera relicva legendară care ar putea schimba cursul istoriei.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/7IxxJ6PbhXR1Bqx2KP24k4fcAk8.jpg",
+      "description": "Ducu și Marina au fost împreună în copilărie, dar s-au despărțit din cauza rivalității dintre familiile lor. La maturitate, cei doi se reîntâlnesc întâmplător și decid să își deschidă împreună un restaurant.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1140877",
+      "id": "tmdb:1081676",
       "type": "movie",
-      "name": "Încă două lozuri",
+      "name": "Dragoste uitată",
       "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/qs0YU64jYz9ytHdml5LEsj8sYTr.jpg",
-      "description": "Sile iese din închisoare cu ideea să se îmbogățească minând cryptomonede. Împreună cu Dinel și Pompiliu îl cunosc pe Ionuț, premiantul județului, cu ajutorul căruia reușesc să mineze cyptomonede în valoare de 6 milioane de euro pe care le stochează pe un stick USB. Dinel e responsabil de păstrarea în siguranță a stickului, dar reușește performanța să-l piardă foarte repede, așa că cei trei pornesc în căutarea lui.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1287753",
-      "type": "movie",
-      "name": "The Dream",
-      "releaseInfo": "2023",
-      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/zRYoe2YQNB46UuDlCmx8YzeIS0P.jpg",
+      "description": "Un chirurg respectat cândva, care și-a pierdut familia și memoria, primește o șansă la izbăvire când reia legătura cu cineva din trecutul său uitat.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:1117698",
@@ -272,20 +129,84 @@
       "description": "După ce pierderea Gamorei îl lasă pe Peter Quill într-o stare fragilă, Gardienii Galaxiei încearcă să-și refacă viața pe Knowhere. Când viața lui Rocket este pusă în pericol de un dușman din trecutul său, echipa pornește într-o misiune riscantă care le va schimba definitiv soarta.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1030319",
+      "id": "tmdb:1084008",
       "type": "movie",
-      "name": "Boss",
+      "name": "Haita de acțiune",
       "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/tDbXRGofDToyjvLr2TC4wATIONG.jpg",
-      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/rDipe00vmNe0i2zifEh7RCAdJXK.jpg",
+      "description": "Denzel este polițist la rutieră, însă el se visează în filmele americane și își dorește să rezolve cazuri complexe. Este luat la mișto de toți colegii lui din secție pentru că este prea naiv să fie corupt și nu-l duce capul destul cât să fie comisar adevărat.  Împreună cu Oli  o polițistă care are probleme cu nervii pentru că e sătulă de misoginismul din România și Aurel, primul agent de circulație din departament de etnie rromă, încep să investigheze un caz interesant, însă scormonesc unde nu trebuie.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:420808",
+      "id": "tmdb:335977",
       "type": "movie",
-      "name": "Peter Pan & Wendy",
+      "name": "Indiana Jones și cadranul destinului",
       "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/9NXAlFEE7WDssbXSMgdacsUD58Y.jpg",
-      "description": "Wendy Darling, o tânără care nu vrea să plece la internat, îl întâlneşte pe Peter Pan, un băiat care nu vrea să crească. Împreună cu fraţii ei şi mica zână Clopoţica, ea călătoreşte alături de Peter în magica Ţară de Nicăieri. Acolo îl întâlneşte pe maleficul pirat Căpitanul Hook şi are parte de o aventură care îi va schimba viaţa pentru totdeauna.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/epIPXh4n7l3fD26805Tn4BhdQRN.jpg",
+      "description": "În 1969, arheologul și aventurierul american Indiana Jones s-a opus Cursei Spațiale din cauza faptului că Statele Unite au recrutat foști naziști pentru a învinge Uniunea Sovietică în această competiție. În această luptă îl însoțește fiica sa Helena. Între timp, Jürgen Voller, un angajat NASA și fost nazist implicat în programul lunar, încearcă să facă din lume un loc mai bun pentru el. Arheologul Indiana Jones pornește într-o cursă contracronometru pentru a recupera relicva legendară care ar putea schimba cursul istoriei.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1140877",
+      "type": "movie",
+      "name": "Încă două lozuri",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/qs0YU64jYz9ytHdml5LEsj8sYTr.jpg",
+      "description": "Sile iese din închisoare cu ideea să se îmbogățească minând cryptomonede. Împreună cu Dinel și Pompiliu îl cunosc pe Ionuț, premiantul județului, cu ajutorul căruia reușesc să mineze cyptomonede în valoare de 6 milioane de euro pe care le stochează pe un stick USB. Dinel e responsabil de păstrarea în siguranță a stickului, dar reușește performanța să-l piardă foarte repede, așa că cei trei pornesc în căutarea lui.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:818511",
+      "type": "movie",
+      "name": "Încărcătură periculoasă",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/ocKoEvCPX809gWsyEXRP2zTViY5.jpg",
+      "description": "Roger, un pilot de curse cu camioane, pierde totul, dar primește o ofertă tentantă și periculoasă: să devină șoferul unei bande de hoți.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:790493",
+      "type": "movie",
+      "name": "Joaca de-a spionii: Armageddon",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/oUhudk1IlIAQqVcXXAFxXX0lW4F.jpg",
+      "description": "Când copiii celor mai mari agenți secreți ai lumii ajută fără să vrea un puternic dezvoltator de jocuri să dezlănțuie un virus de computer care îi oferă controlul asupra întregii tehnologii, ei trebuie să devină ei înșiși spioni pentru a-și salva părinții și lumea.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1140259",
+      "type": "movie",
+      "name": "Libertate",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/z4QSxgzYQXvj99Msx3oOiDjWxnh.jpg",
+      "description": "Sibiu, decembrie 1989. În haosul și panica generate de protestele mulțimii împotriva autorităților, o unitate de miliție devine ținta unui asalt violent care degenerează într-o confruntare sângeroasă între soldați, milițieni, securiști și civili. Încercând să scape de asediu, căpitanul de miliție Viorel e capturat și acuzat că e terorist.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1001884",
+      "type": "movie",
+      "name": "Magie de Crăciun",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/4l62UB7xjfVZKMz6gdQXI42VjPF.jpg",
+      "description": "Eddie Garrick este un om cu inimă bună care nu mai crede în magia Crăciunului. În Ajun cât petrecea timp cu fetița lui de nouă ani, întâlnește un personaj misterios, în costum roșu, pe nume Nick.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1203123",
+      "type": "movie",
+      "name": "Mai departe",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/ryS9qDj5gE3uOyE2KEB9qHlm08f.jpg",
+      "description": "„Această lume este arena mea” este povestea lui George Balta, un jucător de rugby paralizat în urma unui accident, care se reinventează ca maratonist în scaun cu rotile și speaker motivațional.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:958064",
+      "type": "movie",
+      "name": "Mammalia",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/96mM9l0QQ6y50mkgAWHXGZVvKhq.jpg",
+      "description": "Camil, un bărbat în vârstă de 39 de ani, se lansează într-o călătorie onirică în care banalul și fantasticul se întrepătrund. Odată cu pierderea controlului asupra muncii lui, asupra statutului social și asupra relației lui amoroase, pornește într-o căutare care îl face să-și chestioneze identitatea și masculinitatea. Pe urmele partenerei lui, ajunge într-o comunitate bizară, cu ritualuri tulburătoare, în care, în cele din urmă, se confruntă cu o răsturnare tragicomică de roluri.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1166603",
+      "type": "movie",
+      "name": "Miami Bici 2",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/3MzpmVvv2muKaRlwGXaA3Do8nWV.jpg",
+      "description": "Ion Bilă și Ilie Piciu călătoresc de la Miami la Los Angeles în căutarea visului american adaptat la cel românesc, în stilul \"dolari mulți pe muncă puțină\". Ei ajung în situația de a face diferite infracțiuni într-un anturaj de “băieți răi” de care apoi încearcă să se descotorosească.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:1068141",
@@ -296,28 +217,28 @@
       "description": "După o tragedie, o tânără eroină își ia locul de drept printre cei din echipa Power Rangers și înfruntă cel mai vechi dușman de moarte al acestora.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:736790",
+      "id": "tmdb:985895",
       "type": "movie",
-      "name": "Chupa",
+      "name": "MMXX",
       "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/ij2eeDXAhMLPLCYmaPvy8Bc2kLS.jpg",
-      "description": "În timp ce își vizitează familia în Mexic, un băiat singuratic se împrietenește cu o creatură mitică ascunsă la ferma bunicului său și pornește într-o aventură uimitoare.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/noXUQ6ZCrIokWRRz1evNbeL7rkw.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:964980",
+      "id": "tmdb:1039960",
       "type": "movie",
-      "name": "Air",
+      "name": "Monster High 2",
       "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/39EeOmBVeAQu3m2yrDNOjffC7AP.jpg",
-      "description": "Descoperiți parteneriatul care a schimbat jocul dintre un Michael Jordan nedescoperit pe atunci și divizia de baschet a Nike, care a revoluționat lumea sportului și a culturii cu brandul Air Jordan.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/9RaCErx1ofEBiUsifGFaA6F6rKt.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1084008",
+      "id": "tmdb:1189532",
       "type": "movie",
-      "name": "Haita de acțiune",
+      "name": "Nuntă pe bani",
       "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/rDipe00vmNe0i2zifEh7RCAdJXK.jpg",
-      "description": "Denzel este polițist la rutieră, însă el se visează în filmele americane și își dorește să rezolve cazuri complexe. Este luat la mișto de toți colegii lui din secție pentru că este prea naiv să fie corupt și nu-l duce capul destul cât să fie comisar adevărat.  Împreună cu Oli  o polițistă care are probleme cu nervii pentru că e sătulă de misoginismul din România și Aurel, primul agent de circulație din departament de etnie rromă, încep să investigheze un caz interesant, însă scormonesc unde nu trebuie.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/xyNUW7bUvc2KLy0IZUhOb18coVd.jpg",
+      "description": "Mircea urăște nunțile. Și toată lumea află asta atunci când după participarea la încă o nuntă din obligație, face o postare controversată pe Facebook care devine virală. Însă când trebuie să restituie o sumă uriașă de bani din cauza unor decizii greșite, singura soluție pentru el rămâne propria nuntă.  Pentru Mircea urmează o cursă contracronometru pentru a găsi sală, nași și invitați cu scopul de a face un business cât mai profitabil.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:640146",
@@ -328,12 +249,60 @@
       "description": "Partenerii supereroi Scott Lang și Hope Van Dyne revin pentru a-și continua aventurile ca Omul-Furnică și Viespea. Împreună cu părinții lui Hope, Hank Pym și Janet Van Dyne, și fiica lui Scott, Cassie Lang, familia se regăsește explorând tărâmul cuantic, interacționând cu noi creaturi ciudate, într-o aventură la limita imaginaţiei.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
+      "id": "tmdb:1149381",
+      "type": "movie",
+      "name": "Operațiunea: Soulcatcher",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/jQWnit4BWnDYG60Q8YTJoqDO5O4.jpg",
+      "description": "„Kiel” a lucrat anterior pentru instituțiile guvernamentale poloneze în lupta împotriva terorismului. Dar acum este un mercenar care lucrează pentru o companie militară privată. Împreună cu fratele său, Piotr, acceptă un contract profitabil într-o țară condusă de un localnic. Deși sarcina pe care li se cere să o îndeplinească pare simplă la început, în curând devine evident că este vorba de fapt despre o armă experimentală periculoasă care transformă oamenii în mașini de ucis - iar diferitele părți implicate vor să pună mâna pe dispozitiv.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:420808",
+      "type": "movie",
+      "name": "Peter Pan & Wendy",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/9NXAlFEE7WDssbXSMgdacsUD58Y.jpg",
+      "description": "Wendy Darling, o tânără care nu vrea să plece la internat, îl întâlneşte pe Peter Pan, un băiat care nu vrea să crească. Împreună cu fraţii ei şi mica zână Clopoţica, ea călătoreşte alături de Peter în magica Ţară de Nicăieri. Acolo îl întâlneşte pe maleficul pirat Căpitanul Hook şi are parte de o aventură care îi va schimba viaţa pentru totdeauna.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1203744",
+      "type": "movie",
+      "name": "Puterea Probabilității",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/1hbWtQK5PXn1OFgYnSQYgG197DG.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:1072690",
       "type": "movie",
       "name": "Ramon",
       "releaseInfo": "2023",
       "poster": "https://image.tmdb.org/t/p/w500/tWd9lw09AsaBpCXYCYyaBxs7UIn.jpg",
       "description": "La prima vedere, Ramon pare un om simplu a cărui unică și mare pasiune este viticultura. Viața lui este dată peste cap atunci când, printr-o serie neașteptată de împrejurări, întâlnește cea mai frumoasă femeie din lume de care se îndrăgostește fulgerător.  Decide să plece la București să își găsească “marea iubire”. Ajuns aici, Ramon descoperă că viața într-un oraș mare nu este deloc ușoară. Totul se complică atunci când devine și suspectul principal în cel mai mare jaf al secolului, furtul unui tablou de 50 de milioane de euro!  Ramon pornește astfel într-o dublă misiune extrem de periculoasă (cel puțin așa crede el) să recupereze tabloul și să găsească fata visurilor sale. Va reuși el? Întrebarea la care trebuie să răspundă cei din jurul lui este dacă Ramon este un simplu OM sau un SuperOM.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1072568",
+      "type": "movie",
+      "name": "Romina, VTM",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/nXyHerwRTk2c9doh6GH09ZbMdjN.jpg",
+      "description": "Romina (Nicole Cherry), înfiptă și isteață cum e ea, încearcă să salveze terasa tatălui ei din Costinești. Ca să reușească, e nevoită să își confrunte toate fricile. În peripeția ei, ajunge să se îndrăgostească de Valentin (Rareș Mariș), un turist venit în vacanță la Costinești, cu planuri de a cânta la chitară pe pietonală pentru a câștiga un ban cinstit. Romina îl ajută pe Valentin să devină artist în toată regula, și, fără să își dea seama, Valentin ajunge să semene cam mult cu Gino (Bogdan DLP). Între Romina și Gino pare că a fost ceva la un moment dat, și asta îl face pe Valentin să devină gelos. Cei 3 sunt acompaniați de o gașcă foarte colorată, formată din Narcisa (Cesima Nechifor), Dana (Ana-Maria Guran), Mihai (Costi Max), Pamela (Cristina Pucean), Sebi (Yny Sebi), Bobby (Costel Biju) și Tzancă Uraganu. Va reuși Romina să salveze terasa tatălui ei și dacă da, la ce cost?\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:798021",
+      "type": "movie",
+      "name": "Schimb în familie",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/Q1SV68npDRKMO69j1qQ6gv75vw.jpg",
+      "description": "În prag de Crăciun, într-o familie se dezlănțuie haosul. După un eveniment cosmic rar, părinții fac schimb de corpuri cu copiii lor adolescenți.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1071866",
+      "type": "movie",
+      "name": "Space Pups",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/jKrQikFt0fhkGTZ79d9DsS7y73z.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:739986",
@@ -352,28 +321,51 @@
       "description": "O noapte. Zeci de povești. Un singur oraș.\r Lică - taximetristul „știe-tot” - și Liviu - taximetristul „tace mult” - sunt prieteni buni, deși sunt complet diferiți, iar viziunile lor despre lume și viață nu se prea întâlnesc decât la shaormerie. Dar amândoi împărtășesc frustrarea de-a face o meserie care speră să le asigure un trai decent și poate niște economii până găsesc altceva mai bun.\r Pentru Lică primează banii, pentru Liviu mulțumirea sufletească. Asta până încep să se gândească fiecare mai mult la ce au, ce sunt și ce pot face cu viețile lor. Pentru ei, o tură de noapte prin București e o adevărată aventură în care întâlnesc oameni de toate felurile - de la tineri petrecăreți și corporatiști, la vedete, DJ sau chiar interlopi.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1072568",
+      "id": "tmdb:1287753",
       "type": "movie",
-      "name": "Romina, VTM",
+      "name": "The Dream",
       "releaseInfo": "2023",
-      "poster": "https://image.tmdb.org/t/p/w500/nXyHerwRTk2c9doh6GH09ZbMdjN.jpg",
-      "description": "Romina (Nicole Cherry), înfiptă și isteață cum e ea, încearcă să salveze terasa tatălui ei din Costinești. Ca să reușească, e nevoită să își confrunte toate fricile. În peripeția ei, ajunge să se îndrăgostească de Valentin (Rareș Mariș), un turist venit în vacanță la Costinești, cu planuri de a cânta la chitară pe pietonală pentru a câștiga un ban cinstit. Romina îl ajută pe Valentin să devină artist în toată regula, și, fără să își dea seama, Valentin ajunge să semene cam mult cu Gino (Bogdan DLP). Între Romina și Gino pare că a fost ceva la un moment dat, și asta îl face pe Valentin să devină gelos. Cei 3 sunt acompaniați de o gașcă foarte colorată, formată din Narcisa (Cesima Nechifor), Dana (Ana-Maria Guran), Mihai (Costi Max), Pamela (Cristina Pucean), Sebi (Yny Sebi), Bobby (Costel Biju) și Tzancă Uraganu. Va reuși Romina să salveze terasa tatălui ei și dacă da, la ce cost?\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1070660",
+      "id": "tmdb:1059373",
       "type": "movie",
-      "name": "Două inimi",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/1gVd5kkSsWvjeYBNZfUn6Jp3Ibu.jpg",
-      "description": "Lexi, o fată de 19 ani, săracă, cu o viață plină de greutăți, dar foarte talentată, scrie versuri și muzică într-un caiet. Înainte de o întâlnire importantă care îi poate schimba viața și la care caietul ei ar juca un rol crucial, Lexi pierde caietul. Printr-un concurs de împrejurări, Lexi crede că acesta a ajuns în posesia lui Zen, un superstar arogant, cântăreț de muzică trap.\r Însă Universul are anumite planuri pentru cei doi, care se reîntâlnesc și descoperă că au mai multe lucruri în comun decât credeau și că sunt atrași unul de celălalt.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "name": "Tigru",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/9YWLAAuLcJkbQQMXGeKmokYHuTC.jpg",
+      "description": "Vera, medic veterinar într-un pitoresc oraș transilvănean, este măcinată de probleme personale și are o cădere nervoasă. În ziua când un tigru confiscat de la un interlop local este adus la grădina zoologică unde lucrează, femeia descoperă un secret care o dă peste cap. Tigrul scapă din cuşcă, iar Vera trebuie să pornească în căutarea lui. Filmul este inspirat de fapte reale petrecute la Sibiu în 2011.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1065796",
+      "id": "tmdb:1208251",
       "type": "movie",
-      "name": "O noapte la grădiniță",
+      "name": "Visul",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/oNQYhILe9xS7tx9eAh0rjZSZWi6.jpg",
+      "description": "Inspirat din fapte reale, filmul regizat de Cătălin Saizescu după un scenariu semnat de Gabriel Gheorghe, este o comedie în care visul unui actor de provincie pare să se năruie, în timp ce visurile celor din jur sau ale deținuților cu care ajunge să pună în scenă un spectacol de teatru par să se apropie mai mult de îndeplinire.  Alex e un artist ocolit de succes, înlănțuit într-o relație amoroasă căzută în ruină. Trimis la un penitenciar de maximă siguranță să regizeze o piesă de teatru, alege o scenă din „Visul unei nopți de vară”, a marelui Shakespeare. În fața eforturilor hoților semianalfabeti de a-și depăși limitele, Alex realizează că este prizonier în propria viață. La rândul lor, deținuții fac totul pentru a fi selectionati în cadrul Festivalului de teatru de penitenciar, știind că fiecare scenă are o trapă prin care ar putea evada.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1193145",
+      "type": "movie",
+      "name": "Warboy",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/sPKrNbz3Ed8MWTej5iONniqObJQ.jpg",
+      "description": "Finalul celui de-al Doilea Război Mondial, în toamna anului 1944. Un adolescent încearcă să salveze cei doi cai ai familiei pornind cu ei într-o călătorie inițiatică în peisajul sălbatic al Munților Apuseni.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:787699",
+      "type": "movie",
+      "name": "Wonka",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/deNN34J6LcX8lIJKUnUZt6VGu5s.jpg",
+      "description": "Bazat pe personajul extraordinar din centrul poveștii “Charlie și fabrica de ciocolată”, cea mai emblematică carte pentru copii a lui Roald Dahl și una dintre cele mai bine vândute cărți pentru copii din toate timpurile, „Wonka” spune povestea minunată prin care cel mai mare inventator, magician și producător de ciocolată a devenit îndrăgitul personaj Willy Wonka, așa cum îl cunoaștem astăzi\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:673271",
+      "type": "movie",
+      "name": "13: Muzicalul",
       "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/rgxCnkiXx81uobrGouq09cOdxX9.jpg",
-      "description": "Un tânăr se infiltrează la repetițiile unei piese de teatru școlare pentru a opri un grup de profesori și părinți excentrici să-l exmatriculeze pe fiul iubitei lui.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/rqShG2kTbsVbgrgjfoEwawjR88N.jpg",
+      "description": "După ce se mută din New York în Indiana în urma divorțului părinților, un școlar inteligent este hotărât să organizeze cel mai tare bar mitzvah din câte s-au văzut.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:76600",
@@ -384,60 +376,12 @@
       "description": "„Avatar: Calea Apei\" atinge culmi noi în timp ce James Cameron revine în lumea de pe Pandora. Plasat la mai bine de un deceniu după evenimentele din primul film, acest nou film uluitor spune povestea familiei Sully și prezintă publicului maiestuosul tulkun oceanic.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1124976",
+      "id": "tmdb:939475",
       "type": "movie",
-      "name": "Hai hui în timp",
+      "name": "Basmele sunt pentru cei mici",
       "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/aat42xp2g4S2WOTfgvpU1Y7dH9B.jpg",
-      "description": "Într-o lume în care părinții nu mai petrec suficient timp alături de copii, aceștia vor face orice să recâștige acest lucru prețios. Cei cinci prieteni, Maria, Ioana, Mihai, Radu și Andrei, vor porni într-o aventură plină de farmec unde, alături de noii lor amici dintr-o lume fantastică din trecut, Ain și Ara, vor reuși cu inteligență să își atingă țelul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1002457",
-      "type": "movie",
-      "name": "Oameni de treabă",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/vP9irPoXj7f8FZhuUQCe0SQdl5N.jpg",
-      "description": "Ilie este polițist într-un sat pentru ai cărui locuitori corupția e un mod de viață. În urma unei serii de evenimente violente la care asistă, dar și a tensiunilor care se acumulează, bărbatul se vede nevoit să ia decizii importante la muncă și în viața personală.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:668482",
-      "type": "movie",
-      "name": "Roald Dahl – Matilda: Musicalul",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/ga8R3OiOMMgSvZ4cOj8x7prUNYZ.jpg",
-      "description": "O fetiță extraordinară cu o minte ascuțită și o imaginație bogată ia atitudine pentru a-și schimba viața, iar rezultatele sunt miraculoase. Fă cunoștință cu Matilda.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:774752",
-      "type": "movie",
-      "name": "The Guardians of the Galaxy Holiday Special",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/8dqXyslZ2hv49Oiob9UjlGSHSTR.jpg",
-      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:338958",
-      "type": "movie",
-      "name": "În căutarea magiei",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/770De7ZxChwEJYYPQHEwSh9Fk5i.jpg",
-      "description": "Au trecut 15 ani de la nunta lui Giselle și Robert, dar Giselle e dezamăgită de viața la oraș. Cei doi decid să se mute cu familia tot mai numeroasă în suburbia somnoroasă Monroeville, în căutarea unei vieți de poveste. Din păcate, nu e soluția la care ea spera. Suburbia are alte reguli și o regină locală, pe Malvina Monroe, care o face pe Giselle să nu se simtă în apele ei. Frustrată din cauză că nu găsește finalul fericit sperat, ea apelează la magia din Andalasia, transformând din greşeală orașul într-o poveste reală și punând în pericol viitoarea fericire a familiei. Acum, Giselle trebuie să se grăbească să inverseze vraja și să realizeze ce înseamnă „un final fericit” pentru ea și familia ei.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:505642",
-      "type": "movie",
-      "name": "Pantera Neagră: Wakanda Pentru totdeauna",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/lA5fglOxDQd8ZtAT8Q39FPlNqLD.jpg",
-      "description": "După moartea regelui T'Challa, regina Ramonda, Shuri, M'Baku și Dora Milaje luptă pentru protecția națiunii de intervenția marilor puteri. În vreme ce poporul e gata să depăsească pierderea regelui și să îmbrățișeze un nou capitol, eroii wakandezi ajutați de Nakia și Everett Ross fac planurile unui nou drum, mai luminos, pentru Wakanda.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1020969",
-      "type": "movie",
-      "name": "Crăciunul ursulețului Teddy",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/uqV9OKGUjn7ifZlegAfjzNjGLr4.jpg",
-      "description": "La târgul de Crăciun, în mijlocul fulgilor de zăpadă și al luminii sclipitoare, Mariann descoperă un secret incredibil: un ursuleț de pluș viu care începe să miște capul și să adulmece aerul. Fascinată, ea își dorește să-l câștige, dar ursulețul are alte planuri. Visând la un stăpân bogat care să-l învețe secretele lumii, el ajunge într-un coteț. Cu ajutorul ariciului Bolla, ursulețul învață că, în viață, cele mai importante lucruri nu sunt cele materiale.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/er31inZjWtqTrxQyAjW0FHXVblr.jpg",
+      "description": "Un gamer răzgâiat vrea să participe la un turneu, dar boala mamei și o mătușă excentrică îl forțează să-și regândească prioritățile.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:1005828",
@@ -448,30 +392,6 @@
       "description": "În România rurală a secolului al XIX-lea, izolată de lume, o văduvă și mamă a trei copii este nevoită să țină piept unui vechi prieten de familie care, văzându-i fără apărare, își dă-n vileag adevărata natură sadică. Bazat pe una din cele mai cunoscute povești românești (\"Capra cu trei iezi\", de Ion Creangă), filmul își propune să dezvăluie adevărata natură a faimoasei povești pentru copii și să prezinte publicului o nouă perspectivă, una care oferă imaginea reală a tragediei. Filmul urmează îndeaproape firul narativ al poveștii lui Creangă dezvoltând elementele subtile și păstrând, în mare parte, dialogul original.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:962232",
-      "type": "movie",
-      "name": "Dincolo de univers",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/jv8PbopI3r3p0HrQJbLYcOzFHle.jpg",
-      "description": "Urmând să facă un transplant de rinichi, o tânără pianistă creează o legătură surprinzătoare cu doctorul ei, apoi capătă curajul de a-și îndeplini visul în muzică.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:830784",
-      "type": "movie",
-      "name": "Lilu, Lilu, Crocodilu",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/xgnWY4EWHwhPM7s2J32id88ePOW.jpg",
-      "description": "Josh și părinții lui sunt șocați să găsească un crocodil cântăreț în pod, dar ajung să-l adore. Păcat că vecinul lor morocănos i-a pus gând rău!\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1030908",
-      "type": "movie",
-      "name": "Mirciulică",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/xDjw0bwdMn11h9WLYp21bZ6cU72.jpg",
-      "description": "Mircea, un tânăr de 30 ani din Gherla, pică un examen de magistratură la București și este nevoit să se întoarcă acasă și să locuiască cu părinții lui. Forțat de împrejurări, se angajează la un baron local care deține o firmă de salubritate, dar lucrurile se complică atunci când ajunge să lucreze pentru soția șefului.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
       "id": "tmdb:865577",
       "type": "movie",
       "name": "Carbon",
@@ -480,20 +400,76 @@
       "description": "În Moldova anilor 90, Dima, un șofer de tractor, decide să se înroleze în armată și să ia parte la războiul de la granița cu Transnistria alături de Vasea, un veteran al războiului din Afghanistan. Pe drum spre front, descoperă un cadavru carbonizat care nu prezintă interes pentru nimeni, nici măcar pentru autorități. Dima și Vasea se hotărăsc să-i ofere o înmormântare cuvenită și pornesc într-o călătorie plină de aventuri și situații limită în încercarea de a afla identitatea cadavrului.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:335795",
+      "id": "tmdb:1020969",
       "type": "movie",
-      "name": "Monster High: The Movie",
+      "name": "Crăciunul ursulețului Teddy",
       "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/768OBP28OA4mjavOUAIRlVo14Xu.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/uqV9OKGUjn7ifZlegAfjzNjGLr4.jpg",
+      "description": "La târgul de Crăciun, în mijlocul fulgilor de zăpadă și al luminii sclipitoare, Mariann descoperă un secret incredibil: un ursuleț de pluș viu care începe să miște capul și să adulmece aerul. Fascinată, ea își dorește să-l câștige, dar ursulețul are alte planuri. Visând la un stăpân bogat care să-l învețe secretele lumii, el ajunge într-un coteț. Cu ajutorul ariciului Bolla, ursulețul învață că, în viață, cele mai importante lucruri nu sunt cele materiale.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:691683",
+      "type": "movie",
+      "name": "Cu duzina e mai ieftin",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/kBDs7rQgmfixoE1DZulaVkU2ILg.jpg",
+      "description": "Filmul original Disney+ „Cu duzina e mai ieftin” este o nouă interpretare a comediei de familie de succes din 2003. Filmul spune povestea amuzante și încântătoare a unei familii cu 10 copii, familia Bakers, în timp ce navighează în viața agitată de acasă și își gestionează simultan afacerea de familie.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:962232",
+      "type": "movie",
+      "name": "Dincolo de univers",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/jv8PbopI3r3p0HrQJbLYcOzFHle.jpg",
+      "description": "Urmând să facă un transplant de rinichi, o tânără pianistă creează o legătură surprinzătoare cu doctorul ei, apoi capătă curajul de a-și îndeplini visul în muzică.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:453395",
+      "type": "movie",
+      "name": "Doctor Strange în Multiversul Nebuniei",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/1De3IXu34tpdux5j2t9gEZ4ToxY.jpg",
+      "description": "Doctorul Stephen Strange folosește o vrajă interzisă care deschide poarta către Multivers și inclusiv către o versiune alternativă a lui însuși, iar amenințarea adusă de acest eveniment pare prea mare chiar și pentru puterile combinate ale lui Strange, Wong și Wanda Maximoff.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1070660",
+      "type": "movie",
+      "name": "Două inimi",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/1gVd5kkSsWvjeYBNZfUn6Jp3Ibu.jpg",
+      "description": "Lexi, o fată de 19 ani, săracă, cu o viață plină de greutăți, dar foarte talentată, scrie versuri și muzică într-un caiet. Înainte de o întâlnire importantă care îi poate schimba viața și la care caietul ei ar juca un rol crucial, Lexi pierde caietul. Printr-un concurs de împrejurări, Lexi crede că acesta a ajuns în posesia lui Zen, un superstar arogant, cântăreț de muzică trap.\r Însă Universul are anumite planuri pentru cei doi, care se reîntâlnesc și descoperă că au mai multe lucruri în comun decât credeau și că sunt atrași unul de celălalt.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:817648",
+      "type": "movie",
+      "name": "Echipa gazdă",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/lBeAbMeTLyNJ1TnqkioVJ8t7yA4.jpg",
+      "description": "Suspendat din NFL, antrenorul Sean Payton speră să-i recâștige afecțiunea fiului antrenând echipa lui de fotbal, care e un dezastru. Comedie bazată pe o poveste reală.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:929472",
+      "type": "movie",
+      "name": "Erax",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/rMp04rYhy4yfOfjZq5F9R3wkeqo.jpg",
       "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1021331",
+      "id": "tmdb:772272",
       "type": "movie",
-      "name": "Teambuilding",
+      "name": "Fata înaltă 2",
       "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/1kCztLCB5pFUp2pjeTmAGU02G6G.jpg",
-      "description": "Emil e promovat în fruntea unei echipe care va fi înlocuită de inteligența artificială și își convinge șeful să le salveze slujbele dacă vor câștiga cupa la teambuilding.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/eyKkLdst2vFRjCC89C3NqGCLpNE.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1124976",
+      "type": "movie",
+      "name": "Hai hui în timp",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/aat42xp2g4S2WOTfgvpU1Y7dH9B.jpg",
+      "description": "Într-o lume în care părinții nu mai petrec suficient timp alături de copii, aceștia vor face orice să recâștige acest lucru prețios. Cei cinci prieteni, Maria, Ioana, Mihai, Radu și Andrei, vor porni într-o aventură plină de farmec unde, alături de noii lor amici dintr-o lume fantastică din trecut, Ain și Ara, vor reuși cu inteligență să își atingă țelul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:642885",
@@ -502,30 +478,6 @@
       "releaseInfo": "2022",
       "poster": "https://image.tmdb.org/t/p/w500/7ze7YNmUaX81ufctGqt0AgHxRtL.jpg",
       "description": "Au trecut 29 de ani de când cineva a aprins Lumânarea Flacării Negre și a înviat surorile Sanderson, care au trăit în secolul al XVII-lea, iar acestea caută răzbunare. Acum, trei eleve de liceu trebuie să le oprească pe vrăjitoarele dezlănțuite și răuvoitoare din a face noi ravagii în Salem, înainte de zorii zilei de Ajun.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:894205",
-      "type": "movie",
-      "name": "Noaptea vârcolacului",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/bJwFThoaYzdVw1Q1G3zbtKMPRmB.jpg",
-      "description": "Într-o noapte sinistră, un ordin secret al vânătorilor de monștri reapare din umbră și se reunește la întunecatul Templu Bloodstone, cu prilejul morții conducătorului lor. Comemorarea macabră a vieții acestuia îi angrenează pe participanți într-o competiție mortală misterioasă, pe urmele unei relicve puternice - o vânătoare care îi va aduce față în față cu un monstru periculos.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:936061",
-      "type": "movie",
-      "name": "Under Wraps 2",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/pZzFvEyext3fvc5M0RJceWTiMV3.jpg",
-      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:532639",
-      "type": "movie",
-      "name": "Pinocchio",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/zaZhjKrJeWczQ3AotKoQObppEbH.jpg",
-      "description": "Povestea lui Pinocchio prinde viață de data asta printr-un film live action, CGI. Rescriem povestea păpușii din lemn care pleacă într-o aventură să devină un băiat adevărat. Alte personaje îndrăgite pe care o să le regăsiți sunt: Geppetto, tâmplarul care îl creează pe Pinocchio și care-l tratează ca pe un băiețel adevărat; Greierașul Jiminy, care devine conștiința lui Pinochhio; Zâna Azurie; John cel Onest; Pescărușul Sofia și Vizitiul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:862558",
@@ -552,12 +504,12 @@
       "description": "Ivy și Bean se înscriu la balet, dar află că recitalul va avea loc în fața a sute de oameni. Acum clar trebuie să găsească o cale de scăpare!\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:629176",
+      "id": "tmdb:338958",
       "type": "movie",
-      "name": "Samaritan",
+      "name": "În căutarea magiei",
       "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/zgH8Ej50n2cvJCMJrxd4twEwSqz.jpg",
-      "description": "Sam Clearly în vârstă de 13 ani suspectează că vecinul său misterios Mr. Smith este de fapt legendarul justițiar Samaritan declarat mort cu 25 ani în urmă. Cum rata criminalității e în creștere, iar orașul în pragul haosului, Sam își propune să-și convingă vecinul să-și dezvăluie identitatea și să salveze orașul de la distrugere.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/770De7ZxChwEJYYPQHEwSh9Fk5i.jpg",
+      "description": "Au trecut 15 ani de la nunta lui Giselle și Robert, dar Giselle e dezamăgită de viața la oraș. Cei doi decid să se mute cu familia tot mai numeroasă în suburbia somnoroasă Monroeville, în căutarea unei vieți de poveste. Din păcate, nu e soluția la care ea spera. Suburbia are alte reguli și o regină locală, pe Malvina Monroe, care o face pe Giselle să nu se simtă în apele ei. Frustrată din cauză că nu găsește finalul fericit sperat, ea apelează la magia din Andalasia, transformând din greşeală orașul într-o poveste reală și punând în pericol viitoarea fericire a familiei. Acum, Giselle trebuie să se grăbească să inverseze vraja și să realizeze ce înseamnă „un final fericit” pentru ea și familia ei.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:1003180",
@@ -568,20 +520,12 @@
       "description": "Un documentar captivant și drăgălaș în care experții în pisici pătrund în mintea felinei pentru a dezvălui adevăratele abilități ale jucăușului animal de companie.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:673271",
+      "id": "tmdb:830784",
       "type": "movie",
-      "name": "13: Muzicalul",
+      "name": "Lilu, Lilu, Crocodilu",
       "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/rqShG2kTbsVbgrgjfoEwawjR88N.jpg",
-      "description": "După ce se mută din New York în Indiana în urma divorțului părinților, un școlar inteligent este hotărât să organizeze cel mai tare bar mitzvah din câte s-au văzut.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:698948",
-      "type": "movie",
-      "name": "Treisprezece vieți",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/eanguV7ApTtLNlMyLEKHHlsuj0.jpg",
-      "description": "Thailanda, 2018. După ce încep vizitarea unui sistem carstic subteran, un grup de băieți și antrenorul lor de fotbal realizează că o ploaie torențială a inundat porțiuni din peșteră și că nu mai pot ieși. Vestea ajunge în întreaga lume, iar formarea unei echipe internaționale de salvare începe imediat.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/xgnWY4EWHwhPM7s2J32id88ePOW.jpg",
+      "description": "Josh și părinții lui sunt șocați să găsească un crocodil cântăreț în pod, dar ajung să-l adore. Păcat că vecinul lor morocănos i-a pus gând rău!\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:1023377",
@@ -592,83 +536,19 @@
       "description": "Mihai Viteazul, alături de soția sa, Doamna Stanca, și mama sa, Tudora, călătorește în timp și retrăiește momentele cruciale din viața sa în locul nașterii sale, Drăgoești. În doar șapte ani, tânărul voievod schimbă destinul Europei cu strategii îndrăznețe și viziune.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:809107",
+      "id": "tmdb:1030908",
       "type": "movie",
-      "name": "Zombies 3",
+      "name": "Mirciulică",
       "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/vqzdv4nArhuZxd7il0boKaVxQMF.jpg",
-      "description": "Zed și Addison sunt în ultimul an de liceu, iar Seabrook a devenit un cămin pentru monștri și oameni deopotrivă. Zed încearcă să obțină o bursă la fotbal, devenind astfel primul zombi care urmează colegiul. Addison organizează un campionat internațional de majorete. Când intrușii intergalactici apar la competiție, comunitatea din Seabrook bănuiește că vor mai mult decât să concureze amical.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/xDjw0bwdMn11h9WLYp21bZ6cU72.jpg",
+      "description": "Mircea, un tânăr de 30 ani din Gherla, pică un examen de magistratură la București și este nevoit să se întoarcă acasă și să locuiască cu părinții lui. Forțat de împrejurări, se angajează la un baron local care deține o firmă de salubritate, dar lucrurile se complică atunci când ajunge să lucreze pentru soția șefului.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:616037",
+      "id": "tmdb:335795",
       "type": "movie",
-      "name": "Thor: Iubire și Tunete",
+      "name": "Monster High: The Movie",
       "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/s9AysEGswrWOPd7JOOKwgp7zh9E.jpg",
-      "description": "Thor este nevoit să revină în luptă când Gorr, Călăul Zeilor, începe să extermine divinitățile din univers. Pentru a-l opri, pornește într-o aventură cosmică alături de Valkyrie, Korg și fosta sa iubită Jane Foster, care, spre uimirea lui, mânuiește acum ciocanul Mjölnir și are puterile lui Thor.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:756187",
-      "type": "movie",
-      "name": "Sneakerella",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/fk63GZdyKQXJBotK1D5oAE1gnWa.jpg",
-      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:453395",
-      "type": "movie",
-      "name": "Doctor Strange în Multiversul Nebuniei",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/1De3IXu34tpdux5j2t9gEZ4ToxY.jpg",
-      "description": "Doctorul Stephen Strange folosește o vrajă interzisă care deschide poarta către Multivers și inclusiv către o versiune alternativă a lui însuși, iar amenințarea adusă de acest eveniment pare prea mare chiar și pentru puterile combinate ale lui Strange, Wong și Wanda Maximoff.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:661231",
-      "type": "movie",
-      "name": "Operațiunea Mincemeat",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/tfdfh1mK24VujxT5z11732asxdR.jpg",
-      "description": "E 1943. Aliații vor să distrugă controlul pe care-l are Hitler asupra Europei și au de gând să lanseze un asalt asupra Siciliei. Dar ei se confruntă cu o provocare imposibilă: cum să protejeze forța invaziei de o posibilă anihilare? Totul cade pe umerii a doi ofițeri remarcabili, Ewen Montagu (Colin Firth) și Charles Cholmondeley (Matthew Macfaydyen), care trebuie să creeze cea mai inspirată și improbabilă strategie de dezinformare din acest război. Aceasta îl are în centru pe cel mai neașteptat agent secret: un mort. „Operațiunea Mincemeat” (Carnea Tocată) e povestea extraordinară și adevărată a unei idei care a sperat să întoarcă situația în avantajul Aliaților, asumându-și riscuri imposibil de mari, sfidând logica și împingând nervii creatorilor săi la limită.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:675353",
-      "type": "movie",
-      "name": "Sonic ariciul 2",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/AtaVVX6uvKMxqeHzcCX3Jxi9D7z.jpg",
-      "description": "Robotnik se întoarce, de data asta cu un nou partener, Knuckles, în căutarea unui smarald care are puterea să clădească, dar și să distrugă civilizații. Sonic face echipă cu Tails, noul lui partener, și împreună se îmbarcă într-o aventură pentru a găsi smaraldul înainte ca acesta să cadă pe mâini greșite.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:939475",
-      "type": "movie",
-      "name": "Basmele sunt pentru cei mici",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/er31inZjWtqTrxQyAjW0FHXVblr.jpg",
-      "description": "Un gamer răzgâiat vrea să participe la un turneu, dar boala mamei și o mătușă excentrică îl forțează să-și regândească prioritățile.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:691683",
-      "type": "movie",
-      "name": "Cu duzina e mai ieftin",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/kBDs7rQgmfixoE1DZulaVkU2ILg.jpg",
-      "description": "Filmul original Disney+ „Cu duzina e mai ieftin” este o nouă interpretare a comediei de familie de succes din 2003. Filmul spune povestea amuzante și încântătoare a unei familii cu 10 copii, familia Bakers, în timp ce navighează în viața agitată de acasă și își gestionează simultan afacerea de familie.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:921655",
-      "type": "movie",
-      "name": "Salvat de Ruby",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/tPlJEodEn0SSV4avo8KSawtlTlN.jpg",
-      "description": "Visând să se alăture unei unități K9, un polițist face echipă cu inteligenta, dar neascultătoarea cățelușă Ruby, provenită dintr-un adăpost. Bazat pe o poveste adevărată.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:929472",
-      "type": "movie",
-      "name": "Erax",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/rMp04rYhy4yfOfjZq5F9R3wkeqo.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/768OBP28OA4mjavOUAIRlVo14Xu.jpg",
       "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
@@ -680,36 +560,140 @@
       "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:772272",
+      "id": "tmdb:894205",
       "type": "movie",
-      "name": "Fata înaltă 2",
+      "name": "Noaptea vârcolacului",
       "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/eyKkLdst2vFRjCC89C3NqGCLpNE.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/bJwFThoaYzdVw1Q1G3zbtKMPRmB.jpg",
+      "description": "Într-o noapte sinistră, un ordin secret al vânătorilor de monștri reapare din umbră și se reunește la întunecatul Templu Bloodstone, cu prilejul morții conducătorului lor. Comemorarea macabră a vieții acestuia îi angrenează pe participanți într-o competiție mortală misterioasă, pe urmele unei relicve puternice - o vânătoare care îi va aduce față în față cu un monstru periculos.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1065796",
+      "type": "movie",
+      "name": "O noapte la grădiniță",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/rgxCnkiXx81uobrGouq09cOdxX9.jpg",
+      "description": "Un tânăr se infiltrează la repetițiile unei piese de teatru școlare pentru a opri un grup de profesori și părinți excentrici să-l exmatriculeze pe fiul iubitei lui.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1002457",
+      "type": "movie",
+      "name": "Oameni de treabă",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/vP9irPoXj7f8FZhuUQCe0SQdl5N.jpg",
+      "description": "Ilie este polițist într-un sat pentru ai cărui locuitori corupția e un mod de viață. În urma unei serii de evenimente violente la care asistă, dar și a tensiunilor care se acumulează, bărbatul se vede nevoit să ia decizii importante la muncă și în viața personală.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:661231",
+      "type": "movie",
+      "name": "Operațiunea Mincemeat",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/tfdfh1mK24VujxT5z11732asxdR.jpg",
+      "description": "E 1943. Aliații vor să distrugă controlul pe care-l are Hitler asupra Europei și au de gând să lanseze un asalt asupra Siciliei. Dar ei se confruntă cu o provocare imposibilă: cum să protejeze forța invaziei de o posibilă anihilare? Totul cade pe umerii a doi ofițeri remarcabili, Ewen Montagu (Colin Firth) și Charles Cholmondeley (Matthew Macfaydyen), care trebuie să creeze cea mai inspirată și improbabilă strategie de dezinformare din acest război. Aceasta îl are în centru pe cel mai neașteptat agent secret: un mort. „Operațiunea Mincemeat” (Carnea Tocată) e povestea extraordinară și adevărată a unei idei care a sperat să întoarcă situația în avantajul Aliaților, asumându-și riscuri imposibil de mari, sfidând logica și împingând nervii creatorilor săi la limită.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:505642",
+      "type": "movie",
+      "name": "Pantera Neagră: Wakanda Pentru totdeauna",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/lA5fglOxDQd8ZtAT8Q39FPlNqLD.jpg",
+      "description": "După moartea regelui T'Challa, regina Ramonda, Shuri, M'Baku și Dora Milaje luptă pentru protecția națiunii de intervenția marilor puteri. În vreme ce poporul e gata să depăsească pierderea regelui și să îmbrățișeze un nou capitol, eroii wakandezi ajutați de Nakia și Everett Ross fac planurile unui nou drum, mai luminos, pentru Wakanda.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:532639",
+      "type": "movie",
+      "name": "Pinocchio",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/zaZhjKrJeWczQ3AotKoQObppEbH.jpg",
+      "description": "Povestea lui Pinocchio prinde viață de data asta printr-un film live action, CGI. Rescriem povestea păpușii din lemn care pleacă într-o aventură să devină un băiat adevărat. Alte personaje îndrăgite pe care o să le regăsiți sunt: Geppetto, tâmplarul care îl creează pe Pinocchio și care-l tratează ca pe un băiețel adevărat; Greierașul Jiminy, care devine conștiința lui Pinochhio; Zâna Azurie; John cel Onest; Pescărușul Sofia și Vizitiul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:668482",
+      "type": "movie",
+      "name": "Roald Dahl – Matilda: Musicalul",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/ga8R3OiOMMgSvZ4cOj8x7prUNYZ.jpg",
+      "description": "O fetiță extraordinară cu o minte ascuțită și o imaginație bogată ia atitudine pentru a-și schimba viața, iar rezultatele sunt miraculoase. Fă cunoștință cu Matilda.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:921655",
+      "type": "movie",
+      "name": "Salvat de Ruby",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/tPlJEodEn0SSV4avo8KSawtlTlN.jpg",
+      "description": "Visând să se alăture unei unități K9, un polițist face echipă cu inteligenta, dar neascultătoarea cățelușă Ruby, provenită dintr-un adăpost. Bazat pe o poveste adevărată.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:629176",
+      "type": "movie",
+      "name": "Samaritan",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/zgH8Ej50n2cvJCMJrxd4twEwSqz.jpg",
+      "description": "Sam Clearly în vârstă de 13 ani suspectează că vecinul său misterios Mr. Smith este de fapt legendarul justițiar Samaritan declarat mort cu 25 ani în urmă. Cum rata criminalității e în creștere, iar orașul în pragul haosului, Sam își propune să-și convingă vecinul să-și dezvăluie identitatea și să salveze orașul de la distrugere.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:756187",
+      "type": "movie",
+      "name": "Sneakerella",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/fk63GZdyKQXJBotK1D5oAE1gnWa.jpg",
       "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:817648",
+      "id": "tmdb:675353",
       "type": "movie",
-      "name": "Echipa gazdă",
+      "name": "Sonic ariciul 2",
       "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/lBeAbMeTLyNJ1TnqkioVJ8t7yA4.jpg",
-      "description": "Suspendat din NFL, antrenorul Sean Payton speră să-i recâștige afecțiunea fiului antrenând echipa lui de fotbal, care e un dezastru. Comedie bazată pe o poveste reală.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/AtaVVX6uvKMxqeHzcCX3Jxi9D7z.jpg",
+      "description": "Robotnik se întoarce, de data asta cu un nou partener, Knuckles, în căutarea unui smarald care are puterea să clădească, dar și să distrugă civilizații. Sonic face echipă cu Tails, noul lui partener, și împreună se îmbarcă într-o aventură pentru a găsi smaraldul înainte ca acesta să cadă pe mâini greșite.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:646380",
+      "id": "tmdb:1021331",
       "type": "movie",
-      "name": "Nu priviți în sus",
-      "releaseInfo": "2021",
-      "poster": "https://image.tmdb.org/t/p/w500/th4E1yqsE8DGpAseLiUrI60Hf8V.jpg",
-      "description": "Doi astronomi încep un turneu mediatic pentru a avertiza omenirea că o cometă distrugătoare se năpustește spre Pământ. Dar lumii nici că-i pasă.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "name": "Teambuilding",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/1kCztLCB5pFUp2pjeTmAGU02G6G.jpg",
+      "description": "Emil e promovat în fruntea unei echipe care va fi înlocuită de inteligența artificială și își convinge șeful să le salveze slujbele dacă vor câștiga cupa la teambuilding.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:882093",
+      "id": "tmdb:774752",
       "type": "movie",
-      "name": "David și elfii",
-      "releaseInfo": "2021",
-      "poster": "https://image.tmdb.org/t/p/w500/AtpnwDfKBlcPokEGcaxWO2fmiNl.jpg",
+      "name": "The Guardians of the Galaxy Holiday Special",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/8dqXyslZ2hv49Oiob9UjlGSHSTR.jpg",
       "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:616037",
+      "type": "movie",
+      "name": "Thor: Iubire și Tunete",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/s9AysEGswrWOPd7JOOKwgp7zh9E.jpg",
+      "description": "Thor este nevoit să revină în luptă când Gorr, Călăul Zeilor, începe să extermine divinitățile din univers. Pentru a-l opri, pornește într-o aventură cosmică alături de Valkyrie, Korg și fosta sa iubită Jane Foster, care, spre uimirea lui, mânuiește acum ciocanul Mjölnir și are puterile lui Thor.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:698948",
+      "type": "movie",
+      "name": "Treisprezece vieți",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/eanguV7ApTtLNlMyLEKHHlsuj0.jpg",
+      "description": "Thailanda, 2018. După ce încep vizitarea unui sistem carstic subteran, un grup de băieți și antrenorul lor de fotbal realizează că o ploaie torențială a inundat porțiuni din peșteră și că nu mai pot ieși. Vestea ajunge în întreaga lume, iar formarea unei echipe internaționale de salvare începe imediat.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:936061",
+      "type": "movie",
+      "name": "Under Wraps 2",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/pZzFvEyext3fvc5M0RJceWTiMV3.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:809107",
+      "type": "movie",
+      "name": "Zombies 3",
+      "releaseInfo": "2022",
+      "poster": "https://image.tmdb.org/t/p/w500/vqzdv4nArhuZxd7il0boKaVxQMF.jpg",
+      "description": "Zed și Addison sunt în ultimul an de liceu, iar Seabrook a devenit un cămin pentru monștri și oameni deopotrivă. Zed încearcă să obțină o bursă la fotbal, devenind astfel primul zombi care urmează colegiul. Addison organizează un campionat internațional de majorete. Când intrușii intergalactici apar la competiție, comunitatea din Seabrook bănuiește că vor mai mult decât să concureze amical.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:32471",
@@ -720,44 +704,44 @@
       "description": "În 1999, Beverly, care are 12 ani, descoperă o compilație pe o casetă stricată, creată de părinții ei, și pornește în căutarea melodiilor ca să afle mai multe despre ei.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:762879",
-      "type": "movie",
-      "name": "E Crăciunul...din nou?!",
-      "releaseInfo": "2021",
-      "poster": "https://image.tmdb.org/t/p/w500/tCE4EHfSfGJHKSBIvbSCtplElLE.jpg",
-      "description": "Cum Rowena are parte de un Crăciun lipsit de strălucire, aceasta își pune o dorință la un Moș Crăciun din cartier pentru o a doua șansă și se trezește în mod neașteptat trăind ziua de Crăciun din nou și din nou.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:674610",
-      "type": "movie",
-      "name": "Un Crăciun cu Familia Loud",
-      "releaseInfo": "2021",
-      "poster": "https://image.tmdb.org/t/p/w500/572kONypScXTz8detAOarXGbijI.jpg",
-      "description": "Când Lincoln Loud își dă seama că este posibil ca familia sa să fie separată de Crăciun, el și cel mai bun prieten Clyde fac un efort incredibil pentru ca clanul Loud să petreacă sărbătoarea împreună.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:615666",
-      "type": "movie",
-      "name": "Un băiat numit Crăciun",
-      "releaseInfo": "2021",
-      "poster": "https://image.tmdb.org/t/p/w500/1sRejtiHOZGggZd9RcmdqbapLM5.jpg",
-      "description": "Un băiat obișnuit, pe nume Nikolas, pornește într-o extraordinară aventură spre nordul înzăpezit în căutarea tatălui său plecat să descopere legendarul sat al elfilor, Elfhelm. Având alături un ren încăpățânat, pe nume Blitzen și un șoricel credincios, care este animalul său de companie, Nikolas își întâlnește în curând destinul în această poveste magică, amuzantă și emoționantă, care demonstrează că nimic nu este imposibil.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:654974",
-      "type": "movie",
-      "name": "Singur acasă, dulce casă",
-      "releaseInfo": "2021",
-      "poster": "https://image.tmdb.org/t/p/w500/5lpQqho8UGkVHGzlNZmpZo5catD.jpg",
-      "description": "Max Mercer, în vârstă de zece ani, a fost uitat acasă, din greșeală, în timp ce familia sa se afla în Japonia de sărbători. Așa că, atunci când un cuplu căsătorit care încearcă să fure o bijuterie neprețuită pune ochii pe casa familiei sale, Max trebuie să o protejeze de intruși... și va face totul pentru a-i ține departe.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
       "id": "tmdb:585245",
       "type": "movie",
       "name": "Clifford: Marele câine roșu",
       "releaseInfo": "2021",
       "poster": "https://image.tmdb.org/t/p/w500/8S6d3PQ2dvApw5LZemeIsa0X4VJ.jpg",
       "description": "Tânăra Emily primește în dar un pui de cățel roșcovan care se va dovedi un câine magic: cu cât este mai iubit, cu atât el crește mai mare, și mai mare. Nu va trece mult timp până când apartamentul de oraș în care locuiesc va deveni neîncăpător, iar fetița va porni în aventura vieții ei, însoțită de unchiul său trăznit.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:451048",
+      "type": "movie",
+      "name": "Croazieră în junglă",
+      "releaseInfo": "2021",
+      "poster": "https://image.tmdb.org/t/p/w500/lnJxmYOQA1zFbV7GahvBZOiLJDj.jpg",
+      "description": "Aflați în căutarea unui copac cu proprietăți tămăduitoare, Dr. Lily Houghton și glumețul căpitan Frank Wolff fac echipă pentru aventura vieții lor în „Croazieră în junglă”, o expediție exuberantă pe Amazon.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:337404",
+      "type": "movie",
+      "name": "Cruella",
+      "releaseInfo": "2021",
+      "poster": "https://image.tmdb.org/t/p/w500/sZARcQDelooOuany1JMGuzrp5qB.jpg",
+      "description": "În Londra din anii 1970, în mijlocul revoluției punk rock, o tânără grifter pe nume Estella este hotărâtă să-și facă un nume prin desenele sale. Ea se împrietenește cu o pereche de hoți tineri care apreciază pofta ei de răutate și, împreună, își pot construi o viață pe străzile londoneze. Într-o zi, flerul Estellei în materie de modă atrage privirea baronesei von Hellman, o legendă a modei care este devastator de șic și teribil de înaltă. Dar relația lor pune în mișcare un curs de evenimente și dezvăluiri care îl vor determina pe Estella să-și îmbrățișeze latura rea și să devină Cruella răutăcioasă, la modă și răzbunată.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:882093",
+      "type": "movie",
+      "name": "David și elfii",
+      "releaseInfo": "2021",
+      "poster": "https://image.tmdb.org/t/p/w500/AtpnwDfKBlcPokEGcaxWO2fmiNl.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:762879",
+      "type": "movie",
+      "name": "E Crăciunul...din nou?!",
+      "releaseInfo": "2021",
+      "poster": "https://image.tmdb.org/t/p/w500/tCE4EHfSfGJHKSBIvbSCtplElLE.jpg",
+      "description": "Cum Rowena are parte de un Crăciun lipsit de strălucire, aceasta își pune o dorință la un Moș Crăciun din cartier pentru o a doua șansă și se trezește în mod neașteptat trăind ziua de Crăciun din nou și din nou.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:524434",
@@ -768,11 +752,11 @@
       "description": "\"Eternii\" urmărește un grup de eroi nemuritori care au protejat Pământul de la începutul timpului. Când creaturi monstruoase numite Devianți, considerate dispărute de secole, reapar în mod misterios, Eternii sunt nevoiți sa se reunească pentru a apăra omenirea din nou.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:826914",
+      "id": "tmdb:621876",
       "type": "movie",
-      "name": "Muppets Haunted Mansion",
+      "name": "Flora & Ulysses",
       "releaseInfo": "2021",
-      "poster": "https://image.tmdb.org/t/p/w500/AeVMV8cMvNhn6aKozAH3pysvftm.jpg",
+      "poster": "https://image.tmdb.org/t/p/w500/syobJCxZcIJl0OpjNroZSQKa1kW.jpg",
       "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
@@ -784,12 +768,12 @@
       "description": "Comedia românească „Inve$titorii” urmărește călătoria neașteptată a lui Tavi, Eugen și Calu, trei vechi prieteni și colegi într-o fabrică dintr-o regiune a României. Rutina lor zilnică - muncă / bere / acasă - este brusc perturbată când află că compania a fost vândută unor investitori străini care planifică acum o reducere masivă a personalului. Vestea vine chiar a doua zi când cei trei sunt concediați, dar primesc în schimb un pachet de compensații de 12 salarii. În timpul unei zile de pescuit, băieții încep să discute despre opțiunile pe care le au pentru viitor, dar nu reușesc să găsească nicio variantă bună. Apoi, Tavi ia inițiativa și își convinge prietenii să meargă într-o escapadă de weekend cu banii menționați din compensare. Acest weekend le va schimba complet viața și ajung să fie confundați cu niște investitori străini importanți.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:763873",
+      "id": "tmdb:838150",
       "type": "movie",
-      "name": "Under Wraps",
+      "name": "Întregalde",
       "releaseInfo": "2021",
-      "poster": "https://image.tmdb.org/t/p/w500/dTtsMcqybMaSRB7vzgP9yEQAziG.jpg",
-      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/bS0tmVyR1kxTEygskzRge5LYd5N.jpg",
+      "description": "Trei prieteni care vor să ducă ajutoare umanitare într-o zonă rurală rămân blocați în pădure, ceea ce le pune la încercare noțiunile despre caritate.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:786705",
@@ -798,6 +782,22 @@
       "releaseInfo": "2021",
       "poster": "https://image.tmdb.org/t/p/w500/bGIy308alpX12xdBVsREgsHawQC.jpg",
       "description": "Tetê este o fată isteață care se integrează greu, așa că ar face orice să se pună bine cu lumea la noua ei școală. Însă tartorița clasei are alte intenții.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:826914",
+      "type": "movie",
+      "name": "Muppets Haunted Mansion",
+      "releaseInfo": "2021",
+      "poster": "https://image.tmdb.org/t/p/w500/AeVMV8cMvNhn6aKozAH3pysvftm.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:739990",
+      "type": "movie",
+      "name": "Nightbooks: Captiv în poveste",
+      "releaseInfo": "2021",
+      "poster": "https://image.tmdb.org/t/p/w500/p4KREvqbGIESygNFZVluObePqik.jpg",
+      "description": "Amator de povești de groază, Alex trebuie să spună câte una înfricoșătoare în fiecare seară, altfel va sta închis pe veci cu prietena lui în apartamentul unei vrăjitoare.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     }
   ]
 }

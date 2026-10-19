@@ -16,3 +16,7 @@ Only Romanian-dubbed publisher declarations, supported resolver routes and indep
 ## DeseneFaine Dood/Playmogo
 
 Official v12 adds the verified Dood redirect route. Ten source links resolved; four actual Android TV playback/seek samples passed. Despicable Me (TMDB20352) is the one newly eligible unique title. The host subsequently required CAPTCHA, so availability is conditional; no CAPTCHA bypass is implemented. Romanian speech follows publisher declarations; samples were muted.
+
+## DesenFlix addition
+
+555 dubbed-title pages checked; 289 new unique titles added, bringing the catalog to 1438. Exact v13 native matching passed on 514 eligible pages. Only S1E1 was checked for series. Contradictory metadata, missing first episodes and unsupported/unreachable entries are withheld. No video-host or playback checks. The previous catalog was preserved. See desenflix-source-validation.json.

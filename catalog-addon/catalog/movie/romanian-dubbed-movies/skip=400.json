@@ -1,3 +1,20 @@
 {
-  "metas": []
+  "metas": [
+    {
+      "id": "tmdb:19123",
+      "type": "movie",
+      "name": "Norocul ghinionistului",
+      "releaseInfo": "1981",
+      "poster": "https://image.tmdb.org/t/p/w500/w6N4zpoSwscrz6KViz47Gijq8da.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:433",
+      "type": "movie",
+      "name": "Mary Poppins",
+      "releaseInfo": "1964",
+      "poster": "https://image.tmdb.org/t/p/w500/o4Wsby4ydIXhWmtmfvb451D5Np1.jpg",
+      "description": "Supercalifragilistic. Acesta este probabil cel mai faimos cuvânt din istoria filmului care nu este de găsit în niciun dicționar al vreunei limbi din lume. El aparține lui Mary Popins, cea mai simpatică guvernantă care a existat vreodată. Interpretată superb de Julie Andrews, recompensată cu un Oscar pentru această prestație, Mary Poppins, dădaca magică închipuită de P.L. Travers, avea să se transforme în fenomen cinematografic.\r Povestea lui Mary Poppins, zâna bună, care îi cucerește pe nâzbătioșii copii ai glacialului bancher Banks cu verva sa molipsitoare, este fascinantă. Cântecele și vrăjile ei l-ar putea sensibiliza și pe cel mai îndărătnic taur, dar întâmpină reale probleme în a-l îndulci pe domnul Banks. În cele din urmă, Mary Poppins va reuși să se facă iubită de toată lumea într-unul dintre cele mai grandioase finaluri din istoria Hollywood-ului.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    }
+  ]
 }

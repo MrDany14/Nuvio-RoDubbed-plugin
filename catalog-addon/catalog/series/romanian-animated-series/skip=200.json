@@ -1,12 +1,372 @@
 {
   "metas": [
     {
+      "id": "tmdb:45140",
+      "type": "series",
+      "name": "Haideți, Tineri Titani!",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/ooqvN9JHuMZ9hzJaApTdkWYCv9B.jpg",
+      "description": "Robin, Starfire, Raven, Beast Boy și Cyborg sunt supereroi și colegi de cameră și apără Jump City de răufăcători, dacă nu sunt prea ocupați cu cearta și competiția.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:57748",
+      "type": "series",
+      "name": "Henry Hugglemonster",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/a3fBwmTSJfU29008Ta1MUHokhd0.jpg",
+      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:57780",
+      "type": "series",
+      "name": "Lego: Legendele din Chima",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/bkq3jXxyXVIojL0oxvLUGUEz9y1.jpg",
+      "description": "Chima este un tărâm curat plin de triburi formate din diverse animale antropomorfe, variind de la lei, crocodili, vulturi, gorile, lupi, corbi, rinoceri, urși, castori, scorpioni, păianjeni, lilieci, tigri din dinți de sabie, mamuți, vulturi, fenici, Tigrii, Leopardii, Urșii de gheață și alte animale.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:46974",
+      "type": "series",
+      "name": "Max Steel",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/fuLkBrqnA5hzGkRoSN4lbVbXK0x.jpg",
+      "description": "Max Steel este un serial de comedie științifico-fantastică, animat CGI. Este o re-imaginare a predecesorului său cu același nume, precum și se bazează pe figura de acțiune Mattel tot cu același nume. Max Steel a avut premiera pe 25 martie 2013 pe Disney XD.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:57532",
+      "type": "series",
+      "name": "Patrula cățelușilor",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/8HXkgUBO5OF8ZK9XbY69RM4S5rv.jpg",
+      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:61175",
+      "type": "series",
+      "name": "Steven Universe",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/hMDDHLu52KcWPALbjZNO13GL5XF.jpg",
+      "description": "Un grup de străjeri magici numiți Nestematele de cristal învață un băiat să-și folosească abilitățile speciale ca hibrid om-nestemată pentru a proteja omenirea.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:47035",
+      "type": "series",
+      "name": "Unchiul Bunic",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/bXSx23BtUCuJFKax5zQ0Hj5I75S.jpg",
+      "description": "Aventurile \"Unchiului bunic\" care vrea să ajute fiecare copil și adult din lume prin puterea imaginației. Cu misticul său R.V. și optimism etern, 'Unchiul bunic\" este întotdeauna gata să întâmpine ziua - și pe toți cei pe care îi întâlnește - cu semnătura sa, „Bună dimineața”.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:33880",
+      "type": "series",
+      "name": "Avatar: Legenda Lui Korra",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/dZgYvSfuh1YHDrJuILlVQ5oA2hF.jpg",
+      "description": "Avatarul Korra, o tânără încăpățânată, rebelă și curajoasă, care sfidează și încalcă continuu tradițiile, se află în căutarea de a deveni un Avatar complet. În această poveste, Korra se luptă să găsească echilibrul în interiorul ei.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:46922",
+      "type": "series",
+      "name": "Ben 10: Omniverse",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/Re9I5tauOspaJxYCIqRqavKT4F.jpg",
+      "description": "Ben 10: Omniverse îl urmărește pe Ben Tennyson într-o nouă etapă a aventurilor sale, alături de partenerul său, Rook Blonko. Folosind puterea Omnitrixului, Ben se transformă în numeroși extratereștri pentru a proteja universul de răufăcători și pentru a descoperi secrete din propriul trecut.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:40075",
+      "type": "series",
+      "name": "Ciudățeni",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/fqRdC1NZtwM0xcufO8w676PPwlL.jpg",
+      "description": "Fratele și sora geamănă Dipper și Mabel Pines se pregătesc pentru o aventură neașteptată când își petrec vara ajutându-l pe unchiul lor mare Stan să conducă o capcană turistică în misteriosul oraș Gravity Falls, Oregon.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:46262",
+      "type": "series",
+      "name": "Doc McStuffins",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/eeGWJaFkxX0vvOFFpNFXrh9QVxl.jpg",
+      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:44305",
+      "type": "series",
+      "name": "Dragonii",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/gFhBIF8oXjpdVk1NbI4kP4l8LAe.jpg",
+      "description": "Dragonii (engleză Dreamworks Dragons) este un serial de animație creat de Chris Sanders și Dean DeBlois și produs de DreamWorks Animation. Serialul se bazează pe filmul Cum să îți dresezi dragonul din 2010.\n\nAcesta a avut premiera pe 7 august 2012 pe canalul Cartoon Network, iar în România premiera a avut loc pe 11 martie 2013 pe canalul Cartoon Network.\n\nSerialul este compus din trei serii: Călăreții dragonilor (en. Riders of Berk), Apărătorii insulei (en. Defenders of Berk) iar o a treia serie, numită În marele necunoscut (en. Race To the Edge), a avut premiera exclusiv pe Netflix, și această serie este formată din 6 sezoane.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:52051",
+      "type": "series",
+      "name": "Eu și Mia",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/o2CL46XLxUmn4i9Kb2ZcM02RkNA.jpg",
+      "description": "Un cadou misterios de la părinții ei decedați o transportă pe Mia, o fetiță de 12 ani, într-o lume fermecată, cu spiriduși, unicorni, dar și o regina rea numită Panthea.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:33507",
+      "type": "series",
+      "name": "Insula Dramei Totale: Revanșa",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/eo6qAfLRkUCWtU6UGu8Jx0MmiKg.jpg",
+      "description": "Ducând mai departe călătoria mondială nebunească a Dramei totale, gazda Chris McLean revine în serial cu noua tabără toxică Wawanakwa.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:46698",
+      "type": "series",
+      "name": "Randy Cunningham: Băiatul Ninja",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/uy864Z278ijIfCxQGmPMSp6eKkP.jpg",
+      "description": "Orașul Norrisville este protejat de peste 800 de ani de un ninja legendar, titlu care este transmis din generație în generație, la fiecare 4 ani, unui alt elev de liceu. Noul ales este Randy Cunningham, un boboc de clasa a IX-a obișnuit, pasionat de jocuri video și fast-food. Înarmat cu un costum ninja mistic și ghidat de „NinjaNomicon” (o carte antică cu minte proprie care îi oferă sfaturi de luptă), Randy trebuie să facă față uneia dintre cele mai grele provocări: să fie salvatorul orașului în timp ce încearcă să supraviețuiască vieții de licean. Alături de cel mai bun prieten al său, Howard, Randy luptă zilnic împotriva monștrilor creați de un vrăjitor malefic blocat sub școală și de omul de afaceri corupt Hannibal McFist.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:34391",
+      "type": "series",
+      "name": "Senzaționalul Om-Păianjen",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/5fJ0Gba8EWOzamOVlDsWOCJcA0a.jpg",
+      "description": "Peter Parker a devenit Omul-Păianjen în urmă cu doi ani. A salvat vieți și s-a luptat cu răufăcători, dar încă învață cum să fie un super-erou. Nick Fury, directorul S.H.I.E.L.D., îi oferă lui Peter ocazia să se antreneze în timp ce colaborează cu alți patru super-eroi adolescenți. Peter va trebui să gestioneze relații dificile cu mentorii și colegii săi și să-și înțeleagă mai bine destinul.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:46994",
+      "type": "series",
+      "name": "Slugterra",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/hbAHSGKr0aJStev8w5ebWWZboh1.jpg",
+      "description": "După moartea tatălui său, Eli Shane, în vârstă de 15 ani, își îmbrățișează destinul de a călca pe urmele tatălui său într-o lume secretă, subterană, numită Slugterra, unde este hotărât să fie cel mai mare erou Slugslinging dintre toți!\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:53401",
+      "type": "series",
+      "name": "Spiridusii Nazdravani (The Woodlies)",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/9WWLxsqzVjWvn3j3zgny9iAClZb.jpg",
+      "description": "În inima pădurii trăiesc Spiridușii Năzdrăvani, niște creaturi mici, pufoase și extrem de năzdrăvane. Ei încearcă să-și protejeze căminul de oameni și de alte pericole, în timp ce pornesc în aventuri pline de umor pentru a găsi hrană și a-și apăra comunitatea. Fiecare episod este o combinație de acțiune, comedie și lecții despre prietenie și curaj.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:38881",
+      "type": "series",
+      "name": "Transformatorii - Salvatorii",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/wtugHPxksnORftAs7EOGK3Oy0I5.jpg",
+      "description": "O echipă de autoboți specializați, care nu este deloc pregătită pentru bătăliile de primă ore împotriva Decepticons, primește o misiune vitală de către Optimus Prime. Scopul roboților este să învețe despre omenire și cum să-i ajute pe alții să afle ce înseamnă cu adevărat să fii un erou.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:35094",
+      "type": "series",
+      "name": "Cu frații Kratt în sălbăticie",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/7Nn1AZb6LJv0WedeK7o4yU6Aioh.jpg",
+      "description": "Urmăriți aventurile lui Chris și Martin Kratt care întâlnesc animale sălbatice incredibile îmbinând educația științifică cu distracția și aventurile și călătorind în habitatele animalelor din întreaga lume. Fiecare aventură explorează viața unui animal și prezintă momente nemaivăzute din viața animalelor sălbatice. Toate sunt prezentate în povești incitante cu aventuri, mister, salvări din situații dificile și în stilul comic al fraților Krat\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:38165",
+      "type": "series",
+      "name": "Felinele Fulger",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/9DRhh5eRLtg6lNBCahEfLtyE0Sp.jpg",
+      "description": "ThunderCats sunt în mișcare! După ce regatul Thundera este atacat de oamenii șopârle, Lion-O îi conduce pe Tygra, Cheetara și ceilalți eroi în căutarea Cărții Prevestirilor și a pietrelor magice ale legendei. Dar va trebui să se confrunte cu răufăcători precum Mumm-Ra, vechiul vrăjitor rău, și Slithe, generalul șopârlă periculos. Din fericire, el are la dispoziție Sabia Prevestirilor și puterile sale uimitoare.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:46358",
+      "type": "series",
+      "name": "Franklin și Prietenii săi",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/leSMFU3eAXlDmE2kjciJALnl2gO.jpg",
+      "description": "Franklin and Friends este un serial de televiziune pentru copii CGI canadian produs de Nelvana, care este o repornire a seriei originale Franklin. Este a doua adaptare a personajelor clasice din seria de cărți pentru copii Franklin the Turtle scrisă de Paulette Bourgeois și ilustrată de Brenda Clark, prima dintre acestea fiind Franklin, care a fost și produsă de Nelvana. Noul serial a fost anunțat de Nelvana pe 28 septembrie 2010 și a debutat la Treehouse TV pe 4 martie 2011. Tema cântecului în sine este o versiune actualizată și actualizată a temei originale a seriei, „Hey It’s Franklin”. A avut premiera în Statele Unite pe Nickelodeon pe 13 februarie 2012 și Nick Jr. pe 1 martie 2012. A avut premiera și în Singapore pe Mediacorp pe 15 februarie 2012.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:34891",
+      "type": "series",
+      "name": "Jake și Pirații din Țara de Nicăieri",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/uet64gptwR7iDGc0laIRmYNtNH0.jpg",
+      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:39898",
+      "type": "series",
+      "name": "Kung Fu Panda: Legendele teribilității",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/rkq5Jt7boR5v65bDbELHz3DW7sv.jpg",
+      "description": "Ajutat de mentorul său Shifu și de cei Cinci Furioși iscusiți - Tigress, Mantis, Crane, Monkey și Viper - îndrăgitul urs panda Po se confruntă cu noi adversari în casa sa din Valea păcii în timp ce-și continuă pregătirea în arta kung fu.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:40351",
+      "type": "series",
+      "name": "Lanterna Verde: Seria animată",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/xNrJgBSjVLFaQcxkFbkWtjIuq01.jpg",
+      "description": "Hal Jordan, Lanterna Verde a Pământului, pornește alături de Kilowog spre marginile îndepărtate ale spațiului, unde cei doi descoperă amenințarea Corpului Lanternelor Roșii. La bordul navei Interceptor, împreună cu Aya și Razer, eroii înfruntă pericole intergalactice și luptă pentru protejarea universului și a Corpului Lanternelor Verzi.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:37606",
+      "type": "series",
+      "name": "Uimitoarea lume a lui Gumball",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/ff9dfJr8iJi0fLjqr8k5YbVpMko.jpg",
+      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:32296",
+      "type": "series",
+      "name": "Voltron Forța",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/pOQ5bfYIEm9Po0KYksPBhVt5tHe.jpg",
+      "description": "Aventurile unei noi clase de recruți, în timp ce aceștia au o șansă o dată în viață de a se antrena alături de eroii lor - membrii echipei inițiale Keith, Lance, Hunk, Pidge și Allura - și de a învăța să zboare cu niște lei-roboți incredibili. Se vor forma legături și prieteniile vor fi testate pe măsură ce Forța Voltron se formează ca o echipă într-o luptă epică între bine și rău.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:33623",
+      "type": "series",
+      "name": "Avengers: Cei mai tari eroi ai Pământului",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/r1JDhMrqCOZKh7lc0vQlRYQ46cE.jpg",
+      "description": "Haosul cuprinde planeta în momentul în care sistemul de securitate al închisorilor în care își petrec viața acești superticăloși cedează, eliberând toți prizonierii în același timp. Acum, eroii noștri au de-a face cu o armată de infractori cu puteri speciale, hotărâți să-și ia revanșa.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:33793",
+      "type": "series",
+      "name": "Babar și aventurile lui Badou",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/t3SfPvInIboT35niE7Yyuej7KL5.jpg",
+      "description": "Babar şi aventurile lui Badou urmăreşte aventurile lui Badou, nepotul de opt anişori al renumitului rege Babar. Badou adoră aventurile şi împreună cu prietenii săi năstruşnici este atras de situaţiile delicate. Crescut în palatul regal din Celesteville, Badou nu uită în peripeţiile maturizării că  întotdeauna se poate baza pe bunicul său, regele Babar şi pe călăuzirea acestuia.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:31109",
+      "type": "series",
+      "name": "Ben 10: Ultimate Alien",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/n4KwrlUKO9S4GvOdZzmnz4zOxx7.jpg",
+      "description": "Ben 10: Ultimate Alien îl urmărește pe Ben Tennyson după ce identitatea sa secretă este dezvăluită întregii lumi. Cu ajutorul noului Ultimatrix și al prietenilor săi, Gwen și Kevin, Ben continuă să lupte împotriva amenințărilor extraterestre și să protejeze omenirea.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:31623",
+      "type": "series",
+      "name": "Echipa Umizoomi",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/y090DrGOIK5LyrCq3GeA8TZZ4lY.jpg",
+      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:32118",
+      "type": "series",
+      "name": "Generator Rex",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/3F93j1Yuu9wtPO06BlPSVbLdxaP.jpg",
+      "description": "Generatorul Rex, un adolescent obișnuit cu capacitatea de a-și transforma corpul în mașini uimitoare, ajută organizația secretă Providence să salveze lumea de amenințarea nanite-lor și de monștrii EVO periculoși.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:17572",
+      "type": "series",
+      "name": "Kick Buttowski: Temerarul suburban",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/fkkpMA6EBCxwVP7niDeJVlRACp3.jpg",
+      "description": "Kick Buttowski este un băiat neînfricat de 10 ani care aspiră să devină cel mai mare cascador din lume. Cu ajutorul celui mai bun prieten al său, Gunther, Kick înfruntă provocările zilnice din Mellowbrook cu stil, curaj și cascadorii extreme.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:33765",
+      "type": "series",
+      "name": "Micul meu Ponei: Prietenia este magică",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/uvCchgn7uUUE2MJfhzg39M4RaZW.jpg",
+      "description": "Intră pe tărâmul fermecat Ecvestria, unde licornul Scânteia Amurgului și prietenii săi au aventuri și trag învățăminte importante despre prietenie.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:61483",
+      "type": "series",
+      "name": "Micul Print",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/33Qmmp50gwjz6szG9jeDeC81ZAz.jpg",
+      "description": "Undeva în pacea de pe Asteroid B612, trăieşte micul prinţ, trandafirul său iubit şi prietenul fidel, vulpea. Însă într-o zi, trandafirul începe să fie gelos pe vulpe, deoarece petrece prea mult timp cu iubitul său prinţ. În speranţa că poate profita de emoţiile trandafirului, şarpele viclean îşi propune să-l farmece. Însă, deoarece nu-i reuşesc intenţiile, şarpele mânios şi ahtiat de răzbunare devine tot mai hotărât să scufunde întregul univers în întuneric. Dar apare micul prinţ care îi rezistă, încercând să-i prevină planul malefic. Începe urmărirea periculoasă. Micul prinţ, în pofida mâniei şarpelui, rezistă oricărui pericol teribil şi cu ajutorul vulpii luptă pentru salvarea universului. Nimic altceva nu contează, indiferent de obstacolele întâmpinate! Oare vor reuşi?\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:15260",
+      "type": "series",
+      "name": "Să-nceapă aventura",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/vK8aOLP7sQeYMxgFYMri1ZA7J65.jpg",
+      "description": "Seria prezintă aventurile ficționale dintre doi prieteni foarte buni: Jake, câinele bătrân și înțelept cu o inimă mare și bună, și Finn, băiatul de 12 ani, care mai presus de toate vrea să fie un erou. Cei doi prieteni sunt cei mai apropiați din lume. Ei își știu toate secretele, și se ajută unul pe altul în situații grele, iar la orizont sunt probleme pe care ei știu că le pot rezolva. Finn și Jake te pot face să râzi până la lacrimi, salvând vieți și explorând insule periculoase, în căutarea aventurilor palpitante... Finn a fost găsit în pădure, de părinții lui Jake, pe când era un copil mic. De atunci, prietenul său cel mai bun și fratele său adoptiv, câinele care are 28 de ani câinești, își folosește puterile la oricare oportunitate. Ei trăiesc în tărâmul Ooo, plin de personaje ficționale, și viziuni apocaliptice.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:18123",
+      "type": "series",
+      "name": "Scooby-Doo și Echipa Misterelor",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/aHUzWF3NaiMEGfThwIpoFwZqRap.jpg",
+      "description": "Această reîntoarcere a popularului serial de desene animate îl găsește pe Scooby și gașca care locuiește în Crystal Cove, un orășel cu o lungă istorie de observări cu fantome, povești cu monștri și alte mistere pregătite pentru a le rezolva odată pentru totdeauna detectivii. Dar locuitorii de multă vreme Crystal Cove, care se bazează pe reputația orașului pentru a atrage turiști, sunt pregătiți să facă tot ce este necesar pentru a-și proteja teritoriul.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:33217",
+      "type": "series",
+      "name": "Tinerii justițiari",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/g7hrV0Vg4QSIY2ND6JA8lXctBiU.jpg",
+      "description": "Un serial de animație în care Robin, Aqualad și alți supereroi adolescenți formează o echipă secretă care luptă cu infractorii și salvează lumea.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:32910",
+      "type": "series",
+      "name": "Transformers: Prime",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/ilOKsGRHYc78R2tSMusAd3xGJWq.jpg",
+      "description": "Cu ajutorul a trei aliați umani, autoboții apără încă o dată Pământul de atacul decepticonilor conduși de Megatron.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:19123",
+      "type": "series",
+      "name": "Turneul Mondial al Dramei Totale",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/xBJdymNHzCmiIvN4hSis59S8mcH.jpg",
+      "description": "Având noi personaje dintre curajoșii canadieni, această parodie animată a competițiilor de reality-show pleacă prin lume într-un avion.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:31132",
+      "type": "series",
+      "name": "Un show obișnuit",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/7s3WY9eSPtt93MC5lWIPASfJJPg.jpg",
+      "description": "Mordecai și Rigby sunt doi prieteni cam ciudați, care fac tot felul de tâmpenii în parcul de care au grijă, iar aventurile supranaturale sunt specialitatea lor.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:31499",
+      "type": "series",
+      "name": "Viata in Acvariu",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/sejbZwyIgotzTRH9BdYqMKgtgIp.jpg",
+      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:8616",
       "type": "series",
       "name": "Acţiunea Dramei Totale",
       "releaseInfo": "2009",
       "poster": "https://image.tmdb.org/t/p/w500/tGG1e2B6fnzMdhsMyZzRUVGktJS.jpg",
       "description": "Competiția se mută pe platoul unui studio abandonat unde concurenții se confruntă cu probe noi, inspirate din cinematografie.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:37807",
+      "type": "series",
+      "name": "Beyblade: Metal Saga",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/8WWTb5sVADcxar0RXUJRE4XBB5L.jpg",
+      "description": "Urmărește întreaga aventură din Beyblade: Metal Saga. De la confruntarea lui Gingka Hagane cu organizația Dark Nebula în Metal Fusion, până la bătăliile epice purtate de echipa Gan Gan Galaxy în cadrul Campionatului Mondial din Metal Masters.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:32066",
+      "type": "series",
+      "name": "Geronimo Stilton",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/lTywtYZoEw73qCmRlXexwRRd1jj.jpg",
+      "description": "Nume: Stilton, Geronimo Stilton. El este scriitorul celebru al Insulei Şoarecilor căruia îi datorăm cele mai bune aventuri posibile! Este un editor şef excepţional, care ne surprinde mereu şi care caută mereu noi aventuri. În trei cuvinte: umor, aventuri şi… umor! Aventurile şoricelului isteţ, Geronimo Stilton, sunt palpitante, pline de acţiuni şi de umor.Asta nu înseamnă însă, că personajele noastre nu trec prin situaţii periculoase, ele reuşesc însă să scape întotdeauna şi înfruntă orice astfel de situaţie. La trecerea obstacolelor în perioada cercetărilor, Geronimo este ajutat de prieteni şi de membrii familiei. Apar şi certuri între ei, care duc la situaţii amuzante, dar până la urmă se împacă, căci ţin unul la altul.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:35725",
+      "type": "series",
+      "name": "Gormiti",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/4lKFKV00Y2RvK2YEpPyVxCVgAJp.jpg",
+      "description": "Spectacolul urmărește doi frați, Nick și Toby, care descoperă că au puterea de a se transforma în creaturi puternice cunoscute sub numele de Gormitis. Cei doi prieteni ai lor Jessica și Lucas se alătură luptei și împreună valorifică puterea celor patru elemente. Acum depinde de ei să-și salveze lumea de la distrugere.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:16361",
@@ -17,12 +377,84 @@
       "description": "Lok Lambert, un adolescent aparent obișnuit, descoperă jurnalul tatălui său dispărut și pătrunde într-o lume secretă a magiei. Alături de Sophie Casterwill, Dante Vale și ceilalți membri ai Fundației Huntik, el călătorește prin lume în căutarea unor amulete străvechi, capabile să invoce creaturi puternice numite Titani. Eroii trebuie să dezlege mistere, să găsească artefacte pierdute și să împiedice Organizația să folosească puterea Titanilor în scopuri malefice.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
+      "id": "tmdb:33302",
+      "type": "series",
+      "name": "MetaJets",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/yHrwmaHhMWz3OeyZyUBi0haaPwK.jpg",
+      "description": "Anul este 2067 și fanii de pe tot globul urmăresc ARC, un NASCAR futurist în nori! Patru dintre cei mai buni piloți din lume sunt într-o cursă continuă pentru primul loc pe pistă. În afara pistei este o altă poveste. Acolo devin o echipă de zbor de elită cunoscută sub numele de Metasquadron. Sub comanda căpitanului Strong, Metasquadron-ul își transformă avioanele de curse rapide în zburătoare pregătite pentru luptă. Piloții lucrează împreună pentru a proteja oamenii din întreaga lume de rău, de obicei din mâinile maleficului general Raven și al organizației sale Black Cloud.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:7330",
+      "type": "series",
+      "name": "Omul de Fier: Aventuri blindate",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/kIJGgBwh37V2nfgnJFaN7zDIjdv.jpg",
+      "description": "În rolul lui Iron Man, adolescentul copil-minune Tony Stark își folosește invențiile tehnologice pentru a lupta împotriva diferitelor amenințări similare avansate din punct de vedere tehnologic. Prietenii săi, James „Rhodey” Rhodes și Pepper Potts, îl ajută în aventurile sale curajoase și periculoase.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:18352",
+      "type": "series",
+      "name": "The Garfield Show",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/jBAXfUHvVTBCsCwP1xNG6B3bZ0d.jpg",
+      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:15804",
       "type": "series",
       "name": "Batman: Neînfricat și cutezător",
       "releaseInfo": "2008",
       "poster": "https://image.tmdb.org/t/p/w500/tv2mOIRcPP4H0DhOH84xPgqui7d.jpg",
       "description": "Caped Crusader face echipă cu Blue Beetle, Green Arrow, Aquaman și nenumărați alții în încercarea sa de a susține justiția.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:6040",
+      "type": "series",
+      "name": "Ben 10: Echipa extraterestră",
+      "releaseInfo": "2008",
+      "poster": "https://image.tmdb.org/t/p/w500/sEocAE3h5iu8CUNhdx1gHan7QJf.jpg",
+      "description": "Cinci ani după evenimentele petrecute în prima serie, Ben Tennyson, în vârstă de 15 ani s-a întors la normal, la o viață obișnuită. Terminând cu aventurile sale, Ben și-a scos omnitrixul și a crescut de la un băiat mic într-un adolescent pe care te poți baza.\n\nÎnsă o nouă amenințare se apropie rapid de Pământ. O rasă de extratereștri parazită, Hibrizii, au ajuns în mod secret pe Pământ, cu intenția de a distruge omenirea. Max, bunicul lui Ben fiind un membru al organizației Instalatorilor, deja a pornit în călătoria de a încerca să-i oprească, dar de-atunci n-a mai fost văzut. Ben nu are de ales și trebuie să folosească încă o dată omnitrixul. Omnitrixul s-a contopit din nou cu corpul adolescentului, rezultând noi forme, funcții și extratereștri în care se poate transforma.\n\nBen nu este singur. Verișoara lui, Gwen, i se alătură și ea, având puteri magice care au crescut semnificativ pe parcursul anilor. De asemenea, lui Ben i se alătură și rivalul său, Kevin Levin care și-a petrecut timpul în vidul nul. Pe parcursul seriei, Ben, Gwen și Kevin izgonesc hibrizii, se luptă cu inamici vechi și noi.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:20407",
+      "type": "series",
+      "name": "Chuggington",
+      "releaseInfo": "2008",
+      "poster": "https://image.tmdb.org/t/p/w500/7LsJcmPIHmbpbO1NceqPPRbSfwL.jpg",
+      "description": "Serialul urmărește aventurile lui Koko, Wilson și Brewster, trei locomotive cu personalități unice.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:7307",
+      "type": "series",
+      "name": "Cinci detectivi: Caz după caz",
+      "releaseInfo": "2008",
+      "poster": "https://image.tmdb.org/t/p/w500/zaWaL3auzeiKBQSFjQB1DKL58iz.jpg",
+      "description": "Serialul este plin de distracţii şi emoţii. Ca şi părinţii lor, Jo, Max, Dylan, Allie şi căţelul fidel, Timmy, rezolvă o serie de crime misterioase fiind înarmaţi cu creativitate. Aventurile lor sunt pline de acţiune şi nu duc lipsă nici de umor. Cei cinci prieteni încep vacanţa ca să se relaxeze puţin şi să găsească noi aventuri în timp ce se bucură de mersul cu vaporul, cu cortul şi în excursii. Pe cale, întâlnesc o serie de mistere bizare, inclusiv faptul că lucrurile pur şi simplu dispar. Fiecare membru al echipei are abilităţi speciale pe care le pot testa în rezolvarea acestor evenimente ciudate.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:42912",
+      "type": "series",
+      "name": "Inazuma Eleven",
+      "releaseInfo": "2008",
+      "poster": "https://image.tmdb.org/t/p/w500/fYwU1zSZlq9wGyc054DqBoe98a9.jpg",
+      "description": "În acest serial anime bazat pe manga și jocul video omonime de succes, un tânăr și talentat portar încearcă să relanseze echipa mediocră a școlii.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:31595",
+      "type": "series",
+      "name": "Pad-ul lui Zeke",
+      "releaseInfo": "2008",
+      "poster": "https://image.tmdb.org/t/p/w500/itPKpJKZTxFhfwkhajEfe9EAj5z.jpg",
+      "description": "Însă într-o bună zi, acestea într-adevăr prind viaţă. Când Zeke găseşte o misterioară tablă electronică de desenat, descoperă că orice desenează prinde viaţă în realitate. Astfel Zeke poate desena orice vrea, însă din păcate îşi dă seama că toate se întâmplă altfel decât şi-a imaginat.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:7869",
+      "type": "series",
+      "name": "Pinguinii din Madagascar",
+      "releaseInfo": "2008",
+      "poster": "https://image.tmdb.org/t/p/w500/1fRG81M83HgwupmndtgZQOBHh8o.jpg",
+      "description": "Aventurile a patru pinguini – Skipper, Kowalski, Private și Rico, care efectuează diverse misiuni de tip comando pentru a-și proteja casa din grădina zoologică din Central Park. Pinguinii trebuie adesea să facă față problemelor cauzate sau agravate de vecinii lor de la grădina zoologică, regele Julien XIII (un lemur cu coadă inelată), Maurice (un aye-aye) și Mort (un lemur șoarece).\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:14636",
@@ -33,12 +465,12 @@
       "description": "Secretele familiei Sâmbătă este o serie de desene animate americane creată de canadianul Jay Stephens (creatorul serialului câștigător al premiului Emmy „Tutenstein”) pentru Cartoon Network. Aceasta a debutat în 4 octombrie 2008 în S.U.A. Serialul urmărește aventurile familiei Sâmbătă, o familie de criptozoologi care lucrează ca să țină secretă existența criptidelor, astfel încât să protejeze atât oamenii cât și creaturile. Familia Sâmbătă călătorește prin lume ca să studieze criptide și ca să se lupte cu răufăcătorii precum megalomanul V.V.Argost[1]. Serialul este influențat de stilul Hanna-Barbera al anilor '60 în legătură cu serialele de acțiune, și este combinat cu propriul interes al lui Jay Stephens pentru criptozoologie. Au existat rumori pe internet despre idea conform căreia va apărea și un film inspirat de acest serial la sfârșitul anului 2011 sau la începutul anului 2012. Aceste păreri s-au dovedit că sunt false.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:84368",
+      "id": "tmdb:15423",
       "type": "series",
-      "name": "Patrula Dino",
+      "name": "Animalia",
       "releaseInfo": "2007",
-      "poster": "https://image.tmdb.org/t/p/w500/cLZyqmE5QmFNp2cSEkqeQBTO9sm.jpg",
-      "description": "Seria urmărește aventurile celor cinci adolescenți, fiecare având puterea de a se transforma într-un dinozaur . Ei folosesc această putere pentru a lupta împotriva maleficului Victor Veloci, care intenționează să readucă lumea în epoca dinozaurilor, transformând oamenii și animalele în noi dinozauri mutanți și accelerând încălzirea globală.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/bZN6EC4X9o0Xc5NZkZmJqWm4qZM.jpg",
+      "description": "Animalia este un serial australian pentru copii, bazat pe cartea ilustrată cu același nume, publicată în 1986 și creată de ilustratorul Graeme Base.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:6618",
@@ -57,6 +489,30 @@
       "description": "Viața lui Dan Kuso s-a schimbat într-o zi când cărți misterioase au căzut din cer, el și prietenii săi au folosit cărțile pentru a crea un nou joc. Împreună cu prietenii săi Runo, Marucho, Julie, Shun, și Alice, formează grupul Bakugan Battle Brawlers, membrii sunt trași accidental în luptă pentru soarta Vestroiei (dimensiunea Bakuganilor) împotriva lui Masquerade, Hal-G și a Bakuganului Naga.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
+      "id": "tmdb:84368",
+      "type": "series",
+      "name": "Patrula Dino",
+      "releaseInfo": "2007",
+      "poster": "https://image.tmdb.org/t/p/w500/cLZyqmE5QmFNp2cSEkqeQBTO9sm.jpg",
+      "description": "Seria urmărește aventurile celor cinci adolescenți, fiecare având puterea de a se transforma într-un dinozaur . Ei folosesc această putere pentru a lupta împotriva maleficului Victor Veloci, care intenționează să readucă lumea în epoca dinozaurilor, transformând oamenii și animalele în noi dinozauri mutanți și accelerând încălzirea globală.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1877",
+      "type": "series",
+      "name": "Phineas și Ferb",
+      "releaseInfo": "2007",
+      "poster": "https://image.tmdb.org/t/p/w500/u39uA1IwplCB1s9Qa0evao2YILl.jpg",
+      "description": "În fiecare zi, doi frați vitregi din suburbii buni, aflați în vacanța de vară, se angajează într-un nou proiect măreț, care o enervează pe sora lor controlantă, Candace, care încearcă să-i distrugă. Între timp, ornitorincul lor de companie complotează împotriva maleficului Dr. Doofenshmirtz.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:2804",
+      "type": "series",
+      "name": "Pumnul lui Eon",
+      "releaseInfo": "2007",
+      "poster": "https://image.tmdb.org/t/p/w500/hbxqcu42rXE4v3N7XmhBLhktZQC.jpg",
+      "description": "Într-o lume viitoare post-apocaliptică locuită de oameni și roboți, un băiat orfan și plin de energie pe nume Marty descoperă din greșeală o relicvă legendară: Pumnul lui Eon. Odată atașat de brațul său, acest artefact antic îi conferă puteri extraordinare, transformându-l în noul \"Eon Kid\". Urmărit de forțele întunecate, Marty trebuie să pornească într-o călătorie periculoasă alături de prietena sa Ally, câinele său robotic Buttons și gardianul stoic Gaff, pentru a învăța să stăpânească puterea Pumnului și a opri reînvierea maleficului General și a armatei sale de roboți.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:2094",
       "type": "series",
       "name": "Clasa lui 3000",
@@ -65,12 +521,36 @@
       "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
+      "id": "tmdb:16815",
+      "type": "series",
+      "name": "Legenda Dragonului",
+      "releaseInfo": "2006",
+      "poster": "https://image.tmdb.org/t/p/w500/1haLf3upZNAJprM6SKiyRgvkyAE.jpg",
+      "description": "Legenda Dragonului urmărește aventurile gemenilor Ang și Ling Luong, care descoperă că sunt destinați să devină Ocrotitorii Templelor Zodiacului Chinezesc. Atunci când Ang este ales să fie Noul Dragon de Aur, sora sa Ling, orbită de gelozie și ademenită de maestrul răului Woo Yin, devine întunecatul Dragon Umbră. Ang trebuie să protejeze brățările zodiacale sacre și să își salveze sora din ghearele întunericului.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:4335",
       "type": "series",
       "name": "Oban, Cursele Stelare",
       "releaseInfo": "2006",
       "poster": "https://image.tmdb.org/t/p/w500/oVDayjVhJRQUBOwVBrwCtwAEywr.jpg",
       "description": "În anul 2082, Pământul a fost invitat să participe în Marea Cursă de pe Ōban, o cursă intergalactică a cărei câștigător îi poate fi îndeplinită orice dorință, chiar și învierea unui vechi prieten. Invitația vine de la Avatar, o ființă misterioasă care oprește ostilitățile dintre Pământ și rasa Crog, în schimb, vrând ca Pământul să participe la cursă. Eva Wei, un student de pe Pământ, fuge de la școală să-și găsească tatăl, Don Wei, președintele Wei Racing și cel mai bun manager de curse din lume. Lăsându-și fiica în grija școlii pentru mai mulți ani fără s-o viziteze, Don Wei n-o recunoaște pe Eva. Neputând să-i spună că e fiica lui, ea se angajează în echipa lui ca mecanic, sub numele \"Molly\".\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:346",
+      "type": "series",
+      "name": "American Dragon: Jake Long",
+      "releaseInfo": "2005",
+      "poster": "https://image.tmdb.org/t/p/w500/x2Wd9ZuCYxbx8G2hwOhW3fuKEku.jpg",
+      "description": "Jake Long este un adolescent asiatico-american de 13 ani care încearcă să găsească un echilibru între viața sa obișnuită de skater din New York și identitatea secretă de Dragon American. În același timp, el învață să-și stăpânească puterile mistice și să protejeze toate creaturile magice care trăiesc în secret printre oameni.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:246",
+      "type": "series",
+      "name": "Avatar: Legenda lui Aang",
+      "releaseInfo": "2005",
+      "poster": "https://image.tmdb.org/t/p/w500/cqCfAbdn5D0SJGQKqweKpCHX5lC.jpg",
+      "description": "Serialul urmărește aventurile lui Aang și ale prietenilor săi, care trebuie să salveze lumea înfrângându-l pe Lordul Focului și astfel să pună capăt războiului cu Națiunea Focului. Personajele principale sunt: Katara (o stăpână a apei din Triburile de Sud), Sokka, fratele ei, Aang (Avatarul) și ajutoarele lor Momo și Appa, iar printre personajele negative se numără prințul Zuko si unchiul său Iroh. După sfârșitul primului sezon in scenă mai apare si prințesa Azula (sora lui Zuko) dar și o nouă stăpână a Pământului, Toph Bei Fong, care se va alătura ulterior echipei lui Aang.Abia în al treilea sezon apare și Supremul Lord al focului Ozai unde va avea loc o înfruntare a titanilor dintre el și Aang.Tot războiul a început de la Împăratul Focului Sozin find și bunicul actualului împărat.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:4686",
@@ -89,12 +569,44 @@
       "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:246",
+      "id": "tmdb:155280",
       "type": "series",
-      "name": "Avatar: Legenda lui Aang",
+      "name": "Moby Dick și Secretul lui Mu",
       "releaseInfo": "2005",
-      "poster": "https://image.tmdb.org/t/p/w500/cqCfAbdn5D0SJGQKqweKpCHX5lC.jpg",
-      "description": "Serialul urmărește aventurile lui Aang și ale prietenilor săi, care trebuie să salveze lumea înfrângându-l pe Lordul Focului și astfel să pună capăt războiului cu Națiunea Focului. Personajele principale sunt: Katara (o stăpână a apei din Triburile de Sud), Sokka, fratele ei, Aang (Avatarul) și ajutoarele lor Momo și Appa, iar printre personajele negative se numără prințul Zuko si unchiul său Iroh. După sfârșitul primului sezon in scenă mai apare si prințesa Azula (sora lui Zuko) dar și o nouă stăpână a Pământului, Toph Bei Fong, care se va alătura ulterior echipei lui Aang.Abia în al treilea sezon apare și Supremul Lord al focului Ozai unde va avea loc o înfruntare a titanilor dintre el și Aang.Tot războiul a început de la Împăratul Focului Sozin find și bunicul actualului împărat.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+      "poster": "https://image.tmdb.org/t/p/w500/wEr06YX4w0XAK9V2GctgxjWgaHc.jpg",
+      "description": "Romy, un băiat de 12 ani, pleacă în căutarea celor 24 de tăblițe ale lui Mu care îi vor dezvălui secretul mult uitat al orașului care a dispărut. În compania prietenilor săi Zû și Satya, va trebui să călătorească dintr-un colț în altul al globului sub îndrumarea lui Kamal.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1743",
+      "type": "series",
+      "name": "Skyland",
+      "releaseInfo": "2005",
+      "poster": "https://image.tmdb.org/t/p/w500/9ipYWlcbYG455bK1FpdHlCtkgKw.jpg",
+      "description": "Este secolul 23; Pământul s-a spart în miliarde de bucăți care orbitează în jurul unui nucleu central. În această nouă lume numită Skyland, a apărut o formă evoluată de oameni: Seijins, ființe cu puteri supranaturale activate de lumina soarelui. Skyland este condus de Sphere, o organizație care controlează blocurile fragmentate de aprovizionare cu apă și își menține puterea datorită Gardienilor - promițătoare copiilor Seijin care au fost luați din familiile lor și au primit o pregătire specială. Unii Seijin au scăpat din Sferă și s-au alăturat unui grup de pirați rebeli pentru a lupta împotriva opresiunii sale.\" \"După capturarea mamei lor de către Sferă, Mahad și Lena, o tânără Seijin care încă învață să-și controleze puterile, sunt salvați de un grup de pirați. Ei se alătură rebeliunii piraților, hotărâți să-și elibereze mama și să ajute la doborârea Sferei.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:10085",
+      "type": "series",
+      "name": "Transformers: Cybertron",
+      "releaseInfo": "2005",
+      "poster": "https://image.tmdb.org/t/p/w500/cylffI818pRo6GjP7XMKQz0py6v.jpg",
+      "description": "Autoboții conduși de Optimus Prime duc o luptă contra cronometru pentru a găsi Cheile Ciber-Planetare înainte de Decepticoni și pentru a salva planeta Cybertron de la distrugerea iminentă provocată de o gaură neagră gigantică.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:61071",
+      "type": "series",
+      "name": "Yakari",
+      "releaseInfo": "2005",
+      "poster": "https://image.tmdb.org/t/p/w500/dPCHZugqg6l5kEtmf9V9Tkfr4Zk.jpg",
+      "description": "Binecuvântat cu darul extraordinar de a putea comunica cu animalele, Yakari, un mic Sioux curajos, se lansează în tot felul de escapade îndrăznețe alături de poneiul său companion, Micul Tunet, în timp ce totemul său, Marele Vultur, este mereu în preajmă.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:61205",
+      "type": "series",
+      "name": "Bibi și Tina",
+      "releaseInfo": "2004",
+      "poster": "https://image.tmdb.org/t/p/w500/5TvUnoeBODaSsGlfYdrt3kUIR6B.jpg",
+      "description": "Acest serial animat urmărește aventurile lui Bibi și Tina, două prietene adolescente care adoră să călărească și lucrează împreună pentru a rezolva mistere.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:1720",
@@ -113,12 +625,36 @@
       "description": "În această fantezie animată, o fată pe nume Bloom se împrietenește cu niște zâne, apoi le urmează în magica și periculoasa „Dimensiune magică”.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
+      "id": "tmdb:30844",
+      "type": "series",
+      "name": "Povestitorul",
+      "releaseInfo": "2004",
+      "poster": "https://image.tmdb.org/t/p/w500/p2dReNhFMnlvBrK6prkjmdmL82g.jpg",
+      "description": "The Fairytaler este un serial de televiziune animat danez din 2004, bazat pe basmele lui Hans Christian Andersen.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:75911",
       "type": "series",
       "name": "Transformers Energon",
       "releaseInfo": "2004",
       "poster": "https://image.tmdb.org/t/p/w500/u9B3WoH1l8gqlCaWQA1YXTggbiS.jpg",
       "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:92880",
+      "type": "series",
+      "name": "Umbra Elfilor",
+      "releaseInfo": "2004",
+      "poster": "https://image.tmdb.org/t/p/w500/dj7GQyj55q927ifbO6vcl4P3TYv.jpg",
+      "description": "Aproape de dimensiuni microscopice, există o lume ascunsă în a noastră; Meadowlands este o lume delicată de flori mari precum sequoia și insecte de mărimea dragonilor, unde zânele pașnice își iau aripi și trolii comici bântuie mlaștinile de câmpie și locuiesc peșteri întunecate și ascunse. Fără avertisment, un giulgiu al răului se târăște pe pământ... adânc în Pădurea Întunecată de la marginea Meadowlands, Elfii și-au construit cetatea într-un copac străvechi noduros. Conducătorul lor răuvoitor, Lord Kann, poftește să controleze întregul imperiu al zânelor și a jurat că va cuceri fiecare colț al acestui tărâm magic.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:32520",
+      "type": "series",
+      "name": "Vrăjitoarea Lilly",
+      "releaseInfo": "2004",
+      "poster": "https://image.tmdb.org/t/p/w500/zUNimbkO4sPzr77AJlUcNsW4tXf.jpg",
+      "description": "Lilly era o fetiță oarecare până când s-a întâlnit cu un zmeu minuscul, Hector, care o inițiat-o în știința vrăjitoriei. Nu este chiar așa de ușor să devii o vrăjitoare, află Lilly, în timp ce aventurile o duc în lumi îndepărtate și îi fac fotografiasță cu epocile antice ale istoriei și cu persoanele ale lumii de care nici nu auzise până atunci.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:679",
@@ -145,20 +681,28 @@
       "description": "Luptând pentru adevăr, dreptate și ultima felie de pizza, acești cinci supereroi sunt dovada vie că nu ești niciodată prea tânăr pentru a salva planeta. Protejând Pământul și nu numai, Teen Titans folosesc arte marțiale și gadgeturi pentru a lupta împotriva răufăcătorilor.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
+      "id": "tmdb:1886",
+      "type": "series",
+      "name": "Tutenstein",
+      "releaseInfo": "2003",
+      "poster": "https://image.tmdb.org/t/p/w500/64mxPXRRQEMnPNJB9VdbbVLATdc.jpg",
+      "description": "O mumie egipteană veche de trei mii de ani este readusă accidental la viață de un fulger într-un muzeu. Tânărul faraon încearcă să se adapteze lumii moderne cu ajutorul fetei Cleo și al motanului Luxor, în timp ce se confruntă cu zei, monștri și pericole din Egiptul Antic.\n\n18:28\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:2284",
+      "type": "series",
+      "name": "Țestoasele Ninja adolescente",
+      "releaseInfo": "2003",
+      "poster": "https://image.tmdb.org/t/p/w500/sEb6sTxyGoguCX4fK1G0hyzyLcv.jpg",
+      "description": "Leonardo, Raphael, Donatello și Michelangelo sunt patru țestoase mutante antrenate în arta ninjutsu de către Maestrul Splinter. Din canalizarea orașului New York, ei luptă împotriva amenințărilor cosmice, a mutanților și a mașinațiunilor sinistre ale lui Shredder.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:652",
       "type": "series",
       "name": "Ce mai e nou, Scooby-Doo?",
       "releaseInfo": "2002",
       "poster": "https://image.tmdb.org/t/p/w500/qP3DZrKLSPe5WR2N066BIfB2dIq.jpg",
       "description": "Echipa Misterelor revine pe teren, de data asta adusă direct în secolul 21! Scooby-Doo, Shaggy, Fred, Daphne și Velma își continuă călătoriile prin lume la bordul Mașinii Misterelor, dar acum au la îndemână tehnologie modernă: telefoane mobile, laptopuri și gadgeturi de ultimă generație. Chiar dacă timpurile s-au schimbat, monștrii, fantomele și roboții scăpați de sub control sunt la fel de numeroși, iar poftele insațiabile ale lui Scooby și Shaggy rămân neschimbate. O reinventare modernă și plină de energie a seriei clasice, presărată cu melodii pop-rock uimitoare pe fundalul fiecărei urmăriri!\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:2345",
-      "type": "series",
-      "name": "Kim Possible",
-      "releaseInfo": "2002",
-      "poster": "https://image.tmdb.org/t/p/w500/qsDNX8DPwWydDn9oUIhe1WcTuUH.jpg",
-      "description": "În drum spre o competiție de majorete cu Kim și echipa, Ron se întoarce la locul unde a petrecut cea mai oribilă vară - Tabăra Vreisăplângi. În timp ce își înfruntă vechile temeri, el descoperă ceva care încă îl pândește în tabără - ceva și mai înfricoșător.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:2530",
@@ -169,12 +713,52 @@
       "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
+      "id": "tmdb:2345",
+      "type": "series",
+      "name": "Kim Possible",
+      "releaseInfo": "2002",
+      "poster": "https://image.tmdb.org/t/p/w500/qsDNX8DPwWydDn9oUIhe1WcTuUH.jpg",
+      "description": "În drum spre o competiție de majorete cu Kim și echipa, Ron se întoarce la locul unde a petrecut cea mai oribilă vară - Tabăra Vreisăplângi. În timp ce își înfruntă vechile temeri, el descoperă ceva care încă îl pândește în tabără - ceva și mai înfricoșător.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:2808",
+      "type": "series",
+      "name": "Spioanele",
+      "releaseInfo": "2002",
+      "poster": "https://image.tmdb.org/t/p/w500/v8S1aSZLtoy2P9okG2tnRBlpcPr.jpg",
+      "description": "Trei adolescente din Beverly Hills-Clover, Alex si Sam-sunt nu numai eleve, dar si agenti sub acoperire. Cum reusesc ele sa nu-si dezvaluie identitatea, sa-si duca misiunile la bun sfarsit si sa fie si bune eleve?\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:4516",
+      "type": "series",
+      "name": "Toad Patrol",
+      "releaseInfo": "2002",
+      "poster": "https://image.tmdb.org/t/p/w500/oUvcpWb2XEE4T2Ai28YSheaJ8fN.jpg",
+      "description": "Un grup de broaște râioase se trezesc prinși într-o pădure după ce au ratat migrația către Toad Hollow. Ei trebuie să se confrunte cu mari pericole în călătoria lor, cum ar fi un șarpe uriaș și un șoim calculat, dar vor întâlni și mulți prieteni noi.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:54728",
+      "type": "series",
+      "name": "Beyblade",
+      "releaseInfo": "2001",
+      "poster": "https://image.tmdb.org/t/p/w500/YwtG30zIY88LmGtOa5m4wTwxDv.jpg",
+      "description": "Tânărul Tyson Granger, alături de echipa sa Bladebreakers (Kai, Ray, Max și Kenny), intră în lumea competițională a luptelor Beyblade. Cu ajutorul titanilor lor spirituali (Bit-Beasts), băieții călătoresc prin întreaga lume pentru a deveni campioni mondiali și a proteja aceste creaturi mitice de forțele răului.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:2395",
       "type": "series",
       "name": "Legenda lui Tarzan",
       "releaseInfo": "2001",
       "poster": "https://image.tmdb.org/t/p/w500/w5mGLHBT59nFilSPgd5TgJnZ1ix.jpg",
       "description": "Legenda lui Tarzan reia de unde a rămas lungmetrajul din 1999, personajul din titlu adaptându-se la noul său rol de lider al maimuțelor după moartea lui Kerchak, iar Jane adaptându-se la viața din junglă. Completand distributia tatal lui Jane, profesorul Archimedes Porter; Tantor, elefantul germofob; și Terk, o femeie înțeleptată de gorilă și vechiul prieten de lupte al lui Tarzan.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1666",
+      "type": "series",
+      "name": "Mary-Kate și Ashley în acțiune",
+      "releaseInfo": "2001",
+      "poster": "https://image.tmdb.org/t/p/w500/ecrVFAS7UrxSOZs5kQTqgrcLtfu.jpg",
+      "description": "Agenții speciali Misty și Amber (Mary-Kate și Ashley) luptă împotriva celor care fac răul de pe tot globul. Folosind gadgeturi de înaltă tehnologie și propriul lor simț unic al stilului, ei efectuează salvări uimitoare și protejează planeta.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:40143",
@@ -185,6 +769,22 @@
       "description": "Asakura Yoh este un șaman, o persoană care comunică cu fantomele. El intră în Lupta Șamanului, pentru că oricine câștigă turneul ajunge să comunice cu Marele Spirit, Dumnezeu... asta și logodnicul său Anna vrea să fie soția Regelui Șaman. Îl ajută prietenii săi Manta, Horo Horo, Ryu și partenerul său fantomă samurai, Amidamaru.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
+      "id": "tmdb:2723",
+      "type": "series",
+      "name": "Samurai Jack",
+      "releaseInfo": "2001",
+      "poster": "https://image.tmdb.org/t/p/w500/ddZ7Q2WZ0xAHkVXYvcEgNGFgVkw.jpg",
+      "description": "Samurai Jack este un serial american de desene animate, remarcabil prin combinația dintre stilul cinematografic elaborat și simplitatea desenului.\n\nEpisoadele abordează subiecte variate, de la cele mai sumbre la cele mai vesele, dar în general urmăresc peregrinările lui Jack în căutarea unui mijloc de a călători înapoi în timp și încercările cu care se confruntă el pe parcurs. Adversarii săi sunt de obicei monștri sau roboți, dar mai presus de toți Aku, geniul Răului.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1763",
+      "type": "series",
+      "name": "Zambetul lui Sharon",
+      "releaseInfo": "2001",
+      "poster": "https://image.tmdb.org/t/p/w500/95K74OfPru4LPz7EJ5PAd6uhijz.jpg",
+      "description": "Spectacolul, plasat în Elkford, Columbia Britanică, se bazează pe Sharon Spitz, care este o elevă de liceu cu aparat dentar care îi împiedică să ducă o viață normală de adolescentă. În primul sezon, ea este înscrisă la Mary Pickford Junior High.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:240",
       "type": "series",
       "name": "Aventurile lui Jackie Chan",
@@ -193,196 +793,12 @@
       "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:18457",
-      "type": "series",
-      "name": "Misterele lui Miss Mallard",
-      "releaseInfo": "2000",
-      "poster": "https://image.tmdb.org/t/p/w500/ojV1118IBoWgpJXkz6gpYm0StZI.jpg",
-      "description": "Indiferent unde călătoresc domnișoara Mallard și nepotul ei, ei sunt inevitabil prinși în cele mai interesante investigații. Descoperirea de indicii în timp ce scapi de accidente suspecte și evită dezastrele misterioase poate fi o muncă grea, dar creativă și plină de resurse, domnișoara Mallard își prinde întotdeauna rata! Plin de indicii și „dovezi ascunse”, fiecare mister își încurajează telespectatorii să urmeze indiciile și să rezolve misterul cu domnișoara Mallard.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
       "id": "tmdb:11191",
       "type": "series",
       "name": "Copiii de la  402",
       "releaseInfo": "2000",
       "poster": "https://image.tmdb.org/t/p/w500/r5oYYkSmo2E133bdLdy490VbVgH.jpg",
       "description": "Aici, în clasa 402, sub conducerea strictă, dar atentă, a domnişoarei Graves, toţi copiii sunt în siguranţă. În clasa 402 binele este întotdeauna răsplătit, iar răul este întotdeauna pedepsit. Personajele principale sunt: Nancy Francis, Jessie McCoy, Vinnie Nasta, Polly McShane. Elevii clasei 402 sunt impulsivi, de cele mai multe ori fac alegeri proaste și rareori se gândesc la rezultatele alegerilor lor. Când tentația își face apariția înșelătoare, acești elevi se grăbesc să cadă în capcană. Bineînțeles că, fiind copii, atunci când problemele de zi cu zi nu mai sunt ușor rezolvabile, ele par chestiuni de viață și de moarte.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:10079",
-      "type": "series",
-      "name": "Omul-Păianjen Nelimitat",
-      "releaseInfo": "1999",
-      "poster": "https://image.tmdb.org/t/p/w500/hNdf1WmFil9IV7rabBe6PnAmYnI.jpg",
-      "description": "În încercarea de a-i opri pe Venom și Carnage să deturneze o navetă spațială către o dimensiune paralelă numită Anti-Pământ (Counter-Earth), Spider-Man este acuzat pe nedrept de eșecul misiunii astronautului John Jameson. Pentru a-și reabilita numele și a-l salva pe Jameson, Peter Parker îmbracă un nou costum high-tech realizat din nanotehnologie și călătorește pe Anti-Pământ. Acolo descoperă o lume futuristă și opresivă condusă de Înaltul Evoluționist, un lider autoritar care folosește creaturi hibride om-animal (Bestiali) pentru a subjugate populația umană.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:387",
-      "type": "series",
-      "name": "SpongeBob Pantaloni Pătrați",
-      "releaseInfo": "1999",
-      "poster": "https://image.tmdb.org/t/p/w500/5h0EU2lqBb03dp5vtRuUHJwqzem.jpg",
-      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:606",
-      "type": "series",
-      "name": "Ed, Edd și Eddy",
-      "releaseInfo": "1999",
-      "poster": "https://image.tmdb.org/t/p/w500/nfKenwmfmdtoXGhaYiDIftrBchw.jpg",
-      "description": "Ed, Edd n Eddy (tradus Ed, Edd și Eddy, de asemenea abreviat în engleză EEnE) este un serial de animație americano-canadian creat de Danny Antonucci și produs de compania canadiană a.k.a. Cartoon. A fost prima dată difuzat pe Cartoon Network în data de 4 ianuarie 1999. Serialul aduce aminte de desenele animate create între anii '40 și '70. Acțiunea se petrece în jurul a trei adolescenți, cunoscuți ca „Ezi”, care locuiesc într-o suburbie. Condusă neoficial de Eddy, gașca încearcă să obțină prin diverse metode bani de la copiii din vecini, cu care să cumpere sfarmă-fălci, dar, de cele mai multe ori, acestia eșuează.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:607",
-      "type": "series",
-      "name": "Fetițele Powerpuff",
-      "releaseInfo": "1998",
-      "poster": "https://image.tmdb.org/t/p/w500/468mmhMd21pY4Yx0S0woqeEcxtL.jpg",
-      "description": "Serialul se învârte asupra trei fetițe, Blossom, Bubbles și Buttercup, cunoscute ca fetițele Powerpuff, care dețin din naștere superputeri. Au fost create prin combinarea ingredientelor zahăr, condimente și tot ce-i drăguț (sugar, spice and everything nice în engleză) la care s-a adăugat accidental elementul X (engl.: Chemical X). Ele își dedică viața luptei împotriva criminalității și a răului din lume în orașul Townsville, alături de creatorul și totodată tatăl lor adoptiv, Profesorul Utonium.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:4625",
-      "type": "series",
-      "name": "Noile aventuri ale lui Batman",
-      "releaseInfo": "1997",
-      "poster": "https://image.tmdb.org/t/p/w500/s40Ji11SBKaEYDgJmDc0ifklM59.jpg",
-      "description": "După o lungă pauză -- The Caped Crusader s-a întors și mai cool ca niciodată, în seria animată plină de acțiune -- The New Batman Adventures. Reluând ani de zile după Batman: Seria animată, seria îl evidențiază pe Batman și pe grupul său de luptă împotriva crimei, format din Nightwing, Robin și Batgirl, în timp ce își unesc forțele pentru a lupta cu clasicii super-răuși ai orașului Gotham.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:6332",
-      "type": "series",
-      "name": "Incredibilul Hulk",
-      "releaseInfo": "1996",
-      "poster": "https://image.tmdb.org/t/p/w500/wa60s9NSvrH87NFCArmobnIyNnh.jpg",
-      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1863",
-      "type": "series",
-      "name": "Gașca Rațelor (Quack Pack)",
-      "releaseInfo": "1996",
-      "poster": "https://image.tmdb.org/t/p/w500/d6VewnlRManLlOzV06jPUb08Hgf.jpg",
-      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:4251",
-      "type": "series",
-      "name": "Viața cu Louie",
-      "releaseInfo": "1995",
-      "poster": "https://image.tmdb.org/t/p/w500/myyLrufbm0iDF0kOwpgWbw3G8pQ.jpg",
-      "description": "Viața cu Louie este un serial de desene animate în care sunt povestite întâmplări din viața lui Louie Anderson, un copil de 8 ani care trăiește în Cedar Knoll, Wisconsin (SUA). Louie mai are 5 frați și surori, dar aceștia nu apar în fiecare episod.\n\nDeși are mulți prieteni, Louie are și un inamic pe nume Glen Glenn, care îl bate de câte ori îl prinde. Multe episoade sunt inspirate din viața adevăratului Louie Anderson, un comediant american care apare la începutul episoadelor și care le vorbește telespectatorilor. Louie Anderson a și regizat toate episoadele.\n\nLouie este un copil un pic grăsuț care învață de-a lungul episoadelor lecții de viață importante. Serialul este o combinație reușită de întâmplări din care înveți ceva, cu comedia care te bine dispune și acțiunea care te captează.\n\nAndy Anderson este tatăl acestuia, veteran de război. Andy este tipul omului lăudăros și exagerează de fiecare dată inventând povești din război în care el salvează întreaga omenire. El a lucrat, de fapt, ca bucătar. Mașina acestuia este un Rambler clasic la care nu ar renunța pentru nimic în lume. Aura Anderson este mama lui Louie, o femeie cumsecade, dar și o mamă extrem de iubitoare care ar face orice pentru copiii ei. Tommy Anderson este frățiorul mai mic al lui Louie. Este naiv, iar Louie îl păcălește de multe ori.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:13455",
-      "type": "series",
-      "name": "Povestiri din Criptă",
-      "releaseInfo": "1993",
-      "poster": "https://image.tmdb.org/t/p/w500/4ycalUVnbEHj6LC8EMSI73jSOCu.jpg",
-      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:4574",
-      "type": "series",
-      "name": "Oamenii-X",
-      "releaseInfo": "1992",
-      "poster": "https://image.tmdb.org/t/p/w500/2OFwsFhAobczgJWnVdwd9oZAF2N.jpg",
-      "description": "Oamenii-X sunt o echipă de elită de mutanți, ființe umane dotate genetic cu superputeri, care au jurat să lupte pentru drepturile mutanților împotriva agențiilor guvernamentale ostile, protejând în același timp omenirea de supremacistul mutant Magneto care încearcă să distrugă rasa umană în schimbul atrocitățile comise împotriva tipului mutant.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:2675",
-      "type": "series",
-      "name": "Mica sirenă",
-      "releaseInfo": "1992",
-      "poster": "https://image.tmdb.org/t/p/w500/iF4z0tA4Ax6uCjwQ8Rx0lqhxcs0.jpg",
-      "description": "După unul dintre cele mai îndrăgite filme Disney, fenomenalul „Mica Sirenă” ajunge pe micile ecrane cu aceleași animații sofisticate și personaje comice colorate care l-au făcut un succes printre cinefilii din întreaga lume. Reluându-și rolurile lor din film, JODI BENSON în rolul lui Ariel și SAMUEL E. WRIGHT în rolul acelui crustaceu senzațional, Sebastian, care va da de belele, în timp ce Ariel se scufundă către noi aventuri timp de un sezon întreg, alături de noi personaje din lumea submarină din Atlantica.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:2098",
-      "type": "series",
-      "name": "Batman: Serialul de animație",
-      "releaseInfo": "1992",
-      "poster": "https://image.tmdb.org/t/p/w500/3qMQIEdNJxL8ksLujSLtMaLVUiQ.jpg",
-      "description": "Jurând să răzbune uciderea părinților săi bogați, Bruce Wayne își dedică viața eradicării ticăloșiilor din Gotham. Cavalerul negru se luptă cu demonii interiori, precum și cu răufăcătorii care-l hărțuiesc.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:3319",
-      "type": "series",
-      "name": "Darkwing Duck",
-      "releaseInfo": "1991",
-      "poster": "https://image.tmdb.org/t/p/w500/1gJMSXS0gwM8gDJnzVSITcxbQc.jpg",
-      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1615",
-      "type": "series",
-      "name": "Chip și Dale Salvatorii Parcului",
-      "releaseInfo": "1989",
-      "poster": "https://image.tmdb.org/t/p/w500/44VE1LaaZq4bZhMDo6Yi29NO4H.jpg",
-      "description": "Chip și Dale conduc o mică organizație excentrică a personajelor animale care monitorizează nu doar lumea „oamenilor”, ci și lumea animalelor, rezolvând cazuri misterioase oriunde au loc acestea. Salvatorii se ocupă de cazurile care trec neobservate.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:14578",
-      "type": "series",
-      "name": "Aventurile lui Peter Pan",
-      "releaseInfo": "1989",
-      "poster": "https://image.tmdb.org/t/p/w500/iD0m1c96fszjIOnSE9aSJqGFU67.jpg",
-      "description": "Aventurile lui Peter Pan este un serial anime de la Nippon Animation și regizat de Takashi Nakamura și Yoshio Kuroda, care a fost difuzat pentru prima dată în Japonia pe rețeaua Fuji TV între 8 ianuarie 1989 și 24 decembrie 1989. Este o adaptare a clasicului Roman Peter Pan de James Matthew Barrie și a cuprins un total de 41 de episoade.\n\nA făcut parte din World Masterpiece Theatre, animație faimoasă de bază de la Nippon Animation, care a produs o versiune animată a unei cărți sau povești clasice diferite în fiecare an. Anime-ul, în timp ce adaptează material din romanul original, adaugă și numeroase arcuri de poveste originale.\n\nDe asemenea, serialul a fost tradus și lansat mai târziu în mai multe audiențe internaționale din întreaga lume. În Europa, a fost difuzat pe rețelele de televiziune Telecinco, RTL Television, Kika, Italia 1, TV3, Fox Kids, Yleisradio și TVP 2.  În România, animația a fost difuzată pe Fox Kids.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:720",
-      "type": "series",
-      "name": "Povestirile Rățoiului - Seria Clasică Animată",
-      "releaseInfo": "1987",
-      "poster": "https://image.tmdb.org/t/p/w500/dgcMNk5en7q2lGjfzD2HS9unAQw.jpg",
-      "description": "Când Donald Duck pleacă spre a se înrola în marină,nepoții Huey, Dewey și Louie rămân în grija unchiului lui Donald, Scrooge McDuck. Însă Scrooge nu prea are timp de familie, el încercând să-și apere întreaga avere de frații Beagle.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1931",
-      "type": "series",
-      "name": "Aventurile Ursuleților Gummy",
-      "releaseInfo": "1985",
-      "poster": "https://image.tmdb.org/t/p/w500/lD6wnVCHpAHhveFb5rY3dB19Sao.jpg",
-      "description": "Directorul Disney Michael Eisner a fost lovit de inspirație atunci când a decis să pună în practică animarea celebrelor bomboane atunci când băiatul său i-a cerut într-una din zile bomboana gummy bear.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1069",
-      "type": "series",
-      "name": "Cele 13 Fantome Ale Lui Scooby-Doo",
-      "releaseInfo": "1985",
-      "poster": "https://image.tmdb.org/t/p/w500/v7S15heYWQSJLM60uZjim7Y9nzG.jpg",
-      "description": "Shaggy și Scooby-Doo și prietenii trebuie să returneze 13 fantome pe care le-au eliberat din neatenție într-un cufăr magic. Împreună cu Daphne și Scrappy-Doo, împreună cu noul venit Flim-Flam, ei călătoresc prin lume înfruntând fantomele care trebuie returnate în cufăr.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:21269",
-      "type": "series",
-      "name": "Cartea Cărților",
-      "releaseInfo": "1981",
-      "poster": "https://image.tmdb.org/t/p/w500/eWdaReQRGqL8KETKPTCTZJ5kgtn.jpg",
-      "description": "Seria „Cartea Cărților” provoacă copiii de peste 6 ani la o aventură prin Biblie, pentru a descoperi istorisiri străvechi și a învăța lecții valoroase despre viață.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1068",
-      "type": "series",
-      "name": "Noile filme cu Scooby-Doo",
-      "releaseInfo": "1972",
-      "poster": "https://image.tmdb.org/t/p/w500/slBx9Vkh0ET9m2lgrD8KxJDL5T9.jpg",
-      "description": "Echipa Misterelor (Scooby-Doo, Shaggy, Fred, Daphne și Velma) rezolvă cele mai stranii cazuri și demaschează monștri alături de invitați speciali faimoși, personaje de desene animate și vedete legendare.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:926",
-      "type": "series",
-      "name": "Scooby-Doo, Unde ești tu!",
-      "releaseInfo": "1969",
-      "poster": "https://image.tmdb.org/t/p/w500/qXnAqxsR3I34CDPFGuZbYrg7YW2.jpg",
-      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:8392",
-      "type": "series",
-      "name": "Popeye marinarul",
-      "releaseInfo": "1960",
-      "poster": "https://image.tmdb.org/t/p/w500/tQPDl1S1pRg2jzCQWtVUuauZSqa.jpg",
-      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
     }
   ]
 }

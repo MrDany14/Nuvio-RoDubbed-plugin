@@ -1,0 +1,2055 @@
+{
+  "generatedAt": "2026-10-19T19:40:36.873Z",
+  "pluginVersion": 13,
+  "catalogVersion": "1.0.6",
+  "inventory": 555,
+  "scanned": 555,
+  "qualifyingPages": 514,
+  "addedTitles": 289,
+  "previousTitles": 1149,
+  "totalTitles": 1438,
+  "listCounts": {
+    "romanian-animated-movies": 598,
+    "romanian-animated-series": 333,
+    "romanian-dubbed-movies": 402,
+    "romanian-dubbed-series": 105
+  },
+  "exclusions": {
+    "candidate": 514,
+    "missing-S1E1": 16,
+    "conflicting-year": 12,
+    "search-address-not-found": 1,
+    "request-error": 1,
+    "missing-player": 8,
+    "unsupported-host": 2,
+    "not-dubbed": 1
+  },
+  "nativePassed": 514,
+  "nativeCandidates": 514,
+  "limits": "Publisher Romanian dubbing declarations; series S1E1 only; no host resolution, playback or deletion testing. Ambiguous title/year/identity and unreached native addresses excluded.",
+  "added": [
+    {
+      "type": "tv",
+      "id": 64752,
+      "title": "Garda felină",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/garda-felina-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 203298,
+      "title": "Hotelul pentru Animăluțe",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/hotelul-pentru-animalute-2022-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 40351,
+      "title": "Lanterna Verde: Seria animată",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/lanterna-verde-2011-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 91246,
+      "title": "Mao Mao: Eroii Inimii Curate",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/mao-mao-eroii-inimii-curate-2019-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 68633,
+      "title": "Supergăgăuții",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/supergagautii-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 91425,
+      "title": "Trenul infinitului",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/trenul-infinitului-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 3200,
+      "title": "Familia Stevens",
+      "catalog": "romanian-dubbed-series",
+      "url": "https://desenflix.online/familia-stevens-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 2284,
+      "title": "Țestoasele Ninja adolescente",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/testoasele-ninja-adolescente-2003-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 10085,
+      "title": "Transformers: Cybertron",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/transformers-cybertron-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 208527,
+      "title": "Academia de gimnastică: O nouă șansă",
+      "catalog": "romanian-dubbed-series",
+      "url": "https://desenflix.online/academia-de-gimnastica-o-noua-sansa-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 57780,
+      "title": "Lego: Legendele din Chima",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/lego-legendele-din-chima-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 17572,
+      "title": "Kick Buttowski: Temerarul suburban",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/kick-buttowski-temerarul-suburban-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 599,
+      "title": "Oracolul Întunecat",
+      "catalog": "romanian-dubbed-series",
+      "url": "https://desenflix.online/oracolul-intunecat-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 63401,
+      "title": "Aventurile fraților urși",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/aventurile-fratilor-ursi-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 72468,
+      "title": "OK, K.O.! Să fim eroi!",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/ok-k-o-sa-fim-eroi-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 62306,
+      "title": "Ferma Lenei",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/ferma-lenei-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 2150,
+      "title": "The Scooby-Doo/Dynomutt Hour",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/the-scooby-doo-show-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 53401,
+      "title": "Spiridusii Nazdravani (The Woodlies)",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/spiridusii-nazdravani-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 119986,
+      "title": "Războinica și trolul",
+      "catalog": "romanian-dubbed-series",
+      "url": "https://desenflix.online/razboinica-si-trolul-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 197429,
+      "title": "Bebe Șef: Înapoi în pătuț",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/bebe-sef-inapoi-in-patut-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 86833,
+      "title": "Penny De La M.A.R.S.",
+      "catalog": "romanian-dubbed-series",
+      "url": "https://desenflix.online/penny-de-la-m-a-r-s-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 205214,
+      "title": "Robo-cadeții",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/robo-cadetii-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 154647,
+      "title": "Angry Birds: O vară nebună",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/angry-birds-o-vara-nebuna-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 16815,
+      "title": "Legenda Dragonului",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/legenda-dragonului-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 1886,
+      "title": "Tutenstein",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/tutenstein-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 61851,
+      "title": "Binny și fantoma",
+      "catalog": "romanian-dubbed-series",
+      "url": "https://desenflix.online/binny-si-fantoma-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 81896,
+      "title": "Patru prieteni și jumătate",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/patru-prieteni-si-jumatate-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 59427,
+      "title": "Echipa Răzbunătorilor",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/echipa-razbunatorilor-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 7869,
+      "title": "Pinguinii din Madagascar",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/pinguinii-din-madagascar-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 46358,
+      "title": "Franklin și Prietenii săi",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/franklin-si-prietenii-sai-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 1877,
+      "title": "Phineas și Ferb",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/phineas-si-ferb-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 112334,
+      "title": "Piloții de Drone",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/pilotii-de-drone-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 82434,
+      "title": "Super 4",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/super-4-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 233783,
+      "title": "Bakugan",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/bakugan-2023-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 204135,
+      "title": "Dragon Striker",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/dragon-striker-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 106393,
+      "title": "Star Trek: Prodigy",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/star-trek-prodigy-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 73038,
+      "title": "Kate și Mim-Mim",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/kate-si-mim-mim-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 64586,
+      "title": "Lassie si Prietenii",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/lassie-si-prietenii-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 82075,
+      "title": "Mirette investighează",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/mirette-detectiva-calatoare-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 1763,
+      "title": "Zambetul lui Sharon",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/zambetul-lui-sharon-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 74,
+      "title": "Aventurile lui Fievel în Vestul Sălbatic",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/aventurile-lui-fievel-in-vestul-salbatic-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 2808,
+      "title": "Spioanele",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/spioanele-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 68654,
+      "title": "MECH-X4",
+      "catalog": "romanian-dubbed-series",
+      "url": "https://desenflix.online/mech-x4-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 81980,
+      "title": "Popples",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/popples-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 32118,
+      "title": "Generator Rex",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/generator-rex-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 41343,
+      "title": "Povești din Folclorul Maghiar",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/povesti-din-folclorul-maghiar-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 39898,
+      "title": "Kung Fu Panda: Legendele teribilității",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/kung-fu-panda-legendele-teribilitatii-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 286170,
+      "title": "Pachetul sălbatic",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/wylde-pak-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 31595,
+      "title": "Pad-ul lui Zeke",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/pad-ul-lui-zeke-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 2745,
+      "title": "Aladdin",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/aladdin-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 346,
+      "title": "American Dragon: Jake Long",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/american-dragon-jake-long-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 4516,
+      "title": "Toad Patrol",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/patrula-broscutelor-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 85349,
+      "title": "Amfibienii",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/amfibienii-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 42912,
+      "title": "Inazuma Eleven",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/inazuma-eleven-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 67106,
+      "title": "În adâncuri",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/lumea-adancurilor-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 31109,
+      "title": "Ben 10: Ultimate Alien",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/ben-10-ultimate-alien-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 73379,
+      "title": "Maggie si Bianca In Lumea Modei",
+      "catalog": "romanian-dubbed-series",
+      "url": "https://desenflix.online/maggie-si-bianca-in-lumea-modei-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 1996,
+      "title": "Familia Flinstone",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/familia-flintstone-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 7307,
+      "title": "Cinci detectivi: Caz după caz",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/5-detectivi-caz-dupa-caz-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 46974,
+      "title": "Max Steel",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/max-steel-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 2723,
+      "title": "Samurai Jack",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/samurai-jack-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 32066,
+      "title": "Geronimo Stilton",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/geronimo-stilton-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 1743,
+      "title": "Skyland",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/skyland-lumea-noua-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 65852,
+      "title": "Alex și trupa",
+      "catalog": "romanian-dubbed-series",
+      "url": "https://desenflix.online/alex-si-trupa-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 61071,
+      "title": "Yakari",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/yakari-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 155280,
+      "title": "Moby Dick și Secretul lui Mu",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/moby-dick-si-secretul-civilizatiei-mu-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 94605,
+      "title": "Arcane",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/arcane-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 77020,
+      "title": "Aventurile sirenelor H2O",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/aventurile-sirenelor-h2o-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 72637,
+      "title": "Unsprezece",
+      "catalog": "romanian-dubbed-series",
+      "url": "https://desenflix.online/unsprezece-o11ce-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 61205,
+      "title": "Bibi și Tina",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/bibi-si-tina-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 6040,
+      "title": "Ben 10: Echipa extraterestră",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/ben-10-alien-force-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 46922,
+      "title": "Ben 10: Omniverse",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/ben-10-omniverse-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 33793,
+      "title": "Babar și aventurile lui Badou",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/babar-si-aventurile-lui-badou-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 2804,
+      "title": "Pumnul lui Eon",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/pumnul-lui-eon-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 29904,
+      "title": "Redwall",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/redwall-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 92880,
+      "title": "Umbra Elfilor",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/umbra-spiridusilor-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 15423,
+      "title": "Animalia",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/animalia-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 82065,
+      "title": "Zoom Delfinul Alb",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/zoom-delfinul-alb-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 5150,
+      "title": "Înconjurul lumii în 80 de zile cu Willy Fog",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/willy-fog-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 32296,
+      "title": "Voltron Forța",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/voltron-forta-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 20407,
+      "title": "Chuggington",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/chuggington-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 63350,
+      "title": "Dinotrux",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/dinotrux-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 1666,
+      "title": "Mary-Kate și Ashley în acțiune",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/mary-kate-si-ashley-in-actiune-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 35725,
+      "title": "Gormiti",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/gormiti-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 668,
+      "title": "Oamenii X: Evoluție",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/x-men-evolutie-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 2405,
+      "title": "Johnny Bravo",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/johnny-bravo-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 44305,
+      "title": "Dragonii",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/dragons-riders-of-berk-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 33302,
+      "title": "MetaJets",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/metajets-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 61751,
+      "title": "Trăiască regele Julien",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/traiasca-regele-julien-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 120161,
+      "title": "100 la sută lup – Legenda pietrei lunii",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/100-lup-legenda-pietrei-lunii-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 7330,
+      "title": "Omul de Fier: Aventuri blindate",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/omul-de-fier-aventuri-blindate-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 32520,
+      "title": "Vrăjitoarea Lilly",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/vrajitoarea-lilly-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 30844,
+      "title": "Povestitorul",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/povestitorul-andersen-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 1458,
+      "title": "Franklin",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/franklin-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 459165,
+      "title": "Alfa și Omega 8: Călătorie în Regatul Urșilor",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/alfa-si-omega-8-calatorie-in-regatul-ursilor-2017-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 424105,
+      "title": "Alfa și Omega 7: Marea Furtună",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/alfa-si-omega-7-marea-furtuna-2016-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 397127,
+      "title": "Alfa și Omega 6: Dinozaurii din adâncuri",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/alfa-si-omega-6-dinozaurii-din-adancuri-2016-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 353430,
+      "title": "Alfa şi Omega 5: Vacanţa în familie",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/alfa-si-omega-5-vacanta-in-familie-2015-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 258096,
+      "title": "Alfa și Omega 3: Marile Jocuri ale lupilor",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/alfa-si-omega-3-marile-jocuri-ale-lupilor-2014-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 227425,
+      "title": "Alfa și Omega 2: Aventuri de sărbatori",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/alfa-si-omega-2-aventuri-de-sarbatori-2013-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 86130,
+      "title": "Clopoțica: Jocurile din Valea Zânelor",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/clopotica-jocurile-din-valea-zanelor-2011-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 362058,
+      "title": "Crăiasa Zăpezii 3: Foc și Gheață",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/craiasa-zapezii-3-foc-si-gheata-2016-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 292014,
+      "title": "Crăiasa Zăpezii 2",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/craiasa-zapezii-2-2014-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 382517,
+      "title": "Năzdrăvanii din pădure: Speriosul sperioşilor",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/nazdravanii-din-padure-speriosul-speriosilor-2015-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 57800,
+      "title": "Epoca de gheață 4: Continente în derivă",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/epoca-de-gheata-4-deriva-continentelor-2012-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 164372,
+      "title": "Crăiasa Zăpezii",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/craiasa-zapezii-2012-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 10193,
+      "title": "Povestea jucăriilor 3",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/povestea-jucariilor-3-2010-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 425218,
+      "title": "Școala iepurașilor",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/scoala-iepurasilor-pazitorii-oului-de-aur-2017-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 47292,
+      "title": "Pokemon: Giratina și Războinicul Văzduhului",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/pokemon-giratina-si-razboinicul-vazduhului-2008-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 276223,
+      "title": "Misterul comorii din Machu Picchu",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/misterul-comorii-din-machu-picchu-1999-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 39702,
+      "title": "Pettson și Findus: Mașinăria Tomte",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/pettson-si-findus-masinaria-tomte-2005-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 24256,
+      "title": "Pettson și Findus: Uitucul",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/pettson-si-findus-uitucul-2009-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 534789,
+      "title": "Tomas și prietenii săi: O lume mare! Aventuri mari!",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/tomas-si-prietenii-sai-o-lume-mare-aventuri-mari-2018-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 93399,
+      "title": "Thomas și prietenii săi: Eroul Șinelor",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/thomas-si-prietenii-sai-eroul-sinelor-2009-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 55797,
+      "title": "Pompierul Sam: Marele incendiu din Pontypandy",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/pompierul-sam-marele-incendiu-din-pontypandy-2010-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 76263,
+      "title": "Tomas și prietenii săi: Aventura pe Insula Ceții",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/tomas-si-prietenii-sai-aventura-pe-insula-cetii-2010-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 399268,
+      "title": "Tomas și prietenii săi: Cursa cea mare",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/tomas-si-prietenii-sai-cursa-cea-mare-2016-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 73829,
+      "title": "Thomas și prietenii săi: Ziua locomotivelor Diesel",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/thomas-si-prietenii-sai-ziua-locomotivelor-diesel-2011-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 292821,
+      "title": "Thomas și prietenii: Povestea celor curajoși",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/thomas-si-prietenii-sai-povestea-celor-curajosi-2014-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 132156,
+      "title": "Thomas și prietenii săi: Misterul de pe Muntele Albastru",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/thomas-si-prietenii-sai-misterul-de-pe-muntele-albastru-2012-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 73723,
+      "title": "Lorax, protectorul pădurii",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/lorax-protectorul-padurii-2012-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 490649,
+      "title": "Sus Ancora!",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/sus-ancora-2017-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 20007,
+      "title": "The Bugs Bunny/Road Runner Filmul",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/filmul-lui-bugs-bunny-si-road-runner-1979-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 387587,
+      "title": "Trei prieteni aventuroși: Petrecere în Mullewapp",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/trei-prieteni-aventurosi-petrecere-in-mullewapp-2016-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 5255,
+      "title": "Polar Expres",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/polar-express-2004-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 15403,
+      "title": "Ben 10: Secretul Omnitrixului",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/ben-10-secretul-omnitrixului-2007-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 101468,
+      "title": "Uimitoarele Aventuri Ale Muschetarilor",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/uimitoarele-aventuri-ale-muschetarilor-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 10681,
+      "title": "WALL·E",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/wall-e-2008-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 71571,
+      "title": "Toto Gust și povestea magică a pizzei",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/toto-sapore-si-povestea-magica-2003-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 25475,
+      "title": "Clopoțica și comoara pierdută",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/clopotica-si-comoara-pierduta-2009-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 25831,
+      "title": "Print si cersetor",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/print-si-cersetor-1990-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 41394,
+      "title": "Looney, Looney, Looney Bugs Bunny Film",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/the-looney-looney-looney-bugs-bunny-movie-1981-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 462883,
+      "title": "Ciocănitoarea lemnoasă",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/woody-woodpecker-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 72870,
+      "title": "Sinbad",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/sinbad-marinarul-1992-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 30178,
+      "title": "Stuart Little 3: În sălbăticie",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/stuart-little-3-call-of-the-wild-2005-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 10530,
+      "title": "Pocahontas",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/pocahontas-1995-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 19405,
+      "title": "Reces: scoala a terminat",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/recess-schools-out-2001-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 216115,
+      "title": "Abelhinhas",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/abelhinhas-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 433,
+      "title": "Mary Poppins",
+      "catalog": "romanian-dubbed-movies",
+      "url": "https://desenflix.online/mary-poppins-1964-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 733558,
+      "title": "Mica Prințesă",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/mica-printesa-1996-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 10882,
+      "title": "Frumoasa adormită",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/frumoasa-adormita-1959-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 365045,
+      "title": "Heidi",
+      "catalog": "romanian-dubbed-movies",
+      "url": "https://desenflix.online/heidi-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 14704,
+      "title": "Măgarul X",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/donkey-xote-2007-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 11360,
+      "title": "Dumbo",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/dumbo-1941-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 452097,
+      "title": "Marea vânătoare de ouă de Paște",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/easter-egg-hunt-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 655697,
+      "title": "Colț Alb",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/colt-alb-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 11224,
+      "title": "Cenușăreasa",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/cenusareasa-1950-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 271161,
+      "title": "Aventurile lui Moby Dick",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/aventurile-lui-moby-dick-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 682429,
+      "title": "Călătoriile lui Pin-Pin",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/calatoriile-lui-pin-pin-1990-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 13654,
+      "title": "101 dalmațieni II: Aventura în Londra a lui Petic",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/101-dalmatieni-2-aventura-lui-patch-in-londra-2003-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 119426,
+      "title": "Ali Baba",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/ali-baba-1991-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 523777,
+      "title": "Noua generație",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/noua-generatie-2018-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 77459,
+      "title": "Un monstru în Paris",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/un-monstru-in-paris-2011-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 274862,
+      "title": "Lego Ninjago: Filmul",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/lego-ninjago-filmul-2017-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 82703,
+      "title": "Dl. Peabody și Sherman",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/dl-peabody-si-sherman-2014-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 228161,
+      "title": "Acasă",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/acasa-2015-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 9732,
+      "title": "Regele Leu 2: Regatul lui Simba",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/regele-leu-2-mandria-lui-simba-1998-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 8587,
+      "title": "Regele Leu",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/regele-leu-1994-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 1007757,
+      "title": "Schimbați",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/schimbati-2026-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 11430,
+      "title": "Regele Leu 3: Hakuna Matata",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/regele-leu-3-hakuna-matata-2004-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 33427,
+      "title": "LEGO: Aventurile Clutch Powers",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/lego-aventurile-lui-clutch-powers-2010-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 22259,
+      "title": "Bionicle: Renașterea legendei",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/bionicle-renasterea-legendei-2009-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 10010,
+      "title": "Fratele Urs 2",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/fratele-urs-2-2006-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 463116,
+      "title": "Printesa furatã",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/printesa-furata-2018-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 38757,
+      "title": "O poveste încâlcită",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/o-poveste-incalcita-2010-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 522887,
+      "title": "Manou cel Rapid",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/manou-aventuri-in-zbor-2019-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 25556,
+      "title": "The Land Before Time IX: Călătorie către Big Water",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/taramul-uitat-de-timp-ix-calatorie-spre-apa-cea-mare-2002-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 24554,
+      "title": "Țara dinaintea timpului X: Marea migrație a gâtului lung",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/taramul-uitat-de-timp-x-marea-migratie-2003-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 24556,
+      "title": "The Land Before Time XI: Invazia Tinysauruses",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/taramul-uitat-de-timp-xi-invazia-piticilor-2005-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 25587,
+      "title": "The Land Before Time VIII: The Big Freeze",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/taramul-uitat-de-timp-viii-marele-inghet-2001-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 24102,
+      "title": "Ținutul Stravechi VII: Piatra focului rece",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/taramul-uitat-de-timp-vii-piatra-de-foc-rece-2000-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 19164,
+      "title": "The Land Before Time IV: Călătorie prin ceață",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/taramul-uitat-de-timp-iv-calatorie-prin-ceata-1996-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 19165,
+      "title": "The Land Before Time V: Insula misterioasă",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/taramul-uitat-de-timp-v-insula-misterioasa1997-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 17337,
+      "title": "The Land Before Time VI: Secretul Saurus Rock",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/taramul-uitat-de-timp-vi-secretul-stancii-dinozaurului-1998-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 19004,
+      "title": "The Land Before Time III: Timpul Marii Dăruiri",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/taramul-uitat-de-timp-iii-timpul-marii-daruiri-1995-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 15997,
+      "title": "The Land Before Time II: The Great Valley Adventure",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/tara-dinaintea-timpului-ii-aventura-in-marea-vale1994-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 12144,
+      "title": "Tărâmul uitat de timp",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/taramul-uitat-de-timp-1988-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 224990,
+      "title": "Strawberry Shortcake: The Sweet Dreams Movie",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/capsunica-prajiturica-o-calatorie-foarte-lunga-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 438747,
+      "title": "O altă poveste încâlcită",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/mai-incalciti-ca-niciodata-2017-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 213033,
+      "title": "Zâne",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/taramul-zanelor-1999-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 834802,
+      "title": "Ben 10.010",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/ben-10-010-2021-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 15906,
+      "title": "Barbie și magia lui Pegas 3-D",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/barbie-si-al-ei-pegasus-magic-2005-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 34134,
+      "title": "Barbie în povestea unei sirene",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/barbie-in-povestea-unei-sirene-2010-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 355111,
+      "title": "Barbie in Rock 'N Royals",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/barbie-in-tabara-de-muzica-2015-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 1170657,
+      "title": "Barbie și Stacie în ajutor",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/barbie-si-stacie-in-ajutor-2024-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 417047,
+      "title": "Barbie & Her Sisters in a Puppy Chase",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/barbie-si-surorile-ei-in-goana-dupa-catelusi-2016-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 13283,
+      "title": "Barbie prințesa insulei",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/barbie-printesa-insulei-2007-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 21705,
+      "title": "Jurnalele Barbie",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/jurnalul-lui-barbie-2006-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 361380,
+      "title": "Barbie și surorile ei în marea aventură a cățelușilor",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/barbie-si-surorile-ei-in-marea-aventura-a-catelusilor-2015-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 316322,
+      "title": "Barbie in Princess Power",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/barbie-puterea-printesei-2015-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 42949,
+      "title": "Arthur 3: Războiul dintre cele două lumi",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/arthur-3-razboiul-dintre-cele-doua-lumi-2010-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 1155533,
+      "title": "Barbie Dreamhouse Adventures: Misterul magic al sirenei",
+      "catalog": "romanian-dubbed-movies",
+      "url": "https://desenflix.online/barbie-dreamhouse-adventuresmisterul-magic-al-sirenei-2019-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 150776,
+      "title": "Abominable Christmas",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/abominable-christmas-2012-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 7484,
+      "title": "Năzdrăvanii din pădure",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/nazdravanii-din-padure-2006-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 446894,
+      "title": "Aventurile lui Smallfoot",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/aventurile-lui-smallfoot-2018-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 175112,
+      "title": "Clopoțica și Zâna Pirat",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/clopotica-si-zana-pirat-2014-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 11238,
+      "title": "Aladdin și regele hoților",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/aladdin-si-regele-hotilor-1996-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 203696,
+      "title": "Scooby-Doo! Frica de Scenă",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/scooby-doo-frica-de-scena-2013-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 27653,
+      "title": "O coadă americană: misterul monstrului de noapte",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/poveste-americana-misterul-monstrului-nocturn-1999-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 31473,
+      "title": "O coadă americană: comoara insulei Manhattan",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/poveste-americana-comoara-din-manhattan-1998-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 71689,
+      "title": "Phineas şi Ferb: în a 2-a dimensiune",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/phineas-si-ferb-in-a-2-a-dimensiune-2011-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 15213,
+      "title": "Erou al tuturor",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/eroul-tuturor-2006-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 36550,
+      "title": "Jack și vrejul de fasole",
+      "catalog": "romanian-dubbed-movies",
+      "url": "https://desenflix.online/jack-si-vrejul-de-fasole-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 35177,
+      "title": "Dinotopia: Căutarea pietrei soarelui rubin",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/dinotopia-in-cautarea-rubinului-soarelui2005-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 400155,
+      "title": "Hotel Transilvania 3: Monştrii în Vacanţă",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/hotel-transilvania-3-monstrii-in-vacanta-2018-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 159824,
+      "title": "Hotel Transilvania 2",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/hotel-transilvania-2-2015-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 76492,
+      "title": "Hotel Transilvania",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/hotel-transilvania-2012-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 20760,
+      "title": "Lilo și Stitch 2: Stitch are o problemă",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/lilo-si-stitch-2-stitch-are-un-defect-2005-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 292795,
+      "title": "Pene galbene",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/pene-galbene-2014-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 10567,
+      "title": "Dinozaurul",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/dinozaurul-2000-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 228942,
+      "title": "O vacanță monstruoasă",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/vacanta-monstruoasa-2013-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 449406,
+      "title": "Vivo",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/vivo-2021-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 15512,
+      "title": "Monștri contra extratereștri",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/monstri-contra-extraterestri-2009-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 14175,
+      "title": "Viteaz",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/valiant-2005-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 234004,
+      "title": "Ratchet & Clank",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/ratchet-si-clank-2016-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 508965,
+      "title": "Klaus",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/klaus-2019-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 170687,
+      "title": "Boxtroli",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/boxtrolii-2014-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 37135,
+      "title": "Tarzan",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/tarzan-1999-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 1147416,
+      "title": "Lumea Miraculoasă - Londra: Viitor Incert",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/lumea-miraculoasa-londra-viitor-incert-2024-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 335360,
+      "title": "My Little Pony: Filmul",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/micul-meu-ponei-filmul-2017-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 275562,
+      "title": "Slugterra: Ghoul dincolo",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/slugterra-varcolacul-de-dincolo-2014-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 417859,
+      "title": "Motanul Încălțat",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/motanul-incaltat-2011-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 96826,
+      "title": "Ben 10 Și Vânătoarea de Extratereștrii",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/ben-10-si-vanatoarea-de-extraterestrii-2012-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 953,
+      "title": "Madagascar",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/madagascar-2005-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 12903,
+      "title": "Scooby-Doo! și Regele Spiridușilor",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/scooby-doo-si-regele-spiridusilor-2008-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 484862,
+      "title": "Scooby-Doo! & Batman: Neinfricat si Cutezator",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/scooby-doo-si-batman-neinfricat-si-cutezator-2018-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 369860,
+      "title": "Bibi și Tina: Fetele contra băieților",
+      "catalog": "romanian-dubbed-movies",
+      "url": "https://desenflix.online/bibi-tina-3-fete-contra-baieti-2016-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 375107,
+      "title": "Rață, rață și gâscan",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/rata-rata-si-gascan-2018-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 166428,
+      "title": "Cum să-ți dresezi dragonul 3",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/cum-sa-iti-dresezi-dragonul-3-lumea-ascunsa-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 9487,
+      "title": "Aventuri la firul ierbii",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/aventuri-la-firul-ierbii-1998-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 116870,
+      "title": "Curly - Cel mai mic cățeluș",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/carliont-o-minune-de-catel-1995-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 26497,
+      "title": "Insula lui Impy",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/calatoria-lui-impy-2006-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 19594,
+      "title": "Bartok, Magnificul",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/bartok-magnificul-1999-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 68179,
+      "title": "Cum să evadezi de pe Pământ",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/cum-sa-evadezi-de-pe-pamant-2013-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 17009,
+      "title": "Familia Jetson: Filmul",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/jetson-filmul-1990-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 378236,
+      "title": "Emoji Filmul. Aventura zâmbăreților",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/emoji-filmul-aventura-zambaretilor-2017-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 9444,
+      "title": "Anastasia",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/anastasia-1997-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 93265,
+      "title": "Emilie Jolie",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/emilie-jolie-2011-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 270029,
+      "title": "Curiosul George: E primăvară!",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/curiosul-george-e-primavara-2013-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 139017,
+      "title": "Franklin și Cavalerul Verde",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/franklin-si-cavalerul-verde-2000-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 627093,
+      "title": "George curios: Maimuța regală",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/curiosul-george-maimutoiul-regal-2019-2009-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 263945,
+      "title": "Curiosul George: Un Crăciun foarte maimuță",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/curiosul-george-un-craciun-maimutaresc-2009-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 338103,
+      "title": "Curiosul George 3: Înapoi în junglă",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/curious-george-3-inapoi-in-jungla-2015-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 133931,
+      "title": "Zambezia",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/zambezia-2012-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 10674,
+      "title": "Neînfricata Mulan",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/mulan1998-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 256051,
+      "title": "Curiosul George: Festivalul de Halloween",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/curiosul-george-festivalul-de-halloween-2013-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 74180,
+      "title": "Romeo și Julieta: pecetluite cu un sărut",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/romeo-si-julieta-pecetluit-cu-un-sarut-2006-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 166076,
+      "title": "Superman: Dezlantuit",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/superman-unbound-2013-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 283564,
+      "title": "SlugTerra: Întoarcerea Elementalilor",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/slugterra-return-of-the-elementals-2014-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 177572,
+      "title": "Cei 6 super eroi",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/cei-6-super-eroi-2014-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 105864,
+      "title": "Bunul dinozaur",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/bunul-dinozaur-2015-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 202575,
+      "title": "Casa magicianului",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/casa-magicianului-2013-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 458443,
+      "title": "Bob Constructorul: Mega Mașini",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/bob-constructorul-mega-masini-2017-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 321342,
+      "title": "Slugterra: Slug Fu Showdown",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/slugterra-slug-fu-shadow-2015-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 257932,
+      "title": "Cuibul Dragonului - Începutul erei războinicilor",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/dragon-nest-razboinicii-zorilor2014-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 276905,
+      "title": "Norm de la Polul Nord",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/norm-de-la-polul-nord-2016-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 51170,
+      "title": "Năzdrăvanii din pădure 3",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/nazdravanii-din-padure-3-2010-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 20410,
+      "title": "Scooby Doo și Invadatorii Extratereștrii",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/scooby-doo-si-invadatorii-extraterestri-2000-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 46195,
+      "title": "Rio",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/rio-2011-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 7450,
+      "title": "Titan A.E.",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/titan-a-e-2000-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 23903,
+      "title": "Curious George 2: Urmărește-ți maimuța!",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/curiosul-george-prindeti-maimuta-2009-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 108862,
+      "title": "Marea evadare a lui Yoghin",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/kota-2013-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 13017,
+      "title": "fabule instabile: țestoasă vs iepure",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/fabule-instabile-testoasa-vs-iepure-2008-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 38055,
+      "title": "Megamind",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/megamind-2010-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 284908,
+      "title": "Scooby-Doo! Jocuri înfricoșătoare",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/scooby-doo-jocurile-sinistre-2012-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 812,
+      "title": "Aladdin",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/aladdin-1992-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 422229,
+      "title": "Patrula antifantome",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/patrula-antifantome-2016-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 314387,
+      "title": "Scooby-Doo! Amenințarea Dulăului Mecanic",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/scooby-doo-amenintarea-dulaului-mecanic-2013-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 297102,
+      "title": "Scooby-Doo! Goluri groaznice",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/scooby-doo-goluri-fantomatice-2014-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 79419,
+      "title": "Prima ninsoare a iernii",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/prima-zapada-1998-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 70438,
+      "title": "Prințesa Soarelui",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/printesa-soarelui-2007-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 46152,
+      "title": "Strawberry Shortcake: Let's Dance",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/capsunica-prajiturica-sa-dansam-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 378111,
+      "title": "Bărzoiul Richard",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/barzoiul-richard-2017-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 11970,
+      "title": "Hercule",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/hercule1997-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 916649,
+      "title": "Benjamin Blümchen și prințesa gheții",
+      "catalog": "romanian-dubbed-movies",
+      "url": "https://desenflix.online/benjamin-blumchen-si-printesa-ghetii-1993-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 31170,
+      "title": "Școala de sperie a lui Casper",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/scoala-de-sperieturi-a-lui-casper-2006-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 372449,
+      "title": "Sania stricată a lui Bob",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/sania-stricata-a-lui-bob-2015-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 442056,
+      "title": "Micul vampir",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/micul-vampir-2017-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 10009,
+      "title": "Fratele urs",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/fratele-urs-2003-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 605829,
+      "title": "Prințesa Lebădă: Regatul Muzicii",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/printesa-lebada-regatul-muzicii-2019-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 335797,
+      "title": "Hai să cântăm!",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/hai-sa-cantam-2016-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 30074,
+      "title": "Scooby-Doo! și Legenda Vampirului",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/scooby-doo-si-legenda-vampirului-2003-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 13225,
+      "title": "FernGully: Ultima pădure tropicală",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/ferngully-ultima-padure-tropicala-1992-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 302960,
+      "title": "Scooby-Doo! Moon Monster Madness",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/scooby-doo-monstrul-de-pe-luna-2015-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 408355,
+      "title": "Tronul Elfilor",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/throne-of-elves-2016-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 764807,
+      "title": "Felix și comoara din Morgäa",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/felix-si-comoara-din-morgaa-2021-dublat-in-romana/"
+    },
+    {
+      "type": "tv",
+      "id": 54728,
+      "title": "Beyblade",
+      "catalog": "romanian-animated-series",
+      "url": "https://desenflix.online/beyblade-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 20235,
+      "title": "Lumea magică a lui Belle",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/frumoasa-si-bestia-lumea-magica-a-bellei-1998-dublat-in-romana/"
+    },
+    {
+      "type": "movie",
+      "id": 13690,
+      "title": "Năzdrăvanii din Pădure 2",
+      "catalog": "romanian-animated-movies",
+      "url": "https://desenflix.online/nazdravanii-din-padure-2-2008-dublat-in-romana/"
+    }
+  ]
+}

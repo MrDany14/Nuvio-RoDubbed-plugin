@@ -1,3 +1,44 @@
 {
-  "metas": []
+  "metas": [
+    {
+      "id": "tmdb:3498",
+      "type": "series",
+      "name": "Magicienii din Waverly Place",
+      "releaseInfo": "2007",
+      "poster": "https://image.tmdb.org/t/p/w500/q7nj08KsmQtQh6Kjv41AUxR7DKf.jpg",
+      "description": "Alex, Justin și Max Russo nu sunt simpli adolescenți. Secretul lor? Sunt vrăjitori în devenire!\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:2260",
+      "type": "series",
+      "name": "H2O:  Adaugă apă",
+      "releaseInfo": "2006",
+      "poster": "https://image.tmdb.org/t/p/w500/2z4IKatNXHSDIC2XJgedTS4dsEo.jpg",
+      "description": "Când trei adolescente obișnuite se nimeresc în fața unei grote antice suferă o transformare care le va schimba viața pentru totdeauna. H2O - adaugă apă, este povestea unor adolescente care se confruntă cu problemele de zi cu zi însă cu una în plus: sunt sirene și au o putere incredibilă asupra apei. Emma, Cleo și Rikki au 16 ani și trăiesc pe marginea unei plaje din Gold Coast. Viața lor se învârte în jurul hainelor, plajei și băieților și mai puțin a școlii. Însă dacă apa le atinge au numai câteva secunde să se usuce înainte de a le apărea cozile lungi și elegante. Ele sunt sirene!\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:599",
+      "type": "series",
+      "name": "Oracolul Întunecat",
+      "releaseInfo": "2004",
+      "poster": "https://image.tmdb.org/t/p/w500/v4TC1qRL215XTCnQBAQUDfIjpQm.jpg",
+      "description": "Când gemenii Cally și Lance Stone descoperă o revistă de benzi desenate misterioasă numită „Dark Oracle”, ei își dau seama rapid că întâmplările din paginile ei le oglindesc și le prezic viața reală. Totuși, alter ego-urile lor din benzi desenate îi trag într-o lume mult mai întunecată, plină de magie, secrete și alegeri periculoase.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1894",
+      "type": "series",
+      "name": "Orășelul Leneș",
+      "releaseInfo": "2004",
+      "poster": "https://image.tmdb.org/t/p/w500/9bkxU7kTMLuhBOPnkAYXtCsqZj3.jpg",
+      "description": "Sursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:3200",
+      "type": "series",
+      "name": "Familia Stevens",
+      "releaseInfo": "2000",
+      "poster": "https://image.tmdb.org/t/p/w500/6wdftSHL6EF8sevUFJSVOnEBOHT.jpg",
+      "description": "Peripețiile comice ale familiei Stevens din Sacramento, California, cu un accent deosebit pe rivalitatea continuă dintre mezinul poznaș Louis și sora lui perfecționistă, Ren.\n\nSursă declarată compatibilă și adresă verificată pentru S1E1. Celelalte episoade nu au fost verificate. Disponibilitatea video și redarea nu au fost testate."
+    }
+  ]
 }
