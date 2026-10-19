@@ -1,6 +1,14 @@
 {
   "metas": [
     {
+      "id": "tmdb:150689",
+      "type": "movie",
+      "name": "Cenușăreasa",
+      "releaseInfo": "2015",
+      "poster": "https://image.tmdb.org/t/p/w500/g1h2TyX3QfL1NKWRqU59YLXYkUL.jpg",
+      "description": "Tânăra Ella are curaj, bunătate şi o Zână Ursitoare. Luând inspirație din povestea clasică, „Cenuşăreasa” readuce la viaţă imaginile nemuritoare din capodopera animată a anilor 1950 pentru o nouă generaţie.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:317198",
       "type": "movie",
       "name": "Bad Hair Day",
@@ -79,6 +87,14 @@
       "releaseInfo": "2014",
       "poster": "https://image.tmdb.org/t/p/w500/xb3ZCLPMFCP4abOJ0yGVpx9BTld.jpg",
       "description": "Cel mai cunoscut monstru din lume se întoarce în filmul de acțiune Godzilla, o producție Warner Bros. Pictures și Legendary Pictures. Noul regizor vizionar Gareth Edwards (Monștrii) prezintă o poveste impresionantă despre curaj și armistițiu în fața forței copleșitoare a naturii, în care Godzilla restituie echilibrul în timp ce omenirea este neputincioasă.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:264730",
+      "type": "movie",
+      "name": "Violetta: La emoción del concierto",
+      "releaseInfo": "2014",
+      "poster": "https://image.tmdb.org/t/p/w500/t9BOz79Y92yTbofc4ynri5MzcPH.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:248601",
@@ -583,6 +599,14 @@
       "releaseInfo": "2001",
       "poster": "https://image.tmdb.org/t/p/w500/fFCBl8Bkfyo2UUxWD5QQV9qolW9.jpg",
       "description": "Tânărul hobbit Frodo Baggins moștenește de la unchiul său un inel misterios, căutat de maleficul Sauron. Aflând că inelul trebuie distrus la Muntele Osândei, în ținutul Mordor, Frodo se oferă să-l ducă acolo, protejat de membrii Frăției Inelului. Pe drum, vor înfrunta slujitorii lui Sauron și puterea corupătoare a inelului, care amenință să-i dezbine.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:34205",
+      "type": "movie",
+      "name": "Halloweentown II: Kalabar's Revenge",
+      "releaseInfo": "2001",
+      "poster": "https://image.tmdb.org/t/p/w500/uDnp52aGXxnfU4vqnnc6YpfzjHb.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:10866",

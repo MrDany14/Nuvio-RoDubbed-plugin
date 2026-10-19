@@ -1,4 +1,41 @@
 {
+  "movie:1493400": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/tabara-rock-3-2026-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:53:29.858Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/camp-rock-3-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:06:03.846Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/camp-rock-3",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T13:29:16.962Z"
+      }
+    ]
+  },
   "movie:506574": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -34,6 +71,80 @@
       }
     ]
   },
+  "movie:1301421": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/turma-vede-urma-2026-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:53:34.024Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/turma-vede-urma-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Morencius"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:59:29.489Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/turma-vede-urma",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T13:26:57.192Z"
+      }
+    ]
+  },
+  "movie:1084244": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/toy-story-5-povestea-jucariilor-5-2026-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:53:41.051Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/povestea-jucariilor-5-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:01:30.881Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/povestea-jucariilor-5",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T11:10:19.182Z"
+      }
+    ]
+  },
   "movie:1108427": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -65,6 +176,15 @@
         "checkedAt": "2026-10-19T11:01:31.153Z"
       },
       {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/lumea-miraculoasa-new-york-eroii-uniti-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:58:44.077Z"
+      },
+      {
         "site": "fd",
         "url": "https://filmedublate.net/desen-animat/lumea-miraculoasa-new-york-eroii-uniti-dublat-in-romana",
         "hosts": [
@@ -89,34 +209,6 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T11:01:23.979Z"
-      }
-    ]
-  },
-  "movie:1084244": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/povestea-jucariilor-5-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:01:30.881Z"
-      },
-      {
-        "site": "df",
-        "url": "https://desenefaine.com/film/povestea-jucariilor-5",
-        "hosts": [
-          "Byse",
-          "StreamP2P",
-          "SeekStreaming"
-        ],
-        "addressProof": "Official direct-slug lookup and exact title/year",
-        "checkedAt": "2026-10-19T11:10:19.182Z"
       }
     ]
   },
@@ -147,7 +239,7 @@
           "Byse"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:01:40.246Z"
+        "checkedAt": "2026-10-19T14:53:47.586Z"
       },
       {
         "site": "df",
@@ -174,7 +266,7 @@
           "Byse"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:01:47.337Z"
+        "checkedAt": "2026-10-19T14:53:47.661Z"
       },
       {
         "site": "df",
@@ -240,10 +332,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:01:54.782Z"
+        "checkedAt": "2026-10-19T14:53:47.741Z"
       },
       {
         "site": "df",
@@ -402,6 +495,15 @@
         "checkedAt": "2026-10-19T11:02:30.860Z"
       },
       {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/dragonii-salvatorii-inaripati-sarbatoare-in-huttsgalor-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:59:11.728Z"
+      },
+      {
         "site": "fd",
         "url": "https://filmedublate.net/desen-animat/dragonii-salvatorii-inaripati-sarbatoare-in-huttsgalor-dublat-in-romana",
         "hosts": [
@@ -426,6 +528,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:02:37.411Z"
+      },
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/magie-cu-susul-in-jos-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:00:15.252Z"
       },
       {
         "site": "fd",
@@ -478,6 +589,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:02:44.779Z"
+      },
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/dorinta-de-craciun-a-angelei-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:00:22.559Z"
       },
       {
         "site": "fd",
@@ -595,10 +715,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:36:01.516Z"
+        "checkedAt": "2026-10-19T15:04:24.067Z"
       },
       {
         "site": "df",
@@ -651,6 +772,15 @@
         "checkedAt": "2026-10-19T11:03:16.076Z"
       },
       {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/jingle-jangle-o-aventura-de-craciun-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:00:52.405Z"
+      },
+      {
         "site": "fd",
         "url": "https://filmedublate.net/film-dublat/jingle-jangle-o-aventura-de-craciun-dublat-in-romana",
         "hosts": [
@@ -694,6 +824,15 @@
         "checkedAt": "2026-10-19T11:03:22.552Z"
       },
       {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/un-craciun-extraterestru-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:00:38.890Z"
+      },
+      {
         "site": "df",
         "url": "https://desenefaine.com/film/un-craciun-extraterestru",
         "hosts": [
@@ -729,6 +868,15 @@
         "checkedAt": "2026-10-19T11:03:29.691Z"
       },
       {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/aventurile-fratilor-ursi-filmul-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:00:32.810Z"
+      },
+      {
         "site": "fd",
         "url": "https://filmedublate.net/desen-animat/aventurile-fratilor-ursi-filmul-dublat-in-romana",
         "hosts": [
@@ -738,6 +886,30 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:26:31.133Z"
+      }
+    ]
+  },
+  "movie:27850": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/orasul-halloween-1998-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:53:47.821Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/orasul-halloween-1998-dublat-in-romana",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:04:12.357Z"
       }
     ]
   },
@@ -770,6 +942,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:03:36.443Z"
+      },
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/spongebob-filmul-misiune-de-salvare-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:01:16.918Z"
       },
       {
         "site": "fd",
@@ -848,6 +1029,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:04:30.860Z"
+      },
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/barbie-princess-adventure-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:56:34.005Z"
       }
     ]
   },
@@ -977,6 +1167,93 @@
       }
     ]
   },
+  "movie:569094": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/omul-paianjen-prin-lumea-paianjenului-2023-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:53:54.844Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/omul-paianjen-prin-lumea-paianjenului-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:58:43.596Z"
+      }
+    ]
+  },
+  "movie:676710": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/nastrusnicul-motan-maurice-2023-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:54:01.532Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/nastrusnicul-motan-maurice-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:09:07.307Z"
+      }
+    ]
+  },
+  "movie:335977": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/indiana-jones-si-cadranul-destinului-2023-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:54:07.682Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/indiana-jones-si-cadranul-destinului-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Morencius",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:09:11.220Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/indiana-jones-si-cadranul-destinului",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T12:02:23.799Z"
+      }
+    ]
+  },
   "movie:294272": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -1044,6 +1321,32 @@
       }
     ]
   },
+  "movie:976573": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/elemental-2023-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:54:18.699Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/elementar-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:46:53.423Z"
+      }
+    ]
+  },
   "movie:255718": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -1056,6 +1359,32 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:05:04.201Z"
+      }
+    ]
+  },
+  "movie:438148": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/minions-2-the-rise-of-gru-2022-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:54:25.906Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/minionii-2-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:21:17.891Z"
       }
     ]
   },
@@ -1088,6 +1417,32 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:05:11.601Z"
+      }
+    ]
+  },
+  "movie:502356": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/super-mario-bros-filmul-2023-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:54:33.128Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/super-mario-bros-filmul-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:40:03.848Z"
       }
     ]
   },
@@ -1167,6 +1522,50 @@
       }
     ]
   },
+  "movie:718789": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/lightyear-2022-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:54:50.444Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/lightyear",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T11:55:22.249Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/lightyear-2022-dublat-in-romana",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:08:23.867Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/lightyear-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:10:07.336Z"
+      }
+    ]
+  },
   "movie:129533": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -1233,6 +1632,67 @@
       }
     ]
   },
+  "movie:508947": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/turning-red-rosu-aprins-2022-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:54:57.318Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/rosu-aprins-2022-dublat-in-romana",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:03:54.792Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/rosu-aprins-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:16:04.667Z"
+      }
+    ]
+  },
+  "movie:585245": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/clifford-marele-caine-rosu-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:55:05.120Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/clifford-marele-caine-rosu-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:41:59.199Z"
+      }
+    ]
+  },
   "movie:77499": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -1274,6 +1734,32 @@
       }
     ]
   },
+  "movie:438695": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/sing-2-hai-sa-cantam-din-nou-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:55:12.825Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/hai-sa-cantam-din-nou-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:34:35.733Z"
+      }
+    ]
+  },
   "movie:73456": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -1286,6 +1772,65 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:05:49.975Z"
+      }
+    ]
+  },
+  "movie:568124": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/encanto-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:55:19.983Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/encanto-2021-dublat-in-romana-3",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:10:07.383Z"
+      }
+    ]
+  },
+  "movie:615666": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/un-baiat-numit-craciun-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:55:27.804Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/un-baiat-numit-craciun-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:49:14.735Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/un-baiat-numit-craciun-2021-dublat-in-romana",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:10:59.009Z"
       }
     ]
   },
@@ -1330,31 +1875,105 @@
       }
     ]
   },
-  "movie:1493400": {
-    "catalog": "romanian-dubbed-movies",
+  "movie:508442": {
+    "catalog": "romanian-animated-movies",
     "scope": "movie",
     "sites": [
       {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/soul-suflet-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:55:34.635Z"
+      },
+      {
         "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/camp-rock-3-dublat-in-romana",
+        "url": "https://filmedublate.net/desen-animat/suflet-dublat-in-romana",
         "hosts": [
           "Abyss",
           "Byse",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:06:03.846Z"
+        "checkedAt": "2026-10-19T12:29:47.224Z"
+      }
+    ]
+  },
+  "movie:522478": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/peter-iepurasul-fugit-de-acasa-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:55:42.104Z"
       },
       {
-        "site": "df",
-        "url": "https://desenefaine.com/film/camp-rock-3",
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/peter-iepurasul-fugit-de-acasa-dublat-in-romana",
         "hosts": [
+          "Abyss",
           "Byse",
-          "StreamP2P",
-          "SeekStreaming"
+          "Streamtape"
         ],
-        "addressProof": "Official direct-slug lookup and exact title/year",
-        "checkedAt": "2026-10-19T13:29:16.962Z"
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:33:22.490Z"
+      }
+    ]
+  },
+  "movie:675445": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/patrula-catelusilor-filmul-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:55:48.528Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/patrula-catelusilor-filmul-2021-dublat-in-romana",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:11:33.183Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/patrula-catelusilor-filmul-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:24:37.645Z"
+      }
+    ]
+  },
+  "movie:527774": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/raya-si-ultimul-dragon-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:55:56.008Z"
       }
     ]
   },
@@ -1370,6 +1989,32 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:06:10.276Z"
+      }
+    ]
+  },
+  "movie:726684": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/lumea-miraculoasa-shanghai-o-legenda-a-doamnei-dragon-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:56:03.418Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/lumea-miraculoasa-shanghai-o-legenda-a-doamnei-dragon-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:43:46.202Z"
       }
     ]
   },
@@ -1394,6 +2039,47 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:23:36.427Z"
+      }
+    ]
+  },
+  "movie:337401": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/mulan-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:56:10.536Z"
+      }
+    ]
+  },
+  "movie:501929": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/familia-mitchell-impotriva-robotilor-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:56:17.620Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/familia-mitchell-impotriva-robotilor-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:44:31.791Z"
       }
     ]
   },
@@ -1429,6 +2115,32 @@
       }
     ]
   },
+  "movie:763568": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/arlo-baiatul-aligator-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:56:27.821Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/arlo-baiatul-aligator-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:44:52.987Z"
+      }
+    ]
+  },
   "movie:13004": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -1461,6 +2173,32 @@
       }
     ]
   },
+  "movie:699102": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/o-saptamana-in-lumina-soarelui-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:56:44.370Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/o-saptamana-in-lumina-soarelui-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:30:48.799Z"
+      }
+    ]
+  },
   "movie:8355": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -1473,6 +2211,21 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T11:06:36.497Z"
+      }
+    ]
+  },
+  "movie:264730": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/violetta-live-in-concert-2014-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:56:51.972Z"
       }
     ]
   },
@@ -1500,10 +2253,39 @@
         "url": "https://filmedublate.net/serial-dublat/te-voi-gasi-dublat-in-romana",
         "episodeUrl": "https://filmedublate.net/serial-dublat/te-voi-gasi-dublat-in-romana",
         "hosts": [
-          "Byse"
+          "Abyss",
+          "Byse",
+          "Morencius",
+          "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:06:41.957Z"
+        "checkedAt": "2026-10-19T14:57:02.514Z"
+      }
+    ]
+  },
+  "movie:638597": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/ziua-lui-da-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:57:09.585Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/ziua-lui-da-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:59:05.351Z"
       }
     ]
   },
@@ -1517,10 +2299,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:06:51.765Z"
+        "checkedAt": "2026-10-19T14:57:16.904Z"
       }
     ]
   },
@@ -1539,6 +2322,36 @@
       }
     ]
   },
+  "movie:20558": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/scooby-doo-unde-i-mumia-mea-2005-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:57:16.993Z"
+      }
+    ]
+  },
+  "movie:67900": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/scooby-doo-si-legenda-phantosaurului-2011-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:57:24.600Z"
+      }
+    ]
+  },
   "movie:1228710": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -1548,10 +2361,37 @@
         "url": "https://filmedublate.net/film-dublat/mandalorianul-si-grogu-dublat-in-romana",
         "hosts": [
           "Abyss",
-          "Byse"
+          "Byse",
+          "Morencius"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:07:01.008Z"
+        "checkedAt": "2026-10-19T14:57:34.519Z"
+      }
+    ]
+  },
+  "movie:515743": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/fotbalul-e-o-stiinta-2019-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:57:34.612Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/fotbalul-e-o-stiinta-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:19:59.641Z"
       }
     ]
   },
@@ -1567,6 +2407,36 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:07:06.059Z"
+      }
+    ]
+  },
+  "movie:749618": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/calatoria-lui-xico-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:57:44.531Z"
+      }
+    ]
+  },
+  "movie:205081": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/clanul-nebunaticilor-de-alaturi-filmul-2006-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:57:50.964Z"
       }
     ]
   },
@@ -1594,10 +2464,11 @@
         "url": "https://filmedublate.net/film-dublat/descendentii-tara-minunilor-malefice-dublat-in-romana",
         "hosts": [
           "Abyss",
-          "Byse"
+          "Byse",
+          "Morencius"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:07:08.132Z"
+        "checkedAt": "2026-10-19T14:57:58.228Z"
       },
       {
         "site": "df",
@@ -1612,6 +2483,58 @@
       }
     ]
   },
+  "movie:644092": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/ohana-comoara-ascunsa-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:57:58.311Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/ohana-comoara-ascunsa-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:44:11.965Z"
+      }
+    ]
+  },
+  "movie:773998": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/tata-la-patrat-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:58:05.595Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/tata-la-patrat-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:03:06.193Z"
+      }
+    ]
+  },
   "movie:1715492": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -1621,10 +2544,11 @@
         "url": "https://filmedublate.net/film-dublat/naufragiu-cosmar-pe-mare-dublat-in-romana",
         "hosts": [
           "Abyss",
-          "Byse"
+          "Byse",
+          "Morencius"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:07:18.784Z"
+        "checkedAt": "2026-10-19T14:58:11.978Z"
       },
       {
         "site": "df",
@@ -1654,6 +2578,82 @@
       }
     ]
   },
+  "movie:459151": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/the-boss-baby-2-2021-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:58:12.059Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/bebe-sef-afaceri-de-familie-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:40:52.194Z"
+      }
+    ]
+  },
+  "movie:11688": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/imparatul-vrajit-2000-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:58:22.991Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/imparatul-vrajit-2000-dublat-in-romana",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:14:17.006Z"
+      }
+    ]
+  },
+  "movie:615677": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/vom-fi-eroi-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:58:29.517Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/vom-fi-eroi-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:08:26.272Z"
+      }
+    ]
+  },
   "movie:560050": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -1666,6 +2666,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:07:29.708Z"
+      },
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/dincolo-de-luna-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:02:01.003Z"
       },
       {
         "site": "fd",
@@ -1689,10 +2698,13 @@
         "url": "https://filmedublate.net/serial-dublat/outlast-jungla-dublat-in-romana",
         "episodeUrl": "https://filmedublate.net/serial-dublat/outlast-jungla-dublat-in-romana",
         "hosts": [
-          "Byse"
+          "Abyss",
+          "Byse",
+          "Morencius",
+          "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:07:26.388Z"
+        "checkedAt": "2026-10-19T14:58:37.118Z"
       }
     ]
   },
@@ -1708,6 +2720,39 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:07:37.405Z"
+      },
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/doug-primul-lui-film-1999-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:02:15.151Z"
+      }
+    ]
+  },
+  "movie:14836": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/coraline-2009-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:58:37.204Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/coraline-2009-dublat-in-romana",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:13:51.476Z"
       }
     ]
   },
@@ -1743,6 +2788,50 @@
       }
     ]
   },
+  "movie:446893": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/trolls-world-tour-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:58:51.539Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/trolii-descopera-lumea",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T11:42:20.948Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/trolii-descopera-lumea-2020-dublat-in-romana",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:14:46.739Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/trolii-descopera-lumea-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:37:00.910Z"
+      }
+    ]
+  },
   "movie:724475": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -1755,6 +2844,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:07:51.091Z"
+      },
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/ben-10-impotriva-universului-filmul-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:02:27.945Z"
       }
     ]
   },
@@ -1772,6 +2870,36 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:07:47.611Z"
+      }
+    ]
+  },
+  "movie:415031": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/aventuri-fara-pereche-2016-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:59:05.298Z"
+      }
+    ]
+  },
+  "movie:509080": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/supereroii-lego-marvel-amenintarea-lui-thanos-2017-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:59:22.851Z"
       }
     ]
   },
@@ -1837,10 +2965,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:08:12.397Z"
+        "checkedAt": "2026-10-19T14:59:29.321Z"
       },
       {
         "site": "df",
@@ -1902,10 +3031,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:20:29.554Z"
+        "checkedAt": "2026-10-19T15:04:19.497Z"
       },
       {
         "site": "df",
@@ -1969,23 +3099,6 @@
       }
     ]
   },
-  "movie:615677": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/vom-fi-eroi-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:08:26.272Z"
-      }
-    ]
-  },
   "movie:338958": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -2005,10 +3118,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:32:26.927Z"
+        "checkedAt": "2026-10-19T15:04:23.045Z"
       },
       {
         "site": "df",
@@ -2065,10 +3179,11 @@
         "url": "https://filmedublate.net/film-dublat/fratele-cel-mic-dublat-in-romana",
         "hosts": [
           "Abyss",
-          "Byse"
+          "Byse",
+          "Morencius"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:08:32.814Z"
+        "checkedAt": "2026-10-19T14:59:29.407Z"
       },
       {
         "site": "df",
@@ -2117,10 +3232,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:21:40.069Z"
+        "checkedAt": "2026-10-19T15:04:20.135Z"
       }
     ]
   },
@@ -2136,33 +3252,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:08:42.164Z"
-      }
-    ]
-  },
-  "movie:1301421": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/turma-vede-urma-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:08:39.241Z"
-      },
-      {
-        "site": "df",
-        "url": "https://desenefaine.com/film/turma-vede-urma",
-        "hosts": [
-          "Byse",
-          "StreamP2P",
-          "SeekStreaming"
-        ],
-        "addressProof": "Official direct-slug lookup and exact title/year",
-        "checkedAt": "2026-10-19T13:26:57.192Z"
       }
     ]
   },
@@ -2185,10 +3274,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:20:18.250Z"
+        "checkedAt": "2026-10-19T15:04:15.538Z"
       }
     ]
   },
@@ -2211,10 +3301,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:47:40.986Z"
+        "checkedAt": "2026-10-19T15:07:58.137Z"
       },
       {
         "site": "df",
@@ -2266,10 +3357,11 @@
         "url": "https://filmedublate.net/film-dublat/mesaje-pentru-isabelle-dublat-in-romana",
         "hosts": [
           "Abyss",
-          "Byse"
+          "Byse",
+          "Morencius"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:08:49.115Z"
+        "checkedAt": "2026-10-19T14:59:29.572Z"
       },
       {
         "site": "df",
@@ -2347,6 +3439,49 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:04:06.444Z"
+      }
+    ]
+  },
+  "tv:61923": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/printesa-stea-contra-fortelor-raului-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/printesa-stea-contra-fortelor-raului-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:59:29.740Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/series/printesa-stea-contra-fortelor-raului-2015-dublat-in-romana",
+        "episodeUrl": "https://www.dozaanimata.net/episode/printesa-stea-contra-fortelor-raului-sezonul-1-episodul-1-printesa-stea-vine-pe-pamant-petrecere-cu-un-ponei/",
+        "hosts": [
+          "Playmogo",
+          "Vidmoly"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:41:58.825Z"
+      }
+    ]
+  },
+  "tv:81665": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/insula-taberei-de-vara-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/insula-taberei-de-vara-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:59:36.743Z"
       }
     ]
   },
@@ -2445,10 +3580,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:09:16.418Z"
+        "checkedAt": "2026-10-19T14:59:43.023Z"
       },
       {
         "site": "df",
@@ -2515,6 +3651,22 @@
       }
     ]
   },
+  "tv:1720": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/casa-foster-pentru-prieteni-imaginari-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/casa-foster-pentru-prieteni-imaginari-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:59:43.109Z"
+      }
+    ]
+  },
   "tv:119051": {
     "catalog": "romanian-dubbed-series",
     "scope": "S1E1",
@@ -2529,6 +3681,22 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:09:30.469Z"
+      }
+    ]
+  },
+  "tv:606": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/ed-edd-si-eddy-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/ed-edd-si-eddy-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T14:59:50.601Z"
       }
     ]
   },
@@ -2577,10 +3745,13 @@
         "url": "https://filmedublate.net/serial-dublat/soimul-dublat-in-romana",
         "episodeUrl": "https://filmedublate.net/serial-dublat/soimul-dublat-in-romana",
         "hosts": [
-          "Byse"
+          "Abyss",
+          "Byse",
+          "Morencius",
+          "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:09:26.985Z"
+        "checkedAt": "2026-10-19T14:59:57.625Z"
       }
     ]
   },
@@ -2603,10 +3774,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:26:31.869Z"
+        "checkedAt": "2026-10-19T15:04:21.660Z"
       },
       {
         "site": "doza",
@@ -2628,10 +3800,11 @@
         "url": "https://filmedublate.net/film-dublat/conexiunea-suedeza-dublat-in-romana",
         "hosts": [
           "Abyss",
-          "Byse"
+          "Byse",
+          "Morencius"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:09:37.205Z"
+        "checkedAt": "2026-10-19T14:59:57.707Z"
       },
       {
         "site": "df",
@@ -2716,10 +3889,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:09:47.156Z"
+        "checkedAt": "2026-10-19T14:59:57.793Z"
       },
       {
         "site": "df",
@@ -2803,10 +3977,11 @@
         "url": "https://filmedublate.net/film-dublat/enola-holmes-3-dublat-in-romana",
         "hosts": [
           "Abyss",
-          "Byse"
+          "Byse",
+          "Morencius"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:10:08.981Z"
+        "checkedAt": "2026-10-19T14:59:57.883Z"
       },
       {
         "site": "df",
@@ -2830,10 +4005,44 @@
         "url": "https://filmedublate.net/film-dublat/dorinta-2026-dublat-in-romana",
         "hosts": [
           "Abyss",
-          "Byse"
+          "Byse",
+          "Morencius"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:10:19.401Z"
+        "checkedAt": "2026-10-19T14:59:57.967Z"
+      }
+    ]
+  },
+  "movie:360920": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/the-grinch-grinch-2018-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:00:07.806Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/the-grinch-2018-dublat-in-romana",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:22:01.283Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/grinch",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T11:36:05.831Z"
       }
     ]
   },
@@ -2846,10 +4055,13 @@
         "url": "https://filmedublate.net/serial-dublat/casuta-din-prerie-dublat-in-romana",
         "episodeUrl": "https://filmedublate.net/serial-dublat/casuta-din-prerie-dublat-in-romana",
         "hosts": [
-          "Byse"
+          "Abyss",
+          "Byse",
+          "Morencius",
+          "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:10:30.054Z"
+        "checkedAt": "2026-10-19T15:00:15.169Z"
       }
     ]
   },
@@ -2897,10 +4109,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:32:09.059Z"
+        "checkedAt": "2026-10-19T15:09:19.072Z"
       }
     ]
   },
@@ -2960,6 +4173,33 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T13:17:55.206Z"
+      }
+    ]
+  },
+  "movie:385103": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/scoob-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:00:45.174Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/scoob-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Morencius",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:09:18.898Z"
       }
     ]
   },
@@ -3023,6 +4263,55 @@
       }
     ]
   },
+  "movie:354857": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/regular-show-the-movie-un-show-obisnuit-dublat-in-limba-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:01:03.490Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/un-show-obisnuit-filmul-2015-dublat-in-romana",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:14:22.934Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/un-show-obisnuit-filmul",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T13:18:29.040Z"
+      }
+    ]
+  },
+  "movie:754310": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/din-nou-la-drum-cu-autobuzul-magic-domnisoara-frizzle-ori-trei-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:01:10.690Z"
+      }
+    ]
+  },
   "tv:237512": {
     "catalog": "romanian-animated-series",
     "scope": "S1E1",
@@ -3049,10 +4338,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:11:08.985Z"
+        "checkedAt": "2026-10-19T15:01:24.925Z"
       },
       {
         "site": "df",
@@ -3092,10 +4382,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:11:20.112Z"
+        "checkedAt": "2026-10-19T15:01:28.369Z"
       },
       {
         "site": "df",
@@ -3125,6 +4416,36 @@
       }
     ]
   },
+  "movie:751562": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/supermonstruletii-ziua-monstrilor-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:01:32.053Z"
+      }
+    ]
+  },
+  "movie:568381": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/calatoria-fantastica-a-maronei-2019-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:01:39.203Z"
+      }
+    ]
+  },
   "movie:875828": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -3135,10 +4456,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:11:30.374Z"
+        "checkedAt": "2026-10-19T15:01:46.850Z"
       },
       {
         "site": "df",
@@ -3149,6 +4471,21 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T13:19:04.685Z"
+      }
+    ]
+  },
+  "movie:425104": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/ninjago-maestrii-spinjitzu-ziua-raposatilor-2016-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:01:46.936Z"
       }
     ]
   },
@@ -3165,6 +4502,32 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:11:38.712Z"
+      }
+    ]
+  },
+  "movie:599521": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/zombi-2-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:01:53.964Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/zombi-2-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:19:20.528Z"
       }
     ]
   },
@@ -3195,10 +4558,63 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:11:41.415Z"
+        "checkedAt": "2026-10-19T15:02:08.062Z"
+      }
+    ]
+  },
+  "movie:624963": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/ghidul-unei-dadace-pentru-vanatoarea-de-monstri-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:02:08.147Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/ghidul-unei-dadace-pentru-vanatoarea-de-monstri-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:08:20.752Z"
+      }
+    ]
+  },
+  "movie:63700": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/bona-mea-e-un-vampir-filmul-2010-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:02:21.926Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/dadaca-mea-este-un-vampir-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Morencius",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:06:05.865Z"
       }
     ]
   },
@@ -3212,10 +4628,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:11:52.230Z"
+        "checkedAt": "2026-10-19T15:02:27.861Z"
       },
       {
         "site": "df",
@@ -3255,10 +4672,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:12:03.022Z"
+        "checkedAt": "2026-10-19T15:02:38.312Z"
       },
       {
         "site": "df",
@@ -3269,6 +4687,47 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T13:19:38.630Z"
+      }
+    ]
+  },
+  "movie:508439": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/tot-inainte-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:02:38.398Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/tot-inainte-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:31:17.167Z"
+      }
+    ]
+  },
+  "movie:469310": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/incredibila-poveste-a-perei-uriase-2017-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:02:44.687Z"
       }
     ]
   },
@@ -3288,6 +4747,36 @@
       }
     ]
   },
+  "movie:34205": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/orasul-halloween-2-razbunarea-lui-kalabar-2001-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:02:50.889Z"
+      }
+    ]
+  },
+  "movie:11886": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/robin-hood-1973-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:02:58.121Z"
+      }
+    ]
+  },
   "movie:1297842": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -3298,10 +4787,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:12:21.010Z"
+        "checkedAt": "2026-10-19T15:03:05.321Z"
       },
       {
         "site": "df",
@@ -3332,6 +4822,21 @@
       }
     ]
   },
+  "movie:13761": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/pocahontas-ii-calatorie-catre-lumea-noua-1998-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:03:05.415Z"
+      }
+    ]
+  },
   "tv:607": {
     "catalog": "romanian-animated-series",
     "scope": "S1E1",
@@ -3348,6 +4853,32 @@
       }
     ]
   },
+  "movie:626393": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/o-noapte-cu-surprize-2020-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:03:15.990Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/o-noapte-cu-surprize-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:11:56.052Z"
+      }
+    ]
+  },
   "movie:1265609": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -3358,10 +4889,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:12:30.654Z"
+        "checkedAt": "2026-10-19T15:03:23.775Z"
       },
       {
         "site": "df",
@@ -3375,6 +4907,51 @@
       }
     ]
   },
+  "movie:622230": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/lego-marvel-omul-paianjen-versus-venom-2019-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:03:23.859Z"
+      }
+    ]
+  },
+  "movie:368304": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/supereroii-lego-marvel-razbunatorii-se-aduna-2015-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:03:30.699Z"
+      }
+    ]
+  },
+  "movie:528222": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/supereroii-lego-marvel-probleme-in-wakanda-2018-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:03:42.099Z"
+      }
+    ]
+  },
   "tv:279323": {
     "catalog": "romanian-dubbed-series",
     "scope": "S1E1",
@@ -3384,10 +4961,43 @@
         "url": "https://filmedublate.net/serial-dublat/palatul-de-est-dublat-in-romana",
         "episodeUrl": "https://filmedublate.net/serial-dublat/palatul-de-est-dublat-in-romana",
         "hosts": [
-          "Byse"
+          "Abyss",
+          "Byse",
+          "Morencius",
+          "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:12:41.397Z"
+        "checkedAt": "2026-10-19T15:03:49.105Z"
+      }
+    ]
+  },
+  "movie:763861": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/supereroii-lego-marvel-lupta-finala-2013-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:03:49.189Z"
+      }
+    ]
+  },
+  "movie:431693": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/spioni-deghizati-2019-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:03:59.631Z"
       }
     ]
   },
@@ -3428,10 +5038,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:13:09.797Z"
+        "checkedAt": "2026-10-19T15:04:13.038Z"
       }
     ]
   },
@@ -3445,10 +5056,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:13:20.008Z"
+        "checkedAt": "2026-10-19T15:04:13.135Z"
       },
       {
         "site": "df",
@@ -3532,10 +5144,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:13:46.784Z"
+        "checkedAt": "2026-10-19T15:04:13.314Z"
       },
       {
         "site": "df",
@@ -3560,10 +5173,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:13:56.338Z"
+        "checkedAt": "2026-10-19T15:04:13.404Z"
       },
       {
         "site": "df",
@@ -3601,10 +5215,11 @@
         "url": "https://filmedublate.net/film-dublat/aleea-acadelelor-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:14:07.339Z"
+        "checkedAt": "2026-10-19T15:04:13.488Z"
       },
       {
         "site": "df",
@@ -3642,10 +5257,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:15:20.830Z"
+        "checkedAt": "2026-10-19T15:04:13.572Z"
       }
     ]
   },
@@ -3673,10 +5289,13 @@
         "url": "https://filmedublate.net/serial-dublat/martorul-ocular-dublat-in-romana",
         "episodeUrl": "https://filmedublate.net/serial-dublat/martorul-ocular-dublat-in-romana",
         "hosts": [
-          "Byse"
+          "Abyss",
+          "Byse",
+          "Morencius",
+          "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:15:27.747Z"
+        "checkedAt": "2026-10-19T15:04:13.672Z"
       }
     ]
   },
@@ -3721,10 +5340,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:15:38.422Z"
+        "checkedAt": "2026-10-19T15:04:13.755Z"
       }
     ]
   },
@@ -3753,10 +5373,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:15:48.765Z"
+        "checkedAt": "2026-10-19T15:04:13.842Z"
       },
       {
         "site": "df",
@@ -3837,10 +5458,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:16:09.700Z"
+        "checkedAt": "2026-10-19T15:04:13.928Z"
       }
     ]
   },
@@ -3927,10 +5549,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:16:30.309Z"
+        "checkedAt": "2026-10-19T15:04:14.023Z"
       },
       {
         "site": "doza",
@@ -3978,10 +5601,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:16:46.314Z"
+        "checkedAt": "2026-10-19T15:04:14.120Z"
       }
     ]
   },
@@ -4111,10 +5735,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:17:11.517Z"
+        "checkedAt": "2026-10-19T15:04:14.297Z"
       }
     ]
   },
@@ -4158,10 +5783,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:17:22.398Z"
+        "checkedAt": "2026-10-19T15:04:14.385Z"
       },
       {
         "site": "df",
@@ -4200,10 +5826,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:17:33.432Z"
+        "checkedAt": "2026-10-19T15:04:14.470Z"
       }
     ]
   },
@@ -4247,10 +5874,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:17:43.888Z"
+        "checkedAt": "2026-10-19T15:04:14.560Z"
       },
       {
         "site": "doza",
@@ -4292,10 +5920,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:21:27.635Z"
+        "checkedAt": "2026-10-19T15:09:18.811Z"
       }
     ]
   },
@@ -4324,10 +5953,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:18:02.889Z"
+        "checkedAt": "2026-10-19T15:04:14.724Z"
       }
     ]
   },
@@ -4371,10 +6001,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:18:12.428Z"
+        "checkedAt": "2026-10-19T15:04:14.809Z"
       }
     ]
   },
@@ -4403,10 +6034,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:18:22.513Z"
+        "checkedAt": "2026-10-19T15:04:14.897Z"
       },
       {
         "site": "doza",
@@ -4469,10 +6101,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:18:32.312Z"
+        "checkedAt": "2026-10-19T15:04:14.993Z"
       }
     ]
   },
@@ -4512,10 +6145,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:18:47.347Z"
+        "checkedAt": "2026-10-19T15:04:15.085Z"
       }
     ]
   },
@@ -4544,10 +6178,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:18:57.225Z"
+        "checkedAt": "2026-10-19T15:04:15.177Z"
       },
       {
         "site": "df",
@@ -4584,10 +6219,12 @@
         "url": "https://filmedublate.net/serial-dublat/intre-tata-si-fiu-dublat-in-romana",
         "episodeUrl": "https://filmedublate.net/serial-dublat/intre-tata-si-fiu-dublat-in-romana",
         "hosts": [
-          "Byse"
+          "Abyss",
+          "Byse",
+          "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:19:07.427Z"
+        "checkedAt": "2026-10-19T15:04:15.269Z"
       }
     ]
   },
@@ -4703,10 +6340,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:19:45.839Z"
+        "checkedAt": "2026-10-19T15:04:15.361Z"
       }
     ]
   },
@@ -4735,10 +6373,11 @@
         "url": "https://filmedublate.net/film-dublat/norocul-ghinionistului-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:20:07.287Z"
+        "checkedAt": "2026-10-19T15:04:15.454Z"
       }
     ]
   },
@@ -4754,6 +6393,21 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:20:28.672Z"
+      }
+    ]
+  },
+  "movie:324857": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/desen/omul-paianjen-in-lumea-paianjenului-2018-dublat-in-romana",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:04:15.622Z"
       }
     ]
   },
@@ -4782,10 +6436,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:20:48.010Z"
+        "checkedAt": "2026-10-19T15:04:19.673Z"
       }
     ]
   },
@@ -4798,10 +6453,11 @@
         "url": "https://filmedublate.net/film-dublat/belle-si-sebastien-ultimul-capitol-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:20:57.329Z"
+        "checkedAt": "2026-10-19T15:04:19.763Z"
       },
       {
         "site": "df",
@@ -4838,10 +6494,11 @@
         "url": "https://filmedublate.net/film-dublat/pan-aventuri-in-tara-de-nicaieri-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:21:08.555Z"
+        "checkedAt": "2026-10-19T15:04:19.847Z"
       },
       {
         "site": "doza",
@@ -4878,10 +6535,11 @@
         "url": "https://filmedublate.net/film-dublat/vampirul-inselator-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:21:19.048Z"
+        "checkedAt": "2026-10-19T15:04:19.943Z"
       },
       {
         "site": "doza",
@@ -4933,10 +6591,11 @@
         "url": "https://filmedublate.net/film-dublat/razboiul-mireselor-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:21:30.063Z"
+        "checkedAt": "2026-10-19T15:04:20.036Z"
       },
       {
         "site": "df",
@@ -5014,34 +6673,11 @@
         "url": "https://filmedublate.net/film-dublat/doar-norocul-meu-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:21:50.684Z"
-      }
-    ]
-  },
-  "movie:360920": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/the-grinch-2018-dublat-in-romana",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:22:01.283Z"
-      },
-      {
-        "site": "df",
-        "url": "https://desenefaine.com/film/grinch",
-        "hosts": [
-          "Byse"
-        ],
-        "addressProof": "Official direct-slug lookup and exact title/year",
-        "checkedAt": "2026-10-19T11:36:05.831Z"
+        "checkedAt": "2026-10-19T15:04:20.224Z"
       }
     ]
   },
@@ -5054,10 +6690,11 @@
         "url": "https://filmedublate.net/film-dublat/interstellar-calatorind-prin-univers-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:22:04.002Z"
+        "checkedAt": "2026-10-19T15:04:20.315Z"
       },
       {
         "site": "doza",
@@ -5237,10 +6874,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:22:45.454Z"
+        "checkedAt": "2026-10-19T15:04:20.410Z"
       }
     ]
   },
@@ -5347,10 +6985,11 @@
         "url": "https://filmedublate.net/film-dublat/camp-rock-2-competitia-finala-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:48:01.484Z"
+        "checkedAt": "2026-10-19T15:08:14.536Z"
       }
     ]
   },
@@ -5378,10 +7017,11 @@
         "url": "https://filmedublate.net/film-dublat/calatorie-placuta-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:23:05.580Z"
+        "checkedAt": "2026-10-19T15:04:20.499Z"
       }
     ]
   },
@@ -5410,10 +7050,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:23:19.691Z"
+        "checkedAt": "2026-10-19T15:04:20.592Z"
       },
       {
         "site": "fd",
@@ -5421,10 +7062,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:32:23.501Z"
+        "checkedAt": "2026-10-19T15:04:22.933Z"
       },
       {
         "site": "doza",
@@ -5446,10 +7088,13 @@
         "url": "https://filmedublate.net/serial-dublat/nemesis-dublat-in-romana",
         "episodeUrl": "https://filmedublate.net/serial-dublat/nemesis-dublat-in-romana",
         "hosts": [
-          "Byse"
+          "Abyss",
+          "Byse",
+          "Morencius",
+          "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:23:29.631Z"
+        "checkedAt": "2026-10-19T15:04:20.676Z"
       }
     ]
   },
@@ -5478,10 +7123,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:23:39.353Z"
+        "checkedAt": "2026-10-19T15:04:20.762Z"
       },
       {
         "site": "doza",
@@ -5534,10 +7180,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:23:57.703Z"
+        "checkedAt": "2026-10-19T15:04:20.846Z"
       }
     ]
   },
@@ -5582,10 +7229,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:24:18.768Z"
+        "checkedAt": "2026-10-19T15:04:20.935Z"
       }
     ]
   },
@@ -5646,10 +7294,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:24:39.176Z"
+        "checkedAt": "2026-10-19T15:04:21.034Z"
       }
     ]
   },
@@ -5701,10 +7350,11 @@
         "url": "https://filmedublate.net/film-dublat/jumper-oriunde-oricand-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:24:57.571Z"
+        "checkedAt": "2026-10-19T15:04:21.122Z"
       },
       {
         "site": "df",
@@ -5736,10 +7386,11 @@
         "url": "https://filmedublate.net/film-dublat/parfum-de-vedeta-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:52:53.281Z"
+        "checkedAt": "2026-10-19T15:08:47.481Z"
       }
     ]
   },
@@ -5791,10 +7442,13 @@
         "url": "https://filmedublate.net/serial-dublat/legende-dublat-in-romana",
         "episodeUrl": "https://filmedublate.net/serial-dublat/legende-dublat-in-romana",
         "hosts": [
-          "Byse"
+          "Abyss",
+          "Byse",
+          "Morencius",
+          "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:25:07.924Z"
+        "checkedAt": "2026-10-19T15:04:21.213Z"
       }
     ]
   },
@@ -5808,10 +7462,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:25:17.810Z"
+        "checkedAt": "2026-10-19T15:04:21.301Z"
       },
       {
         "site": "doza",
@@ -5873,10 +7528,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:25:27.870Z"
+        "checkedAt": "2026-10-19T15:04:21.393Z"
       },
       {
         "site": "df",
@@ -5908,10 +7564,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:25:39.031Z"
+        "checkedAt": "2026-10-19T15:04:21.486Z"
       },
       {
         "site": "doza",
@@ -6006,10 +7663,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:26:00.066Z"
+        "checkedAt": "2026-10-19T15:04:21.573Z"
       }
     ]
   },
@@ -6066,10 +7724,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:26:42.348Z"
+        "checkedAt": "2026-10-19T15:04:21.744Z"
       }
     ]
   },
@@ -6111,10 +7770,13 @@
         "site": "fd",
         "url": "https://filmedublate.net/film-dublat/intr-un-ocean-o-poveste-cu-descendentii-dublat-in-romana",
         "hosts": [
-          "Byse"
+          "Abyss",
+          "Byse",
+          "Morencius",
+          "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:27:17.477Z"
+        "checkedAt": "2026-10-19T15:04:21.920Z"
       },
       {
         "site": "df",
@@ -6169,10 +7831,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:27:37.934Z"
+        "checkedAt": "2026-10-19T15:04:22.007Z"
       }
     ]
   },
@@ -6227,10 +7890,12 @@
         "url": "https://filmedublate.net/serial-dublat/cartierele-dublat-in-romana",
         "episodeUrl": "https://filmedublate.net/serial-dublat/cartierele-dublat-in-romana",
         "hosts": [
-          "Byse"
+          "Abyss",
+          "Byse",
+          "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:27:57.729Z"
+        "checkedAt": "2026-10-19T15:04:22.095Z"
       }
     ]
   },
@@ -6322,10 +7987,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:28:45.479Z"
+        "checkedAt": "2026-10-19T15:04:22.183Z"
       }
     ]
   },
@@ -6339,10 +8005,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:28:55.688Z"
+        "checkedAt": "2026-10-19T15:04:22.278Z"
       },
       {
         "site": "df",
@@ -6366,10 +8033,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:29:06.424Z"
+        "checkedAt": "2026-10-19T15:04:22.379Z"
       },
       {
         "site": "df",
@@ -6482,10 +8150,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:29:58.720Z"
+        "checkedAt": "2026-10-19T15:04:22.466Z"
       }
     ]
   },
@@ -6540,27 +8209,11 @@
         "url": "https://filmedublate.net/film-dublat/wonka-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:30:30.702Z"
-      }
-    ]
-  },
-  "movie:699102": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/o-saptamana-in-lumina-soarelui-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:30:48.799Z"
+        "checkedAt": "2026-10-19T15:04:22.557Z"
       }
     ]
   },
@@ -6636,10 +8289,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:31:30.435Z"
+        "checkedAt": "2026-10-19T15:04:22.654Z"
       }
     ]
   },
@@ -6667,10 +8321,11 @@
         "url": "https://filmedublate.net/film-dublat/irezistibila-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:31:41.509Z"
+        "checkedAt": "2026-10-19T15:04:22.750Z"
       }
     ]
   },
@@ -6756,10 +8411,11 @@
         "url": "https://filmedublate.net/film-dublat/gravity-misiune-in-spatiu-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:32:02.886Z"
+        "checkedAt": "2026-10-19T15:04:22.845Z"
       },
       {
         "site": "doza",
@@ -6909,10 +8565,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:33:12.645Z"
+        "checkedAt": "2026-10-19T15:04:23.341Z"
       }
     ]
   },
@@ -6958,10 +8615,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:33:52.415Z"
+        "checkedAt": "2026-10-19T15:04:23.437Z"
       }
     ]
   },
@@ -6983,10 +8641,11 @@
         "url": "https://filmedublate.net/film-dublat/detectivul-cu-fler-de-la-liceul-bixler-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:51:50.584Z"
+        "checkedAt": "2026-10-19T15:08:47.208Z"
       }
     ]
   },
@@ -7000,10 +8659,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:34:10.406Z"
+        "checkedAt": "2026-10-19T15:04:23.525Z"
       },
       {
         "site": "doza",
@@ -7057,10 +8717,11 @@
         "url": "https://filmedublate.net/film-dublat/liceul-monstrilor-filmul-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:34:31.874Z"
+        "checkedAt": "2026-10-19T15:04:23.613Z"
       }
     ]
   },
@@ -7152,10 +8813,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:35:03.422Z"
+        "checkedAt": "2026-10-19T15:04:23.699Z"
       }
     ]
   },
@@ -7204,10 +8866,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:35:13.402Z"
+        "checkedAt": "2026-10-19T15:04:23.790Z"
       },
       {
         "site": "doza",
@@ -7275,10 +8938,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:35:34.591Z"
+        "checkedAt": "2026-10-19T15:04:23.879Z"
       },
       {
         "site": "df",
@@ -7316,10 +8980,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:35:50.784Z"
+        "checkedAt": "2026-10-19T15:04:23.973Z"
       },
       {
         "site": "doza",
@@ -7441,10 +9106,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:36:43.472Z"
+        "checkedAt": "2026-10-19T15:04:24.163Z"
       },
       {
         "site": "df",
@@ -7539,10 +9205,11 @@
         "url": "https://filmedublate.net/film-dublat/amintirile-unui-om-invizibil-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:37:21.329Z"
+        "checkedAt": "2026-10-19T15:04:24.265Z"
       }
     ]
   },
@@ -7620,10 +9287,11 @@
         "url": "https://filmedublate.net/film-dublat/fosta-mea-super-gagica-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:37:50.897Z"
+        "checkedAt": "2026-10-19T15:04:24.361Z"
       },
       {
         "site": "df",
@@ -7681,10 +9349,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:48:33.203Z"
+        "checkedAt": "2026-10-19T15:08:28.663Z"
       }
     ]
   },
@@ -7741,10 +9410,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:38:12.369Z"
+        "checkedAt": "2026-10-19T15:04:24.449Z"
       },
       {
         "site": "df",
@@ -7782,10 +9452,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:38:30.126Z"
+        "checkedAt": "2026-10-19T15:04:24.534Z"
       }
     ]
   },
@@ -7893,6 +9564,32 @@
       }
     ]
   },
+  "tv:153715": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/antieroii-din-valley-view-2022-serialul-dublat-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/antieroii-din-valley-view-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:04:24.618Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/series/antieroii-din-valley-view-2022-dublat-in-romana",
+        "episodeUrl": "https://www.dozaanimata.net/episode/antieroii-din-valley-view-sezonul-1-episodul-1-in-cautarea-unei-alte-dimensiuni/",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:33:22.952Z"
+      }
+    ]
+  },
   "movie:59860": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -7902,10 +9599,11 @@
         "url": "https://filmedublate.net/film-dublat/monte-carlo-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:39:09.538Z"
+        "checkedAt": "2026-10-19T15:04:28.718Z"
       }
     ]
   },
@@ -7919,10 +9617,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:39:19.344Z"
+        "checkedAt": "2026-10-19T15:04:28.804Z"
       },
       {
         "site": "doza",
@@ -7941,6 +9640,22 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T12:48:08.771Z"
+      }
+    ]
+  },
+  "tv:1615": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/chip-si-dale-salvatorii-in-misiune-1989-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/chip-si-dale-salvatorii-in-misiune-1989-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:04:28.892Z"
       }
     ]
   },
@@ -7989,10 +9704,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:52:43.354Z"
+        "checkedAt": "2026-10-19T15:08:47.394Z"
       },
       {
         "site": "df",
@@ -8014,10 +9730,11 @@
         "url": "https://filmedublate.net/film-dublat/diavolul-cutezator-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:39:29.302Z"
+        "checkedAt": "2026-10-19T15:04:41.796Z"
       }
     ]
   },
@@ -8061,10 +9778,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:39:40.003Z"
+        "checkedAt": "2026-10-19T15:04:41.881Z"
       }
     ]
   },
@@ -8150,23 +9868,6 @@
       }
     ]
   },
-  "movie:502356": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/super-mario-bros-filmul-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:40:03.848Z"
-      }
-    ]
-  },
   "movie:248601": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -8245,10 +9946,11 @@
         "url": "https://filmedublate.net/film-dublat/joaca-de-a-spionii-armageddon-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:40:24.706Z"
+        "checkedAt": "2026-10-19T15:04:41.968Z"
       }
     ]
   },
@@ -8277,10 +9979,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:40:35.102Z"
+        "checkedAt": "2026-10-19T15:04:42.052Z"
       }
     ]
   },
@@ -8303,10 +10006,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:58:54.408Z"
+        "checkedAt": "2026-10-19T15:09:10.758Z"
       },
       {
         "site": "df",
@@ -8375,10 +10079,11 @@
         "url": "https://filmedublate.net/film-dublat/belle-si-sebastien-aventura-continua-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:40:55.996Z"
+        "checkedAt": "2026-10-19T15:04:42.137Z"
       },
       {
         "site": "df",
@@ -8404,6 +10109,22 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:41:03.305Z"
+      }
+    ]
+  },
+  "tv:67660": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/ce-ciudat-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/ce-ciudat-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:04:42.223Z"
       }
     ]
   },
@@ -8434,10 +10155,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:41:16.240Z"
+        "checkedAt": "2026-10-19T15:04:59.143Z"
       },
       {
         "site": "doza",
@@ -8528,10 +10250,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:41:37.243Z"
+        "checkedAt": "2026-10-19T15:05:05.785Z"
       }
     ]
   },
@@ -8552,20 +10275,19 @@
       }
     ]
   },
-  "movie:585245": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
+  "tv:5371": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
     "sites": [
       {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/clifford-marele-caine-rosu-dublat-in-romana",
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/icarly-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/icarly-sezonul-1-episodul-1-dublat-in-romana/",
         "hosts": [
-          "Abyss",
-          "Byse",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:41:59.199Z"
+        "checkedAt": "2026-10-19T15:05:05.872Z"
       }
     ]
   },
@@ -8599,41 +10321,6 @@
       }
     ]
   },
-  "movie:446893": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "df",
-        "url": "https://desenefaine.com/film/trolii-descopera-lumea",
-        "hosts": [
-          "Byse"
-        ],
-        "addressProof": "Official direct-slug lookup and exact title/year",
-        "checkedAt": "2026-10-19T11:42:20.948Z"
-      },
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/trolii-descopera-lumea-2020-dublat-in-romana",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:14:46.739Z"
-      },
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/trolii-descopera-lumea-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:37:00.910Z"
-      }
-    ]
-  },
   "movie:926670": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -8644,10 +10331,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:42:20.296Z"
+        "checkedAt": "2026-10-19T15:05:13.126Z"
       }
     ]
   },
@@ -8691,10 +10379,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:42:41.984Z"
+        "checkedAt": "2026-10-19T15:05:13.212Z"
       },
       {
         "site": "df",
@@ -8761,6 +10450,22 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:42:53.201Z"
+      }
+    ]
+  },
+  "tv:16361": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/huntik-secrete-si-cautatori-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/huntik-secrete-si-cautatori-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:05:13.294Z"
       }
     ]
   },
@@ -8840,10 +10545,11 @@
         "url": "https://filmedublate.net/film-dublat/belle-si-sebastien-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:43:02.563Z"
+        "checkedAt": "2026-10-19T15:05:19.310Z"
       },
       {
         "site": "df",
@@ -8871,6 +10577,33 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:43:12.415Z"
+      }
+    ]
+  },
+  "tv:92685": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/casa-bufnitelor-2020-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/casa-bufnitelor-2020-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:05:19.400Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/series/casa-bufnitelor-2020-dublat-in-romana",
+        "episodeUrl": "https://www.dozaanimata.net/episode/casa-bufnitelor-sezonul-1-episodul-1-vrajitoarea-si-gardianul/",
+        "hosts": [
+          "Playmogo",
+          "Vidmoly"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:41:13.504Z"
       }
     ]
   },
@@ -8910,10 +10643,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:05:30.281Z"
+        "checkedAt": "2026-10-19T15:09:18.619Z"
       },
       {
         "site": "df",
@@ -8923,6 +10657,22 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T12:47:55.575Z"
+      }
+    ]
+  },
+  "tv:70779": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/lego-friends-the-power-of-friendship-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/lego-friends-the-power-of-friendship-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:05:26.340Z"
       }
     ]
   },
@@ -8951,10 +10701,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:43:32.941Z"
+        "checkedAt": "2026-10-19T15:05:33.387Z"
       },
       {
         "site": "df",
@@ -8964,6 +10715,22 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T11:56:00.783Z"
+      }
+    ]
+  },
+  "tv:88367": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/scooby-doo-si-cine-crezi-tu-sezonul-1-dublat-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/scooby-doo-si-cine-crezi-tu-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:05:33.480Z"
       }
     ]
   },
@@ -8992,10 +10759,27 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:43:52.274Z"
+        "checkedAt": "2026-10-19T15:05:44.591Z"
+      }
+    ]
+  },
+  "tv:103659": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/power-players-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/powers-players-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:05:44.678Z"
       }
     ]
   },
@@ -9016,20 +10800,35 @@
       }
     ]
   },
-  "movie:644092": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
+  "tv:94107": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
     "sites": [
       {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/ohana-comoara-ascunsa-dublat-in-romana",
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/aventuri-in-lego-city-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/aventuri-in-lego-city-sezonul-1-episodul-1-dublat-in-romana/",
         "hosts": [
-          "Abyss",
-          "Byse",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:44:11.965Z"
+        "checkedAt": "2026-10-19T15:05:52.057Z"
+      }
+    ]
+  },
+  "tv:94625": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/clandestinii-serialul-2019-dublat-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/clandestinii-2019-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:05:59.132Z"
       }
     ]
   },
@@ -9045,22 +10844,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:44:25.845Z"
-      }
-    ]
-  },
-  "movie:63700": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/dadaca-mea-este-un-vampir-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:44:22.038Z"
       }
     ]
   },
@@ -9088,10 +10871,11 @@
         "url": "https://filmedublate.net/film-dublat/capcana-pentru-hoti-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:44:32.622Z"
+        "checkedAt": "2026-10-19T15:06:05.950Z"
       },
       {
         "site": "df",
@@ -9101,6 +10885,22 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T12:29:43.837Z"
+      }
+    ]
+  },
+  "tv:87491": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/dc-super-hero-girls-2019-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/dc-super-hero-girls-2019-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:06:06.039Z"
       }
     ]
   },
@@ -9169,6 +10969,22 @@
       }
     ]
   },
+  "tv:46404": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/monstroville-serialul-2013-dublat-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/monstroville-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:06:12.366Z"
+      }
+    ]
+  },
   "movie:317442": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -9193,10 +11009,43 @@
         "url": "https://filmedublate.net/film-dublat/show-dogs-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:44:54.375Z"
+        "checkedAt": "2026-10-19T15:06:19.592Z"
+      }
+    ]
+  },
+  "tv:25831": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/k-9-2009-serialul-dublat-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/k-9-2009-serialul-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:06:19.679Z"
+      }
+    ]
+  },
+  "tv:64085": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/ghost-rockers-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/ghost-rockers-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:06:26.393Z"
       }
     ]
   },
@@ -9225,10 +11074,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:45:12.269Z"
+        "checkedAt": "2026-10-19T15:06:33.625Z"
       },
       {
         "site": "doza",
@@ -9247,6 +11097,22 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T12:34:02.835Z"
+      }
+    ]
+  },
+  "tv:39518": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/bona-mea-e-un-vampir-serialul-dublat-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/bona-mea-e-un-vampir-serialul-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:06:33.722Z"
       }
     ]
   },
@@ -9275,10 +11141,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:45:22.884Z"
+        "checkedAt": "2026-10-19T15:06:41.515Z"
       },
       {
         "site": "df",
@@ -9289,6 +11156,22 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T12:50:22.041Z"
+      }
+    ]
+  },
+  "tv:95599": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/kipo-si-era-creaturilor-fabuloase-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/kipo-si-era-creaturilor-fabuloase-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:06:41.607Z"
       }
     ]
   },
@@ -9304,6 +11187,22 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:45:32.514Z"
+      }
+    ]
+  },
+  "tv:93265": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/academia-catelusilor-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/academia-catelusilor-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:06:48.299Z"
       }
     ]
   },
@@ -9326,10 +11225,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:46:40.846Z"
+        "checkedAt": "2026-10-19T15:09:19.358Z"
       }
     ]
   },
@@ -9347,6 +11247,22 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:45:43.660Z"
+      }
+    ]
+  },
+  "tv:79787": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/coop-si-cami-intreaba-lumea-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/coop-si-cami-intreaba-lumea-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:06:54.985Z"
       }
     ]
   },
@@ -9369,10 +11285,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:53:43.353Z"
+        "checkedAt": "2026-10-19T15:08:47.568Z"
       },
       {
         "site": "df",
@@ -9383,6 +11300,38 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T12:31:53.575Z"
+      }
+    ]
+  },
+  "tv:110317": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/mighty-express-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/mighty-express-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:07:02.069Z"
+      }
+    ]
+  },
+  "tv:83880": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/planeta-noastra-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/planeta-noastra-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:07:09.340Z"
       }
     ]
   },
@@ -9409,6 +11358,22 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:18:06.654Z"
+      }
+    ]
+  },
+  "tv:91338": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/catelul-pat-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/catelul-pat-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:07:16.135Z"
       }
     ]
   },
@@ -9441,6 +11406,22 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:46:27.926Z"
+      }
+    ]
+  },
+  "tv:93741": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/jurassic-world-tabara-cretacica-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/jurassic-world-tabara-cretacica-sezonul-1-episodul-1-dublat-in-romana-2/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:07:23.429Z"
       }
     ]
   },
@@ -9483,6 +11464,22 @@
       }
     ]
   },
+  "tv:18352": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/the-garfield-show-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/the-garfield-show-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:07:30.407Z"
+      }
+    ]
+  },
   "movie:9408": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -9495,6 +11492,22 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:46:41.913Z"
+      }
+    ]
+  },
+  "tv:4251": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/viata-cu-louie-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/viata-cu-louie-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:07:37.336Z"
       }
     ]
   },
@@ -9530,20 +11543,19 @@
       }
     ]
   },
-  "movie:976573": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
+  "tv:106292": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
     "sites": [
       {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/elementar-dublat-in-romana",
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/julie-and-the-phantoms-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/julie-and-the-phantoms-sezonul-1-episodul-1-dublat-in-romana/",
         "hosts": [
-          "Abyss",
-          "Byse",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:46:53.423Z"
+        "checkedAt": "2026-10-19T15:07:43.617Z"
       }
     ]
   },
@@ -9614,10 +11626,11 @@
         "url": "https://filmedublate.net/film-dublat/maleficent-mistress-of-evil-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:47:16.426Z"
+        "checkedAt": "2026-10-19T15:07:50.935Z"
       }
     ]
   },
@@ -9667,6 +11680,38 @@
       }
     ]
   },
+  "tv:31132": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/un-show-obisnuit-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/un-show-obisnuit-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:07:51.109Z"
+      }
+    ]
+  },
+  "tv:60554": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/razboiul-stelelor-rebelii-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/star-wars-rebelii-sezonul-1-episodul-1-online-subtitrat/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:08:01.775Z"
+      }
+    ]
+  },
   "movie:974262": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -9686,10 +11731,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:05:10.183Z"
+        "checkedAt": "2026-10-19T15:09:18.529Z"
       },
       {
         "site": "df",
@@ -9734,6 +11780,22 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T12:16:13.371Z"
+      }
+    ]
+  },
+  "tv:926": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/scooby-doo-unde-esti-tu-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/scooby-doo-unde-esti-tu-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:08:07.920Z"
       }
     ]
   },
@@ -9791,10 +11853,11 @@
         "url": "https://filmedublate.net/film-dublat/schimb-in-familie-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:48:11.962Z"
+        "checkedAt": "2026-10-19T15:08:14.628Z"
       },
       {
         "site": "df",
@@ -9831,10 +11894,43 @@
         "url": "https://filmedublate.net/film-dublat/legendele-templului-ascuns-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:48:22.909Z"
+        "checkedAt": "2026-10-19T15:08:14.716Z"
+      }
+    ]
+  },
+  "tv:33217": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/tinerii-justitiari-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/tinerii-justitiari-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:08:14.802Z"
+      }
+    ]
+  },
+  "tv:93895": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/lego-jurassic-world-legenda-din-isla-nublar-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/lego-jurassic-world-legenda-din-isla-nublar-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:08:21.354Z"
       }
     ]
   },
@@ -9863,10 +11959,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:48:43.690Z"
+        "checkedAt": "2026-10-19T15:08:32.539Z"
       },
       {
         "site": "df",
@@ -9995,32 +12092,6 @@
       }
     ]
   },
-  "movie:615666": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/un-baiat-numit-craciun-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:49:14.735Z"
-      },
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/un-baiat-numit-craciun-2021-dublat-in-romana",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:10:59.009Z"
-      }
-    ]
-  },
   "movie:41513": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -10046,10 +12117,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:49:25.569Z"
+        "checkedAt": "2026-10-19T15:08:46.764Z"
       },
       {
         "site": "doza",
@@ -10113,10 +12185,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:49:56.981Z"
+        "checkedAt": "2026-10-19T15:08:46.859Z"
       }
     ]
   },
@@ -10196,10 +12269,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:50:29.826Z"
+        "checkedAt": "2026-10-19T15:08:46.946Z"
       },
       {
         "site": "df",
@@ -10223,10 +12297,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:50:41.043Z"
+        "checkedAt": "2026-10-19T15:08:47.033Z"
       },
       {
         "site": "df",
@@ -10293,10 +12368,11 @@
         "url": "https://filmedublate.net/film-dublat/baiatul-care-se-credea-varcolac-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:51:40.113Z"
+        "checkedAt": "2026-10-19T15:08:47.121Z"
       }
     ]
   },
@@ -10448,10 +12524,11 @@
         "url": "https://filmedublate.net/film-dublat/intalnire-exploziva-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:52:33.478Z"
+        "checkedAt": "2026-10-19T15:08:47.309Z"
       },
       {
         "site": "df",
@@ -10580,10 +12657,11 @@
         "url": "https://filmedublate.net/film-dublat/solo-o-poveste-star-wars-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:53:53.964Z"
+        "checkedAt": "2026-10-19T15:08:47.665Z"
       }
     ]
   },
@@ -10597,10 +12675,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:54:04.210Z"
+        "checkedAt": "2026-10-19T15:08:53.825Z"
       },
       {
         "site": "df",
@@ -10650,10 +12729,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:54:14.997Z"
+        "checkedAt": "2026-10-19T15:08:53.914Z"
       }
     ]
   },
@@ -10692,10 +12772,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:04:19.768Z"
+        "checkedAt": "2026-10-19T15:09:18.440Z"
       }
     ]
   },
@@ -10760,10 +12841,11 @@
         "url": "https://filmedublate.net/film-dublat/noaptea-varcolacului-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:54:49.496Z"
+        "checkedAt": "2026-10-19T15:08:58.023Z"
       }
     ]
   },
@@ -10786,10 +12868,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:26:10.935Z"
+        "checkedAt": "2026-10-19T15:09:18.984Z"
       }
     ]
   },
@@ -10802,10 +12885,11 @@
         "url": "https://filmedublate.net/film-dublat/obsesia-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:55:00.165Z"
+        "checkedAt": "2026-10-19T15:08:58.110Z"
       },
       {
         "site": "df",
@@ -10845,41 +12929,6 @@
       }
     ]
   },
-  "movie:718789": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "df",
-        "url": "https://desenefaine.com/film/lightyear",
-        "hosts": [
-          "Byse"
-        ],
-        "addressProof": "Official direct-slug lookup and exact title/year",
-        "checkedAt": "2026-10-19T11:55:22.249Z"
-      },
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/lightyear-2022-dublat-in-romana",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:08:23.867Z"
-      },
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/lightyear-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:10:07.336Z"
-      }
-    ]
-  },
   "movie:1243341": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -10890,10 +12939,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:55:22.183Z"
+        "checkedAt": "2026-10-19T15:08:58.200Z"
       },
       {
         "site": "df",
@@ -10916,10 +12966,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:55:33.063Z"
+        "checkedAt": "2026-10-19T15:08:58.294Z"
       }
     ]
   },
@@ -10975,10 +13026,11 @@
         "url": "https://filmedublate.net/film-dublat/domnita-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:55:54.202Z"
+        "checkedAt": "2026-10-19T15:08:58.380Z"
       }
     ]
   },
@@ -10992,10 +13044,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:56:04.743Z"
+        "checkedAt": "2026-10-19T15:08:58.468Z"
       },
       {
         "site": "df",
@@ -11043,10 +13096,11 @@
         "url": "https://filmedublate.net/film-dublat/magie-de-craciun-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:56:15.798Z"
+        "checkedAt": "2026-10-19T15:08:58.554Z"
       },
       {
         "site": "df",
@@ -11092,6 +13146,22 @@
       }
     ]
   },
+  "tv:98494": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/tehnicienii-de-glitch-sezonul-1-dublat-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/tehnicienii-de-glitch-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:08:58.642Z"
+      }
+    ]
+  },
   "movie:629176": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -11102,10 +13172,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:56:36.297Z"
+        "checkedAt": "2026-10-19T15:09:03.778Z"
       },
       {
         "site": "df",
@@ -11153,10 +13224,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:57:23.948Z"
+        "checkedAt": "2026-10-19T15:09:03.868Z"
       }
     ]
   },
@@ -11172,6 +13244,22 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:56:55.665Z"
+      }
+    ]
+  },
+  "tv:84154": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/trei-sub-stele-povesti-din-arcadia-sezonul-1-dublat-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/trei-sub-stele-povesti-din-arcadia-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:09:03.959Z"
       }
     ]
   },
@@ -11237,10 +13325,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:01:11.250Z"
+        "checkedAt": "2026-10-19T15:09:11.134Z"
       },
       {
         "site": "df",
@@ -11263,10 +13352,11 @@
         "url": "https://filmedublate.net/film-dublat/guardians-of-the-galaxy-vol-3-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:57:51.873Z"
+        "checkedAt": "2026-10-19T15:09:10.580Z"
       }
     ]
   },
@@ -11280,10 +13370,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:58:15.691Z"
+        "checkedAt": "2026-10-19T15:09:10.672Z"
       }
     ]
   },
@@ -11380,23 +13471,6 @@
       }
     ]
   },
-  "movie:569094": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/omul-paianjen-prin-lumea-paianjenului-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:58:43.596Z"
-      }
-    ]
-  },
   "movie:736790": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -11416,10 +13490,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:59:15.647Z"
+        "checkedAt": "2026-10-19T15:09:10.849Z"
       }
     ]
   },
@@ -11435,23 +13510,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:59:06.525Z"
-      }
-    ]
-  },
-  "movie:638597": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/ziua-lui-da-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:59:05.351Z"
       }
     ]
   },
@@ -11500,10 +13558,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:01:32.439Z"
+        "checkedAt": "2026-10-19T15:09:11.308Z"
       }
     ]
   },
@@ -11547,10 +13606,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:59:47.132Z"
+        "checkedAt": "2026-10-19T15:09:10.948Z"
       }
     ]
   },
@@ -11671,10 +13731,11 @@
         "url": "https://filmedublate.net/film-dublat/cei-noua-obraznici-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:00:50.176Z"
+        "checkedAt": "2026-10-19T15:09:11.039Z"
       },
       {
         "site": "doza",
@@ -11776,31 +13837,6 @@
       }
     ]
   },
-  "movie:335977": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/indiana-jones-si-cadranul-destinului-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:01:21.472Z"
-      },
-      {
-        "site": "df",
-        "url": "https://desenefaine.com/film/indiana-jones-si-cadranul-destinului",
-        "hosts": [
-          "VOE"
-        ],
-        "addressProof": "Official direct-slug lookup and exact title/year",
-        "checkedAt": "2026-10-19T12:02:23.799Z"
-      }
-    ]
-  },
   "movie:292177": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -11845,6 +13881,33 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:02:04.007Z"
+      }
+    ]
+  },
+  "tv:15804": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/batman-neinfricat-si-cutezator-sezonul-1-dublat-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/batman-neinfricat-si-cutezator-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:09:11.397Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/series/batman-neinfricat-si-cutezator-2008-dublat-in-romana",
+        "episodeUrl": "https://www.dozaanimata.net/episode/batman-neinfricat-si-cutezator-sezonul-1-episodul-1-se-naste-carabusul-albastru/",
+        "hosts": [
+          "Playmogo",
+          "Vidmoly"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:38:34.103Z"
       }
     ]
   },
@@ -11920,27 +13983,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:02:55.707Z"
-      }
-    ]
-  },
-  "movie:773998": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/tata-la-patrat-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:03:06.193Z"
+        "checkedAt": "2026-10-19T15:09:18.168Z"
       }
     ]
   },
@@ -11985,10 +14032,11 @@
         "url": "https://filmedublate.net/film-dublat/piaza-rea-dublat-in-romana",
         "hosts": [
           "Abyss",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:03:26.744Z"
+        "checkedAt": "2026-10-19T15:09:18.258Z"
       }
     ]
   },
@@ -12007,32 +14055,6 @@
       }
     ]
   },
-  "movie:508947": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/rosu-aprins-2022-dublat-in-romana",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:03:54.792Z"
-      },
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/rosu-aprins-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:16:04.667Z"
-      }
-    ]
-  },
   "movie:1071866": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -12043,25 +14065,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:03:54.736Z"
-      }
-    ]
-  },
-  "movie:27850": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/orasul-halloween-1998-dublat-in-romana",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:04:12.357Z"
+        "checkedAt": "2026-10-19T15:09:18.346Z"
       }
     ]
   },
@@ -12519,23 +14527,6 @@
       }
     ]
   },
-  "movie:624963": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/ghidul-unei-dadace-pentru-vanatoarea-de-monstri-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:08:20.752Z"
-      }
-    ]
-  },
   "movie:555604": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -12641,23 +14632,6 @@
       }
     ]
   },
-  "movie:676710": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/nastrusnicul-motan-maurice-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:09:07.307Z"
-      }
-    ]
-  },
   "movie:245473": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -12758,21 +14732,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:38:49.827Z"
-      }
-    ]
-  },
-  "movie:568124": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/encanto-2021-dublat-in-romana-3",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:10:07.383Z"
       }
     ]
   },
@@ -12973,32 +14932,6 @@
       }
     ]
   },
-  "movie:675445": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/patrula-catelusilor-filmul-2021-dublat-in-romana",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:11:33.183Z"
-      },
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/patrula-catelusilor-filmul-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:24:37.645Z"
-      }
-    ]
-  },
   "movie:828397": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -13022,23 +14955,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:29:36.302Z"
-      }
-    ]
-  },
-  "movie:626393": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/o-noapte-cu-surprize-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:11:56.052Z"
       }
     ]
   },
@@ -13268,21 +15184,6 @@
       }
     ]
   },
-  "movie:14836": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/coraline-2009-dublat-in-romana",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:13:51.476Z"
-      }
-    ]
-  },
   "movie:499701": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -13300,21 +15201,6 @@
       }
     ]
   },
-  "movie:11688": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/imparatul-vrajit-2000-dublat-in-romana",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:14:17.006Z"
-      }
-    ]
-  },
   "movie:1072690": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -13327,31 +15213,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:14:18.920Z"
-      }
-    ]
-  },
-  "movie:354857": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/un-show-obisnuit-filmul-2015-dublat-in-romana",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:14:22.934Z"
-      },
-      {
-        "site": "df",
-        "url": "https://desenefaine.com/film/un-show-obisnuit-filmul",
-        "hosts": [
-          "StreamP2P",
-          "SeekStreaming"
-        ],
-        "addressProof": "Official direct-slug lookup and exact title/year",
-        "checkedAt": "2026-10-19T13:18:29.040Z"
       }
     ]
   },
@@ -13618,23 +15479,6 @@
       }
     ]
   },
-  "movie:599521": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/zombi-2-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:19:20.528Z"
-      }
-    ]
-  },
   "movie:382748": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -13666,23 +15510,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:19:48.789Z"
-      }
-    ]
-  },
-  "movie:515743": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/fotbalul-e-o-stiinta-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:19:59.641Z"
       }
     ]
   },
@@ -13734,23 +15561,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:21:07.588Z"
-      }
-    ]
-  },
-  "movie:438148": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/minionii-2-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:21:17.891Z"
       }
     ]
   },
@@ -13993,23 +15803,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:25:49.065Z"
-      }
-    ]
-  },
-  "movie:385103": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/scoob-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:26:00.045Z"
       }
     ]
   },
@@ -14286,23 +16079,6 @@
       }
     ]
   },
-  "movie:508442": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/suflet-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:29:47.224Z"
-      }
-    ]
-  },
   "movie:1002457": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -14462,23 +16238,6 @@
       }
     ]
   },
-  "movie:508439": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/tot-inainte-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:31:17.167Z"
-      }
-    ]
-  },
   "movie:594328": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -14611,39 +16370,6 @@
       }
     ]
   },
-  "movie:522478": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/peter-iepurasul-fugit-de-acasa-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:33:22.490Z"
-      }
-    ]
-  },
-  "tv:153715": {
-    "catalog": "romanian-dubbed-series",
-    "scope": "S1E1",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/series/antieroii-din-valley-view-2022-dublat-in-romana",
-        "episodeUrl": "https://www.dozaanimata.net/episode/antieroii-din-valley-view-sezonul-1-episodul-1-in-cautarea-unei-alte-dimensiuni/",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:33:22.952Z"
-      }
-    ]
-  },
   "movie:1021331": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -14721,23 +16447,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:34:26.626Z"
-      }
-    ]
-  },
-  "movie:438695": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/hai-sa-cantam-din-nou-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:34:35.733Z"
       }
     ]
   },
@@ -14953,10 +16662,11 @@
         "hosts": [
           "Abyss",
           "Byse",
+          "Morencius",
           "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:37:10.789Z"
+        "checkedAt": "2026-10-19T15:09:19.175Z"
       }
     ]
   },
@@ -15067,23 +16777,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:38:17.805Z"
-      }
-    ]
-  },
-  "tv:15804": {
-    "catalog": "romanian-animated-series",
-    "scope": "S1E1",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/series/batman-neinfricat-si-cutezator-2008-dublat-in-romana",
-        "episodeUrl": "https://www.dozaanimata.net/episode/batman-neinfricat-si-cutezator-sezonul-1-episodul-1-se-naste-carabusul-albastru/",
-        "hosts": [
-          "Playmogo",
-          "Vidmoly"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:38:34.103Z"
       }
     ]
   },
@@ -15306,23 +16999,6 @@
       }
     ]
   },
-  "movie:459151": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/bebe-sef-afaceri-de-familie-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:40:52.194Z"
-      }
-    ]
-  },
   "tv:11191": {
     "catalog": "romanian-animated-series",
     "scope": "S1E1",
@@ -15348,27 +17024,12 @@
         "site": "fd",
         "url": "https://filmedublate.net/desen-animat/dragonii-salvatorii-inaripati-secretele-cantaripii-dublat-in-romana",
         "hosts": [
-          "Byse"
+          "Abyss",
+          "Byse",
+          "Streamtape"
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:41:05.728Z"
-      }
-    ]
-  },
-  "tv:92685": {
-    "catalog": "romanian-animated-series",
-    "scope": "S1E1",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/series/casa-bufnitelor-2020-dublat-in-romana",
-        "episodeUrl": "https://www.dozaanimata.net/episode/casa-bufnitelor-sezonul-1-episodul-1-vrajitoarea-si-gardianul/",
-        "hosts": [
-          "Playmogo",
-          "Vidmoly"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:41:13.504Z"
+        "checkedAt": "2026-10-19T15:09:19.273Z"
       }
     ]
   },
@@ -15460,23 +17121,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:41:37.002Z"
-      }
-    ]
-  },
-  "tv:61923": {
-    "catalog": "romanian-animated-series",
-    "scope": "S1E1",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/series/printesa-stea-contra-fortelor-raului-2015-dublat-in-romana",
-        "episodeUrl": "https://www.dozaanimata.net/episode/printesa-stea-contra-fortelor-raului-sezonul-1-episodul-1-printesa-stea-vine-pe-pamant-petrecere-cu-un-ponei/",
-        "hosts": [
-          "Playmogo",
-          "Vidmoly"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:41:58.825Z"
       }
     ]
   },
@@ -15639,23 +17283,6 @@
       }
     ]
   },
-  "movie:726684": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/lumea-miraculoasa-shanghai-o-legenda-a-doamnei-dragon-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:43:46.202Z"
-      }
-    ]
-  },
   "movie:579023": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -15705,23 +17332,6 @@
       }
     ]
   },
-  "movie:501929": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/familia-mitchell-impotriva-robotilor-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:44:31.791Z"
-      }
-    ]
-  },
   "movie:597316": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -15736,23 +17346,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:44:43.010Z"
-      }
-    ]
-  },
-  "movie:763568": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/arlo-baiatul-aligator-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:44:52.987Z"
       }
     ]
   },

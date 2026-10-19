@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T14:22:42.904Z",
+  "generatedAt": "2026-10-19T15:09:41.146Z",
   "complete": true,
   "scope": "Romanian declarations, supported host routes and actual official canonical-page/S1E1 matching. No host requests, media requests, deletion checks or playback tests.",
   "seriesScope": "Only TMDB/Nuvio S1E1 checked. Later episodes and seasons are not covered by this audit.",
@@ -28,32 +28,37 @@
         "checked": 928
       }
     },
-    "candidates": 1127,
+    "candidates": 1242,
     "total": 5394,
     "inventoryTotal": 5394,
-    "complete": true
+    "complete": true,
+    "targetedRecheck": {
+      "checked": 329,
+      "finishedAt": "2026-10-19T15:09:19.445Z",
+      "runtimeCheckedAt": "2026-10-19T15:09:36.966Z"
+    }
   },
   "publisherPagesChecked": 5394,
-  "officialMatcherAcceptedPages": 1124,
-  "qualifyingSupportedPages": 1123,
-  "uniqueTitles": 840,
+  "officialMatcherAcceptedPages": 1238,
+  "qualifyingSupportedPages": 1236,
+  "uniqueTitles": 897,
   "listCounts": {
-    "romanian-animated-movies": 374,
-    "romanian-animated-series": 51,
-    "romanian-dubbed-movies": 387,
-    "romanian-dubbed-series": 28
+    "romanian-animated-movies": 394,
+    "romanian-animated-series": 74,
+    "romanian-dubbed-movies": 390,
+    "romanian-dubbed-series": 39
   },
   "excluded": {
-    "unsupported-or-no-host": 2103,
-    "unverified-TMDB-identity": 305,
+    "unsupported-or-no-host": 1964,
+    "unverified-TMDB-identity": 324,
     "excluded-language": 1469,
-    "unverified-runtime-address": 139,
-    "previously-observed-unresolved-source": 1,
+    "unverified-runtime-address": 144,
+    "previously-observed-unresolved-source": 2,
     "missing-or-unmapped-S1E1": 222,
     "unverified-title-metadata": 29,
-    "official-matcher-rejected": 3
+    "official-matcher-rejected": 4
   },
-  "duplicateWebsiteEntriesMerged": 283,
+  "duplicateWebsiteEntriesMerged": 339,
   "unsupportedHostCounts": [
     {
       "site": "doza",
@@ -76,19 +81,9 @@
       "publisherPages": 527
     },
     {
-      "site": "fd",
-      "family": "morencius.com",
-      "publisherPages": 187
-    },
-    {
       "site": "dd",
       "family": "VidMoly",
       "publisherPages": 160
-    },
-    {
-      "site": "dd",
-      "family": "StreamTape (HD)",
-      "publisherPages": 116
     },
     {
       "site": "df",
@@ -116,11 +111,6 @@
       "publisherPages": 29
     },
     {
-      "site": "dd",
-      "family": "Streamtape",
-      "publisherPages": 23
-    },
-    {
       "site": "doza",
       "family": "Sendvid",
       "publisherPages": 21
@@ -139,16 +129,6 @@
       "site": "doza",
       "family": "vidply.com",
       "publisherPages": 13
-    },
-    {
-      "site": "fd",
-      "family": "Streamtape",
-      "publisherPages": 12
-    },
-    {
-      "site": "fd",
-      "family": "Abyss",
-      "publisherPages": 12
     },
     {
       "site": "doza",

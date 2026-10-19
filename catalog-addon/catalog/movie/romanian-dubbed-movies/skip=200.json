@@ -153,6 +153,14 @@
       "description": "Ea este Sam, a 2-a născută a unei familii regale. Nu este o fată obișnuită și nu se încadrează în tiparul obișnuit al regalităților. După ce a fost trimisă la școala de vară de către mama ei, Regina, Sam află că ea și alți elevi au superputeri iar școala trebuie să-i pregătească pentru a face parte din Societatea secretă a supereroilor regali. Or să învețe cum să-și folosească puterile pentru a-și salva regatele?\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
+      "id": "tmdb:337401",
+      "type": "movie",
+      "name": "Mulan",
+      "releaseInfo": "2020",
+      "poster": "https://image.tmdb.org/t/p/w500/48T5RMshZWTl0szQJAcq2X7XImr.jpg",
+      "description": "Acţiunea va merge pe urmele lui Hua Mulan, fiica unui bătrân luptător, care se deghizează în bărbat şi îi ia locul tatălui său în armată. Călătoria epică o va transforma într-un războinic venerat, îi va aduce respectul întregii națiuni și îl va face mândru pe tatăl ei.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:626393",
       "type": "movie",
       "name": "O noapte cu surprize",
@@ -791,14 +799,6 @@
       "releaseInfo": "2015",
       "poster": "https://image.tmdb.org/t/p/w500/xBDjQY8nPohvwjphVwmZH3jNuaT.jpg",
       "description": "Robert este un scriitor tânăr care trece printr-o criză. Decide să se întoarcă acasă în satul natal, prima dată după trei ani de la moartea mamei sale. Nici înainte nu își vizita părinții pea des și asta se reflectă în relația distantă pe care o are cu tatăl lui. Ajuns acasă, îi întâlnește doi dintre foștii colegi de clasă - pe Petrică - prietenul cel mai bun din copilărie, acum însurat și cu copii - și pe Paula - iubita lui din adolescență. În 24 de ore rescrie toate relațiile: cu tatăl lui, cu prietenul cel mai bun, cu prima iubire, cu trecutul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:150689",
-      "type": "movie",
-      "name": "Cenușăreasa",
-      "releaseInfo": "2015",
-      "poster": "https://image.tmdb.org/t/p/w500/g1h2TyX3QfL1NKWRqU59YLXYkUL.jpg",
-      "description": "Tânăra Ella are curaj, bunătate şi o Zână Ursitoare. Luând inspirație din povestea clasică, „Cenuşăreasa” readuce la viaţă imaginile nemuritoare din capodopera animată a anilor 1950 pentru o nouă generaţie.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     }
   ]
 }

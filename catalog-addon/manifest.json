@@ -1,6 +1,6 @@
 {
   "id": "com.mrdany14.romanian.catalog",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "name": "Catalog românesc",
   "description": "Titluri dublate în română cu adresă verificată și sursă compatibilă. Serialele sunt verificate doar pentru S1E1; redarea nu este testată.",
   "resources": [

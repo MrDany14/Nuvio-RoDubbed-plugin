@@ -1,6 +1,134 @@
 {
   "metas": [
     {
+      "id": "tmdb:10191",
+      "type": "movie",
+      "name": "Cum să îți dresezi dragonul",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/fIiIHBYCshbudw1rtJLI7oF5VuK.jpg",
+      "description": "Timidul Sughiț trebuie să le dovedească tatălui său și întregului sat că poate fi un războinic viking, dar mai degrabă s-ar împrieteni cu un dragon decât să-l ucidă.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:32916",
+      "type": "movie",
+      "name": "Scooby-Doo! Abracadabra-Doo",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/1cKL7mZW5shP9r9TlTNQX4doMQN.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:26809",
+      "type": "movie",
+      "name": "Prep & Landing",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/jl4UZyUA1xPFZMYWYJ4ZzuccW7Q.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:26505",
+      "type": "movie",
+      "name": "Arthur 2: Răzbunarea lui Maltazard",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/uDg51dzy7lggArwRjG7TiUXJcxh.jpg",
+      "description": "Arthur răspunde unui apel de ajutor din partea prințesei Selenia, amenințată de maleficul Maltazard.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:51800",
+      "type": "movie",
+      "name": "Povestea micului delfin",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/f1jSTZY3POZl7cA4qWOgx0zyfUx.jpg",
+      "description": "Filmul prezintă povestea lui Daniel, un delfin care își abandonează locuința sa sigură pentru a explora oceanul și pentru a descoperi adevăratul său scop în viață.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:22794",
+      "type": "movie",
+      "name": "Stă să plouă cu chiftele",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/pMJzs65ObBq0HNaKC2XNNTa7LOC.jpg",
+      "description": "Te-ai săturat să-ți spună alții ce trebuie și ce nu trebuie să mănânci? Ești dezamăgit că trebuie să mănânci aceleași alimente, zi după zi? Abia aștepți ziua când vei putea comanda ce vrei și când vrei? Ei bine, așteptarea ta s-a terminat. În 2009, pregătește-te să fii servit cu Stă să plouă cu chiftele – o aventură hilară în… porții gigantice. Inspirată după îndrăgita carte pentru copii, filmul se concentrează pe un oraș în care mâncarea cade din cer în ploaie torențială!\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:23566",
+      "type": "movie",
+      "name": "Barbie și cei trei muschetari",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/zR0ts7zL2P1kQIQXYlnS4KCqqmu.jpg",
+      "description": "Corinne este o tânără de la țară care pleacă la Paris pentru a-și împlini marele vis: să devină muschetară. Nu și-ar fi imaginat niciodată că va întâlni alte trei fete care împărtășesc în secret același vis. Folosindu-și talentele speciale, ele lucrează împreună pentru a dejuca un complot și a-l salva pe prinț. Toate pentru una și una pentru toate!\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:8355",
+      "type": "movie",
+      "name": "Epoca de gheață 3: Apariția dinozaurilor",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/okDvR6L3lcQeF1qrx47L79Du2p6.jpg",
+      "description": "Prietenii noștrii preistorici - Manny, Sid, Diego și Scrat - se aventurează împreună într-o lume sub pământ, nouă și misterioasă, populată de dinozauri și de o nevăstuică cu un singur ochi, pe nume Buck.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:50300",
+      "type": "movie",
+      "name": "Ed, Edd și Eddy - Marele Show",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/uwuNrGrGJlkqInCZ9Kunf9JYWUG.jpg",
+      "description": "În film este vorba despre Ed, Edd și Eddy care fug de copiii din cartier din cauza unei farse nereușite a lui Eddy care i-a supărat foarte tare. Cei trei decid să meargă prin tot orașul în căutarea fratelui mai mare a lui Eddy deoarece ei cred că acesta îi va învăța minte pe ceilalți. Apoi, Ezii au fost acceptați de copii și toți i-au luat pe Ezi pe sus, către cartier primind sfarmă-fălci de la Kevin, și desigur au cântat cântecul „E bine să ai prieteni”. La sfârșitul filmului, Jonny și Scândură plănuiau cum să se răzbune pe întreg cartierul iar Scândură a spus că s-a terminat filmul iar Jonny a întrebat \"Care film?\"\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:14160",
+      "type": "movie",
+      "name": "Deasupra tuturor",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/f6ytrGR8IJ0qizc2gI0HSJN6OaU.jpg",
+      "description": "Carl Fredricksen, un văduv în vârstă care a visat mereu la aventură, își leagă casa de mii de baloane și pornește în zbor spre America de Sud pentru a îndeplini o promisiune făcută soției sale. Călătoria lui ia o turnură neașteptată când descoperă că Russell, un cercetaș de opt ani, a ajuns din greșeală la bord.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:16390",
+      "type": "movie",
+      "name": "Scooby-Doo! și Sabia Samuraiului",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/qJ0UlWWrBn2fnAg4SifTJbDUuaf.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:14836",
+      "type": "movie",
+      "name": "Coraline",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/4jeFXQYytChdZYE9JYO7Un87IlW.jpg",
+      "description": "Coraline Jones, o fetiță curioasă mutată într-o casă nouă, descoperă o ușă secretă care o duce într-o realitate paralelă, asemănătoare cu a ei, dar mai vie și mai atrăgătoare. Când această lume aparent perfectă își dezvăluie latura întunecată, Coraline trebuie să găsească o cale de întoarcere acasă.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:712352",
+      "type": "movie",
+      "name": "Casa Foster pentru Prieteni Imaginari: Destinația Imaginația",
+      "releaseInfo": "2008",
+      "poster": "https://image.tmdb.org/t/p/w500/uNBljb1382SlOmLtNGhkFD0pRjV.jpg",
+      "description": "Frankie s-a săturat să tot muncească fără să i se recunoască efortul și când aceasta deschide o cutie cu jucării lăsată la ușa casei, aceasta descoperă o lume ciudată, unde nimeni nu are față. Acolo ea este tratată ca o prințesă de un prieten imaginar ce este de fapt o față care poate lua orice formă și orice corp, oricând la nevoie. Bloo, Mac, Wilt, Eduardo și Coco descopăr că Frankie a dispărut și pornesc în căutarea ei prin această lume ciudată, trecând prin diferite peripeții.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:13053",
+      "type": "movie",
+      "name": "Bolt",
+      "releaseInfo": "2008",
+      "poster": "https://image.tmdb.org/t/p/w500/v5aC4nrzXFGJDWY4JO1eengXzqk.jpg",
+      "description": "Cățelul Bolt, vedeta unui serial de acțiune de la Hollywood, crede că aventurile și superputerile sale sunt reale. Când este trimis din greșeală la New York, pornește într-o călătorie înapoi acasă alături de doi tovarăși de drum neașteptați și descoperă pe parcurs că poate fi erou și în lumea reală.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:13459",
+      "type": "movie",
+      "name": "Barbie și colindele de Crăciun",
+      "releaseInfo": "2008",
+      "poster": "https://image.tmdb.org/t/p/w500/fX9g1AE1JIqjX3LPPKVjcmHs6fd.jpg",
+      "description": "În ajunul Crăciunului, Kelly nu vrea să meargă la bal, așa că Barbie îi spune povestea lui Eden Starling, o divă strălucitoare din Anglia victoriană și proprietara unui teatru. Egoistă și însoțită mereu de pisica ei arogantă, Chuzzlewit, Eden nu crede în Crăciun și le poruncește tuturor angajaților să lucreze în timpul sărbătorii.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:13179",
+      "type": "movie",
+      "name": "Clopoțica",
+      "releaseInfo": "2008",
+      "poster": "https://image.tmdb.org/t/p/w500/4JWp5YpbsPAZFUFBEalngpK8vib.jpg",
+      "description": "Plăsmuită din râsul zglobiu al unui copil, Clopoțica este purtată de o păpădie în Valea Ielelor, tărâmul magic unde zânele pregătesc, prin minuni numai de ele înțelese, sosirea primăverii! Însă Clopoțicăi i s-a hărăzit darul meșteșugului și ar trebui să rămână în Valea Ielelor, alături de ceilalți cârpaci care pregătesc toate lucrurile de care au nevoie zânele în funcție de anotimp. Clopoțica vrea însă cu tot dinadinsul să meargă pe Continent, împreună cu celelalte zâne, chiar dacă asta înseamnă să-și schimbe talentul. Așa că își roagă prietenele - Iridessa, zâna luminii, Rosetta - zâna florilor, Fauna - zâna animalelor și Boare-Argintie - zâna apelor - să o învețe tainele lor.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:13004",
       "type": "movie",
       "name": "Barbie şi Castelul de Diamant",
@@ -129,6 +257,14 @@
       "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
+      "id": "tmdb:205081",
+      "type": "movie",
+      "name": "Nume de Cod: Clanul Nebunaticilor de Alături - Operatiunea Z.E.R.O.",
+      "releaseInfo": "2006",
+      "poster": "https://image.tmdb.org/t/p/w500/fwgLVVHcDT2XtR3I9ozHN2CwC0v.jpg",
+      "description": "În “Clanul Nebunaticilor de Alături: Operațiunea Z.E.R.O” , nebunaticii de alături trebuie să găsească o modalitate de a-l opri pe bunicul de la conducerea lumii și de a transforma pe toată lumea, inclusiv pe adulți, în zombi seniori. Între timp, Numbuh își dă seama că tatăl său era numărul zero.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:920",
       "type": "movie",
       "name": "Mașini",
@@ -167,6 +303,14 @@
       "releaseInfo": "2005",
       "poster": "https://image.tmdb.org/t/p/w500/87FpA4b90eTaw3U6zmCNikoPLir.jpg",
       "description": "Când cerul chiar cade şi raţiunea a părăsit coteţul, cine va deveni marele salvator? Împreună cu grupul lui amuzant de prieteni ciudaţi, Puiu' Mic trebuie să clocească un plan care va salva planeta de o invazie extraterestră şi va dovedi că eroul cel mai mare din lume e un pui mic.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:20558",
+      "type": "movie",
+      "name": "Scooby Doo Unde-i Mumia Mea?",
+      "releaseInfo": "2005",
+      "poster": "https://image.tmdb.org/t/p/w500/w9CpKZmgDfQvHe8WzFsvxxKCNyc.jpg",
+      "description": "Scooby-Doo și gașca Mystery Inc. se implică într-un mister supranatural în Egipt.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:13284",
@@ -385,6 +529,14 @@
       "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
+      "id": "tmdb:13761",
+      "type": "movie",
+      "name": "Pocahontas 2: Călătorie către lumea nouă",
+      "releaseInfo": "1998",
+      "poster": "https://image.tmdb.org/t/p/w500/ww1PAz4sA00Rur2L9DfrKM9ePjI.jpg",
+      "description": "Când vestea morții lui John Smith ajunge în America, Pocahontas este devastată. Ea pleacă la Londra împreună cu John Rolfe, pentru a se întâlni cu regele Angliei într-o misiune diplomatică: să creeze pace și respect între cele două mari țări. Cu toate acestea, guvernatorul Ratcliffe este încă în preajmă; el vrea să se întoarcă la Jamestown și să preia controlul. Nu se va da în lături de la nimic pentru a discredita tânăra prințesă.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:13313",
       "type": "movie",
       "name": "Frumoasa și Bestia: Crăciunul fermecat",
@@ -511,6 +663,14 @@
       "releaseInfo": "1977",
       "poster": "https://image.tmdb.org/t/p/w500/jpr2SZWXCM44U9bWVkSvFVMHmIg.jpg",
       "description": "Doi agenți ai Societății Internaționale de Ajutorare și Salvare, condusă de șoricei, caută o fetiță orfană răpită de vânători de comori siniștri.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:11886",
+      "type": "movie",
+      "name": "Robin Hood",
+      "releaseInfo": "1973",
+      "poster": "https://image.tmdb.org/t/p/w500/x9AvkYek0bGdxQSZ8W3lAjGrREm.jpg",
+      "description": "În Anglia medievală, Robin Hood și credinciosul său tovarăș, Micul John, conduc o bandă de tâlhari care îl înfruntă pe lacomul Prinț John și pe Șeriful din Nottingham. Jefuindu-i pe bogați pentru a-i ajuta pe cei săraci, ei încearcă să aducă speranță locuitorilor din pădurea Sherwood.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:10112",
