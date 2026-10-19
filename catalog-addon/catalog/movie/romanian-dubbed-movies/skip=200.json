@@ -1,6 +1,38 @@
 {
   "metas": [
     {
+      "id": "tmdb:739990",
+      "type": "movie",
+      "name": "Nightbooks: Captiv în poveste",
+      "releaseInfo": "2021",
+      "poster": "https://image.tmdb.org/t/p/w500/p4KREvqbGIESygNFZVluObePqik.jpg",
+      "description": "Amator de povești de groază, Alex trebuie să spună câte una înfricoșătoare în fiecare seară, altfel va sta închis pe veci cu prietena lui în apartamentul unei vrăjitoare.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:566525",
+      "type": "movie",
+      "name": "Shang-Chi și legenda celor zece inele",
+      "releaseInfo": "2021",
+      "poster": "https://image.tmdb.org/t/p/w500/k2AiRdl95hNdZV9LhA8p3gTDz8M.jpg",
+      "description": "Vedeta Shang-Chi din Shang-Chi și Legenda Celor Zece Inelede la Marvel Studios trebuie să se confrunte cu trecutul pe care a crezut că l-a lăsat în urmă, când este atras în rețeaua misterioasei organizații Zece Inele.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:347626",
+      "type": "movie",
+      "name": "Un băiat minunat",
+      "releaseInfo": "2021",
+      "poster": "https://image.tmdb.org/t/p/w500/kW3AG5NHoyq52dcSbMiFB6LyHvk.jpg",
+      "description": "O formatoare de opinie specialistă în transformări face un pariu susținând că poate face dintr-un coleg anost regele balului. Un remake după clasicul „O fată minunată”.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:838150",
+      "type": "movie",
+      "name": "Întregalde",
+      "releaseInfo": "2021",
+      "poster": "https://image.tmdb.org/t/p/w500/bS0tmVyR1kxTEygskzRge5LYd5N.jpg",
+      "description": "Trei prieteni care vor să ducă ajutoare umanitare într-o zonă rurală rămân blocați în pădure, ceea ce le pune la încercare noțiunile despre caritate.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:451048",
       "type": "movie",
       "name": "Croazieră în junglă",
@@ -767,38 +799,6 @@
       "releaseInfo": "2015",
       "poster": "https://image.tmdb.org/t/p/w500/e9c2JOwJlWUfIZRaxIWE2BZt5GV.jpg",
       "description": "Tocmai când se pregătea pentru Olimpiadă, viaţa gimnastei Ariana Berlin a luat o întorsătură neaşteptată, fiind victima unui accident de maşină îngrozitor. După o recuperare dificilă, îşi câştigă din nou încrederea în forţele proprii cu ajutorul unei trupe de hip hop, care o învaţă acest stil de dans. Apoi, datorită antrenoarei de renume mondial Valorie Kondos Field, este rechemată in lumea gimnasticii. Cu ajutorul lui Valorie, Ariana îşi câştigă un loc în echipa de gimnastică a unei universităţi celebre şi câştigă campionatul mondial, ceva la care visa de mult timp.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:277217",
-      "type": "movie",
-      "name": "Descendenții",
-      "releaseInfo": "2015",
-      "poster": "https://image.tmdb.org/t/p/w500/enleHo8EMGqiCAdS80K8WsuW8mF.jpg",
-      "description": "În regatul Auradon, Ben, blândul fiu al regelui Adam și al reginei Belle, oferă o șansă la izbăvire descendenților unor personaje negative clasice din lumea Disney: Cruella De Vil (Carlos), Maleficent (Mal), Regina cea Rea (Evvie) și Jafar (Jay).\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:325189",
-      "type": "movie",
-      "name": "Plaja Adolescenților 2",
-      "releaseInfo": "2015",
-      "poster": "https://image.tmdb.org/t/p/w500/3h1QyNjuuD6fwuMoFR8IG206Dan.jpg",
-      "description": "La câteva luni după întoarcerea acasă din aventura verii, care i-a transportat în filmul despre o petrecere pe plajă, Wet Side Story, din anii 1960, Mack și Brady primesc o vizită surpriză în lumea reală de la noii lor amici de pe coastă. După ce au aflat pe propria lor piele că nu e bine ca lumea reală să se amestece cu cea a filmelor, gașca trebuie să născocească repede un plan pentru a-i trimite pe toți înapoi în filmul lor, înainte de căderea cortinei.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:345363",
-      "type": "movie",
-      "name": "O croazieră nebună",
-      "releaseInfo": "2015",
-      "poster": "https://image.tmdb.org/t/p/w500/gV2I1lW2udrFmF3Xi9MOmlJY2c2.jpg",
-      "description": "O fată, fratele ei și cei doi noi frați vitregi ai lor găsesc aventură când își fac bagajele pentru o croazieră în familie.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:353790",
-      "type": "movie",
-      "name": "Acasă la tata",
-      "releaseInfo": "2015",
-      "poster": "https://image.tmdb.org/t/p/w500/xBDjQY8nPohvwjphVwmZH3jNuaT.jpg",
-      "description": "Robert este un scriitor tânăr care trece printr-o criză. Decide să se întoarcă acasă în satul natal, prima dată după trei ani de la moartea mamei sale. Nici înainte nu își vizita părinții pea des și asta se reflectă în relația distantă pe care o are cu tatăl lui. Ajuns acasă, îi întâlnește doi dintre foștii colegi de clasă - pe Petrică - prietenul cel mai bun din copilărie, acum însurat și cu copii - și pe Paula - iubita lui din adolescență. În 24 de ore rescrie toate relațiile: cu tatăl lui, cu prietenul cel mai bun, cu prima iubire, cu trecutul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     }
   ]
 }

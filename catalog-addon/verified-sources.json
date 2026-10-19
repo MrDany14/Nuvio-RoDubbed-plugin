@@ -159,6 +159,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:01:23.559Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/vaiana-filmul",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:10:51.832Z"
       }
     ]
   },
@@ -551,6 +562,32 @@
       }
     ]
   },
+  "movie:81440": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/bafta-charlie-filmul-calatoria",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T15:52:39.113Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/bafta-charlie-filmul-calatoria-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:43:10.125Z"
+      }
+    ]
+  },
   "movie:550738": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -682,6 +719,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:03:02.841Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/cronicile-craciunului-partea-a-doua",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:07:45.082Z"
       },
       {
         "site": "fd",
@@ -1108,6 +1154,21 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:04:11.109Z"
+      }
+    ]
+  },
+  "movie:18269": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/doamna-si-vagabondul-2-aventura-lui-scamp",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T15:52:39.482Z"
       }
     ]
   },
@@ -1596,6 +1657,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:05:25.611Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/daca-dorintele-ar-putea-ucide",
+        "episodeUrl": "https://desenefaine.com/epi/daca-dorintele-ar-putea-ucide-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:37:21.324Z"
       }
     ]
   },
@@ -1629,6 +1701,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:05:36.126Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/neales",
+        "episodeUrl": "https://desenefaine.com/epi/neales-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:36:36.773Z"
       }
     ]
   },
@@ -1731,6 +1814,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:05:45.669Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/confruntarea-familiei-thunderman",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:10:48.002Z"
       }
     ]
   },
@@ -2112,6 +2206,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:06:21.185Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/lego-razboiul-stelelor-mandalorianul",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:10:44.639Z"
       }
     ]
   },
@@ -2170,6 +2275,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:06:31.761Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/lego-disney-printese-haosul-magic",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:10:33.808Z"
       }
     ]
   },
@@ -2366,6 +2480,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T14:57:34.519Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/mandalorianul-si-grogu",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:10:30.490Z"
       }
     ]
   },
@@ -2452,6 +2577,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:07:12.556Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/barbie-in-rolul-de-printesa-si-cersetoare",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:08:14.006Z"
       }
     ]
   },
@@ -3466,6 +3601,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:41:58.825Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/printesa-stea-contra-fortelor-raului",
+        "episodeUrl": "https://desenefaine.com/epi/printesa-stea-contra-fortelor-raului-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:28:27.347Z"
       }
     ]
   },
@@ -3551,6 +3696,18 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:09:16.361Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/un-show-obisnuit-casetele-pierdute",
+        "episodeUrl": "https://desenefaine.com/epi/un-show-obisnuit-casetele-pierdute-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:39:11.999Z"
       }
     ]
   },
@@ -3567,6 +3724,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:09:12.486Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/violetta",
+        "episodeUrl": "https://desenefaine.com/epi/violetta-s1-ep1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:24:59.003Z"
       }
     ]
   },
@@ -3612,6 +3780,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:09:20.032Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/austin-si-ally",
+        "episodeUrl": "https://desenefaine.com/epi/austin-si-ally-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:30:31.562Z"
       }
     ]
   },
@@ -3681,6 +3859,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:09:30.469Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/wednesday",
+        "episodeUrl": "https://desenefaine.com/epi/wednesday-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:31:19.317Z"
       }
     ]
   },
@@ -3860,6 +4048,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:09:48.231Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/academia-unicornilor",
+        "episodeUrl": "https://desenefaine.com/epi/academia-unicornilor-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:43:10.485Z"
       }
     ]
   },
@@ -3965,6 +4163,31 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:10:02.380Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/mereu-la-mijloc",
+        "episodeUrl": "https://desenefaine.com/epi/mereu-la-mijloc-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:35:56.205Z"
+      }
+    ]
+  },
+  "movie:24787": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/scooby-doo-ii-intalneste-pe-fratii-boo",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T15:52:42.647Z"
       }
     ]
   },
@@ -4010,6 +4233,467 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T14:59:57.967Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/dorinta-2026",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:10:26.715Z"
+      }
+    ]
+  },
+  "tv:68295": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/ben-10",
+        "episodeUrl": "https://desenefaine.com/epi/ben-10-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T15:53:47.280Z"
+      }
+    ]
+  },
+  "tv:92783": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/she-hulk-avocata-apararii",
+        "episodeUrl": "https://desenefaine.com/epi/she-hulk-avocata-apararii-s1-ep1/",
+        "hosts": [
+          "Byse",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T15:54:30.998Z"
+      }
+    ]
+  },
+  "tv:65334": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/miraculous-buburuza-si-motan-noir",
+        "episodeUrl": "https://desenefaine.com/epi/miraculous-buburuza-si-motan-noir-s1-ep1/",
+        "hosts": [
+          "Byse",
+          "SeekStreaming",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T15:55:59.115Z"
+      }
+    ]
+  },
+  "tv:67175": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/elena-din-avalor",
+        "episodeUrl": "https://desenefaine.com/epi/elena-din-avalor-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T15:56:48.711Z"
+      },
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/elena-din-avalor-sezonul-1-dublat-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/elena-din-avalor-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "OK.ru"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:54:17.181Z"
+      }
+    ]
+  },
+  "tv:387": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/spongebob-pantaloni-patrati",
+        "episodeUrl": "https://desenefaine.com/epi/spongebob-pantaloni-patrati-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T15:58:12.843Z"
+      }
+    ]
+  },
+  "tv:62181": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/miles-in-spatiu",
+        "episodeUrl": "https://desenefaine.com/epi/miles-in-spatiu-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T15:58:26.907Z"
+      }
+    ]
+  },
+  "tv:125574": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/transformers-botbots",
+        "episodeUrl": "https://desenefaine.com/epi/transformers-botbots-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T15:58:41.697Z"
+      }
+    ]
+  },
+  "tv:75868": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/drama-totala-reuniunea-vedetelor",
+        "episodeUrl": "https://desenefaine.com/epi/drama-totala-reuniunea-vedetelor-sezonul1-episoul1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T15:58:52.411Z"
+      }
+    ]
+  },
+  "tv:205118": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/eu-si-mickey",
+        "episodeUrl": "https://desenefaine.com/epi/eu-si-mickey-sezonul1-episoul1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T15:59:04.451Z"
+      }
+    ]
+  },
+  "tv:82452": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/avatar-ultimul-razboinic-al-aerului",
+        "episodeUrl": "https://desenefaine.com/epi/avatar-ultimul-razboinic-al-aerului-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T15:59:14.317Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/series/avatar-ultimul-razboinic-al-aerului-2024-dublat-in-romana",
+        "episodeUrl": "https://www.dozaanimata.net/episode/avatar-ultimul-razboinic-al-aerului-sezonul-1-episodul-1-aang/",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:11:38.712Z"
+      }
+    ]
+  },
+  "tv:103822": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/zenimation",
+        "episodeUrl": "https://desenefaine.com/epi/zenimation-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T15:59:28.448Z"
+      }
+    ]
+  },
+  "tv:93405": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/jocul-calamarului",
+        "episodeUrl": "https://desenefaine.com/epi/jocul-calamarului-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T15:59:53.260Z"
+      }
+    ]
+  },
+  "tv:2098": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/batman-seria-animata",
+        "episodeUrl": "https://desenefaine.com/epi/batman-seria-animata-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:00:07.619Z"
+      }
+    ]
+  },
+  "tv:114479": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/the-acolyte",
+        "episodeUrl": "https://desenefaine.com/epi/the-acolyte-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:00:29.567Z"
+      }
+    ]
+  },
+  "tv:253760": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/lego-razboiul-stelelor-reconstructia-galaxiei",
+        "episodeUrl": "https://desenefaine.com/epi/lego-razboiul-stelelor-reconstructia-galaxiei-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:00:50.044Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/series/lego-razboiul-stelelor-reconstructia-galaxiei-2024-dublat-in-romana",
+        "episodeUrl": "https://www.dozaanimata.net/episode/lego-razboiul-stelelor-reconstructia-galaxiei-sezonul-1-episodul-1-partea-i/",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:30:37.025Z"
+      }
+    ]
+  },
+  "tv:239770": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/doctor-who",
+        "episodeUrl": "https://desenefaine.com/epi/doctor-who-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:01:10.792Z"
+      }
+    ]
+  },
+  "tv:129294": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/dogmatix-si-neinduplecatii",
+        "episodeUrl": "https://desenefaine.com/epi/dogmatix-si-neinduplecatii-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:01:42.131Z"
+      }
+    ]
+  },
+  "tv:233779": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/calea-misterelor",
+        "episodeUrl": "https://desenefaine.com/epi/calea-misterelor-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:01:56.194Z"
+      }
+    ]
+  },
+  "tv:2260": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/h2o-adauga-apa",
+        "episodeUrl": "https://desenefaine.com/epi/h2o-adauga-apa-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:02:09.211Z"
+      }
+    ]
+  },
+  "tv:202879": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/razboiul-stelelor-echipajul-de-baza",
+        "episodeUrl": "https://desenefaine.com/epi/razboiul-stelelor-echipajul-de-baza-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:02:26.293Z"
+      }
+    ]
+  },
+  "tv:33217": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/tinerii-justitiari",
+        "episodeUrl": "https://desenefaine.com/epi/tinerii-justitiari-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:02:36.345Z"
+      },
+      {
+        "site": "dd",
+        "url": "https://deseneledublate.com/serial/tinerii-justitiari-seria-dublata-in-romana",
+        "episodeUrl": "https://deseneledublate.com/episoade/tinerii-justitiari-sezonul-1-episodul-1-dublat-in-romana/",
+        "hosts": [
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T15:08:14.802Z"
+      }
+    ]
+  },
+  "tv:3090": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/micile-genii",
+        "episodeUrl": "https://desenefaine.com/epi/micile-genii-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:05:27.720Z"
+      }
+    ]
+  },
+  "tv:313298": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/dinozaurii-26",
+        "episodeUrl": "https://desenefaine.com/epi/dinozaurii-1x1/",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:05:49.216Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/serial-dublat/dinozaurii-dublat-in-romana",
+        "episodeUrl": "https://filmedublate.net/serial-dublat/dinozaurii-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:28:25.938Z"
+      }
+    ]
+  },
+  "tv:224263": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/stranger-things-povesti-din-85",
+        "episodeUrl": "https://desenefaine.com/epi/stranger-things-povesti-din-85-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:06:23.011Z"
       }
     ]
   },
@@ -4130,6 +4814,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:10:42.964Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/hero-inside",
+        "episodeUrl": "https://desenefaine.com/epi/hero-inside-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:44:58.648Z"
       }
     ]
   },
@@ -4216,6 +4911,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:10:56.613Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/jentry-chau-impotriva-infernului",
+        "episodeUrl": "https://desenefaine.com/epi/jentry-chau-impotriva-infernului-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:58:28.470Z"
       }
     ]
   },
@@ -4260,6 +4965,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:11:04.082Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/nasii-mei-vrajitori-o-noua-dorinta",
+        "episodeUrl": "https://desenefaine.com/epi/nasii-mei-vrajitori-o-noua-dorinta-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:54:03.115Z"
       }
     ]
   },
@@ -4325,6 +5040,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:11:11.376Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/jurassic-world-teoria-haosului",
+        "episodeUrl": "https://desenefaine.com/epi/jurassic-world-teoria-haosului-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:52:17.879Z"
       }
     ]
   },
@@ -4369,6 +5095,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:11:18.384Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/barbie-mysteries",
+        "episodeUrl": "https://desenefaine.com/epi/barbie-mysteries-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:02:39.853Z"
       }
     ]
   },
@@ -4413,6 +5149,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:11:25.275Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/agentul-203",
+        "episodeUrl": "https://desenefaine.com/epi/agentul-203-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:58:08.331Z"
       }
     ]
   },
@@ -4486,22 +5232,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:01:46.936Z"
-      }
-    ]
-  },
-  "tv:82452": {
-    "catalog": "romanian-dubbed-series",
-    "scope": "S1E1",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/series/avatar-ultimul-razboinic-al-aerului-2024-dublat-in-romana",
-        "episodeUrl": "https://www.dozaanimata.net/episode/avatar-ultimul-razboinic-al-aerului-sezonul-1-episodul-1-aang/",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:11:38.712Z"
       }
     ]
   },
@@ -4819,6 +5549,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:12:23.253Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/familia-crood-copacul-familiei",
+        "episodeUrl": "https://desenefaine.com/epi/familia-crood-copacul-familiei-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:47:40.344Z"
       }
     ]
   },
@@ -4850,6 +5590,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:12:30.907Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/fetitele-powerpuff-1998",
+        "episodeUrl": "https://desenefaine.com/epi/fetitele-powerpuff-1x1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:28:56.947Z"
       }
     ]
   },
@@ -5448,6 +6198,21 @@
       }
     ]
   },
+  "movie:254263": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/printesa-lebada-5-o-poveste-regala",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:07:08.644Z"
+      }
+    ]
+  },
   "movie:552524": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -5831,6 +6596,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:04:14.470Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/cum-sa-iti-dresezi-dragonul-filmul",
+        "hosts": [
+          "Byse",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:44.449Z"
       }
     ]
   },
@@ -6106,6 +6881,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:04:14.993Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/kleks-academy",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:13.429Z"
       }
     ]
   },
@@ -6207,6 +6991,21 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:19:05.550Z"
+      }
+    ]
+  },
+  "movie:61717": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/wendy-wu-razboinica-miss-boboc",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:07:12.067Z"
       }
     ]
   },
@@ -6441,6 +7240,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:04:19.673Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/misterul-mumiei-2",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:07:55.681Z"
       }
     ]
   },
@@ -6678,6 +7486,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:04:20.224Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/doar-norocul-meu",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:08:38.558Z"
       }
     ]
   },
@@ -6879,6 +7697,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:04:20.410Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/michael-jackson-verdictul",
+        "episodeUrl": "https://desenefaine.com/epi/michael-jackson-verdictul-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:40:14.935Z"
       }
     ]
   },
@@ -6933,6 +7762,32 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T11:25:15.540Z"
+      }
+    ]
+  },
+  "movie:278927": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/cartea-junglei-filmul",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:07:18.916Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/cartea-junglei-filmul-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:27:02.593Z"
       }
     ]
   },
@@ -7022,6 +7877,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:04:20.499Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/calatorie-placuta",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:08:45.737Z"
       }
     ]
   },
@@ -7095,6 +7960,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:04:20.676Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/nemesis",
+        "episodeUrl": "https://desenefaine.com/epi/nemesis-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:39:50.547Z"
       }
     ]
   },
@@ -7185,6 +8061,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:04:20.846Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/liceul-monstrilor-2",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:37.961Z"
       }
     ]
   },
@@ -7216,6 +8101,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:24:15.634Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/cadetul-kelly",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:10:15.678Z"
       }
     ]
   },
@@ -7449,6 +8345,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:04:21.213Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/legende",
+        "episodeUrl": "https://desenefaine.com/epi/legende-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:39:40.196Z"
       }
     ]
   },
@@ -7588,6 +8495,21 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T12:44:56.873Z"
+      }
+    ]
+  },
+  "movie:295693": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/cine-i-sef-acasa",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:07:22.916Z"
       }
     ]
   },
@@ -7789,6 +8711,21 @@
       }
     ]
   },
+  "movie:54113": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/printesa-lebada-2-secretul-castelului",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:07:26.222Z"
+      }
+    ]
+  },
   "movie:287233": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -7896,6 +8833,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:04:22.095Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/cartierele",
+        "episodeUrl": "https://desenefaine.com/epi/cartierele-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:39:26.463Z"
       }
     ]
   },
@@ -7941,24 +8889,6 @@
       }
     ]
   },
-  "tv:313298": {
-    "catalog": "romanian-animated-series",
-    "scope": "S1E1",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/serial-dublat/dinozaurii-dublat-in-romana",
-        "episodeUrl": "https://filmedublate.net/serial-dublat/dinozaurii-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:28:25.938Z"
-      }
-    ]
-  },
   "tv:198178": {
     "catalog": "romanian-dubbed-series",
     "scope": "S1E1",
@@ -7974,6 +8904,43 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:28:34.982Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/omul-minune",
+        "episodeUrl": "https://desenefaine.com/epi/omul-minune-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:31:06.315Z"
+      }
+    ]
+  },
+  "movie:40205": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/16-dorinte",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:07:30.081Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/16-dorinte-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:35:45.737Z"
       }
     ]
   },
@@ -8020,6 +8987,30 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T12:49:25.853Z"
+      }
+    ]
+  },
+  "movie:1267": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/intalniti-i-pe-robinsoni",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:07:37.435Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/familia-robinson-2007-dublat-in-romana",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:35:59.032Z"
       }
     ]
   },
@@ -8326,6 +9317,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:04:22.750Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/irezistibila",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:02.968Z"
       }
     ]
   },
@@ -8537,6 +9537,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:32:46.244Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/scooby-doo-masca-soimului-albastru",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:10:05.296Z"
       }
     ]
   },
@@ -8722,6 +9732,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:04:23.613Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/liceul-monstrilor-filmul",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:08:56.078Z"
       }
     ]
   },
@@ -9006,21 +10025,6 @@
       }
     ]
   },
-  "movie:1267": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/familia-robinson-2007-dublat-in-romana",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:35:59.032Z"
-      }
-    ]
-  },
   "movie:816904": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -9050,6 +10054,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:36:12.047Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/scooby-doo-si-krypto-de-asemenea",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:07:59.691Z"
       }
     ]
   },
@@ -9263,6 +10276,21 @@
       }
     ]
   },
+  "movie:354279": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/charming-printul-fermecator",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:07:41.299Z"
+      }
+    ]
+  },
   "movie:1371150": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -9371,6 +10399,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:38:02.111Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/printesa-lebada-mai-mult-decat-pentru-totdeauna",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:08:06.565Z"
       }
     ]
   },
@@ -9735,6 +10772,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:04:41.796Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/diavolul-cutezator",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:08:59.661Z"
       }
     ]
   },
@@ -10052,6 +11098,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:40:45.504Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/kiff-casa-bantuita-a-domnisoarei-mcgravy",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:47.841Z"
       }
     ]
   },
@@ -10336,6 +11392,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:05:13.126Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/henry-danger-filmul",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:27.055Z"
       }
     ]
   },
@@ -10466,6 +11531,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:05:13.294Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/huntik-secrete-si-cautatori",
+        "episodeUrl": "https://desenefaine.com/epi/huntik-secrete-si-cautatori-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:38:14.067Z"
       }
     ]
   },
@@ -10764,6 +11839,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:05:44.591Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/livrare-pana-la-craciun",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:23.924Z"
       }
     ]
   },
@@ -11247,6 +12331,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T11:45:43.660Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/panda-bear-in-africa",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:41.187Z"
       }
     ]
   },
@@ -11422,6 +12515,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:07:23.429Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/jurassic-world-tabara-cretacica",
+        "episodeUrl": "https://desenefaine.com/epi/jurassic-world-tabara-cretacica-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:52:34.376Z"
       }
     ]
   },
@@ -11477,6 +12581,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:07:30.407Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/spectacolul-lui-garfield",
+        "episodeUrl": "https://desenefaine.com/epi/spectacolul-lui-garfield-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:33:15.954Z"
       }
     ]
   },
@@ -11649,6 +12764,41 @@
       }
     ]
   },
+  "movie:181812": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/razboiul-stelelor-episodul-ix-skywalker-ascensiunea",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:07:51.830Z"
+      },
+      {
+        "site": "doza",
+        "url": "https://www.dozaanimata.net/star-wars-episodul-ix-ascensiunea-lui-skywalker-2019-dublat-in-romana",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T11:56:15.909Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/film-dublat/razboiul-stelelor-episodul-ix-skywalker-ascensiunea-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:13:01.236Z"
+      }
+    ]
+  },
   "movie:9992": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -11693,6 +12843,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:07:51.109Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/un-show-obisnuit",
+        "episodeUrl": "https://desenefaine.com/epi/un-show-obisnuit-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:34:01.608Z"
       }
     ]
   },
@@ -11709,6 +12870,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:08:01.775Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/razboiul-stelelor-rebelii",
+        "episodeUrl": "https://desenefaine.com/epi/razboiul-stelelor-rebelii-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:35:26.981Z"
       }
     ]
   },
@@ -11796,6 +12967,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:08:07.920Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/scooby-doo-unde-esti-tu",
+        "episodeUrl": "https://desenefaine.com/epi/scooby-doo-unde-esti-tu-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:30:45.777Z"
       }
     ]
   },
@@ -11899,22 +13080,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:08:14.716Z"
-      }
-    ]
-  },
-  "tv:33217": {
-    "catalog": "romanian-animated-series",
-    "scope": "S1E1",
-    "sites": [
-      {
-        "site": "dd",
-        "url": "https://deseneledublate.com/serial/tinerii-justitiari-seria-dublata-in-romana",
-        "episodeUrl": "https://deseneledublate.com/episoade/tinerii-justitiari-sezonul-1-episodul-1-dublat-in-romana/",
-        "hosts": [
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T15:08:14.802Z"
       }
     ]
   },
@@ -12373,6 +13538,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:08:47.121Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/baiatul-care-se-credea-varcolac",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:08:52.611Z"
       }
     ]
   },
@@ -12737,22 +13912,6 @@
       }
     ]
   },
-  "tv:67175": {
-    "catalog": "romanian-animated-series",
-    "scope": "S1E1",
-    "sites": [
-      {
-        "site": "dd",
-        "url": "https://deseneledublate.com/serial/elena-din-avalor-sezonul-1-dublat-in-romana",
-        "episodeUrl": "https://deseneledublate.com/episoade/elena-din-avalor-sezonul-1-episodul-1-dublat-in-romana/",
-        "hosts": [
-          "OK.ru"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:54:17.181Z"
-      }
-    ]
-  },
   "movie:616037": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -12971,6 +14130,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:08:58.294Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/vecini-nu-ti-i-alegi",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:20.878Z"
       }
     ]
   },
@@ -13058,32 +14226,6 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T12:32:12.331Z"
-      }
-    ]
-  },
-  "movie:181812": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/star-wars-episodul-ix-ascensiunea-lui-skywalker-2019-dublat-in-romana",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T11:56:15.909Z"
-      },
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/razboiul-stelelor-episodul-ix-skywalker-ascensiunea-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:13:01.236Z"
       }
     ]
   },
@@ -13260,6 +14402,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:09:03.959Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/trei-sub-stele-povesti-din-arcadia",
+        "episodeUrl": "https://desenefaine.com/epi/trei-sub-stele-povesti-din-arcadia-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:16:43.344Z"
       }
     ]
   },
@@ -14070,6 +15222,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:09:18.346Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/extraterestri-cu-codite",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:10.088Z"
       }
     ]
   },
@@ -14336,6 +15497,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:06:48.960Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/legile-lui-milo-murphy",
+        "episodeUrl": "https://desenefaine.com/epi/legile-lui-milo-murphy-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:45:30.061Z"
       }
     ]
   },
@@ -15201,6 +16372,21 @@
       }
     ]
   },
+  "movie:1166714": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/mickey-si-prietenii-vrajiti-de-halloween",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:08:03.237Z"
+      }
+    ]
+  },
   "movie:1072690": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -15213,6 +16399,32 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:14:18.920Z"
+      }
+    ]
+  },
+  "movie:718100": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/printesa-lebada-o-nunta-regala",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:08:10.355Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/printesa-lebada-o-nunta-regala-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:39:40.008Z"
       }
     ]
   },
@@ -15331,6 +16543,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:15:26.277Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/mickey-salveaza-craciunul",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:55.640Z"
       }
     ]
   },
@@ -15658,6 +16880,21 @@
       }
     ]
   },
+  "movie:13926": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/visul-lui-red",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:08:20.668Z"
+      }
+    ]
+  },
   "movie:728754": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -15773,6 +17010,21 @@
       }
     ]
   },
+  "movie:15789": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/filmul-lui-goofy",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:08:24.023Z"
+      }
+    ]
+  },
   "movie:49350": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -15803,6 +17055,21 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:25:49.065Z"
+      }
+    ]
+  },
+  "movie:13417": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/noua-viata-a-lui-kronk",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:08:36.297Z"
       }
     ]
   },
@@ -15871,23 +17138,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:26:59.735Z"
-      }
-    ]
-  },
-  "movie:278927": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
+      },
       {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/cartea-junglei-filmul-dublat-in-romana",
+        "site": "df",
+        "url": "https://desenefaine.com/serial/razboiul-stelelor-maul-lordul-umbrelor",
+        "episodeUrl": "https://desenefaine.com/epi/razboiul-stelelor-maul-lordul-umbrelor-sezonul-1-episodul-1/",
         "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
+          "StreamP2P",
+          "SeekStreaming"
         ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:27:02.593Z"
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:35:45.591Z"
       }
     ]
   },
@@ -16005,6 +17266,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:28:21.423Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/a-fost-odata-un-om-de-zapada",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:51.770Z"
       }
     ]
   },
@@ -16124,6 +17396,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:30:11.973Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/agatha-de-la-bun-inceput",
+        "episodeUrl": "https://desenefaine.com/epi/agatha-de-la-bun-inceput-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:50:37.667Z"
       }
     ]
   },
@@ -16157,22 +17439,6 @@
       }
     ]
   },
-  "tv:253760": {
-    "catalog": "romanian-animated-series",
-    "scope": "S1E1",
-    "sites": [
-      {
-        "site": "doza",
-        "url": "https://www.dozaanimata.net/series/lego-razboiul-stelelor-reconstructia-galaxiei-2024-dublat-in-romana",
-        "episodeUrl": "https://www.dozaanimata.net/episode/lego-razboiul-stelelor-reconstructia-galaxiei-sezonul-1-episodul-1-partea-i/",
-        "hosts": [
-          "Playmogo"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:30:37.025Z"
-      }
-    ]
-  },
   "tv:262153": {
     "catalog": "romanian-animated-series",
     "scope": "S1E1",
@@ -16186,6 +17452,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:30:47.383Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/lego-pixar-caramizile-animate",
+        "episodeUrl": "https://desenefaine.com/epi/lego-pixar-caramizile-animate-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:52:08.532Z"
       }
     ]
   },
@@ -16268,6 +17545,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:31:44.945Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/gremlinii-secretele-mogwailor",
+        "episodeUrl": "https://desenefaine.com/epi/gremlinii-secretele-mogwailor-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:53:31.552Z"
       }
     ]
   },
@@ -16300,6 +17588,21 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:32:19.248Z"
+      }
+    ]
+  },
+  "movie:1287753": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/visul",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:06.930Z"
       }
     ]
   },
@@ -16501,23 +17804,6 @@
       }
     ]
   },
-  "movie:40205": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/16-dorinte-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:35:45.737Z"
-      }
-    ]
-  },
   "tv:1894": {
     "catalog": "romanian-dubbed-series",
     "scope": "S1E1",
@@ -16583,6 +17869,16 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:36:21.107Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/transformers-prime",
+        "episodeUrl": "https://desenefaine.com/epi/transformers-prime-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:31:55.998Z"
       }
     ]
   },
@@ -16863,23 +18159,6 @@
       }
     ]
   },
-  "movie:718100": {
-    "catalog": "romanian-animated-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/printesa-lebada-o-nunta-regala-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:39:40.008Z"
-      }
-    ]
-  },
   "movie:317198": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -16945,6 +18224,17 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:40:10.524Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/lego-razboiul-stelelor-de-sarbatori",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:10:12.314Z"
       }
     ]
   },
@@ -16996,6 +18286,21 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:40:41.816Z"
+      }
+    ]
+  },
+  "movie:23521": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/daffy-ducks-quackbusters",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:16.979Z"
       }
     ]
   },
@@ -17239,23 +18544,6 @@
       }
     ]
   },
-  "movie:81440": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/film-dublat/bafta-charlie-filmul-calatoria-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:43:10.125Z"
-      }
-    ]
-  },
   "movie:864388": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -17346,6 +18634,21 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:44:43.010Z"
+      }
+    ]
+  },
+  "movie:823219": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/flow",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:30.583Z"
       }
     ]
   },
@@ -17542,6 +18845,36 @@
       }
     ]
   },
+  "movie:22620": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/scooby-doo-misterul-incepe",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:09:58.789Z"
+      }
+    ]
+  },
+  "movie:13350": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/scooby-doo-si-scoala-de-vampiri",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:10:01.934Z"
+      }
+    ]
+  },
   "movie:13354": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -17682,6 +19015,22 @@
       }
     ]
   },
+  "movie:1453792": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/spectacolul-lui-blue-piesa-de-teatru",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:10:08.910Z"
+      }
+    ]
+  },
   "movie:1500099": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -17728,6 +19077,53 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T13:26:29.394Z"
+      }
+    ]
+  },
+  "movie:1554882": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/pana-la-sfarsit",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:10:22.756Z"
+      }
+    ]
+  },
+  "movie:1751466": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/odata-printesa-mereu-printesa",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:10:37.785Z"
+      }
+    ]
+  },
+  "movie:387893": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/epoca-de-gheata-marea-escapada-a-oualelor",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:10:41.521Z"
       }
     ]
   },
@@ -17799,6 +19195,23 @@
       }
     ]
   },
+  "movie:1750432": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/paienjenelul-marvel-si-razbunatorii-echipa-de-halloween",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:10:55.126Z"
+      }
+    ]
+  },
   "movie:1239251": {
     "catalog": "romanian-animated-movies",
     "scope": "movie",
@@ -17813,6 +19226,3471 @@
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
         "checkedAt": "2026-10-19T13:33:22.455Z"
+      }
+    ]
+  },
+  "tv:31499": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/viata-in-acvariu",
+        "episodeUrl": "https://desenefaine.com/epi/viata-in-acvariu-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:10:58.870Z"
+      }
+    ]
+  },
+  "tv:68267": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/vanatorii-de-troli-povesti-din-arcadia",
+        "episodeUrl": "https://desenefaine.com/epi/vanatorii-de-troli-povesti-din-arcadia-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:11:08.617Z"
+      }
+    ]
+  },
+  "tv:95594": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/furios-si-iute-cursa-spionilor",
+        "episodeUrl": "https://desenefaine.com/epi/furios-si-iute-cursa-spionilor-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:11:27.157Z"
+      }
+    ]
+  },
+  "tv:195926": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/iepurele-samurai-cronicile-lui-usagi",
+        "episodeUrl": "https://desenefaine.com/epi/iepurele-samurai-cronicile-lui-usagi-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:11:45.625Z"
+      }
+    ]
+  },
+  "tv:246": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/avatar-legenda-lui-aang",
+        "episodeUrl": "https://desenefaine.com/epi/avatar-legenda-lui-aang-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:12:04.408Z"
+      }
+    ]
+  },
+  "tv:70047": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/o-poveste-incalcita-serialul",
+        "episodeUrl": "https://desenefaine.com/epi/o-poveste-incalcita-serialul-s1-ep1/",
+        "hosts": [
+          "Byse",
+          "SeekStreaming",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:12:35.691Z"
+      }
+    ]
+  },
+  "tv:34391": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/marvels-ultimate-spider-man",
+        "episodeUrl": "https://desenefaine.com/epi/marvels-ultimate-spider-man-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:14:14.603Z"
+      }
+    ]
+  },
+  "tv:33880": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/avatar-legenda-lui-korra",
+        "episodeUrl": "https://desenefaine.com/epi/avatar-legenda-lui-korra-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:14:36.096Z"
+      }
+    ]
+  },
+  "tv:81046": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/printul-dragon",
+        "episodeUrl": "https://desenefaine.com/epi/printul-dragon-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:15:57.648Z"
+      }
+    ]
+  },
+  "tv:105797": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/vrajitorii-povesti-din-arcadia",
+        "episodeUrl": "https://desenefaine.com/epi/vrajitorii-povesti-din-arcadia-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:16:25.687Z"
+      }
+    ]
+  },
+  "tv:33623": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/avengers-cei-mai-tari-eroi-ai-pamantului",
+        "episodeUrl": "https://desenefaine.com/epi/avengers-cei-mai-tari-eroi-ai-pamantului-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:17:44.068Z"
+      }
+    ]
+  },
+  "tv:34891": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/jake-si-piratii-din-tara-de-nicaieri",
+        "episodeUrl": "https://desenefaine.com/epi/jake-si-piratii-din-tara-de-nicaieri-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:19:21.710Z"
+      }
+    ]
+  },
+  "tv:2345": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/kim-posibila",
+        "episodeUrl": "https://desenefaine.com/epi/kim-posibila-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:19:46.066Z"
+      }
+    ]
+  },
+  "tv:91363": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/si-daca",
+        "episodeUrl": "https://desenefaine.com/epi/si-daca-s1-ep1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:20:24.803Z"
+      }
+    ]
+  },
+  "tv:68837": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/liga-dreptatii-actiune",
+        "episodeUrl": "https://desenefaine.com/epi/liga-dreptatii-actiune-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:21:18.240Z"
+      }
+    ]
+  },
+  "tv:96650": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/aventurile-lui-paddington",
+        "episodeUrl": "https://desenefaine.com/epi/aventurile-lui-paddington-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:21:39.649Z"
+      }
+    ]
+  },
+  "tv:38867": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/copiii-bionici",
+        "episodeUrl": "https://desenefaine.com/epi/copiii-bionici-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:21:56.844Z"
+      }
+    ]
+  },
+  "tv:129959": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/kung-fu-panda-cavalerul-dragon",
+        "episodeUrl": "https://desenefaine.com/epi/kung-fu-panda-cavalerul-dragon-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:24:39.083Z"
+      }
+    ]
+  },
+  "tv:66203": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/soy-luna",
+        "episodeUrl": "https://desenefaine.com/epi/soy-luna-s1-ep1/",
+        "hosts": [
+          "Byse",
+          "SeekStreaming",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:25:13.561Z"
+      }
+    ]
+  },
+  "tv:105971": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/razboiul-stelelor-lotul-rau",
+        "episodeUrl": "https://desenefaine.com/epi/razboiul-stelelor-lotul-rau-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:26:07.016Z"
+      }
+    ]
+  },
+  "tv:158138": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/fratii-roboti-supergiganti",
+        "episodeUrl": "https://desenefaine.com/epi/fratii-roboti-supergiganti-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:26:23.607Z"
+      }
+    ]
+  },
+  "tv:114466": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/baymax",
+        "episodeUrl": "https://desenefaine.com/epi/baymax-s1-ep1/",
+        "hosts": [
+          "Byse",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:26:51.496Z"
+      }
+    ]
+  },
+  "tv:35094": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/cu-fratii-kratt-in-salbaticie",
+        "episodeUrl": "https://desenefaine.com/epi/wild-kratts-cu-fratii-kratt-in-salbaticie-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:27:50.450Z"
+      }
+    ]
+  },
+  "tv:115304": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/legaturi-incalcite",
+        "episodeUrl": "https://desenefaine.com/epi/legaturi-incalcite-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:28:11.665Z"
+      }
+    ]
+  },
+  "tv:158139": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/terminus-parcul-paranormal",
+        "episodeUrl": "https://desenefaine.com/epi/terminus-parcul-paranormal-1x1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:28:19.478Z"
+      }
+    ]
+  },
+  "tv:73375": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/tom-clancy-prezinta-jack-ryan",
+        "episodeUrl": "https://desenefaine.com/epi/tom-clancy-prezinta-jack-ryan-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:29:01.559Z"
+      }
+    ]
+  },
+  "tv:232125": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/eu-sunt-groot",
+        "episodeUrl": "https://desenefaine.com/epi/eu-sunt-groot-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:29:12.889Z"
+      }
+    ]
+  },
+  "tv:88329": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/hawkeye",
+        "episodeUrl": "https://desenefaine.com/epi/hawkeye-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:29:23.487Z"
+      }
+    ]
+  },
+  "tv:4574": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/x-men",
+        "episodeUrl": "https://desenefaine.com/epi/x-men-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:29:34.670Z"
+      }
+    ]
+  },
+  "tv:88396": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/soimul-si-soldatul-iernii",
+        "episodeUrl": "https://desenefaine.com/epi/soimul-si-soldatul-iernii-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:29:44.463Z"
+      }
+    ]
+  },
+  "tv:10079": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/omul-paianjen-nelimitat",
+        "episodeUrl": "https://desenefaine.com/epi/omul-paianjen-nelimitat-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:29:55.184Z"
+      }
+    ]
+  },
+  "tv:66248": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/kong-regele-maimutelor",
+        "episodeUrl": "https://desenefaine.com/epi/kong-regele-maimutelor-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:30:14.743Z"
+      }
+    ]
+  },
+  "tv:61915": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/k-c-sub-acoperire",
+        "episodeUrl": "https://desenefaine.com/epi/k-c-sub-acoperire-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:30:41.719Z"
+      }
+    ]
+  },
+  "tv:111837": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/willow",
+        "episodeUrl": "https://desenefaine.com/epi/willow-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:30:58.595Z"
+      }
+    ]
+  },
+  "tv:78938": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/joaca-de-a-spionii-misiune-critica",
+        "episodeUrl": "https://desenefaine.com/epi/joaca-de-a-spionii-misiune-critica-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:31:34.449Z"
+      }
+    ]
+  },
+  "tv:66456": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/bizaardvark",
+        "episodeUrl": "https://desenefaine.com/epi/bizaardvark-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:33:06.378Z"
+      }
+    ]
+  },
+  "tv:114463": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/zootropolis",
+        "episodeUrl": "https://desenefaine.com/epi/zootropolis-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:34:01.426Z"
+      }
+    ]
+  },
+  "tv:72027": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/casa-raven",
+        "episodeUrl": "https://desenefaine.com/epi/casa-lui-raven-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:35:04.950Z"
+      }
+    ]
+  },
+  "tv:114478": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/razboiul-stelelor-viziuni",
+        "episodeUrl": "https://desenefaine.com/epi/razboiul-stelelor-viziuni-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:35:15.570Z"
+      }
+    ]
+  },
+  "tv:68665": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/cei-6-super-eroi-serialul",
+        "episodeUrl": "https://desenefaine.com/epi/cei-6-super-eroi-serialul-s1-ep1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:35:41.348Z"
+      }
+    ]
+  },
+  "tv:59375": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/liv-si-maddie",
+        "episodeUrl": "https://desenefaine.com/epi/liv-si-maddie-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:36:02.718Z"
+      }
+    ]
+  },
+  "tv:98240": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/el-este-ponei",
+        "episodeUrl": "https://desenefaine.com/epi/el-este-ponei-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:36:10.618Z"
+      }
+    ]
+  },
+  "tv:93260": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/familia-casagrandes",
+        "episodeUrl": "https://desenefaine.com/epi/familia-casagrandes-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:36:17.924Z"
+      }
+    ]
+  },
+  "tv:72350": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/povestirile-ratoiului",
+        "episodeUrl": "https://desenefaine.com/epi/povestirile-ratoiului-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:36:31.683Z"
+      }
+    ]
+  },
+  "tv:27318": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/invingatorii-painii",
+        "episodeUrl": "https://desenefaine.com/epi/invingatorii-painii-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:36:50.410Z"
+      }
+    ]
+  },
+  "tv:61852": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/henry-pericol",
+        "episodeUrl": "https://desenefaine.com/epi/henry-pericol-s1-ep1/",
+        "hosts": [
+          "Byse",
+          "SeekStreaming",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:37:05.451Z"
+      }
+    ]
+  },
+  "tv:3498": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/magicienii-din-waverly-place",
+        "episodeUrl": "https://desenefaine.com/epi/magicienii-din-waverly-place-s1-ep1/",
+        "hosts": [
+          "Byse",
+          "SeekStreaming",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:37:36.569Z"
+      }
+    ]
+  },
+  "tv:720": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/povestirile-ratoiului-seria-clasica-animata",
+        "episodeUrl": "https://desenefaine.com/epi/povestirile-ratoiului-seria-clasica-animata-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:37:53.392Z"
+      }
+    ]
+  },
+  "tv:57532": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/patrula-catelusilor",
+        "episodeUrl": "https://desenefaine.com/epi/patrula-catelusilor-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:38:51.559Z"
+      }
+    ]
+  },
+  "tv:127445": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/tom-si-jerry-in-new-york",
+        "episodeUrl": "https://desenefaine.com/epi/tom-si-jerry-in-new-york-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:39:15.965Z"
+      }
+    ]
+  },
+  "tv:203085": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/razboiul-stelelor-povesti-jedi",
+        "episodeUrl": "https://desenefaine.com/epi/razboiul-stelelor-povesti-jedi-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:39:35.821Z"
+      }
+    ]
+  },
+  "tv:123591": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/strumfii",
+        "episodeUrl": "https://desenefaine.com/epi/strumfii-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:39:58.720Z"
+      }
+    ]
+  },
+  "tv:69756": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/lost-in-the-west",
+        "episodeUrl": "https://desenefaine.com/epi/lost-in-the-west-s1-ep1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:40:05.165Z"
+      }
+    ]
+  },
+  "tv:210694": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/catelusii-fantomatici",
+        "episodeUrl": "https://desenefaine.com/epi/catelusii-fantomatici-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:40:12.655Z"
+      }
+    ]
+  },
+  "tv:212989": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/lego-ninjago-ascensiunea-dragonilor",
+        "episodeUrl": "https://desenefaine.com/epi/lego-ninjago-ascensiunea-dragonilor-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:40:22.728Z"
+      }
+    ]
+  },
+  "tv:128023": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/armura-de-jad",
+        "episodeUrl": "https://desenefaine.com/epi/armura-de-jad-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:40:33.276Z"
+      }
+    ]
+  },
+  "tv:65564": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/draculas-vampirul-iepuras",
+        "episodeUrl": "https://desenefaine.com/epi/draculas-vampirul-iepuras-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:40:46.482Z"
+      }
+    ]
+  },
+  "tv:1931": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/aventurile-ursuletilor-gummy",
+        "episodeUrl": "https://desenefaine.com/epi/aventurile-ursuletilor-gummy-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:40:53.085Z"
+      }
+    ]
+  },
+  "tv:70104": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/nella-printesa-cavaler",
+        "episodeUrl": "https://desenefaine.com/epi/nella-printesa-cavaler-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:40:59.988Z"
+      }
+    ]
+  },
+  "tv:46262": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/doctorita-plusica",
+        "episodeUrl": "https://desenefaine.com/epi/doctorita-plusica-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:41:26.644Z"
+      }
+    ]
+  },
+  "tv:156608": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/eureka",
+        "episodeUrl": "https://desenefaine.com/epi/eureka-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:41:37.289Z"
+      }
+    ]
+  },
+  "tv:127633": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/mickey-mouse-casa-distractiei",
+        "episodeUrl": "https://desenefaine.com/epi/mickey-mouse-casa-distractiei-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:41:44.696Z"
+      }
+    ]
+  },
+  "tv:15260": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/sa-nceapa-aventura",
+        "episodeUrl": "https://desenefaine.com/epi/sa-nceapa-aventura-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:41:48.230Z"
+      }
+    ]
+  },
+  "tv:6618": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/insula-dramei-totale",
+        "episodeUrl": "https://desenefaine.com/epi/insula-dramei-totale-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:41:57.985Z"
+      }
+    ]
+  },
+  "tv:209708": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/puterea-printeselor",
+        "episodeUrl": "https://desenefaine.com/epi/puterea-printeselor-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:42:05.971Z"
+      }
+    ]
+  },
+  "tv:8616": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/actiune-drama-totala",
+        "episodeUrl": "https://desenefaine.com/epi/actiune-drama-totala-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:42:12.914Z"
+      }
+    ]
+  },
+  "tv:19123": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/turneul-mondial-al-dramei-totale",
+        "episodeUrl": "https://desenefaine.com/epi/turneul-mondial-al-dramei-totale-sezonul1-episoul1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:42:26.407Z"
+      }
+    ]
+  },
+  "tv:218695": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/lego-friends-urmatorul-capitol",
+        "episodeUrl": "https://desenefaine.com/epi/lego-friends-urmatorul-capitol-s1-ep1/",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:42:32.989Z"
+      }
+    ]
+  },
+  "tv:91997": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/pluto",
+        "episodeUrl": "https://desenefaine.com/epi/pluto-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:42:49.855Z"
+      }
+    ]
+  },
+  "tv:38881": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/transformatorii-salvatorii",
+        "episodeUrl": "https://desenefaine.com/epi/transformatorii-salvatorii-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:42:56.790Z"
+      }
+    ]
+  },
+  "tv:75911": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/transformers-energon",
+        "episodeUrl": "https://desenefaine.com/epi/transformers-energon-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:43:03.246Z"
+      }
+    ]
+  },
+  "tv:70967": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/sta-sa-ploua-cu-chiftele",
+        "episodeUrl": "https://desenefaine.com/epi/sta-sa-ploua-cu-chiftele-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:43:17.979Z"
+      }
+    ]
+  },
+  "tv:210945": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/onimusha",
+        "episodeUrl": "https://desenefaine.com/epi/onimusha-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:43:25.420Z"
+      }
+    ]
+  },
+  "tv:222024": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/erin-si-aaron",
+        "episodeUrl": "https://desenefaine.com/epi/erin-si-aaron-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:43:35.767Z"
+      }
+    ]
+  },
+  "tv:18123": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/scooby-doo-si-echipa-misterelor",
+        "episodeUrl": "https://desenefaine.com/epi/scooby-doo-si-echipa-misterelor-s1-ep1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:43:46.509Z"
+      }
+    ]
+  },
+  "tv:199175": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/barbie-it-takes-two",
+        "episodeUrl": "https://desenefaine.com/epi/barbie-it-takes-two-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:44:16.810Z"
+      }
+    ]
+  },
+  "tv:153864": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/cartitel",
+        "episodeUrl": "https://desenefaine.com/epi/cartitel-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:44:35.306Z"
+      }
+    ]
+  },
+  "tv:91433": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/t-o-t-s",
+        "episodeUrl": "https://desenefaine.com/epi/t-o-t-s-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:44:48.897Z"
+      }
+    ]
+  },
+  "tv:2355": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/lilo-si-stitch-seria",
+        "episodeUrl": "https://desenefaine.com/epi/lilo-si-stitch-seria-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:45:12.504Z"
+      }
+    ]
+  },
+  "tv:78254": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/mar-si-ceapa",
+        "episodeUrl": "https://desenefaine.com/epi/mar-si-ceapa-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:45:23.176Z"
+      }
+    ]
+  },
+  "tv:37606": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/uimitoarea-lume-a-lui-gumball",
+        "episodeUrl": "https://desenefaine.com/epi/uimitoarea-lume-a-lui-gumball-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:45:40.541Z"
+      }
+    ]
+  },
+  "tv:103540": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/percy-jackson-si-olimpienii",
+        "episodeUrl": "https://desenefaine.com/epi/percy-jackson-si-olimpienii-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:45:50.922Z"
+      }
+    ]
+  },
+  "tv:95556": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/expatii",
+        "episodeUrl": "https://desenefaine.com/epi/expatii-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:46:01.839Z"
+      }
+    ]
+  },
+  "tv:235995": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/hot-wheels-sa-ne-ntrecem",
+        "episodeUrl": "https://desenefaine.com/epi/hot-wheels-sa-ne-ntrecem-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:46:19.626Z"
+      }
+    ]
+  },
+  "tv:114481": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/iwaju-orasul-viitorului",
+        "episodeUrl": "https://desenefaine.com/epi/iwaju-orasul-viitorului-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:46:26.998Z"
+      }
+    ]
+  },
+  "tv:122226": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/echo",
+        "episodeUrl": "https://desenefaine.com/epi/echo-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:46:33.839Z"
+      }
+    ]
+  },
+  "tv:33507": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/insula-dramei-totale-revansa",
+        "episodeUrl": "https://desenefaine.com/epi/insula-dramei-totale-revansa-sezonul1-episoul1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:46:45.187Z"
+      }
+    ]
+  },
+  "tv:67082": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/drama-totala-cursa-colosala",
+        "episodeUrl": "https://desenefaine.com/epi/drama-totala-cursa-colosala-sezonul1-episoul1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:46:51.891Z"
+      }
+    ]
+  },
+  "tv:118642": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/dl-si-dna-smith",
+        "episodeUrl": "https://desenefaine.com/epi/dl-si-dna-smith-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:46:58.759Z"
+      }
+    ]
+  },
+  "tv:72442": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/hotel-transylvania-serialul",
+        "episodeUrl": "https://desenefaine.com/epi/hotel-transylvania-serialul-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:47:08.408Z"
+      }
+    ]
+  },
+  "tv:2675": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/mica-sirena",
+        "episodeUrl": "https://desenefaine.com/epi/mica-sirena-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:47:21.785Z"
+      }
+    ]
+  },
+  "tv:68194": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/eu-si-cavalerul-meu",
+        "episodeUrl": "https://desenefaine.com/epi/eu-si-cavalerul-meu-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:47:33.237Z"
+      }
+    ]
+  },
+  "tv:109930": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/minunata-lume-a-lui-mickey-mouse",
+        "episodeUrl": "https://desenefaine.com/epi/minunata-lume-a-lui-mickey-mouse-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:47:46.766Z"
+      }
+    ]
+  },
+  "tv:106138": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/insula-monstrilor",
+        "episodeUrl": "https://desenefaine.com/epi/insula-monstrilor-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:48:04.902Z"
+      }
+    ]
+  },
+  "tv:4625": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/noile-aventuri-ale-lui-batman",
+        "episodeUrl": "https://desenefaine.com/epi/noile-aventuri-ale-lui-batman-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:49:05.072Z"
+      }
+    ]
+  },
+  "tv:79093": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/star-wars-rezistenta",
+        "episodeUrl": "https://desenefaine.com/epi/star-wars-rezistenta-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:49:15.686Z"
+      }
+    ]
+  },
+  "tv:158300": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/knuckles",
+        "episodeUrl": "https://desenefaine.com/epi/knuckles-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:49:29.910Z"
+      }
+    ]
+  },
+  "tv:228669": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/disney-junior-ariel",
+        "episodeUrl": "https://desenefaine.com/epi/disney-junior-ariel-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:49:41.525Z"
+      }
+    ]
+  },
+  "tv:245782": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/lumea-secreta-a-sunetelor",
+        "episodeUrl": "https://desenefaine.com/epi/lumea-secreta-a-sunetelor-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:49:55.769Z"
+      }
+    ]
+  },
+  "tv:153492": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/paianjenelul-lucas",
+        "episodeUrl": "https://desenefaine.com/epi/paianjenelul-lucas-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:50:09.650Z"
+      }
+    ]
+  },
+  "tv:138992": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/hailey-se-ocupa",
+        "episodeUrl": "https://desenefaine.com/epi/hailey-se-ocupa-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:50:19.907Z"
+      }
+    ]
+  },
+  "tv:127727": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/posta-pe-aproape",
+        "episodeUrl": "https://desenefaine.com/epi/posta-pe-aproape-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:50:44.496Z"
+      }
+    ]
+  },
+  "tv:209809": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/ronia-fata-de-talhar",
+        "episodeUrl": "https://desenefaine.com/epi/ronia-fata-de-talhar-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:50:50.947Z"
+      }
+    ]
+  },
+  "tv:62783": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/cele-mai-bune-prietene-oricand",
+        "episodeUrl": "https://desenefaine.com/epi/cele-mai-bune-prietene-oricand-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:51:04.735Z"
+      }
+    ]
+  },
+  "tv:201478": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/super-pisicute",
+        "episodeUrl": "https://desenefaine.com/epi/super-pisicute-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:51:15.623Z"
+      }
+    ]
+  },
+  "tv:46698": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/randy-cunningham-baiatul-ninja",
+        "episodeUrl": "https://desenefaine.com/epi/randy-cunningham-baiatul-ninja-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:51:21.869Z"
+      }
+    ]
+  },
+  "tv:73541": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/rusty-repara-tot",
+        "episodeUrl": "https://desenefaine.com/epi/rusty-repara-tot-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:51:31.490Z"
+      }
+    ]
+  },
+  "tv:106379": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/fallout",
+        "episodeUrl": "https://desenefaine.com/epi/fallout-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:51:47.667Z"
+      }
+    ]
+  },
+  "tv:130987": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/duplicate",
+        "episodeUrl": "https://desenefaine.com/epi/duplicate-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:51:57.587Z"
+      }
+    ]
+  },
+  "tv:216770": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/zokie-de-pe-planeta-ruby",
+        "episodeUrl": "https://desenefaine.com/epi/zokie-de-pe-planeta-ruby-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:52:51.211Z"
+      }
+    ]
+  },
+  "tv:251091": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/razboiul-stelelor-povestile-imperiului",
+        "episodeUrl": "https://desenefaine.com/epi/razboiul-stelelor-povestile-imperiului-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:53:14.331Z"
+      }
+    ]
+  },
+  "tv:105177": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/mistere-neelucidate",
+        "episodeUrl": "https://desenefaine.com/epi/mistere-neelucidate-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:53:41.794Z"
+      }
+    ]
+  },
+  "tv:135238": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/creatura-din-gyeongseong",
+        "episodeUrl": "https://desenefaine.com/epi/creatura-din-gyeongseong-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:53:52.494Z"
+      }
+    ]
+  },
+  "tv:84368": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/patrula-dino",
+        "episodeUrl": "https://desenefaine.com/epi/patrula-dino-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:54:13.909Z"
+      }
+    ]
+  },
+  "tv:72805": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/cronicile-lui-zorro",
+        "episodeUrl": "https://desenefaine.com/epi/cronicile-lui-zorro-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:54:23.960Z"
+      }
+    ]
+  },
+  "tv:90281": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/oswaldo",
+        "episodeUrl": "https://desenefaine.com/epi/oswaldo-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:54:34.218Z"
+      }
+    ]
+  },
+  "tv:138503": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/omul-paianjen-vecinul-prietenos",
+        "episodeUrl": "https://desenefaine.com/epi/omul-paianjen-vecinul-prietenos-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:54:48.612Z"
+      }
+    ]
+  },
+  "tv:114471": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/inima-de-fier",
+        "episodeUrl": "https://desenefaine.com/epi/inima-de-fier-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:54:58.883Z"
+      }
+    ]
+  },
+  "tv:14636": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/secretele-familiei-sambata",
+        "episodeUrl": "https://desenefaine.com/epi/secretele-familiei-sambata-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:55:09.124Z"
+      }
+    ]
+  },
+  "tv:231728": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/cei-sapte-ursuleti",
+        "episodeUrl": "https://desenefaine.com/epi/cei-sapte-ursuleti-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:55:19.812Z"
+      }
+    ]
+  },
+  "tv:74916": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/curse-trasnite",
+        "episodeUrl": "https://desenefaine.com/epi/curse-trasnite-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:55:33.618Z"
+      }
+    ]
+  },
+  "tv:249522": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/competitia-beast",
+        "episodeUrl": "https://desenefaine.com/epi/competitia-beast-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:55:40.739Z"
+      }
+    ]
+  },
+  "tv:202555": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/daredevil-renasterea",
+        "episodeUrl": "https://desenefaine.com/epi/daredevil-renasterea-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:55:51.434Z"
+      }
+    ]
+  },
+  "tv:63038": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/100-de-lucruri-de-facut-inainte-de-liceu",
+        "episodeUrl": "https://desenefaine.com/epi/100-de-lucruri-de-facut-inainte-de-liceu-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:56:01.142Z"
+      }
+    ]
+  },
+  "tv:114500": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/castigi-sau-pierzi",
+        "episodeUrl": "https://desenefaine.com/epi/castigi-sau-pierzi-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:56:22.547Z"
+      }
+    ]
+  },
+  "tv:241388": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/eyes-of-wakanda",
+        "episodeUrl": "https://desenefaine.com/epi/eyes-of-wakanda-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:56:34.484Z"
+      }
+    ]
+  },
+  "tv:235998": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/masinute-monstruoase",
+        "episodeUrl": "https://desenefaine.com/epi/masinute-monstruoase-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:56:48.591Z"
+      }
+    ]
+  },
+  "tv:82578": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/secretul-lui-nick",
+        "episodeUrl": "https://desenefaine.com/epi/secretul-lui-nick-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:56:59.027Z"
+      }
+    ]
+  },
+  "tv:204139": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/primos",
+        "episodeUrl": "https://desenefaine.com/epi/primos-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:57:12.675Z"
+      }
+    ]
+  },
+  "tv:231727": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/regele-lup",
+        "episodeUrl": "https://desenefaine.com/epi/regele-lup-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:57:23.620Z"
+      }
+    ]
+  },
+  "tv:218342": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/ghidul-pentru-crima-al-unei-fete-cuminti",
+        "episodeUrl": "https://desenefaine.com/epi/ghidul-pentru-crima-al-unei-fete-cuminti-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T16:57:34.240Z"
+      }
+    ]
+  },
+  "tv:131830": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/clubul-de-scufundari",
+        "episodeUrl": "https://desenefaine.com/epi/clubul-de-scufundari-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:57:54.065Z"
+      }
+    ]
+  },
+  "tv:2395": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/legenda-lui-tarzan",
+        "episodeUrl": "https://desenefaine.com/epi/legenda-lui-tarzan-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:58:14.339Z"
+      }
+    ]
+  },
+  "tv:122781": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/asterix-si-obelix-batalia-dintre-sefi",
+        "episodeUrl": "https://desenefaine.com/epi/asterix-si-obelix-batalia-dintre-sefi-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:58:35.492Z"
+      }
+    ]
+  },
+  "tv:288055": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/razboiul-stelelor-povesti-din-lumea-underground",
+        "episodeUrl": "https://desenefaine.com/epi/razboiul-stelelor-povesti-din-lumea-underground-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:58:45.813Z"
+      }
+    ]
+  },
+  "tv:252605": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/tocilara",
+        "episodeUrl": "https://desenefaine.com/epi/tocilara-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:58:56.306Z"
+      }
+    ]
+  },
+  "tv:255779": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/pariu",
+        "episodeUrl": "https://desenefaine.com/epi/pariu-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:59:06.322Z"
+      }
+    ]
+  },
+  "tv:213782": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/lexi-si-lottie",
+        "episodeUrl": "https://desenefaine.com/epi/lexi-si-lottie-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:59:17.327Z"
+      }
+    ]
+  },
+  "tv:99692": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/echipa-dronix",
+        "episodeUrl": "https://desenefaine.com/epi/echipa-dronix-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:59:23.785Z"
+      }
+    ]
+  },
+  "tv:156606": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/hamster-gretel",
+        "episodeUrl": "https://desenefaine.com/epi/hamster-si-gretel-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:59:30.970Z"
+      }
+    ]
+  },
+  "tv:31623": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/echipa-umizoomi",
+        "episodeUrl": "https://desenefaine.com/epi/echipa-umizoomi-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:59:37.709Z"
+      }
+    ]
+  },
+  "tv:255868": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/productiile-de-vis",
+        "episodeUrl": "https://desenefaine.com/epi/productiile-de-vis-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T16:59:52.684Z"
+      }
+    ]
+  },
+  "tv:224024": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/max-si-minicavalerii",
+        "episodeUrl": "https://desenefaine.com/epi/max-si-minicavalerii-sezonul-1-episodul-1/",
+        "hosts": [
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:00:00.072Z"
+      }
+    ]
+  },
+  "tv:158691": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/my-little-pony-redescopera-magia",
+        "episodeUrl": "https://desenefaine.com/epi/my-little-pony-redescopera-magia-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:01:51.309Z"
+      }
+    ]
+  },
+  "tv:52051": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/eu-si-mia",
+        "episodeUrl": "https://desenefaine.com/epi/eu-si-mia-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:02:25.218Z"
+      }
+    ]
+  },
+  "tv:111474": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/casa-de-papusi-a-lui-gabby",
+        "episodeUrl": "https://desenefaine.com/epi/casa-de-papusi-a-lui-gabby-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:03:29.192Z"
+      }
+    ]
+  },
+  "tv:274388": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/omul-de-fier-si-prietenii-lui-uimitori",
+        "episodeUrl": "https://desenefaine.com/epi/omul-de-fier-si-prietenii-lui-uimitori-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:04:08.452Z"
+      }
+    ]
+  },
+  "tv:45140": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/haideti-tineri-titani",
+        "episodeUrl": "https://desenefaine.com/epi/haideti-tineri-titani-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:04:36.909Z"
+      }
+    ]
+  },
+  "tv:33765": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/micul-meu-ponei-prietenia-este-magica",
+        "episodeUrl": "https://desenefaine.com/epi/micul-meu-ponei-prietenia-este-magica-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:05:32.983Z"
+      }
+    ]
+  },
+  "tv:302540": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/baietii-rai-imblanzirea",
+        "episodeUrl": "https://desenefaine.com/epi/baietii-rai-imblanzirea-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:06:59.746Z"
+      }
+    ]
+  },
+  "tv:254653": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/familia-thunderman-sub-acoperire",
+        "episodeUrl": "https://desenefaine.com/epi/familia-thunderman-sub-acoperire-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:07:15.002Z"
+      }
+    ]
+  },
+  "tv:202121": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/misterele-din-rock-island",
+        "episodeUrl": "https://desenefaine.com/epi/misterele-din-rock-island-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:07:38.610Z"
+      }
+    ]
+  },
+  "tv:257720": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/super-duper-bunny-league",
+        "episodeUrl": "https://desenefaine.com/epi/super-duper-bunny-league-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:08:04.089Z"
+      }
+    ]
+  },
+  "tv:225361": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/familia-batman",
+        "episodeUrl": "https://desenefaine.com/epi/familia-batman-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:08:27.951Z"
+      }
+    ]
+  },
+  "tv:236234": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/dora",
+        "episodeUrl": "https://desenefaine.com/epi/dora-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:08:51.056Z"
+      }
+    ]
+  },
+  "tv:61854": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/nicky-ricki-dicky-si-dawn",
+        "episodeUrl": "https://desenefaine.com/epi/nicky-ricki-dicky-si-dawn-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:09:05.679Z"
+      }
+    ]
+  },
+  "tv:80056": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/fancy-nancy-clancy",
+        "episodeUrl": "https://desenefaine.com/epi/fancy-nancy-clancy-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:09:19.747Z"
+      }
+    ]
+  },
+  "tv:47035": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/unchiul-bunic",
+        "episodeUrl": "https://desenefaine.com/epi/unchiul-bunic-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:09:37.209Z"
+      }
+    ]
+  },
+  "tv:1863": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/gasca-ratelor",
+        "episodeUrl": "https://desenefaine.com/epi/gasca-ratelor-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:09:50.874Z"
+      }
+    ]
+  },
+  "tv:34109": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/luptatorii-bakugan",
+        "episodeUrl": "https://desenefaine.com/epi/luptatorii-bakugan-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:10:12.819Z"
+      }
+    ]
+  },
+  "tv:114502": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/masini-la-drum",
+        "episodeUrl": "https://desenefaine.com/epi/masini-la-drum-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:10:36.663Z"
+      }
+    ]
+  },
+  "tv:3319": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/darkwing-duck",
+        "episodeUrl": "https://desenefaine.com/epi/darkwing-duck-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:10:50.838Z"
+      }
+    ]
+  },
+  "tv:228880": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/beast-boy-lupul-singuratic",
+        "episodeUrl": "https://desenefaine.com/epi/beast-boy-lupul-singuratic-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:16:27.285Z"
+      }
+    ]
+  },
+  "tv:129565": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/ciudatii-mei-parinti-si-mai-ciudati",
+        "episodeUrl": "https://desenefaine.com/epi/ciudatii-mei-parinti-si-mai-ciudati-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:27:01.456Z"
+      }
+    ]
+  },
+  "tv:85948": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/star-trek-puntea-inferioara",
+        "episodeUrl": "https://desenefaine.com/epi/star-trek-puntea-inferioara-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:27:12.072Z"
+      }
+    ]
+  },
+  "tv:131364": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/pregatiti-pentru-gradinita",
+        "episodeUrl": "https://desenefaine.com/epi/pregatiti-pentru-gradinita-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:27:22.406Z"
+      }
+    ]
+  },
+  "tv:57748": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/henry-dragomonstru",
+        "episodeUrl": "https://desenefaine.com/epi/henry-dragomonstru-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:28:11.542Z"
+      }
+    ]
+  },
+  "tv:204136": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/zombi-seria-re-animata",
+        "episodeUrl": "https://desenefaine.com/epi/zombi-seria-re-animata-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:29:17.557Z"
+      }
+    ]
+  },
+  "tv:99588": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/tabara-coral-cu-spogebob-minimarin",
+        "episodeUrl": "https://desenefaine.com/epi/tabara-coral-cu-spogebob-minimarin-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:29:59.083Z"
+      }
+    ]
+  },
+  "tv:224981": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/kitti-katz",
+        "episodeUrl": "https://desenefaine.com/epi/kitti-katz-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:30:12.554Z"
+      }
+    ]
+  },
+  "tv:105046": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/luminita",
+        "episodeUrl": "https://desenefaine.com/epi/luminita-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:30:19.691Z"
+      }
+    ]
+  },
+  "tv:30916": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/baietii-descurcareti",
+        "episodeUrl": "https://desenefaine.com/epi/baietii-descurcareti-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:30:55.908Z"
+      }
+    ]
+  },
+  "tv:119847": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/gardienii-padurii",
+        "episodeUrl": "https://desenefaine.com/epi/gardienii-padurii-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:31:17.061Z"
+      }
+    ]
+  },
+  "tv:136752": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/ham-ham-in-spatiu",
+        "episodeUrl": "https://desenefaine.com/epi/ham-ham-in-spatiu-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:31:40.959Z"
+      }
+    ]
+  },
+  "tv:1069": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/cele-13-fantome-ale-lui-scooby-doo",
+        "episodeUrl": "https://desenefaine.com/epi/cele-13-fantome-ale-lui-scooby-doo-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:31:52.429Z"
+      }
+    ]
+  },
+  "tv:1068": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/noile-filme-cu-scooby-doo",
+        "episodeUrl": "https://desenefaine.com/epi/noile-filme-cu-scooby-doo-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:32:04.201Z"
+      }
+    ]
+  },
+  "tv:652": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/ce-mai-e-nou-scooby-doo",
+        "episodeUrl": "https://desenefaine.com/epi/ce-mai-e-nou-scooby-doo-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:32:18.390Z"
+      }
+    ]
+  },
+  "tv:258926": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/tim-rex-in-spatiu",
+        "episodeUrl": "https://desenefaine.com/epi/tim-rex-in-spatiu-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:32:33.124Z"
+      }
+    ]
+  },
+  "tv:37807": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/beyblade-metal-saga",
+        "episodeUrl": "https://desenefaine.com/epi/beyblade-metal-saga-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:33:05.469Z"
+      }
+    ]
+  },
+  "tv:84587": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/disney-vampirinele-rock",
+        "episodeUrl": "https://desenefaine.com/epi/disney-vampirinele-rock-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:33:33.697Z"
+      }
+    ]
+  },
+  "tv:288018": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/gigi",
+        "episodeUrl": "https://desenefaine.com/epi/gigi-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:34:19.120Z"
+      }
+    ]
+  },
+  "tv:281016": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/iubit-la-cerere",
+        "episodeUrl": "https://desenefaine.com/epi/iubit-la-cerere-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:34:33.658Z"
+      }
+    ]
+  },
+  "tv:98566": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/scurtcircuit",
+        "episodeUrl": "https://desenefaine.com/epi/scurtcircuit-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:34:47.541Z"
+      }
+    ]
+  },
+  "tv:316945": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/academia-unicornilor-secrete-dezvaluite",
+        "episodeUrl": "https://desenefaine.com/epi/academia-unicornilor-secrete-dezvaluite-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:35:01.295Z"
+      }
+    ]
+  },
+  "tv:228671": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/tabara-magiei",
+        "episodeUrl": "https://desenefaine.com/epi/tabara-magiei-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:35:18.390Z"
+      }
+    ]
+  },
+  "tv:91278": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/marvel-razbunatorii-viitorului",
+        "episodeUrl": "https://desenefaine.com/epi/marvel-razbunatorii-viitorului-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:35:32.077Z"
+      }
+    ]
+  },
+  "tv:204684": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/aventuri-trasnite-cu-james",
+        "episodeUrl": "https://desenefaine.com/epi/aventuri-trasnite-cu-james-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:36:11.252Z"
+      }
+    ]
+  },
+  "tv:2530": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/dl-bean-seria-animata",
+        "episodeUrl": "https://desenefaine.com/epi/dl-bean-seria-animata-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:36:22.591Z"
+      }
+    ]
+  },
+  "tv:61483": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/micul-print",
+        "episodeUrl": "https://desenefaine.com/epi/micul-print-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:36:46.219Z"
+      }
+    ]
+  },
+  "tv:8392": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/popeye-marinarul",
+        "episodeUrl": "https://desenefaine.com/epi/popeye-marinarul-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:36:56.486Z"
+      }
+    ]
+  },
+  "tv:285985": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/familia-happos",
+        "episodeUrl": "https://desenefaine.com/epi/familia-happos-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:37:07.030Z"
+      }
+    ]
+  },
+  "tv:63722": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/razboiul-stelelor-o-poveste-droid",
+        "episodeUrl": "https://desenefaine.com/epi/razboiul-stelelor-o-poveste-droid-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:37:30.767Z"
+      }
+    ]
+  },
+  "tv:1848": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/clubul-zanelor",
+        "episodeUrl": "https://desenefaine.com/epi/clubul-zanelor-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:37:54.835Z"
+      }
+    ]
+  },
+  "tv:223386": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/pus-pe-jar",
+        "episodeUrl": "https://desenefaine.com/epi/pus-pe-jar-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:38:08.700Z"
+      }
+    ]
+  },
+  "tv:318262": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/sa-ma-marit-cu-un-ucigas",
+        "episodeUrl": "https://desenefaine.com/epi/sa-ma-marit-cu-un-ucigas-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:38:19.809Z"
+      }
+    ]
+  },
+  "tv:155780": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/batroti",
+        "episodeUrl": "https://desenefaine.com/epi/batroti-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "VOE"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:38:30.472Z"
+      }
+    ]
+  },
+  "tv:129604": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/ada-savanta",
+        "episodeUrl": "https://desenefaine.com/epi/ada-savanta-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:38:51.141Z"
+      }
+    ]
+  },
+  "tv:15079": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/o-viata-minunata-pe-punte",
+        "episodeUrl": "https://desenefaine.com/epi/o-viata-minunata-pe-punte-sezonul-1-episodul-1/",
+        "hosts": [
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:39:00.993Z"
+      }
+    ]
+  },
+  "tv:261647": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/sofia-intai-magia-regala",
+        "episodeUrl": "https://desenefaine.com/epi/sofia-intai-magia-regala-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:43:19.520Z"
+      }
+    ]
+  },
+  "tv:125438": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/noile-aventuri-ale-familiei-proud",
+        "episodeUrl": "https://desenefaine.com/epi/noile-aventuri-ale-familiei-proud-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:44:00.517Z"
+      }
+    ]
+  },
+  "tv:289324": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/razboiul-stelelor-viziuni-prezinta-al-noualea-jedi",
+        "episodeUrl": "https://desenefaine.com/epi/razboiul-stelelor-viziuni-prezinta-al-noualea-jedi-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:44:31.151Z"
+      }
+    ]
+  },
+  "tv:138502": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/x-men-97",
+        "episodeUrl": "https://desenefaine.com/epi/x-men-97-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:44:38.429Z"
+      }
+    ]
+  },
+  "tv:135531": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/miraculous-chibi",
+        "episodeUrl": "https://desenefaine.com/epi/miraculous-chibi-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:44:45.664Z"
+      }
+    ]
+  },
+  "tv:317374": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/jurnale-din-dulap-descendentii",
+        "episodeUrl": "https://desenefaine.com/epi/jurnale-din-dulap-descendentii-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:44:52.302Z"
+      }
+    ]
+  },
+  "tv:277410": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/dino-ranch-exploratori-pe-insula",
+        "episodeUrl": "https://desenefaine.com/epi/dino-ranch-exploratori-pe-insula-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:45:13.389Z"
+      }
+    ]
+  },
+  "tv:313973": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/jurnale-din-dulap-z-o-m-b-i",
+        "episodeUrl": "https://desenefaine.com/epi/jurnale-din-dulap-z-o-m-b-i-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T17:45:28.623Z"
+      }
+    ]
+  },
+  "tv:318918": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/lego-one-piece",
+        "episodeUrl": "https://desenefaine.com/epi/lego-one-piece-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:45:38.613Z"
+      }
+    ]
+  },
+  "tv:66558": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/voltron-aparatorul-legendar",
+        "episodeUrl": "https://desenefaine.com/epi/voltron-aparatorul-legendar-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:45:45.666Z"
+      }
+    ]
+  },
+  "tv:256694": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/sa-nceapa-aventura-misiuni-secundare",
+        "episodeUrl": "https://desenefaine.com/epi/sa-nceapa-aventura-misiuni-secundare-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:45:59.590Z"
+      }
+    ]
+  },
+  "tv:213375": {
+    "catalog": "romanian-dubbed-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/visionquest",
+        "episodeUrl": "https://desenefaine.com/epi/visionquest-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:46:13.370Z"
+      }
+    ]
+  },
+  "tv:284833": {
+    "catalog": "romanian-animated-series",
+    "scope": "S1E1",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/serial/avatar-cele-sapte-refugii",
+        "episodeUrl": "https://desenefaine.com/epi/avatar-cele-sapte-refugii-sezonul-1-episodul-1/",
+        "hosts": [
+          "Byse",
+          "StreamP2P",
+          "SeekStreaming"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T17:46:26.865Z"
       }
     ]
   }

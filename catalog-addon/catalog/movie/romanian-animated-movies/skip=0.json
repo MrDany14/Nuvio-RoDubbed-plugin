@@ -1,6 +1,14 @@
 {
   "metas": [
     {
+      "id": "tmdb:1750432",
+      "type": "movie",
+      "name": "Spidey and the Avengers: Halloween Team-Up!",
+      "releaseInfo": "2026",
+      "poster": "https://image.tmdb.org/t/p/w500/hPucpn2pmszkcqRVHmrlUYK0PtG.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:1731694",
       "type": "movie",
       "name": "LEGO Star Wars: The Mandalorian",
@@ -369,6 +377,14 @@
       "description": "În Regatul Castiliei, o forță întunecată se ridică din nou. Cu doar câteva zile înainte de încoronarea noului Împărat și a noii Împărătese, cei șapte pui regali sunt răpiți, iar soarta lor ajunge în mâinile unui singur erou: un adolescent livrator, Arthur Capra. Visul lui de a deveni frizer de renume mondial este pus în așteptare când devine părinte peste noapte. Pentru a-i ține în siguranță pe micuții năzdrăvani în timpul călătoriei, Arthur trebuie mai întâi să se maturizeze, să-și descopere propriul trecut și, pe parcurs, să trezească campioni uitați. Va reuși Arthur să aducă moștenitorii înapoi și, în cele din urmă, să salveze regatul?\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
+      "id": "tmdb:823219",
+      "type": "movie",
+      "name": "Flow - O pisică fără frică",
+      "releaseInfo": "2024",
+      "poster": "https://image.tmdb.org/t/p/w500/xGbXOZ50SQQEtHdgS9IztkQaUcY.jpg",
+      "description": "Lumea pare să se apropie de sfârșit, plină de rămășițele prezenței umane. Pisica este un animal singuratic, dar casa sa este distrusă de un mare potop, așa că este nevoită să își găsească refugiu pe o barcă alături de alte animale. În ciuda diferențelor dintre ei, aceștia vor forma o echipă de neoprit în timp ce barca solitară navighează prin peisaje mistice inundate, iar animăluțele trec prin diferite provocări și pericole pentru a se adapta acestei noi lumi.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:974663",
       "type": "movie",
       "name": "200% lup",
@@ -543,6 +559,14 @@
       "releaseInfo": "2023",
       "poster": "https://image.tmdb.org/t/p/w500/m6tuBUWG9W7ajV74canrYpK2bAN.jpg",
       "description": "Poppy descoperă că Branch a făcut cândva parte din trupa pop BroZone alături de frații săi Floyd, John Dory, Spruce și Clay, dar când Floyd este răpit, cei doi prieteni trebuie să plece într-o călătorie pentru a-l salva și a-i reuni pe toți.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1166714",
+      "type": "movie",
+      "name": "Mickey and Friends: Trick or Treats",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/ntL7axfE0W0HHcF0wAmlRVla20o.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:1146348",
@@ -775,30 +799,6 @@
       "releaseInfo": "2022",
       "poster": "https://image.tmdb.org/t/p/w500/vx1u0uwxdlhV2MUzj4VlcMB0N6m.jpg",
       "description": "Cineastul distins cu premiul Oscar Guillermo del Toro reinventează povestea clasică semnată de Carlo Collodi, despre o marionetă de lemn care prinde viață în mod magic pentru a alina suferința unui tâmplar pe nume Geppetto. Acest musical fantastic de tip stop-cadru, regizat de Guillermo del Toro și Mark Gustafson urmărește peripețiile neascultătorului Pinocchio, care se află în căutarea locului său pe lume.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1034470",
-      "type": "movie",
-      "name": "Barbie: Epic Road Trip",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/a2a1Y6a6UriLJ0U7cGjphPOWQPK.jpg",
-      "description": "O aventură interactivă în care Barbie pornește într-o excursie prin toată țara și ia decizii importante legate de viitor. Oare ce vis își va îndeplini?\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1012801",
-      "type": "movie",
-      "name": "Barbie în Puterea sirenelor",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/8qb8cLDBAWdahrtixN2mQdI6e52.jpg",
-      "description": "Barbie „Brooklyn” Roberts, Barbie „Malibu” Roberts și surorile Skipper, Stacie și Chelsea pornesc într-o aventură subacvatică și se transformă în sirene pentru a salva lumea Pacifica.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:1053812",
-      "type": "movie",
-      "name": "Thomas & Friends: The Mystery of Lookout Mountain",
-      "releaseInfo": "2022",
-      "poster": "https://image.tmdb.org/t/p/w500/y54q8Dpa2Z1qC1SGF2aDodo4Kyl.jpg",
-      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     }
   ]
 }

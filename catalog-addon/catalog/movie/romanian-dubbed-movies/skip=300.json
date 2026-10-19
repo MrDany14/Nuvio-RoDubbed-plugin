@@ -1,6 +1,38 @@
 {
   "metas": [
     {
+      "id": "tmdb:277217",
+      "type": "movie",
+      "name": "Descendenții",
+      "releaseInfo": "2015",
+      "poster": "https://image.tmdb.org/t/p/w500/enleHo8EMGqiCAdS80K8WsuW8mF.jpg",
+      "description": "În regatul Auradon, Ben, blândul fiu al regelui Adam și al reginei Belle, oferă o șansă la izbăvire descendenților unor personaje negative clasice din lumea Disney: Cruella De Vil (Carlos), Maleficent (Mal), Regina cea Rea (Evvie) și Jafar (Jay).\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:325189",
+      "type": "movie",
+      "name": "Plaja Adolescenților 2",
+      "releaseInfo": "2015",
+      "poster": "https://image.tmdb.org/t/p/w500/3h1QyNjuuD6fwuMoFR8IG206Dan.jpg",
+      "description": "La câteva luni după întoarcerea acasă din aventura verii, care i-a transportat în filmul despre o petrecere pe plajă, Wet Side Story, din anii 1960, Mack și Brady primesc o vizită surpriză în lumea reală de la noii lor amici de pe coastă. După ce au aflat pe propria lor piele că nu e bine ca lumea reală să se amestece cu cea a filmelor, gașca trebuie să născocească repede un plan pentru a-i trimite pe toți înapoi în filmul lor, înainte de căderea cortinei.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:345363",
+      "type": "movie",
+      "name": "O croazieră nebună",
+      "releaseInfo": "2015",
+      "poster": "https://image.tmdb.org/t/p/w500/gV2I1lW2udrFmF3Xi9MOmlJY2c2.jpg",
+      "description": "O fată, fratele ei și cei doi noi frați vitregi ai lor găsesc aventură când își fac bagajele pentru o croazieră în familie.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:353790",
+      "type": "movie",
+      "name": "Acasă la tata",
+      "releaseInfo": "2015",
+      "poster": "https://image.tmdb.org/t/p/w500/xBDjQY8nPohvwjphVwmZH3jNuaT.jpg",
+      "description": "Robert este un scriitor tânăr care trece printr-o criză. Decide să se întoarcă acasă în satul natal, prima dată după trei ani de la moartea mamei sale. Nici înainte nu își vizita părinții pea des și asta se reflectă în relația distantă pe care o are cu tatăl lui. Ajuns acasă, îi întâlnește doi dintre foștii colegi de clasă - pe Petrică - prietenul cel mai bun din copilărie, acum însurat și cu copii - și pe Paula - iubita lui din adolescență. În 24 de ore rescrie toate relațiile: cu tatăl lui, cu prietenul cel mai bun, cu prima iubire, cu trecutul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:150689",
       "type": "movie",
       "name": "Cenușăreasa",
@@ -425,6 +457,14 @@
       "description": "Ben 10 vrea să împiedice cucerirea lumii de către niște gândaci extratereștri ce controlează corpul uman și activați de regina lor ce desigur a posedat pe tatăl Elenei, care este prietena lui Ben. Însă prieteni săi și bunicul nu vor să o ajute fiind din cauza tatălui ei acuzat că a furat tehnologie extraterestră. Dar Ben crede că este nevinovată și de aceea o ajută să afle ce sa întâmplat cu tatăl ei chiar dacă au rămas numai ei doi. În cele din urmă Gwen și Kevin află că tot ceea ce a zis Elena este adevărat și vor să caute indicii.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
+      "id": "tmdb:22620",
+      "type": "movie",
+      "name": "Scooby-Doo! The Mystery Begins",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/fUbx2NFwRTmRMtwcTbzEd804WQj.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:26736",
       "type": "movie",
       "name": "Magicienii din Waverly Place: Filmul",
@@ -503,6 +543,14 @@
       "releaseInfo": "2006",
       "poster": "https://image.tmdb.org/t/p/w500/hCtb6wPDdvHAyspjtAnwGw7aGwM.jpg",
       "description": "Când arhitectul din New York Matt Saunders își abandonează noua iubită Jenny Johnson - o super-eroină inteligentă, sexy și reticentă cunoscută sub numele de G-Girl - ea își folosește puterile pentru a-i face viața un calvar!\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:61717",
+      "type": "movie",
+      "name": "Un samurai în sufragerie",
+      "releaseInfo": "2006",
+      "poster": "https://image.tmdb.org/t/p/w500/5E5qT8Q3pLDurJZqrO8meYZc60g.jpg",
+      "description": "Wendy Wu se gândește la un singur lucru: cum să devină regina balului de anul acesta. Dar sosirea unui tânăr și misterios călugăr chinez pe nume Shen îi dă lui Wendy toată lumea peste cap.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:10025",

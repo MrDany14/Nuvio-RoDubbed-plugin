@@ -1,3 +1,75 @@
 {
-  "metas": []
+  "metas": [
+    {
+      "id": "tmdb:1532629",
+      "type": "movie",
+      "name": "Greierele şi furnica",
+      "releaseInfo": "1969",
+      "description": "Adaptare după fabula cu același nume de La Fontaine.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:9078",
+      "type": "movie",
+      "name": "Sabia din stâncă",
+      "releaseInfo": "1963",
+      "poster": "https://image.tmdb.org/t/p/w500/l0aepIPwwrq22I4nBnqgZM6oawY.jpg",
+      "description": "Porniți într-o călătorie plină de peripeții, alături de un erou complet neașteptat! Legenda spune că numai acela care va dovedi onoare, bunăcuviință și forță lăuntrică va putea pretinde tronul Angliei, smulgând sabia fermecată care zace încătușată într-o piatră uriașă. Mulți cavaleri curajoși și-au încercat norocul, așa încât părea de-a dreptul imposibil ca un tânăr ucenic poreclit Wart să reușească. Dar, călăuzit de vrăjitorul Merlin, ajutat de o întreagă trupă de prieteni caraghioși și susținut de forța adevărată a caracterului său, tânărul Wart ar putea deveni cel mai mare rege al Angliei.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:12230",
+      "type": "movie",
+      "name": "101 dalmațieni",
+      "releaseInfo": "1961",
+      "poster": "https://image.tmdb.org/t/p/w500/cBk40oECABdyDIVJlupN1e2eAFp.jpg",
+      "description": "Pongo și Perdita, doi câini dalmațieni din Londra, pornesc în căutarea puilor răpiți de răufăcătoarea Cruella De Vil. Efortul lor mobilizează alte animale din împrejurimi, transformând căutarea într-o adevărată operațiune de salvare.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:10340",
+      "type": "movie",
+      "name": "Doamna și Vagabondul",
+      "releaseInfo": "1955",
+      "poster": "https://image.tmdb.org/t/p/w500/v3T4VF7amqJfclsVjxOOwMcOa50.jpg",
+      "description": "Lady, o cățelușă răsfățată, trăiește liniștită alături de familia ei până când apariția unui bebeluș îi schimbă rutina. Când mătușa Sarah, venită să aibă grijă de copil, o face să plece de acasă, îl întâlnește pe Vagabond, un câine fără stăpân care îi arată o lume nouă, plină de aventuri și pericole.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:10693",
+      "type": "movie",
+      "name": "Peter Pan",
+      "releaseInfo": "1953",
+      "poster": "https://image.tmdb.org/t/p/w500/fJJOs1iyrhKfZceANxoPxPwNGF1.jpg",
+      "description": "Wendy și frații ei îl întâlnesc pe Peter Pan, eroul lor din povești, care îi poartă în zbor spre Țara de Nicăieri, un loc în care copiii nu cresc niciodată. Alături de Clopoțica și de Băieții Pierduți, ei trăiesc aventuri fantastice și îl înfruntă pe temutul Căpitan Hook.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:12092",
+      "type": "movie",
+      "name": "Alice în Țara Minunilor",
+      "releaseInfo": "1951",
+      "poster": "https://image.tmdb.org/t/p/w500/6qAodPheUqOrVrzTmmRZZkaQhF1.jpg",
+      "description": "Plictisită de lectura surorii ei, Alice își imaginează o lume fantastică în care apariția unui Iepure Alb o atrage în Țara Minunilor, un ținut lipsit de logică. Acolo, trece printr-o serie de întâmplări bizare, încercând să găsească drumul înapoi acasă.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:3170",
+      "type": "movie",
+      "name": "Bambi",
+      "releaseInfo": "1942",
+      "poster": "https://image.tmdb.org/t/p/w500/wV9e2y4myJ4KMFsyFfWYcUOawyK.jpg",
+      "description": "Bambi, un pui de cerb, descoperă lumea pădurii alături de prietenii săi Bocănilă și Floare. Pe măsură ce crește, învață atât despre minunile, cât și despre provocările vieții în natură, pregătindu-se să devină prințul pădurii.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:756",
+      "type": "movie",
+      "name": "Fantasia",
+      "releaseInfo": "1940",
+      "poster": "https://image.tmdb.org/t/p/w500/5m9njnidjR0syG2gpVPVgcEMB2X.jpg",
+      "description": "Opt secvențe animate inspirate de lucrări celebre de muzică clasică prind viață sub bagheta dirijorului Leopold Stokowski. De la „Ucenicul vrăjitor”, interpretat de Mickey Mouse, până la lumi abstracte și creaturi fantastice, filmul îmbină animația Disney cu muzica simfonică.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:10895",
+      "type": "movie",
+      "name": "Pinocchio",
+      "releaseInfo": "1940",
+      "poster": "https://image.tmdb.org/t/p/w500/bnZJrLRnoQHpzEJdka1KYfsAF3N.jpg",
+      "description": "Geppetto, un tâmplar care își dorește un fiu, cioplește o păpușă de lemn pe care o numește Pinocchio. Când aceasta prinde viață, greierele Jiminy Cricket este ales să-i fie călăuză și conștiință. Dornic să devină un băiat adevărat, dar naiv și ușor de amăgit, Pinocchio pornește într-un șir de aventuri care îi pun la încercare curajul și sinceritatea.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    }
+  ]
 }

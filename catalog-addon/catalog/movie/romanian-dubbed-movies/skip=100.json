@@ -1,6 +1,30 @@
 {
   "metas": [
     {
+      "id": "tmdb:1304606",
+      "type": "movie",
+      "name": "Noaptea lui Vlad",
+      "releaseInfo": "2024",
+      "poster": "https://image.tmdb.org/t/p/w500/o9DkyF7BhpLbetiLTV7G2nSCpv9.jpg",
+      "description": "Într-o noapte la muzeu copilul Vlad se întâlnește cu personalități marcante ale istoriei neamului românesc.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1208251",
+      "type": "movie",
+      "name": "Visul",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/oNQYhILe9xS7tx9eAh0rjZSZWi6.jpg",
+      "description": "Inspirat din fapte reale, filmul regizat de Cătălin Saizescu după un scenariu semnat de Gabriel Gheorghe, este o comedie în care visul unui actor de provincie pare să se năruie, în timp ce visurile celor din jur sau ale deținuților cu care ajunge să pună în scenă un spectacol de teatru par să se apropie mai mult de îndeplinire.  Alex e un artist ocolit de succes, înlănțuit într-o relație amoroasă căzută în ruină. Trimis la un penitenciar de maximă siguranță să regizeze o piesă de teatru, alege o scenă din „Visul unei nopți de vară”, a marelui Shakespeare. În fața eforturilor hoților semianalfabeti de a-și depăși limitele, Alex realizează că este prizonier în propria viață. La rândul lor, deținuții fac totul pentru a fi selectionati în cadrul Festivalului de teatru de penitenciar, știind că fiecare scenă are o trapă prin care ar putea evada.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:787699",
+      "type": "movie",
+      "name": "Wonka",
+      "releaseInfo": "2023",
+      "poster": "https://image.tmdb.org/t/p/w500/deNN34J6LcX8lIJKUnUZt6VGu5s.jpg",
+      "description": "Bazat pe personajul extraordinar din centrul poveștii “Charlie și fabrica de ciocolată”, cea mai emblematică carte pentru copii a lui Roald Dahl și una dintre cele mai bine vândute cărți pentru copii din toate timpurile, „Wonka” spune povestea minunată prin care cel mai mare inventator, magician și producător de ciocolată a devenit îndrăgitul personaj Willy Wonka, așa cum îl cunoaștem astăzi\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:798021",
       "type": "movie",
       "name": "Schimb în familie",
@@ -223,6 +247,13 @@
       "releaseInfo": "2023",
       "poster": "https://image.tmdb.org/t/p/w500/qs0YU64jYz9ytHdml5LEsj8sYTr.jpg",
       "description": "Sile iese din închisoare cu ideea să se îmbogățească minând cryptomonede. Împreună cu Dinel și Pompiliu îl cunosc pe Ionuț, premiantul județului, cu ajutorul căruia reușesc să mineze cyptomonede în valoare de 6 milioane de euro pe care le stochează pe un stick USB. Dinel e responsabil de păstrarea în siguranță a stickului, dar reușește performanța să-l piardă foarte repede, așa că cei trei pornesc în căutarea lui.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:1287753",
+      "type": "movie",
+      "name": "The Dream",
+      "releaseInfo": "2023",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:1117698",
@@ -767,38 +798,6 @@
       "releaseInfo": "2021",
       "poster": "https://image.tmdb.org/t/p/w500/bGIy308alpX12xdBVsREgsHawQC.jpg",
       "description": "Tetê este o fată isteață care se integrează greu, așa că ar face orice să se pună bine cu lumea la noua ei școală. Însă tartorița clasei are alte intenții.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:739990",
-      "type": "movie",
-      "name": "Nightbooks: Captiv în poveste",
-      "releaseInfo": "2021",
-      "poster": "https://image.tmdb.org/t/p/w500/p4KREvqbGIESygNFZVluObePqik.jpg",
-      "description": "Amator de povești de groază, Alex trebuie să spună câte una înfricoșătoare în fiecare seară, altfel va sta închis pe veci cu prietena lui în apartamentul unei vrăjitoare.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:566525",
-      "type": "movie",
-      "name": "Shang-Chi și legenda celor zece inele",
-      "releaseInfo": "2021",
-      "poster": "https://image.tmdb.org/t/p/w500/k2AiRdl95hNdZV9LhA8p3gTDz8M.jpg",
-      "description": "Vedeta Shang-Chi din Shang-Chi și Legenda Celor Zece Inelede la Marvel Studios trebuie să se confrunte cu trecutul pe care a crezut că l-a lăsat în urmă, când este atras în rețeaua misterioasei organizații Zece Inele.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:347626",
-      "type": "movie",
-      "name": "Un băiat minunat",
-      "releaseInfo": "2021",
-      "poster": "https://image.tmdb.org/t/p/w500/kW3AG5NHoyq52dcSbMiFB6LyHvk.jpg",
-      "description": "O formatoare de opinie specialistă în transformări face un pariu susținând că poate face dintr-un coleg anost regele balului. Un remake după clasicul „O fată minunată”.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
-    },
-    {
-      "id": "tmdb:838150",
-      "type": "movie",
-      "name": "Întregalde",
-      "releaseInfo": "2021",
-      "poster": "https://image.tmdb.org/t/p/w500/bS0tmVyR1kxTEygskzRge5LYd5N.jpg",
-      "description": "Trei prieteni care vor să ducă ajutoare umanitare într-o zonă rurală rămân blocați în pădure, ceea ce le pune la încercare noțiunile despre caritate.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     }
   ]
 }
