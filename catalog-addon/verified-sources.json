@@ -674,10 +674,11 @@
         "site": "df",
         "url": "https://desenefaine.com/film/101-dalmatieni",
         "hosts": [
+          "Playmogo",
           "VOE"
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
-        "checkedAt": "2026-10-19T11:02:50.493Z"
+        "checkedAt": "2026-10-19T18:46:44.070Z"
       },
       {
         "site": "doza",
@@ -1764,6 +1765,15 @@
         "checkedAt": "2026-10-19T14:55:05.120Z"
       },
       {
+        "site": "df",
+        "url": "https://desenefaine.com/film/clifford-marele-caine-rosu",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T18:46:44.206Z"
+      },
+      {
         "site": "fd",
         "url": "https://filmedublate.net/film-dublat/clifford-marele-caine-rosu-dublat-in-romana",
         "hosts": [
@@ -2098,6 +2108,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T14:56:03.418Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/lumea-miraculoasa-shanghai-o-legenda-a-doamnei-dragon",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T18:46:45.137Z"
       },
       {
         "site": "fd",
@@ -4585,10 +4604,11 @@
         "episodeUrl": "https://desenefaine.com/epi/h2o-adauga-apa-sezonul-1-episodul-1/",
         "hosts": [
           "Byse",
-          "VOE"
+          "VOE",
+          "Playmogo"
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
-        "checkedAt": "2026-10-19T16:02:09.211Z"
+        "checkedAt": "2026-10-19T18:46:44.673Z"
       }
     ]
   },
@@ -4773,10 +4793,11 @@
         "site": "df",
         "url": "https://desenefaine.com/film/descendentii",
         "hosts": [
-          "VOE"
+          "VOE",
+          "Playmogo"
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
-        "checkedAt": "2026-10-19T11:10:32.960Z"
+        "checkedAt": "2026-10-19T18:46:44.809Z"
       },
       {
         "site": "doza",
@@ -9285,6 +9306,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:04:22.654Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/misterul-mumiei",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Canonical address among first eight actual native lookup search results",
+        "checkedAt": "2026-10-19T18:46:45.260Z"
       }
     ]
   },
@@ -9486,10 +9516,11 @@
         "site": "df",
         "url": "https://desenefaine.com/film/neinfricata",
         "hosts": [
+          "Playmogo",
           "VOE"
         ],
         "addressProof": "Official direct-slug lookup and exact title/year",
-        "checkedAt": "2026-10-19T11:32:21.126Z"
+        "checkedAt": "2026-10-19T18:46:44.917Z"
       }
     ]
   },
@@ -13184,6 +13215,32 @@
       }
     ]
   },
+  "movie:675353": {
+    "catalog": "romanian-dubbed-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/sonic-ariciul-2",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T18:46:45.030Z"
+      },
+      {
+        "site": "fd",
+        "url": "https://filmedublate.net/desen-animat/sonic-ariciul-2-dublat-in-romana",
+        "hosts": [
+          "Abyss",
+          "Byse",
+          "Streamtape"
+        ],
+        "addressProof": "Canonical address present in actual official lookup query results",
+        "checkedAt": "2026-10-19T12:16:45.461Z"
+      }
+    ]
+  },
   "movie:497698": {
     "catalog": "romanian-dubbed-movies",
     "scope": "movie",
@@ -14389,6 +14446,21 @@
       }
     ]
   },
+  "movie:20352": {
+    "catalog": "romanian-animated-movies",
+    "scope": "movie",
+    "sites": [
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/sunt-un-mic-ticalos",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T18:46:48.339Z"
+      }
+    ]
+  },
   "tv:84154": {
     "catalog": "romanian-animated-series",
     "scope": "S1E1",
@@ -14763,6 +14835,15 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T15:09:10.948Z"
+      },
+      {
+        "site": "df",
+        "url": "https://desenefaine.com/film/cronicile-din-narnia-leul-vrajitoarea-si-dulapul",
+        "hosts": [
+          "Playmogo"
+        ],
+        "addressProof": "Official direct-slug lookup and exact title/year",
+        "checkedAt": "2026-10-19T18:46:48.822Z"
       }
     ]
   },
@@ -16570,23 +16651,6 @@
         ],
         "addressProof": "Canonical address present in actual official lookup query results",
         "checkedAt": "2026-10-19T12:16:29.359Z"
-      }
-    ]
-  },
-  "movie:675353": {
-    "catalog": "romanian-dubbed-movies",
-    "scope": "movie",
-    "sites": [
-      {
-        "site": "fd",
-        "url": "https://filmedublate.net/desen-animat/sonic-ariciul-2-dublat-in-romana",
-        "hosts": [
-          "Abyss",
-          "Byse",
-          "Streamtape"
-        ],
-        "addressProof": "Canonical address present in actual official lookup query results",
-        "checkedAt": "2026-10-19T12:16:45.461Z"
       }
     ]
   },

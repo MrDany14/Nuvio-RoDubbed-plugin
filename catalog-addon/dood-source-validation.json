@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-19T18:55:51.935Z",
+  "pluginVersion": 12,
+  "resolvedLinks": 10,
+  "reviewedLinks": 57,
+  "addedTitles": [
+    {
+      "tmdbId": 20352,
+      "title": "Despicable Me",
+      "site": "DeseneFaine"
+    }
+  ],
+  "playbackSamples": [
+    "101 Dalmatians (1961)",
+    "Clifford (2021)",
+    "H2O S1E1",
+    "Descendants (2015)"
+  ],
+  "limits": "Four actual emulator playback/seek samples; muted audio, Romanian speech based on publisher declarations. Host subsequently required CAPTCHA; this feature does not solve or bypass it. Other catalog titles were not playback-tested."
+}

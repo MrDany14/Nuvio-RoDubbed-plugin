@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T17:46:45.152Z",
+  "generatedAt": "2026-10-19T18:47:47.418Z",
   "scope": "Counts are publisher title pages (or their S1E1 pages); unsupported-only titles without a proven TMDB identity are not deduplicated across sites.",
   "groups": [
     {
@@ -36973,469 +36973,6 @@
     },
     {
       "site": "df",
-      "family": "doodstream.com",
-      "publisherPages": [
-        {
-          "title": "101 dalmațieni",
-          "url": "https://desenefaine.com/film/101-dalmatieni",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 03Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/a1cznx16w3t0"
-        },
-        {
-          "title": "Clifford, Marele Câine Roșu",
-          "url": "https://desenefaine.com/film/clifford-marele-caine-rosu",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 02Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/nhmrbzstcdvt"
-        },
-        {
-          "title": "H2O:  Adaugă apă",
-          "url": "https://desenefaine.com/serial/h2o-adauga-apa",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/d4cggz0fvntf"
-        },
-        {
-          "title": "Tinerii justițiari",
-          "url": "https://desenefaine.com/serial/tinerii-justitiari",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 03Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/es5wu0tvgwrs"
-        },
-        {
-          "title": "Descendenții",
-          "url": "https://desenefaine.com/film/descendentii",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 06Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/di03amxd1ob3"
-        },
-        {
-          "title": "Neînfricată",
-          "url": "https://desenefaine.com/film/neinfricata",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/piecf34i98xm"
-        },
-        {
-          "title": "Un băiat minunat",
-          "url": "https://desenefaine.com/film/un-baiat-minunat",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 02Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/4n8ud8wxtfpp"
-        },
-        {
-          "title": "Paddington",
-          "url": "https://desenefaine.com/film/paddington",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 02Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/m348ei7pq2bo"
-        },
-        {
-          "title": "Sonic Ariciul 2",
-          "url": "https://desenefaine.com/film/sonic-ariciul-2",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 06Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/ayt0yn92ratq"
-        },
-        {
-          "title": "Lumea Miraculoasă – New York, Eroii Uniți",
-          "url": "https://desenefaine.com/film/lumea-miraculoasa-new-york-eroii-uniti",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 05Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/mjn259si0mmw"
-        },
-        {
-          "title": "Lumea Miraculoasă: Shanghai, O legendă a Doamnei Dragon",
-          "url": "https://desenefaine.com/film/lumea-miraculoasa-shanghai-o-legenda-a-doamnei-dragon",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 06Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/m0lh06mtxlw9"
-        },
-        {
-          "title": "Chip și Dale: Salvatorii",
-          "url": "https://desenefaine.com/film/chip-n-dale-rescue-rangers",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 03Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/q0lz5oukiscn"
-        },
-        {
-          "title": "Ascensiunea Țestoaselor Ninja: Filmul",
-          "url": "https://desenefaine.com/film/ascensiunea-testoaselor-ninja-filmul",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 03Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/fx414z5l8wo0"
-        },
-        {
-          "title": "Doamna Și Vagabondul Filmul",
-          "url": "https://desenefaine.com/film/doamna-si-vagabondul-2019",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 05Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/7t2bjswas54z"
-        },
-        {
-          "title": "Barbie Epic Road Trip",
-          "url": "https://desenefaine.com/film/barbie-epic-road-trip",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 03Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/y4kjxstgqln3"
-        },
-        {
-          "title": "Misterul mumiei",
-          "url": "https://desenefaine.com/film/misterul-mumiei",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 02Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/rpuococn6p9f"
-        },
-        {
-          "title": "Sunt un mic ticălos",
-          "url": "https://desenefaine.com/film/sunt-un-mic-ticalos",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 05Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/kaj18t23tr23"
-        },
-        {
-          "title": "Barbie: Puterea Sirenei",
-          "url": "https://desenefaine.com/film/barbie-mermaid-power",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 03Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/wk6vg7rnz30o"
-        },
-        {
-          "title": "Mummies",
-          "url": "https://desenefaine.com/film/mummies",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 06Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/38apxtg8d3rh"
-        },
-        {
-          "title": "Hai hui în timp",
-          "url": "https://desenefaine.com/film/hai-hui-in-timp",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 03Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/6rrktese4xej"
-        },
-        {
-          "title": "Cronicile din Narnia: Leul, vrăjitoarea și dulapul",
-          "url": "https://desenefaine.com/film/cronicile-din-narnia-leul-vrajitoarea-si-dulapul",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 02Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/3ufh642biwk6"
-        },
-        {
-          "title": "Regele Maimuță",
-          "url": "https://desenefaine.com/film/regele-maimuta",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 06Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/y41rrhgskcnl"
-        },
-        {
-          "title": "Legendele Templului Ascuns",
-          "url": "https://desenefaine.com/film/legendele-templului-ascuns",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 03Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/57xm29iizhr3"
-        },
-        {
-          "title": "Descendenții: Ascensiunea lui Red",
-          "url": "https://desenefaine.com/film/descendentii-ascensiunea-lui-red",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 05Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/b82hmrob672v"
-        },
-        {
-          "title": "Paddington 2",
-          "url": "https://desenefaine.com/film/paddington-2",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/q1bubaa136ew"
-        },
-        {
-          "title": "Paddington în Peru",
-          "url": "https://desenefaine.com/film/paddington-in-peru",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/oszeheutizty"
-        },
-        {
-          "title": "Panda Bear in Africa",
-          "url": "https://desenefaine.com/film/panda-bear-in-africa",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/lqzew8vb799u"
-        },
-        {
-          "title": "Prințesa și monstrul fermecat",
-          "url": "https://desenefaine.com/film/printesa-si-monstrul-fermecat",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 03Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/wst58omvy47v"
-        },
-        {
-          "title": "Minecraft: Filmul",
-          "url": "https://desenefaine.com/film/minecraft-filmul",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/ora77a72prao"
-        },
-        {
-          "title": "Shrek",
-          "url": "https://desenefaine.com/film/shrek",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/5bo5uv83mchu"
-        },
-        {
-          "title": "Puișorii: Marea aventură",
-          "url": "https://desenefaine.com/film/puisorii-marea-aventura",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/ubsvotu0kowm"
-        },
-        {
-          "title": "Little Eggs: A Frozen Rescue",
-          "url": "https://desenefaine.com/film/little-eggs-a-frozen-rescue",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/lesfk3pi8zhr"
-        },
-        {
-          "title": "Dolittle",
-          "url": "https://desenefaine.com/film/dolittle",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 05Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/ld0wxh96qfsw"
-        },
-        {
-          "title": "Hai, România!",
-          "url": "https://desenefaine.com/film/hai-romania",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/fh5smu76mzfz"
-        },
-        {
-          "title": "Plan de lecție",
-          "url": "https://desenefaine.com/film/plan-de-lectie",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 05Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/2iudo6qvlyim"
-        },
-        {
-          "title": "Dora în căutarea lui Sol Dorado",
-          "url": "https://desenefaine.com/film/dora-and-the-search-for-sol-dorado",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 05Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/66t8pzgkpnrg"
-        },
-        {
-          "title": "Dincolo de Univers",
-          "url": "https://desenefaine.com/film/dincolo-de-univers",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 05Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/qm4bv8xycpig"
-        },
-        {
-          "title": "Cum să îți dresezi dragonul Filmul",
-          "url": "https://desenefaine.com/film/cum-sa-iti-dresezi-dragonul-filmul",
-          "type": "movie",
-          "scope": "movie",
-          "label": "SERVER 05Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/0kr6b9exvztf"
-        },
-        {
-          "title": "Avatar: Legenda lui Aang",
-          "url": "https://desenefaine.com/serial/avatar-legenda-lui-aang",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 05Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/duzt43jqbhke"
-        },
-        {
-          "title": "Avatar: Legenda Lui Korra",
-          "url": "https://desenefaine.com/serial/avatar-legenda-lui-korra",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 06Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/5okyegs3lh4q"
-        },
-        {
-          "title": "Ms. Marvel",
-          "url": "https://desenefaine.com/serial/ms-marvel",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/wlnkdy3gas14"
-        },
-        {
-          "title": "Kung Fu Panda: Cavalerul dragon",
-          "url": "https://desenefaine.com/serial/kung-fu-panda-cavalerul-dragon",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/1s9x0njokfp3"
-        },
-        {
-          "title": "Wednesday",
-          "url": "https://desenefaine.com/serial/wednesday",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/l7k2ry0onu8e"
-        },
-        {
-          "title": "Hero Inside",
-          "url": "https://desenefaine.com/serial/hero-inside",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 05Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/9sdj6q47x32w"
-        },
-        {
-          "title": "Uimitoarea lume a lui Gumball",
-          "url": "https://desenefaine.com/serial/uimitoarea-lume-a-lui-gumball",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 03Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/fhb5bdcmirjb"
-        },
-        {
-          "title": "Cei șapte ursuleți",
-          "url": "https://desenefaine.com/serial/cei-sapte-ursuleti",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 05Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/6hawx3uqpiyj"
-        },
-        {
-          "title": "Eyes of Wakanda",
-          "url": "https://desenefaine.com/serial/eyes-of-wakanda",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/s83njzyobpca"
-        },
-        {
-          "title": "Secretul lui Nick",
-          "url": "https://desenefaine.com/serial/secretul-lui-nick",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/8qojzsaoc3vq"
-        },
-        {
-          "title": "Ghidul pentru crimă al unei fete cuminți",
-          "url": "https://desenefaine.com/serial/ghidul-pentru-crima-al-unei-fete-cuminti",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/b0fcie0x7abj"
-        },
-        {
-          "title": "Clubul de scufundări",
-          "url": "https://desenefaine.com/serial/clubul-de-scufundari",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/s7pvz7veglae"
-        },
-        {
-          "title": "Legenda lui Tarzan",
-          "url": "https://desenefaine.com/serial/legenda-lui-tarzan",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/x2c10ad3ti85"
-        },
-        {
-          "title": "Asterix și Obelix: Bătălia dintre șefi",
-          "url": "https://desenefaine.com/serial/asterix-si-obelix-batalia-dintre-sefi",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 03Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/5c0gfkxi4kbr"
-        },
-        {
-          "title": "Războiul Stelelor: Povești din lumea underground",
-          "url": "https://desenefaine.com/serial/razboiul-stelelor-povesti-din-lumea-underground",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 03Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/zrkuondshfh0"
-        },
-        {
-          "title": "Pariu",
-          "url": "https://desenefaine.com/serial/pariu",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 03Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/t3y3vh9mmd9k"
-        },
-        {
-          "title": "My Little Pony: Redescoperă magia",
-          "url": "https://desenefaine.com/serial/my-little-pony-redescopera-magia",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 04Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/1y5n3y2je963"
-        },
-        {
-          "title": "Casa de păpuși a lui Gabby",
-          "url": "https://desenefaine.com/serial/casa-de-papusi-a-lui-gabby",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 03Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/c6nf1ix1zav8"
-        },
-        {
-          "title": "Haideți, Tineri Titani!",
-          "url": "https://desenefaine.com/serial/haideti-tineri-titani",
-          "type": "tv",
-          "scope": "S1E1",
-          "label": "SERVER 03Doodstream - ROMÂNĂ",
-          "embed": "https://doodstream.com/e/hvhl25zd5ztm"
-        }
-      ],
-      "count": 57
-    },
-    {
-      "site": "df",
       "family": "Unknown",
       "publisherPages": [
         {
@@ -38239,6 +37776,389 @@
         }
       ],
       "count": 48
+    },
+    {
+      "site": "df",
+      "family": "doodstream.com",
+      "publisherPages": [
+        {
+          "title": "Tinerii justițiari",
+          "url": "https://desenefaine.com/serial/tinerii-justitiari",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 03Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/es5wu0tvgwrs"
+        },
+        {
+          "title": "Un băiat minunat",
+          "url": "https://desenefaine.com/film/un-baiat-minunat",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 02Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/4n8ud8wxtfpp"
+        },
+        {
+          "title": "Paddington",
+          "url": "https://desenefaine.com/film/paddington",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 02Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/m348ei7pq2bo"
+        },
+        {
+          "title": "Lumea Miraculoasă – New York, Eroii Uniți",
+          "url": "https://desenefaine.com/film/lumea-miraculoasa-new-york-eroii-uniti",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 05Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/mjn259si0mmw"
+        },
+        {
+          "title": "Chip și Dale: Salvatorii",
+          "url": "https://desenefaine.com/film/chip-n-dale-rescue-rangers",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 03Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/q0lz5oukiscn"
+        },
+        {
+          "title": "Ascensiunea Țestoaselor Ninja: Filmul",
+          "url": "https://desenefaine.com/film/ascensiunea-testoaselor-ninja-filmul",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 03Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/fx414z5l8wo0"
+        },
+        {
+          "title": "Doamna Și Vagabondul Filmul",
+          "url": "https://desenefaine.com/film/doamna-si-vagabondul-2019",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 05Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/7t2bjswas54z"
+        },
+        {
+          "title": "Barbie Epic Road Trip",
+          "url": "https://desenefaine.com/film/barbie-epic-road-trip",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 03Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/y4kjxstgqln3"
+        },
+        {
+          "title": "Barbie: Puterea Sirenei",
+          "url": "https://desenefaine.com/film/barbie-mermaid-power",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 03Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/wk6vg7rnz30o"
+        },
+        {
+          "title": "Mummies",
+          "url": "https://desenefaine.com/film/mummies",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 06Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/38apxtg8d3rh"
+        },
+        {
+          "title": "Hai hui în timp",
+          "url": "https://desenefaine.com/film/hai-hui-in-timp",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 03Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/6rrktese4xej"
+        },
+        {
+          "title": "Regele Maimuță",
+          "url": "https://desenefaine.com/film/regele-maimuta",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 06Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/y41rrhgskcnl"
+        },
+        {
+          "title": "Legendele Templului Ascuns",
+          "url": "https://desenefaine.com/film/legendele-templului-ascuns",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 03Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/57xm29iizhr3"
+        },
+        {
+          "title": "Descendenții: Ascensiunea lui Red",
+          "url": "https://desenefaine.com/film/descendentii-ascensiunea-lui-red",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 05Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/b82hmrob672v"
+        },
+        {
+          "title": "Paddington 2",
+          "url": "https://desenefaine.com/film/paddington-2",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/q1bubaa136ew"
+        },
+        {
+          "title": "Paddington în Peru",
+          "url": "https://desenefaine.com/film/paddington-in-peru",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/oszeheutizty"
+        },
+        {
+          "title": "Panda Bear in Africa",
+          "url": "https://desenefaine.com/film/panda-bear-in-africa",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/lqzew8vb799u"
+        },
+        {
+          "title": "Prințesa și monstrul fermecat",
+          "url": "https://desenefaine.com/film/printesa-si-monstrul-fermecat",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 03Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/wst58omvy47v"
+        },
+        {
+          "title": "Minecraft: Filmul",
+          "url": "https://desenefaine.com/film/minecraft-filmul",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/ora77a72prao"
+        },
+        {
+          "title": "Shrek",
+          "url": "https://desenefaine.com/film/shrek",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/5bo5uv83mchu"
+        },
+        {
+          "title": "Puișorii: Marea aventură",
+          "url": "https://desenefaine.com/film/puisorii-marea-aventura",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/ubsvotu0kowm"
+        },
+        {
+          "title": "Little Eggs: A Frozen Rescue",
+          "url": "https://desenefaine.com/film/little-eggs-a-frozen-rescue",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/lesfk3pi8zhr"
+        },
+        {
+          "title": "Dolittle",
+          "url": "https://desenefaine.com/film/dolittle",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 05Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/ld0wxh96qfsw"
+        },
+        {
+          "title": "Hai, România!",
+          "url": "https://desenefaine.com/film/hai-romania",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/fh5smu76mzfz"
+        },
+        {
+          "title": "Plan de lecție",
+          "url": "https://desenefaine.com/film/plan-de-lectie",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 05Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/2iudo6qvlyim"
+        },
+        {
+          "title": "Dora în căutarea lui Sol Dorado",
+          "url": "https://desenefaine.com/film/dora-and-the-search-for-sol-dorado",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 05Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/66t8pzgkpnrg"
+        },
+        {
+          "title": "Dincolo de Univers",
+          "url": "https://desenefaine.com/film/dincolo-de-univers",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 05Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/qm4bv8xycpig"
+        },
+        {
+          "title": "Cum să îți dresezi dragonul Filmul",
+          "url": "https://desenefaine.com/film/cum-sa-iti-dresezi-dragonul-filmul",
+          "type": "movie",
+          "scope": "movie",
+          "label": "SERVER 05Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/0kr6b9exvztf"
+        },
+        {
+          "title": "Avatar: Legenda lui Aang",
+          "url": "https://desenefaine.com/serial/avatar-legenda-lui-aang",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 05Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/duzt43jqbhke"
+        },
+        {
+          "title": "Avatar: Legenda Lui Korra",
+          "url": "https://desenefaine.com/serial/avatar-legenda-lui-korra",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 06Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/5okyegs3lh4q"
+        },
+        {
+          "title": "Ms. Marvel",
+          "url": "https://desenefaine.com/serial/ms-marvel",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/wlnkdy3gas14"
+        },
+        {
+          "title": "Kung Fu Panda: Cavalerul dragon",
+          "url": "https://desenefaine.com/serial/kung-fu-panda-cavalerul-dragon",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/1s9x0njokfp3"
+        },
+        {
+          "title": "Wednesday",
+          "url": "https://desenefaine.com/serial/wednesday",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/l7k2ry0onu8e"
+        },
+        {
+          "title": "Hero Inside",
+          "url": "https://desenefaine.com/serial/hero-inside",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 05Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/9sdj6q47x32w"
+        },
+        {
+          "title": "Uimitoarea lume a lui Gumball",
+          "url": "https://desenefaine.com/serial/uimitoarea-lume-a-lui-gumball",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 03Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/fhb5bdcmirjb"
+        },
+        {
+          "title": "Cei șapte ursuleți",
+          "url": "https://desenefaine.com/serial/cei-sapte-ursuleti",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 05Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/6hawx3uqpiyj"
+        },
+        {
+          "title": "Eyes of Wakanda",
+          "url": "https://desenefaine.com/serial/eyes-of-wakanda",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/s83njzyobpca"
+        },
+        {
+          "title": "Secretul lui Nick",
+          "url": "https://desenefaine.com/serial/secretul-lui-nick",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/8qojzsaoc3vq"
+        },
+        {
+          "title": "Ghidul pentru crimă al unei fete cuminți",
+          "url": "https://desenefaine.com/serial/ghidul-pentru-crima-al-unei-fete-cuminti",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/b0fcie0x7abj"
+        },
+        {
+          "title": "Clubul de scufundări",
+          "url": "https://desenefaine.com/serial/clubul-de-scufundari",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/s7pvz7veglae"
+        },
+        {
+          "title": "Legenda lui Tarzan",
+          "url": "https://desenefaine.com/serial/legenda-lui-tarzan",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/x2c10ad3ti85"
+        },
+        {
+          "title": "Asterix și Obelix: Bătălia dintre șefi",
+          "url": "https://desenefaine.com/serial/asterix-si-obelix-batalia-dintre-sefi",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 03Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/5c0gfkxi4kbr"
+        },
+        {
+          "title": "Războiul Stelelor: Povești din lumea underground",
+          "url": "https://desenefaine.com/serial/razboiul-stelelor-povesti-din-lumea-underground",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 03Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/zrkuondshfh0"
+        },
+        {
+          "title": "Pariu",
+          "url": "https://desenefaine.com/serial/pariu",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 03Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/t3y3vh9mmd9k"
+        },
+        {
+          "title": "My Little Pony: Redescoperă magia",
+          "url": "https://desenefaine.com/serial/my-little-pony-redescopera-magia",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 04Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/1y5n3y2je963"
+        },
+        {
+          "title": "Casa de păpuși a lui Gabby",
+          "url": "https://desenefaine.com/serial/casa-de-papusi-a-lui-gabby",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 03Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/c6nf1ix1zav8"
+        },
+        {
+          "title": "Haideți, Tineri Titani!",
+          "url": "https://desenefaine.com/serial/haideti-tineri-titani",
+          "type": "tv",
+          "scope": "S1E1",
+          "label": "SERVER 03Doodstream - ROMÂNĂ",
+          "embed": "https://doodstream.com/e/hvhl25zd5ztm"
+        }
+      ],
+      "count": 47
     },
     {
       "site": "dd",

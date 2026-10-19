@@ -1,6 +1,14 @@
 {
   "metas": [
     {
+      "id": "tmdb:10112",
+      "type": "movie",
+      "name": "Pisicile aristocrate",
+      "releaseInfo": "1970",
+      "poster": "https://image.tmdb.org/t/p/w500/tEj8JIy8NSSL2ctSgyoY0Fxy5Ym.jpg",
+      "description": "În Paris, doamna Adelaide Bonfamille își lasă averea pisicii sale, Ducesa, și celor trei pui ai ei. Când majordomul află că aceștia vor moșteni înaintea lui, îi răpește și îi abandonează pe un drum de țară. Pe drumul spre casă, Ducesa și puii ei primesc ajutorul lui Thomas O’Malley, un motan descurcăreț, și al prietenilor săi iubitori de jazz.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
       "id": "tmdb:1532629",
       "type": "movie",
       "name": "Greierele şi furnica",
