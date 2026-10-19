@@ -1,705 +1,804 @@
 {
   "metas": [
     {
-      "id": "tmdb:140420",
+      "id": "tmdb:360920",
       "type": "movie",
-      "name": "Paperman",
-      "poster": "https://image.tmdb.org/t/p/w500/6MXYNvGmI63W8fI3HKlcZzEy1U5.jpg",
-      "releaseInfo": "2012"
+      "name": "Grinch",
+      "releaseInfo": "2018",
+      "poster": "https://image.tmdb.org/t/p/w500/sK1TO4CNIwHwlbw76SpER95RVE5.jpg",
+      "description": "Când locuitorii din Whoville decid să facă Crăciunul mai mare și mai luminos ca niciodată, un proscris cunoscut sub numele de Grinch plănuiește să se dea drept Moș Crăciun, să fure Crăciunul și să distrugă atmosfera sărbătorească.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:664574",
+      "id": "tmdb:546728",
       "type": "movie",
-      "name": "Noapte liniștită",
-      "poster": "https://image.tmdb.org/t/p/w500/zKnenwvQB6xA4mxc8zxL2S8qVbR.jpg",
-      "releaseInfo": "2021"
+      "name": "Mătușa Edna",
+      "releaseInfo": "2018",
+      "poster": "https://image.tmdb.org/t/p/w500/ypgqNZGKPh5vLDhDAUUArv1ZSRu.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:876716",
+      "id": "tmdb:552752",
       "type": "movie",
-      "name": "Ciao Alberto",
-      "poster": "https://image.tmdb.org/t/p/w500/1SyTnaY0wte69oKdqxQLvxPT3hs.jpg",
-      "releaseInfo": "2021"
+      "name": "Supermonstruleții – program special de Halloween",
+      "releaseInfo": "2018",
+      "poster": "https://image.tmdb.org/t/p/w500/yJqwIglIQpFeDjT9RQ6VFHTjO5d.jpg",
+      "description": "Supermonstruleții își folosesc puterile pentru a le insufla vecinilor spiritul de Halloween, apoi ajută un prieten intimidat să își înfrângă temerile.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:77887",
+      "id": "tmdb:474395",
       "type": "movie",
-      "name": "Povestea jucăriilor: Vacanța Hawaiană",
-      "poster": "https://image.tmdb.org/t/p/w500/tByW10AkjWG0DtZwN2E2trT88DD.jpg",
-      "releaseInfo": "2011"
+      "name": "Haideţi, Tineri Titani, la film!",
+      "releaseInfo": "2018",
+      "poster": "https://image.tmdb.org/t/p/w500/lFGe66WmLVxWdVdOJCcCViDLlkE.jpg",
+      "description": "Tinerii Titani sunt cinci adolescenți speciali și curajoși, cu puteri supranaturale și un scop comun: să lupte împotriva răului. Se pare că toți marii supereroi joacă în propriile lor filme - toți, cu excepția Tinerilor Titani. Dar, în realitate, liderul Robin este hotărât să remedieze situația și să fie văzut ca un star, nu doar ca un ajutor. Dacă ar putea să ajungă la cel mai tare regizor de filme de la Hollywood pentru a-i observa, ar fi ideal. Cu câteva idei nebunești și un entuziasm fără măsură, Tinerii Titani se îndreaptă către Tinsel Town, determinați să își realizeze visul. Dar, atunci când grupul este direcționat în mod greșit de un ticălos și de planul său malefic de a prelua controlul asupra Pământului, lucrurile iau o turnură periculoasă. Echipa Tinerilor Titani își găsește prietenia și spiritul lor de luptă pălind, punându-și propria soartă într-un real pericol.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:747059",
+      "id": "tmdb:494407",
       "type": "movie",
-      "name": "Burrow",
-      "poster": "https://image.tmdb.org/t/p/w500/zkQcHvMc7gVG6OWVotVLDeRkrRl.jpg",
-      "releaseInfo": "2020"
+      "name": "Pokémon Filmul: Puterea e în noi",
+      "releaseInfo": "2018",
+      "poster": "https://image.tmdb.org/t/p/w500/qp1wXju81fpFkVeSt5EVvnpKmgf.jpg",
+      "description": "Ash și Pikachu pleacă în Fula City pentru a participa la Festivalul Vântului, dar când apare dezastrul, ei trebuie să salveze situația alături de un grup de rebeli!\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1333609",
+      "id": "tmdb:537170",
       "type": "movie",
-      "name": "Nona",
-      "poster": "https://image.tmdb.org/t/p/w500/jWlFOOpijBeNMws7KwtFBB79v2S.jpg",
-      "releaseInfo": "2021"
+      "name": "Micul Meu Ponei: Fetele Equestriei – Caruselul Prieteniei",
+      "releaseInfo": "2018",
+      "poster": "https://image.tmdb.org/t/p/w500/vjDE0bioRTxD4k9ICdL50sTZXnK.jpg",
+      "description": "Prietenia lui Rarity cu Applejack este pusă la încercare când Vignette Valencia o angajează ca nou designer pentru o paradă în parc tematic.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:852719",
+      "id": "tmdb:260513",
       "type": "movie",
-      "name": "Twenty Something",
-      "poster": "https://image.tmdb.org/t/p/w500/zLaGPqNxhkxkzEqPd6hb58FB8t4.jpg",
-      "releaseInfo": "2021"
+      "name": "Incredibilii 2",
+      "releaseInfo": "2018",
+      "poster": "https://image.tmdb.org/t/p/w500/gR6PL7QthGSW0pBfXkkKYP6bq5W.jpg",
+      "description": "Helen Parr este aleasă să conducă o campanie menită să reabiliteze imaginea supereroilor în ochii publicului. În timp ce ea revine în acțiune, Bob rămâne acasă alături de copii și descoperă că viața de familie poate fi la fel de complicată ca lupta cu răufăcătorii. Când un nou inamic o pune pe Helen în pericol, Incredibilii trebuie să acționeze din nou împreună pentru a salva situația.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:574093",
+      "id": "tmdb:505832",
       "type": "movie",
-      "name": "Float",
-      "poster": "https://image.tmdb.org/t/p/w500/mgwObpU1NCXfPqF7ZaTpi80mxsF.jpg",
-      "releaseInfo": "2019"
+      "name": "Micul Meu Ponei: Fetele Equestriei – Prietenia Uitată",
+      "releaseInfo": "2018",
+      "poster": "https://image.tmdb.org/t/p/w500/dY7pdaPfbTnJnfnZBjRFprgRuUn.jpg",
+      "description": "Sunset Shimmer descoperă că prietenele ei nu-și mai amintesc nimic din binele pe care l-a făcut și o văd din nou drept vechea lor adversară. Cu ajutorul lui Trixie și al Prințesei Twilight, Sunset caută sursa vrajei și încearcă să recupereze amintirile șterse înainte ca prietenia lor să fie pierdută definitiv.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:574074",
+      "id": "tmdb:364689",
       "type": "movie",
-      "name": "Kitbull",
-      "poster": "https://image.tmdb.org/t/p/w500/mwKO3cZbxipgd9QAPboJVTDLPiN.jpg",
-      "releaseInfo": "2019"
+      "name": "Ferdinand",
+      "releaseInfo": "2017",
+      "poster": "https://image.tmdb.org/t/p/w500/3Lxz0eoVQSAfbWvoTRZ1NhpCQWw.jpg",
+      "description": "După ce a fost confundat cu o bestie, Ferdinand, un taur uriaș cu o inimă mare, a fost capturat și îndepărtat de propria casă. Hotărât să se întoarcă la familia sa, își face o echipă specială, cu care pornește într-o aventură extraordinară. Stabilit în Spania, Ferdinand ne arată că nu este bine să judeci un taur după înfățișarea sa.  De la studiourile Blue Sky și Carlos Saldanha, regizorul animației Rio, inspirat de îndrăgita carte Povestea lui Ferdinand de Munro Leaf și Robert Lawson, Ferdinand este o comedie emoționantă și plină de aventură cu o distribuție excepțională care îi numără pe: John Cena, Kate McKinnon, Gina Rodriguez, Anthony Anderson și mulți alții.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:646053",
+      "id": "tmdb:355547",
       "type": "movie",
-      "name": "Loop",
-      "poster": "https://image.tmdb.org/t/p/w500/pUA0cnrZnm8IRx1NMcr9FiOsAI7.jpg",
-      "releaseInfo": "2019"
+      "name": "Primul Crăciun",
+      "releaseInfo": "2017",
+      "poster": "https://image.tmdb.org/t/p/w500/135fIjMAcStUfHK1YRvQKIpdRa1.jpg",
+      "description": "The Star urmărește povestea măgarului Bo și a prietenilor săi, în timp ce devin eroii anonimi ai primului Crăciun. Bo, un măgar mic și curajos, visează la o viață dincolo de munca sa zilnică de la moara din sat. Într-o zi, el își găsește curajul de a se elibera și în cele din urmă pornește în aventura viselor sale. În călătoria sa, el face echipă cu Ruth, o oaie drăgălașă care și-a pierdut turma și Dave, un porumbel cu aspirații înalte. Împreună cu trei cămile sarcastice și unele animale excentrice, Bo și noii lui prieteni urmează „Steaua” și devin eroii neobișnuiți în cea mai bună poveste relatată vreodată – primul Crăciun. Plini de entuziasm și determinare, Bo și prietenii săi se vor confrunta cu cele mai dificile provocări pentru a-și îndeplini visul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:697173",
+      "id": "tmdb:354912",
       "type": "movie",
-      "name": "Out",
-      "poster": "https://image.tmdb.org/t/p/w500/kU3YYulx2RNB8TYns7a2QR9CqEP.jpg",
-      "releaseInfo": "2020"
+      "name": "Coco",
+      "releaseInfo": "2017",
+      "poster": "https://image.tmdb.org/t/p/w500/8QBLQFXkHqukinO8VIocibxt09M.jpg",
+      "description": "Miguel, un băiat dintr-o familie în care muzica este interzisă de generații, visează să devină muzician. De Ziua Morților, ajunge accidental în lumea de dincolo, unde pornește alături de Hector, un spirit uitat, într-o călătorie care îi dezvăluie trecutul ascuns al familiei sale.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:574091",
+      "id": "tmdb:460793",
       "type": "movie",
-      "name": "Wind",
-      "poster": "https://image.tmdb.org/t/p/w500/eCQOiAWjXmRPlktXFEu4vt22Kz2.jpg",
-      "releaseInfo": "2019"
+      "name": "Regatul de Gheaţă. Sărbători cu Olaf",
+      "releaseInfo": "2017",
+      "poster": "https://image.tmdb.org/t/p/w500/3HCy58ahc95eGEAn2axBGp6Nd07.jpg",
+      "description": "Olaf și Sven pornesc într-o nouă aventură. Cei doi merg din ușă în ușă, prin întregul regat și adună toate tradițiile pentru sărbătorile de iarnă. Ce tradiție vor alege Anna și Elsa? Își vor crea ele propria tradiție?\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:532952",
+      "id": "tmdb:476631",
       "type": "movie",
-      "name": "Smash and Grab",
-      "poster": "https://image.tmdb.org/t/p/w500/bsDQdjuGAhj6JrmCKVBFTUBeIrb.jpg",
-      "releaseInfo": "2019"
+      "name": "Barbie și Delfinul Magic",
+      "releaseInfo": "2017",
+      "poster": "https://image.tmdb.org/t/p/w500/c8Bb9MnvkNTKstQSKixO4dWaUhL.jpg",
+      "description": "Barbie și surorile ei pleacă într-o altă aventură captivantă, globală, pentru a-și vizita prietenul Ken la stagiul său de vară într-un recif de corali frumos și exotic.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:532953",
+      "id": "tmdb:448779",
       "type": "movie",
-      "name": "Purl",
-      "poster": "https://image.tmdb.org/t/p/w500/A8to7TlVMBwMuDgi2DJ9rVJsobE.jpg",
-      "releaseInfo": "2019"
+      "name": "Patrula junglei",
+      "releaseInfo": "2017",
+      "poster": "https://image.tmdb.org/t/p/w500/crHxbRaKxHXW7ZtM6GAEJtNn3ou.jpg",
+      "description": "Maurice poate arăta ca un pinguin - dar în interior este un tigru adevărat! Crescut de o tigroaică, el este cel mai neîndemânatic maestru de kung-fu din toate timpurile. Împreună cu prietenii săi, Patrula junglei, el intenționează să mențină ordinea și dreptatea în junglă, așa cum a făcut-o și mama sa înaintea lui. Dar Igor, un koala malefic, vrea să distrugă jungla odată pentru totdeauna, ajutat de armata sa de babuini prostuți.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:148605",
+      "id": "tmdb:260514",
       "type": "movie",
-      "name": "Mater Camion Monstru",
-      "poster": "https://image.tmdb.org/t/p/w500/ikdzBp4KIDazYgbJJLakZJmfnhn.jpg",
-      "releaseInfo": "2010"
+      "name": "Mașini 3",
+      "releaseInfo": "2017",
+      "poster": "https://image.tmdb.org/t/p/w500/8OkNkV28jguhzBcfTQ8kqrJmCH1.jpg",
+      "description": "Luat prin surprindere de o nouă generație de mașini de curse, legendarul Fulger McQueen este scos din sportul pe care îl iubește. Pentru a se putea întoarce va avea nevoie de ajutorul unui mecanic priceput, un plan bine pus la punct și evident mult noroc. Dovada că numarul #95 nu se lasă bătut va trebui oferită chiar în cea mai mare cursă din Cupa Piston.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:296137",
+      "id": "tmdb:324852",
       "type": "movie",
-      "name": "Spinning",
-      "poster": "https://image.tmdb.org/t/p/w500/rrnf2Q6doMoFr68Ai6Y2IgF8Fel.jpg",
-      "releaseInfo": "2013"
+      "name": "Sunt un mic ticălos 3",
+      "releaseInfo": "2017",
+      "poster": "https://image.tmdb.org/t/p/w500/sjCv0R599rGvp5oNXEdhcueoyhx.jpg",
+      "description": "Gru nu reușește să aresteze un copil-vedetă din anii ’80 devenit superticălos, așa că își pierde slujba, dar câștigă o nouă rudă: un geamăn de care nu știuse niciodată.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:148608",
+      "id": "tmdb:434757",
       "type": "movie",
-      "name": "Moon Mater",
-      "poster": "https://image.tmdb.org/t/p/w500/d4du70hEkq5nBznMcW89BxDY2Zb.jpg",
-      "releaseInfo": "2010"
+      "name": "Barbie: Eroina Jocului Video",
+      "releaseInfo": "2017",
+      "poster": "https://image.tmdb.org/t/p/w500/rWQPf9Q8CAHIpBP8SVLE3uaSmf4.jpg",
+      "description": "Barbie este atrasă ca prin magie în jocul ei favorit și este entuziasmată de felul în care s-a transformat: un caracter amuzant pe role. În acest joc îl intâlnește pe Cutie, adorabilul nor pufos și pe printesa rolelor, Bella. Împreună navighează în joc, iar pe măsura înaintării descoperă că o forță malefică vrea să pună stăpânire pe el... așa că Barbie folosidu-se de talentele sale încearcă să salveze jocul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:140967",
+      "id": "tmdb:411840",
       "type": "movie",
-      "name": "Mater the Greater",
-      "poster": "https://image.tmdb.org/t/p/w500/tVrU8hUW2xTjAlIiyAvYVOFFQwd.jpg",
-      "releaseInfo": "2008"
+      "name": "Cu toţii la surf 2: Mania valurilor",
+      "releaseInfo": "2017",
+      "poster": "https://image.tmdb.org/t/p/w500/eacrUb7Uu4rzgF6YRIiAnYZ5MOn.jpg",
+      "description": "Cody, Chicken Joe și Lani se întorc pe marile ecrane pentru cea mai spectaculoasă aventură! Cea mai radicală echipă de surferi, The Hang Five, îi pune la încercare pe Cody și gașca lui, și îi învață ce înseamnă efortul de echipă pe drumul spre cel mai legendar loc pentru surf de pe planetă.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:39030",
+      "id": "tmdb:342473",
       "type": "movie",
-      "name": "El Materdor",
-      "poster": "https://image.tmdb.org/t/p/w500/sW4IdZHsUOi6I4hAYtR92aeHUsC.jpg",
-      "releaseInfo": "2008"
-    },
-    {
-      "id": "tmdb:148607",
-      "type": "movie",
-      "name": "Heavy Metal Mater",
-      "poster": "https://image.tmdb.org/t/p/w500/5WFqQ6VhbPP1JGDe0RDWW5PPLgE.jpg",
-      "releaseInfo": "2010"
-    },
-    {
-      "id": "tmdb:171536",
-      "type": "movie",
-      "name": "Unidentified Flying Mater",
-      "poster": "https://image.tmdb.org/t/p/w500/i6To4oegSvLEW9CTsrCANgko1Gj.jpg",
-      "releaseInfo": "2009"
-    },
-    {
-      "id": "tmdb:56553",
-      "type": "movie",
-      "name": "Rescue Squad Mater",
-      "poster": "https://image.tmdb.org/t/p/w500/2mLBoPMSXshWjknql6dxc2DAfZ1.jpg",
-      "releaseInfo": "2008"
-    },
-    {
-      "id": "tmdb:148606",
-      "type": "movie",
-      "name": "Mater Private Eye",
-      "poster": "https://image.tmdb.org/t/p/w500/xy5fx1rJXfJPxNHx0qqdcTYr1Wp.jpg",
-      "releaseInfo": "2010"
-    },
-    {
-      "id": "tmdb:483396",
-      "type": "movie",
-      "name": "Miss Fritter's Racing Skoool",
-      "poster": "https://image.tmdb.org/t/p/w500/hyFYjn7OjmEg8HkQVjQm2rXOTo1.jpg",
-      "releaseInfo": "2017"
-    },
-    {
-      "id": "tmdb:13934",
-      "type": "movie",
-      "name": "Mater și lumina fantomă",
-      "poster": "https://image.tmdb.org/t/p/w500/thZHluscCvT3SCzVckmFszOVVtM.jpg",
-      "releaseInfo": "2006"
-    },
-    {
-      "id": "tmdb:24328",
-      "type": "movie",
-      "name": "Tokyo Mater",
-      "poster": "https://image.tmdb.org/t/p/w500/sBFxPsjKNDZgnV1kcOzAXU205wa.jpg",
-      "releaseInfo": "2008"
-    },
-    {
-      "id": "tmdb:286189",
-      "type": "movie",
-      "name": "The Radiator Springs 500½",
-      "poster": "https://image.tmdb.org/t/p/w500/oKuGXTnggOmut8A0ZvU1Hh2yOa8.jpg",
-      "releaseInfo": "2014"
-    },
-    {
-      "id": "tmdb:509080",
-      "type": "movie",
-      "name": "LEGO: Marvel Super Heroes – Gardienii galaxiei",
-      "poster": "https://image.tmdb.org/t/p/w500/e5h1RlnQzjgEAh4s96k50S8XkKa.jpg",
-      "releaseInfo": "2017"
-    },
-    {
-      "id": "tmdb:528222",
-      "type": "movie",
-      "name": "LEGO: Marvel Super Heroes – Pantera Neagră",
-      "poster": "https://image.tmdb.org/t/p/w500/2t6V87sYjESrtBj9flbHWhZKtAp.jpg",
-      "releaseInfo": "2018"
-    },
-    {
-      "id": "tmdb:870358",
-      "type": "movie",
-      "name": "Crăciunul cu micul Batman",
-      "poster": "https://image.tmdb.org/t/p/w500/sZI81uzQncVuYgM58yMUE2MIJMK.jpg",
-      "releaseInfo": "2023"
-    },
-    {
-      "id": "tmdb:1123093",
-      "type": "movie",
-      "name": "Jurnalul unui puști: Arest la domiciliu de Crăciun",
-      "poster": "https://image.tmdb.org/t/p/w500/tV0996od52EJ6S8dLKvcVGsO7B.jpg",
-      "releaseInfo": "2023"
-    },
-    {
-      "id": "tmdb:66816",
-      "type": "movie",
-      "name": "A Knight for a Day",
-      "poster": "https://image.tmdb.org/t/p/w500/uccgNllBobc7mWec1WFyEoszJvO.jpg",
-      "releaseInfo": "1946"
-    },
-    {
-      "id": "tmdb:49077",
-      "type": "movie",
-      "name": "All in a Nutshell",
-      "poster": "https://image.tmdb.org/t/p/w500/n48x4oozcMNAjmDZ7AfGhHpoJme.jpg",
-      "releaseInfo": "1949"
-    },
-    {
-      "id": "tmdb:52482",
-      "type": "movie",
-      "name": "Elmer Elephant",
-      "poster": "https://image.tmdb.org/t/p/w500/xeROPnW0JWQOF380WGtGPlYNkzV.jpg",
-      "releaseInfo": "1936"
-    },
-    {
-      "id": "tmdb:234567",
-      "type": "movie",
-      "name": "Get a Horse!",
-      "poster": "https://image.tmdb.org/t/p/w500/axVSbOZxa6Xp0ticSJA6faVeyDY.jpg",
-      "releaseInfo": "2013"
-    },
-    {
-      "id": "tmdb:66884",
-      "type": "movie",
-      "name": "How to Fish",
-      "poster": "https://image.tmdb.org/t/p/w500/bCu4PyNkVZ02UlXdUMjrE72s1Jz.jpg",
-      "releaseInfo": "1942"
-    },
-    {
-      "id": "tmdb:132714",
-      "type": "movie",
-      "name": "Gulliver Mickey",
-      "poster": "https://image.tmdb.org/t/p/w500/kJlHoCpjjqMcNl2VuVzWZGZ4RtY.jpg",
-      "releaseInfo": "1934"
-    },
-    {
-      "id": "tmdb:55566",
-      "type": "movie",
-      "name": "Goliath II",
-      "poster": "https://image.tmdb.org/t/p/w500/6L3TLqnx1VCaOiWgeFHR7rjYRTd.jpg",
-      "releaseInfo": "1960"
-    },
-    {
-      "id": "tmdb:54184",
-      "type": "movie",
-      "name": "Lambert the Sheepish Lion",
-      "poster": "https://image.tmdb.org/t/p/w500/hnJpKnhfLG3zPpHk1lFkxbEUCsn.jpg",
-      "releaseInfo": "1952"
-    },
-    {
-      "id": "tmdb:32428",
-      "type": "movie",
-      "name": "Lonesome Ghosts",
-      "poster": "https://image.tmdb.org/t/p/w500/ydAWe33OKMxkwd4piuQdKDVr3qO.jpg",
-      "releaseInfo": "1937"
-    },
-    {
-      "id": "tmdb:67132",
-      "type": "movie",
-      "name": "Mr. Mouse Takes a Trip",
-      "poster": "https://image.tmdb.org/t/p/w500/aHwYLRD0r4gB1zd5z5Cp2x14njw.jpg",
-      "releaseInfo": "1940"
-    },
-    {
-      "id": "tmdb:31135",
-      "type": "movie",
-      "name": "Mickey and the Beanstalk",
-      "poster": "https://image.tmdb.org/t/p/w500/yJ5vx5U4Dj8iU3IcyyLzonNnmJT.jpg",
-      "releaseInfo": "1947"
-    },
-    {
-      "id": "tmdb:14813",
-      "type": "movie",
-      "name": "Colinda de Crăciun a lui Mickey",
-      "poster": "https://image.tmdb.org/t/p/w500/kIv4dXyFm8SW2crbsagbVeRqMiF.jpg",
-      "releaseInfo": "1983"
-    },
-    {
-      "id": "tmdb:67167",
-      "type": "movie",
-      "name": "Atelierul lui Moș Crăciun",
-      "poster": "https://image.tmdb.org/t/p/w500/21eoNIxYWj63hHWoXkzreQCWOnx.jpg",
-      "releaseInfo": "1932"
-    },
-    {
-      "id": "tmdb:67572",
-      "type": "movie",
-      "name": "The Band Concert",
-      "poster": "https://image.tmdb.org/t/p/w500/veEJ9AjgdcuGT9Yylvw2xdcJlUa.jpg",
-      "releaseInfo": "1935"
-    },
-    {
-      "id": "tmdb:44293",
-      "type": "movie",
-      "name": "Paul Bunyan",
-      "poster": "https://image.tmdb.org/t/p/w500/b6BNmkxDtoKUW3XHM79lzOWn8z3.jpg",
-      "releaseInfo": "1958"
-    },
-    {
-      "id": "tmdb:81077",
-      "type": "movie",
-      "name": "The Grasshopper and the Ants",
-      "poster": "https://image.tmdb.org/t/p/w500/rTRYC5loiIL5EuQgZv7NXEiH0Pd.jpg",
-      "releaseInfo": "1934"
-    },
-    {
-      "id": "tmdb:22752",
-      "type": "movie",
-      "name": "The Reluctant Dragon",
-      "poster": "https://image.tmdb.org/t/p/w500/woyLqPJLeHP7gzF7DOtEapqaJQx.jpg",
-      "releaseInfo": "1941"
-    },
-    {
-      "id": "tmdb:25831",
-      "type": "movie",
-      "name": "Print si cersetor",
-      "poster": "https://image.tmdb.org/t/p/w500/i5HhTVZo50hbCccUBwZpMTwBuLS.jpg",
-      "releaseInfo": "1990"
-    },
-    {
-      "id": "tmdb:91815",
-      "type": "movie",
-      "name": "The Wise Little Hen",
-      "poster": "https://image.tmdb.org/t/p/w500/oMKqAHgr4aC194UKlLt4N8nbwtM.jpg",
-      "releaseInfo": "1934"
-    },
-    {
-      "id": "tmdb:987337",
-      "type": "movie",
-      "name": "The Wonderful Summer of Mickey Mouse",
-      "poster": "https://image.tmdb.org/t/p/w500/9sdmCWZlLwFF4GbohSQxlD24g6m.jpg",
-      "releaseInfo": "2022"
-    },
-    {
-      "id": "tmdb:27287",
-      "type": "movie",
-      "name": "The Small One",
-      "poster": "https://image.tmdb.org/t/p/w500/dumrBarjoCd7tSarOYSRLiPFcPC.jpg",
-      "releaseInfo": "1978"
-    },
-    {
-      "id": "tmdb:67609",
-      "type": "movie",
-      "name": "Three Blind Mouseketeers",
-      "poster": "https://image.tmdb.org/t/p/w500/oqh31E3VVFUVRZiUdoxajWj57qT.jpg",
-      "releaseInfo": "1936"
-    },
-    {
-      "id": "tmdb:939336",
-      "type": "movie",
-      "name": "The Wonderful Winter of Mickey Mouse",
-      "poster": "https://image.tmdb.org/t/p/w500/3dspgMFx64kA8BqkGZQK6Hk1sCV.jpg",
-      "releaseInfo": "2022"
-    },
-    {
-      "id": "tmdb:34463",
-      "type": "movie",
-      "name": "Cei trei porcușori",
-      "poster": "https://image.tmdb.org/t/p/w500/aPmSY3y4A2xMSkF24tdIfDQNKJy.jpg",
-      "releaseInfo": "1933"
-    },
-    {
-      "id": "tmdb:67661",
-      "type": "movie",
-      "name": "Thru the Mirror",
-      "poster": "https://image.tmdb.org/t/p/w500/ykONqQgAnLDySxbXHwmFzmueWO3.jpg",
-      "releaseInfo": "1936"
-    },
-    {
-      "id": "tmdb:109329",
-      "type": "movie",
-      "name": "Three Little Wolves",
-      "poster": "https://image.tmdb.org/t/p/w500/AsoHl5o6ewvrlL5y38gQLNHj46A.jpg",
-      "releaseInfo": "1936"
-    },
-    {
-      "id": "tmdb:418956",
-      "type": "movie",
-      "name": "The Ugly Duckling",
-      "poster": "https://image.tmdb.org/t/p/w500/nCkMoq2penMxvdhQa0LGwK1G6fJ.jpg",
-      "releaseInfo": "1939"
-    },
-    {
-      "id": "tmdb:67790",
-      "type": "movie",
-      "name": "Zilele de altădată",
-      "poster": "https://image.tmdb.org/t/p/w500/bz6ARhFsKEpNSA0dBvegSvgN1jM.jpg",
-      "releaseInfo": "1933"
-    },
-    {
-      "id": "tmdb:15906",
-      "type": "movie",
-      "name": "Barbie și magia lui Pegas 3-D",
-      "poster": "https://image.tmdb.org/t/p/w500/wqKNLSzGN9lqnmtFFwu40g2eWgQ.jpg",
-      "releaseInfo": "2005"
-    },
-    {
-      "id": "tmdb:23566",
-      "type": "movie",
-      "name": "Barbie și cei trei muschetari",
-      "poster": "https://image.tmdb.org/t/p/w500/zR0ts7zL2P1kQIQXYlnS4KCqqmu.jpg",
-      "releaseInfo": "2009"
-    },
-    {
-      "id": "tmdb:13283",
-      "type": "movie",
-      "name": "Barbie prințesa insulei",
-      "poster": "https://image.tmdb.org/t/p/w500/oguRPUFeHt0H0wO0He4ewTseMXo.jpg",
-      "releaseInfo": "2007"
-    },
-    {
-      "id": "tmdb:57737",
-      "type": "movie",
-      "name": "Barbie: Secretul zânelor",
-      "poster": "https://image.tmdb.org/t/p/w500/wn2aoYKOonwMNKkzfgO5y4ji8pB.jpg",
-      "releaseInfo": "2011"
-    },
-    {
-      "id": "tmdb:481583",
-      "type": "movie",
-      "name": "Barbie: Dreamtopia Festival of Fun",
-      "poster": "https://image.tmdb.org/t/p/w500/zybhquH38BMn55GIwMQ6E3mGabR.jpg",
-      "releaseInfo": "2018"
-    },
-    {
-      "id": "tmdb:15167",
-      "type": "movie",
-      "name": "Barbie in the Nutcracker",
-      "poster": "https://image.tmdb.org/t/p/w500/eIkXJggVmzN4MyPgJ2kDjOy9lmQ.jpg",
-      "releaseInfo": "2001"
-    },
-    {
-      "id": "tmdb:13459",
-      "type": "movie",
-      "name": "Barbie și colindele de Crăciun",
-      "poster": "https://image.tmdb.org/t/p/w500/fX9g1AE1JIqjX3LPPKVjcmHs6fd.jpg",
-      "releaseInfo": "2008"
-    },
-    {
-      "id": "tmdb:18198",
-      "type": "movie",
-      "name": "Barbie Mariposa și prietenele zâne-fluture",
-      "poster": "https://image.tmdb.org/t/p/w500/qsb1OQCNVMAX3KRT6xhKOl3mM6P.jpg",
-      "releaseInfo": "2008"
-    },
-    {
-      "id": "tmdb:73456",
-      "type": "movie",
-      "name": "Barbie la școala prințeselor",
-      "poster": "https://image.tmdb.org/t/p/w500/lI2jPbssax6XX5vDqB9mTJHGzfH.jpg",
-      "releaseInfo": "2011"
-    },
-    {
-      "id": "tmdb:255718",
-      "type": "movie",
-      "name": "Barbie: Prințesa perlelor",
-      "poster": "https://image.tmdb.org/t/p/w500/zA4csIbIKzPOd6DwN5rKxHkVCu6.jpg",
-      "releaseInfo": "2014"
-    },
-    {
-      "id": "tmdb:16418",
-      "type": "movie",
-      "name": "Barbie prezintă Thumbelina",
-      "poster": "https://image.tmdb.org/t/p/w500/ytKd2jWnzWLCiccutqqMNzcP5RE.jpg",
-      "releaseInfo": "2009"
-    },
-    {
-      "id": "tmdb:11047",
-      "type": "movie",
-      "name": "Astérix le Gaulois",
-      "poster": "https://image.tmdb.org/t/p/w500/hTjdYzjOvSCyO4Un8NQszX9nwwg.jpg",
-      "releaseInfo": "1967"
-    },
-    {
-      "id": "tmdb:828397",
-      "type": "movie",
-      "name": "Ben Gen 10",
-      "poster": "https://image.tmdb.org/t/p/w500/nxWAw5kaYjSH8EIcUz6VtHj8jyd.jpg",
-      "releaseInfo": "2021"
-    },
-    {
-      "id": "tmdb:834802",
-      "type": "movie",
-      "name": "Ben 10.010",
-      "poster": "https://image.tmdb.org/t/p/w500/6aDh4yH5FHaMfjdsqw4n97rl7FJ.jpg",
-      "releaseInfo": "2021"
-    },
-    {
-      "id": "tmdb:882878",
-      "type": "movie",
-      "name": "Ben 10 Extraterestro-Mania",
-      "poster": "https://image.tmdb.org/t/p/w500/pgL3pJEPv1K4Bb1isw5PFlA1MJ3.jpg",
-      "releaseInfo": "2021"
-    },
-    {
-      "id": "tmdb:27653",
-      "type": "movie",
-      "name": "O coadă americană: misterul monstrului de noapte",
-      "poster": "https://image.tmdb.org/t/p/w500/oTV5TwZ4i6wDcWxoNpczk4CQBbM.jpg",
-      "releaseInfo": "1999"
-    },
-    {
-      "id": "tmdb:262549",
-      "type": "movie",
-      "name": "Donald Duck - Cele mai frumoase aventuri de Craciun",
-      "poster": "https://image.tmdb.org/t/p/w500/wd1mpVo5MP7PlVe0CWuF8bMVScL.jpg",
-      "releaseInfo": "2012"
-    },
-    {
-      "id": "tmdb:459159",
-      "type": "movie",
-      "name": "Puppy!",
-      "poster": "https://image.tmdb.org/t/p/w500/sNxIazoQqDQukfQqkYxTgx9DRbu.jpg",
-      "releaseInfo": "2017"
-    },
-    {
-      "id": "tmdb:893723",
-      "type": "movie",
-      "name": "Patrula Cățelușilor: Filmul cel Mare",
-      "poster": "https://image.tmdb.org/t/p/w500/n5x6FvGTDj061Ei8fbgGfCuxCyB.jpg",
-      "releaseInfo": "2023"
+      "name": "Balerina",
+      "releaseInfo": "2016",
+      "poster": "https://image.tmdb.org/t/p/w500/g0TSNxrgCVWA3JgjSU6hWruF1AX.jpg",
+      "description": "Felicie și Victor, doi tineri prieteni din Franța anilor 1880, fug din orfelinat pentru a-și îndeplini visurile la Paris, strălucitorul oraș al luminilor.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
       "id": "tmdb:429657",
       "type": "movie",
       "name": "Albert",
-      "poster": "https://image.tmdb.org/t/p/w500/6hEXYAJ88eQZFN3niaBsjn52os9.jpg",
-      "releaseInfo": "2016"
+      "releaseInfo": "2016",
+      "poster": "https://image.tmdb.org/t/p/w500/3mdKQIvJ1uIAjEMLnuQtAinn4vi.jpg",
+      "description": "Albert, un brăduț Douglas, are vise mari de a deveni cel mai faimos pom de Crăciun din Empire City.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1166714",
+      "id": "tmdb:277834",
       "type": "movie",
-      "name": "Mickey and Friends: Trick or Treats",
-      "poster": "https://image.tmdb.org/t/p/w500/ntL7axfE0W0HHcF0wAmlRVla20o.jpg",
-      "releaseInfo": "2023"
+      "name": "Vaiana",
+      "releaseInfo": "2016",
+      "poster": "https://image.tmdb.org/t/p/w500/4z83O8t5RL52XmnyW17JWW4u8yH.jpg",
+      "description": "Pe insula Motunui din Oceania, Vaiana, fiica șefului de trib, se pregătește să preia conducerea comunității, deși simte chemarea oceanului. Când un blestem provocat de semizeul Maui începe să distrugă insula, ea pornește pe mare împotriva poruncii tatălui ei, hotărâtă să-l găsească pe Maui și să-i ceară ajutorul pentru a-și salva poporul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1046032",
+      "id": "tmdb:405314",
       "type": "movie",
-      "name": "Băieții răi: Sărbători foarte rele",
-      "poster": "https://image.tmdb.org/t/p/w500/cvleTuXZnMhp3VyhN60yJo5B2x7.jpg",
-      "releaseInfo": "2023"
+      "name": "Micul Meu Ponei: Fetele Equestriei – Legenda Taberei Mereu Libere",
+      "releaseInfo": "2016",
+      "poster": "https://image.tmdb.org/t/p/w500/fo9LoPjqK7wLv7g7zZM1LcnqsVg.jpg",
+      "description": "Elevele liceului Canterlot pleacă într-o excursie la tabăra Mereu Libere, unde Twilight speră să uite de transformarea ei în Midnight Sparkle. Când fetele descoperă noi puteri magice și tabăra este amenințată, ele trebuie să afle adevărul din spatele legendei lui Gaia Everfree și să-și salveze vacanța.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1075794",
+      "id": "tmdb:415749",
       "type": "movie",
-      "name": "Leo",
-      "poster": "https://image.tmdb.org/t/p/w500/gSOVog7ydsaF1YpgAqBqnKYFGY.jpg",
-      "releaseInfo": "2023"
+      "name": "Barbie în aventura spaţială",
+      "releaseInfo": "2016",
+      "poster": "https://image.tmdb.org/t/p/w500/oABoCuGs42NqiC7M4r06fNCkJQH.jpg",
+      "description": "Barbie este o prințesă cosmică care zboară cu nava ei spațială într-un univers îndepărtat, avându-l alături pe cățelușui ei devotat și adorabil, Pupcorn.  Într-o zi, totul se schimbă, când strălucirea stelelor începe să pălească, și dansul lor prin univers să încetinească. Barbie pleacă, așadar, pe o nouă planetă minunată pentru a se alătura unei echipe speciale de salvare, cu o misiune extraordinară: să salveze stelele.  Alături de noii ei prieteni vor face totul ca să salveze galaxia, și va trece prin cele mai nevăzute aventuri cu nava ei spațială. Barbie va descoperi că, dacă își ascultă inima, și dacă are alături prieteni buni cărora să le ceară ajutorul, ar putea deveni lidera pe care o așteaptă un întreg univers!\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:392536",
+      "id": "tmdb:409122",
       "type": "movie",
-      "name": "LEGO Scooby-Doo! Haunted Hollywood",
-      "poster": "https://image.tmdb.org/t/p/w500/fZ53SvgcryXaWctiiRtlxR1p4Uq.jpg",
-      "releaseInfo": "2016"
+      "name": "Scooby-Doo si WWE: Cursa Demonului Vitezei",
+      "releaseInfo": "2016",
+      "poster": "https://image.tmdb.org/t/p/w500/wRrvPis7C8YfbOBuuyUoZel7MC4.jpg",
+      "description": "Când Scooby și Mystery Inc. vizitează o competiție de curse off-road, nu trece mult până încep să apară evenimente ciudate. Un misterios pilot fantomă, cunoscut doar sub numele de Inferno, provoacă haos și este hotărât să saboteze cursa. Depinde de Scooby-Doo, Shaggy și noul lor partener de conducere, The Undertaker, să salveze cursa și să rezolve misterul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:718100",
+      "id": "tmdb:372058",
       "type": "movie",
-      "name": "The Swan Princess: A Royal Wedding",
-      "poster": "https://image.tmdb.org/t/p/w500/mJaNBADFKRiMys8DiGemrLGYd9U.jpg",
-      "releaseInfo": "2020"
+      "name": "Numele tău.",
+      "releaseInfo": "2016",
+      "poster": "https://image.tmdb.org/t/p/w500/xvpAbQcuzMqQQqVwsYmLPTctU0h.jpg",
+      "description": "Liceenii Mitsuha și Taki sunt doi străini care trăiesc vieți separate. Însă, într-o noapte, fac brusc schimb de locuri. Mitsuha se trezește în corpul lui Taki, iar el în al ei. Această întâmplare bizară continuă să se repete la întâmplare, iar cei doi trebuie să își adapteze viețile unul în jurul celuilalt.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1154598",
+      "id": "tmdb:278154",
       "type": "movie",
-      "name": "LEGO Marvel Avengers: Code Red",
-      "poster": "https://image.tmdb.org/t/p/w500/rDzig50dj7VpLwJ7SThbamETK1G.jpg",
-      "releaseInfo": "2023"
+      "name": "Epoca de gheață 5: Ploaie de meteoriți",
+      "releaseInfo": "2016",
+      "poster": "https://image.tmdb.org/t/p/w500/vnJvgfao1syZ7O4TgeJmw27PKZ9.jpg",
+      "description": "Trupa dă de necazuri extraterestre când Scrat încearcă să-și îngroape ghinda și declanșează un eveniment cosmic ce pune în pericol tot Pământul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1175959",
+      "id": "tmdb:127380",
       "type": "movie",
-      "name": "The Swan Princess: Far Longer Than Forever",
-      "poster": "https://image.tmdb.org/t/p/w500/dWyxPokAp4eiJXWriYbNvU2v1V.jpg",
-      "releaseInfo": "2023"
+      "name": "În căutarea lui Dory",
+      "releaseInfo": "2016",
+      "poster": "https://image.tmdb.org/t/p/w500/tPYE8LNohdthZeG7mxZARdAmKLQ.jpg",
+      "description": "Dory, peștele-chirurg uituc, trăiește fericită în recif cu Nemo și Marlin. Dar când brusc își amintește că are o familie care poate o caută, cei trei pornesc într-o călătorie epică prin ocean ca să găsească familia ei. Dory este ajutată de Manny, o caracatiță arțăgoasă; Bailey, o balenă beluga care e convins că abilitățile lui de detectare sonică sunt stricate; și Speranța, o balenă-rechin mioapă. Pe drum, Dory și prietenii ei descoperă magia defectelor lor, a prieteniei și a familiei.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1040148",
+      "id": "tmdb:153518",
       "type": "movie",
-      "name": "Ruby Gillman, adolescenta kraken",
-      "poster": "https://image.tmdb.org/t/p/w500/wrSFglhDHVhyHHCWsbso6XkqV9m.jpg",
-      "releaseInfo": "2023"
+      "name": "Angry Birds: Filmul",
+      "releaseInfo": "2016",
+      "poster": "https://image.tmdb.org/t/p/w500/ujQfmrhQuFbnMPuZ0ismlrS9msG.jpg",
+      "description": "Inspirat de unul dintre cele mai populare jocuri din ultimul deceniu, Angry Birds are în centrul atenției păsăretul dintr-o pădure colorată. La ce să țină eroii mai mult decât la prețioasele lor ouă, garanție a perpetuării speciei? Doar că ouăle sunt și un ingredient delicios pe masa maleficilor și întreprinzătorilor porci verzi, gata de orice pentru a-și îmbogăți festinurile cu o așa delicatesă. Când ouăle dispar ca prin minune, pică pe umerii descurcărețului Red, a partenerului său de nădejde Chuck și a explozivului Bomb să le recupereze...\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1146348",
+      "id": "tmdb:269149",
       "type": "movie",
-      "name": "Scooby-Doo! and Krypto, Too!",
-      "poster": "https://image.tmdb.org/t/p/w500/ntMOnvlYYnio7Fx3xqBu9B1Sz7f.jpg",
-      "releaseInfo": "2023"
+      "name": "Zootropolis",
+      "releaseInfo": "2016",
+      "poster": "https://image.tmdb.org/t/p/w500/lo47pLksE1XJy634Ew8dVwDVsoc.jpg",
+      "description": "Într-o metropolă populată de animale, iepurașul Judy Hopps devine prima polițistă din specia ei, dar descoperă că uniforma nu este suficientă pentru a fi luată în serios. Pentru a-și dovedi valoarea, preia un caz dificil și ajunge să facă echipă cu Nick Wilde, un vulpoi escroc și viclean.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:614930",
+      "id": "tmdb:421126",
       "type": "movie",
-      "name": "Țestoasele Ninja: Haosul mutanților",
-      "poster": "https://image.tmdb.org/t/p/w500/4ympvYV3A0MhtDTf56pHmdOQATq.jpg",
-      "releaseInfo": "2023"
+      "name": "Dragonul vrăjit",
+      "releaseInfo": "2016",
+      "poster": "https://image.tmdb.org/t/p/w500/y9LPVQ32nA8AEQeaca1wF9hRfy2.jpg",
+      "description": "Dorind să fie erou, ca tatăl său, Nicky pornește în căutarea dragonului ce era ținut captiv de o vrăjitoare. Pe Tărâmul Magic, își face mulți prieteni, o veveriță kamikaze, un liliac vorbăreț, dar mai ales pe Rocky, care-l învață să călărească melci viteziști cu trei ochi și să zboare cu țânțari prietenoși. Cel mai curajos dintre ei va vedea primul dragonul. Și-l vor putea face prieten?\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:601131",
+      "id": "tmdb:140300",
       "type": "movie",
-      "name": "Norm of the North: King Sized Adventure",
-      "poster": "https://image.tmdb.org/t/p/w500/lc2ZqIBQGSyETa7V37V6jDS8W2o.jpg",
-      "releaseInfo": "2019"
+      "name": "Kung Fu Panda 3",
+      "releaseInfo": "2016",
+      "poster": "https://image.tmdb.org/t/p/w500/3WmM15SL9Mo2VdowjY8H7BdHMeY.jpg",
+      "description": "Po și tatăl lui vizitează un sat secret de urși panda, dar un spirit malefic amenință întreaga Chină și îl forțează pe Po să formeze o armată pestriță pentru a riposta.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1186402",
+      "id": "tmdb:377897",
       "type": "movie",
-      "name": "Strawberry Shortcake and the Beast of Berry Bog",
-      "poster": "https://image.tmdb.org/t/p/w500/mxF63zcLcKn3pytKxYI3PbXqatA.jpg",
-      "releaseInfo": "2023"
+      "name": "Barbie în echipa spioanelor",
+      "releaseInfo": "2016",
+      "poster": "https://image.tmdb.org/t/p/w500/uxdvJHE5V844dTlK2EmqRQCTYDb.jpg",
+      "description": "Barbie, împreună cu prietenele sale, Teresa și Renee, se transformă din niște sportive care se antrenează intensiv în spioane sub acoperire în această nouă aventură plină de acțiune!  Când o agenție de spioni ultrasecreți remarcă talentul lor sportiv extraordinar, fetele sunt recrutate pentru a porni pe urmele unui hoț de bijuterii care a reușit până acum să se facă scăpat. Cu ajutorul gadgeturilor lor high-tech, cu deghizările lor elegante, și cu ajutorul unor animale de companie-roboți, fetele își vor pune mințile ascuțite la contribuție pentru ca misiunea lor să nu fie… imposibilă!\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:676705",
+      "id": "tmdb:258509",
       "type": "movie",
-      "name": "Aventurile lui Pil",
-      "poster": "https://image.tmdb.org/t/p/w500/eSOWxoIIIrVjJYWO8yLsaotxuya.jpg",
-      "releaseInfo": "2021"
+      "name": "Alvin și veverițele: Marea aventură",
+      "releaseInfo": "2015",
+      "poster": "https://image.tmdb.org/t/p/w500/ApxblqxYwKN3nJ0IEska7CoI5dB.jpg",
+      "description": "Printr-o serie de neînțelegeri, Alvin, Simon și Theodore ajung să creadă că Dave o va cere în căsătorie pe noua sa iubită în New York City - și va scăpa de ei. Au trei zile la dispoziție să ajungă la el și să oprească crererea în căsătorie.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:587284",
+      "id": "tmdb:367961",
       "type": "movie",
-      "name": "Lucky",
-      "poster": "https://image.tmdb.org/t/p/w500/pecbGfL7xM7ERapRRwPCWN8PF14.jpg",
-      "releaseInfo": "2019"
+      "name": "Savva: Inima de razboinic",
+      "releaseInfo": "2015",
+      "poster": "https://image.tmdb.org/t/p/w500/lyoe9vwlzmaaKdLa0SqW2djq00J.jpg",
+      "description": "Slugile unei regine malefice îi țin prizonieri pe locuitorii unui sat blestemat, un băiat pleacă într-o misiune periculoasă pentru a-i elibera.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:439058",
+      "id": "tmdb:354857",
       "type": "movie",
-      "name": "Hey Arnold: Filmul Junglei",
-      "poster": "https://image.tmdb.org/t/p/w500/asBhWDiqGxelve0DtMfMFIzR0Jm.jpg",
-      "releaseInfo": "2018"
+      "name": "Un Show Obișnuit: Filmul",
+      "releaseInfo": "2015",
+      "poster": "https://image.tmdb.org/t/p/w500/p44RoW4naoE1nlSGOqqT0J2pc09.jpg",
+      "description": "Mordecai și Rigby lucrează în parc. O navă spațială se prăbușește în fața lor. Un războinic intergalactic anunță că o Timpnadă va distruge universul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:2899",
+      "id": "tmdb:150540",
       "type": "movie",
-      "name": "Asterix și Obelix - Misiune: Cleopatra",
-      "poster": "https://image.tmdb.org/t/p/w500/eBPaDAdVBMBp6ZaotSvyF1B5ipK.jpg",
-      "releaseInfo": "2002"
+      "name": "Întors pe dos",
+      "releaseInfo": "2015",
+      "poster": "https://image.tmdb.org/t/p/w500/jO5SQgtltzEtDszgoyRGwubI0JG.jpg",
+      "description": "Viața lui Riley, o fetiță veselă din Minnesota, este dată peste cap când familia ei se mută la San Francisco. Emoțiile Bucurie, Tristețe, Frică, Furie și Dezgust încearcă să o ghideze fiecare în felul ei, dar schimbarea le tulbură echilibrul și le face să caute o nouă cale de a o ajuta să meargă mai departe.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:676710",
+      "id": "tmdb:211672",
       "type": "movie",
-      "name": "Năstrușnicul Motan Maurice",
-      "poster": "https://image.tmdb.org/t/p/w500/tUNsQXAqOen09PwDN3Xw1yHE8CZ.jpg",
-      "releaseInfo": "2022"
+      "name": "Minionii",
+      "releaseInfo": "2015",
+      "poster": "https://image.tmdb.org/t/p/w500/zYIx3sker1VIbPR26u0ExWzFgKQ.jpg",
+      "description": "Povestea Minionilor își are originea la începutul timpurilor. Minionii au început ca organisme unicelulare, pentru ca mai apoi să evolueze de-a lungul vremii, mereu ca slujitori ai celor mai ticăloși stăpâni. Niciodată n-au avut norocul să-și păstreze în viață acei stăpâni, de la T. Rex, la Napoleon, așa că acum se trezesc că nu au pe cine să slujească, și sunt afectați de o depresie profundă.  Dar un Minion pe nume Kevin are un plan! Kevin, împreună cu rebelul adolescent Stuart și cu simpaticul Bob se vor aventura în lumea largă pentru a găsi un nou șef pe care ei și frații lor să-l urmeze supuși.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:1153222",
+      "id": "tmdb:317442",
       "type": "movie",
-      "name": "LEGO Disney Prințese: Aventură la castel",
-      "poster": "https://image.tmdb.org/t/p/w500/yVOUMUxndWI4HWUH89l63maH5vr.jpg",
-      "releaseInfo": "2023"
+      "name": "Ultimul: filmul Naruto",
+      "releaseInfo": "2014",
+      "poster": "https://image.tmdb.org/t/p/w500/x0CwUdcWWQgOb9tO8cW6jxyo9Zx.jpg",
+      "description": "La doi ani după evenimentele celui de-al patrulea Mare Război Ninja, luna pe care Hagoromo Otsutsuki a creat-o cu mult timp în urmă pentru a sigila Statuia Gedo începe să coboare spre lume, amenințănd să devină un meteor care va distruge totul la impact. În mijlocul acestei crize, un descendent direct al lui Kaguya Otsutsuki pe nume Toneri Otsutsuki încearcă să o răpească pe Hinata Hyuga, dar ajunge să o răpească pe sora ei mai mică Hanabi. Naruto și aliații săi organizează acum o misiune de salvare înainte de a se trezi implicați într-o luptă finală pentru a decide soarta tuturor.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:832502",
+      "id": "tmdb:270946",
       "type": "movie",
-      "name": "Regele Maimuță",
-      "poster": "https://image.tmdb.org/t/p/w500/i6ye8ueFhVE5pXatgyRrZ83LBD8.jpg",
-      "releaseInfo": "2023"
+      "name": "Pinguinii din Madagascar",
+      "releaseInfo": "2014",
+      "poster": "https://image.tmdb.org/t/p/w500/RQRegW3VKqcUri8n71A8UqmgSF.jpg",
+      "description": "Echipele de superspioni nu se nasc... ci ies din găoace. Descoperiți secretele celor mai abile și amuzante păsări sub acoperire din spionajul global: Skipper, Kowalski, Rico și Private. Acești agenți de elită își unesc forțele cu o organizație șic sub acoperire, Vântul din Nord, condusă de chipeșul și răgușitul Agent Secret (am putea să vă spunem numele lui adevărat, dar... știți ce ar urma), a cărui voce este asigurată de Benedict Cumberbatch. Împreună, ei trebuie să îl oprească pe diabolicul dr. Octavius Brine, a cărui voce este asigurată de John Malkovich, și care intenționează să distrugă lumea așa cum o cunoaștem.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:569094",
+      "id": "tmdb:292177",
       "type": "movie",
-      "name": "Omul-Păianjen: Prin lumea păianjenului",
-      "poster": "https://image.tmdb.org/t/p/w500/xxgHYTS38rvMqUBain8auWvnV6o.jpg",
-      "releaseInfo": "2023"
+      "name": "Micul Meu Ponei: Fetele Equestriei – Rainbow Rocks",
+      "releaseInfo": "2014",
+      "poster": "https://image.tmdb.org/t/p/w500/hGNZ1K2pgiMifYqJJBMELVlwxYz.jpg",
+      "description": "Trei sirene alungate din Equestria sosesc la liceul Canterlot și transformă spectacolul muzical al școlii într-o luptă a trupelor. Twilight Sparkle revine în lumea oamenilor, iar împreună cu Sunset Shimmer și prietenele sale trebuie să oprească magia care se hrănește din neînțelegeri și să readucă armonia prin muzică.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     },
     {
-      "id": "tmdb:976573",
+      "id": "tmdb:247788",
       "type": "movie",
-      "name": "Elementar",
-      "poster": "https://image.tmdb.org/t/p/w500/zEIdfI4TWMILyMclKvlkntNNjdP.jpg",
-      "releaseInfo": "2023"
+      "name": "Al şaptelea pitic",
+      "releaseInfo": "2014",
+      "poster": "https://image.tmdb.org/t/p/w500/k7uuPKYK7h6zXlDJL44W27k4hxW.jpg",
+      "description": "Este ajunul celei de-a 18-a aniversări a prinţesei Rose, iar la castelul Fantabularasa tot regatul se pregăteşte pentru sărbătoare. Au sosit deja Albă ca Zăpada, cei şapte pitici, Cenuşăreasa şi Scufiţa Roşie.  Chiar înainte ca orologiul să bată miezul nopţii, Bobo, cel mai mic dintre pitici, o înţeapă din greşeală pe Printesa Rose (Frumoasa din Pădurea Adormită) cu un ac blestemat, iar întregul regat cade într-un somn de o sută de ani!  Bobo şi ceilalţi şase pitici pornesc într-o aventură periculoasă, pentru a-l găsi pe Jack, care să o trezească pe Rose cu sărutul lui. Ei îi vor înfrunta cu vitejie şi umor pe dragonul care scuipă flăcări şi pe Dellamorta, vrăjitoarea cea rea şi geloasă!\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:285733",
+      "type": "movie",
+      "name": "Barbie şi uşa secretă",
+      "releaseInfo": "2014",
+      "poster": "https://image.tmdb.org/t/p/w500/i4BIMP1KZmERVwt4BFXKeBBIDvJ.jpg",
+      "description": "În această aventură muzicală, o prințesă din zilele noastre pe nume Alexa face echipă cu o zână și cu o sirenă pentru a salva magia dintr-un regat mistic.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:287233",
+      "type": "movie",
+      "name": "Tom and Jerry: The Lost Dragon",
+      "releaseInfo": "2014",
+      "poster": "https://image.tmdb.org/t/p/w500/s2Tegfa5IOUkFx988FgTFZth189.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:294512",
+      "type": "movie",
+      "name": "Alfa și Omega 4: Peștera Dintelui Ascuțit",
+      "releaseInfo": "2014",
+      "poster": "https://image.tmdb.org/t/p/w500/rUgutlhSQabaKO5DPBE2Co8mlyF.jpg",
+      "description": "În timp ce explorează zone necunoscute ale pădurii, micuțul Runt descoperă o peșteră misterioasă despre care se zvonește că ar fi bântuită de un spirit al stâncilor. Curajosul pui face cunoștință cu o lupoaică ieșită din comun care se ascunde acolo și are nevoie de ajutor. Runt, alături de familia sa, pornește într-o misiune pentru a proteja noua sa prietenă și a dezlega misterul din spatele legendei.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:82702",
+      "type": "movie",
+      "name": "Cum să îți dresezi dragonul 2",
+      "releaseInfo": "2014",
+      "poster": "https://image.tmdb.org/t/p/w500/xliu2hIVOiueuxFUeXZGFqIFm37.jpg",
+      "description": "Au trecut cinci ani de când vikingii și dragonii trăiesc în bună pace pe insula Berk. În timp ce prietenii lor se întrec în curse pe dragoni, Sughiț și Știrbul sfârtecă cerurile, călătorind unde nimeni din neamul lor n-a mai ajuns. Una din aventurile lor îi aduce la o peșteră plină de dragoni sălbatici conduși de un lider misterios, iar pacea este din nou pusă în pericol. Sughiț și Știrbul trebuie iarăși să lupte pentru ceea ce cred, dându-și seama că numai împreună au puterea de a schimba o dată pentru totdeauna viitorul oamenilor și-al dragonilor deopotrivă.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:255718",
+      "type": "movie",
+      "name": "Barbie: Prințesa perlelor",
+      "releaseInfo": "2014",
+      "poster": "https://image.tmdb.org/t/p/w500/zA4csIbIKzPOd6DwN5rKxHkVCu6.jpg",
+      "description": "Barbie joacă rolul lui Lumina, o sirenă care visează să fie prințesă. Ea are puteri magice: perlele dansează și strălucesc la comanda ei!\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:230896",
+      "type": "movie",
+      "name": "Omul de Fier și Hulk: Eroi uniți",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/xCBBQMPxXsqIlZUAbpeSo1SVj6R.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:109445",
+      "type": "movie",
+      "name": "Regatul de gheață",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/itAKcobTYGpYT8Phwjd8c9hleTo.jpg",
+      "description": "Prințesa Elsa își ascunde încă din copilărie puterile, dar când acestea scapă de sub control la încoronarea sa, regatul Arendelle este cuprins de o iarnă fără sfârșit, iar ea fuge în munți. Sora ei, Anna, pornește să o găsească și îi întâlnește pe drum pe Kristoff, renul Sven și omul de zăpadă Olaf, alături de care speră să o aducă înapoi pe Elsa și să salveze regatul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:227200",
+      "type": "movie",
+      "name": "Barbie şi surorile ei într-o poveste cu ponei",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/ijs7rC9WvE2wYOxab8x1QSiQiJc.jpg",
+      "description": "Barbie și surorile sale pornesc într-o aventură în maiestuoșii Alpi elvețieni, fiind încântate să petreacă o vară la o academie de călărie unde distracția este în toi!\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:109451",
+      "type": "movie",
+      "name": "Stă să plouă cu chiftele 2",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/5ftbmq0eemlGRTzllBE7flO4Np8.jpg",
+      "description": "După furtuna dezastruoasă din primul film, Flint și prietenii săi sunt forțați să părăsească orașul. Flint acceptă invitația idolul său Chester V de a se alătura companiei Live Corp, care a fost însărcinată să curețe insula și unde cei mai buni inventatori din lume creează tehnologii pentru îmbunătățirea omenirii. Când Flint descoperă că mașina lui încă funcționează și acum creează animale mutante, cum ar fi murăturile vii, tacodile înfometate, creveții și plăcinta cu mere, el și prietenii săi trebuie să se întoarcă pentru a salva lumea.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:196254",
+      "type": "movie",
+      "name": "Barbie: Mariposa și zâna prințesă",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/aUVd4itaF4mDFgld99wMIihjUK7.jpg",
+      "description": "Mariposa devine ambasadorul regal al Flutterfield și este trimisă să aducă pacea între tărâmul ei de zâne și rivalii lor, Zânele de Cristal din Shimmervale. Deși Mariposa nu face o primă impresie prea bună regelui, se împrietenește rapid cu fiica sa timidă, prințesa Catania. Cu toate acestea, o neînțelegere face ca Mariposa să fie izgonită de pe tărâmul lor de zâne. În timp ce Mariposa și Zee se întorc la Flutterfield, ele întâlnesc o zână întunecată care se îndreaptă spre a distruge Shimmervale. Mariposa se grăbește să se întoarcă și o ajută pe Prințesa Catania să salveze tărâmul lor de zâne și, împreună, cele două fete dovedesc că cel mai bun mod de a-ți face un prieten, este să fii prieten.  Translated with www.DeepL.com/Translator (free version)\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:93456",
+      "type": "movie",
+      "name": "Sunt un mic ticălos 2",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/qe0yU8iXNHWzblayghL7ugKIhFt.jpg",
+      "description": "Mai multe invenții, mai mulți minioni, mai mult haos! Tocmai când Gru se dedicase creșterii fetelor, o agenție secretă îl recrutează să lupte cu un geniu malefic.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:646230",
+      "type": "movie",
+      "name": "Aventura Lui Franklin: Exploratori Polari",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/djHwqDptktJwSESTbB0V9ATxRKH.jpg",
+      "description": "În \"Aventura lui Franklin: Exploratori Polari“, cheia moștenită de la Mătușa Harriet a lui Franklin deschide o barcă specială de navigare, coordonatele îi trimit pe Franklin și părinții săi într-o aventură care îi va duce la Polul Nord și la Sud !! Cu un Ranger Husky Polar Bear ca gazdă a Arcticii și a barcei de navigare ca hartă, familia Țestoasă se îmbarcă într-o călătorie misterioasă, ducându-i în multe aventuri și obiective incredibile.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:116711",
+      "type": "movie",
+      "name": "Regatul Secret",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/jZ6SPqPHuIRC1EdHBBkpy5MnprL.jpg",
+      "description": "REGATUL SECRET este o aventură-comedie 3D care ne prezintă o lume fantastică așa cum nu s-a mai văzut. Fiind realizat de creatorii filmelor Epoca de gheață și Rio, REGATUL SECRET spune povestea luptei continue dintre forțele binelui, care mențin lumea naturală vie, și forțele răului, care doresc să o distrugă. După ce o adolescentă se trezește transportată în mod magic în acest univers secret, ea se înconjoară de o echipă de elită de războinici și de un grup de personaje comice, ireale, pentru a-și salva lumea lor... și a noastră.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:49519",
+      "type": "movie",
+      "name": "Familia Crood",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/100UM26RIK2TUb7CR3t8sb3kODL.jpg",
+      "description": "După ce peștera lor este distrusă, o familie preistorică trebuie să traverseze o lume necunoscută, plină de creaturi fantastice și surprize ciudate, în căutarea unei noi locuințe.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:168903",
+      "type": "movie",
+      "name": "Barbie în pantofii roz de balerină",
+      "releaseInfo": "2013",
+      "poster": "https://image.tmdb.org/t/p/w500/4HSPgeq04YUghXbSO5tSPP0jZ4k.jpg",
+      "description": "Barbie o joacă pe Kristyn, o balerină care descoperă o pereche magică de balerini roz care o transportă într-o lume fantastică, unde dansează în spectacole renumite.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:152581",
+      "type": "movie",
+      "name": "Mătura Vrăjitoarei",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/9qAL19JR0oJ7ZlVpUE1Os2P6XXp.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:151535",
+      "type": "movie",
+      "name": "Scooby-Doo! Mask of the Blue Falcon",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/qcSjTyzy1IOt2W7nR4X3uWUx2xj.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:262549",
+      "type": "movie",
+      "name": "Donald Duck - Cele mai frumoase aventuri de Craciun",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/wd1mpVo5MP7PlVe0CWuF8bMVScL.jpg",
+      "description": "Chip & Dale, Donald Duck, Pluto, Goofy, Mickey si prietenii lor va vor amuza cu aventurile lor petrecute in miezul iernii.\r Daca pe \"Campul de hockey\", Huey, Dewey si Louie intra in belele alaturi de unchiul lor: Donald Duck, \"Batalia cu bulgari\" se va dovedi mai nemiloasa ca niciodata cand acestia se afla intr-un razboi cu zapada.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:245881",
+      "type": "movie",
+      "name": "Scooby-Doo! Sărbători Bântuite",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/jCnHwIKptAzm2V5Ho9qko3VpMvL.jpg",
+      "description": "Gașca se bucură de un festival de iarnă, până când ajunge un om de zăpadă viu și îi alungă pe toți. Curios, gașca decide să investigheze într-o fabrică de jucării din apropiere, care ascunde un secret mortal. Gașca află curând că sunt prinși în interiorul magazinului de jucării, deoarece omul de zăpadă îi așteapta afară. Se întâlnesc apoi cu proprietarul, Fabian Menkle, care le explică despre turnul cu ceas bântuit al magazinului și că magazinul de jucării familiei Menkle a fost blestemat cu mult timp în urmă de Sinistru Om de Zăpadă.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:62214",
+      "type": "movie",
+      "name": "Frankenweenie",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/yGjVbLVdZRBlZTTQVBsj2KUjL1s.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:129533",
+      "type": "movie",
+      "name": "Barbie: Prințesa și vedeta pop",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/hab6ZMC3eXj9pQHlSxNUjonphCR.jpg",
+      "description": "Barbie este o prințesă care preferă să cânte și să danseze în locul îndatoririlor regale. Când o vedetă pop vizitează regatul, cele două decid să facă schimb de vieți.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:77174",
+      "type": "movie",
+      "name": "ParaNorman",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/9DZPtuYTKYxt6vzHvZ5FLThG4fl.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:62177",
+      "type": "movie",
+      "name": "Neînfricată",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/boX80tU8VSelGcd66MTvQ56Yv3a.jpg",
+      "description": "Hotărâtă să-și aleagă singură viitorul, prințesa Merida sfidează o veche tradiție a regatului. Când o încercare nechibzuită de a schimba lucrurile declanșează un blestem, Merida trebuie să găsească o cale de a-l dezlega și descoperă astfel ce înseamnă cu adevărat curajul.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:91342",
+      "type": "movie",
+      "name": "Barbie: Povestea unei sirene 2",
+      "releaseInfo": "2012",
+      "poster": "https://image.tmdb.org/t/p/w500/iVCfTtVDAECpbMSokSNilIR6wPr.jpg",
+      "description": "Cu ajutorul prietenilor ei din adâncurile mării, sirena surfistă Merliah trebuie să o oprească pe malefica sirenă Eris, care e hotărâtă să devină stăpână peste Oceana.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:88096",
+      "type": "movie",
+      "name": "Prep & Landing: Naughty vs. Nice",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/wJqj6tBEojifQVPEayWBlCU9tNV.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:79218",
+      "type": "movie",
+      "name": "Epoca de gheaţă: Crăciunul Mamutului",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/ue5417HaDcvgMDusryenwwwZARq.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:65759",
+      "type": "movie",
+      "name": "Happy Feet 2: Mumble dansează din nou",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/8G45gLL7gaZA4FjrvbJAczG48Th.jpg",
+      "description": "Mumble, pinguinul dansator de step, și Gloria, femela de pinguin cu o voce minunată, au acum un pui, pe Erik. La fel ca tatăl său, micul pinguin imperial Erik se străduiește mereu să-și descopere talentul. Din nefericire, Erik e total nepriceput la coregrafie și nu poate prinde pașii de dans. Rușinat, micul pinguin fuge de acasă și astfel îl cunoaște pe Marele Sven, un pinguin care poate să zboare! Între timp, pericole neașteptate îi amenință pe toți pinguinii, iar pentru a se salva se pare că trebuie să se unească cu toate creaturile din Antarctica și să... danseze.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:51052",
+      "type": "movie",
+      "name": "Marea cursă de Crăciun",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/wb2sZocCIhwHyqhm9BcVZp2ePfO.jpg",
+      "description": "La fabrica de jucării supersecretă a lui Moș Crăciun, domnul Crăciun îi încredințează fiului său, Arthur, o misiune extrem de importantă.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:77499",
+      "type": "movie",
+      "name": "Barbie: Un Crăciun perfect",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/u14NrsyD9h505ZXs5Ofm7Tv3AuM.jpg",
+      "description": "Avionul în care se află Barbie și surorile sale aterizează forțat într-un orășel, iar locuitorii acestuia le învață să se bucure de spiritul Crăciunului.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:17578",
+      "type": "movie",
+      "name": "Aventurile lui Tintin: Secretul Licornului",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/fQZ3sLR1Fi63NMsNRbjm9q5qODJ.jpg",
+      "description": "Această animație urmărește noile aventuri ale tânărului jurnalist Tintin, pe care flerul profesional îl ajută să descopere poveștile ce au potențialul de a se transforma în reportaje de succes, dar, în același timp, îl bagă adeseori în bucluc și îi pune viața în pericol. După ce Tintin și câinele lui, Snowy, intră în posesia unui indiciu care îi conduce la o corabie scufundată la prora căreia se află un unicorn și care a fost comandată în trecut de către Francis Haddock, ei pornesc într-o vânătoare de comori. Numai că, pentru a ajunge la comoara pierdută în valuri, Tintin trebuie să îl învingă pe diabolicul pirat Red Rackham, ajutat fiind de către un moștenitor al căpitanului Francis Haddock și de către detectivii gemeni Thompson și Thomson, care se află pe urmele unui condamnat evadat din închisoare.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:73456",
+      "type": "movie",
+      "name": "Barbie la școala prințeselor",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/lI2jPbssax6XX5vDqB9mTJHGzfH.jpg",
+      "description": "Blair Willows este încântată că va merge la Școala Fermecată de Prințese, unde le cunoaște pe prințesele Delancy și Hadley și caută o coroană magică.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:41513",
+      "type": "movie",
+      "name": "Ștrumpfii",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/91dy46x3nInAfAdVxd3DlVcfuCX.jpg",
+      "description": "Când maleficul Gargamel încearcă să îi captureze, ștrumpfii părăsesc ținutul natal împădurit, trec printr-un portal magic și se trezesc pierduți în New York.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:49013",
+      "type": "movie",
+      "name": "Mașini 2",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/tU3kOCZmnf3wWIJYdQLK4F9NY2t.jpg",
+      "description": "Totul începe atunci când Lightning decide să participe la Grand Prix-ul Mondial și pornește alături de prietenii săi în ceea ce va deveni aventura vieții lor. Grație acestui concurs, personajele ajung să călătorească în țări precum Italia, Marea Britanie sau Japonia, iar diferențele culturale de care aceștia se izbesc dau naștere multor situații comice. Dar, de data aceasta, cursele de mașini nu mai constituie subiectul central al poveștii. Și asta datorită lui Mater, care se trezește în mijlocul unei operațiuni secrete în care el însuși este spionul principal. Astfel este prins într-o cursă incredibilă pe străzile Japoniei și Europei, în mijlocul unei aventuri pline de peripeții, tractat de prietenii lui și urmărit de o lume întreagă.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:49444",
+      "type": "movie",
+      "name": "Kung Fu Panda 2",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/pFuHd05h39SGUaP4CXA0Rb0IrL5.jpg",
+      "description": "În Kung Fu Panda 2, Po își trăiește visul ca Războinicul Dragon, apărând Valea Păcii alături de prietenii săi, maeștrii kung fu, Cei Cinci Furioși: Tigroaica, Maimuță, Călugăriță, Viperă și Cocor. Dar viața nemaipomenită a lui Po este acum amenințată de apariția unui super-ticălos, Lordul Shen care plănuiește să folosească o armă ultrasecretă pentru ca să cucerească China și să distrugă arta kung fu. Pregătit să devină Războinicul Dragon de mentorul său, Shifu, Po trebuie acum să caute în trecutul său și să scoată la iveală secretele misterioasei sale origini. Numai așa va reuși să descătușeze forțele de care are nevoie.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:51162",
+      "type": "movie",
+      "name": "Winnie de pluș",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/kgajbBN0hVD1qbU5EdyU3JLgWUz.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:50359",
+      "type": "movie",
+      "name": "Hop",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/bG81q0F2X4FFnHcyl1BG76fSJ7f.jpg",
+      "description": "E.B., Fiul adolescent al Iepurașului de Paște, se îndreaptă către Hollywood, determinat să devină un toboșar într-o formație de rock 'n' roll. În LA, el este luat de Fred după ce leneșul fără slujbă îl lovește pe E.B. cu mașina sa.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:50321",
+      "type": "movie",
+      "name": "Mămici pentru Marte",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/o8r2kFiyLo1HZTJcWlxEBf6Km1t.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:57737",
+      "type": "movie",
+      "name": "Barbie: Secretul zânelor",
+      "releaseInfo": "2011",
+      "poster": "https://image.tmdb.org/t/p/w500/wn2aoYKOonwMNKkzfgO5y4ji8pB.jpg",
+      "description": "Barbie descoperă că zânele trăiesc în secret printre oameni. Cu ajutorul prietenelor sale Taylor și Carrie, pornește să-l salveze pe Ken, răpit și dus în orașul ascuns al zânelor, Gloss Angeles.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:50337",
+      "type": "movie",
+      "name": "Duncan - Stăpânul Focului",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/mTPC0ysx6pa91BK6dnnKvoynjb3.jpg",
+      "description": "Belloc era liderul Kaiju, iar atunci când a izbucnit războiul dintre Kaiju și oameni numai dragostea lui pentru Margaret a fost cea care a împedicat distrugerea ambelor tabere. După terminarea războiului, toți dragonii Kaju s-au făcut nevăzuți, iar Margaret a fost nevoită sa-l crească singură pe Duncan. Acesta e acum un licean obișnuit, cu excepția tenului oarecum portocaliu și a temperamentului incendiar. Transferat la un liceu nou, se împrietenește cu Isabel și Ken și se îndrăgostește de cea mai frumoasă fată din școală, Jenna.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:44874",
+      "type": "movie",
+      "name": "Barbie în basmul modei pariziene",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/bFnf8f8DXdCANQ7Y62djgubhh4P.jpg",
+      "description": "Barbie, o actriță populară aflată într-o pauză de la carieră, află că mătușa ei, creatoarea de modă Millicent, și-a vândut afacerea unei rivale. Cu ajutorul câtorva ființe magice, Barbie intervine pentru a salva situația.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:45752",
+      "type": "movie",
+      "name": "Scooby Doo şi Coşmarul din Tabăra de Vară",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/qTEFkyef3tJiBnVeN3cuNfTrhob.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:49953",
+      "type": "movie",
+      "name": "Aventurile lui Sammy",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/gNkrg8ISfl1pZ8lNo70H12npUT3.jpg",
+      "description": "Sammy, o simpatică broscuță țestoasă, este cel mai curajos dintre semenii săi. Așa cum se întâmplă cu toate broscuțele proaspăt ieșite din ou, Sammy trebuie să își înceapă călătoria inițiatică prin oceanele nemărginite ale Terrei. Drumul până la apă este împânzit de pericole, dar odată ajuns în valuri, o serie de întâmplări amuzante îl poartă într-o adevărată aventură în jurul lumii.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:44683",
+      "type": "movie",
+      "name": "Clopoțica și aventurile ei în lumea oamenilor",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/hwoz1GD0tSsqwliDgKSNTlRysss.jpg",
+      "description": "Chiar înainte să se fi întâlnit cu Wendy și Băieții Pierduți, Tinker Bell o întâlnește pe Lizzy, o fată cu o credință puternică în existența zânelor. \"Tinker Bell and the Great Fairy Rescue\" se desfășoară în timpul verii, într-o zonă rurală Angliei. O întâmplare magică se petrece atunci când Lizzy o descoperă pe Tinker Bell, pe măsură ce lumile celor două se unesc, se creează o legătură specială între Tink și fata curioasă aflată în nevoia unui prietenii.  În timp ce zânele lansează o misiune de salvare, Tinker Bell își asumă un risc enorm, punându-și propria siguranță și viitorul zânelor în pericol. Această aventură plină de acțiune le duce pe zânele din Pixie Hollow într-un zbor spre Londra pentru a o salva pe Tinker Bell și binele tuturor zânelor.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:10191",
+      "type": "movie",
+      "name": "Cum să îți dresezi dragonul",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/fIiIHBYCshbudw1rtJLI7oF5VuK.jpg",
+      "description": "Timidul Sughiț trebuie să le dovedească tatălui său și întregului sat că poate fi un războinic viking, dar mai degrabă s-ar împrieteni cu un dragon decât să-l ucidă.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:32916",
+      "type": "movie",
+      "name": "Scooby-Doo! Abracadabra-Doo",
+      "releaseInfo": "2010",
+      "poster": "https://image.tmdb.org/t/p/w500/1cKL7mZW5shP9r9TlTNQX4doMQN.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:26809",
+      "type": "movie",
+      "name": "Prep & Landing",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/jl4UZyUA1xPFZMYWYJ4ZzuccW7Q.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:26505",
+      "type": "movie",
+      "name": "Arthur 2: Răzbunarea lui Maltazard",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/uDg51dzy7lggArwRjG7TiUXJcxh.jpg",
+      "description": "Arthur răspunde unui apel de ajutor din partea prințesei Selenia, amenințată de maleficul Maltazard.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:51800",
+      "type": "movie",
+      "name": "Povestea micului delfin",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/f1jSTZY3POZl7cA4qWOgx0zyfUx.jpg",
+      "description": "Filmul prezintă povestea lui Daniel, un delfin care își abandonează locuința sa sigură pentru a explora oceanul și pentru a descoperi adevăratul său scop în viață.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:22794",
+      "type": "movie",
+      "name": "Stă să plouă cu chiftele",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/pMJzs65ObBq0HNaKC2XNNTa7LOC.jpg",
+      "description": "Te-ai săturat să-ți spună alții ce trebuie și ce nu trebuie să mănânci? Ești dezamăgit că trebuie să mănânci aceleași alimente, zi după zi? Abia aștepți ziua când vei putea comanda ce vrei și când vrei? Ei bine, așteptarea ta s-a terminat. În 2009, pregătește-te să fii servit cu Stă să plouă cu chiftele – o aventură hilară în… porții gigantice. Inspirată după îndrăgita carte pentru copii, filmul se concentrează pe un oraș în care mâncarea cade din cer în ploaie torențială!\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:23566",
+      "type": "movie",
+      "name": "Barbie și cei trei muschetari",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/zR0ts7zL2P1kQIQXYlnS4KCqqmu.jpg",
+      "description": "Corinne este o tânără de la țară care pleacă la Paris pentru a-și împlini marele vis: să devină muschetară. Nu și-ar fi imaginat niciodată că va întâlni alte trei fete care împărtășesc în secret același vis. Folosindu-și talentele speciale, ele lucrează împreună pentru a dejuca un complot și a-l salva pe prinț. Toate pentru una și una pentru toate!\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:8355",
+      "type": "movie",
+      "name": "Epoca de gheață 3: Apariția dinozaurilor",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/okDvR6L3lcQeF1qrx47L79Du2p6.jpg",
+      "description": "Prietenii noștrii preistorici - Manny, Sid, Diego și Scrat - se aventurează împreună într-o lume sub pământ, nouă și misterioasă, populată de dinozauri și de o nevăstuică cu un singur ochi, pe nume Buck.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:50300",
+      "type": "movie",
+      "name": "Ed, Edd și Eddy - Marele Show",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/uwuNrGrGJlkqInCZ9Kunf9JYWUG.jpg",
+      "description": "În film este vorba despre Ed, Edd și Eddy care fug de copiii din cartier din cauza unei farse nereușite a lui Eddy care i-a supărat foarte tare. Cei trei decid să meargă prin tot orașul în căutarea fratelui mai mare a lui Eddy deoarece ei cred că acesta îi va învăța minte pe ceilalți. Apoi, Ezii au fost acceptați de copii și toți i-au luat pe Ezi pe sus, către cartier primind sfarmă-fălci de la Kevin, și desigur au cântat cântecul „E bine să ai prieteni”. La sfârșitul filmului, Jonny și Scândură plănuiau cum să se răzbune pe întreg cartierul iar Scândură a spus că s-a terminat filmul iar Jonny a întrebat \"Care film?\"\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:14160",
+      "type": "movie",
+      "name": "Deasupra tuturor",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/f6ytrGR8IJ0qizc2gI0HSJN6OaU.jpg",
+      "description": "Carl Fredricksen, un văduv în vârstă care a visat mereu la aventură, își leagă casa de mii de baloane și pornește în zbor spre America de Sud pentru a îndeplini o promisiune făcută soției sale. Călătoria lui ia o turnură neașteptată când descoperă că Russell, un cercetaș de opt ani, a ajuns din greșeală la bord.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:16390",
+      "type": "movie",
+      "name": "Scooby-Doo! și Sabia Samuraiului",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/qJ0UlWWrBn2fnAg4SifTJbDUuaf.jpg",
+      "description": "Adresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:14836",
+      "type": "movie",
+      "name": "Coraline",
+      "releaseInfo": "2009",
+      "poster": "https://image.tmdb.org/t/p/w500/4jeFXQYytChdZYE9JYO7Un87IlW.jpg",
+      "description": "Coraline Jones, o fetiță curioasă mutată într-o casă nouă, descoperă o ușă secretă care o duce într-o realitate paralelă, asemănătoare cu a ei, dar mai vie și mai atrăgătoare. Când această lume aparent perfectă își dezvăluie latura întunecată, Coraline trebuie să găsească o cale de întoarcere acasă.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:712352",
+      "type": "movie",
+      "name": "Casa Foster pentru Prieteni Imaginari: Destinația Imaginația",
+      "releaseInfo": "2008",
+      "poster": "https://image.tmdb.org/t/p/w500/uNBljb1382SlOmLtNGhkFD0pRjV.jpg",
+      "description": "Frankie s-a săturat să tot muncească fără să i se recunoască efortul și când aceasta deschide o cutie cu jucării lăsată la ușa casei, aceasta descoperă o lume ciudată, unde nimeni nu are față. Acolo ea este tratată ca o prințesă de un prieten imaginar ce este de fapt o față care poate lua orice formă și orice corp, oricând la nevoie. Bloo, Mac, Wilt, Eduardo și Coco descopăr că Frankie a dispărut și pornesc în căutarea ei prin această lume ciudată, trecând prin diferite peripeții.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:13053",
+      "type": "movie",
+      "name": "Bolt",
+      "releaseInfo": "2008",
+      "poster": "https://image.tmdb.org/t/p/w500/v5aC4nrzXFGJDWY4JO1eengXzqk.jpg",
+      "description": "Cățelul Bolt, vedeta unui serial de acțiune de la Hollywood, crede că aventurile și superputerile sale sunt reale. Când este trimis din greșeală la New York, pornește într-o călătorie înapoi acasă alături de doi tovarăși de drum neașteptați și descoperă pe parcurs că poate fi erou și în lumea reală.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:13459",
+      "type": "movie",
+      "name": "Barbie și colindele de Crăciun",
+      "releaseInfo": "2008",
+      "poster": "https://image.tmdb.org/t/p/w500/fX9g1AE1JIqjX3LPPKVjcmHs6fd.jpg",
+      "description": "În ajunul Crăciunului, Kelly nu vrea să meargă la bal, așa că Barbie îi spune povestea lui Eden Starling, o divă strălucitoare din Anglia victoriană și proprietara unui teatru. Egoistă și însoțită mereu de pisica ei arogantă, Chuzzlewit, Eden nu crede în Crăciun și le poruncește tuturor angajaților să lucreze în timpul sărbătorii.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
+    },
+    {
+      "id": "tmdb:13179",
+      "type": "movie",
+      "name": "Clopoțica",
+      "releaseInfo": "2008",
+      "poster": "https://image.tmdb.org/t/p/w500/4JWp5YpbsPAZFUFBEalngpK8vib.jpg",
+      "description": "Plăsmuită din râsul zglobiu al unui copil, Clopoțica este purtată de o păpădie în Valea Ielelor, tărâmul magic unde zânele pregătesc, prin minuni numai de ele înțelese, sosirea primăverii! Însă Clopoțicăi i s-a hărăzit darul meșteșugului și ar trebui să rămână în Valea Ielelor, alături de ceilalți cârpaci care pregătesc toate lucrurile de care au nevoie zânele în funcție de anotimp. Clopoțica vrea însă cu tot dinadinsul să meargă pe Continent, împreună cu celelalte zâne, chiar dacă asta înseamnă să-și schimbe talentul. Așa că își roagă prietenele - Iridessa, zâna luminii, Rosetta - zâna florilor, Fauna - zâna animalelor și Boare-Argintie - zâna apelor - să o învețe tainele lor.\n\nAdresă verificată și cel puțin o sursă declarată compatibilă. Disponibilitatea video și redarea nu au fost testate."
     }
   ]
 }
-

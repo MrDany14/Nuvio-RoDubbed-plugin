@@ -1,8 +1,8 @@
 {
   "id": "com.mrdany14.romanian.catalog",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "Catalog românesc",
-  "description": "Cataloage TMDB cu filme și seriale dublate sau animate.",
+  "description": "Titluri dublate în română cu adresă verificată și sursă compatibilă. Serialele sunt verificate doar pentru S1E1; redarea nu este testată.",
   "resources": [
     "catalog"
   ],
@@ -17,22 +17,46 @@
     {
       "type": "movie",
       "id": "romanian-animated-movies",
-      "name": "Filme animate"
+      "name": "Filme animate",
+      "extra": [
+        {
+          "name": "skip",
+          "isRequired": false
+        }
+      ]
     },
     {
       "type": "series",
       "id": "romanian-animated-series",
-      "name": "Seriale animate"
+      "name": "Seriale animate",
+      "extra": [
+        {
+          "name": "skip",
+          "isRequired": false
+        }
+      ]
     },
     {
       "type": "movie",
       "id": "romanian-dubbed-movies",
-      "name": "Filme dublate în română"
+      "name": "Filme dublate în română",
+      "extra": [
+        {
+          "name": "skip",
+          "isRequired": false
+        }
+      ]
     },
     {
       "type": "series",
       "id": "romanian-dubbed-series",
-      "name": "Seriale dublate în română"
+      "name": "Seriale dublate în română",
+      "extra": [
+        {
+          "name": "skip",
+          "isRequired": false
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,381 @@
+{
+  "generatedAt": "2026-10-19T14:22:42.904Z",
+  "complete": true,
+  "scope": "Romanian declarations, supported host routes and actual official canonical-page/S1E1 matching. No host requests, media requests, deletion checks or playback tests.",
+  "seriesScope": "Only TMDB/Nuvio S1E1 checked. Later episodes and seasons are not covered by this audit.",
+  "scan": {
+    "started": "2026-10-19T11:01:10.425Z",
+    "network": 10491,
+    "cache": 5312,
+    "checked": 5394,
+    "included": 0,
+    "blocked": {},
+    "sites": {
+      "df": {
+        "inventory": 2520,
+        "checked": 2520
+      },
+      "doza": {
+        "inventory": 1323,
+        "checked": 1323
+      },
+      "fd": {
+        "inventory": 623,
+        "checked": 623
+      },
+      "dd": {
+        "inventory": 928,
+        "checked": 928
+      }
+    },
+    "candidates": 1127,
+    "total": 5394,
+    "inventoryTotal": 5394,
+    "complete": true
+  },
+  "publisherPagesChecked": 5394,
+  "officialMatcherAcceptedPages": 1124,
+  "qualifyingSupportedPages": 1123,
+  "uniqueTitles": 840,
+  "listCounts": {
+    "romanian-animated-movies": 374,
+    "romanian-animated-series": 51,
+    "romanian-dubbed-movies": 387,
+    "romanian-dubbed-series": 28
+  },
+  "excluded": {
+    "unsupported-or-no-host": 2103,
+    "unverified-TMDB-identity": 305,
+    "excluded-language": 1469,
+    "unverified-runtime-address": 139,
+    "previously-observed-unresolved-source": 1,
+    "missing-or-unmapped-S1E1": 222,
+    "unverified-title-metadata": 29,
+    "official-matcher-rejected": 3
+  },
+  "duplicateWebsiteEntriesMerged": 283,
+  "unsupportedHostCounts": [
+    {
+      "site": "doza",
+      "family": "Netu",
+      "publisherPages": 1152
+    },
+    {
+      "site": "df",
+      "family": "Netu",
+      "publisherPages": 857
+    },
+    {
+      "site": "dd",
+      "family": "Netu",
+      "publisherPages": 624
+    },
+    {
+      "site": "df",
+      "family": "Player4me",
+      "publisherPages": 527
+    },
+    {
+      "site": "fd",
+      "family": "morencius.com",
+      "publisherPages": 187
+    },
+    {
+      "site": "dd",
+      "family": "VidMoly",
+      "publisherPages": 160
+    },
+    {
+      "site": "dd",
+      "family": "StreamTape (HD)",
+      "publisherPages": 116
+    },
+    {
+      "site": "df",
+      "family": "4meplayer.4meplayer.com",
+      "publisherPages": 105
+    },
+    {
+      "site": "df",
+      "family": "dfbk.embed4me.com",
+      "publisherPages": 105
+    },
+    {
+      "site": "df",
+      "family": "Unknown",
+      "publisherPages": 41
+    },
+    {
+      "site": "df",
+      "family": "doodstream.com",
+      "publisherPages": 36
+    },
+    {
+      "site": "dd",
+      "family": "gounlimited.to",
+      "publisherPages": 29
+    },
+    {
+      "site": "dd",
+      "family": "Streamtape",
+      "publisherPages": 23
+    },
+    {
+      "site": "doza",
+      "family": "Sendvid",
+      "publisherPages": 21
+    },
+    {
+      "site": "df",
+      "family": "desenefaine.net",
+      "publisherPages": 17
+    },
+    {
+      "site": "df",
+      "family": "vembed.net",
+      "publisherPages": 16
+    },
+    {
+      "site": "doza",
+      "family": "vidply.com",
+      "publisherPages": 13
+    },
+    {
+      "site": "fd",
+      "family": "Streamtape",
+      "publisherPages": 12
+    },
+    {
+      "site": "fd",
+      "family": "Abyss",
+      "publisherPages": 12
+    },
+    {
+      "site": "doza",
+      "family": "dsvplay.com",
+      "publisherPages": 12
+    },
+    {
+      "site": "doza",
+      "family": "embed.hideiframe.com",
+      "publisherPages": 12
+    },
+    {
+      "site": "doza",
+      "family": "do7go.com",
+      "publisherPages": 12
+    },
+    {
+      "site": "df",
+      "family": "dsvplay.com",
+      "publisherPages": 11
+    },
+    {
+      "site": "dd",
+      "family": "vid-guard.com",
+      "publisherPages": 9
+    },
+    {
+      "site": "df",
+      "family": "dood.pm",
+      "publisherPages": 9
+    },
+    {
+      "site": "df",
+      "family": "vid-guard.com",
+      "publisherPages": 8
+    },
+    {
+      "site": "doza",
+      "family": "d-s.io",
+      "publisherPages": 7
+    },
+    {
+      "site": "doza",
+      "family": "doply.net",
+      "publisherPages": 6
+    },
+    {
+      "site": "dd",
+      "family": "vidoza.net",
+      "publisherPages": 6
+    },
+    {
+      "site": "doza",
+      "family": "dooodster.com",
+      "publisherPages": 5
+    },
+    {
+      "site": "dd",
+      "family": "Vidmoly (vidmoly.to)",
+      "publisherPages": 5
+    },
+    {
+      "site": "dd",
+      "family": "openload.co",
+      "publisherPages": 5
+    },
+    {
+      "site": "df",
+      "family": "OK.ru",
+      "publisherPages": 4
+    },
+    {
+      "site": "doza",
+      "family": "vide0.net",
+      "publisherPages": 4
+    },
+    {
+      "site": "df",
+      "family": "dooodster.com",
+      "publisherPages": 4
+    },
+    {
+      "site": "df",
+      "family": "vidply.com",
+      "publisherPages": 4
+    },
+    {
+      "site": "doza",
+      "family": "secure.lockn.link",
+      "publisherPages": 3
+    },
+    {
+      "site": "df",
+      "family": "vembed.org",
+      "publisherPages": 3
+    },
+    {
+      "site": "dd",
+      "family": "www.youtube.com",
+      "publisherPages": 3
+    },
+    {
+      "site": "dd",
+      "family": "www.vidload.net",
+      "publisherPages": 3
+    },
+    {
+      "site": "doza",
+      "family": "OK.ru",
+      "publisherPages": 3
+    },
+    {
+      "site": "doza",
+      "family": "www.youtube.com",
+      "publisherPages": 3
+    },
+    {
+      "site": "df",
+      "family": "vsembed.su",
+      "publisherPages": 3
+    },
+    {
+      "site": "dd",
+      "family": "estream.to",
+      "publisherPages": 2
+    },
+    {
+      "site": "df",
+      "family": "dood.so",
+      "publisherPages": 2
+    },
+    {
+      "site": "df",
+      "family": "sbfull.com",
+      "publisherPages": 2
+    },
+    {
+      "site": "doza",
+      "family": "d0000d.com",
+      "publisherPages": 2
+    },
+    {
+      "site": "df",
+      "family": "Streamtape",
+      "publisherPages": 2
+    },
+    {
+      "site": "df",
+      "family": "Playmogo",
+      "publisherPages": 2
+    },
+    {
+      "site": "dd",
+      "family": "deseneledublate.embed4me.com",
+      "publisherPages": 1
+    },
+    {
+      "site": "doza",
+      "family": "www.dozaanimata.net",
+      "publisherPages": 1
+    },
+    {
+      "site": "df",
+      "family": "vk.com",
+      "publisherPages": 1
+    },
+    {
+      "site": "dd",
+      "family": "Sendvid",
+      "publisherPages": 1
+    },
+    {
+      "site": "df",
+      "family": "www.youtube.com",
+      "publisherPages": 1
+    },
+    {
+      "site": "doza",
+      "family": "vvide0.com",
+      "publisherPages": 1
+    },
+    {
+      "site": "doza",
+      "family": "www.they.tube",
+      "publisherPages": 1
+    },
+    {
+      "site": "dd",
+      "family": "deseneledublate.com",
+      "publisherPages": 1
+    },
+    {
+      "site": "df",
+      "family": "evoload.io",
+      "publisherPages": 1
+    },
+    {
+      "site": "df",
+      "family": "dood.wf",
+      "publisherPages": 1
+    },
+    {
+      "site": "doza",
+      "family": "ds2video.com",
+      "publisherPages": 1
+    },
+    {
+      "site": "df",
+      "family": "streamdav.com",
+      "publisherPages": 1
+    },
+    {
+      "site": "doza",
+      "family": "dood.re",
+      "publisherPages": 1
+    },
+    {
+      "site": "df",
+      "family": "mixdrop.top",
+      "publisherPages": 1
+    }
+  ],
+  "unsupportedCountCaveat": "Counts are publisher title pages (or their S1E1 pages); unsupported-only titles without a proven TMDB identity are not deduplicated across sites.",
+  "rules": {
+    "animated": "Independent TMDB animation genre16; animated titles appear only in animated lists.",
+    "deduplication": "Media type plus independently matched TMDB ID. Distinct remakes/editions retain distinct IDs.",
+    "sourceAvailability": "Declared support only, not a guarantee the video exists or plays. Recent previously observed unresolved-source evidence is retained without rechecking video hosts.",
+    "matching": "Canonical address observed in actual supported runtime query results, or the exact native direct-slug route; actual official page/episode guards replayed offline."
+  }
+}
